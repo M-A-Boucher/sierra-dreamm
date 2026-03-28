@@ -1,0 +1,201 @@
+//
+// Mixed-Up Fairy Tales
+//
+desc[sol-tales]:
+
+name = Mixed-Up Fairy Tales
+icon = sol-tales.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_386DX_33)
+ramkb = 4096
+filter = sierra, adventure
+EXE_NAME = SCIDHUV.EXE
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; nothrottle = 3.5
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY3V.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 5; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME);
+        videohw = vga; nothrottle = 5
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME);
+        videohw = vga; nothrottle = 5; priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = sb16+cms
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; nothrottle = 6; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	audioDrv=AUDNONE.DRV
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+        minHunk=200k
+        language=1
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, Int. 11.13.91, 3x1.44M
+//
+game[v1.0-int-11.13.91-3x1.44m]:
+    name = v1.0, Int. 11.13.91, 3x1.44M
+    anchorfile = RESOURCE.000
+    file[]: crc = 1293e42e; size =      3164; name = 190.SCR
+    file[]: crc = d8cfeeae; size =      9228; name = 220.SCR
+    file[]: crc = f3cc83b6; size =      6936; name = 235.SCR
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = a99541a4; size =      2331; name = AUDBLAST.DRV
+    file[]: crc = 5b0df88e; size =      1869; name = AUDDISNY.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
+    file[]: crc = cc5064c5; size =      1381; name = AUDPS1.DRV
+    file[]: crc = 11f24e99; size =      1484; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
+    file[]: crc = 01a55f12; size =     40993; name = INSTALL.EXE ; optional = true
+    file[]: crc = c7e49415; size =     14583; name = INSTALL.HLP ; optional = true
+    file[]: crc = 425b624c; size =      2881; name = INSTALL.SCR ; optional = true
+    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = 1c8e83b5; size =      1765; name = READ.ME     ; optional = true
+    file[]: crc = 2a9686bc; size =        31; name = README.BAT  ; optional = true
+    file[]: crc = 93412e5e; size =    984439; name = RESOURCE.000
+    file[]: crc = 851b8b93; size =    238019; name = RESOURCE.001
+    file[]: crc = c7312f42; size =   1414142; name = RESOURCE.002
+    file[]: crc = a22386fe; size =   1344719; name = RESOURCE.003
+    file[]: crc = fd1c79c6; size =        35; name = RESOURCE.CFG; optional = true
+    file[]: crc = b5ad3421; size =      3249; name = RESOURCE.MAP
+    file[]: crc = 74276dcd; size =     60755; name = SCIDHUV.EXE
+    file[]: crc = 751cc00f; size =        40; name = SIERRA.BAT  ; optional = true
+    file[]: crc = 2b657ffe; size =        37; name = SIERRAH.BAT ; optional = true
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = 4022ad52; size =        48; name = TALES.BAT   ; optional = true
+    file[]: crc = 0ed0ab6c; size =        45; name = TALESH.BAT  ; optional = true
+    file[]: crc = f62c2b48; size =        35; name = TALESRS.BAT ; optional = true
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = e9e20b62; size =         8; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// v1.0, Int. 11.23.91, 4x720K, 16 Color
+//
+game[v1.0-int-11.23.91-4x720k]:
+    name = v1.0, Int. 11.23.91, 4x720K, 16 Color
+    EXE_NAME = SCIDUV.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = 5704cdfc; size =     15460; name = 230.SCR
+    file[]: crc = ef583030; size =     10304; name = 230.TEX
+    file[]: crc = 53dd7b09; size =      1260; name = 231.SCR
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = a99541a4; size =      2331; name = AUDBLAST.DRV
+    file[]: crc = 5b0df88e; size =      1869; name = AUDDISNY.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
+    file[]: crc = cc5064c5; size =      1381; name = AUDPS1.DRV
+    file[]: crc = 11f24e99; size =      1484; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
+    file[]: crc = 8af78c52; size =     41062; name = INSTALL.EXE ; optional = true
+    file[]: crc = 90d1d716; size =     14440; name = INSTALL.HLP ; optional = true
+    file[]: crc = eac56752; size =      1487; name = INSTALL.SCR ; optional = true
+    file[]: crc = a159941c; size =      4567; name = INSTALL.TXT ; optional = true
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = e5440acb; size =      1941; name = READ.ME     ; optional = true
+    file[]: crc = c766ef6d; size =     17819; name = RESOURCE.000
+    file[]: crc = 694e6f46; size =    478401; name = RESOURCE.001
+    file[]: crc = 1041f342; size =    663713; name = RESOURCE.002
+    file[]: crc = 254d10e1; size =    560255; name = RESOURCE.003
+    file[]: crc = 6ce469f7; size =    651109; name = RESOURCE.004
+    file[]: crc = 19d878bb; size =        35; name = RESOURCE.CFG; optional = true
+    file[]: crc = 376e05b7; size =      3219; name = RESOURCE.MAP
+    file[]: crc = 2dc7b0a8; size =     58571; name = SCIDUV.EXE
+    file[]: crc = 032a3658; size =        39; name = SIERRA.BAT  ; optional = true
+    file[]: crc = 760124a2; size =        36; name = SIERRAH.BAT ; optional = true
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = bcdea9b1; size =        47; name = TALES.BAT   ; optional = true
+    file[]: crc = 7e6db69e; size =        44; name = TALESH.BAT  ; optional = true
+    file[]: crc = f62c2b48; size =        35; name = TALESRS.BAT ; optional = true
+    file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+end
+
+end

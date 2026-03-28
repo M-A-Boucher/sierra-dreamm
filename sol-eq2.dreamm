@@ -1,0 +1,159 @@
+//
+// Lost Secret of the Rainforest
+//
+desc[sol-eq2]:
+
+name = Lost Secret of the Rainforest
+icon = sol-eq2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.EXE
+mips = $(MIPS_386DX_33)
+nothrottle = 4
+videohw = vga;
+ramkb = 4096
+filter = sierra, adventure
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16+mt32; priority = 1
+        AUDIO_DRIVER = PROAUDIO.DRV
+        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; nothrottle = 7; priority = 3
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        AUDIO_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+        memoryDrv=ARM.DRV
+        minhunk=200k
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[launch]:
+    code = [[[$(CRLF)
+        if (!file_exists("RESOURCE.000"))
+            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004")
+    ]]]
+end
+
+//
+// v1.0, Int. 2.5.93, 4x1.44M
+//
+game[v1.0-int-2.5.93-4x1.44m]:
+    name = v1.0, Int. 12.23.91, 4x1.44M
+    anchorfile = RESOURCE.000
+    anchordepth = 1
+    file[]: crc = 8ac500dc; size =       980; name = 5.HEP
+    file[]: crc = bc55172b; size =      2374; name = 5.SCR
+    file[]: crc = ed9cb7c5; size =       632; name = 65535.MAP
+    file[]: crc = f1f4eed2; size =       155; name = 943.TEX
+    file[]: crc = 8ae6bb35; size =       119; name = 952.TEX
+    file[]: crc = 82b03a30; size =        11; name = 993.TEX
+    file[]: crc = a575e624; size =        70; name = 999.TEX
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = d9636f05; size =      6522; name = AUDBLAST.DRV
+    file[]: crc = cd79cd66; size =      5250; name = AUDDISNY.DRV
+    file[]: crc = 67d9b87d; size =      3965; name = AUDMSSYS.DRV
+    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
+    file[]: crc = b8c33ec3; size =      6070; name = AUDPRO.DRV
+    file[]: crc = 5a425a32; size =      4079; name = AUDPRO16.DRV
+    file[]: crc = 0bb0fe60; size =      4829; name = AUDPS1.DRV
+    file[]: crc = ea921c26; size =      6549; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = c2d18c21; size =     62724; name = INSTALL.EXE
+    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP
+    file[]: crc = fa1d9d0f; size =      1732; name = INSTALL.SCR
+    file[]: crc = 0c7a9d30; size =      8737; name = INSTALL.TXT
+    file[]: crc = 18896cc7; size =      6032; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = e9283764; size =       261; name = MESSAGE.MAP
+    file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 154c7107; size =      5922; name = README
+    file[]: crc = 5b7b2b9a; size =        22; name = README.BAT
+    file[]: crc = d1647aa0; size =    590000; name = RESOURCE.001
+    file[]: crc = fd35b274; size =   1454600; name = RESOURCE.002
+    file[]: crc = 3385742c; size =   1454600; name = RESOURCE.003
+    file[]: crc = c3c77533; size =    708992; name = RESOURCE.004
+    file[]: crc = 46fb2493; size =    730768; name = RESOURCE.AUD
+    file[]: crc = cacb24c3; size =       191; name = RESOURCE.CFG
+    file[]: crc = 6675ca0a; size =      5658; name = RESOURCE.MAP
+    file[]: crc = 84f6af22; size =    111608; name = RESOURCE.MSG
+    file[]: crc = 0dabc06c; size =     67960; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = bccee52a; size =        58; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+end

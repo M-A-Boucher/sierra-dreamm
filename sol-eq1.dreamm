@@ -1,0 +1,159 @@
+//
+// EcoQuest: The Search for Cetus
+//
+desc[sol-eq1]:
+
+name = EcoQuest: The Search for Cetus
+icon = sol-eq1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SCIDHUV.EXE
+mips = $(MIPS_386DX_33)
+nothrottle = 8
+videohw = vga;
+ramkb = 4096
+filter = sierra, adventure
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 1
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = sb16+cms; nothrottle = 10
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; nothrottle = 10; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+        audioDrv=AUDNONE.DRV
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+        minHunk=200k
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, Int. 12.23.91, 3x1.44M-1x720K
+//
+game[v1.0-int-12.23.91-5x1.44m-1x720k]:
+    name = v1.0, Int. 12.23.91, 3x1.44M-1x720K
+    anchorfile = RESOURCE.000
+    file[]: crc = bbfd7872; size =     18762; name = 0.SCR
+    file[]: crc = f6866b5e; size =     10615; name = 140.MSG
+    file[]: crc = 1984c477; size =     17317; name = 200.MSG
+    file[]: crc = 4bd23a10; size =     13708; name = 200.SCR
+    file[]: crc = 99da5dce; size =      8044; name = 224.MSG
+    file[]: crc = 0a8f411a; size =      7262; name = 345.SCR
+    file[]: crc = 464eb07c; size =     10784; name = 360.SCR
+    file[]: crc = 6a3ff58f; size =     10674; name = 381.SCR
+    file[]: crc = 41bc2b79; size =     11971; name = 50.MSG
+    file[]: crc = b2bf68e2; size =     11062; name = 500.SCR
+    file[]: crc = c694920f; size =      9606; name = 540.SCR
+    file[]: crc = f5c2b554; size =      2608; name = 560.SCR
+    file[]: crc = 48b92702; size =     14756; name = 580.SCR
+    file[]: crc = 2184fa6b; size =      3112; name = 64.SCR
+    file[]: crc = 5ce30b6b; size =      3344; name = 67.SCR
+    file[]: crc = 41d5674e; size =      2803; name = 810.MSG
+    file[]: crc = 22576a86; size =     15222; name = 919.SND
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = 69c7f0b2; size =      2572; name = AUDBLAST.DRV
+    file[]: crc = d7c2405c; size =      2145; name = AUDDISNY.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 48ab1007; size =      2317; name = AUDPRO.DRV
+    file[]: crc = b2631db1; size =      1713; name = AUDPS1.DRV
+    file[]: crc = b612a992; size =      1775; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 5b1c781e; size =        31; name = ECORS.BAT   ; optional = true
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
+    file[]: crc = 8af78c52; size =     41062; name = INSTALL.EXE ; optional = true
+    file[]: crc = 0475e263; size =     14652; name = INSTALL.HLP ; optional = true
+    file[]: crc = 7134449b; size =      1311; name = INSTALL.SCR ; optional = true
+    file[]: crc = 314486bd; size =      4639; name = INSTALL.TXT ; optional = true
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = 5381d012; size =      1918; name = README      ; optional = true
+    file[]: crc = 301c5032; size =   1099239; name = RESOURCE.000
+    file[]: crc = 51b7948d; size =   1413719; name = RESOURCE.001
+    file[]: crc = a4159e79; size =   1241816; name = RESOURCE.002
+    file[]: crc = 75e26d97; size =    586832; name = RESOURCE.003
+    file[]: crc = 252869ff; size =        43; name = RESOURCE.CFG; optional = true
+    file[]: crc = 70a1d215; size =      4053; name = RESOURCE.MAP
+    file[]: crc = 6515dae8; size =     63095; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+    file[]: crc = 2172aaf7; size =      5846; name = VGA320.DRV
+    file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
+end
+
+//
+// v1.0, Int. 12.23.91, 4x1.2M
+//
+game[v1.0-int-12.23.91-4x1.2m]:
+    name = v1.0, Int. 12.23.91, 4x1.2M
+    imports = v1.0-int-12.23.91-5x1.44m-1x720k
+    anchorfile = RESOURCE.000
+    file[]: crc = ac480c4d; size =    858490; name = RESOURCE.000
+    file[]: crc = 57964522; size =   1212161; name = RESOURCE.001
+    file[]: crc = 1cee5361; size =   1129316; name = RESOURCE.002
+    file[]: crc = 398401f3; size =   1145616; name = RESOURCE.003
+    file[]: crc = 30c95dc0; size =      4059; name = RESOURCE.MAP
+end
+
+end

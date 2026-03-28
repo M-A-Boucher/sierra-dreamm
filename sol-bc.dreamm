@@ -1,0 +1,188 @@
+//
+// The Black Cauldron
+//
+desc[sol-bc]:
+
+name = The Black Cauldron
+icon = sol-bc.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_286_10)
+ramkb = 1024
+filter = sierra, adventure
+EXE_NAME = SIERRA.COM
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[agikey]:
+    condition = is_game()
+    code = [[[$(CRLF)
+        file = file_open("$$(rootpath)\\AGI");
+        keyblob = blob_create();
+        if (file)
+        {
+            file_seek(file, 0x100);
+            datablob = file_read(file, 0x80);
+            file_close(file);
+
+            echo(datablob);
+            for (index = 0; index < 0x80; index++)
+                blob_append(keyblob, ((blob_value(datablob, index) << 2) | (blob_value(datablob, (index + 1) & 0x7f) >> 6)) & 0xff);
+            echo(keyblob);
+        }
+        wait("progload");
+        base = cpu_csbase();
+        patchptr = cpu_findmem(base + 0x100, 0x10000, 0xbb,0x00,-1, 0xb4,0x48, 0xcd,0x21);
+        keyptr = cpu_findmem(base + 0x100, 0x10000, "keyOfs");
+        if (patchptr != 0 && keyptr != 0 && keyblob)
+        {
+            echo("Patching at ", hexstr(ptr));
+            cpu_writemem(patchptr, 1, 0xc3);
+            cpu_writemem(keyptr + 8, keyblob);
+        }
+    ]]]
+end
+
+//
+// v2.00, Int. 2.439, 2x360K, Copy Protection
+//
+game[v2.00-int-2.439-2x360k]:
+    name = v2.00, Int. 2.439, 2x360K, Copy Protection
+    anchorfile = VOL.0
+    file[]: crc = 7b095b6e; size =        37; name = _BC.BAT.    ; optional = true
+    file[]: crc = 37038296; size =       759; name = _INSTALL.BAT; optional = true
+    file[]: crc = 044da781; size =     38400; name = AGI
+    file[]: crc = e8c29f5f; size =      7680; name = AGIDATA.OVL
+    file[]: crc = ad269bd0; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ;  optional = true
+    file[]: crc = cfa63d5c; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 40a8511a; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = 77cbc884; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = 3bcb96dd; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = b8bee926; size =      1245; name = INSTALLH.BAT;  optional = true
+    file[]: crc = e3713583; size =       512; name = JR_GRAF.OVL
+    file[]: crc = 783a63a1; size =       357; name = LOGDIR
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM;  optional = true
+    file[]: crc = 14b3c6ab; size =       312; name = OBJECT
+    file[]: crc = e8103bdf; size =       216; name = PICDIR
+    file[]: crc = 027cde62; size =      2944; name = SIERRA.COM
+    file[]: crc = 8491f9fc; size =        87; name = SNDDIR
+    file[]: crc = d5409a74; size =       549; name = VIEWDIR
+    file[]: crc = ff6febf8; size =     36317; name = VOL.0
+    file[]: crc = e6a85e67; size =    204646; name = VOL.1
+    file[]: crc = ac9b48f9; size =    145491; name = VOL.2
+    file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
+end
+
+//
+// v2.00, Int. 2.439, 2x360K, Copy Protection Removed
+//
+game[v2.00-int-2.439-2x360k-cr]:
+    name = v2.00, Int. 2.439, 2x360K, Copy Protection Removed
+    imports = v2.00-int-2.439-2x360k
+    anchorfile = SIERRA.COM
+    file[]: crc = 4563e6f0; size =      2944; name = SIERRA.COM
+end
+
+//
+// v2.10, Int. 3.002.098, 2x360K, Copy Protection *** MISSING ***
+//
+
+//
+// v2.10, Int. 3.002.098, 2x360K, Copy Protection Removed
+//
+game[v2.10-int-3.002.098-2x360k-cr]:
+    name = v2.10, Int. 3.002.098, 2x360K, Copy Protection Removed
+    EXE_NAME = SIERRA.EXE
+    anchorfile = VOL.0
+    file[]: crc = 76174b5b; size =        41; name = _BC.BAT     ; optional = true
+    file[]: crc = 5e8aaf69; size =       772; name = _INSTALL.BAT; optional = true
+    file[]: crc = 6d990c16; size =      8080; name = AGIDATA.OVL
+    file[]: crc = 739d9d55; size =       126; name = BC.QA.      ; optional = true
+    file[]: crc = 2691d449; size =      1217; name = BCDIR
+    file[]: crc = 08aa1057; size =     22603; name = BCVOL.0
+    file[]: crc = 02eed913; size =    168138; name = BCVOL.1
+    file[]: crc = dbd154d0; size =    114352; name = BCVOL.2
+    file[]: crc = 8736a089; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = 15f00bfd; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 43312c25; size =      1445; name = HGC_GRAF.OVL
+    file[]: crc = e6e6ee8b; size =       599; name = HGC_OBJS.OVL
+    file[]: crc = 2fcbeb6a; size =       341; name = IBM_OBJS.OVL
+    file[]: crc = a17e8774; size =      1365; name = INSTALL.BAT ; optional = true
+    file[]: crc = c9b7edf8; size =       465; name = JR_GRAF.OVL
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
+    file[]: crc = 14b3c6ab; size =       312; name = OBJECT
+    file[]: crc = 9ab69f1b; size =     40898; name = SIERRA.EXE
+    file[]: crc = 372a41f9; size =       362; name = VG_GRAF.OVL
+    file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
+end
+
+//
+// v2.10, Int. 3.002.098, 1x720K, Copy Protection *** MISSING ***
+//
+
+//
+// v2.10, Int. 3.002.098, 1x720K, Copy Protection Removed
+//
+game[v2.10-int-3.002.098-1x720k-cr]:
+    name = v2.10, Int. 3.002.098, 1x720K, Copy Protection Removed
+    EXE_NAME = SIERRA.EXE
+    anchorfile = VOL.0
+    file[]: crc = 76174b5b; size =        41; name = _BC.BAT.    ; optional = true
+    file[]: crc = 271ed2e5; size =       534; name = _INSTALL.BAT; optional = true
+    file[]: crc = 6d990c16; size =      8080; name = AGIDATA.OVL
+    file[]: crc = 739d9d55; size =       126; name = BC.QA.      ; optional = true
+    file[]: crc = b3af0f26; size =      1217; name = BCDIR
+    file[]: crc = 08aa1057; size =     22603; name = BCVOL.0
+    file[]: crc = 232d19a7; size =    282464; name = BCVOL.1
+    file[]: crc = 8736a089; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = 15f00bfd; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 43312c25; size =      1445; name = HGC_GRAF.OVL
+    file[]: crc = e6e6ee8b; size =       599; name = HGC_OBJS.OVL
+    file[]: crc = 2fcbeb6a; size =       341; name = IBM_OBJS.OVL
+    file[]: crc = a17e8774; size =      1365; name = INSTALL.BAT ; optional = true
+    file[]: crc = c9b7edf8; size =       465; name = JR_GRAF.OVL
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
+    file[]: crc = 14b3c6ab; size =       312; name = OBJECT
+    file[]: crc = 9ab69f1b; size =     40898; name = SIERRA.EXE
+    file[]: crc = 372a41f9; size =       362; name = VG_GRAF.OVL
+    file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
+end
+
+end

@@ -1,0 +1,341 @@
+//
+// Conquests of the Longbow: The Legend of Robin Hood
+//
+desc[sol-longbow]:
+
+name = Conquests of the Longbow: The Legend of Robin Hood
+icon = sol-longbow.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_486DX_33)
+ramkb = 4096
+filter = sierra, adventure
+EXE_NAME = SCIDHUV.EXE
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; nothrottle = 2.8
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY3V.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 4; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga; nothrottle = 4
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME);
+        videohw = vga; nothrottle = 4.5
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME);
+        videohw = vga; nothrottle = 4.5; priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = sb16+cms; priority = 1
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 2
+        AUDIO_DRIVER = PROAUDIO.DRV
+        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 3
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+	memoryDrv=ARM.DRV
+	minHunk=260k
+	patchDir=
+   ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, Int. 11.20.91, 6x1.44M
+//
+game[v1.0-int-11.20.91-6x1.44m]:
+    name = v1.0, Int. 11.20.91, 6x1.44M
+    anchorfile = RESOURCE.000
+    file[]: crc = 272496f7; size =      3970; name = 100.SCR
+    file[]: crc = 5ebb7a66; size =      2715; name = 1162.TEX
+    file[]: crc = 1102e2a4; size =      5125; name = 1179.TEX
+    file[]: crc = 85fc9f66; size =      4069; name = 1402.TEX
+    file[]: crc = d285fc37; size =       902; name = 1490.TEX
+    file[]: crc = 8c174f93; size =     12102; name = 150.SCR
+    file[]: crc = bf80c0e9; size =      6706; name = 1530.TEX
+    file[]: crc = 2ac804ab; size =      3056; name = 1535.TEX
+    file[]: crc = 008812b6; size =     10078; name = 160.SCR
+    file[]: crc = ecdc1696; size =     17276; name = 171.SCR
+    file[]: crc = f684f77c; size =      1664; name = 175.SCR
+    file[]: crc = 9cfe151a; size =       139; name = 175.TEX
+    file[]: crc = a97d3316; size =      2094; name = 179.SCR
+    file[]: crc = f3fc22db; size =     12364; name = 180.SCR
+    file[]: crc = 281e5dff; size =      6722; name = 185.SCR
+    file[]: crc = b4cd667a; size =     16452; name = 210.SCR
+    file[]: crc = 04c41c66; size =      3250; name = 223.SCR
+    file[]: crc = 459f77fa; size =      8152; name = 225.SCR
+    file[]: crc = c68daa58; size =      5654; name = 25.SCR
+    file[]: crc = 2d9da226; size =      8922; name = 27.SCR
+    file[]: crc = 6efde55d; size =      6574; name = 28.SCR
+    file[]: crc = a9672aff; size =     10094; name = 320.SCR
+    file[]: crc = 7267bc64; size =      7996; name = 360.SCR
+    file[]: crc = 802d1b0f; size =     17186; name = 392.V56
+    file[]: crc = 059a4804; size =      5372; name = 440.SCR
+    file[]: crc = 2703144c; size =      7358; name = 470.SCR
+    file[]: crc = 915023f9; size =      4588; name = 490.SCR
+    file[]: crc = 76986bae; size =      5788; name = 5.SCR
+    file[]: crc = d53a7d93; size =     10830; name = 530.SCR
+    file[]: crc = 4b88f545; size =      1256; name = 534.SCR
+    file[]: crc = 567e2b45; size =      9088; name = 540.SCR
+    file[]: crc = af18c89e; size =      7908; name = 550.SCR
+    file[]: crc = fad3a4d5; size =      7438; name = 561.SCR
+    file[]: crc = d3a6c5c4; size =     11712; name = 570.SCR
+    file[]: crc = d251662c; size =      8604; name = 640.SCR
+    file[]: crc = 12cf1ea3; size =      8640; name = 700.SCR
+    file[]: crc = ac5d302f; size =      2410; name = 701.SCR
+    file[]: crc = 5d09a5cb; size =      3628; name = 702.SCR
+    file[]: crc = 53cfb115; size =      3524; name = 705.SCR
+    file[]: crc = a9124bd5; size =     10000; name = 801.SCR
+    file[]: crc = 6ed4b396; size =      1032; name = 806.SCR
+    file[]: crc = d0cfd7bd; size =        75; name = 806.TEX
+    file[]: crc = 306e0351; size =      2072; name = 808.SCR
+    file[]: crc = d720cd26; size =      4946; name = 851.SCR
+    file[]: crc = 22ae490c; size =      2048; name = 928.SCR
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = a54f329d; size =      2407; name = AUDBLAST.DRV
+    file[]: crc = 11ada3af; size =      1986; name = AUDDISNY.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
+    file[]: crc = 37b5a5d2; size =      1510; name = AUDPS1.DRV
+    file[]: crc = 74171a26; size =      1622; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 6cfe3c1a; size =     41078; name = INSTALL.EXE ; optional = true
+    file[]: crc = 441610ee; size =     14429; name = INSTALL.HLP ; optional = true
+    file[]: crc = 4a983fca; size =      1825; name = INSTALL.SCR ; optional = true
+    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = cf1e5615; size =       368; name = READ.ME     ; optional = true
+    file[]: crc = 8246a91a; size =   1296607; name = RESOURCE.000
+    file[]: crc = 1d7d81d1; size =   1379267; name = RESOURCE.001
+    file[]: crc = e7132fb0; size =   1234140; name = RESOURCE.002
+    file[]: crc = 64f65f65; size =    823610; name = RESOURCE.003
+    file[]: crc = 80af3db1; size =   1260237; name = RESOURCE.004
+    file[]: crc = 0a109417; size =   1284609; name = RESOURCE.005
+    file[]: crc = c05dc3ea; size =        19; name = RESOURCE.CFG; optional = true
+    file[]: crc = 02ae509a; size =      6045; name = RESOURCE.MAP
+    file[]: crc = 4b8679d5; size =        20; name = ROBIN2.BAT  ; optional = true
+    file[]: crc = bfd3a781; size =        10; name = ROBIN3.BAT  ; optional = true
+    file[]: crc = 1e9a9ddb; size =     60755; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = e9e20b62; size =         8; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// v1.0, Int. 11.20.91, 7x1.2M
+//
+game[v1.0-int-11.20.91-7x1.2m]:
+    name = v1.0, Int. 11.20.91, 7x1.2M
+    imports = v1.0-int-11.20.91-6x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = b4cd667a; size =     16452; remove = 210.SCR
+    file[]: crc = 802d1b0f; size =     17186; remove = 392.V56
+    file[]: crc = 567e2b45; size =      9088; remove = 540.SCR
+    file[]: crc = fad3a4d5; size =      7438; remove = 561.SCR
+    file[]: crc = d3a6c5c4; size =     11712; remove = 570.SCR
+    file[]: crc = 8b6c33b3; size =      1909; name = INSTALL.SCR ; optional = true
+    file[]: crc = 484460c7; size =   1096767; name = RESOURCE.000
+    file[]: crc = feb5fa77; size =   1133226; name = RESOURCE.001
+    file[]: crc = 01b88bc7; size =   1128555; name = RESOURCE.002
+    file[]: crc = 2d2340e3; size =    972635; name = RESOURCE.003
+    file[]: crc = 6fabd74c; size =   1064637; name = RESOURCE.004
+    file[]: crc = b98dc5ef; size =   1154950; name = RESOURCE.005
+    file[]: crc = 1bd07428; size =   1042966; name = RESOURCE.006
+    file[]: crc = cfa0ad59; size =      6261; name = RESOURCE.MAP
+end
+
+//
+// v1.0, Int. 12.9.91, 4x1.2M, 16 Color
+//
+game[v1.0-int-12.9.91-4x1.2m]:
+    name = v1.0, Int. 12.9.91, 4x1.2M, 16 Color
+    EXE_NAME = SCIDUV.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = 9c8a5136; size =     12408; name = 180.SCR
+    file[]: crc = 0892f836; size =      6850; name = 185.SCR
+    file[]: crc = cb031d68; size =      8744; name = 700.SCR
+    file[]: crc = d299b6a3; size =      1860; name = 704.SCR
+    file[]: crc = e0912c9e; size =      5118; name = 710.SCR
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = a54f329d; size =      2407; name = AUDBLAST.DRV
+    file[]: crc = 34c3aac6; size =      1992; name = AUDDISNY.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
+    file[]: crc = 37b5a5d2; size =      1510; name = AUDPS1.DRV
+    file[]: crc = 74171a26; size =      1622; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 6cfe3c1a; size =     41078; name = INSTALL.EXE ; optional = true
+    file[]: crc = a6e13209; size =     14432; name = INSTALL.HLP ; optional = true
+    file[]: crc = bb7bbbd9; size =      1401; name = INSTALL.SCR ; optional = true
+    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 518a264e; size =      2850; name = MCGA320.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = cf1e5615; size =       368; name = READ.ME     ; optional = true
+    file[]: crc = a0185053; size =    934643; name = RESOURCE.000
+    file[]: crc = c1e88128; size =   1196133; name = RESOURCE.001
+    file[]: crc = e4e4c8c6; size =   1152478; name = RESOURCE.002
+    file[]: crc = c5784237; size =   1171439; name = RESOURCE.003
+    file[]: crc = c05dc3ea; size =        19; name = RESOURCE.CFG; optional = true
+    file[]: crc = 8ff7402c; size =      6021; name = RESOURCE.MAP
+    file[]: crc = 0d501fd6; size =        19; name = ROBIN2.BAT  ; optional = true
+    file[]: crc = 8c3b1ac0; size =         9; name = ROBIN3.BAT  ; optional = true
+    file[]: crc = 1808fe65; size =    105089; name = SCIDUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 200cc608; size =       581; name = TANDYKBD.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+end
+
+//
+// v1.0, Int. 12.9.91, 7x720K, 16 Color
+//
+game[v1.0-int-12.9.91-7x720k]:
+    name = v1.0, Int. 12.9.91, 7x720K, 16 Color
+    EXE_NAME = SCIDUV.EXE
+    imports = v1.0-int-12.9.91-4x1.2m
+    anchorfile = RESOURCE.000
+    file[]: crc = 4f0bfb51; size =      1871; name = INSTALL.SCR ; optional = true
+    file[]: crc = 8e66118a; size =    718161; name = RESOURCE.000
+    file[]: crc = be0c4c15; size =    705680; name = RESOURCE.001
+    file[]: crc = 23afe1a6; size =    700633; name = RESOURCE.002
+    file[]: crc = b69ae1f4; size =    686510; name = RESOURCE.003
+    file[]: crc = 34a57bd7; size =    705631; name = RESOURCE.004
+    file[]: crc = c4013c04; size =    469243; name = RESOURCE.005
+    file[]: crc = cade9b3d; size =    713158; name = RESOURCE.006
+    file[]: crc = 15da82ab; size =      6261; name = RESOURCE.MAP
+end
+
+//
+// v1.1, Int. 1.13.92, 6x1.44M
+//
+game[v1.1-int-1.13.92-6x1.44m]:
+    name = v1.1, Int. 1.13.92, 6x1.44M
+    anchorfile = RESOURCE.000
+    file[]: crc = 157ddb8f; size =     14102; name = 140.SCR
+    file[]: crc = b39e24c8; size =      6816; name = 185.SCR
+    file[]: crc = f640a2e4; size =      4066; name = 312.SCR
+    file[]: crc = 33c93d08; size =     10128; name = 320.SCR
+    file[]: crc = f4666133; size =     17268; name = 750.SCR
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = a54f329d; size =      2407; name = AUDBLAST.DRV
+    file[]: crc = 34c3aac6; size =      1992; name = AUDDISNY.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
+    file[]: crc = 37b5a5d2; size =      1510; name = AUDPS1.DRV
+    file[]: crc = 74171a26; size =      1622; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 6cfe3c1a; size =     41078; name = INSTALL.EXE ; optional = true
+    file[]: crc = a6e13209; size =     14432; name = INSTALL.HLP ; optional = true
+    file[]: crc = 4a983fca; size =      1825; name = INSTALL.SCR ; optional = true
+    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = cf1e5615; size =       368; name = READ.ME     ; optional = true
+    file[]: crc = 6f4f28f1; size =   1297120; name = RESOURCE.000
+    file[]: crc = d507c4d4; size =   1366155; name = RESOURCE.001
+    file[]: crc = 5faad746; size =   1234743; name = RESOURCE.002
+    file[]: crc = 660d1b7e; size =    823686; name = RESOURCE.003
+    file[]: crc = b01b6da7; size =   1261462; name = RESOURCE.004
+    file[]: crc = af133b6e; size =   1284720; name = RESOURCE.005
+    file[]: crc = c05dc3ea; size =        19; name = RESOURCE.CFG; optional = true
+    file[]: crc = d94b5242; size =      6027; name = RESOURCE.MAP
+    file[]: crc = 4b8679d5; size =        20; name = ROBIN2.BAT  ; optional = true
+    file[]: crc = bfd3a781; size =        10; name = ROBIN3.BAT  ; optional = true
+    file[]: crc = 1e9a9ddb; size =     60755; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 200cc608; size =       581; name = TANDYKBD.DRV
+    file[]: crc = 80315fa3; size =         3; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+end

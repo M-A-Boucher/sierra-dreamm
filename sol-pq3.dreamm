@@ -1,0 +1,269 @@
+//
+// Police Quest III: The Kindred
+//
+desc[sol-pq3]:
+
+name = Police Quest III: The Kindred
+icon = sol-pq3.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_486DX_33)
+ramkb = 4096
+videohw = vga;
+filter = sierra, adventure
+EXE_NAME = SCIDHUV.EXE
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; nothrottle = 2
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY3V.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 3; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga; nothrottle = 3
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME);
+        videohw = vga; nothrottle = 3
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME);
+        videohw = vga; nothrottle = 3; priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = sb16+cms
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIO_DRIVER = SNDBLAST.DRV
+        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[mtblast]:
+        name = $(MT32_NAME) + $(SB16_NAME)
+        audiohw = sb16+mt32; priority = 3
+        AUDIO_DRIVER = MTBLAST.DRV
+        condition = file_exists("$$(rootpath)\\MTBLAST.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv=$(VIDEO_DRIVER)
+        soundDrv=$(AUDIO_DRIVER)
+        joyDrv=JOYSTICK.DRV
+        kbdDrv=IBMKBD.DRV
+        mouseDrv=STDMOUSE.DRV
+        memoryDrv=ARM.DRV
+        minHunk=243k
+        patchDir=.
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, Int. 9.24.91, 5x1.44M (identical to 5x1.2M)
+//
+game[v1.0-int-9.24.91-5x1.44m]:
+    name = v1.0, Int. 9.24.91, 5x1.44M
+    anchorfile = RESOURCE.000
+    file[]: crc = 43d6b20c; size =     10012; name = 12.SCR
+    file[]: crc = 087e676e; size =      1116; name = 12.TEX
+    file[]: crc = 74d04dba; size =      5872; name = 129.SCR
+    file[]: crc = 0fa14337; size =       676; name = 129.TEX
+    file[]: crc = f1ef348b; size =      5034; name = 133.SCR
+    file[]: crc = da3f0f59; size =      3336; name = 133.TEX
+    file[]: crc = 56b592c3; size =     16878; name = 21.SCR
+    file[]: crc = 5205de35; size =      6520; name = 21.TEX
+    file[]: crc = 6d269375; size =      9568; name = 50.SCR
+    file[]: crc = a3df5867; size =      3401; name = 50.TEX
+    file[]: crc = ce5827c3; size =     10970; name = 56.SCR
+    file[]: crc = 03ae0148; size =      1026; name = 56.TEX
+    file[]: crc = a5f732aa; size =      5330; name = 57.SCR
+    file[]: crc = 27b82e85; size =       632; name = 57.TEX
+    file[]: crc = 36760ff5; size =      8916; name = 594.V56
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
+    file[]: crc = d11dbd97; size =     76835; name = INSTALL.EXE ; optional = true
+    file[]: crc = 97c926bc; size =     14028; name = INSTALL.HLP ; optional = true
+    file[]: crc = ab612110; size =      3567; name = INSTALL.SCR ; optional = true
+    file[]: crc = 73e48627; size =      4189; name = INSTALL.TXT ; optional = true
+    file[]: crc = 242cbaf8; size =      2366; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV
+    file[]: crc = ddfd48ea; size =        32; name = PQ3.BAT     ; optional = true
+    file[]: crc = beb1a067; size =        29; name = PQ3H.BAT    ; optional = true
+    file[]: crc = d92fab72; size =        33; name = PQ3RS.BAT   ; optional = true
+    file[]: crc = 9b5ef36d; size =     11942; name = PROAUDIO.DRV
+    file[]: crc = caff59c4; size =      1069; name = README      ; optional = true
+    file[]: crc = 33334ca5; size =    737253; name = RESOURCE.000
+    file[]: crc = a32a321e; size =   1196787; name = RESOURCE.001
+    file[]: crc = 8de818c2; size =   1153561; name = RESOURCE.002
+    file[]: crc = 01f43fe7; size =   1159791; name = RESOURCE.003
+    file[]: crc = b8ef8240; size =   1143606; name = RESOURCE.004
+    file[]: crc = e5aa813e; size =        36; name = RESOURCE.CFG; optional = true
+    file[]: crc = 5120369f; size =      5559; name = RESOURCE.MAP
+    file[]: crc = 0fecf427; size =     62676; name = SCIDHUV.EXE
+    file[]: crc = 6a511e72; size =        24; name = SIERRA.BAT  ; optional = true
+    file[]: crc = 20ad7f60; size =        21; name = SIERRAH.BAT ; optional = true
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = bc1abb38; size =         8; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// v1.0, Int. 10.21.91, 4x1.2M, 16 Color
+//
+game[v1.0-int-10.21.91-4x1.2m]:
+    name = v1.0, Int. 10.21.91, 4x1.2M, 16 Color
+    EXE_NAME = SCIDUV.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = 530adca5; size =     15536; name = 13.SCR
+    file[]: crc = 5e14fb01; size =      3366; name = 13.TEX
+    file[]: crc = bccd8f15; size =     19114; name = 390.V16
+    file[]: crc = f94219ec; size =     11348; name = 45.SCR
+    file[]: crc = 5a4ce2b1; size =      2828; name = 45.TEX
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
+    file[]: crc = 3b1f9619; size =     79483; name = INSTALL.EXE ; optional = true
+    file[]: crc = 97c926bc; size =     14028; name = INSTALL.HLP ; optional = true
+    file[]: crc = c2ddccb2; size =      3326; name = INSTALL.SCR ; optional = true
+    file[]: crc = d7f75fdf; size =      4554; name = INSTALL.TXT ; optional = true
+    file[]: crc = 242cbaf8; size =      2366; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 8445d7c9; size =      2747; name = MCGA320.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV
+    file[]: crc = aeb54a86; size =      5526; name = MTPRO.DRV
+    file[]: crc = ad4f1110; size =        31; name = PQ3.BAT     ; optional = true
+    file[]: crc = ea8c7087; size =        28; name = PQ3H.BAT    ; optional = true
+    file[]: crc = d92fab72; size =        33; name = PQ3RS.BAT   ; optional = true
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = 870bea29; size =      1618; name = README      ; optional = true
+    file[]: crc = 2505a921; size =    504069; name = RESOURCE.000
+    file[]: crc = 51de81e2; size =    869158; name = RESOURCE.001
+    file[]: crc = 1481be40; size =    983665; name = RESOURCE.002
+    file[]: crc = 50ff6a64; size =    930048; name = RESOURCE.003
+    file[]: crc = 77c90495; size =        34; name = RESOURCE.CFG; optional = true
+    file[]: crc = 96b31cfb; size =      5535; name = RESOURCE.MAP
+    file[]: crc = 5209835d; size =     62987; name = SCIDUV.EXE
+    file[]: crc = 9c090003; size =        23; name = SIERRA.BAT  ; optional = true
+    file[]: crc = 912ac2ca; size =        20; name = SIERRAH.BAT ; optional = true
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = 9401607a; size =         9; name = VERSION
+end
+
+//
+// v1.0, Int. 10.21.91, 6x720K, 16 Color
+//
+game[v1.0-int-10.21.91-6x720k]:
+    name = v1.0, Int. 10.21.91, 6x720K, 16 Color
+    EXE_NAME = SCIDUV.EXE
+    imports = v1.0-int-10.21.91-4x1.2m
+    anchorfile = RESOURCE.000
+    file[]: crc = d0cd9ff1; size =      3525; name = INSTALL.SCR ; optional = true
+    file[]: crc = a01f3f95; size =      2366; name = INTERP.TXT
+    file[]: crc = 48664a32; size =    402208; name = RESOURCE.000
+    file[]: crc = d78e0700; size =    703373; name = RESOURCE.001
+    file[]: crc = 44597531; size =    692676; name = RESOURCE.002
+    file[]: crc = a9658e6b; size =    527848; name = RESOURCE.003
+    file[]: crc = 4eec2968; size =    449682; name = RESOURCE.004
+    file[]: crc = b7de4dec; size =    724000; name = RESOURCE.005
+    file[]: crc = 3161e076; size =      5901; name = RESOURCE.MAP
+end
+
+//
+// Daryl E. Gates - Police Quest Collection (v1.0, Int. 9.24.91)
+//
+game[v1.0-int-9.24.91-police-quest-collection]:
+    name = Daryl E. Gates - Police Quest Collection (v1.0, Int. 9.24.91)
+    imports = v1.0-int-9.24.91-5x1.44m
+    anchorfile = MTBLAST.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = e2dc2be8; size =      3076; name = INSTALL.BAT ; optional = true
+    file[]: crc = 73e48627; size =      4189; name = INSTALL.TXT ; optional = true
+    file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
+    file[]: crc = 7647ea26; size =       768; name = POPDIR.COM  ; optional = true
+    file[]: crc = 4caeab12; size =        50; name = PQ3.BAT     ; optional = true
+    file[]: crc = a41a5251; size =     65078; name = PQ3PEN.BMP  ; optional = true
+    file[]: crc = 251276dd; size =       768; name = PUSHDIR.COM ; optional = true
+    file[]: crc = 1910b426; size =       205; name = RESOURCE.CFG; optional = true
+    file[]: crc = 20ad7f60; size =        21; name = SIERRA.BAT  ; optional = true
+    file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
+    file[]: crc = 6b71137c; size =      3170; name = WHAT.EXE    ; optional = true
+end
+
+end

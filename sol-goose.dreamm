@@ -1,0 +1,92 @@
+//
+// Mixed-Up Mother Goose
+//
+desc[sol-goose]:
+
+name = Mixed-Up Mother Goose
+icon = sol-goose.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+mips = $(MIPS_286_10)
+ramkb = 1024
+filter = sierra, adventure
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);   writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.00D, Int. 2.915, 1x720K
+//
+game[v1.00d-int-2.915-1x720k]:
+    name = v1.00D, Int. 2.915, 1x720K
+    anchorfile = VOL.0
+    file[]: crc = 4a13b873; size =       772; name = _INSTALL.BAT
+    file[]: crc = 3ebf25c1; size =        36; name = _MG.BAT
+    file[]: crc = ec923f17; size =     39424; name = AGI
+    file[]: crc = 5745a47b; size =      8192; name = AGIDATA.OVL
+    file[]: crc = 9f7d2517; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 6284c954; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 3f18f45e; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = c449b9a5; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = 3838825f; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = de7f4b42; size =      1239; name = INSTALLH.BAT
+    file[]: crc = 91502785; size =       512; name = JR_GRAF.OVL
+    file[]: crc = adc0e9c9; size =       606; name = LOGDIR
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM
+    file[]: crc = b2ce210d; size =      2688; name = MGSG.1
+    file[]: crc = 99225799; size =         8; name = OBJECT
+    file[]: crc = d8337aeb; size =       603; name = PICDIR
+    file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
+    file[]: crc = 443edc2c; size =       198; name = SNDDIR
+    file[]: crc = 4927f36f; size =       512; name = VG_GRAF.OVL
+    file[]: crc = df72ee30; size =       603; name = VIEWDIR
+    file[]: crc = 6855d3d0; size =     34929; name = VOL.0
+    file[]: crc = 15a840f8; size =     47397; name = VOL.1
+    file[]: crc = 21ac3cc4; size =    317869; name = VOL.2
+    file[]: crc = 50f4710f; size =       235; name = WORDS.TOK
+end
+
+//
+// v1.00D, Int. 2.915, 3x360K
+//
+game[v1.00d-int-2.915-3x360k]:
+    name = v1.00D, Int. 2.915, 3x360K
+    imports = v1.00d-int-2.915-1x720k
+    anchorfile = OBJECT
+    file[]: crc = ac703c85; size =         8; name = OBJECT
+end
+
+end

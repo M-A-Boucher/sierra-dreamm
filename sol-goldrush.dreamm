@@ -1,0 +1,136 @@
+//
+// Gold Rush!
+//
+desc[sol-goldrush]:
+
+name = Gold Rush!
+icon = sol-goldrush.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_286_10)
+ramkb = 1024
+filter = sierra, adventure
+EXE_NAME = SIERRA.COM
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 4; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules; nothrottle = 4
+        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga; nothrottle = 4
+        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 4
+        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);   writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v2.01, Int. 3.002.149, 2x720K
+//
+game[v2.01-int-3.002.149-2x720k]:
+    name = v2.01, Int. 3.002.149, 2x720K
+    anchorfile = GRVOL.1
+    file[]: crc = d4abbaf5; size =        37; name = _GR.BAT.    ; optional = true
+    file[]: crc = 03c52a24; size =       586; name = _INSTALL.BAT; optional = true
+    file[]: crc = dfcb5f07; size =     40520; name = AGI
+    file[]: crc = e943259e; size =      7488; name = AGIDATA.OVL
+    file[]: crc = e2bf4b38; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = fc3f867e; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM   ; optional = true
+    file[]: crc = b5ce25a6; size =        68; name = GR122388.QA ; optional = true
+    file[]: crc = f23766f7; size =      2399; name = GRDIR
+    file[]: crc = 4446a980; size =     78086; name = GRVOL.0
+    file[]: crc = eca59845; size =    552584; name = GRVOL.1
+    file[]: crc = 031a1241; size =      3075; name = HGC_GRAF.OVL
+    file[]: crc = 052116f9; size =      1244; name = INSTALLH.BAT; optional = true
+    file[]: crc = ea3c9728; size =       470; name = JR_GRAF.OVL
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
+    file[]: crc = 6f8e1901; size =      1814; name = OBJECT
+    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
+    file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
+    file[]: crc = d65b7244; size =       362; name = VG_GRAF.OVL
+    file[]: crc = 6f42a9a1; size =      6110; name = WORDS.TOK
+end
+
+//
+// v2.01, Int. 3.002.149, 5x360K
+//
+game[v2.01-int-3.002.149-5x360k]:
+    name = v2.01, Int. 3.002.149, 5x360K
+    imports = v2.01-int-3.002.149-2x720k
+    anchorfile = GRVOL.12
+    file[]: crc = 66797504; size =       904; name = _INSTALL.BAT; optional = true
+    file[]: crc = 6dfff5b6; size =      2399; name = GRDIR
+    file[]: crc = e6cbcdae; size =     25070; name = GRVOL.0
+    file[]: crc = 985699e5; size =    207528; name = GRVOL.1
+    file[]: crc = 1bfe2e52; size =    125702; name = GRVOL.2
+    file[]: crc = cbe53112; size =    279567; name = GRVOL.3
+    file[]: crc = e2dd97d8; size =    259527; name = GRVOL.4
+    file[]: crc = be407cf8; size =    227102; name = GRVOL.5
+    file[]: crc = ea07285b; size =     26174; name = GRVOL.9
+    file[]: crc = 127e2cbb; size =     20612; name = GRVOL.10
+    file[]: crc = 395bf1d8; size =     10123; name = GRVOL.11
+    file[]: crc = 95d58783; size =      3976; name = GRVOL.12
+end
+
+//
+// v3.0, Int. 3.002.149, 2x1.44M, The Software Farm, Inc (1998)
+//
+game[v3.0-int-3.002.149-2x1.44m]:
+    name = v3.0, Int. 3.002.149, 2x1.44M, The Software Farm, Inc (1998)
+    EXE_NAME = GR.COM
+    imports = v2.01-int-3.002.149-2x720k
+    anchorfile = GRVOL.0
+    file[]: crc = cf4020ce; size =        42; name = _GR.BAT     ; optional = true
+    file[]: crc = 10842f8f; size =      1532; name = _INSTALL.BAT; optional = true
+    file[]: crc = b5786357; size =     89504; name = _MSTEST.EXE ; optional = true
+    file[]: crc = c2a1322f; size =      5052; name = GOLDRUSH.MST; optional = true
+    file[]: crc = 829dbdef; size =      3134; name = GR.COM
+    file[]: crc = bef7aaa2; size =       766; name = GR.ICO      ; optional = true
+    file[]: crc = 743170e9; size =      1332; name = GR.INF      ; optional = true
+    file[]: crc = b5ce25a6; size =        68; remove = GR122388.QA
+    file[]: crc = bbd5a547; size =      2399; name = GRDIR
+    file[]: crc = c7ec040d; size =     78257; name = GRVOL.0
+    file[]: crc = 72f9a421; size =    563363; name = GRVOL.1
+    file[]: crc = 71c7cf7b; size =    570124; name = GRVOL.2
+    file[]: crc = 031a1241; size =      3075; name = HGC_GRAF.OVL
+    file[]: crc = 052116f9; size =      1244; remove = INSTALLH.BAT
+    file[]: crc = 8bac66e9; size =     74528; name = MSCOMSTF.DLL; optional = true
+    file[]: crc = 89349a87; size =     57760; name = MSCUISTF.DLL; optional = true
+    file[]: crc = bf8f1809; size =     22097; name = MSDETECT.INC; optional = true
+    file[]: crc = 2bd46f8f; size =     24544; name = MSDETSTF.DLL; optional = true
+    file[]: crc = 5a9638c2; size =     65440; name = MSINSSTF.DLL; optional = true
+    file[]: crc = 77c31cc6; size =     14896; name = MSSHLSTF.DLL; optional = true
+    file[]: crc = d342f37d; size =      6144; name = MSUILSTF.DLL; optional = true
+    file[]: crc = 039ab396; size =      2815; name = readme.txt  ; optional = true
+    file[]: crc = 7a7b8d78; size =     24624; name = SETUP.EXE   ; optional = true
+    file[]: crc = d40ee760; size =       533; name = SETUP.LST   ; optional = true
+    file[]: crc = ce4efa87; size =     55620; name = SETUPAPI.INC; optional = true
+    file[]: crc = 95cf05e7; size =      1418; name = SETUPDOS.BAT; optional = true
+    file[]: crc = 6f42a9a1; size =      6110; name = WORDS.TOK
+end
+
+end

@@ -1,0 +1,333 @@
+//
+// Quest for Glory: Shadows of Darkness
+//
+desc[sol-qfg4]:
+
+name = Quest for Glory: Shadows of Darkness
+icon = sol-qfg4.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.EXE
+ramkb = 4096
+filter = sierra, adventure
+SPEECH = DACNONE.DRV
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 1
+        AUDIO_DRIVER = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 3
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = gmidi; priority = 2
+        AUDIO_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv=VGA
+        soundDrv=$(AUDIO_DRIVER)
+        audioDrv=$(SPEECH)
+        kbdDrv=IBMKBD.DRV
+        mouseDrv=STDMOUSE.DRV
+        minMemory=1500k
+        audiosize=26k
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[launch]:
+    code = [[[$(CRLF)
+        if (!file_exists("RESOURCE.000"))
+            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005", "RESOURCE.006", "RESOURCE.007", "RESOURCE.008", "RESOURCE.009")
+    ]]]
+end
+
+//
+// v1.0, Int. 12.5.93, 9x1.44M
+//
+game[v1.0-int-12.5.93-9x1.44m]:
+    name = v1.0, Int. 12.5.93, 9x1.44M
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = 2ba3a5d8; size =      4088; name = 250.HEP
+    file[]: crc = 17a9717a; size =      7450; name = 250.SCR
+    file[]: crc = 1ba57e83; size =      3796; name = 260.HEP
+    file[]: crc = 228e3842; size =     10208; name = 260.SCR
+    file[]: crc = d0e2ea19; size =      3838; name = 290.HEP
+    file[]: crc = 0809e56f; size =     11392; name = 290.SCR
+    file[]: crc = 92078eb4; size =      6316; name = 310.HEP
+    file[]: crc = 789716a0; size =      6542; name = 310.SCR
+    file[]: crc = 95ddb187; size =      1998; name = 330.HEP
+    file[]: crc = 9b59cf96; size =      4962; name = 330.SCR
+    file[]: crc = 1ad6aadc; size =      3698; name = 360.HEP
+    file[]: crc = 1267aaec; size =      7590; name = 360.SCR
+    file[]: crc = e81fc7de; size =       506; name = 52.HEP
+    file[]: crc = e7a64141; size =      1664; name = 52.SCR
+    file[]: crc = bc7a504e; size =       884; name = 54.HEP
+    file[]: crc = 8fa18f8c; size =      4326; name = 54.SCR
+    file[]: crc = 2f497ed8; size =       237; name = 65535.MAP
+    file[]: crc = d0333f09; size =      3422; name = 710.HEP
+    file[]: crc = 5da06a1f; size =     11248; name = 710.SCR
+    file[]: crc = 620378b0; size =      2908; name = 800.HEP
+    file[]: crc = be6469c0; size =     12196; name = 800.SCR
+    file[]: crc = bd6c8d8a; size =        98; name = 832.SND
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = af2a3246; size =      4717; name = DACBLAST.DRV
+    file[]: crc = 39c567f2; size =      2745; name = DACMSSYS.DRV
+    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
+    file[]: crc = d2274fcf; size =      2956; name = DACPRO.DRV
+    file[]: crc = 68a610f1; size =      3098; name = DACPRO16.DRV
+    file[]: crc = abaa23e6; size =      4618; name = DACTHUND.DRV
+    file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
+    file[]: crc = 1a0937b6; size =     76541; name = INSTALL.EXE ; optional = true
+    file[]: crc = bf09a741; size =     20636; name = INSTALL.HLP ; optional = true
+    file[]: crc = b9f08dee; size =      7644; name = INSTALL.SCR ; optional = true
+    file[]: crc = 6f1c38c2; size =      9514; name = INSTALL.TXT ; optional = true
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 09cb013b; size =      3098; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = 84e6e0c1; size =     21422; name = README      ; optional = true
+    file[]: crc = 265bcdef; size =        16; name = README.BAT  ; optional = true
+    file[]: crc = 16165151; size =     80000; name = RESOURCE.001
+    file[]: crc = 2017553d; size =   1454600; name = RESOURCE.002
+    file[]: crc = 62dd934e; size =   1454600; name = RESOURCE.003
+    file[]: crc = aaa996dd; size =   1454600; name = RESOURCE.004
+    file[]: crc = 2bb55f6e; size =   1454600; name = RESOURCE.005
+    file[]: crc = bcf869f0; size =   1454600; name = RESOURCE.006
+    file[]: crc = fe749521; size =   1454600; name = RESOURCE.007
+    file[]: crc = f825bce0; size =   1454600; name = RESOURCE.008
+    file[]: crc = 7598160a; size =    741389; name = RESOURCE.009
+    file[]: crc = 80250708; size =      9295; name = RESOURCE.MAP
+    file[]: crc = 29f4de8b; size =    676450; name = RESOURCE.SFX
+    file[]: crc = 6e4fbe87; size =       197; name = RESOURCE.CFG; optional = true
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = 4b05ab4a; size =      8189; name = SIERRA.ERR
+    file[]: crc = b23330b4; size =    694768; name = SIERRA.EXE
+    file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = d8dadb6e; size =        42; name = VERSION
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
+end
+
+//
+// v1.1, Int. 12.14.93, 9x1.44M
+//
+game[v1.1-int-12.14.93-9x1.44m]:
+    name = v1.1, Int. 12.14.93, 9x1.44M
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = 8641b2cc; size =      6045; name = 19.MSG
+    file[]: crc = 2ba3a5d8; size =      4088; name = 250.HEP
+    file[]: crc = c9f69afb; size =      7508; name = 250.SCR
+    file[]: crc = 1ba57e83; size =      3796; name = 260.HEP
+    file[]: crc = 8dde1893; size =     10196; name = 260.SCR
+    file[]: crc = 95ddb187; size =      1998; name = 330.HEP
+    file[]: crc = 816a70e3; size =      4966; name = 330.SCR
+    file[]: crc = cd0fe2c2; size =      4018; name = 350.HEP
+    file[]: crc = f4546802; size =      8400; name = 350.SCR
+    file[]: crc = f5a0b2f3; size =      3520; name = 480.HEP
+    file[]: crc = 001e4398; size =     20093; name = 480.MSG
+    file[]: crc = 35087966; size =      8412; name = 480.SCR
+    file[]: crc = 1e0b0836; size =       586; name = 51.HEP
+    file[]: crc = 4b17a71c; size =      2032; name = 51.SCR
+    file[]: crc = bb18a776; size =      3416; name = 545.HEP
+    file[]: crc = 0a26068f; size =      9310; name = 545.SCR
+    file[]: crc = 34f74366; size =      1016; name = 575.HEP
+    file[]: crc = 342dcb03; size =       670; name = 575.SCR
+    file[]: crc = 9be68ebd; size =      3146; name = 579.HEP
+    file[]: crc = 0f454946; size =     14286; name = 579.SCR
+    file[]: crc = 440ae5b7; size =       104; name = 64921.HEP
+    file[]: crc = f99cc981; size =      4116; name = 64921.SCR
+    file[]: crc = 2f497ed8; size =       237; name = 65535.MAP
+    file[]: crc = 023e5d6c; size =      3232; name = 662.HEP
+    file[]: crc = 6fe01c36; size =      4942; name = 662.SCR
+    file[]: crc = e036ef04; size =     10126; name = 710.MSG
+    file[]: crc = dcdacc09; size =      4632; name = 730.HEP
+    file[]: crc = afd50789; size =      9236; name = 730.SCR
+    file[]: crc = f4f5202a; size =      2130; name = 85.HEP
+    file[]: crc = eabea473; size =      2112; name = 85.SCR
+    file[]: crc = febf2d35; size =       468; name = 87.HEP
+    file[]: crc = d59b839a; size =       516; name = 87.SCR
+    file[]: crc = 6c8a2e9c; size =       562; name = 89.HEP
+    file[]: crc = 43549533; size =      1698; name = 89.SCR
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = 0385a3ac; size =      4717; name = DACBLAST.DRV
+    file[]: crc = ab47a093; size =      2745; name = DACMSSYS.DRV
+    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
+    file[]: crc = efe84434; size =      2956; name = DACPRO.DRV
+    file[]: crc = ba17233a; size =      3098; name = DACPRO16.DRV
+    file[]: crc = 85c36f83; size =      3752; name = DACTHUND.DRV
+    file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
+    file[]: crc = 1a0937b6; size =     76541; name = INSTALL.EXE ; optional = true
+    file[]: crc = bf09a741; size =     20636; name = INSTALL.HLP ; optional = true
+    file[]: crc = 7bcb83db; size =      7717; name = INSTALL.SCR ; optional = true
+    file[]: crc = 6f1c38c2; size =      9514; name = INSTALL.TXT ; optional = true
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 09cb013b; size =      3098; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = d72cf57f; size =     21661; name = README      ; optional = true
+    file[]: crc = 265bcdef; size =        16; name = README.BAT  ; optional = true
+    file[]: crc = ccba0a6b; size =     80000; name = RESOURCE.001
+    file[]: crc = 7c558f9e; size =   1454600; name = RESOURCE.002
+    file[]: crc = 36d0977b; size =   1454600; name = RESOURCE.003
+    file[]: crc = 3a0b090f; size =   1454600; name = RESOURCE.004
+    file[]: crc = ceebbcd5; size =   1454600; name = RESOURCE.005
+    file[]: crc = 8668e729; size =   1454600; name = RESOURCE.006
+    file[]: crc = 614d5901; size =   1454600; name = RESOURCE.007
+    file[]: crc = e8aa087d; size =   1454600; name = RESOURCE.008
+    file[]: crc = e95a1e7d; size =    742793; name = RESOURCE.009
+    file[]: crc = c9e33aed; size =      9301; name = RESOURCE.MAP
+    file[]: crc = 29f4de8b; size =    676450; name = RESOURCE.SFX
+    file[]: crc = 6e4fbe87; size =       197; name = RESOURCE.CFG; optional = true
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = 4b05ab4a; size =      8189; name = SIERRA.ERR
+    file[]: crc = 44effa13; size =    691840; name = SIERRA.EXE
+    file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = 90614f3f; size =        44; name = VERSION
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
+end
+
+//
+// CD (v1.0)
+//
+game[v1.0-cd]:
+    name = CD (v1.0)
+    SPEECH = DACBLAST.DRV
+    anchorfile = RESOURCE.000
+    file[]: crc = 6b7f71ed; size =       908; name = 100.HEP
+    file[]: crc = 959b3e4f; size =      1600; name = 100.SCR
+    file[]: crc = bcce8e56; size =     61617; name = 3.P56
+    file[]: crc = ef0c19c3; size =      1228; name = 475.MAP
+    file[]: crc = 519b2eab; size =      6146; name = 500.HEP
+    file[]: crc = d3b9c04a; size =     11856; name = 500.SCR
+    file[]: crc = 7fa53b65; size =      4110; name = 580.HEP
+    file[]: crc = 31bc5907; size =      9910; name = 580.SCR
+    file[]: crc = d7a1fba8; size =      3090; name = 641.HEP
+    file[]: crc = 3b7cb1ae; size =      5200; name = 641.SCR
+    file[]: crc = 70a0db36; size =       237; name = 65535.MAP
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = eb7b0a6e; size =      4314; name = DACBLAST.DRV
+    file[]: crc = 81daea37; size =      2356; name = DACMSSYS.DRV
+    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
+    file[]: crc = 54136c93; size =      2788; name = DACPRO.DRV
+    file[]: crc = df3c04b5; size =      2712; name = DACPRO16.DRV
+    file[]: crc = adefe012; size =      3382; name = DACTHUND.DRV
+    file[]: crc = 1bcdd733; size =   9477608; name = FLYBY.AVI
+    file[]: crc = cb8c1fb3; size =   3370704; name = FLYTHRU.SEQ
+    file[]: crc = c7556258; size =      1908; name = FUN.BAT     ; optional = true
+    file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
+    file[]: crc = 63927f53; size =       407; name = GO.BAT      ; optional = true
+    file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
+    file[]: crc = bf09a741; size =     20636; name = INSTALL.HLP ; optional = true
+    file[]: crc = b7f51c93; size =      2873; name = INSTALL.SCR ; optional = true
+    file[]: crc = 1e23be7f; size =      9501; name = INSTALL.TXT ; optional = true
+    file[]: crc = a72845c2; size =     14224; name = MENU.EXE    ; optional = true
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = 64492198; size =      3714; name = MIDITEST.MID; optional = true
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 656ef0b3; size =      3352; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = dce66ac4; size =     65280; name = PROGLIB.DLL ; optional = true
+    file[]: crc = 81f58df0; size =       850; name = QGCHECK.BAT ; optional = true
+    file[]: crc = 94ea5b46; size =     28355; name = README      ; optional = true
+    file[]: crc = 265bcdef; size =        16; name = README.BAT  ; optional = true
+    file[]: crc = 265bcdef; size =        16; name = README.BTH  ; optional = true
+    file[]: crc = 94ea5b46; size =     28355; name = README.WIN  ; optional = true
+    file[]: crc = 87c4f043; size =  11571394; name = RESOURCE.000
+    file[]: crc = c1211211; size = 515422434; name = RESOURCE.AUD
+    file[]: crc = ad3385ab; size =       200; name = RESOURCE.CFG; optional = true
+    file[]: crc = 0b19d8a0; size =     10246; name = RESOURCE.MAP
+    file[]: crc = dfcfc57b; size =   2626716; name = RESOURCE.SFX
+    file[]: crc = 03cc4fe3; size =       170; name = RESOURCE.WIN; optional = true
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = 3c327c24; size =     22048; name = SETUP.EXE   ; optional = true
+    file[]: crc = c3ef09ab; size =    228991; name = SETUP.SOL   ; optional = true
+    file[]: crc = 3f875756; size =      7318; name = SIERRA.BMP  ; optional = true
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = d30cbd07; size =    776483; name = SIERRA.EXE
+    file[]: crc = 16bcc463; size =      2687; name = SIERRA.INF  ; optional = true
+    file[]: crc = ed9b9ea4; size =    655476; name = SIERRAW.EXE ; optional = true
+    file[]: crc = be2ae9ab; size =       766; name = SIERRAW.ICO ; optional = true
+    file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
+    file[]: crc = 6b71137c; size =      3170; name = WHAT.EXE    ; optional = true
+end
+
+//
+// GOG (v1.0)
+//
+game[v1.0-gog]:
+    name = GOG (v1.0)
+    SPEECH = DACBLAST.DRV
+    imports = v1.0-cd
+    anchorfile = RESOURCE.000
+    file[]: crc = e2d01ede; size =      1852; name = 10.HEP
+    file[]: crc = d300d580; size =      8318; name = 10.SCR
+    file[]: crc = 0ba86529; size =      4224; name = 250.HEP
+    file[]: crc = 9c10c287; size =      7797; name = 250.SCR
+    file[]: crc = bd678ddf; size =      1564; name = 26.HEP
+    file[]: crc = 1061124f; size =      4160; name = 26.SCR
+    file[]: crc = 5f9ce934; size =       876; name = 38.HEP
+    file[]: crc = 9ff1e29a; size =      4013; name = 38.SCR
+    file[]: crc = 4a5ed173; size =       527; name = 52.HEP
+    file[]: crc = 2f7087f5; size =      1746; name = 52.SCR
+    file[]: crc = 5c3c11c4; size =      3544; name = 545.HEP
+    file[]: crc = c53d2f6c; size =      9983; name = 545.SCR
+    file[]: crc = 7268c69f; size =      3414; name = 710.HEP
+    file[]: crc = 6341db65; size =     11433; name = 710.SCR
+    file[]: crc = ffb12a6e; size =      4792; name = 730.HEP
+    file[]: crc = 44461c1e; size =      9389; name = 730.SCR
+    file[]: crc = 1407942a; size =        89; name = 731.HEP
+    file[]: crc = 393fbc3e; size =      3266; name = 731.SCR
+    file[]: crc = 0c77a433; size =       260; name = 803.HEP
+    file[]: crc = d80c9b49; size =       881; name = 803.SCR
+    file[]: crc = 239375db; size =      1950; name = 81.HEP
+    file[]: crc = 4fa767d8; size =      5826; name = 81.SCR
+    file[]: crc = 82a5266d; size =       692; name = qfg4cd.txt  ; optional = true
+    file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
+    file[]: crc = bf09a741; size =     20636; name = INSTALL.HLP ; optional = true
+    file[]: crc = b7f51c93; size =      2873; name = INSTALL.SCR ; optional = true
+    file[]: crc = 1e23be7f; size =      9501; name = INSTALL.TXT ; optional = true
+    file[]: crc = 8125052d; size =   5049077; name = Quest for Glory 4 - manual.pdf; optional = true
+    file[]: crc = 69fc0468; size =       356; name = RESOURCE.CFG; optional = true
+    file[]: crc = 32682373; size =     20991; name = TS.001
+end
+
+end

@@ -1,0 +1,445 @@
+//
+// Quest for Glory I: So You Want To Be A Hero
+//
+desc[sol-qfg1]:
+
+name = Quest for Glory I: So You Want To Be A Hero
+icon = sol-qfg1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_486DX_33)
+nothrottle = 3
+ramkb = 8096
+filter = sierra, adventure
+EXE_NAME = SIERRA.COM
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = JR.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
+    end
+    option[hercmono]:
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        VIDEO_DRIVER = HERCMONO.DRV
+        condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
+    end
+    option[cga]:
+        name = CGA (2 colours)
+        videohw = cga
+        VIDEO_DRIVER = CGA320M.DRV
+        condition = file_exists("$$(rootpath)\\CGA320M.DRV")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO_DRIVER = CGA320C.DRV
+        condition = file_exists("$$(rootpath)\\CGA320C.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 2
+        VIDEO_DRIVER = EGA620.DRV
+        condition = file_exists("$$(rootpath)\\EGA620.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME);
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME);
+        videohw = vga; priority = 3
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = sb16+cms
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIO_DRIVER = SNDBLAST.DRV
+        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+      videoDrv=$(VIDEO_DRIVER)
+      soundDrv=$(AUDIO_DRIVER)
+      joyDrv=JOYSTICK.DRV
+      kbdDrv=IBMKBD.DRV
+      mouseDrv=STDMOUSE.DRV
+      minHunk=239k
+      patchDir=.
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[launch]:
+code = [[[$(CRLF)
+	if (!file_exists("RESOURCE.000"))
+		file_copy("RESOURCE.000", "TEMP/RESOURCE.000", "TEMP/RESOURCE.P00", "TEMP/RESOURCE.P01", "TEMP/RESOURCE.P02", "TEMP/RESOURCE.P03", "TEMP/RESOURCE.P04")
+	]]]
+end
+
+//
+// v1.000, Int. 0.000.566, 4x720K
+//
+game[v1.000-int-0.000.566-4x720k]:
+    name = v1.000, Int. 0.000.566, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    anchorfile = RESOURCE.000
+    file[]: crc = a748e00d; size =        26; name = __HDHERO.BAT ; optional = true
+    file[]: crc = 65c9d2d3; size =      1009; name = __INSTH.BAT  ; optional = true
+    file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
+    file[]: crc = 053f0464; size =      2017; name = CGA320BW.DRV
+    file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
+    file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
+    file[]: crc = 56d134d8; size =      2532; name = CSM1.DRV
+    file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 85ce1ec4; size =      2459; name = FB01.DRV
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 909742d2; size =      2193; name = HERCMONO.DRV
+    file[]: crc = a5f636a0; size =        10; name = HERO.BAT    ; optional = true
+    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: crc = 3d36b764; size =      2290; name = IMF.DRV
+    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
+    file[]: crc = 2142c8e4; size =      9698; name = INSTALL.HLP ; optional = true
+    file[]: crc = 5c67e5cd; size =       837; name = INSTGAME.BAT; optional = true
+    file[]: crc = 82c368e0; size =       536; name = JOYSTICK.DRV
+    file[]: crc = 255d2356; size =      2990; name = JR.DRV
+    file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
+    file[]: crc = 98079388; size =      3099; name = MT32.DRV
+    file[]: crc = 0817d6c3; size =      2528; name = MT540.DRV
+    file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
+    file[]: crc = 4d999fe6; size =     80334; name = RESOURCE.000
+    file[]: crc = 81e15fc0; size =    462727; name = RESOURCE.001
+    file[]: crc = 48a75c43; size =    646869; name = RESOURCE.002
+    file[]: crc = 3ed50052; size =    642203; name = RESOURCE.003
+    file[]: crc = 3979504a; size =    641688; name = RESOURCE.004
+    file[]: crc = ac9409e1; size =      6474; name = RESOURCE.MAP
+    file[]: crc = 7c8237aa; size =     75027; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
+    file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
+    file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
+end
+
+//
+// v1.001, Int. 0.000.566, 4x720K
+//
+game[v1.001-int-0.000.566-4x720k]:
+    name = v1.001, Int. 0.000.566, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    imports = v1.000-int-0.000.566-4x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 7e59ae17; size =    462729; name = RESOURCE.001
+    file[]: crc = c73af827; size =    647244; name = RESOURCE.002
+    file[]: crc = 20222c75; size =      6486; name = RESOURCE.MAP
+end
+
+//
+// v1.001, Int. 0.000.566, 10x360K
+//
+game[v1.001-int-0.000.566-10x360k]:
+    name = v1.001, Int. 0.000.566, 10x360K, aka Hero's Quest I - So You Want To Be A Hero
+    imports = v1.001-int-0.000.566-4x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 1f45621b; size =      2046; name = __INSTH.BAT ; optional = true
+    file[]: crc = e2016e97; size =     95500; name = RESOURCE.001
+    file[]: crc = 67736a07; size =    271587; name = RESOURCE.002
+    file[]: crc = 6cdf672a; size =    256373; name = RESOURCE.003
+    file[]: crc = a353432f; size =    266415; name = RESOURCE.004
+    file[]: crc = 4683a291; size =    271185; name = RESOURCE.005
+    file[]: crc = efdd7a3e; size =    267852; name = RESOURCE.006
+    file[]: crc = bdc46933; size =    272747; name = RESOURCE.007
+    file[]: crc = dedd4948; size =    263728; name = RESOURCE.008
+    file[]: crc = ed35c5a0; size =    273698; name = RESOURCE.009
+    file[]: crc = b110d315; size =    267913; name = RESOURCE.010
+    file[]: crc = 3d3ccc6d; size =      6948; name = RESOURCE.MAP
+end
+
+//
+// v1.002, Int. 0.000.629, 4x720K
+//
+game[v1.002-int-0.000.629-4x720k]:
+    name = v1.001, Int. 0.000.629, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    imports = v1.000-int-0.000.566-4x720k
+    anchorfile = RESOURCE.000
+    file[]: crc = bc3f487e; size =      8997; name = ADL.DRV
+    file[]: crc = caf039f1; size =      2549; name = CSM1.DRV
+    file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
+    file[]: crc = bbd3280f; size =      9794; name = INSTALL.HLP ; optional = true
+    file[]: crc = d83dab02; size =       523; name = JOYSTICK.DRV
+    file[]: crc = 88df91ef; size =      3162; name = MT32.DRV
+    file[]: crc = 662e8668; size =      2529; name = MT540.DRV
+    file[]: crc = 48cf918e; size =       269; name = READ.ME     ; optional = true
+    file[]: crc = 278fbe58; size =     78800; name = RESOURCE.000
+    file[]: crc = 42e05112; size =    459835; name = RESOURCE.001
+    file[]: crc = aca47b8d; size =    635561; name = RESOURCE.002
+    file[]: crc = a867e695; size =    640502; name = RESOURCE.003
+    file[]: crc = 9568ab96; size =    644575; name = RESOURCE.004
+    file[]: crc = c106ad57; size =      6396; name = RESOURCE.MAP
+    file[]: crc = b1f69b40; size =     76179; name = SCIV.EXE
+end
+
+//
+// v1.002, Int. 0.000.629, 10x360K
+//
+game[v1.002-int-0.000.629-10x360k]:
+    name = v1.002, Int. 0.000.629, 10x360K, aka Hero's Quest I - So You Want To Be A Hero
+    imports = v1.002-int-0.000.629-4x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 1f45621b; size =      2046; name = __INSTH.BAT ; optional = true
+    file[]: crc = 23fe5622; size =       837; name = INSTGAME.BAT
+    file[]: crc = 37a3f0b3; size =     75090; name = RESOURCE.001
+    file[]: crc = 376d0f42; size =    271354; name = RESOURCE.002
+    file[]: crc = 42e62997; size =    258084; name = RESOURCE.003
+    file[]: crc = 6375fdef; size =    267835; name = RESOURCE.004
+    file[]: crc = 850bcb11; size =    268807; name = RESOURCE.005
+    file[]: crc = 4ce4b4ea; size =    278473; name = RESOURCE.006
+    file[]: crc = 7b32768a; size =    269237; name = RESOURCE.007
+    file[]: crc = 18850e8f; size =    261041; name = RESOURCE.008
+    file[]: crc = 90ed2025; size =    271387; name = RESOURCE.009
+    file[]: crc = b192d3bd; size =    268639; name = RESOURCE.010
+    file[]: crc = ebd0c118; size =      6858; name = RESOURCE.MAP
+end
+
+//
+// v1.200, Int. 9.10.90, 4x720K
+//
+game[v1.200-int-9.10.90-4x720k]:
+    name = v1.200, Int. 9.10.90, 4x720K
+    imports = v1.002-int-0.000.629-4x720k
+    anchorfile = RESOURCE.000
+    file[]: crc = 2a60566b; size =      1013; name = __INSTH.BAT ; optional = true
+    file[]: crc = c33dc3f5; size =        27; name = _HDGLORY.BAT; optional = true
+    file[]: crc = bc3f487e; size =      8997; name = ADL.DRV
+    file[]: crc = caf039f1; size =      2549; name = CSM1.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = a5f636a0; size =        10; name = GLORY.BAT   ; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
+    file[]: crc = bbd3280f; size =      9794; name = INSTALL.HLP ; optional = true
+    file[]: crc = 7b34170b; size =       842; name = INSTGAME.BAT; optional = true
+    file[]: crc = f32ee266; size =       262; name = READ.ME     ; optional = true
+    file[]: crc = df8a1b9f; size =     79181; name = RESOURCE.000
+    file[]: crc = 2a4cacb1; size =    461422; name = RESOURCE.001
+    file[]: crc = fa7bc5fc; size =    635734; name = RESOURCE.002
+    file[]: crc = f643fd71; size =    640483; name = RESOURCE.003
+    file[]: crc = 65e1f9b9; size =    644443; name = RESOURCE.004
+    file[]: crc = 927da40e; size =      6432; name = RESOURCE.MAP
+end
+
+//
+// v2.0, Int. 6.25.92, 5x1.44M
+//
+game[v2.0-int-6.25.92-5x1.44m]:
+    name = v2.0, Int. 6.25.92, 5x1.44M
+    EXE_NAME = SCIDHUV.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = d37d0f00; size =      2994; name = 141.HEP
+    file[]: crc = 07e56667; size =      4046; name = 141.SCR
+    file[]: crc = 740e6fc0; size =      3178; name = 15.HEP
+    file[]: crc = 4fcbc41e; size =      9832; name = 15.SCR
+    file[]: crc = 58fedb1e; size =      1294; name = 171.HEP
+    file[]: crc = 53dfac29; size =      1326; name = 171.SCR
+    file[]: crc = ee0667c0; size =      2682; name = 21.HEP
+    file[]: crc = 0693b7e6; size =      7292; name = 21.SCR
+    file[]: crc = 119623f2; size =      3692; name = 22.HEP
+    file[]: crc = 80a7f5a2; size =      7382; name = 22.SCR
+    file[]: crc = d996c884; size =       120; name = 223.HEP
+    file[]: crc = d5e6e350; size =       838; name = 223.SCR
+    file[]: crc = e61331e0; size =      2066; name = 29.HEP
+    file[]: crc = a1264abc; size =      7850; name = 29.MSG
+    file[]: crc = 0e71471a; size =      5624; name = 29.SCR
+    file[]: crc = 2948b164; size =      5626; name = 301.HEP
+    file[]: crc = 224f411c; size =      9100; name = 301.SCR
+    file[]: crc = 03defad9; size =      2414; name = 334.HEP
+    file[]: crc = bbf5a6fc; size =      3950; name = 334.SCR
+    file[]: crc = 59323802; size =      2680; name = 37.HEP
+    file[]: crc = dd0f5f1a; size =      6092; name = 37.SCR
+    file[]: crc = ca0d75b1; size =      2090; name = 39.HEP
+    file[]: crc = e61a1f52; size =      3214; name = 39.SCR
+    file[]: crc = 901d7417; size =      1834; name = 41.HEP
+    file[]: crc = 3c35f4c2; size =      4374; name = 41.SCR
+    file[]: crc = 17274027; size =      3482; name = 45.HEP
+    file[]: crc = 728ea873; size =      6142; name = 45.SCR
+    file[]: crc = 009b6e90; size =      3378; name = 54.HEP
+    file[]: crc = 92d128d2; size =      9770; name = 54.SCR
+    file[]: crc = 1c0258fd; size =      3426; name = 73.HEP
+    file[]: crc = 1f05c4d1; size =      9042; name = 73.SCR
+    file[]: crc = bf0f340a; size =      2630; name = 76.HEP
+    file[]: crc = 9f0cafe7; size =      7620; name = 76.SCR
+    file[]: crc = 0c4b61b2; size =     16386; name = 815.MSG
+    file[]: crc = 16465dbd; size =      1500; name = 95.MSG
+    file[]: crc = af06346b; size =        40; name = 952.HEP
+    file[]: crc = 0e787994; size =        26; name = 952.SCR
+    file[]: crc = fabfa48b; size =      2906; name = 96.HEP
+    file[]: crc = bb2cd02c; size =     12386; name = 96.SCR
+    file[]: crc = 558b3a0b; size =      4170; name = 97.HEP
+    file[]: crc = 9fb3a62f; size =      6442; name = 97.SCR
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = 09eafdef; size =      2439; name = AUDDISNY.DRV
+    file[]: crc = 1b46fd88; size =       715; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = 08a3bd51; size =      2072; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 7e16538c; size =     53856; name = INSTALL.EXE ; optional = true
+    file[]: crc = 0ec938c2; size =     16313; name = INSTALL.HLP ; optional = true
+    file[]: crc = d27fa2a5; size =      2081; name = INSTALL.SCR ; optional = true
+    file[]: crc = 0cad1096; size =      8337; name = INSTALL.TXT ; optional = true
+    file[]: crc = 4deab5e2; size =      2605; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = 4bf6756d; size =        29; name = QFG1.BAT    ; optional = true
+    file[]: crc = b4663a53; size =        34; name = QFG1RS.BAT  ; optional = true
+    file[]: crc = d43134ef; size =      3448; name = README      ; optional = true
+    file[]: crc = a4d2025e; size =    930000; name = TEMP/RESOURCE.000
+    file[]: crc = 578a710a; size =   1420000; name = TEMP/RESOURCE.P01
+    file[]: crc = 8cff2290; size =   1420000; name = TEMP/RESOURCE.P02
+    file[]: crc = cb5b4955; size =   1420000; name = TEMP/RESOURCE.P03
+    file[]: crc = 41669a3b; size =   1380147; name = TEMP/RESOURCE.P04
+    file[]: crc = 76b39928; size =        82; name = RESOURCE.CFG; optional = true
+    file[]: crc = 5ca1cc2f; size =      8469; name = RESOURCE.MAP
+    file[]: crc = 2ee7f809; size =    118753; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = bf2c3da7; size =         7; name = VERSION
+    file[]: crc = 7a6fc517; size =      5846; name = VGA320.DRV
+    file[]: crc = 109667d7; size =      5909; name = VGA320BW.DRV
+end
+
+//
+// Quest for Glory: Collection Series (v2.0-int-6.25.92)
+//
+game[v2.0-int-6.25.92-quest-for-glory-collection-series]:
+    name = Quest for Glory: Collection Series (v2.0-int-6.25.92)
+    EXE_NAME = SCIDHUV.EXE
+    imports = v2.0-int-6.25.92-5x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = fa7a09c1; size =       322; name = 120.HEP
+    file[]: crc = 6f1f99e8; size =      2010; name = 120.SCR
+    file[]: crc = 779a7f58; size =        40; name = 121.HEP
+    file[]: crc = 630ec3ef; size =       316; name = 121.SCR
+    file[]: crc = be8656a1; size =      1102; name = 13.HEP
+    file[]: crc = f73f4050; size =      6894; name = 13.SCR
+    file[]: crc = 6e6f8c95; size =      2970; name = 16.HEP
+    file[]: crc = b2f2e504; size =     10760; name = 16.SCR
+    file[]: crc = f1ecf9bf; size =      1318; name = 210.HEP
+    file[]: crc = bbd9271a; size =      9836; name = 210.SCR
+    file[]: crc = c5e85759; size =      3948; name = 314.HEP
+    file[]: crc = 0c9e5283; size =      3340; name = 314.SCR
+    file[]: crc = 228af0d7; size =      3024; name = 32.HEP
+    file[]: crc = c1b598e5; size =      7026; name = 32.SCR
+    file[]: crc = 3d627aaf; size =      4710; name = 331.HEP
+    file[]: crc = 36de6df1; size =      9768; name = 331.SCR
+    file[]: crc = de93ba86; size =      7744; name = 54.V56
+    file[]: crc = fa153096; size =      4548; name = 600.HEP
+    file[]: crc = be901e8a; size =      5562; name = 600.SCR
+    file[]: crc = e588bcda; size =      1320; name = 70.HEP
+    file[]: crc = b177f129; size =      2018; name = 70.SCR
+    file[]: crc = a3b9dd4f; size =     22682; name = 93.V56
+    file[]: crc = 98d5d1ae; size =      1630; name = 988.V56
+    file[]: crc = 4bf6756d; size =        29; remove = QFG1.BAT  ; optional = true
+    file[]: crc = b4663a53; size =        34; remove = QFG1RS.BAT; optional = true
+    file[]: crc = d43134ef; size =      3448; remove = README    ; optional = true
+    file[]: crc = 6b5c37e5; size =        37; name = QG1NEW.BAT  ; optional = true
+    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
+    file[]: crc = d43134ef; size =      3448; name = README.OLD  ; optional = true
+    file[]: crc = f52edad3; size =   6570147; name = RESOURCE.000
+    file[]: crc = a4d2025e; size =    930000; remove = TEMP/RESOURCE.000
+    file[]: crc = 578a710a; size =   1420000; remove = TEMP/RESOURCE.P01
+    file[]: crc = 8cff2290; size =   1420000; remove = TEMP/RESOURCE.P02
+    file[]: crc = cb5b4955; size =   1420000; remove = TEMP/RESOURCE.P03
+    file[]: crc = 41669a3b; size =   1380147; remove = TEMP/RESOURCE.P04
+    file[]: crc = 0fd54ed6; size =       261; name = RESOURCE.CFG; optional = true
+    file[]: crc = 252c6b75; size =    147387; name = SCIDHUV.EXE
+end
+
+//
+// GOG (v2.0-int-6.25.92)
+//
+game[v2.0-int-6.25.92-gog]:
+    name = GOG (v2.0-int-6.25.92)
+    EXE_NAME = SCIDHUV.EXE
+    imports = v2.0-int-6.25.92-quest-for-glory-collection-series
+    anchorfile = 96.SCR
+    file[]: crc = 5539387d; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = 3c4db4ca; size =      3402; name = 39.SCR
+    file[]: crc = ea8bbb5e; size =       174; name = 222.HEP
+    file[]: crc = 15238afb; size =      1720; name = 222.SCR
+    file[]: crc = ecf443db; size =      3790; name = 31.HEP
+    file[]: crc = 5fa59f9c; size =      5412; name = 31.SCR
+    file[]: crc = e32cabf1; size =      3324; name = 55.HEP
+    file[]: crc = 60008ea9; size =      7288; name = 55.SCR
+    file[]: crc = cee331a9; size =      2562; name = 91.HEP
+    file[]: crc = 0f99be8a; size =      5234; name = 91.SCR
+    file[]: crc = c8d62ce9; size =     12756; name = 96.SCR
+end
+
+end

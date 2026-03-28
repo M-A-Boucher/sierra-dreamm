@@ -1,0 +1,243 @@
+//
+// Leisure Suit Larry III: Passionate Patti in Pursuit of the Pulsating Pectorals
+//
+desc[sol-lsl3]:
+
+name = Leisure Suit Larry III: Passionate Patti in Pursuit of the Pulsating Pectorals
+icon = sol-lsl3.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+mips = $(MIPS_386DX_33)
+nothrottle = 4
+ramkb = 1024
+filter = sierra, adventure
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 2; machine = tandy
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
+    end
+    option[hercules]: 
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        VIDEO_DRIVER = HERCMONO.DRV
+        condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
+    end
+    option[cgamono]:  
+        name = CGA (2 colours)
+        videohw = cga
+        VIDEO_DRIVER = CGA320M.DRV
+        condition = file_exists("$$(rootpath)\\CGA320M.DRV")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO_DRIVER = CGA320C.DRV
+        condition = file_exists("$$(rootpath)\\CGA320C.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = cms; priority = 1
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.003, Int. 0.000.572, 4x720K
+//
+game[v1.003-int-0.000.572-4x720k]:
+    name = v1.003, Int. 0.000.572, 4x720K
+    anchorfile = RESOURCE.001
+    file[]: crc = d36c4f12; size =      1089; name = __INSTH.BAT ; optional = true
+    file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
+    file[]: crc = 053f0464; size =      2017; name = CGA320BW.DRV
+    file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
+    file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
+    file[]: crc = 78248208; size =      2539; name = CSM1.DRV
+    file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 85ce1ec4; size =      2459; name = FB01.DRV
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 909742d2; size =      2193; name = HERCMONO.DRV
+    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: crc = 3d36b764; size =      2290; name = IMF.DRV
+    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
+    file[]: crc = 2142c8e4; size =      9698; name = INSTALL.HLP ; optional = true
+    file[]: crc = d7084740; size =       748; name = INSTGAME.BAT; optional = true
+    file[]: crc = 82c368e0; size =       536; name = JOYSTICK.DRV
+    file[]: crc = 255d2356; size =      2990; name = JR.DRV
+    file[]: crc = 90beb9cc; size =        34; name = LSL3.BAT    ; optional = true
+    file[]: crc = 70e15f90; size =       185; name = LSL3.QA     ; optional = true
+    file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
+    file[]: crc = 98079388; size =      3099; name = MT32.DRV
+    file[]: crc = c5769c5c; size =      2534; name = MT540.DRV
+    file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
+    file[]: crc = 69c9530a; size =       994; name = README.COM  ; optional = true
+    file[]: crc = 9b09fdbe; size =       241; name = README.TXT  ; optional = true
+    file[]: crc = 024a420a; size =    456265; name = RESOURCE.001
+    file[]: crc = ff6c660c; size =    577059; name = RESOURCE.002
+    file[]: crc = c7c6ae3f; size =    506817; name = RESOURCE.003
+    file[]: crc = aa0659eb; size =    513337; name = RESOURCE.004
+    file[]: crc = b7ab134b; size =      5916; name = RESOURCE.MAP
+    file[]: crc = ce7efb20; size =     75203; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM
+    file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
+    file[]: crc = afd4ea9a; size =      3438; name = TANDY.DRV
+    file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
+    file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
+end
+
+//
+// v1.003, Int. 0.000.572, 8x360K
+//
+game[v1.003-int-0.000.572-8x360k]:
+    name = v1.003, Int. 0.000.572, 8x360K
+    imports = v1.003-int-0.000.572-4x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 0f370595; size =      1781; name = __INSTH.BAT ; optional = true
+    file[]: crc = b6cd67a1; size =    141381; name = RESOURCE.001
+    file[]: crc = ef612011; size =    345171; name = RESOURCE.002
+    file[]: crc = eb85696c; size =    329214; name = RESOURCE.003
+    file[]: crc = 6ac8831a; size =    290173; name = RESOURCE.004
+    file[]: crc = 48515c20; size =    302946; name = RESOURCE.005
+    file[]: crc = 2d962f2b; size =    282465; name = RESOURCE.006
+    file[]: crc = 53f4f775; size =    257174; name = RESOURCE.007
+    file[]: crc = 302d8378; size =    285888; name = RESOURCE.008
+    file[]: crc = 6d3d9599; size =      7452; name = RESOURCE.MAP
+end
+
+//
+// v1.021, Int. 5.15.90, 4x720K
+//
+game[v1.021-int-5.15.90-4x720k]:
+    name = v1.021, Int. 5.15.90, 4x720K
+    imports = v1.003-int-0.000.572-4x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
+    file[]: crc = 601c1929; size =       184; name = LSL3.QA     ; optional = true
+    file[]: crc = 7738166a; size =      1102; name = README.COM  ; optional = true
+    file[]: crc = f197f636; size =       349; name = README.TXT  ; optional = true
+    file[]: crc = 7fa5e23e; size =    456722; name = RESOURCE.001
+    file[]: crc = 66159dec; size =    578024; name = RESOURCE.002
+    file[]: crc = d16711c3; size =    506807; name = RESOURCE.003
+    file[]: crc = 92023f79; size =    513651; name = RESOURCE.004
+    file[]: crc = 595c3f83; size =      5916; name = RESOURCE.MAP
+end
+
+//
+// v1.021, Int. 5.15.90, 8x360K
+//
+game[v1.021-int-5.15.90-8x360k]:
+    name = v1.021, Int. 5.15.90, 8x360K
+    imports = v1.003-int-0.000.572-8x360k
+    anchorfile = RESOURCE.001
+    file[]: crc = 969a2b7e; size =    141515; name = RESOURCE.001
+    file[]: crc = 1d0d9e60; size =    345494; name = RESOURCE.002
+    file[]: crc = 15fab0e3; size =    329220; name = RESOURCE.003
+    file[]: crc = e670cf00; size =    290303; name = RESOURCE.004
+    file[]: crc = 19b8fcad; size =    303905; name = RESOURCE.005
+    file[]: crc = ea6d436f; size =    282649; name = RESOURCE.006
+    file[]: crc = 8dbf09a7; size =    257178; name = RESOURCE.007
+    file[]: crc = 3a20975a; size =    285874; name = RESOURCE.008
+    file[]: crc = d4f7b3ca; size =      7452; name = RESOURCE.MAP
+end
+
+//
+// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021-int-5.15.90)
+//
+game[v1.021-int-5.15.90-leisure-suit-larry-collectors-series]:
+    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021-int-5.15.90)
+    anchorfile = RESOURCE.CFG
+    file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
+    file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
+    file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
+    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
+    file[]: crc = cf6f7b20; size =     17556; name = INSTALL.HLP ; optional = true
+    file[]: crc = 6867af31; size =       954; name = INSTALL.SCR ; optional = true
+    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
+    file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
+    file[]: crc = 8ee6577f; size =       766; name = LSL3.ICO    ; optional = true
+    file[]: crc = 601c1929; size =       184; name = LSL3.QA     ; optional = true
+    file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
+    file[]: crc = 98079388; size =      3099; name = MT32.DRV
+    file[]: crc = 7738166a; size =      1102; name = README.COM  ; optional = true
+    file[]: crc = f197f636; size =       349; name = README.TXT  ; optional = true
+    file[]: crc = 7fa5e23e; size =    456722; name = RESOURCE.001
+    file[]: crc = 66159dec; size =    578024; name = RESOURCE.002
+    file[]: crc = d16711c3; size =    506807; name = RESOURCE.003
+    file[]: crc = 92023f79; size =    513651; name = RESOURCE.004
+    file[]: crc = eb226689; size =        66; name = RESOURCE.CFG; optional = true
+    file[]: crc = 595c3f83; size =      5916; name = RESOURCE.MAP
+    file[]: crc = ce7efb20; size =     75203; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
+end
+
+end

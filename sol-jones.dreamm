@@ -1,0 +1,188 @@
+//
+// Jones in the Fast Lane
+//
+desc[sol-jones]:
+
+name = Jones in the Fast Lane
+icon = sol-jones.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_486DX_33)
+nothrottle = 4
+ramkb = 4096
+filter = sierra, adventure
+EXE_NAME = SCIV256.EXE
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY3V.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME);
+        videohw = vga; priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = cms
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIO_DRIVER = SNDBLAST.DRV
+        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+	memoryDrv=ARM.DRV
+	minHunk=260k
+	patchDir=.
+   ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.000.060, Int. 10.19.90, 1x1.2M
+//
+game[v1.000.060-int-10.19.90-1x1.2m]:
+    name = v1.000.060, Int. 10.19.90, 1x1.2M
+    anchorfile = RESOURCE.001
+    file[]: crc = f268096a; size =       456; name = __INSTH.BAT ; optional = true
+    file[]: crc = 594590e7; size =      8033; name = ADL.DRV
+    file[]: crc = d1588060; size =      3709; name = CMS.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 1f125b48; size =       449; name = IBMKBD.DRV
+    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
+    file[]: crc = 4875ad10; size =      9453; name = INSTALL.HLP ; optional = true
+    file[]: crc = 8ecb7db1; size =       889; name = INSTGAME.BAT; optional = true
+    file[]: crc = edc86d44; size =        27; name = JONES.BAT   ; optional = true
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
+    file[]: crc = 2545b160; size =    994487; name = RESOURCE.001
+    file[]: crc = df72a9e3; size =      1602; name = RESOURCE.MAP
+    file[]: crc = 9f332d23; size =     60373; name = SCIV256.EXE
+    file[]: crc = 1db1b72c; size =        30; name = SIERRA.BAT  ; optional = true
+    file[]: crc = 13e01cb8; size =      9489; name = SNDBLAST.DRV
+    file[]: crc = c9d29874; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = c1c37f45; size =      1352; name = STD.DRV
+    file[]: crc = 6c230416; size =      3854; name = TANDY3V.DRV
+    file[]: crc = f13c8668; size =       476; name = TANDYKBD.DRV
+    file[]: crc = d7283060; size =        13; name = VERSION
+    file[]: crc = 5bb181a9; size =      3797; name = VGA320.DRV
+end
+
+//
+// v1.000.060, Int. 10.19.90, 2x720K
+//
+game[v1.000.060-int-10.19.90-2x720k]:
+    name = v1.000.060, Int. 10.19.90, 2x720K
+    imports = v1.000.060-int-10.19.90-1x1.2m
+    anchorfile = RESOURCE.001
+    file[]: crc = aea74daa; size =       635; name = __INSTH.BAT ; optional = true
+    file[]: crc = e8d8af1b; size =       890; name = INSTGAME.BAT; optional = true
+    file[]: crc = a0a2d94e; size =    313476; name = RESOURCE.001
+    file[]: crc = 29ec0c84; size =    719747; name = RESOURCE.002
+    file[]: crc = 61debfd3; size =      1800; name = RESOURCE.MAP
+    file[]: crc = cdbf5965; size =       182; name = SIERRA.BAT  ; optional = true
+end
+
+//
+// v1.000.060, Int. 10.19.90, 1x720K, 16 Color
+//
+game[v1.000.060-int-10.19.90-1x720k]:
+    name = v1.000.060, Int. 10.19.90, 1x720K, 16 Color
+    EXE_NAME = SCIV.EXE
+    imports = v1.000.060-int-10.19.90-1x1.2m
+    anchorfile = RESOURCE.001
+    file[]: crc = 45e4742a; size =       453; name = __INSTH.BAT ; optional = true
+    file[]: crc = a28a9e4d; size =      3273; name = EGA320.DRV
+    file[]: crc = cab3d4cf; size =      1974; name = EXPLORER.DRV; optional = true
+    file[]: crc = d49c2c4e; size =       887; name = INSTGAME.BAT; optional = true
+    file[]: crc = db0e22be; size =      2763; name = MCGA320.DRV
+    file[]: crc = 3264b567; size =    511528; name = RESOURCE.001
+    file[]: crc = f7c748e7; size =      1602; name = RESOURCE.MAP
+    file[]: crc = 3891dc81; size =     59447; name = SCIV.EXE
+    file[]: crc = 9f332d23; size =     60373; remove = SCIV256.EXE
+    file[]: crc = 0c10813e; size =        27; name = SIERRA.BAT  ; optional = true
+    file[]: crc = b5eec20c; size =      2796; name = TANDY320.DRV
+    file[]: crc = 6c230416; size =      3854; name = TANDY3V.DRV
+    file[]: crc = f13c8668; size =       476; name = TANDYKBD.DRV
+    file[]: crc = 5bb181a9; size =      3797; remove = VGA320.DRV
+end
+
+//
+// v1.000.060, Int. 10.19.90, 2x360K, 16 Color
+//
+game[v1.000.060-int-10.19.90-2x360k]:
+    name = v1.000.060, Int. 10.19.90, 2x360K, 16 Color
+    EXE_NAME = SCIV.EXE
+    imports = v1.000.060-int-10.19.90-1x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = a4aec6e0; size =       625; name = __INSTH.BAT ; optional = true
+    file[]: crc = 376518a5; size =       866; name = INSTGAME.BAT; optional = true
+    file[]: crc = c0cf7df6; size =    202105; name = RESOURCE.001
+    file[]: crc = 2ddcfe52; size =    341771; name = RESOURCE.002
+    file[]: crc = 759a5d84; size =      1800; name = RESOURCE.MAP
+    file[]: crc = bded8bb3; size =       179; name = SIERRA.BAT  ; optional = true
+end
+
+end

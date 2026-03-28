@@ -1,0 +1,281 @@
+//
+// Hoyle - Official Book of Games - Volume 2
+//
+desc[sol-hoyle2]:
+
+name = Hoyle - Official Book of Games - Volume 2
+icon = sol-hoyle2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SCIV.EXE
+mips = $(MIPS_386DX_33)
+ramkb = 4096
+filter = sierra, adventure
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
+    end
+    option[hercules]: 
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        VIDEO_DRIVER = HERCMONO.DRV
+        condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
+    end
+    option[cgamono]:  
+        name = CGA (2 colours)
+        videohw = cga
+        VIDEO_DRIVER = CGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
+    end
+    option[cgamono]:  
+        name = CGA (2 colours)
+        videohw = cga
+        VIDEO_DRIVER = CGA320M.DRV
+        condition = file_exists("$$(rootpath)\\CGA320M.DRV")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO_DRIVER = CGA320C.DRV
+        condition = file_exists("$$(rootpath)\\CGA320C.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = cms; priority = 1
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+	minHunk=396k
+	patchDir=.
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.000.011, Int. 6.21.90, 1x720K
+//
+game[v1.000.011-int-6.21.90-1x720k]:
+    name = v1.000.011, Int. 6.21.90, 1x720K
+    anchorfile = RESOURCE.001
+    file[]: crc = 7ccce5f1; size =       544; name = __INSTH.BAT  ; optional = true
+    file[]: crc = 9f2cea3f; size =      9778; name = ADL.DRV
+    file[]: crc = 053f0464; size =      2017; name = CGA320BW.DRV
+    file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
+    file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
+    file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 909742d2; size =      2193; name = HERCMONO.DRV
+    file[]: crc = ff354972; size =        28; name = HOYLE2.BAT  ; optional = true
+    file[]: crc = 0fa1eb7d; size =      1856; name = HOYLESOL.100
+    file[]: crc = c95da9f0; size =      1742; name = HOYLESOL.101
+    file[]: crc = 531fde90; size =      1856; name = HOYLESOL.102
+    file[]: crc = 0de34f08; size =      1628; name = HOYLESOL.103
+    file[]: crc = 14011ffc; size =      1628; name = HOYLESOL.104
+    file[]: crc = 4fcee71f; size =      1400; name = HOYLESOL.105
+    file[]: crc = a886f0a2; size =      1172; name = HOYLESOL.106
+    file[]: crc = 7bc729ce; size =      1514; name = HOYLESOL.107
+    file[]: crc = 56e17f37; size =      1058; name = HOYLESOL.108
+    file[]: crc = 3816e1a0; size =      1058; name = HOYLESOL.109
+    file[]: crc = f782b295; size =      2540; name = HOYLESOL.110
+    file[]: crc = fc2be248; size =      1856; name = HOYLESOL.111
+    file[]: crc = 0f495182; size =      2198; name = HOYLESOL.112
+    file[]: crc = 23a4b2b9; size =      1970; name = HOYLESOL.113
+    file[]: crc = f8a693df; size =      2540; name = HOYLESOL.114
+    file[]: crc = 5c33064e; size =      2768; name = HOYLESOL.115
+    file[]: crc = 36c57f49; size =      1514; name = HOYLESOL.116
+    file[]: crc = a8043b3b; size =      1628; name = HOYLESOL.117
+    file[]: crc = ec0ae3fc; size =      3359; name = HOYLESOL.118
+    file[]: crc = 9ba17c7f; size =      1742; name = HOYLESOL.119
+    file[]: crc = 2e112473; size =      2198; name = HOYLESOL.120
+    file[]: crc = 28e65f0f; size =       944; name = HOYLESOL.121
+    file[]: crc = 789bea0e; size =      6290; name = HOYLESOL.122
+    file[]: crc = 393050e2; size =      2312; name = HOYLESOL.123
+    file[]: crc = d74c0cf8; size =      4622; name = HOYLESOL.124
+    file[]: crc = 9f832b44; size =      2426; name = HOYLESOL.125
+    file[]: crc = a39ac2d4; size =      3359; name = HOYLESOL.126
+    file[]: crc = 38c99bcc; size =      2312; name = HOYLESOL.127
+    file[]: crc = b254e488; size =      1742; name = HOYLESOL.400
+    file[]: crc = 4cd39c10; size =      1514; name = HOYLESOL.401
+    file[]: crc = 7905b9c5; size =      1856; name = HOYLESOL.402
+    file[]: crc = 77756f4c; size =      1628; name = HOYLESOL.403
+    file[]: crc = 7341ff99; size =      1628; name = HOYLESOL.404
+    file[]: crc = 1db80974; size =      1400; name = HOYLESOL.405
+    file[]: crc = 125a5745; size =      1058; name = HOYLESOL.406
+    file[]: crc = 20859d37; size =      1514; name = HOYLESOL.407
+    file[]: crc = 418a0ee0; size =      1058; name = HOYLESOL.408
+    file[]: crc = 299cd110; size =      1058; name = HOYLESOL.409
+    file[]: crc = a680ddc2; size =      2540; name = HOYLESOL.410
+    file[]: crc = 17f1225a; size =      1856; name = HOYLESOL.411
+    file[]: crc = 7dc388d6; size =      2198; name = HOYLESOL.412
+    file[]: crc = 7040b901; size =      1970; name = HOYLESOL.413
+    file[]: crc = 8274bf3c; size =      2540; name = HOYLESOL.414
+    file[]: crc = 6bca7e2f; size =      2768; name = HOYLESOL.415
+    file[]: crc = b4faeb6f; size =      1514; name = HOYLESOL.416
+    file[]: crc = 13262a21; size =      1742; name = HOYLESOL.417
+    file[]: crc = ec0ae3fc; size =      3359; name = HOYLESOL.418
+    file[]: crc = ff4c6213; size =      1742; name = HOYLESOL.419
+    file[]: crc = ab710f3e; size =      1514; name = HOYLESOL.420
+    file[]: crc = 1e54469b; size =       830; name = HOYLESOL.421
+    file[]: crc = 0f0e7484; size =      6290; name = HOYLESOL.422
+    file[]: crc = 8bcc48d6; size =      2312; name = HOYLESOL.423
+    file[]: crc = 9ba96be4; size =      3824; name = HOYLESOL.424
+    file[]: crc = 9f832b44; size =      2426; name = HOYLESOL.425
+    file[]: crc = ab739ae2; size =      3245; name = HOYLESOL.426
+    file[]: crc = b6f5cc3d; size =      2198; name = HOYLESOL.427
+    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
+    file[]: crc = 329e93ec; size =      5963; name = INSTALL.HLP ; optional = true
+    file[]: crc = f37d4a58; size =       834; name = INSTGAME.BAT; optional = true
+    file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
+    file[]: crc = 2a343283; size =      2988; name = JR.DRV
+    file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
+    file[]: crc = 98079388; size =      3099; name = MT32.DRV
+    file[]: crc = 20ca3aa0; size =        14; name = OPTIONS.SOL
+    file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
+    file[]: crc = 671ffd14; size =    216315; name = RESOURCE.001
+    file[]: crc = 8849625e; size =      1356; name = RESOURCE.MAP
+    file[]: crc = ce7efb20; size =     75203; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
+    file[]: crc = 7c4b8fa1; size =      3424; name = TANDY.DRV
+    file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
+    file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
+end
+
+//
+// v1.000.011, Int. 6.21.90, 2x360K
+//
+game[v1.000.011-int-6.21.90-2x360k]:
+    name = v1.000.011, Int. 6.21.90, 2x360K
+    imports = v1.000.011-int-6.21.90-1x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = b769ad91; size =       749; name = __INSTH.BAT ; optional = true
+    file[]: crc = 869f3946; size =      5704; name = INSTALL.HLP ; optional = true
+    file[]: crc = df4c1347; size =     98138; name = RESOURCE.001
+    file[]: crc = acb7318e; size =    196631; name = RESOURCE.002
+    file[]: crc = d82eb98c; size =      2100; name = RESOURCE.MAP
+end
+
+//
+// v1.000.014, Int. 7.25.90, 1x720K
+//
+game[v1.000.014-int-7.25.90-1x720k]:
+    name = v1.000.014, Int. 7.25.90, 1x720K
+    imports = v1.000.011-int-6.21.90-1x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
+    file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
+    file[]: crc = d0bc16a1; size =      5962; name = INSTALL.HLP ; optional = true
+    file[]: crc = 6f7a894f; size =    217034; name = RESOURCE.001
+    file[]: crc = 54d364f9; size =      1356; name = RESOURCE.MAP
+    file[]: crc = 1c680980; size =     76499; name = SCIV.EXE
+end
+
+//
+// v1.000.014, Int. 7.25.90, 2x360K
+//
+game[v1.000.014-int-7.25.90-2x360k]:
+    name = v1.000.014, Int. 7.25.90, 2x360K
+    imports = v1.000.014-int-7.25.90-1x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = b769ad91; size =       749; name = __INSTH.BAT ; optional = true
+    file[]: crc = ddf6b7d4; size =     98289; name = RESOURCE.001
+    file[]: crc = 45ff0eb7; size =    197326; name = RESOURCE.002
+    file[]: crc = 763be3b9; size =      2100; name = RESOURCE.MAP
+end
+
+//
+// v1.000.016, Int. 12.5.90, 1x720K
+//
+game[v1.000.016-int-12.5.90-1x720k]:
+    name = v1.000.016, Int. 12.5.90, 1x720K
+    imports = v1.000.014-int-7.25.90-1x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 6b3357e8; size =      1856; name = HOYLESOL.102
+    file[]: crc = 1e78a6d8; size =      1856; name = HOYLESOL.111
+    file[]: crc = 412930bd; size =      1856; name = HOYLESOL.402
+    file[]: crc = f5a266ca; size =      1856; name = HOYLESOL.411
+    file[]: crc = b9c36b1a; size =        14; name = OPTIONS.SOL
+    file[]: crc = 0e85bc6e; size =    217880; name = RESOURCE.001
+    file[]: crc = 46400a17; size =      1356; name = RESOURCE.MAP
+end
+
+//
+// v1.000.016, Int. 12.5.90, 2x360K
+//
+game[v1.000.016-int-12.5.90-2x360k]:
+    name = v1.000.016, Int. 12.5.90, 2x360K
+    imports = v1.000.016-int-12.5.90-1x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = b769ad91; size =       749; name = __INSTH.BAT ; optional = true
+    file[]: crc = 299f8cba; size =     99107; name = RESOURCE.001
+    file[]: crc = cc0ccc92; size =    198172; name = RESOURCE.002
+    file[]: crc = a1c3bf3c; size =      2100; name = RESOURCE.MAP
+end
+
+end

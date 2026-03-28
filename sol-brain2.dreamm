@@ -1,0 +1,228 @@
+//
+// Island of Doctor Brain
+//
+desc[sol-brain2]:
+
+name = Island of Doctor Brain
+icon = sol-brain2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\$(EXE_NAME)
+mips = $(MIPS_486DX_33)
+nothrottle = 2
+ramkb = 4096
+filter = sierra, adventure
+EXE_NAME = SIERRA.EXE
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 1
+        AUDIO_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv=$(VIDEO_DRIVER)
+        soundDrv=$(AUDIO_DRIVER)
+        audioDrv=AUDBLAST.DRV
+        joyDrv=JOYSTICK.DRV
+        kbdDrv=IBMKBD.DRV
+        mouseDrv=STDMOUSE.DRV
+        minHunk=206k
+        patchDir=.
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[launch]:
+    code = [[[$(CRLF)
+        if (!file_exists("RESOURCE.000"))
+            file_copy("RESOURCE.000", "RESOURCE.P01", "RESOURCE.P02")
+        if (!file_exists("RESOURCE.AUD"))
+            file_copy("RESOURCE.AUD", "RESOURCE.A01", "RESOURCE.A02")
+    ]]]
+end
+
+//
+// v1.0, Int. 10.27.92, 3x1.44M
+//
+game[v1.0-int-10.27.92-3x1.44m]:
+    name = v1.0, Int. 10.27.92, 3x1.44M
+    anchorfile = RESOURCE.P01
+    file[]: crc = 04f44ebd; size =       536; name = 185.HEP
+    file[]: crc = 17af0d50; size =      1622; name = 185.SCR
+    file[]: crc = 2a2fc426; size =       602; name = 20.MAP
+    file[]: crc = 6fbdaa43; size =      2768; name = 200.HEP
+    file[]: crc = 989b64b7; size =      3162; name = 200.SCR
+    file[]: crc = 26284814; size =      2782; name = 240.HEP
+    file[]: crc = f1b12caa; size =      2784; name = 240.SCR
+    file[]: crc = 749571c0; size =      3052; name = 260.HEP
+    file[]: crc = 8dca909d; size =      3222; name = 260.SCR
+    file[]: crc = b3b61cc5; size =      1320; name = 268.HEP
+    file[]: crc = 0bc00a75; size =      4408; name = 268.SCR
+    file[]: crc = f3d7c0ac; size =     10543; name = 269.V56
+    file[]: crc = 0ba56cb3; size =       404; name = 30.HEP
+    file[]: crc = 91f7a4ff; size =       484; name = 30.SCR
+    file[]: crc = 4ebccfc8; size =     21780; name = 300.MSG
+    file[]: crc = 71974912; size =      1946; name = 310.HEP
+    file[]: crc = d73b0247; size =      7900; name = 310.SCR
+    file[]: crc = 51292a2c; size =      1970; name = 350.HEP
+    file[]: crc = 41b374fc; size =      8794; name = 350.SCR
+    file[]: crc = e084fe10; size =      1100; name = 365.HEP
+    file[]: crc = 1e9816d9; size =      7806; name = 365.SCR
+    file[]: crc = dec050ca; size =       554; name = 40.HEP
+    file[]: crc = 6ae50537; size =      3144; name = 40.SCR
+    file[]: crc = 93648f8d; size =      3170; name = 420.HEP
+    file[]: crc = eb98a367; size =      5698; name = 420.SCR
+    file[]: crc = fdef233b; size =       632; name = 65535.MAP
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = c8b2dd10; size =      5884; name = AUDBLAST.DRV
+    file[]: crc = 05690414; size =      4862; name = AUDDISNY.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = 6f06bcee; size =      5378; name = AUDPRO.DRV
+    file[]: crc = 03840f4a; size =      4435; name = AUDPS1.DRV
+    file[]: crc = 56c72025; size =      4507; name = AUDTANDY.DRV
+    file[]: crc = 8c978981; size =      3691; name = AUDTHUND.DRV
+    file[]: crc = f7f65417; size =        35; name = BRAIN2.BAT  ; optional = true
+    file[]: crc = 5c9adc2a; size =        14; name = BRAIN2H.BAT ; optional = true
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = 42864938; size =     55886; name = INSTALL.EXE ; optional = true
+    file[]: crc = c3076153; size =     16652; name = INSTALL.HLP ; optional = true
+    file[]: crc = 510db537; size =      1932; name = INSTALL.SCR ; optional = true
+    file[]: crc = fa79ddd7; size =      8466; name = INSTALL.TXT ; optional = true
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
+    file[]: crc = 011d912c; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 0e005a99; size =      8627; name = README      ; optional = true
+    file[]: crc = 2b849af7; size =    429000; name = RESOURCE.A01
+    file[]: crc = 7d2b0f5f; size =   1451696; name = RESOURCE.A02
+    file[]: crc = e2535485; size =       120; name = RESOURCE.CFG; optional = true
+    file[]: crc = 2133c27d; size =      3281; name = RESOURCE.MAP
+    file[]: crc = d3565b13; size =   1085000; name = RESOURCE.P01
+    file[]: crc = 559beda3; size =   1018560; name = RESOURCE.P02
+    file[]: crc = d16d0770; size =        19; name = SIERRA.BAT  ; optional = true
+    file[]: crc = d94cccc6; size =     67778; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = 465b2310; size =        46; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// v1.1, Int. 2.3.93, 3x1.44M
+//
+game[v1.1-int-2.3.93-3x1.44m]:
+    name = v1.1, Int. 2.3.93, 3x1.44M
+    anchorfile = RESOURCE.P01
+    file[]: crc = c00a1fc9; size =       602; name = 20.MAP
+    file[]: crc = c14bafcf; size =      1552; name = 340.HEP
+    file[]: crc = 7a4e299e; size =      1956; name = 340.SCR
+    file[]: crc = df16b2ae; size =       632; name = 65535.MAP
+    file[]: crc = 5b54f9ac; size =      1495; name = 990.MSG
+    file[]: crc = 85726811; size =       717; name = 994.MSG
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
+    file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
+    file[]: crc = 885ee375; size =      3995; name = AUDMSSYS.DRV
+    file[]: crc = 2deb6ee1; size =      1100; name = AUDNONE.DRV
+    file[]: crc = 263252dc; size =      6100; name = AUDPRO.DRV
+    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
+    file[]: crc = 6dc64007; size =      4859; name = AUDPS1.DRV
+    file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
+    file[]: crc = f7f65417; size =        35; name = BRAIN2.BAT  ; optional = true
+    file[]: crc = 5c9adc2a; size =        14; name = BRAIN2H.BAT ; optional = true
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = 43386f83; size =       760; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = c2d18c21; size =     62724; name = INSTALL.EXE ; optional = true
+    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
+    file[]: crc = fabdb5f6; size =      2006; name = INSTALL.SCR ; optional = true
+    file[]: crc = 0c7a9d30; size =      8737; name = INSTALL.TXT ; optional = true
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 338ece09; size =       186; name = MESSAGE.MAP
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 3562a380; size =      8317; name = README      ; optional = true
+    file[]: crc = 56425985; size =    600000; name = RESOURCE.A01
+    file[]: crc = 5ac79c35; size =    800048; name = RESOURCE.A02
+    file[]: crc = e2535485; size =       120; name = RESOURCE.CFG; optional = true
+    file[]: crc = a0624a7b; size =      3101; name = RESOURCE.MAP
+    file[]: crc = 64e2c13e; size =    155228; name = RESOURCE.MSG
+    file[]: crc = 70b60459; size =   1100000; name = RESOURCE.P01
+    file[]: crc = 8c238ce9; size =    847866; name = RESOURCE.P02
+    file[]: crc = d16d0770; size =        19; name = SIERRA.BAT  ; optional = true
+    file[]: crc = d94cccc6; size =     67778; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = f536d131; size =        46; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+end

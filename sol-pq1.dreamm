@@ -1,0 +1,139 @@
+//
+// Police Quest: In Pursuit of the Death Angel
+//
+desc[sol-pq1]:
+
+name = Police Quest: In Pursuit of the Death Angel
+icon = sol-pq1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+mips = $(MIPS_286_10)
+nothrottle = 1.5
+ramkb = 1024
+filter = sierra, adventure
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);   writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v2.0A, Int. 2.903, 3x360K *** MISSING ***
+//
+
+//
+// v2.0A, Int. 2.911, 3x360K *** MISSING ***
+//
+
+//
+// v2.0E, Int. 2.915, 2x720K
+//
+game[v2.0e-int-2.915-2x720k]:
+    name = v2.0E, Int. 2.915, 2x720K
+    anchorfile = VOL.0
+    file[]: crc = d0b4a941; size =       999; name = _INSTALL.BAT
+    file[]: crc = 5c13cccf; size =        36; name = _PQ.BAT     
+    file[]: crc = 9c60cf86; size =     39424; name = AGI
+    file[]: crc = 5745a47b; size =      8192; name = AGIDATA.OVL
+    file[]: crc = 9f7d2517; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 6284c954; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 3f18f45e; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = c449b9a5; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = 3838825f; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = abc7aa3c; size =      1239; name = INSTALLH.BAT
+    file[]: crc = 91502785; size =       512; name = JR_GRAF.OVL
+    file[]: crc = 496bad30; size =       360; name = LOGDIR
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM
+    file[]: crc = 8b985ad2; size =       369; name = OBJECT
+    file[]: crc = 34dd13ed; size =       351; name = PICDIR
+    file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
+    file[]: crc = 9b4aacf3; size =       126; name = SNDDIR
+    file[]: crc = 4927f36f; size =       512; name = VG_GRAF.OVL
+    file[]: crc = 253bfe3c; size =       768; name = VIEWDIR
+    file[]: crc = 82eaf402; size =     66869; name = VOL.0
+    file[]: crc = ca7a3f35; size =    384576; name = VOL.1
+    file[]: crc = 9ecf0dc3; size =    250269; name = VOL.2
+    file[]: crc = 83c394ee; size =        23; name = VOL.3
+    file[]: crc = 666de107; size =      6737; name = WORDS.TOK
+end
+
+//
+// v2.0E, Int. 2.915, 3x360K *** MISSING ***
+//
+
+//
+// v2.0G, Int. 2.917, 2x720K
+//
+game[v2.0g-int-2.917-2x720k]:
+    name = v2.0G, Int. 2.917, 2x720K
+    imports = v2.0e-int-2.915-2x720k
+    anchorfile = VOL.0
+    file[]: crc = 40ae7b2d; size =     39424; name = AGI
+    file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
+    file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 67e8b0ad; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
+    file[]: crc = 0e851173; size =       360; name = LOGDIR
+    file[]: crc = 5bf41c35; size =       351; name = PICDIR
+    file[]: crc = 389fa06d; size =        13; name = PQ101088.QA
+    file[]: crc = 89a3a183; size =       126; name = SNDDIR
+    file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
+    file[]: crc = 8a93212e; size =       768; name = VIEWDIR
+    file[]: crc = 9c5f96fa; size =    384591; name = VOL.1
+    file[]: crc = 76f042f1; size =    250262; name = VOL.2
+    file[]: crc = 00000000; size =         0; remove = VOL.3
+    file[]: crc = 666de107; size =      6737; name = WORDS.TOK
+
+end
+
+//
+// v2.0G, Int. 2.917, 3x360K
+//
+game[v2.0g-int-2.917-3x360k]:
+    name = v2.0G, Int. 2.917, 3x360K
+    imports = v2.0g-int-2.917-2x720k
+    anchorfile = VOL.1
+    file[]: crc = 1ccd8b67; size =       360; name = LOGDIR
+    file[]: crc = 574cecf1; size =       351; name = PICDIR
+    file[]: crc = 812b4496; size =       126; name = SNDDIR
+    file[]: crc = 99f247bf; size =       768; name = VIEWDIR
+    file[]: crc = 35c0dda5; size =    195134; name = VOL.1
+    file[]: crc = dea7f7e8; size =    189447; name = VOL.2
+    file[]: crc = d16c4ba3; size =    250262; name = VOL.3
+end
+
+end

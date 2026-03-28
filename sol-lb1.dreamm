@@ -1,0 +1,168 @@
+//
+// Colonel's Bequest
+//
+desc[sol-lb1]:
+
+name = Colonel's Bequest
+icon = sol-lb1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SCIV.EXE
+mips = $(MIPS_386DX_33)
+ramkb = 1024
+filter = sierra, adventure
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 3; machine = tandy
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = JR.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
+    end
+    option[hercules]: 
+        name = $(HERCULES_NAME)
+        videohw = hercules; nothrottle = 6
+        VIDEO_DRIVER = HERCMONO.DRV
+        condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
+    end
+    option[cgamono]:  
+        name = CGA (2 colours)
+        videohw = cga; nothrottle = 5.5
+        VIDEO_DRIVER = CGA320M.DRV
+        condition = file_exists("$$(rootpath)\\CGA320M.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 5.5; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga; nothrottle = 5.5
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = cms; priority = 1
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+	videoDrv=$(VIDEO_DRIVER)
+	soundDrv=$(AUDIO_DRIVER)
+	joyDrv=JOYSTICK.DRV
+	kbdDrv=IBMKBD.DRV
+	mouseDrv=STDMOUSE.DRV
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.000.046, Int. 0.000.631, 4x720K
+//
+game[v1.000.046-int-0.000.631-4x720k]:
+    name = v1.000.046, Int. 0.000.631, 4x720K
+    anchorfile = RESOURCE.001
+    file[]: crc = 341c5556; size =      1032; name = __INSTH.BAT ; optional = true
+    file[]: crc = bc3f487e; size =      8997; name = ADL.DRV
+    file[]: crc = 7f0cc35b; size =        24; name = CB.BAT      ; optional = true
+    file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
+    file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
+    file[]: crc = caf039f1; size =      2549; name = CSM1.DRV
+    file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 85ce1ec4; size =      2459; name = FB01.DRV
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
+    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: crc = 3d36b764; size =      2290; name = IMF.DRV
+    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
+    file[]: crc = bffd948b; size =      8661; name = INSTALL.HLP ; optional = true
+    file[]: crc = f7c24976; size =       827; name = INSTGAME.BAT; optional = true
+    file[]: crc = 82c368e0; size =       536; name = JOYSTICK.DRV
+    file[]: crc = 255d2356; size =      2990; name = JR.DRV
+    file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
+    file[]: crc = 88df91ef; size =      3162; name = MT32.DRV
+    file[]: crc = 662e8668; size =      2529; name = MT540.DRV
+    file[]: crc = 52b90f0a; size =       206; name = README      ; optional = true
+    file[]: crc = 8053a408; size =    515788; name = RESOURCE.001
+    file[]: crc = e384bdfd; size =    721381; name = RESOURCE.002
+    file[]: crc = 59a496c5; size =    667468; name = RESOURCE.003
+    file[]: crc = a42c938c; size =    683807; name = RESOURCE.004
+    file[]: crc = 88e45cdd; size =      8478; name = RESOURCE.MAP
+    file[]: crc = 8ea9203d; size =     76419; name = SCIV.EXE
+    file[]: crc = 02f2fa25; size =      6962; name = SCRIPT.052
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
+    file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
+    file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
+    file[]: crc = ee181702; size =      2734; name = TEXT.052
+end
+
+//
+// v1.000.046, Int. 0.000.631, 10x360K
+//
+game[v1.000.046-int-0.000.631-10-360k]:
+    name = v1.000.046, Int. 0.000.631, 10x360K
+    imports = v1.000.046-int-0.000.631-4x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 4c11bfa7; size =      2025; name = __INSTH.BAT ; optional = true
+    file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
+    file[]: crc = 6c814ca3; size =    108032; name = RESOURCE.001
+    file[]: crc = f6000927; size =    354680; name = RESOURCE.002
+    file[]: crc = 01c665f4; size =    361815; name = RESOURCE.003
+    file[]: crc = 53f8b5cc; size =    339714; name = RESOURCE.004
+    file[]: crc = dc0cdbd9; size =    327465; name = RESOURCE.005
+    file[]: crc = 7d6ce8ea; size =    328390; name = RESOURCE.006
+    file[]: crc = 1700776a; size =    317687; name = RESOURCE.007
+    file[]: crc = a876e1d5; size =    352345; name = RESOURCE.008
+    file[]: crc = 26df38d5; size =    257355; name = RESOURCE.009
+    file[]: crc = 2b6587b0; size =    356093; name = RESOURCE.010
+    file[]: crc = da3ae43c; size =     12030; name = RESOURCE.MAP
+end
+
+end

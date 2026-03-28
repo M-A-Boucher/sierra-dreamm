@@ -1,0 +1,416 @@
+//
+// Space Quest V
+//
+desc[sol-sq5]:
+
+name = Space Quest V
+icon = sol-sq5.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.EXE
+mips = $(MIPS_386DX_33)
+nothrottle = 2
+ramkb = 8192
+filter = sierra, adventure
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 1
+        AUDIO_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv=$(VIDEO_DRIVER)
+        soundDrv=$(AUDIO_DRIVER)
+        audioDrv=AUDBLAST.DRV
+        kbdDrv=IBMKBD.DRV
+        mouseDrv=STDMOUSE.DRV
+        memoryDrv=ARM.DRV
+        minHunk=233k
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[launch]:
+code = [[[$(CRLF)
+	if (!file_exists("RESOURCE.000"))
+		file_copy("RESOURCE.000", "DISK1/RESOURCE.000", "DISK2/RESOURCE.000", "DISK3/RESOURCE.000", "DISK4/RESOURCE.000", "DISK5/RESOURCE.000")
+	]]]
+end
+
+//
+// v1.0, Int. 2.5.93, 5x1.44M
+//
+game[v1.0-int-2.5.93-5x1.44m]:
+    name = v1.0, Int. 2.5.93, 5x1.44M
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = 69161c49; size =      1782; name = 0.FON
+    file[]: crc = 1344dedc; size =      1296; name = 10.FON
+    file[]: crc = 5c20596c; size =     52329; name = 100.V56
+    file[]: crc = 66868e85; size =      9877; name = 1004.V56
+    file[]: crc = 4e625c4e; size =      1299; name = 1005.FON
+    file[]: crc = 5f5ef6ba; size =      8768; name = 1006.V56
+    file[]: crc = 461ce94e; size =      1576; name = 1007.FON
+    file[]: crc = f8cd6527; size =      1351; name = 1008.FON
+    file[]: crc = dbde9129; size =     33373; name = 101.V56
+    file[]: crc = 251e4b13; size =      4716; name = 104.HEP
+    file[]: crc = c595f62a; size =      5066; name = 104.SCR
+    file[]: crc = a9d533b5; size =     27448; name = 105.V56
+    file[]: crc = 5643eaf0; size =     15745; name = 114.V56
+    file[]: crc = ec5fe573; size =      6376; name = 119.P56
+    file[]: crc = b869b2f7; size =      8902; name = 127.P56
+    file[]: crc = ed2789ab; size =      1486; name = 1307.FON
+    file[]: crc = fd949c2d; size =     13866; name = 133.P56
+    file[]: crc = a079a0e3; size =      1414; name = 137.HEP
+    file[]: crc = e3cf5677; size =      4088; name = 137.SCR
+    file[]: crc = ef036fa2; size =     15903; name = 142.V56
+    file[]: crc = 7d48b7f0; size =     38385; name = 160.V56
+    file[]: crc = a19d3b77; size =      1494; name = 1605.FON
+    file[]: crc = 524318a6; size =     35177; name = 167.V56
+    file[]: crc = 3aedb243; size =     23461; name = 2003.V56
+    file[]: crc = a965a30d; size =     16606; name = 205.V56
+    file[]: crc = ac576ccd; size =      3089; name = 2099.V56
+    file[]: crc = 69161c49; size =      1782; name = 2106.FON
+    file[]: crc = 3b221c09; size =      4770; name = 201.HEP
+    file[]: crc = f4ff6266; size =     13586; name = 201.SCR
+    file[]: crc = 0accdc30; size =        13; name = 201.TEX
+    file[]: crc = a34135f2; size =      1318; name = 204.HEP
+    file[]: crc = 30008c08; size =      2066; name = 204.SCR
+    file[]: crc = fe77fccb; size =     26618; name = 211.V56
+    file[]: crc = 4039bc15; size =      1544; name = 2306.FON
+    file[]: crc = 955be66e; size =     13395; name = 24.P56
+    file[]: crc = 64846ec7; size =      1502; name = 2407.FON
+    file[]: crc = a526b0b5; size =      2148; name = 2510.FON
+    file[]: crc = 6ae424d8; size =      7077; name = 252.V56
+    file[]: crc = 0e3ca0e0; size =     10530; name = 264.V56
+    file[]: crc = 860a13ce; size =     15250; name = 29.V56
+    file[]: crc = 739afe21; size =     43072; name = 31.P56
+    file[]: crc = 3e5ebeba; size =      3514; name = 335.HEP
+    file[]: crc = a50cacec; size =      3050; name = 335.SCR
+    file[]: crc = 68bfddad; size =      1323; name = 4.FON
+    file[]: crc = 5e58d240; size =      3479; name = 4115.FON
+    file[]: crc = 6c348c51; size =     31003; name = 48.P56
+    file[]: crc = f0ffc109; size =      4630; name = 5.P56
+    file[]: crc = e4e7030c; size =     18334; name = 50.P56
+    file[]: crc = 4f757c21; size =     11876; name = 537.V56
+    file[]: crc = 27610eb0; size =     48319; name = 538.V56
+    file[]: crc = a6a7460a; size =     31392; name = 550.V56
+    file[]: crc = db88a76d; size =     15604; name = 606.V56
+    file[]: crc = 3a801b50; size =      8846; name = 613.V56
+    file[]: crc = 66a44d1a; size =      4394; name = 616.V56
+    file[]: crc = b9336c87; size =     20400; name = 625.V56
+    file[]: crc = 88252273; size =     17564; name = 627.V56
+    file[]: crc = b029f85e; size =       422; name = 65535.MAP
+    file[]: crc = dd4e80da; size =      8820; name = 667.V56
+    file[]: crc = 42fcd26d; size =     37046; name = 674.V56
+    file[]: crc = 7f5b7191; size =     21164; name = 676.V56
+    file[]: crc = 7c7e9a14; size =     41491; name = 7.P56
+    file[]: crc = 4c2137d7; size =      5172; name = 701.V56
+    file[]: crc = 7d372caf; size =      8664; name = 8.P56
+    file[]: crc = 57849c43; size =     50913; name = 81.P56
+    file[]: crc = 3593bb69; size =       908; name = 900.V56
+    file[]: crc = e1c40a3e; size =      2179; name = 910.V56
+    file[]: crc = 586cbe46; size =      2341; name = 916.V56
+    file[]: crc = 22abc453; size =      1840; name = 917.V56
+    file[]: crc = 3acb349a; size =     60820; name = 96.V56
+    file[]: crc = 579fdb1c; size =     49463; name = 97.V56
+    file[]: crc = fd18459a; size =      2488; name = 98.V56
+    file[]: crc = 2d34d642; size =      2078; name = 980.V56
+    file[]: crc = 7e829c49; size =      1333; name = 986.V56
+    file[]: crc = 7e44ddcc; size =       496; name = 987.V56
+    file[]: crc = c2e479bf; size =      1287; name = 988.V56
+    file[]: crc = deb043f6; size =     58646; name = 99.V56
+    file[]: crc = 5b28b2d4; size =      8991; name = 992.V56
+    file[]: crc = 3f1f03fe; size =     11138; name = 995.V56
+    file[]: crc = 6793fd20; size =      1252; name = 999.FON
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
+    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
+    file[]: crc = 829df8cf; size =      3970; name = AUDMSSYS.DRV
+    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
+    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
+    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
+    file[]: crc = 33b05d68; size =      4823; name = AUDPS1.DRV
+    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = c6c6fb9e; size =      1465; name = IBMPS1.DRV
+    file[]: crc = 0142dc19; size =    142232; name = INSTALL.EXE ; optional = true
+    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
+    file[]: crc = 37ca4770; size =      2632; name = INSTALL.SCR ; optional = true
+    file[]: crc = 0c7a9d30; size =      8737; name = INSTALL.TXT ; optional = true
+    file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 74e17132; size =    694148; name = LANGUAGE.EXE; optional = true
+    file[]: crc = 15bcc3bd; size =       446; name = MESSAGE.MAP
+    file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = b9f693d5; size =      3893; name = README      ; optional = true
+    file[]: crc = 31fbf9c0; size =    350000; name = DISK1\RESOURCE.000
+    file[]: crc = 46da6004; size =   1454000; name = DISK2\RESOURCE.000
+    file[]: crc = 835d9135; size =   1454000; name = DISK3\RESOURCE.000
+    file[]: crc = 4927fa75; size =   1454000; name = DISK4\RESOURCE.000
+    file[]: crc = 3aefc94f; size =    784486; name = DISK5\RESOURCE.000
+    file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
+    file[]: crc = 537da83b; size =        65; name = RESOURCE.CFG; optional = true
+    file[]: crc = 40c462c6; size =      6143; name = RESOURCE.MAP
+    file[]: crc = d1e35249; size =    125988; name = RESOURCE.MSG
+    file[]: crc = 13631226; size =     68342; name = SIERRA.EXE
+    file[]: crc = d25afba4; size =        26; name = SQ5.BAT     ; optional = true
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = c6c6fb9e; size =      1465; name = TANDY3V.DRV
+    file[]: crc = 9831adfc; size =    656042; name = UTILITY.EXE ; optional = true
+    file[]: crc = 8368d0f5; size =         6; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// v1.01, Int. 3.1.93, 5x1.44M
+//
+game[v1.01-int-3.1.93-5x1.44m]:
+    name = v1.01, Int. 3.1.93, 5x1.44M
+    imports = v1.0-int-2.5.93-5x1.44m
+    anchorfile = 335.SCR
+    anchordepth = 1
+    file[]: crc = 96462313; size =      4678; name = 119.HEP
+    file[]: crc = 1d9eb9e1; size =     13036; name = 119.SCR
+    file[]: crc = 8d01664f; size =      2934; name = 305.HEP
+    file[]: crc = c4c5439e; size =      7940; name = 305.SCR
+    file[]: crc = e470e95e; size =      3054; name = 335.SCR
+    file[]: crc = 7fe3400d; size =         7; name = VERSION
+end
+
+//
+// v1.01, Int. 3.1.93, French
+//
+game[v1.01-int-3.1.93-fr]:
+    name = v1.01, Int. 3.1.93, French
+    anchorfile = RESOURCE.000
+    anchordepth = 1
+    file[]: crc = 5fe84248; size =      2791; name = 0.FON
+    file[]: crc = 322acb1c; size =      2830; name = 10.FON
+    file[]: crc = fe6542f2; size =     52368; name = 100.V56
+    file[]: crc = 4a2efb7b; size =     14773; name = 1001.V56
+    file[]: crc = be985e50; size =      9903; name = 1004.V56
+    file[]: crc = 832f2156; size =      2776; name = 1005.FON
+    file[]: crc = 4b303be3; size =      8751; name = 1006.V56
+    file[]: crc = 693cb442; size =      2573; name = 1007.FON
+    file[]: crc = de874f80; size =      2653; name = 1008.FON
+    file[]: crc = 0359f5e2; size =     33978; name = 101.V56
+    file[]: crc = 725757d9; size =      4850; name = 104.HEP
+    file[]: crc = 621ea631; size =      5084; name = 104.SCR
+    file[]: crc = 42bf6d6a; size =      4182; name = 1040.HEP
+    file[]: crc = cc19e9a7; size =      3448; name = 1040.SCR
+    file[]: crc = cd4d7067; size =     28511; name = 105.V56
+    file[]: crc = c1543eaa; size =     17825; name = 114.V56
+    file[]: crc = 2c033d49; size =     40052; name = 118.P56
+    file[]: crc = 96462313; size =      4678; name = 119.HEP
+    file[]: crc = ec5fe573; size =      6376; name = 119.P56
+    file[]: crc = 4fbd3022; size =     13046; name = 119.SCR
+    file[]: crc = 019ac28b; size =     10295; name = 127.P56
+    file[]: crc = 569be804; size =      2751; name = 1307.FON
+    file[]: crc = 0e1c5774; size =      1286; name = 133.HEP
+    file[]: crc = a313447b; size =     13926; name = 133.P56
+    file[]: crc = a540bfd4; size =      2830; name = 133.SCR
+    file[]: crc = e6f810c0; size =      1414; name = 137.HEP
+    file[]: crc = 974f385e; size =      4100; name = 137.SCR
+    file[]: crc = 43a791ae; size =     15900; name = 142.V56
+    file[]: crc = 4aec91e5; size =     52922; name = 160.V56
+    file[]: crc = eaef9b95; size =      2795; name = 1605.FON
+    file[]: crc = 363e10bf; size =     35149; name = 167.V56
+    file[]: crc = 6bbfa041; size =     23734; name = 2003.V56
+    file[]: crc = 3b221c09; size =      4770; name = 201.HEP
+    file[]: crc = f4ff6266; size =     13586; name = 201.SCR
+    file[]: crc = 0accdc30; size =        13; name = 201.TEX
+    file[]: crc = 640ea98b; size =      8381; name = 201.V56
+    file[]: crc = a34135f2; size =      1318; name = 204.HEP
+    file[]: crc = 30008c08; size =      2066; name = 204.SCR
+    file[]: crc = 91c6a4f8; size =     16632; name = 205.V56
+    file[]: crc = c5b1edfc; size =     15278; name = 206.V56
+    file[]: crc = 4b4c5aff; size =      3203; name = 2099.V56
+    file[]: crc = 3f802c66; size =      2756; name = 2106.FON
+    file[]: crc = 38b726d4; size =     27005; name = 211.V56
+    file[]: crc = de091cc1; size =      2553; name = 2306.FON
+    file[]: crc = 49e6f6c1; size =     13455; name = 24.P56
+    file[]: crc = 804ece95; size =      4116; name = 240.HEP
+    file[]: crc = 6e6b7080; size =     12300; name = 240.SCR
+    file[]: crc = 7aee732d; size =      2601; name = 2407.FON
+    file[]: crc = 2b7d5c1d; size =      3635; name = 2510.FON
+    file[]: crc = 5b713917; size =      7148; name = 252.V56
+    file[]: crc = 882d10e9; size =     11603; name = 264.V56
+    file[]: crc = 23ada803; size =     16290; name = 29.V56
+    file[]: crc = 8d01664f; size =      2934; name = 305.HEP
+    file[]: crc = c4c5439e; size =      7940; name = 305.SCR
+    file[]: crc = 33acfe68; size =     42745; name = 31.P56
+    file[]: crc = c834fdd9; size =      2183; name = 3270.V56
+    file[]: crc = 3e5ebeba; size =      3514; name = 335.HEP
+    file[]: crc = e470e95e; size =      3054; name = 335.SCR
+    file[]: crc = ea91693d; size =      4960; name = 38.P56
+    file[]: crc = 2f8087ac; size =      2701; name = 4.FON
+    file[]: crc = 3aac14da; size =      2574; name = 4111.V56
+    file[]: crc = 556eb390; size =      5326; name = 4115.FON
+    file[]: crc = c5ddbebd; size =     30771; name = 48.P56
+    file[]: crc = 4101d2af; size =      4654; name = 5.P56
+    file[]: crc = 345c302d; size =     17963; name = 50.P56
+    file[]: crc = 770131ea; size =      2816; name = 5220.FON
+    file[]: crc = 0bed4b8d; size =     12298; name = 537.V56
+    file[]: crc = 41c9256b; size =     48559; name = 538.V56
+    file[]: crc = 8e213b81; size =      4368; name = 539.V56
+    file[]: crc = a1e0b550; size =     28675; name = 550.V56
+    file[]: crc = 6c179c38; size =     15615; name = 606.V56
+    file[]: crc = 2cfecac9; size =      8842; name = 613.V56
+    file[]: crc = 527eee96; size =      4491; name = 616.V56
+    file[]: crc = 3852c26e; size =     21688; name = 625.V56
+    file[]: crc = 9242699f; size =     18092; name = 627.V56
+    file[]: crc = b029f85e; size =       422; name = 65535.MAP
+    file[]: crc = 86a40361; size =      8467; name = 667.V56
+    file[]: crc = 9bae66e9; size =     38526; name = 674.V56
+    file[]: crc = 69555cf3; size =     21614; name = 676.V56
+    file[]: crc = 18db41f9; size =     41363; name = 7.P56
+    file[]: crc = 7776ab0d; size =      5176; name = 701.V56
+    file[]: crc = 89d65e2e; size =      3016; name = 730.HEP
+    file[]: crc = 2f5d6b53; size =      6774; name = 730.SCR
+    file[]: crc = 13750a28; size =      7982; name = 8.P56
+    file[]: crc = b097fa18; size =      5086; name = 801.HEP
+    file[]: crc = e7a611bf; size =      6604; name = 801.SCR
+    file[]: crc = 101a7be9; size =     50405; name = 81.P56
+    file[]: crc = 3593bb69; size =       908; name = 900.V56
+    file[]: crc = e1c40a3e; size =      2179; name = 910.V56
+    file[]: crc = 586cbe46; size =      2341; name = 916.V56
+    file[]: crc = 22abc453; size =      1840; name = 917.V56
+    file[]: crc = 3acb349a; size =     60820; name = 96.V56
+    file[]: crc = 26e9ffce; size =     49838; name = 97.V56
+    file[]: crc = c3f211fe; size =      2539; name = 98.V56
+    file[]: crc = 42dcdc45; size =      2109; name = 980.V56
+    file[]: crc = 5ee415b0; size =      1362; name = 986.V56
+    file[]: crc = b62f494f; size =      1581; name = 987.V56
+    file[]: crc = 6b6054e1; size =      1308; name = 988.V56
+    file[]: crc = 21b7e6b1; size =     51848; name = 99.V56
+    file[]: crc = 851cbbce; size =     10080; name = 992.V56
+    file[]: crc = a99dd340; size =     11506; name = 995.V56
+    file[]: crc = dd1a103d; size =      2587; name = 999.FON
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
+    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
+    file[]: crc = 829df8cf; size =      3970; name = AUDMSSYS.DRV
+    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
+    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
+    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
+    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE
+    file[]: crc = f94d63f1; size =     21170; name = INSTALL.HLP
+    file[]: crc = 1cefda09; size =      2423; name = INSTALL.SCR
+    file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT
+    file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 239042f5; size =       446; name = MESSAGE.MAP
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 7035e6d3; size =      2831; name = README.
+    file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
+    file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
+    file[]: crc = eb08f3e0; size =        90; name = RESOURCE.CFG
+    file[]: crc = 40c462c6; size =      6143; name = RESOURCE.MAP
+    file[]: crc = ed57ebc3; size =    140374; name = RESOURCE.MSG
+    file[]: crc = 13631226; size =     68342; name = SIERRA.EXE
+    file[]: crc = c5cfda55; size =        85; name = SQ5.BAT
+    file[]: crc = 40090983; size =       766; name = SQ5A.ICO
+    file[]: crc = c5cfda55; size =        85; name = SQ5FREN.BAT
+    file[]: crc = f7cdd06f; size =       285; name = SQ5INST.BAT
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 7fe3400d; size =         7; name = VERSION     ; replace = VERSION.
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
+//
+game[v1.01-int-3.1.93-cd-space-quest-collectors-edition]:
+    name = Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
+    imports = v1.01-int-3.1.93-5x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
+    file[]: crc = 0350d856; size =      2262; name = INSTALL.SCR ; optional = true
+    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
+    file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
+    file[]: crc = b9f693d5; size =      3893; name = README      ; replace = README.; optional = true
+    file[]: crc = 31fbf9c0; size =    350000; remove = DISK1\RESOURCE.000
+    file[]: crc = 46da6004; size =   1454000; remove = DISK2\RESOURCE.000
+    file[]: crc = 835d9135; size =   1454000; remove = DISK3\RESOURCE.000
+    file[]: crc = 4927fa75; size =   1454000; remove = DISK4\RESOURCE.000
+    file[]: crc = 3aefc94f; size =    784486; remove = DISK5\RESOURCE.000
+    file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
+    file[]: crc = 296bb385; size =        81; name = RESOURCE.CFG; optional = true
+    file[]: crc = eeab4ca0; size =        83; name = SQ5.BAT     ; optional = true
+    file[]: crc = 395f4572; size =       766; name = SQ5.ICO     ; optional = true
+    file[]: crc = 8a2e3a77; size =       281; name = SQ5INST.BAT ; optional = true
+    file[]: crc = 7fe3400d; size =         7; name = VERSION     ; replace = VERSION.
+end
+
+end

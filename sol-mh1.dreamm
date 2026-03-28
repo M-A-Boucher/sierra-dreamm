@@ -1,0 +1,149 @@
+//
+// Manhunter: New York
+//
+desc[sol-mh1]:
+
+name = Manhunter: New York
+icon = sol-mh1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+mips = $(MIPS_286_10)
+ramkb = 1024
+filter = sierra, adventure
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 2; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules; nothrottle = 2.5
+        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; nothrottle = 2
+        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.22, Int. 3.002.102, 5x360K
+//
+game[v1.22-int-3.002.102-5x360k]:
+    name = v1.22, Int. 3.002.102, 5x360K
+    anchorfile = MH083188.QA
+    file[]: crc = 5950092b; size =      1160; name = _INSTALL.BAT; optional = true
+    file[]: crc = 72c953d1; size =        23; name = _MH.BAT     ; optional = true
+    file[]: crc = 96314fe2; size =     40898; name = AGI
+    file[]: crc = 31b45b19; size =      8080; name = AGIDATA.OVL
+    file[]: crc = 3e704f41; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = dcbcf113; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM   ; optional = true
+    file[]: crc = f84e2cd6; size =      1445; name = HGC_GRAF.OVL
+    file[]: crc = 17ff101e; size =       599; name = HGC_OBJS.OVL
+    file[]: crc = a43d0869; size =       341; name = IBM_OBJS.OVL
+    file[]: crc = 28823426; size =       817; name = INSTALLH.BAT; optional = true
+    file[]: crc = c24a735d; size =       465; name = JR_GRAF.OVL
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
+    file[]: crc = 21ec792d; size =       325; name = MH083188.QA ; optional = true
+    file[]: crc = 757d0fa4; size =      2123; name = MHDIR
+    file[]: crc = 95858b68; size =    115078; name = MHVOL.0
+    file[]: crc = fc6ef230; size =    144059; name = MHVOL.1
+    file[]: crc = 41c60f99; size =    197136; name = MHVOL.2
+    file[]: crc = 86b9d86a; size =    207016; name = MHVOL.3
+    file[]: crc = c07a9ec8; size =    183955; name = MHVOL.4
+    file[]: crc = 1471080e; size =    123482; name = MHVOL.5
+    file[]: crc = 367e22e1; size =     10834; name = MHVOL.9
+    file[]: crc = 037a7209; size =     23347; name = MHVOL.10
+    file[]: crc = 9c9c177f; size =     35644; name = MHVOL.11
+    file[]: crc = 7507f18e; size =      7632; name = MHVOL.12
+    file[]: crc = c1520a64; size =       387; name = OBJECT
+    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
+    file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
+    file[]: crc = fecfc877; size =       362; name = VG_GRAF.OVL
+    file[]: crc = 36d2cf43; size =       275; name = WORDS.TOK
+end
+
+//
+// v1.22, Int. 3.002.107, 5x360K
+//
+game[v1.22-int-3.002.107-5x360k]:
+    name = v1.22, Int. 3.002.107, 5x360K
+    imports = v1.22-int-3.002.102-5x360k
+    anchorfile = MH083188.QA
+    file[]: crc = e039df1a; size =      1045; name = _INSTALL.BAT; optional = true
+    file[]: crc = 1438888c; size =     40962; name = AGI
+    file[]: crc = a6f8388c; size =      8080; name = AGIDATA.OVL
+    file[]: crc = a3a2db04; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = e7f12eb7; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 71ef2aa7; size =      1445; name = HGC_GRAF.OVL
+    file[]: crc = 246c130f; size =       599; name = HGC_OBJS.OVL
+    file[]: crc = 0d24e11c; size =       341; name = IBM_OBJS.OVL
+    file[]: crc = 25f29f67; size =       465; name = JR_GRAF.OVL
+    file[]: crc = 4c9de5bf; size =        69; name = MH083188.QA ; optional = true
+    file[]: crc = a9b8b29c; size =       362; name = VG_GRAF.OVL
+end
+
+//
+// v1.22, Int. 3.002.102, 2x720K
+//
+game[v1.22-int-3.002.102-2x720k]:
+    name = v1.22, Int. 3.002.102, 2x720K
+    anchorfile = MH083188.QA
+    file[]: crc = fa2dc8b1; size =      1621; name = _INSTALL.BAT; optional = true
+    file[]: crc = 72c953d1; size =        23; name = _MH.BAT     ; optional = true
+    file[]: crc = 96314fe2; size =     40898; name = AGI
+    file[]: crc = 31b45b19; size =      8080; name = AGIDATA.OVL
+    file[]: crc = 3e704f41; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = dcbcf113; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM   ; optional = true
+    file[]: crc = 39599e49; size =      3072; name = HGC_FONT
+    file[]: crc = f84e2cd6; size =      1445; name = HGC_GRAF.OVL
+    file[]: crc = 17ff101e; size =       599; name = HGC_OBJS.OVL
+    file[]: crc = a43d0869; size =       341; name = IBM_OBJS.OVL
+    file[]: crc = 8db71918; size =      1405; name = INSTALLH.BAT; optional = true
+    file[]: crc = c24a735d; size =       465; name = JR_GRAF.OVL
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
+    file[]: crc = 996722d5; size =       303; name = MH083188.QA ; optional = true
+    file[]: crc = 6a97bebf; size =      2141; name = MHDIR
+    file[]: crc = 2c1c1547; size =    156891; name = MHVOL.0
+    file[]: crc = b8fcd1e8; size =    341204; name = MHVOL.1
+    file[]: crc = 4ddc9338; size =    568398; name = MHVOL.2
+    file[]: crc = c1520a64; size =       387; name = OBJECT
+    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
+    file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
+    file[]: crc = fecfc877; size =       362; name = VG_GRAF.OVL
+    file[]: crc = 36d2cf43; size =       275; name = WORDS.TOK
+end
+
+//
+// v1.22, Int. 3.002.107, 2x720K
+//
+game[v1.22-int-3.002.107-2x720k]:
+    name = v1.22, Int. 3.002.107, 2x720K
+    imports = v1.22-int-3.002.102-2x720k
+    anchorfile = MH083188.QA
+    file[]: crc = 62edd742; size =    550083; name = MHVOL.2
+end
+
+end
