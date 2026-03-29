@@ -110,10 +110,10 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
-// v1.000.106, Int. 0.000.247, 4x720K
+// v1.000.106, Int. 0.000.247, 4x720K, Detailed Background Graphics
 //
 game[v1.000.106-int-0.000.247-4x720k]:
-    name = v1.000.106, Int. 0.000.247, 4x720K
+    name = v1.000.106, Int. 0.000.247, 4x720K, Detailed Background Graphics
     EXE_NAME = SIERRA.EXE
     anchorfile = RESOURCE.001
     file[]: crc = 8cfbf2db; size =      5727; name = ADL.DRV
@@ -145,10 +145,10 @@ game[v1.000.106-int-0.000.247-4x720k]:
 end
 
 //
-// v1.000.106, Int. 0.000.247, 9x360K
+// v1.000.106, Int. 0.000.247, 9x360K, Detailed Background Graphics
 //
 game[v1.000.106-int-0.000.247-9x360k]:
-    name = v1.000.106, Int. 0.000.247, 9x360K
+    name = v1.000.106, Int. 0.000.247, 9x360K, Detailed Background Graphics
     EXE_NAME = SIERRA.EXE
     imports = v1.000.106-int-0.000.247-4x720k
     anchorfile = RESOURCE.001
@@ -189,10 +189,10 @@ game[v1.000.111-int-0.000.247-4x720k]:
 end
 
 //
-// v1.000.111, Int. 0.000.247, 9x360K
+// v1.000.111, Int. 0.000.247, 9x360K, Detailed Background Graphics
 //
 game[v1.000.111-int-0.000.247-9x360k]:
-    name = v1.000.111, Int. 0.000.247, 9x360K
+    name = v1.000.111, Int. 0.000.247, 9x360K, Detailed Background Graphics
     EXE_NAME = SIERRA.EXE
     imports = v1.000.106-int-0.000.247-9x360k
     anchorfile = RESOURCE.001
@@ -217,10 +217,10 @@ game[v1.000.111-int-0.000.247-9x360k]:
 end
 
 //
-// v1.003.006, Int. 0.000.409, 4x720K
+// v1.003.006, Int. 0.000.409, 4x720K, Simplified Background Graphics
 //
 game[v1.003.006-int-0.000.409-4x720k]:
-    name = v1.003.006, Int. 0.000.409, 4x720K
+    name = v1.003.006, Int. 0.000.409, 4x720K, Simplified Background Graphics
     anchorfile = RESOURCE.001
     file[]: crc = 22fc1777; size =       957; name = __INSTH.BAT ; optional = true
     file[]: crc = f2ae36e7; size =      5892; name = ADL.DRV
@@ -256,10 +256,10 @@ game[v1.003.006-int-0.000.409-4x720k]:
 end
 
 //
-// v1.003.006, Int. 0.000.409, 8x360K
+// v1.003.006, Int. 0.000.409, 8x360K, Simplified Background Graphics
 //
 game[v1.003.006-int-0.000.409-8x360k]:
-    name = v1.003.006, Int. 0.000.409, 8x360K
+    name = v1.003.006, Int. 0.000.409, 8x360K, Simplified Background Graphics
     imports = v1.003.006-int-0.000.409-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = ddaf099a; size =      1636; name = __INSTH.BAT ; optional = true
@@ -278,10 +278,10 @@ game[v1.003.006-int-0.000.409-8x360k]:
 end
 
 //
-// v1.006.004, Int. 0.000.502, 4x720K
+// v1.006.004, Int. 0.000.502, 4x720K, Simplified Background Graphics
 //
 game[v1.006.004-int-0.000.502-4x720k]:
-    name = v1.006.004, Int. 0.000.502, 4x720K
+    name = v1.006.004, Int. 0.000.502, 4x720K, Simplified Background Graphics
     anchorfile = RESOURCE.001
     file[]: crc = 49cb730a; size =       987; name = __INSTH.BAT ; optional = true
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
@@ -319,10 +319,10 @@ game[v1.006.004-int-0.000.502-4x720k]:
 end
 
 //
-// v1.006.003, Int. 0.000.502, 8x360K
+// v1.006.003, Int. 0.000.502, 8x360K, Simplified Background Graphics
 //
 game[v1.003.006-int-0.000.502-8x360k]:
-    name = v1.006.003, Int. 0.000.502, 8x360K
+    name = v1.006.003, Int. 0.000.502, 8x360K, Simplified Background Graphics
     imports = v1.006.004-int-0.000.502-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = a55924d7; size =      1660; name = __INSTH.BAT ; optional = true
