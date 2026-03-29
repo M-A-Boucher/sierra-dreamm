@@ -1,0 +1,180 @@
+//
+// Leisure Suit Larry: Love for Sail!
+//
+desc[sol-lsl7]:
+
+name = Leisure Suit Larry: Love for Sail!
+icon = sol-lsl7.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIER.EXE
+mips = $(MIPS_P100)
+nothrottle = 3
+ramkb = 16384
+videohw = svga
+audiohw = adlib+sb16+mt32+gmidi
+filter = sierra, adventure
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv  = VESA.DRV
+        soundDrv  = MIDNONE.DRV
+        audioDrv  = DACBLAST.DRV
+        joyDrv    = NO
+        CD        = NO
+        mouseDrv  = NONE
+        memoryDrv = NONE
+        minMemory = 3200k
+        audioSize = 112k
+        brightness= 0
+        language  = 1
+        resMap    = .\
+        resAUD    = .\
+        resSFX    = .\
+        patchDir  = .\PATCHES
+        movieDir  = .\MOVIE
+        audio     = .\MUSIC\22S16
+        dacsize   = 30720
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.01, CD
+//
+game[v1.01-cd]:
+    name = v1.01, CD
+    anchorfile = SIER.EXE
+    anchordepth = 2
+    file[]: crc = 55d4d361; size =      4366; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 9136f82e; size =      8188; name = RESMAP.000
+    file[]: crc = 26c82b3b; size =      8188; name = RESMDT.000
+    file[]: crc = f77ec06a; size = 397103899; name = RESOURCE.AUD
+    file[]: crc = b00b52b1; size =       336; name = RESOURCE.CFG; optional = true
+    file[]: crc = 6979e5be; size =  36104701; name = RESOURCE.SFX
+    file[]: crc = d20b474a; size =       471; name = RESOURCE.WIN; optional = true
+    file[]: crc = abf9a5d8; size =  66965678; name = RESSCI.000
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL ; optional = true
+    file[]: crc = e283a72b; size =    905005; name = SIER.EXE
+    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
+    file[]: crc = 5146006b; size =     14138; name = SIERRA.INF  ; optional = true
+    file[]: crc = ccbb4016; size =    787632; name = SIERW.EXE   ; optional = true
+    file[]: crc = 0d5d1c3c; size =    569344; name = SIERW5.EXE  ; optional = true
+    file[]: crc = 80ec049b; size =         6; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+    file[]: crc = 28b34084; size =   9077704; name = MOVIE\10.VMD
+    file[]: crc = 04b895bc; size =   1250232; name = MOVIE\11.VMD
+    file[]: crc = e27713bf; size =    700396; name = MOVIE\12.VMD
+    file[]: crc = 39e2f50b; size =    907121; name = MOVIE\13.VMD
+    file[]: crc = 6610a465; size =   2518709; name = MOVIE\14.VMD
+    file[]: crc = 368bb409; size =     74873; name = MUSIC\22M8\10000.AUD
+    file[]: crc = 28acda36; size =    547244; name = MUSIC\22M8\11000.AUD
+    file[]: crc = 47832dff; size =    526850; name = MUSIC\22M8\11010.AUD
+    file[]: crc = 5ca63e48; size =    343896; name = MUSIC\22M8\12000.AUD
+    file[]: crc = 7ee6b192; size =    498139; name = MUSIC\22M8\12100.AUD
+    file[]: crc = 76271dd7; size =     97509; name = MUSIC\22M8\12600.AUD
+    file[]: crc = 6723e5d7; size =   2406371; name = MUSIC\22M8\13000.AUD
+    file[]: crc = a922e944; size =    340414; name = MUSIC\22M8\15000.AUD
+    file[]: crc = fd1ef2dc; size =    129399; name = MUSIC\22M8\20300.AUD
+    file[]: crc = a11b6ef7; size =    209731; name = MUSIC\22M8\22302.AUD
+    file[]: crc = d634790b; size =    213009; name = MUSIC\22M8\24200.AUD
+    file[]: crc = f6ec6dd2; size =    237226; name = MUSIC\22M8\24215.AUD
+    file[]: crc = 785ddf2d; size =    137455; name = MUSIC\22M8\24400.AUD
+    file[]: crc = 2af7ccd6; size =     39631; name = MUSIC\22M8\24500.AUD
+    file[]: crc = e2034f18; size =    572425; name = MUSIC\22M8\25202.AUD
+    file[]: crc = 6497a948; size =    234565; name = MUSIC\22M8\26100.AUD
+    file[]: crc = d6cb7567; size =   1150673; name = MUSIC\22M8\30000.AUD
+    file[]: crc = a8a0c0ef; size =    529020; name = MUSIC\22M8\30100.AUD
+    file[]: crc = 98a9b21b; size =    330765; name = MUSIC\22M8\31000.AUD
+    file[]: crc = 8ca6dabe; size =    676895; name = MUSIC\22M8\31200.AUD
+    file[]: crc = 0af27789; size =    111796; name = MUSIC\22M8\32204.AUD
+    file[]: crc = 91202d15; size =   1387478; name = MUSIC\22M8\34000.AUD
+    file[]: crc = ed710033; size =    577555; name = MUSIC\22M8\37000.AUD
+    file[]: crc = 7f6c5fa9; size =    151061; name = MUSIC\22M8\37003.AUD
+    file[]: crc = 40a1bfc3; size =    376821; name = MUSIC\22M8\37300.AUD
+    file[]: crc = 128925ee; size =    508604; name = MUSIC\22M8\38000.AUD
+    file[]: crc = 4727039d; size =    353075; name = MUSIC\22M8\38700.AUD
+    file[]: crc = 8fea4692; size =    854942; name = MUSIC\22M8\40000.AUD
+    file[]: crc = 12f7d9e5; size =    177907; name = MUSIC\22M8\40001.AUD
+    file[]: crc = a5d247ae; size =    415762; name = MUSIC\22M8\41000.AUD
+    file[]: crc = f39ebe11; size =    341615; name = MUSIC\22M8\41007.AUD
+    file[]: crc = 060fbfb1; size =    467541; name = MUSIC\22M8\42000.AUD
+    file[]: crc = 12bcfe0c; size =    489704; name = MUSIC\22M8\43200.AUD
+    file[]: crc = 37c932e7; size =    406108; name = MUSIC\22M8\43300.AUD
+    file[]: crc = 797fd5ff; size =    506750; name = MUSIC\22M8\43304.AUD
+    file[]: crc = 6c33b4c6; size =    108034; name = MUSIC\22M8\44000.AUD
+    file[]: crc = 099af32e; size =   1322376; name = MUSIC\22M8\51200.AUD
+    file[]: crc = 86df9052; size =     57075; name = MUSIC\22M8\51217.AUD
+    file[]: crc = 33329d53; size =     82410; name = MUSIC\22M8\51500.AUD
+    file[]: crc = b61fdd67; size =    183762; name = MUSIC\22M8\52000.AUD
+    file[]: crc = bc562752; size =     71342; name = MUSIC\22M8\52200.AUD
+    file[]: crc = a2cbf8f5; size =    341455; name = MUSIC\22M8\53000.AUD
+    file[]: crc = acf8f806; size =    288431; name = MUSIC\22M8\55000.AUD
+    file[]: crc = 9f9fd0d5; size =    466920; name = MUSIC\22M8\55200.AUD
+    file[]: crc = f0241849; size =    299452; name = MUSIC\22S16\10000.AUD
+    file[]: crc = e6bb17b7; size =   2189096; name = MUSIC\22S16\11000.AUD
+    file[]: crc = 585bbeb2; size =   2107362; name = MUSIC\22S16\11010.AUD
+    file[]: crc = 1ca55f80; size =   1365350; name = MUSIC\22S16\12000.AUD
+    file[]: crc = 26a67f89; size =   2035522; name = MUSIC\22S16\12100.AUD
+    file[]: crc = 0797294a; size =    389992; name = MUSIC\22S16\12600.AUD
+    file[]: crc = 01959b3a; size =   9628630; name = MUSIC\22S16\13000.AUD
+    file[]: crc = 25bee59f; size =   1362628; name = MUSIC\22S16\15000.AUD
+    file[]: crc = ea49a0a7; size =    516760; name = MUSIC\22S16\20300.AUD
+    file[]: crc = db2df976; size =    838884; name = MUSIC\22S16\22302.AUD
+    file[]: crc = 8790ee9c; size =    857684; name = MUSIC\22S16\24200.AUD
+    file[]: crc = ed0d8ce9; size =    948824; name = MUSIC\22S16\24215.AUD
+    file[]: crc = 45b4a538; size =    549780; name = MUSIC\22S16\24400.AUD
+    file[]: crc = 127398c3; size =    158438; name = MUSIC\22S16\24500.AUD
+    file[]: crc = c5d51097; size =   2289026; name = MUSIC\22S16\25202.AUD
+    file[]: crc = f15887ab; size =    938216; name = MUSIC\22S16\26100.AUD
+    file[]: crc = 75e1f270; size =   4602652; name = MUSIC\22S16\30000.AUD
+    file[]: crc = 70f2176c; size =   2116710; name = MUSIC\22S16\30100.AUD
+    file[]: crc = 118aca28; size =   1323020; name = MUSIC\22S16\31000.AUD
+    file[]: crc = bd00f055; size =   4874014; name = MUSIC\22S16\31200.AUD
+    file[]: crc = a210e214; size =    381636; name = MUSIC\22S16\32204.AUD
+    file[]: crc = e78c617e; size =   5546662; name = MUSIC\22S16\34000.AUD
+    file[]: crc = 334a7e7c; size =   2310178; name = MUSIC\22S16\37000.AUD
+    file[]: crc = 396c7626; size =    907200; name = MUSIC\22S16\37003.AUD
+    file[]: crc = 7f09ce89; size =   1505858; name = MUSIC\22S16\37300.AUD
+    file[]: crc = 6f93b6e5; size =   2034376; name = MUSIC\22S16\38000.AUD
+    file[]: crc = b2981e44; size =   1412260; name = MUSIC\22S16\38700.AUD
+    file[]: crc = 58c47269; size =   5126458; name = MUSIC\22S16\40000.AUD
+    file[]: crc = 8cae6c93; size =    711586; name = MUSIC\22S16\40001.AUD
+    file[]: crc = c6b20baf; size =   1663010; name = MUSIC\22S16\41000.AUD
+    file[]: crc = 3e529b15; size =   1363422; name = MUSIC\22S16\41007.AUD
+    file[]: crc = 02bbda0c; size =   1870124; name = MUSIC\22S16\42000.AUD
+    file[]: crc = 8e15b00d; size =   1935496; name = MUSIC\22S16\43200.AUD
+    file[]: crc = cfa6ed02; size =   3254224; name = MUSIC\22S16\43300.AUD
+    file[]: crc = 7f0010a9; size =   1969768; name = MUSIC\22S16\43304.AUD
+    file[]: crc = f6ff1362; size =    463114; name = MUSIC\22S16\44000.AUD
+    file[]: crc = 43e3981e; size =   9439646; name = MUSIC\22S16\51200.AUD
+    file[]: crc = f47ad98e; size =    140686; name = MUSIC\22S16\51217.AUD
+    file[]: crc = c23b28a8; size =    323676; name = MUSIC\22S16\51500.AUD
+    file[]: crc = 104d20cd; size =    735008; name = MUSIC\22S16\52000.AUD
+    file[]: crc = c58c3fd9; size =    285328; name = MUSIC\22S16\52200.AUD
+    file[]: crc = 121a54f5; size =   1365780; name = MUSIC\22S16\53000.AUD
+    file[]: crc = 8cee5d8e; size =   1153684; name = MUSIC\22S16\55000.AUD
+    file[]: crc = c35dde5f; size =   1836534; name = MUSIC\22S16\55200.AUD
+    file[]: crc = 97f7bfae; size =     47548; name = PATCHES\120.CSC
+    file[]: crc = b76dc68d; size =     10577; name = PATCHES\14.MSG
+    file[]: crc = 297f8474; size =     50358; name = PATCHES\341.CSC
+    file[]: crc = 07a465dc; size =     38620; name = PATCHES\360.CSC
+    file[]: crc = 45f77127; size =     41226; name = PATCHES\370.CSC
+    file[]: crc = 38a5ae6d; size =     47826; name = PATCHES\410.CSC
+end
+
+end

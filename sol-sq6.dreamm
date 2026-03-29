@@ -1,0 +1,192 @@
+//
+// Space Quest VI: Roger Wilco in The Spinal Frontier
+//
+desc[sol-sq6]:
+
+name = Space Quest VI: Roger Wilco in The Spinal Frontier
+icon = sol-sq6.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
+mips = $(MIPS_P100)
+ramkb = 16384
+videohw = svga
+filter = sierra, adventure
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[sadl]:
+        name = $(ADLIB_NAME) + $(SB16_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = SADL.DRV
+        condition = file_exists("$$(rootpath)\\SADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 1
+        AUDIO_DRIVER = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 3
+        AUDIO_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv  = VESA.DRV
+        soundDrv  = $(AUDIO_DRIVER)
+        audioDrv  = DACBLAST.DRV
+        joyDrv    = NO
+        CD        = NO
+        mouseDrv  = NONE
+        memoryDrv = NONE
+        minMemory = 3200k
+        audiosize = 112k
+        brightness= 0
+        language  = 1
+        resMap    = .\
+        resAUD    = .\
+        resSFX    = .\
+        patchDir  = .\;.\MOVIES
+        movieDir  = .\MOVIES
+        robot     = .\ROBOTS
+        dacsize   = 30720
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, CD
+//
+game[v1.0-cd]:
+    name = v1.0, CD
+    anchorfile = SIERRA.EXE
+    anchordepth = 2
+    file[]: crc = 2b4f7ece; size =     42972; name = 102.SND
+    file[]: crc = ff1176a5; size =     39020; name = 120.SND
+    file[]: crc = dc06e4b8; size =     29990; name = 217.SND
+    file[]: crc = acc7ad41; size =      9494; name = 250.SND
+    file[]: crc = 3ecbc0c0; size =      7518; name = 251.SND
+    file[]: crc = 207d4f09; size =     29132; name = 280.SND
+    file[]: crc = efb78660; size =      5402; name = 370.HEP
+    file[]: crc = 80c5a6b5; size =     26242; name = 370.SCR
+    file[]: crc = 2ce1635d; size =     39868; name = 390.SND
+    file[]: crc = f9b4f81b; size =      2780; name = 455.HEP
+    file[]: crc = ce9008af; size =      2170; name = 455.SCR
+    file[]: crc = 20319ac2; size =      6118; name = 620.HEP
+    file[]: crc = 91cc4f73; size =     21556; name = 620.SCR
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = 5d934e96; size =      4319; name = DACBLAST.DRV
+    file[]: crc = a68a9241; size =      2802; name = DACPRO.DRV
+    file[]: crc = a1935602; size =      2726; name = DACPRO16.DRV
+    file[]: crc = b7d37c38; size =      2584; name = DACPRO8.DRV
+    file[]: crc = 3f6fbb99; size =      3388; name = GENMIDI.DRV
+    file[]: crc = 656ef0b3; size =      3352; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = 845f0ad6; size =  41150806; name = RESOURCE.000
+    file[]: crc = 3f2d1d93; size = 435838311; name = RESOURCE.AUD
+    file[]: crc = 757436f3; size =       227; name = RESOURCE.CFG; optional = true
+    file[]: crc = 0c88fc54; size =     10528; name = RESOURCE.MAP
+    file[]: crc = 475f47fa; size =     10528; name = RESOURCE.MDT
+    file[]: crc = 2b5b6bc6; size =  36011811; name = RESOURCE.SFX
+    file[]: crc = 3f12b27c; size =       375; name = RESOURCE.WIN; optional = true
+    file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
+    file[]: crc = 7b42d20c; size =      8504; name = SIERRA.ERR
+    file[]: crc = 7a93dc56; size =    926521; name = SIERRA.EXE
+    file[]: crc = 740def2f; size =      4584; name = SIERRA.INF  ; optional = true
+    file[]: crc = 3bb23f6b; size =    803516; name = SIERRAW.EXE
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+
+    file[]: crc = 96f8dd46; size =   2196926; name = MOVIES\1075.VMD
+    file[]: crc = cd7d5707; size =   7654353; name = MOVIES\1090.VMD
+    file[]: crc = 0ac2d9e6; size =   3311244; name = MOVIES\1450.VMD
+    file[]: crc = f5da0097; size =   2078329; name = MOVIES\1490.VMD
+    file[]: crc = ee5f535d; size =    894981; name = MOVIES\1491.VMD
+    file[]: crc = 6237f092; size =    889065; name = MOVIES\1492.VMD
+    file[]: crc = d7f8b3f6; size =   2368280; name = MOVIES\1500.VMD
+    file[]: crc = df52c827; size =   4190829; name = MOVIES\1540.VMD
+    file[]: crc = 327a4447; size =   5045356; name = MOVIES\450.VMD
+    file[]: crc = 99772da1; size =   2970704; name = MOVIES\490.VMD
+    file[]: crc = 9c4c06c5; size =   1145834; name = MOVIES\491.VMD
+    file[]: crc = 564830a7; size =   1151000; name = MOVIES\492.VMD
+    file[]: crc = 3260f39a; size =   2742491; name = MOVIES\500.VMD
+    file[]: crc = d8acc91a; size =   6882345; name = MOVIES\540.VMD
+    file[]: crc = 8470e74d; size =   3730588; name = MOVIES\75.VMD
+    file[]: crc = 7976adc7; size =  10022256; name = MOVIES\90.VMD
+
+    file[]: crc = 9b761848; size =   2477394; name = ROBOTS\410.RBT
+    file[]: crc = 7a7662cb; size =    444179; name = ROBOTS\475.RBT
+    file[]: crc = fc0866ed; size =    295549; name = ROBOTS\4751.RBT
+    file[]: crc = 0cdcbf25; size =    774349; name = ROBOTS\4752.RBT
+    file[]: crc = cc29e3e0; size =   2407293; name = ROBOTS\4901.RBT
+    file[]: crc = 9e9f6781; size =   2502731; name = ROBOTS\4902.RBT
+    file[]: crc = 366851c7; size =   2372929; name = ROBOTS\4903.RBT
+    file[]: crc = c13e79c7; size =    792034; name = ROBOTS\4904.RBT
+    file[]: crc = 8de681e5; size =   2014046; name = ROBOTS\545.RBT
+    file[]: crc = a8e9d93c; size =   1582642; name = ROBOTS\600.RBT
+    file[]: crc = 3a5cd93a; size =    626342; name = ROBOTS\643.RBT
+    file[]: crc = 85aad742; size =   4194080; name = ROBOTS\670.RBT
+    file[]: crc = cca4eefc; size =   2608880; name = ROBOTS\700.RBT
+    file[]: crc = 57981b29; size =    467722; name = ROBOTS\748.RBT
+    file[]: crc = 14864a54; size =   1686526; name = ROBOTS\7480.RBT
+    file[]: crc = e092ed46; size =    130001; name = ROBOTS\7740.RBT
+    file[]: crc = 6ebf26a9; size =    841872; name = ROBOTS\7741.RBT
+    file[]: crc = 06677fee; size =    159298; name = ROBOTS\776.RBT
+end
+
+//
+// v1.11, CD
+//
+game[v1.11-cd]:
+    name = v1.11, CD
+    imports = v1.0-cd
+    anchorfile = SIERRA.EXE
+    anchordepth = 2
+    file[]: crc = bb435210; size =      4736; name = 280.HEP
+    file[]: crc = 95596c0c; size =     12760; name = 280.SCR
+    file[]: crc = 9be171ae; size =      4442; name = 340.HEP
+    file[]: crc = 56c73e27; size =     15514; name = 340.SCR
+    file[]: crc = d81f7b6c; size =     12584; name = 490.HEP
+    file[]: crc = 6e670556; size =     26644; name = 490.SCR
+    file[]: crc = 9593662e; size =      4023; name = 590.MSG
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = b7d37c38; size =      2584; remove = DACPRO8.DRV
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = ebfd9f39; size =       183; name = RESOURCE.CFG
+    file[]: crc = 7431b34c; size =     10528; name = RESOURCE.MAP
+    file[]: crc = 56ae60e7; size =       375; name = RESOURCE.WIN
+    file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
+    file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
+    file[]: crc = 022a3d8d; size =    942697; name = SIERRA.EXE
+    file[]: crc = de6bb7ed; size =      4596; name = SIERRA.INF
+    file[]: crc = 6209dcac; size =    803516; name = SIERRAW.EXE
+    file[]: crc = 385063fe; size =         6; name = VERSION
+end
+
+end
