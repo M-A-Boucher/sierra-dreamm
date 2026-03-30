@@ -185,10 +185,10 @@ game[v1.0-int-4.16.93-7x1.2m]:
 end
 
 //
-// v1.0 CD       *** import thinks this isn't legit ***
+// v1.0, CD
 //
 game[v1.0-cd]:
-    name = v1.0 CD
+    name = v1.0, CD
     anchorfile = RESOURCE.000
     anchordepth = 1
     file[]: crc = 87fec9a4; size =        73; name = 0.MAP
@@ -261,7 +261,7 @@ game[v1.0-cd]:
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
     file[]: crc = 66f45660; size =      2347; name = READ.ME     ; optional = true
     file[]: crc = aa7a41ad; size =   5490246; name = RESOURCE.000
-    file[]: crc = ea283956; size = 599841365; name = RESOURCE.AUD
+    file[]: crc = b0eb9e36; size = 599841365; name = RESOURCE.AUD
     file[]: crc = 91d9b4c1; size =       195; name = RESOURCE.CFG; optional = true
     file[]: crc = c76ff860; size =      6058; name = RESOURCE.MAP
     file[]: crc = 84be194a; size =  16743534; name = RESOURCE.SFX
@@ -275,20 +275,6 @@ game[v1.0-cd]:
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 8ec4273a; size =         7; name = VERSION
     file[]: crc = 9f7e188a; size =      8252; name = VGA320.DRV
-end
-
-//
-// GOG
-//
-game[gog]:
-    name = GOG
-    imports = v1.0-cd
-    anchorfile = RESOURCE.AUD
-    anchordepth = 1
-    file[]: crc = b0eb9e36; size = 599841365; name = RESOURCE.AUD
-    file[]: crc = b7fbae68; size =   6334980; name = HintBook.pdf; optional = true
-    file[]: crc = 2b5c46a7; size =   6954583; name = Manual.pdf  ; optional = true
-    file[]: crc = 95834b83; size =       365; name = RESOURCE.CFG; optional = true
 end
 
 end
