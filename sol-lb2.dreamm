@@ -270,4 +270,138 @@ game[v1.1-int-7.14.92-5x1.44m]:
     file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
 end
 
+//
+// v1.1, CD
+//
+game[v1.1-cd]:
+    name = v1.1, CD
+    EXE_NAME = SIERRA.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = 4b11d3d4; size =      1408; name = 100.HEP
+    file[]: crc = d5f47766; size =      2398; name = 100.SCR
+    file[]: crc = 4630ceab; size =     13270; name = 111.AUD
+    file[]: crc = afdbf3a4; size =      7082; name = 281.AUD
+    file[]: crc = aece561c; size =     11571; name = 282.AUD
+    file[]: crc = 0b6c3f0b; size =      3201; name = 292.AUD
+    file[]: crc = 72805ade; size =    278295; name = 312.AUD
+    file[]: crc = bad1eed4; size =      1080; name = 40.AUD
+    file[]: crc = 788d04cd; size =      1280; name = 41.AUD
+    file[]: crc = 04f0d71e; size =      5031; name = 42.AUD
+    file[]: crc = d11166f7; size =      1169; name = 430.AUD
+    file[]: crc = c0a798f6; size =      5273; name = 44.AUD
+    file[]: crc = 794bc2b7; size =      2459; name = 440.AUD
+    file[]: crc = dee363f2; size =      2388; name = 441.AUD
+    file[]: crc = 56476996; size =      9189; name = 443.AUD
+    file[]: crc = 5c188d8c; size =      5081; name = 444.AUD
+    file[]: crc = 693c6911; size =      8776; name = 445.AUD
+    file[]: crc = 7a8283f2; size =      3951; name = 45.AUD
+    file[]: crc = bf3711c4; size =      1518; name = 450.HEP
+    file[]: crc = 4c49588a; size =      2688; name = 450.SCR
+    file[]: crc = ac9d600b; size =     11310; name = 452.AUD
+    file[]: crc = 0d985b48; size =      9858; name = 453.AUD
+    file[]: crc = 694fbe48; size =       779; name = 455.AUD
+    file[]: crc = c0a798f6; size =      5273; name = 46.AUD
+    file[]: crc = a6afc7cd; size =       453; name = 460.AUD
+    file[]: crc = f8de0881; size =     14586; name = 462.AUD
+    file[]: crc = 7a8283f2; size =      3951; name = 47.AUD
+    file[]: crc = fc8ca4f3; size =      9283; name = 48.AUD
+    file[]: crc = d5a6fd22; size =     20830; name = 480.AUD
+    file[]: crc = 92993c00; size =      2402; name = 481.AUD
+    file[]: crc = 0cb1ab66; size =      1445; name = 49.AUD
+    file[]: crc = e3d2c5a8; size =       778; name = 490.AUD
+    file[]: crc = 1ccaece2; size =      4269; name = 500.AUD
+    file[]: crc = 775acf54; size =      1988; name = 501.AUD
+    file[]: crc = 6d349182; size =       761; name = 51.AUD
+    file[]: crc = 0efb1535; size =      4690; name = 52.AUD
+    file[]: crc = de9f7e48; size =     16899; name = 522.AUD
+    file[]: crc = 7e543f53; size =     10479; name = 523.AUD
+    file[]: crc = 74000f2e; size =      3213; name = 54.AUD
+    file[]: crc = 289c842f; size =       778; name = 543.AUD
+    file[]: crc = a8eec8e1; size =      5005; name = 555.AUD
+    file[]: crc = 2f79b9d1; size =      1011; name = 556.AUD
+    file[]: crc = 32c4b2bb; size =      6941; name = 560.AUD
+    file[]: crc = dd1e0435; size =      3270; name = 561.AUD
+    file[]: crc = a167ce67; size =      1370; name = 566.AUD
+    file[]: crc = f51d2c01; size =      5494; name = 600.AUD
+    file[]: crc = dc8af145; size =     11072; name = 612.AUD
+    file[]: crc = 89c325b6; size =      4063; name = 631.AUD
+    file[]: crc = 50ad4355; size =      2080; name = 632.AUD
+    file[]: crc = a8faea1f; size =      1245; name = 633.AUD
+    file[]: crc = e4e5f35f; size =      1281; name = 634.AUD
+    file[]: crc = 7811c42b; size =      8435; name = 635.AUD
+    file[]: crc = f6edc320; size =      1325; name = 640.AUD
+    file[]: crc = 883207c3; size =      1397; name = 641.AUD
+    file[]: crc = 8239cda0; size =     19661; name = 651.AUD
+    file[]: crc = f949ebd6; size =       517; name = 652.AUD
+    file[]: crc = fa4fb54f; size =       561; name = 654.AUD
+    file[]: crc = b79167f1; size =      2378; name = 700.AUD
+    file[]: crc = a5926b4b; size =     25755; name = 701.AUD
+    file[]: crc = 4e486aa1; size =     26195; name = 710.AUD
+    file[]: crc = ce3cfc57; size =     25755; name = 712.AUD
+    file[]: crc = 4978eec8; size =     47755; name = 713.AUD
+    file[]: crc = 62481032; size =      5870; name = 721.AUD
+    file[]: crc = 26867f18; size =      9868; name = 722.AUD
+    file[]: crc = c834e476; size =     28089; name = 750.AUD
+    file[]: crc = 6624b9d4; size =     32722; name = 751.AUD
+    file[]: crc = bbb63242; size =     20352; name = 752.AUD
+    file[]: crc = ad744c0f; size =      7053; name = 770.AUD
+    file[]: crc = 773a762d; size =      1011; name = 80.AUD
+    file[]: crc = dc2e90b0; size =     21042; name = 81.AUD
+    file[]: crc = fccfa4f0; size =     22740; name = 82.AUD
+    file[]: crc = c6b5ff98; size =     11332; name = 83.AUD
+    file[]: crc = 96b9e543; size =      8788; name = 84.AUD
+    file[]: crc = 03b062e2; size =      5005; name = 85.AUD
+    file[]: crc = 71aa0743; size =     21818; name = 96.AUD
+    file[]: crc = a95e72fe; size =      8653; name = ADL.DRV
+    file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
+    file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
+    file[]: crc = 2deb6ee1; size =      1100; name = AUDNONE.DRV
+    file[]: crc = f13c1f73; size =      6113; name = AUDPRO.DRV
+    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
+    file[]: crc = 6dc64007; size =      4859; name = AUDPS1.DRV
+    file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = 044b8a83; size =    103141; name = INSTALL.EX$ ; optional = true
+    file[]: crc = 54fd068e; size =    175952; name = INSTALL.EXE ; optional = true
+    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
+    file[]: crc = e1c5a1c8; size =       155; name = INSTALL.INI ; optional = true
+    file[]: crc = 2c9d521d; size =      7264; name = INSTALL.INS ; optional = true
+    file[]: crc = 1479a577; size =       183; name = INSTALL.LGO ; optional = true
+    file[]: crc = e3545711; size =      2017; name = INSTALL.SCR ; optional = true
+    file[]: crc = 3b84f25e; size =      9438; name = INSTALL.TXT ; optional = true
+    file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 68a4a3b7; size =     24918; name = LAURT.BMP   ; optional = true
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = a95e72fe; size =      8653; name = PROAUDIO.DRV
+    file[]: crc = 72134b16; size =       596; name = RA.BAT      ; optional = true
+    file[]: crc = 43ea4e7e; size =      2159; name = README      ; optional = true
+    file[]: crc = b296232f; size =        29; name = README.BAT  ; optional = true
+    file[]: crc = 5a24259f; size =   5598672; name = RESOURCE.000
+    file[]: crc = 53416101; size = 355217113; name = RESOURCE.AUD
+    file[]: crc = 77f8a728; size =       126; name = RESOURCE.CFG; optional = true
+    file[]: crc = b9b8b357; size =       186; name = RESOURCE.GEN; optional = true
+    file[]: crc = 27ba1778; size =      7274; name = RESOURCE.MAP
+    file[]: crc = cdf048f4; size =       183; name = RESOURCE.MT ; optional = true
+    file[]: crc = cecda11c; size =       185; name = RESOURCE.PRO; optional = true
+    file[]: crc = 29d6c11f; size =       182; name = RESOURCE.SB ; optional = true
+    file[]: crc = e60aaa48; size =       182; name = RESOURCE.STD; optional = true
+    file[]: crc = 99752b38; size =       182; name = RESOURCE.THN; optional = true
+    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
+    file[]: crc = de121aa6; size =    179712; name = SCIWV.EXE
+    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
+    file[]: crc = c52dab59; size =      7198; name = SIERRA.BMP  ; optional = true
+    file[]: crc = da4d51f7; size =     69357; name = SIERRA.EXE
+    file[]: crc = b31b2668; size =       101; name = SIERRA.INI  ; optional = true
+    file[]: crc = 4b60e844; size =       766; name = SIERRAW.ICO ; optional = true
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = d530492e; size =     31618; name = TITLE.BMP   ; optional = true
+    file[]: crc = 6a5ca6d2; size =         5; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
 end
