@@ -94,6 +94,12 @@ config[sound]:
         AUDIO_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
+    option[mtblast]:
+        name = Unofficial MTBLAST.DRV
+        audiohw = sb16+mt32; priority = 3
+        AUDIO_DRIVER = MTBLAST.DRV
+        condition = file_size("$$(rootpath)\\MTBLAST.DRV") == 2401
+    end
 end
 
 dynamicfile[]:
