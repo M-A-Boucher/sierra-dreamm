@@ -27,7 +27,7 @@ dynamicfile[]:
         mouseDrv  = NONE
         memoryDrv = NONE
         minMemory = 3200k
-        audioSize = 112k
+        audioSize = 32k
         brightness= 0
         language  = 1
         resMap    = .\
