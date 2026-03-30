@@ -8,11 +8,12 @@ icon = sol-sq6.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
+launch = $(rootpath)\SIERRA.EXE $(OPTIONS)
 mips = $(MIPS_P100)
 ramkb = 16384
 videohw = svga
 filter = sierra, adventure
+OPTIONS = -o RESOURCE.CFG
 
 //
 // sound configuration
@@ -119,7 +120,6 @@ game[v1.0-cd]:
     file[]: crc = 3bb23f6b; size =    803516; name = SIERRAW.EXE
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
-
     file[]: crc = 96f8dd46; size =   2196926; name = MOVIES\1075.VMD
     file[]: crc = cd7d5707; size =   7654353; name = MOVIES\1090.VMD
     file[]: crc = 0ac2d9e6; size =   3311244; name = MOVIES\1450.VMD
@@ -136,7 +136,6 @@ game[v1.0-cd]:
     file[]: crc = d8acc91a; size =   6882345; name = MOVIES\540.VMD
     file[]: crc = 8470e74d; size =   3730588; name = MOVIES\75.VMD
     file[]: crc = 7976adc7; size =  10022256; name = MOVIES\90.VMD
-
     file[]: crc = 9b761848; size =   2477394; name = ROBOTS\410.RBT
     file[]: crc = 7a7662cb; size =    444179; name = ROBOTS\475.RBT
     file[]: crc = fc0866ed; size =    295549; name = ROBOTS\4751.RBT
@@ -178,15 +177,48 @@ game[v1.11-cd]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = b7d37c38; size =      2584; remove = DACPRO8.DRV
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
-    file[]: crc = ebfd9f39; size =       183; name = RESOURCE.CFG
+    file[]: crc = ebfd9f39; size =       183; name = RESOURCE.CFG; optional = true
     file[]: crc = 7431b34c; size =     10528; name = RESOURCE.MAP
-    file[]: crc = 56ae60e7; size =       375; name = RESOURCE.WIN
+    file[]: crc = 56ae60e7; size =       375; name = RESOURCE.WIN; optional = true
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 022a3d8d; size =    942697; name = SIERRA.EXE
-    file[]: crc = de6bb7ed; size =      4596; name = SIERRA.INF
-    file[]: crc = 6209dcac; size =    803516; name = SIERRAW.EXE
+    file[]: crc = de6bb7ed; size =      4596; name = SIERRA.INF  ; optional = true
+    file[]: crc = 6209dcac; size =    803516; name = SIERRAW.EXE ; optional = true
     file[]: crc = 385063fe; size =         6; name = VERSION
+end
+
+//
+// Interactive Demo
+//
+game[interactive-demo]:
+    name = Interactive Demo
+    OPTIONS = $(NULL)
+    anchorfile = SIERRA.EXE
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = cff3fc52; size =      4305; name = DACBLAST.DRV
+    file[]: crc = 54136c93; size =      2788; name = DACPRO.DRV
+    file[]: crc = df3c04b5; size =      2712; name = DACPRO16.DRV
+    file[]: crc = c1f86ce6; size =      2570; name = DACPRO8.DRV
+    file[]: crc = 3f6fbb99; size =      3388; name = GENMIDI.DRV
+    file[]: crc = 656ef0b3; size =      3352; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = c6339b9c; size =   2272050; name = RESOURCE.000
+    file[]: crc = 8071b831; size = 114486522; name = RESOURCE.AUD
+    file[]: crc = 774a2f3d; size =       218; name = RESOURCE.CFG
+    file[]: crc = 60bc4c4c; size =      2572; name = RESOURCE.MAP
+    file[]: crc = c7aa6ff0; size =      2572; name = RESOURCE.MDT
+    file[]: crc = 132d30aa; size =   7495186; name = RESOURCE.SFX
+    file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = 9cd11d20; size =    925001; name = SIERRA.EXE
+    file[]: crc = 9531d85a; size =    796604; name = SQ6W.EXE    ; optional = true
+    file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
 end
 
 end
