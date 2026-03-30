@@ -1,0 +1,279 @@
+//
+// Torin's Passage
+//
+desc[sol-torin]:
+
+name = Torin's Passage
+icon = sol-torin.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRAH.EXE
+mips = $(MIPS_P100)
+ramkb = 16384
+videohw = svga
+filter = sierra, adventure
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[sadl]:
+        name = $(ADLIB_NAME) + $(SB16_NAME)
+        audiohw = sb16+adlib
+        AUDIO_DRIVER = SADL.DRV
+        condition = file_exists("$$(rootpath)\\SADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 1
+        AUDIO_DRIVER = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 3
+        AUDIO_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv  = VESA.DRV
+        soundDrv  = MIDNONE.DRV
+        audioDrv  = DACBLAST.DRV
+        joyDrv    = NO
+        CD        = NO
+        mouseDrv  = NONE
+        memoryDrv = NONE
+        minMemory = 3200k
+        audiosize = 112k
+        brightness= 0
+        language  = 1
+        resMap    = .\
+        resAUD    = .\
+        resSFX    = .\
+        patchDir  = .\PATCHES;.\MOVIE
+        movieDir  = .\MOVIE
+        dacsize   = 30720
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, CD
+//
+game[v1.0-cd]:
+    name = v1.0, CD
+    anchorfile = SIERRAH.EXE
+    anchordepth = 2
+    file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
+    file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
+    file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
+    file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
+    file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN
+    file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
+    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
+    file[]: crc = 855d50e0; size =     20390; name = SIERRA.INF
+    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
+    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE
+    file[]: crc = cea7602b; size =       355; name = TORIN1
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = 32741db9; size =      9301; name = ENGLISH\CONTACT.TXT
+    file[]: crc = d26a89c0; size =      1633; name = ENGLISH\LANGUAGE.INF
+    file[]: crc = 439a4cd5; size =     17222; name = ENGLISH\README.TXT
+    file[]: crc = 3b44f042; size =     38144; name = ENGLISH\README.WRI
+    file[]: crc = dc3d4ad1; size =    100196; name = ENGLISH\SNDTEST.WAV
+    file[]: crc = 776be479; size =     81326; name = ENGLISH\THEGUIDE.TXT
+    file[]: crc = 3491db3d; size =      3497; name = FRENCH\INSTALL.SCR
+    file[]: crc = 6ebf92e1; size =      9977; name = FRENCH\INSTALL.TXT
+    file[]: crc = e49b8003; size =      3904; name = FRENCH\LANGUAGE.INF
+    file[]: crc = dc3d4ad1; size =    100196; name = FRENCH\SNDTEST.WAV
+    file[]: crc = ec3d4038; size =      5857; name = FRENCH\MSG\0.MSG
+    file[]: crc = 30e25f58; size =      1510; name = FRENCH\MSG\1.MSG
+    file[]: crc = 5d097dba; size =      4902; name = FRENCH\MSG\100.MSG
+    file[]: crc = 0d46c6f3; size =      2430; name = FRENCH\MSG\10000.MSG
+    file[]: crc = 1f1c0b10; size =      6305; name = FRENCH\MSG\101.MSG
+    file[]: crc = a89ac348; size =      1669; name = FRENCH\MSG\10100.MSG
+    file[]: crc = a1b51efc; size =      8554; name = FRENCH\MSG\102.MSG
+    file[]: crc = 9a47210d; size =      2523; name = FRENCH\MSG\103.MSG
+    file[]: crc = 88a6e957; size =      5487; name = FRENCH\MSG\104.MSG
+    file[]: crc = a813ceaa; size =      7394; name = FRENCH\MSG\105.MSG
+    file[]: crc = 34c8345a; size =      3923; name = FRENCH\MSG\110.MSG
+    file[]: crc = 682545c7; size =       234; name = FRENCH\MSG\11000.MSG
+    file[]: crc = 096b1eee; size =      1275; name = FRENCH\MSG\111.MSG
+    file[]: crc = 5b3495f9; size =       448; name = FRENCH\MSG\11100.MSG
+    file[]: crc = bd6a6c21; size =       196; name = FRENCH\MSG\11200.MSG
+    file[]: crc = ee8a562b; size =       169; name = FRENCH\MSG\11300.MSG
+    file[]: crc = 58c1d8be; size =      2108; name = FRENCH\MSG\12000.MSG
+    file[]: crc = 61d79ccf; size =      1814; name = FRENCH\MSG\13000.MSG
+    file[]: crc = 81e8c94b; size =      7559; name = FRENCH\MSG\14000.MSG
+    file[]: crc = 7bab528e; size =      2930; name = FRENCH\MSG\15000.MSG
+    file[]: crc = 57bd21b3; size =      8898; name = FRENCH\MSG\15100.MSG
+    file[]: crc = e1f3ecf9; size =      1995; name = FRENCH\MSG\15200.MSG
+    file[]: crc = f42139c1; size =       233; name = FRENCH\MSG\16000.MSG
+    file[]: crc = 9e4e90f6; size =      4056; name = FRENCH\MSG\16100.MSG
+    file[]: crc = 9c62ec0a; size =      4657; name = FRENCH\MSG\2.MSG
+    file[]: crc = da496c30; size =       681; name = FRENCH\MSG\200.MSG
+    file[]: crc = ec1de991; size =       384; name = FRENCH\MSG\20000.MSG
+    file[]: crc = 67f960a7; size =      4614; name = FRENCH\MSG\20100.MSG
+    file[]: crc = f3e2154f; size =      9086; name = FRENCH\MSG\20200.MSG
+    file[]: crc = 1e006aeb; size =      8655; name = FRENCH\MSG\20300.MSG
+    file[]: crc = 5153d755; size =      2354; name = FRENCH\MSG\20400.MSG
+    file[]: crc = e18586ea; size =      3984; name = FRENCH\MSG\20500.MSG
+    file[]: crc = 47b40666; size =      3498; name = FRENCH\MSG\20600.MSG
+    file[]: crc = 16612560; size =       505; name = FRENCH\MSG\20700.MSG
+    file[]: crc = 7f803e07; size =       160; name = FRENCH\MSG\20800.MSG
+    file[]: crc = 1b295f27; size =      3642; name = FRENCH\MSG\20900.MSG
+    file[]: crc = e43db20f; size =      6005; name = FRENCH\MSG\300.MSG
+    file[]: crc = 932be546; size =       860; name = FRENCH\MSG\30000.MSG
+    file[]: crc = 70d5920e; size =       873; name = FRENCH\MSG\30100.MSG
+    file[]: crc = c9a43a23; size =      5873; name = FRENCH\MSG\30200.MSG
+    file[]: crc = 272c5f3f; size =      1810; name = FRENCH\MSG\30300.MSG
+    file[]: crc = da138ea5; size =       657; name = FRENCH\MSG\30500.MSG
+    file[]: crc = 0ae8b400; size =      3614; name = FRENCH\MSG\30600.MSG
+    file[]: crc = 641cda18; size =      1743; name = FRENCH\MSG\40000.MSG
+    file[]: crc = c61f720e; size =       521; name = FRENCH\MSG\40100.MSG
+    file[]: crc = adc387bf; size =      1077; name = FRENCH\MSG\40200.MSG
+    file[]: crc = 5b9e8d6f; size =       108; name = FRENCH\MSG\40400.MSG
+    file[]: crc = dafeec93; size =       273; name = FRENCH\MSG\40600.MSG
+    file[]: crc = cefa8119; size =        97; name = FRENCH\MSG\40700.MSG
+    file[]: crc = e15eda0e; size =       308; name = FRENCH\MSG\40800.MSG
+    file[]: crc = 3faf3576; size =       150; name = FRENCH\MSG\40900.MSG
+    file[]: crc = 44f32883; size =      3161; name = FRENCH\MSG\5.MSG
+    file[]: crc = f5e1c889; size =       780; name = FRENCH\MSG\50000.MSG
+    file[]: crc = 5000b9d9; size =       583; name = FRENCH\MSG\50100.MSG
+    file[]: crc = b8e4c9ac; size =       220; name = FRENCH\MSG\50200.MSG
+    file[]: crc = 2164332b; size =       426; name = FRENCH\MSG\50300.MSG
+    file[]: crc = 894af97b; size =      4031; name = FRENCH\MSG\50400.MSG
+    file[]: crc = 58e4a23b; size =      2714; name = FRENCH\MSG\50500.MSG
+    file[]: crc = ef5a12ed; size =      3564; name = FRENCH\MSG\50600.MSG
+    file[]: crc = dc15fcd7; size =      4654; name = FRENCH\MSG\50900.MSG
+    file[]: crc = 0ae3d41f; size =       782; name = FRENCH\MSG\51000.MSG
+    file[]: crc = ac4be729; size =       747; name = FRENCH\MSG\51100.MSG
+    file[]: crc = e5a73c90; size =       681; name = FRENCH\MSG\51200.MSG
+    file[]: crc = 73b90050; size =       160; name = FRENCH\MSG\51300.MSG
+    file[]: crc = d1f6ffd7; size =      7840; name = FRENCH\MSG\53000.MSG
+    file[]: crc = c6725fc0; size =      4696; name = FRENCH\MSG\53100.MSG
+    file[]: crc = e51ba456; size =      4420; name = FRENCH\MSG\53200.MSG
+    file[]: crc = 7958baa5; size =       546; name = FRENCH\MSG\55000.MSG
+    file[]: crc = 180f82a8; size =       361; name = FRENCH\MSG\56000.MSG
+    file[]: crc = d0c8a42c; size =      2528; name = FRENCH\MSG\57000.MSG
+    file[]: crc = 265b3dec; size =      1627; name = FRENCH\MSG\64990.MSG
+    file[]: crc = ca28619b; size =      1112; name = FRENCH\MSG\64994.MSG
+    file[]: crc = e064958e; size =      3618; name = GERMAN\INSTALL.SCR
+    file[]: crc = 1cb83111; size =     10318; name = GERMAN\INSTALL.TXT
+    file[]: crc = ea169ebc; size =      3463; name = GERMAN\LANGUAGE.INF
+    file[]: crc = dc3d4ad1; size =    100196; name = GERMAN\SNDTEST.WAV
+    file[]: crc = 66c1b3f2; size =      5993; name = GERMAN\MSG\0.MSG
+    file[]: crc = d1b4868c; size =      1505; name = GERMAN\MSG\1.MSG
+    file[]: crc = cdb661a1; size =      4871; name = GERMAN\MSG\100.MSG
+    file[]: crc = 61f1ffe6; size =      2574; name = GERMAN\MSG\10000.MSG
+    file[]: crc = 8b278d86; size =      6625; name = GERMAN\MSG\101.MSG
+    file[]: crc = 2ae78701; size =      1567; name = GERMAN\MSG\10100.MSG
+    file[]: crc = 9d6ca8f6; size =      8572; name = GERMAN\MSG\102.MSG
+    file[]: crc = 6ea2f79a; size =      2671; name = GERMAN\MSG\103.MSG
+    file[]: crc = 213e13bd; size =      5221; name = GERMAN\MSG\104.MSG
+    file[]: crc = 5a2d4e78; size =      7835; name = GERMAN\MSG\105.MSG
+    file[]: crc = 85488b0e; size =      3980; name = GERMAN\MSG\110.MSG
+    file[]: crc = 45571f0d; size =       242; name = GERMAN\MSG\11000.MSG
+    file[]: crc = ffdab6f2; size =      1292; name = GERMAN\MSG\111.MSG
+    file[]: crc = 0ff36728; size =       423; name = GERMAN\MSG\11100.MSG
+    file[]: crc = 2c277214; size =       182; name = GERMAN\MSG\11200.MSG
+    file[]: crc = 1c775005; size =       173; name = GERMAN\MSG\11300.MSG
+    file[]: crc = 65875bd7; size =      2044; name = GERMAN\MSG\12000.MSG
+    file[]: crc = 893e8bca; size =      1845; name = GERMAN\MSG\13000.MSG
+    file[]: crc = 09c56f0b; size =      7252; name = GERMAN\MSG\14000.MSG
+    file[]: crc = 4e9ec602; size =      2772; name = GERMAN\MSG\15000.MSG
+    file[]: crc = 7b291d4d; size =      8455; name = GERMAN\MSG\15100.MSG
+    file[]: crc = 477c6a38; size =      1891; name = GERMAN\MSG\15200.MSG
+    file[]: crc = fb6039ff; size =       254; name = GERMAN\MSG\16000.MSG
+    file[]: crc = 1eb5ebac; size =      4282; name = GERMAN\MSG\16100.MSG
+    file[]: crc = ad04d714; size =      4617; name = GERMAN\MSG\2.MSG
+    file[]: crc = 851a7a3b; size =       663; name = GERMAN\MSG\200.MSG
+    file[]: crc = 81360719; size =       328; name = GERMAN\MSG\20000.MSG
+    file[]: crc = 2484e89a; size =      4744; name = GERMAN\MSG\20100.MSG
+    file[]: crc = 7b80cf47; size =      9346; name = GERMAN\MSG\20200.MSG
+    file[]: crc = fbf08170; size =      8923; name = GERMAN\MSG\20300.MSG
+    file[]: crc = 601081be; size =      2423; name = GERMAN\MSG\20400.MSG
+    file[]: crc = 8f857ce1; size =      4121; name = GERMAN\MSG\20500.MSG
+    file[]: crc = 12346c67; size =      3628; name = GERMAN\MSG\20600.MSG
+    file[]: crc = 833074d8; size =       571; name = GERMAN\MSG\20700.MSG
+    file[]: crc = 2d4fd33d; size =       166; name = GERMAN\MSG\20800.MSG
+    file[]: crc = f82736da; size =      3879; name = GERMAN\MSG\20900.MSG
+    file[]: crc = 4541b7e9; size =      6248; name = GERMAN\MSG\300.MSG
+    file[]: crc = e56c79e3; size =       905; name = GERMAN\MSG\30000.MSG
+    file[]: crc = 9d28704e; size =       898; name = GERMAN\MSG\30100.MSG
+    file[]: crc = faa6ae71; size =      6048; name = GERMAN\MSG\30200.MSG
+    file[]: crc = fcd93ad7; size =      1758; name = GERMAN\MSG\30300.MSG
+    file[]: crc = 6571713a; size =       668; name = GERMAN\MSG\30500.MSG
+    file[]: crc = 9d0ec617; size =      3596; name = GERMAN\MSG\30600.MSG
+    file[]: crc = b4cfc431; size =      1685; name = GERMAN\MSG\40000.MSG
+    file[]: crc = de0fd8ba; size =       517; name = GERMAN\MSG\40100.MSG
+    file[]: crc = e3de38b1; size =      1068; name = GERMAN\MSG\40200.MSG
+    file[]: crc = 029bce82; size =        94; name = GERMAN\MSG\40400.MSG
+    file[]: crc = b904cf3f; size =       279; name = GERMAN\MSG\40600.MSG
+    file[]: crc = 45f29d57; size =       113; name = GERMAN\MSG\40700.MSG
+    file[]: crc = 2a871796; size =       356; name = GERMAN\MSG\40800.MSG
+    file[]: crc = efaf7c0d; size =       151; name = GERMAN\MSG\40900.MSG
+    file[]: crc = c54aa3a6; size =      3057; name = GERMAN\MSG\5.MSG
+    file[]: crc = a1560345; size =       808; name = GERMAN\MSG\50000.MSG
+    file[]: crc = dbf7629b; size =       623; name = GERMAN\MSG\50100.MSG
+    file[]: crc = 76d2f551; size =       255; name = GERMAN\MSG\50200.MSG
+    file[]: crc = 2ad469a2; size =       416; name = GERMAN\MSG\50300.MSG
+    file[]: crc = ceb3db2b; size =      3986; name = GERMAN\MSG\50400.MSG
+    file[]: crc = 0f2ffccd; size =      2922; name = GERMAN\MSG\50500.MSG
+    file[]: crc = 0f6666c0; size =      4075; name = GERMAN\MSG\50600.MSG
+    file[]: crc = f0c21287; size =      4660; name = GERMAN\MSG\50900.MSG
+    file[]: crc = 8ba359cf; size =       795; name = GERMAN\MSG\51000.MSG
+    file[]: crc = a6623d09; size =       796; name = GERMAN\MSG\51100.MSG
+    file[]: crc = b3e4e139; size =       664; name = GERMAN\MSG\51200.MSG
+    file[]: crc = c49481f7; size =       176; name = GERMAN\MSG\51300.MSG
+    file[]: crc = e0269edc; size =      7773; name = GERMAN\MSG\53000.MSG
+    file[]: crc = 8379f39d; size =      4630; name = GERMAN\MSG\53100.MSG
+    file[]: crc = 4e613eba; size =      4433; name = GERMAN\MSG\53200.MSG
+    file[]: crc = 9a852de4; size =       614; name = GERMAN\MSG\55000.MSG
+    file[]: crc = 0f6dc807; size =       365; name = GERMAN\MSG\56000.MSG
+    file[]: crc = fdfc0605; size =      2600; name = GERMAN\MSG\57000.MSG
+    file[]: crc = 467248fc; size =      1643; name = GERMAN\MSG\64990.MSG
+    file[]: crc = 574558b7; size =      1089; name = GERMAN\MSG\64994.MSG
+
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = cf5ac77e; size =       262; name = RESOURCE.CFG
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+
+    file[]: crc = 8425f555; size =  21034036; name = MOVIE\10000.VMD
+    file[]: crc = eeaba050; size =   7031530; name = MOVIE\10001.VMD
+    file[]: crc = 8102a9f0; size =      1866; name = PATCHES\20400.HEP
+    file[]: crc = 16695f28; size =      6374; name = PATCHES\20400.SCR
+    file[]: crc = 123480be; size =      1946; name = PATCHES\20700.HEP
+    file[]: crc = 711882ce; size =      6068; name = PATCHES\20700.SCR
+    file[]: crc = 99a1dc84; size =       454; name = PATCHES\51500.HEP
+    file[]: crc = bfc8cd33; size =       966; name = PATCHES\51500.SCR
+    file[]: crc = cb356a92; size =      1224; name = PATCHES\64866.HEP
+    file[]: crc = 82882f10; size =      4856; name = PATCHES\64866.SCR
+    file[]: crc = 5612bb30; size =       274; name = PATCHES\8000.HEP
+    file[]: crc = 2be2ef0a; size =       532; name = PATCHES\8000.SCR
+end
+
+end
