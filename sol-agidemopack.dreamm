@@ -1,0 +1,183 @@
+//
+// AGI Demo Pack
+//
+desc[sol-agidemopack]:
+
+name = AGI Demo Pack
+icon = sol-agidemopack.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+mips = $(MIPS_286_10)
+nothrottle = 1
+ramkb = 1024
+filter = sierra, demo
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// Pack 1
+//
+demo[pack-1]:
+    name = Pack 1
+    anchorfile = VOL.0
+    file[]: crc = e1eadf83; size =     39424; name = AGI
+    file[]: crc = 5745a47b; size =      8192; name = AGIDATA.OVL
+    file[]: crc = 9f7d2517; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 6284c954; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 3f18f45e; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = c449b9a5; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = 3838825f; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = 93e80acd; size =      1240; name = INSTALLH.BAT
+    file[]: crc = 91502785; size =       512; name = JR_GRAF.OVL
+    file[]: crc = 1d38ad82; size =       666; name = LOGDIR
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM
+    file[]: crc = 05853ab3; size =         8; name = OBJECT
+    file[]: crc = a9a88072; size =       699; name = PICDIR
+    file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
+    file[]: crc = cdcab7e1; size =       669; name = SNDDIR
+    file[]: crc = 4927f36f; size =       512; name = VG_GRAF.OVL
+    file[]: crc = 4913ecec; size =       681; name = VIEWDIR
+    file[]: crc = 9a526994; size =     21620; name = VOL.0
+    file[]: crc = 6f443d70; size =    106892; name = VOL.1
+    file[]: crc = 29b05cd0; size =    138102; name = VOL.2
+    file[]: crc = fc3a1407; size =        69; name = WORDS.TOK
+end
+
+//
+// Pack 2
+//
+demo[pack-2]:
+    name = Pack 2
+    imports = pack-1
+    anchorfile = VOL.0
+    file[]: crc = 5c201ce2; size =        40; name = _DEMO.BAT
+    file[]: crc = 88ba328c; size =       495; name = _INSTALL.BAT
+    file[]: crc = ee668bc2; size =        21; name = DEMO.BAT
+    file[]: crc = 85e73dfe; size =       666; name = LOGDIR
+    file[]: crc = 50f70a71; size =       699; name = PICDIR
+    file[]: crc = acbf5a63; size =       669; name = SNDDIR
+    file[]: crc = 73a0ff92; size =       681; name = VIEWDIR
+    file[]: crc = a52d0c7c; size =     24711; name = VOL.0
+    file[]: crc = bc6a0ca7; size =    108470; name = VOL.1
+    file[]: crc = 87f805da; size =    130311; name = VOL.2
+    file[]: crc = a71600d4; size =    125277; name = VOL.3
+end
+
+//
+// Pack 3
+//
+demo[pack-3]:
+    name = Pack 3
+    imports = pack-2
+    anchorfile = VOL.0
+    file[]: crc = c2995d8a; size =     39424; name = AGI
+    file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
+    file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 67e8b0ad; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = d6a27c03; size =       406; name = INSTALL.BAT
+    file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
+    file[]: crc = a124de2b; size =       606; name = LOGDIR
+    file[]: crc = f044aa1c; size =       627; name = PICDIR
+    file[]: crc = f6ec8a8e; size =       618; name = SNDDIR
+    file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
+    file[]: crc = 39c90c7b; size =       660; name = VIEWDIR
+    file[]: crc = 4ea95bb5; size =     33860; name = VOL.0
+    file[]: crc = 2baf2f68; size =    246227; name = VOL.1
+    file[]: crc = 87f805da; size =    130311; remove = VOL.2
+    file[]: crc = a71600d4; size =    125277; remove = VOL.3
+    file[]: crc = 38e8c845; size =        66; name = WORDS.TOK
+end
+
+//
+// Pack 4
+//
+demo[pack-4]:
+    name = Pack 4
+    anchorfile = DMVOL.0
+    file[]: crc = 5c201ce2; size =        40; name = _DEMO.BAT
+    file[]: crc = dde3455c; size =       364; name = _INSTALL.BAT
+    file[]: crc = d23ffe33; size =     40898; name = AGI
+    file[]: crc = 31b45b19; size =      8080; name = AGIDATA.OVL
+    file[]: crc = 3e704f41; size =       684; name = CGA_GRAF.OVL
+    file[]: crc = 89f76449; size =        18; name = DM091388.QA
+    file[]: crc = d43258d5; size =      2552; name = DMDIR
+    file[]: crc = c2ef86b5; size =     13266; name = DMVOL.0
+    file[]: crc = 2ee9890f; size =    237339; name = DMVOL.1
+    file[]: crc = dcbcf113; size =       591; name = EGA_GRAF.OVL
+    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = f84e2cd6; size =      1445; name = HGC_GRAF.OVL
+    file[]: crc = 17ff101e; size =       599; name = HGC_OBJS.OVL
+    file[]: crc = a43d0869; size =       341; name = IBM_OBJS.OVL
+    file[]: crc = ed5d5354; size =       814; name = INSTALLH.BAT
+    file[]: crc = c24a735d; size =       465; name = JR_GRAF.OVL
+    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM
+    file[]: crc = 05853ab3; size =         8; name = OBJECT
+    file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
+    file[]: crc = fecfc877; size =       362; name = VG_GRAF.OVL
+    file[]: crc = fc3a1407; size =        69; name = WORDS.TOK
+end
+
+//
+// Pack 5
+//
+demo[pack-5]:
+    name = Pack 5
+    anchorfile = VOL.0
+    file[]: crc = fc881fd3; size =     38400; name = AGI
+    file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
+    file[]: crc = ca8b4741; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 8e14b45e; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = 211da9c5; size =      1536; name = HGC_GRAF.OVL
+    file[]: crc = e1d5c430; size =      1024; name = HGC_OBJS.OVL
+    file[]: crc = 4d0b9afd; size =       512; name = IBM_OBJS.OVL
+    file[]: crc = c49114dd; size =       512; name = JR_GRAF.OVL
+    file[]: crc = ff09c352; size =       300; name = LOGDIR
+    file[]: crc = 05853ab3; size =         8; name = OBJECT
+    file[]: crc = a5958ae1; size =       300; name = PICDIR
+    file[]: crc = 54d17b58; size =      2080; name = SIERRA.COM
+    file[]: crc = 9fd999bf; size =       186; name = SNDDIR
+    file[]: crc = f62208ea; size =       696; name = VIEWDIR
+    file[]: crc = ba47bc96; size =    170742; name = VOL.0
+    file[]: crc = fc3a1407; size =        69; name = WORDS.TOK
+end
+
+end
