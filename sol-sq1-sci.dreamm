@@ -190,16 +190,27 @@ game[v2.0-int-8.11.92-5x1.44m]:
 end
 
 //
-// Demo
+// Space Quest - Collector's Edition (v2.0, Int. 8.11.92)
 //
-//demo[demo]:
-//    name = demo
-//    imports = drivers
-//    EXE_NAME = SIERRA.EXE
-//    anchorfile = RESOURCE.001
-//    file[]: size = 549177;  name = RESOURCE.001
-//    file[]: size =    642;  name = RESOURCE.MAP
-//    file[]: size =  60415;  name = SIERRA.EXE
-//end
+game[v2.0-int-8.11.92-space-quest-collectors-edition]:
+    name = Space Quest - Collector's Edition (v2.0, Int. 8.11.92)
+    imports = v2.0-int-8.11.92-5x1.44m
+    anchorfile = MTBLAST.DRV
+    file[]: crc = bfcb766f; size =      4364; remove = IBMPS1.DRV
+    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
+    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
+    file[]: crc = 2f5991c4; size =      1965; name = INSTALL.SCR ; optional = true
+    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
+    file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
+    file[]: crc = 648e58de; size =       106; name = RESOURCE.CFG; optional = true
+    file[]: crc = fd9f688a; size =        22; name = SIERRA.BAT  ; optional = true
+    file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
+    file[]: crc = b8d689c1; size =      1301; name = SQ1GMPAT    ; optional = true
+    file[]: crc = 7599dba0; size =       281; name = SQ1INST.BAT ; optional = true
+    file[]: crc = c5cfda55; size =        85; name = SQ1SCI.BAT  ; optional = true
+    file[]: crc = c5cfda55; size =        85; name = SQ1VGA.BAT  ; optional = true
+    file[]: crc = cecb955a; size =      3950; remove = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; remove = TANDY3VD.DRV
+end
 
 end
