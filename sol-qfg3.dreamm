@@ -256,22 +256,22 @@ game[v1.1-int-11.9.92-quest-for-glory-collection-series]:
     file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE
-    file[]: crc = 7bb84bb8; size =     16588; name = INSTALL.HLP
-    file[]: crc = 32c770b3; size =      1748; name = INSTALL.SCR
-    file[]: crc = 27f56298; size =      8458; name = INSTALL.TXT
+    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
+    file[]: crc = 7bb84bb8; size =     16588; name = INSTALL.HLP ; optional = true
+    file[]: crc = 32c770b3; size =      1748; name = INSTALL.SCR ; optional = true
+    file[]: crc = 27f56298; size =      8458; name = INSTALL.TXT ; optional = true
     file[]: crc = a012c6d4; size =      5845; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
     file[]: crc = 5450710b; size =      2570; name = MT32.DRV
-    file[]: crc = 960a232c; size =      1048; name = PKCOMP.INF
+    file[]: crc = 960a232c; size =      1048; name = PKCOMP.INF  ; optional = true
     file[]: crc = 011d912c; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = 6c404c0d; size =        34; name = QG3E.BAT
-    file[]: crc = 28b42af9; size =     33345; name = README
-    file[]: crc = 7a2fd6b3; size =      2094; name = README.OLD
+    file[]: crc = 6c404c0d; size =        34; name = QG3E.BAT    ; optional = true
+    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
+    file[]: crc = 7a2fd6b3; size =      2094; name = README.OLD  ; optional = true
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
-    file[]: crc = fa76a505; size =       223; name = RESOURCE.CFG
+    file[]: crc = fa76a505; size =       223; name = RESOURCE.CFG; optional = true
     file[]: crc = 459f98d3; size =      5958; name = RESOURCE.MAP
     file[]: crc = 94ae61ce; size =    246888; name = RESOURCE.MSG
     file[]: crc = 7be0254a; size =     67778; name = SIERRA.EXE
@@ -280,6 +280,48 @@ game[v1.1-int-11.9.92-quest-for-glory-collection-series]:
     file[]: crc = c69f28c9; size =        36; name = VERSION
     file[]: crc = bcf69f6a; size =      5836; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = RESOURCE.000
+    file[]: crc = 3ef0b381; size =        32; name = 0.MAP
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = dc1e3d76; size =      3092; name = AUDBLAST.DRV
+    file[]: crc = de6a8351; size =      2381; name = AUDDISNY.DRV
+    file[]: crc = e9598ba7; size =       302; name = AUDNONE.DRV
+    file[]: crc = 1544d1da; size =      2711; name = AUDPRO.DRV
+    file[]: crc = 1b5e6d1c; size =      1945; name = AUDPS1.DRV
+    file[]: crc = 933c01f2; size =      2036; name = AUDTANDY.DRV
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 2c6e8e36; size =     52606; name = INSTALL.EXE ; optional = true
+    file[]: crc = 40c5dae4; size =     16542; name = INSTALL.HLP ; optional = true
+    file[]: crc = e68b914a; size =       748; name = INSTALL.SCR ; optional = true
+    file[]: crc = f97af3e2; size =      8175; name = INSTALL.TXT ; optional = true
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT  ; optional = true
+    file[]: crc = 54f4b725; size =      2570; name = MT32.DRV
+    file[]: crc = 1504c83a; size =    648702; name = RESOURCE.000
+    file[]: crc = 90c60116; size =    200704; name = RESOURCE.AUD
+    file[]: crc = 9530690c; size =       184; name = RESOURCE.CFG; optional = true
+    file[]: crc = f3bca97c; size =       188; name = RESOURCE.GEN; optional = true
+    file[]: crc = 5d8752e6; size =       687; name = RESOURCE.MAP
+    file[]: crc = 863b78d2; size =       187; name = RESOURCE.MT ; optional = true
+    file[]: crc = 9d6a27a4; size =       182; name = RESOURCE.PRO; optional = true
+    file[]: crc = b68f949b; size =       185; name = RESOURCE.PS1; optional = true
+    file[]: crc = baaad593; size =       184; name = RESOURCE.SB ; optional = true
+    file[]: crc = 9530690c; size =       184; name = RESOURCE.STD; optional = true
+    file[]: crc = ef7a27f8; size =       188; name = RESOURCE.TDY; optional = true
+    file[]: crc = 4647611f; size =     67192; name = SIERRA.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 8135e38d; size =        27; name = VERSION
+    file[]: crc = 5aba02e9; size =      5832; name = VGA320.DRV
 end
 
 end

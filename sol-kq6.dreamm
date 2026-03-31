@@ -595,4 +595,86 @@ game[1.000.00-kings-quest-collectors-edition]:
     file[]: crc = d9bbda57; size =     61083; name = WINGG.BIN
 end
 
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = RESOURCE.000
+    file[]: crc = e149c8ff; size =       188; name = 1002.SYN
+    file[]: crc = a2b977b7; size =       144; name = 1003.SYN
+    file[]: crc = 95269d05; size =       268; name = 1005.SYN
+    file[]: crc = 8bf40279; size =       164; name = 1006.SYN
+    file[]: crc = 41582348; size =       168; name = 1007.SYN
+    file[]: crc = 9d146061; size =       196; name = 1008.SYN
+    file[]: crc = d004cc30; size =       208; name = 1009.SYN
+    file[]: crc = 0cbd2ee8; size =       204; name = 1010.SYN
+    file[]: crc = fa3a2a07; size =       328; name = 1011.SYN
+    file[]: crc = 2cdfb6fd; size =       193; name = 1012.SYN
+    file[]: crc = 99a1f824; size =       299; name = 2001.SYN
+    file[]: crc = cc51805d; size =       399; name = 2002.SYN
+    file[]: crc = 49d1fee9; size =       251; name = 2004.SYN
+    file[]: crc = 641c209c; size =       275; name = 2005.SYN
+    file[]: crc = 60bab65b; size =       255; name = 2006.SYN
+    file[]: crc = 7f6811c4; size =       215; name = 2007.SYN
+    file[]: crc = 99f77b59; size =       167; name = 2008.SYN
+    file[]: crc = 8902fb4d; size =       211; name = 2009.SYN
+    file[]: crc = b71fb155; size =       356; name = 3001.SYN
+    file[]: crc = 8c989bd9; size =       272; name = 3002.SYN
+    file[]: crc = 0327eb56; size =       134; name = 65535.MAP
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = ac49f7b0; size =      6125; name = AUDBLAST.DRV
+    file[]: crc = 86f4cd6a; size =      4874; name = AUDDISNY.DRV
+    file[]: crc = 363b982f; size =      3471; name = AUDMSSYS.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = 7a480254; size =      5390; name = AUDPRO.DRV
+    file[]: crc = 2a8fd938; size =      4447; name = AUDPS1.DRV
+    file[]: crc = 87d829f4; size =      5899; name = AUDTHUND.DRV
+    file[]: crc = 2640dd45; size =    104350; name = BOAT.SEQ
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 9ee3c049; size =    799706; name = FS3A.SEQ
+    file[]: crc = c4ed7144; size =    410871; name = FS3B.SEQ
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = 687129ae; size =     56019; name = INSTALL.EXE ; optional = true
+    file[]: crc = 660d68e3; size =     17363; name = INSTALL.HLP ; optional = true
+    file[]: crc = 57f8e790; size =       898; name = INSTALL.SCR ; optional = true
+    file[]: crc = fa79ddd7; size =      8466; name = INSTALL.TXT ; optional = true
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = f6481593; size =       263; name = KQ6DEMO.BAT ; optional = true
+    file[]: crc = f6481593; size =       263; name = KQ6DM.BAT   ; optional = true
+    file[]: crc = 70802c8b; size =    140082; name = LAND.SEQ
+    file[]: crc = f86df7ed; size =        31; name = MESSAGE.MAP
+    file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
+    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
+    file[]: crc = 799ab5fc; size =   1227786; name = NSHP.SEQ
+    file[]: crc = e5c74485; size =   1036161; name = OPEN.SEQ
+    file[]: crc = 9f4ae482; size =   2007164; name = PAN.SEQ
+    file[]: crc = 34191be0; size =     67724; name = PO.SEQ
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = ae53e5d6; size =    264116; name = RESOURCE.000
+    file[]: crc = 17e73907; size =    440400; name = RESOURCE.AUD
+    file[]: crc = a523dde8; size =       272; name = RESOURCE.CFG; optional = true
+    file[]: crc = 46e52d41; size =       272; name = RESOURCE.DIS; optional = true
+    file[]: crc = 7201edba; size =       276; name = RESOURCE.GEN; optional = true
+    file[]: crc = 0a6e48d4; size =       706; name = RESOURCE.MAP
+    file[]: crc = c861a77d; size =       277; name = RESOURCE.MS ; optional = true
+    file[]: crc = 4e4f213a; size =      8260; name = RESOURCE.MSG
+    file[]: crc = c12ffe06; size =       273; name = RESOURCE.MT ; optional = true
+    file[]: crc = 5df29cc5; size =       275; name = RESOURCE.PRO; optional = true
+    file[]: crc = aea23ada; size =       273; name = RESOURCE.PS1; optional = true
+    file[]: crc = 16d0ffd1; size =       305; name = RESOURCE.SB ; optional = true
+    file[]: crc = a523dde8; size =       272; name = RESOURCE.STD; optional = true
+    file[]: crc = 7c5856eb; size =     87575; name = SCAN.SEQ
+    file[]: crc = f6481593; size =       263; name = SIERRA.BAT  ; optional = true
+    file[]: crc = d55492d1; size =     67812; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = 0171d37d; size =        13; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
 end
