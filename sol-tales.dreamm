@@ -81,12 +81,12 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-	videoDrv=$(VIDEO_DRIVER)
-	soundDrv=$(AUDIO_DRIVER)
-	audioDrv=AUDNONE.DRV
-	joyDrv=JOYSTICK.DRV
-	kbdDrv=IBMKBD.DRV
-	mouseDrv=STDMOUSE.DRV
+        videoDrv=$(VIDEO_DRIVER)
+        soundDrv=$(AUDIO_DRIVER)
+        audioDrv=AUDNONE.DRV
+        joyDrv=JOYSTICK.DRV
+        kbdDrv=IBMKBD.DRV
+        mouseDrv=STDMOUSE.DRV
         minHunk=200k
         language=1
     ]]]

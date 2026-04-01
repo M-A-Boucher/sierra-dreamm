@@ -12,28 +12,43 @@ launch = $(rootpath)\SIERRA.COM
 mips = $(MIPS_386DX_33)
 ramkb = 1024
 filter = sierra, adventure
-TANDY = false
-
-//
-// machine configuration
-//
-config[machine]:
-    title = Machine Configuration
-    option[tandy]: name = $(TVIDEO_NAME); machine = tandy; videohw = cga; TANDY = true; condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
-    option[pc]:    name = PC;             machine = pc;    priority = 1;
-end
+TANDY = 0
 
 //
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
-    option[hercules]: name = $(HERCULES_NAME);  videohw = hercules; VIDEO_DRIVER = HERCMONO.DRV;   condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
-    option[cgamono]:  name = CGA (2 colours);   videohw = cga;      VIDEO_DRIVER = CGA320M.DRV;    condition = file_exists("$$(rootpath)\\CGA320M.DRV")
-    option[cga]:      name = $(CGA_NAME);       videohw = cga;      VIDEO_DRIVER = CGA320C.DRV;    condition = file_exists("$$(rootpath)\\CGA320C.DRV")
-    option[ega]:      name = $(EGA_NAME);       videohw = ega;      VIDEO_DRIVER = EGA320.DRV;     condition = file_exists("$$(rootpath)\\EGA320.DRV")  ; priority = 1
-    option[mcga]:     name = $(MCGA_NAME);      videohw = mcga;     VIDEO_DRIVER = MCGA320.DRV;    condition = file_exists("$$(rootpath)\\MCGA320.DRV")
-    condition = !$(TANDY)
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; nothrottle = 2.8
+        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = JR.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
+    end
+    option[cgamono]:
+        name = CGA (2 colours)
+        videohw = cga
+        VIDEO_DRIVER = CGA320M.DRV
+        condition = file_exists("$$(rootpath)\\CGA320M.DRV")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO_DRIVER = CGA320C.DRV
+        condition = file_exists("$$(rootpath)\\CGA320C.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA320.DRV
+        condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[mcga]:
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
 end
 
 //
@@ -41,36 +56,48 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    option[speaker]: name = $(SPEAKER_NAME); audiohw = speaker;  AUDIO_DRIVER = STD.DRV;       condition = file_exists("$$(rootpath)\\STD.DRV")
-    option[adlib]:   name = $(ADLIB_NAME);   audiohw = adlib;    AUDIO_DRIVER = ADL.DRV;       condition = file_exists("$$(rootpath)\\ADL.DRV")
-    option[cms]:     name = $(CMS_NAME);     audiohw = cms;      AUDIO_DRIVER = CMS.DRV;       condition = file_exists("$$(rootpath)\\CMS.DRV")
-    option[sb16]:    name = $(SB16_NAME);    audiohw = sb16;     AUDIO_DRIVER = SNDBLAST.DRV;  condition = file_exists("$$(rootpath)\\SNDBLAST.DRV"); priority = 1
-    option[mt32]:    name = $(MT32_NAME);    audiohw = mt32;     AUDIO_DRIVER = MT32.DRV;      condition = file_exists("$$(rootpath)\\MT32.DRV")    ; priority = 2
     condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIO_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = cms; priority = 1
+        AUDIO_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 2
+        AUDIO_DRIVER = PROAUDIO.DRV
+        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32; priority = 3
+        AUDIO_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
 end
 
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-	videoDrv=$(VIDEO_DRIVER)
-	soundDrv=$(AUDIO_DRIVER)
-	joyDrv=JOYSTICK.DRV
-	kbdDrv=IBMKBD.DRV
-	mouseDrv=STDMOUSE.DRV
+	    videoDrv=$(VIDEO_DRIVER)
+	    soundDrv=$(AUDIO_DRIVER)
+	    joyDrv=JOYSTICK.DRV
+	    kbdDrv=IBMKBD.DRV
+	    mouseDrv=STDMOUSE.DRV
     ]]]
-    condition = !$(TANDY)
-end
-
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-	videoDrv=TANDY320.DRV
-	soundDrv=JR.DRV
-	joyDrv=JOYSTICK.DRV
-	kbdDrv=IBMKBD.DRV
-	mouseDrv=STDMOUSE.DRV
-    ]]]
-    condition = $(TANDY)
 end
 
 //

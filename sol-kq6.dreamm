@@ -86,8 +86,8 @@ dynamicfile[]:
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
-	minHunk=204k
-	audioSize=32k
+        minHunk=204k
+        audioSize=32k
         patchDir=.
     ]]]
 end
