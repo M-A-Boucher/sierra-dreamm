@@ -262,7 +262,7 @@ end
 //
 game[v0.000.051-int-11.9.90-x1.44m-1x1.2m-1x720k]:
     name = v0.000.051, Int. 11.9.90, 9x1.44M+1x1.2M+1x720K
-    anchorfile = RESOURCE.001
+    anchorfile = RESOURCE.000
     file[]: crc = 223b4d55; size =      1640; name = __INSTH.BAT ; optional = true
     file[]: crc = 3cdb7101; size =      7976; name = ADL.DRV
     file[]: crc = a65e8550; size =      3734; name = CMS.DRV
@@ -317,7 +317,7 @@ end
 game[v0.000.051, Int. 11.9.90-11x1.2m+1x720k]:
     name = v0.000.051, Int. 11.9.90, 11x1.2M+1x720K
     imports = v0.000.051-int-11.9.90-x1.44m-1x1.2m-1x720k
-    anchorfile = RESOURCE.001
+    anchorfile = RESOURCE.000
     file[]: crc = f516812e; size =    276398; name = RESOURCE.000
     file[]: crc = e9690a0b; size =   1099506; name = RESOURCE.001
     file[]: crc = 4e95e7de; size =   1061243; name = RESOURCE.002
@@ -341,18 +341,18 @@ game[v0.000.062-int-2.1.91-8x1.44m]:
     file[]: crc = 69161c49; size =      1782; name = FONT.000
     file[]: crc = 1f125b48; size =       449; name = IBMKBD.DRV
     file[]: crc = 84b67aa4; size =      4354; name = IBMPS1.DRV
-    file[]: crc = 5cf0cd35; size =     31688; name = INSTALL.EXE
-    file[]: crc = 8892472f; size =      6665; name = INSTALL.HLP
-    file[]: crc = 90fc7726; size =      3778; name = INSTALL.SCR
+    file[]: crc = 5cf0cd35; size =     31688; name = INSTALL.EXE ; optional = true
+    file[]: crc = 8892472f; size =      6665; name = INSTALL.HLP ; optional = true
+    file[]: crc = 90fc7726; size =      3778; name = INSTALL.SCR ; optional = true
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 692f231e; size =        79; name = KQ5.BAT
-    file[]: crc = 3457a539; size =        72; name = KQ52.BAT
-    file[]: crc = ce53f6c5; size =        89; name = KQ53.BAT
-    file[]: crc = f007ec4c; size =        76; name = KQ54.BAT
-    file[]: crc = 02864386; size =        69; name = KQ55.BAT
-    file[]: crc = c34b6c33; size =        86; name = KQ56.BAT
+    file[]: crc = 692f231e; size =        79; name = KQ5.BAT     ; optional = true
+    file[]: crc = 3457a539; size =        72; name = KQ52.BAT    ; optional = true
+    file[]: crc = ce53f6c5; size =        89; name = KQ53.BAT    ; optional = true
+    file[]: crc = f007ec4c; size =        76; name = KQ54.BAT    ; optional = true
+    file[]: crc = 02864386; size =        69; name = KQ55.BAT    ; optional = true
+    file[]: crc = c34b6c33; size =        86; name = KQ56.BAT    ; optional = true
     file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
-    file[]: crc = 6bebedae; size =       771; name = README
+    file[]: crc = 6bebedae; size =       771; name = README      ; optional = true
     file[]: crc = 8631b834; size =    276351; name = RESOURCE.000
     file[]: crc = b5540861; size =   1022087; name = RESOURCE.001
     file[]: crc = 674915ec; size =   1307211; name = RESOURCE.002
@@ -377,7 +377,7 @@ game[v0.000.062-int-2.1.91-8x1.44m]:
     file[]: crc = 724df845; size =      4384; name = VOCAB.997
     file[]: crc = bb1df8ac; size =      1229; name = VOCAB.998
     file[]: crc = 1b519541; size =      1113; name = VOCAB.999
-    file[]: crc = dbffcd42; size =      2156; name = WHAT.EXE
+    file[]: crc = dbffcd42; size =      2156; name = WHAT.EXE    ; optional = true
 end
 
 //
@@ -397,7 +397,60 @@ game[v0.000.062, Int. 2.1.91-9x1.2m]:
     file[]: crc = afdcb28a; size =   1133814; name = RESOURCE.007
     file[]: crc = a32cdefe; size =   1131985; name = RESOURCE.008
     file[]: crc = 190e26c5; size =      8184; name = RESOURCE.MAP
-    file[]: crc = dbffcd42; size =      2156; remove = WHAT.EXE
+end
+
+//
+// v0.000.149 Base Files
+//
+fragment[v0.000.149-base]:
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 903e6ab8; size =     64875; name = SIERRA.EXE
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// v0.000.149, French, 8x1.44M
+//
+game[v0.000.149-fr-8x1.44m]:
+    name = v0.000.149, French, 8x1.44M
+    imports = v0.000.149-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 8cb0fe4d; size =        43; name = INSTALL.BAT ; optional = true
+    file[]: crc = 16094b00; size =     32347; name = INSTALL.EXE ; optional = true
+    file[]: crc = e98edc62; size =     14661; name = INSTALL.HLP ; optional = true
+    file[]: crc = a1de5884; size =       261; name = INSTALL.MSG ; optional = true
+    file[]: crc = f7f47972; size =      3769; name = INSTALL.SCR ; optional = true
+    file[]: crc = da123fd6; size =      4687; name = INSTALL.TXT ; optional = true
+    file[]: crc = 9ee0552b; size =      2671; name = INTERP.TXT
+    file[]: crc = 6bf0765f; size =        74; name = KQ5.BAT     ; optional = true
+    file[]: crc = 0e9eae7a; size =        69; name = KQ52.BAT    ; optional = true
+    file[]: crc = 6dbda8f8; size =        86; name = KQ53.BAT    ; optional = true
+    file[]: crc = e37adb35; size =        73; name = KQ54.BAT    ; optional = true
+    file[]: crc = 135af6db; size =        66; name = KQ55.BAT    ; optional = true
+    file[]: crc = b918dc79; size =        83; name = KQ56.BAT    ; optional = true
+    file[]: crc = 5a87e5d8; size =       821; name = README      ; optional = true
+    file[]: crc = 8ce322f8; size =    332806; name = RESOURCE.000
+    file[]: crc = 7e27a601; size =   1136827; name = RESOURCE.001
+    file[]: crc = 0edf8b17; size =   1343738; name = RESOURCE.002
+    file[]: crc = 67ff8c41; size =   1324811; name = RESOURCE.003
+    file[]: crc = 7db998a0; size =   1332216; name = RESOURCE.004
+    file[]: crc = bd38f77d; size =   1268334; name = RESOURCE.005
+    file[]: crc = 8c33de26; size =   1210081; name = RESOURCE.006
+    file[]: crc = 9b07e724; size =   1338473; name = RESOURCE.007
+    file[]: crc = 67c731e8; size =        19; name = RESOURCE.CFG; optional = true
+    file[]: crc = 1131533e; size =      8283; name = RESOURCE.MAP
 end
 
 //
@@ -405,11 +458,8 @@ end
 //
 game[v0.000.149-it-8x1.44m]:
     name = v0.000.149, Italian, 8x1.44M
-    anchorfile = RESOURCE.001
-    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
-    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
-    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
-    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    imports = v0.000.149-base
+    anchorfile = RESOURCE.000
     file[]: crc = 8cb0fe4d; size =        43; name = INSTALL.BAT ; optional = true
     file[]: crc = 16094b00; size =     32347; name = INSTALL.EXE ; optional = true
     file[]: crc = b822751b; size =     14196; name = INSTALL.HLP ; optional = true
@@ -417,14 +467,12 @@ game[v0.000.149-it-8x1.44m]:
     file[]: crc = 15019915; size =      3660; name = INSTALL.SCR ; optional = true
     file[]: crc = 2f6c7b8e; size =      4490; name = INSTALL.TXT ; optional = true
     file[]: crc = f89f15ac; size =      2642; name = INTERP.TXT
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 6bf0765f; size =        74; name = KQ5.BAT     ; optional = true
     file[]: crc = 0e9eae7a; size =        69; name = KQ52.BAT    ; optional = true
     file[]: crc = 6dbda8f8; size =        86; name = KQ53.BAT    ; optional = true
     file[]: crc = e37adb35; size =        73; name = KQ54.BAT    ; optional = true
     file[]: crc = 135af6db; size =        66; name = KQ55.BAT    ; optional = true
     file[]: crc = b918dc79; size =        83; name = KQ56.BAT    ; optional = true
-    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = 0932d217; size =       847; name = README      ; optional = true
     file[]: crc = 4352c151; size =    332246; name = RESOURCE.000
     file[]: crc = 19ba1914; size =   1136389; name = RESOURCE.001
@@ -436,15 +484,6 @@ game[v0.000.149-it-8x1.44m]:
     file[]: crc = 8f613618; size =   1209325; name = RESOURCE.006
     file[]: crc = 67c731e8; size =        19; name = RESOURCE.CFG; optional = true
     file[]: crc = 268e1e28; size =      8283; name = RESOURCE.MAP
-    file[]: crc = 903e6ab8; size =     64875; name = SIERRA.EXE
-    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
-    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
-    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
-    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
-    file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
-    file[]: crc = 8ec4273a; size =         7; name = VERSION
-    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
-    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
 end
 
 //
@@ -547,44 +586,23 @@ game[v1.000.052-kings-quest-collectors-edition]:
 end
 
 //
-// King's Quest - Collector's Edition, French (v1.000)
+// King's Quest - Collector's Edition, French (v0.000.149)
 //
-game[v1.000.052-fr-kings-quest-collectors-edition]:
-    name = King's Quest - Collector's Edition, French (v1.000)
+game[v0.000.149-fr-kings-quest-collectors-edition]:
+    name = King's Quest - Collector's Edition, French (v0.000.149)
+    imports = v0.000.149-fr-8x1.44m
     anchorfile = RESOURCE.000
-    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
-    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
-    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
-    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 8cb0fe4d; size =        43; name = INSTALL.BAT ; optional = true
     file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = e98edc62; size =     14661; name = INSTALL.HLP ; optional = true
-    file[]: crc = a1de5884; size =       261; name = INSTALL.MSG ; optional = true
     file[]: crc = 1aaff929; size =      2300; name = INSTALL.SCR ; optional = true
     file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT ; optional = true
-    file[]: crc = 9ee0552b; size =      2671; name = INTERP.TXT
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = bf6f79ba; size =       766; name = KQ5A.ICO    ; optional = true
     file[]: crc = 8196db85; size =        92; name = KQ5FRNCH.BAT; optional = true
     file[]: crc = 0e6d09e0; size =       387; name = KQ5INST.BAT ; optional = true
-    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = db7bbd06; size =       803; name = README      ; optional = true
-    file[]: crc = 8ce322f8; size =    332806; name = RESOURCE.000
-    file[]: crc = 7e27a601; size =   1136827; name = RESOURCE.001
-    file[]: crc = 0edf8b17; size =   1343738; name = RESOURCE.002
-    file[]: crc = 67ff8c41; size =   1324811; name = RESOURCE.003
-    file[]: crc = 7db998a0; size =   1332216; name = RESOURCE.004
-    file[]: crc = bd38f77d; size =   1268334; name = RESOURCE.005
-    file[]: crc = 8c33de26; size =   1210081; name = RESOURCE.006
-    file[]: crc = 9b07e724; size =   1338473; name = RESOURCE.007
     file[]: crc = 39ce3732; size =       137; name = RESOURCE.CFG; optional = true
-    file[]: crc = 1131533e; size =      8283; name = RESOURCE.MAP
-    file[]: crc = 903e6ab8; size =     64875; name = SIERRA.EXE
-    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
-    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
-    file[]: crc = 8ec4273a; size =         7; name = VERSION
-    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
-    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+    file[]: crc = cecb955a; size =      3950; remove = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; remove = TANDY3VD.DRV
+    file[]: crc = 2418c236; size =       563; remove = TANDYKBD.DRV
 end
 
 //
