@@ -97,10 +97,49 @@ code = [[[$(CRLF)
 end
 
 //
+// Base files for v1.01
+//
+fragment[v1.01-base]:
+    name = Base Files
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
+    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
+    file[]: crc = 829df8cf; size =      3970; name = AUDMSSYS.DRV
+    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
+    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
+    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
+    file[]: crc = 33b05d68; size =      4823; name = AUDPS1.DRV
+    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = c6c6fb9e; size =      1465; name = IBMPS1.DRV
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 31fbf9c0; size =    350000; name = RESOURCE.001
+    file[]: crc = 46da6004; size =   1454000; name = RESOURCE.002
+    file[]: crc = 835d9135; size =   1454000; name = RESOURCE.003
+    file[]: crc = 4927fa75; size =   1454000; name = RESOURCE.004
+    file[]: crc = 3aefc94f; size =    784486; name = RESOURCE.005
+    file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
+    file[]: crc = 40c462c6; size =      6143; name = RESOURCE.MAP
+    file[]: crc = 13631226; size =     68342; name = SIERRA.EXE
+    file[]: crc = d25afba4; size =        26; name = SQ5.BAT
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = c6c6fb9e; size =      1465; name = TANDY3V.DRV
+    file[]: crc = 7fe3400d; size =         7; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
 // v1.0, Int. 2.5.93, 5x1.44M
 //
 game[v1.0-int-2.5.93-5x1.44m]:
     name = v1.0, Int. 2.5.93, 5x1.44M
+    imports = v1.01-base
     anchorfile = SIERRA.EXE
     anchordepth = 1
     file[]: crc = 69161c49; size =      1782; name = 0.FON
@@ -182,48 +221,16 @@ game[v1.0-int-2.5.93-5x1.44m]:
     file[]: crc = 5b28b2d4; size =      8991; name = 992.V56
     file[]: crc = 3f1f03fe; size =     11138; name = 995.V56
     file[]: crc = 6793fd20; size =      1252; name = 999.FON
-    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
-    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
-    file[]: crc = 829df8cf; size =      3970; name = AUDMSSYS.DRV
-    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
-    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
-    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
-    file[]: crc = 33b05d68; size =      4823; name = AUDPS1.DRV
-    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
-    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
-    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
-    file[]: crc = c6c6fb9e; size =      1465; name = IBMPS1.DRV
     file[]: crc = 0142dc19; size =    142232; name = INSTALL.EXE ; optional = true
     file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
     file[]: crc = 37ca4770; size =      2632; name = INSTALL.SCR ; optional = true
     file[]: crc = 0c7a9d30; size =      8737; name = INSTALL.TXT ; optional = true
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 74e17132; size =    694148; name = LANGUAGE.EXE; optional = true
     file[]: crc = 15bcc3bd; size =       446; name = MESSAGE.MAP
-    file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
-    file[]: crc = a885862d; size =      2542; name = MT32.DRV
-    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
     file[]: crc = b9f693d5; size =      3893; name = README      ; optional = true
-    file[]: crc = 31fbf9c0; size =    350000; name = RESOURCE.001
-    file[]: crc = 46da6004; size =   1454000; name = RESOURCE.002
-    file[]: crc = 835d9135; size =   1454000; name = RESOURCE.003
-    file[]: crc = 4927fa75; size =   1454000; name = RESOURCE.004
-    file[]: crc = 3aefc94f; size =    784486; name = RESOURCE.005
-    file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
     file[]: crc = 537da83b; size =        65; name = RESOURCE.CFG; optional = true
-    file[]: crc = 40c462c6; size =      6143; name = RESOURCE.MAP
     file[]: crc = d1e35249; size =    125988; name = RESOURCE.MSG
-    file[]: crc = 13631226; size =     68342; name = SIERRA.EXE
-    file[]: crc = d25afba4; size =        26; name = SQ5.BAT     ; optional = true
-    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
-    file[]: crc = c6c6fb9e; size =      1465; name = TANDY3V.DRV
-    file[]: crc = 9831adfc; size =    656042; name = UTILITY.EXE ; optional = true
     file[]: crc = 8368d0f5; size =         6; name = VERSION
-    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
-    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
 //
@@ -242,37 +249,15 @@ game[v1.01-int-3.1.93-5x1.44m]:
     file[]: crc = 7fe3400d; size =         7; name = VERSION
 end
 
-//
-// Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
-//
-game[v1.01-int-3.1.93-space-quest-collectors-edition]:
-    name = Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
-    imports = v1.01-int-3.1.93-5x1.44m
-    anchorfile = RESOURCE.000
-    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = 0350d856; size =      2262; name = INSTALL.SCR ; optional = true
-    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
-    file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
-    file[]: crc = b9f693d5; size =      3893; name = README      ; replace = README.; optional = true
-    file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
-    file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
-    file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
-    file[]: crc = 835d9135; size =   1454000; remove = RESOURCE.003
-    file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
-    file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
-    file[]: crc = 296bb385; size =        81; name = RESOURCE.CFG; optional = true
-    file[]: crc = eeab4ca0; size =        83; name = SQ5.BAT     ; optional = true
-    file[]: crc = 395f4572; size =       766; name = SQ5.ICO     ; optional = true
-    file[]: crc = 8a2e3a77; size =       281; name = SQ5INST.BAT ; optional = true
-end
+
 
 //
-// Space Quest - Collector's Edition, French (v1.01, Int. 3.1.93)
+// v1.01, Int. 3.1.93, French, 5x1.44M
 //
-game[v1.01-int-3.1.93-fr-space-quest-collectors-edition]:
-    name = Space Quest - Collector's Edition, French (v1.01, Int. 3.1.93)
-    anchorfile = RESOURCE.000
-    anchordepth = 1
+game[v1.01-int-3.1.93-fr-5x1.44m]:
+    name = v1.01, Int. 3.1.93, French, 5x1.44M
+    imports = v1.01-base
+    anchorfile = 119.HEP
     file[]: crc = 5fe84248; size =      2791; name = 0.FON
     file[]: crc = 322acb1c; size =      2830; name = 10.FON
     file[]: crc = fe6542f2; size =     52368; name = 100.V56
@@ -375,50 +360,20 @@ game[v1.01-int-3.1.93-fr-space-quest-collectors-edition]:
     file[]: crc = 851cbbce; size =     10080; name = 992.V56
     file[]: crc = a99dd340; size =     11506; name = 995.V56
     file[]: crc = dd1a103d; size =      2587; name = 999.FON
-    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
-    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
-    file[]: crc = 829df8cf; size =      3970; name = AUDMSSYS.DRV
-    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
-    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
-    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
-    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
-    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
-    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
-    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = f94d63f1; size =     21170; name = INSTALL.HLP ; optional = true
-    file[]: crc = 1cefda09; size =      2423; name = INSTALL.SCR ; optional = true
-    file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT ; optional = true
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 239042f5; size =       446; name = MESSAGE.MAP
-    file[]: crc = a885862d; size =      2542; name = MT32.DRV
-    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = 7035e6d3; size =      2831; name = README.     ; optional = true
-    file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
-    file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
-    file[]: crc = eb08f3e0; size =        90; name = RESOURCE.CFG; optional = true
-    file[]: crc = 40c462c6; size =      6143; name = RESOURCE.MAP
     file[]: crc = ed57ebc3; size =    140374; name = RESOURCE.MSG
-    file[]: crc = 13631226; size =     68342; name = SIERRA.EXE
-    file[]: crc = c5cfda55; size =        85; name = SQ5.BAT     ; optional = true
-    file[]: crc = 40090983; size =       766; name = SQ5A.ICO    ; optional = true
-    file[]: crc = c5cfda55; size =        85; name = SQ5FREN.BAT ; optional = true
-    file[]: crc = f7cdd06f; size =       285; name = SQ5INST.BAT ; optional = true
-    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
-    file[]: crc = 7fe3400d; size =         7; name = VERSION
-    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
-    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+    file[]: crc = 82cc00f8; size =      3029; name = README      ; optional = true
+
 end
 
 //
-// Space Quest - Collector's Edition, German (v1.01, Int. 3.1.93)
+// v1.01, Int. 3.1.93, German, 5x1.44M
 //
-game[v1.01-int-3.1.93-de-space-quest-collectors-edition]:
-    name = Space Quest - Collector's Edition, German (v1.01, Int. 3.1.93)
-    anchorfile = RESOURCE.000
-    anchordepth = 1
+game[v1.01-int-3.1.93-de-5x1.44m]:
+    name = v1.01, Int. 3.1.93, German, 5x1.44M
+    imports = v1.01-base
+    anchorfile = 240.HEP
     file[]: crc = 5fe84248; size =      2791; name = 0.FON
     file[]: crc = 38a9ecbb; size =      1708; name = 001.FON
     file[]: crc = cd2a8c8b; size =      1563; name = 002.FON
@@ -534,7 +489,6 @@ game[v1.01-int-3.1.93-de-space-quest-collectors-edition]:
     file[]: crc = e9feb287; size =      4486; name = 616.V56
     file[]: crc = 5308c99c; size =     21294; name = 625.V56
     file[]: crc = 9a5a71f4; size =     17604; name = 627.V56
-    file[]: crc = b029f85e; size =       422; name = 65535.MAP
     file[]: crc = 3fd4c20c; size =      9170; name = 667.V56
     file[]: crc = dc2d6c12; size =     38548; name = 674.V56
     file[]: crc = 104f7157; size =     21596; name = 676.V56
@@ -562,43 +516,96 @@ game[v1.01-int-3.1.93-de-space-quest-collectors-edition]:
     file[]: crc = 3adb7c76; size =      9152; name = 992.V56
     file[]: crc = 68fdde49; size =     12849; name = 995.V56
     file[]: crc = dd1a103d; size =      2587; name = 999.FON
-    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
-    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
-    file[]: crc = 829df8cf; size =      3970; name = AUDMSSYS.DRV
-    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
-    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
-    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
-    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
-    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
-    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = 193efcaa; size =      6391; name = INTERP.ERR
+    file[]: crc = b35d10b6; size =       446; name = MESSAGE.MAP
+    file[]: crc = d83d9423; size =    146282; name = RESOURCE.MSG
+    file[]: crc = ad6be7d9; size =      2647; name = OLD1008.FON ; optional = true
+    file[]: crc = 9bd55090; size =      2780; name = OLD1605.FON ; optional = true
+    file[]: crc = fb962052; size =      2559; name = OLD999.FON  ; optional = true
+    file[]: crc = 1d5bd610; size =      4621; name = README      ; optional = true
+end
+
+//
+// Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
+//
+game[v1.01-int-3.1.93-space-quest-collectors-edition]:
+    name = Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
+    imports = v1.01-int-3.1.93-5x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
+    file[]: crc = 0350d856; size =      2262; name = INSTALL.SCR ; optional = true
+    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
+    file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
+    file[]: crc = b9f693d5; size =      3893; name = README      ; replace = README.; optional = true
+    file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
+    file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
+    file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
+    file[]: crc = 835d9135; size =   1454000; remove = RESOURCE.003
+    file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
+    file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
+    file[]: crc = 296bb385; size =        81; name = RESOURCE.CFG; optional = true
+    file[]: crc = eeab4ca0; size =        83; name = SQ5.BAT     ; optional = true
+    file[]: crc = 395f4572; size =       766; name = SQ5.ICO     ; optional = true
+    file[]: crc = 8a2e3a77; size =       281; name = SQ5INST.BAT ; optional = true
+end
+
+//
+// Space Quest - Collector's Edition, French (v1.01, Int. 3.1.93)
+//
+game[v1.01-int-3.1.93-fr-space-quest-collectors-edition]:
+    name = Space Quest - Collector's Edition, French (v1.01, Int. 3.1.93)
+    imports = v1.01-int-3.1.93-fr-5x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = 33b05d68; size =      4823; remove = AUDPS1.DRV
+    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
+    file[]: crc = f94d63f1; size =     21170; name = INSTALL.HLP ; optional = true
+    file[]: crc = 1cefda09; size =      2423; name = INSTALL.SCR ; optional = true
+    file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT ; optional = true
+    file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
+    file[]: crc = 7035e6d3; size =      2831; name = README      ;optional = true
+    file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
+    file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
+    file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
+    file[]: crc = 835d9135; size =   1454000; remove = RESOURCE.003
+    file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
+    file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
+    file[]: crc = eb08f3e0; size =        90; name = RESOURCE.CFG; optional = true
+    file[]: crc = c5cfda55; size =        85; name = SQ5.BAT     ; optional = true
+    file[]: crc = 40090983; size =       766; name = SQ5A.ICO    ; optional = true
+    file[]: crc = c5cfda55; size =        85; name = SQ5FREN.BAT ; optional = true
+    file[]: crc = f7cdd06f; size =       285; name = SQ5INST.BAT ; optional = true
+    file[]: crc = c6c6fb9e; size =      1465; remove = TANDY3V.DRV
+
+end
+
+//
+// Space Quest - Collector's Edition, German (v1.01, Int. 3.1.93)
+//
+game[v1.01-int-3.1.93-de-space-quest-collectors-edition]:
+    name = Space Quest - Collector's Edition, German (v1.01, Int. 3.1.93)
+    imports = v1.01-int-3.1.93-de-5x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = 33b05d68; size =      4823; remove = AUDPS1.DRV
     file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
     file[]: crc = 263a02b3; size =     21770; name = INSTALL.HLP ; optional = true
     file[]: crc = 8596b70c; size =      2562; name = INSTALL.SCR ; optional = true
     file[]: crc = f513db5c; size =     11032; name = INSTALL.TXT ; optional = true
+    file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = b35d10b6; size =       446; name = MESSAGE.MAP
-    file[]: crc = a885862d; size =      2542; name = MT32.DRV
-    file[]: crc = ad6be7d9; size =      2647; name = OLD1008.FON
-    file[]: crc = 9bd55090; size =      2780; name = OLD1605.FON
-    file[]: crc = fb962052; size =      2559; name = OLD999.FON
-    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = faa52f02; size =      4380; name = README.     ; optional = true
+    file[]: crc = faa52f02; size =      4380; name = README      ; optional = true
     file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
+    file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
+    file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
+    file[]: crc = 835d9135; size =   1454000; remove = RESOURCE.003
+    file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
+    file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
     file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
     file[]: crc = e83598ee; size =        89; name = RESOURCE.CFG; optional = true
-    file[]: crc = 40c462c6; size =      6143; name = RESOURCE.MAP
-    file[]: crc = d83d9423; size =    146282; name = RESOURCE.MSG
-    file[]: crc = 13631226; size =     68342; name = SIERRA.EXE
     file[]: crc = c5cfda55; size =        85; name = SQ5.BAT     ; optional = true
     file[]: crc = 0989f7a2; size =       766; name = SQ5B.ICO    ; optional = true
     file[]: crc = 62c36598; size =       284; name = SQ5INST.BAT ; optional = true
-    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
-    file[]: crc = 7fe3400d; size =         7; name = VERSION
-    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
-    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+    file[]: crc = c6c6fb9e; size =      1465; remove = TANDY3V.DRV
+
 end
 
 end
