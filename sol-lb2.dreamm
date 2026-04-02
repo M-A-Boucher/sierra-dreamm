@@ -275,7 +275,7 @@ end
 //
 game[v1.1-cd]:
     name = v1.1, CD
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 4b11d3d4; size =      1408; name = 100.HEP
     file[]: crc = d5f47766; size =      2398; name = 100.SCR
