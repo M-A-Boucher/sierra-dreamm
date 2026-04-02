@@ -290,10 +290,10 @@ game[v1.1-int-4.29.91-6x1.2m]:
 end
 
 //
-// v1.3, Italian, 6x1.2M
+// v1.3, Italian, 6x1.44M
 //
-game[v1.3-it-6x1.2m]:
-    name = v1.3, Italian, 6x1.2M
+game[v1.3-it-6x1.44m]:
+    name = v1.3, Italian, 6x1.44M
     launch = SIERRA.EXE
     anchorfile = RESOURCE.000
     file[]: crc = cc4e621b; size =     16980; name = 0.SCR
