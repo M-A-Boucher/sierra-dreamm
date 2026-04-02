@@ -1,9 +1,9 @@
 //
-// King's Quest 4: Perils of Rosella - AGI
+// King's Quest IV: Perils of Rosella - AGI
 //
 desc[sol-kq4-agi]:
 
-name = King's Quest 4: Perils of Rosella - AGI
+name = King's Quest IV: Perils of Rosella - AGI
 icon = sol-kq4.png
 machine = pc
 osenv = dos

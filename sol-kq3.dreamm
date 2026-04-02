@@ -1,9 +1,9 @@
 //
-// King's Quest 3: To Heir is Human
+// King's Quest III: To Heir is Human
 //
 desc[sol-kq3]:
 
-name = King's Quest 3: To Heir is Human
+name = King's Quest III: To Heir is Human
 icon = sol-kq3.png
 machine = pc
 osenv = dos

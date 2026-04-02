@@ -1,9 +1,9 @@
 //
-// King's Quest 4: The Perils of Rosella - SCI
+// King's Quest IV: The Perils of Rosella - SCI
 //
 desc[sol-kq4-sci]:
 
-name = King's Quest 4: The Perils of Rosella - SCI
+name = King's Quest IV: The Perils of Rosella - SCI
 machine = pc
 osenv = dos
 rootpath = C:\
