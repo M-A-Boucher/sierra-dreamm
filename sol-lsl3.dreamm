@@ -8,7 +8,7 @@ icon = sol-lsl3.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 nothrottle = 4
 ramkb = 1024
@@ -31,6 +31,12 @@ config[graphics]:
         videohw = hercules
         VIDEO_DRIVER = HERCMONO.DRV
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
+    end
+    option[cgamono]:  
+        name = CGA (2 colours)
+        videohw = cga
+        VIDEO_DRIVER = CGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
     end
     option[cgamono]:  
         name = CGA (2 colours)
@@ -113,7 +119,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.003-int-0.000.572-4x720k]:
     name = v1.003, Int. 0.000.572, 4x720K
     anchorfile = RESOURCE.001
-    file[]: crc = d36c4f12; size =      1089; name = __INSTH.BAT ; optional = true
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
     file[]: crc = 053f0464; size =      2017; name = CGA320BW.DRV
     file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
@@ -145,8 +150,8 @@ game[v1.003-int-0.000.572-4x720k]:
     file[]: crc = aa0659eb; size =    513337; name = RESOURCE.004
     file[]: crc = b7ab134b; size =      5916; name = RESOURCE.MAP
     file[]: crc = ce7efb20; size =     75203; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
     file[]: crc = afd4ea9a; size =      3438; name = TANDY.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
@@ -160,7 +165,6 @@ game[v1.003-int-0.000.572-8x360k]:
     name = v1.003, Int. 0.000.572, 8x360K
     imports = v1.003-int-0.000.572-4x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 0f370595; size =      1781; name = __INSTH.BAT ; optional = true
     file[]: crc = b6cd67a1; size =    141381; name = RESOURCE.001
     file[]: crc = ef612011; size =    345171; name = RESOURCE.002
     file[]: crc = eb85696c; size =    329214; name = RESOURCE.003
@@ -209,35 +213,121 @@ game[v1.021-int-5.15.90-8x360k]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021-int-5.15.90)
+// v1.050, Int. 1.15.91, French, 4x720K
+//
+game[v1.050-int-1.15.91-fr-4x720k]:
+    name = v1.050, Int. 1.15.91, French, 4x720K
+    anchorfile = RESOURCE.001
+    file[]: crc = 4820653b; size =     10189; name = ADL.DRV
+    file[]: crc = f6c9988b; size =      2057; name = CGA320M.DRV
+    file[]: crc = 02f91723; size =      5825; name = CMS.DRV
+    file[]: crc = 9fba1ff2; size =      2818; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = dc2d854b; size =      1978; name = EXPLORER.DRV; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 2b2452fe; size =      2212; name = HERCMONO.DRV
+    file[]: crc = 1f125b48; size =       449; name = IBMKBD.DRV
+    file[]: crc = b8468763; size =      3675; name = IBMPS1.DRV
+    file[]: crc = 3255d4b7; size =     13127; name = INSTALL.EXE ; optional = true
+    file[]: crc = 3d2680ad; size =      6956; name = INSTALL.HLP ; optional = true
+    file[]: crc = 5ccb6ebc; size =       835; name = INSTGAME.BAT; optional = true
+    file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
+    file[]: crc = 5802f068; size =      3012; name = JR.DRV
+    file[]: crc = 86b6ccbc; size =        24; name = LARRY3.DVR  ; optional = true
+    file[]: crc = 90beb9cc; size =        34; name = LSL3.BAT    ; optional = true
+    file[]: crc = 7e18ff84; size =      2767; name = MCGA320.DRV
+    file[]: crc = d55135df; size =      3176; name = MT32.DRV
+    file[]: crc = cb8c1976; size =    457402; name = RESOURCE.001
+    file[]: crc = 83e5ad64; size =    671614; name = RESOURCE.002
+    file[]: crc = 4c37ec37; size =    586921; name = RESOURCE.003
+    file[]: crc = f0080d69; size =    690826; name = RESOURCE.004
+    file[]: crc = 0bd00578; size =       100; name = RESOURCE.CFG; optional = true
+    file[]: crc = 50a8326d; size =         8; name = RESOURCE.LL3; optional = true
+    file[]: crc = 82986930; size =      6480; name = RESOURCE.MAP
+    file[]: crc = ac75f9a9; size =     57554; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
+    file[]: crc = 6d9d9936; size =     11483; name = SNDBLAST.DRV
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 36dba36b; size =      2470; name = STD.DRV
+    file[]: crc = becab8f7; size =      3452; name = TANDY.DRV
+    file[]: crc = 5eeb21fc; size =      2800; name = TANDY320.DRV
+    file[]: crc = 7b4bedd3; size =       491; name = TANDYKBD.DRV
+    file[]: crc = b91ad708; size =         7; name = VERSION
+end
+
+//
+// v1.056, Int. 1.16.91, German, 4x720K
+//
+game[v1.050-int-1.16.91-de-4x720k]:
+    name = v1.050, Int. 1.16.91, German, 4x720K
+    anchorfile = RESOURCE.001
+    file[]: crc = 251bc6a9; size =     10182; name = ADL.DRV
+    file[]: crc = 020754a3; size =      2049; name = CGA320M.DRV
+    file[]: crc = 02f91723; size =      5825; name = CMS.DRV
+    file[]: crc = 64b24400; size =      2814; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 6b532402; size =      1974; name = EXPLORER.DRV; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 2b2452fe; size =      2212; name = HERCMONO.DRV
+    file[]: crc = c71d1f55; size =       450; name = IBMKBD.DRV
+    file[]: crc = 6a0fb8f6; size =      3699; name = IBMPS1.DRV
+    file[]: crc = 31efee6f; size =     13191; name = INSTALL.EXE ; optional = true
+    file[]: crc = b72d49d6; size =      7023; name = INSTALL.HLP ; optional = true
+    file[]: crc = 1f4b740e; size =       832; name = INSTGAME.BAT; optional = true
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = b9c0705c; size =      3014; name = JR.DRV
+    file[]: crc = 90beb9cc; size =        34; name = LSL3.BAT    ; optional = true
+    file[]: crc = 83750b7b; size =      2761; name = MCGA320.DRV
+    file[]: crc = 734ac2e9; size =      3178; name = MT32.DRV
+    file[]: crc = 4e8d773f; size =      3544; name = PIC.455
+    file[]: crc = 5fd67875; size =    460488; name = RESOURCE.001
+    file[]: crc = 1086f32b; size =    672403; name = RESOURCE.002
+    file[]: crc = 39194243; size =    587036; name = RESOURCE.003
+    file[]: crc = d3a4bd3f; size =    691932; name = RESOURCE.004
+    file[]: crc = faababeb; size =      6480; name = RESOURCE.MAP
+    file[]: crc = 66a72410; size =     57618; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
+    file[]: crc = 5fc4227a; size =     11483; name = SNDBLAST.DRV
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 500f96bb; size =      2473; name = STD.DRV
+    file[]: crc = fb4b92ee; size =      3453; name = TANDY.DRV
+    file[]: crc = 9452a841; size =      2796; name = TANDY320.DRV
+    file[]: crc = 7b4bedd3; size =       491; name = TANDYKBD.DRV
+    file[]: crc = bd97abba; size =         7; name = VERSION
+end
+
+//
+// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021, Int. 5.15.90)
 //
 game[v1.021-int-5.15.90-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021-int-5.15.90)
+    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021, Int. 5.15.90)
     anchorfile = RESOURCE.CFG
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
+    file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
+    file[]: crc = 9e4650ff; size =      2376; remove = CGA320C.DRV
     file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
+    file[]: crc = 78248208; size =      2539; remove = CSM1.DRV
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
+    file[]: crc = 85ce1ec4; size =      2459; remove = FB01.DRV
+    file[]: crc = 909742d2; size =      2193; remove = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
     file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
     file[]: crc = cf6f7b20; size =     17556; name = INSTALL.HLP ; optional = true
     file[]: crc = 6867af31; size =       954; name = INSTALL.SCR ; optional = true
     file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
-    file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
     file[]: crc = 8ee6577f; size =       766; name = LSL3.ICO    ; optional = true
     file[]: crc = 601c1929; size =       184; name = LSL3.QA     ; optional = true
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
     file[]: crc = 98079388; size =      3099; name = MT32.DRV
+    file[]: crc = c5769c5c; size =      2534; remove = MT540.DRV
+    file[]: crc = a2e978ac; size =      1660; remove = PCJR320.DRV
     file[]: crc = 7738166a; size =      1102; name = README.COM  ; optional = true
     file[]: crc = f197f636; size =       349; name = README.TXT  ; optional = true
-    file[]: crc = 7fa5e23e; size =    456722; name = RESOURCE.001
-    file[]: crc = 66159dec; size =    578024; name = RESOURCE.002
-    file[]: crc = d16711c3; size =    506807; name = RESOURCE.003
-    file[]: crc = 92023f79; size =    513651; name = RESOURCE.004
     file[]: crc = eb226689; size =        66; name = RESOURCE.CFG; optional = true
-    file[]: crc = 595c3f83; size =      5916; name = RESOURCE.MAP
-    file[]: crc = ce7efb20; size =     75203; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
     file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
+    file[]: crc = afd4ea9a; size =      3438; remove = TANDY.DRV
+    file[]: crc = ebb96398; size =      1667; remove = TANDY320.DRV
+    file[]: crc = 700299a0; size =       473; remove = TANDYKBD.DRV
 end
 
 end
