@@ -499,4 +499,59 @@ game[v1.000.052-kings-quest-collectors-edition]:
     file[]: crc = 1233be6b; size =    140288; name = SCIKQ5.EXE
 end
 
+//
+// King's Quest - Collector's Edition, French (v1.000)
+//
+game[v1.000.052-fr-kings-quest-collectors-edition]:
+    name = King's Quest - Collector's Edition, French (v1.000)
+    anchorfile = RESOURCE.000
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 8cb0fe4d; size =        43; name = INSTALL.BAT ; optional = true
+    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
+    file[]: crc = e98edc62; size =     14661; name = INSTALL.HLP ; optional = true
+    file[]: crc = a1de5884; size =       261; name = INSTALL.MSG ; optional = true
+    file[]: crc = 1aaff929; size =      2300; name = INSTALL.SCR ; optional = true
+    file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT ; optional = true
+    file[]: crc = 9ee0552b; size =      2671; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = bf6f79ba; size =       766; name = KQ5A.ICO    ; optional = true
+    file[]: crc = 8196db85; size =        92; name = KQ5FRNCH.BAT; optional = true
+    file[]: crc = 0e6d09e0; size =       387; name = KQ5INST.BAT ; optional = true
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = db7bbd06; size =       803; name = README      ; optional = true
+    file[]: crc = 8ce322f8; size =    332806; name = RESOURCE.000
+    file[]: crc = 7e27a601; size =   1136827; name = RESOURCE.001
+    file[]: crc = 0edf8b17; size =   1343738; name = RESOURCE.002
+    file[]: crc = 67ff8c41; size =   1324811; name = RESOURCE.003
+    file[]: crc = 7db998a0; size =   1332216; name = RESOURCE.004
+    file[]: crc = bd38f77d; size =   1268334; name = RESOURCE.005
+    file[]: crc = 8c33de26; size =   1210081; name = RESOURCE.006
+    file[]: crc = 9b07e724; size =   1338473; name = RESOURCE.007
+    file[]: crc = 39ce3732; size =       137; name = RESOURCE.CFG; optional = true
+    file[]: crc = 1131533e; size =      8283; name = RESOURCE.MAP
+    file[]: crc = 903e6ab8; size =     64875; name = SIERRA.EXE
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// King's Quest - Collection Series (v1.000.052)
+//
+game[v1.000.052-kings-quest-collection-series]:
+    name = King's Quest - Collection Series (v1.000.052)
+    imports = v1.000.052-kings-quest-collectors-edition
+    anchorfile = SCIKQ5.EXE
+    file[]: crc = f8dfbefb; size =        54; remove = 119.TEX
+    file[]: crc = 580b41fd; size =      2284; remove = AUDDISNY.DRV
+    file[]: crc = 1205bb52; size =  97103872; remove = AUDIO001.002
+    file[]: crc = 5bc860b4; size =       159; name = KQ5.BAT     ; optional = true
+    file[]: crc = 9bf8c9f7; size =       766; name = KQ5.ICO     ; optional = true
+end
+
 end
