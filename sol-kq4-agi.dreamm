@@ -4,7 +4,7 @@
 desc[sol-kq4-agi]:
 
 name = King's Quest IV: Perils of Rosella - AGI
-icon = sol-kq4.png
+icon = sol-kq4-agi.png
 machine = pc
 osenv = dos
 rootpath = C:\

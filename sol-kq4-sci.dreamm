@@ -4,6 +4,7 @@
 desc[sol-kq4-sci]:
 
 name = King's Quest IV: The Perils of Rosella - SCI
+icon = sol-kq4-sci.png
 machine = pc
 osenv = dos
 rootpath = C:\
