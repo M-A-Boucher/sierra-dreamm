@@ -262,6 +262,57 @@ game[v1.0-int-9.24.91-8x720k]:
 end
 
 //
+// v1.0, Int. 11.14.91, German, 8x1.44M
+//
+game[v1.0-int-11.14.91-8x1.44m]:
+    name = v1.0, Int. 11.14.91, German, 8x1.44M
+    anchorfile = RESOURCE.000
+    file[]: crc = 63fd77b8; size =      2062; name = 961.V56
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 13c3dd0d; size =       284; name = INSTALL.BAT
+    file[]: crc = d52d6681; size =     43515; name = INSTALL.EXE
+    file[]: crc = 90afb9ca; size =     15235; name = INSTALL.HLP
+    file[]: crc = 9da4e0e1; size =      3381; name = INSTALL.SCR
+    file[]: crc = 60cbbf37; size =      5193; name = INSTALL.TXT
+    file[]: crc = 02d83fa2; size =      2597; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = ddfd48ea; size =        32; name = LSL5.BAT
+    file[]: crc = beb1a067; size =        29; name = LSL5H.BAT
+    file[]: crc = 5c6cf07a; size =        33; name = LSL5RS.BAT
+    file[]: crc = 8445d7c9; size =      2747; name = MCGA320.DRV
+    file[]: crc = ef6f4334; size =         9; name = MEMORY.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV
+    file[]: crc = aeb54a86; size =      5526; name = MTPRO.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = bd6604b4; size =      1654; name = README
+    file[]: crc = 498cae2f; size =    759095; name = RESOURCE.000
+    file[]: crc = f3557a82; size =    918742; name = RESOURCE.001
+    file[]: crc = ba411d2f; size =    947382; name = RESOURCE.002
+    file[]: crc = 89a36eb7; size =   1006884; name = RESOURCE.003
+    file[]: crc = b3573da1; size =   1023776; name = RESOURCE.004
+    file[]: crc = 9d47e247; size =    959342; name = RESOURCE.005
+    file[]: crc = 5a7de4ee; size =   1021774; name = RESOURCE.006
+    file[]: crc = ed0be573; size =    993408; name = RESOURCE.007
+    file[]: crc = 5ee37e71; size =        80; name = RESOURCE.CFG
+    file[]: crc = dede3dc9; size =      6867; name = RESOURCE.MAP
+    file[]: crc = 3d7e6a02; size =     64891; name = SCIDHUV.EXE
+    file[]: crc = 6a511e72; size =        24; name = SIERRA.BAT
+    file[]: crc = 20ad7f60; size =        21; name = SIERRAH.BAT
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
+    file[]: crc = 629f4402; size =        47; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
 // Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 9.11.91)
 //
 game[v1.0-int-9.11.91-leisure-suit-larry-collectors-series]:
