@@ -8,12 +8,11 @@ icon = sol-kq4-sci.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 nothrottle = 2
 ramkb = 1024
 filter = sierra, adventure
-EXE_NAME = SCIV.EXE
 TANDY = 0
 
 //
@@ -115,7 +114,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 game[v1.000.106-int-0.000.247-4x720k]:
     name = v1.000.106, Int. 0.000.247, 4x720K, Detailed Background Graphics
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     anchorfile = RESOURCE.001
     file[]: crc = 8cfbf2db; size =      5727; name = ADL.DRV
     file[]: crc = 54834c4f; size =      2404; name = CGA320BW.DRV
@@ -150,7 +149,7 @@ end
 //
 game[v1.000.106-int-0.000.247-9x360k]:
     name = v1.000.106, Int. 0.000.247, 9x360K, Detailed Background Graphics
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     imports = v1.000.106-int-0.000.247-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = be584aa0; size =       808; name = INSTGAME.BAT; optional = true
@@ -171,7 +170,7 @@ end
 //
 game[v1.000.111-int-0.000.247-4x720k]:
     name = v1.000.111, Int. 0.000.247, 4x720K
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     imports = v1.000.106-int-0.000.247-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = b45b09c1; size =       934; name = __INSTH.BAT ; optional = true
@@ -194,7 +193,7 @@ end
 //
 game[v1.000.111-int-0.000.247-9x360k]:
     name = v1.000.111, Int. 0.000.247, 9x360K, Detailed Background Graphics
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     imports = v1.000.106-int-0.000.247-9x360k
     anchorfile = RESOURCE.001
     file[]: crc = fb8c59dd; size =      1794; name = __INSTH.BAT ; optional = true

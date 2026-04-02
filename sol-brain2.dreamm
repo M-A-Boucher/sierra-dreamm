@@ -8,12 +8,11 @@ icon = sol-brain2.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 2
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SIERRA.EXE
 
 //
 // graphics configuration

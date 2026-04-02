@@ -8,11 +8,10 @@ icon = sol-bc.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SIERRA.COM
 mips = $(MIPS_286_10)
 ramkb = 1024
 filter = sierra, adventure
-EXE_NAME = SIERRA.COM
 
 //
 // graphics configuration
@@ -127,7 +126,7 @@ end
 //
 game[v2.10-int-3.002.098-2x360k-cr]:
     name = v2.10, Int. 3.002.098, 2x360K, Copy Protection Removed
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     anchorfile = VOL.0
     file[]: crc = 76174b5b; size =        41; name = _BC.BAT     ; optional = true
     file[]: crc = 5e8aaf69; size =       772; name = _INSTALL.BAT; optional = true
@@ -161,7 +160,7 @@ end
 //
 game[v2.10-int-3.002.098-1x720k-cr]:
     name = v2.10, Int. 3.002.098, 1x720K, Copy Protection Removed
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     anchorfile = VOL.0
     file[]: crc = 76174b5b; size =        41; name = _BC.BAT.    ; optional = true
     file[]: crc = 271ed2e5; size =       534; name = _INSTALL.BAT; optional = true

@@ -8,13 +8,12 @@ icon = sol-sq4.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 4
 ramkb = 4096
 videohw = vga;
 filter = sierra, adventure
-EXE_NAME = SCIDHUV.EXE
 TANDY = 0
 SPEECH = 
 
@@ -195,7 +194,7 @@ end
 //
 game[v1.060-int-3.13.91-3x1.2m]:
     name = v1.060, Int. 3.13.91, 3x1.2M, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 865c9892; size =      8069; name = 377.V16
     file[]: crc = 85e306b8; size =      8040; name = ADL.DRV
@@ -240,7 +239,7 @@ end
 //
 game[v1.060-int-3.13.91-6x720k]:
     name = v1.060, Int. 3.13.91, 6x720K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     imports = v1.060-int-3.13.91-3x1.2m
     anchorfile = RESOURCE.000
     file[]: crc = a0d3f8b5; size =      3428; name = INSTALL.SCR ; optional = true
@@ -344,7 +343,7 @@ end
 //
 game[v1.0-cd]:
     name = v1.0, CD
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     SPEECH = AUDBLAST.DRV
     anchorfile = RESOURCE.000
     file[]: crc = bc2487b9; size =      2846; name = 335.HEP
@@ -414,7 +413,7 @@ end
 game[v1.0-cd-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v1.0 CD)
     imports = v1.0-cd
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     SPEECH = AUDBLAST.DRV
     anchorfile = AUDBLAST.DRV
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV

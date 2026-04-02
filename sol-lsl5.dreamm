@@ -8,11 +8,10 @@ icon = sol-lsl5.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SCIDHUV.EXE
 TANDY = 0
 
 //
@@ -184,7 +183,7 @@ end
 //
 game[v1.0-int-9.24.91-4x1.2m]:
     name = v1.0, Int. 9.24.91, 4x1.2M, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 8c3bc6ff; size =      8844; name = 160.SCR
     file[]: crc = bbbc8455; size =      4768; name = 160.TEX
@@ -247,7 +246,7 @@ end
 //
 game[v1.0-int-9.24.91-8x720k]:
     name = v1.0, Int. 9.24.91, 8x720K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     imports = v1.0-int-9.24.91-4x1.2m
     anchorfile = RESOURCE.000
     file[]: crc = d3554498; size =      3027; name = INSTALL.SCR ; optional = true

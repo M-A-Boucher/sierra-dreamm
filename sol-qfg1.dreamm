@@ -8,12 +8,11 @@ icon = sol-qfg1.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 3
 ramkb = 8096
 filter = sierra, adventure
-EXE_NAME = SIERRA.COM
 TANDY = 0
 
 //
@@ -146,6 +145,7 @@ end
 //
 game[v1.000-int-0.000.566-4x720k]:
     name = v1.000, Int. 0.000.566, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    launch = SCIV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = a748e00d; size =        26; name = __HDHERO.BAT ; optional = true
     file[]: crc = 65c9d2d3; size =      1009; name = __INSTH.BAT  ; optional = true
@@ -178,7 +178,7 @@ game[v1.000-int-0.000.566-4x720k]:
     file[]: crc = 3979504a; size =    641688; name = RESOURCE.004
     file[]: crc = ac9409e1; size =      6474; name = RESOURCE.MAP
     file[]: crc = 7c8237aa; size =     75027; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
@@ -190,6 +190,7 @@ end
 //
 game[v1.001-int-0.000.566-4x720k]:
     name = v1.001, Int. 0.000.566, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    launch = SCIV.EXE
     imports = v1.000-int-0.000.566-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = 7e59ae17; size =    462729; name = RESOURCE.001
@@ -202,6 +203,7 @@ end
 //
 game[v1.001-int-0.000.566-10x360k]:
     name = v1.001, Int. 0.000.566, 10x360K, aka Hero's Quest I - So You Want To Be A Hero
+    launch = SCIV.EXE
     imports = v1.001-int-0.000.566-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = 1f45621b; size =      2046; name = __INSTH.BAT ; optional = true
@@ -223,6 +225,7 @@ end
 //
 game[v1.002-int-0.000.629-4x720k]:
     name = v1.001, Int. 0.000.629, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    launch = SCIV.EXE
     imports = v1.000-int-0.000.566-4x720k
     anchorfile = RESOURCE.000
     file[]: crc = bc3f487e; size =      8997; name = ADL.DRV
@@ -247,6 +250,7 @@ end
 //
 game[v1.002-int-0.000.629-10x360k]:
     name = v1.002, Int. 0.000.629, 10x360K, aka Hero's Quest I - So You Want To Be A Hero
+    launch = SCIV.EXE
     imports = v1.002-int-0.000.629-4x720k
     anchorfile = RESOURCE.001
     file[]: crc = 1f45621b; size =      2046; name = __INSTH.BAT ; optional = true
@@ -269,6 +273,7 @@ end
 //
 game[v1.200-int-9.10.90-4x720k]:
     name = v1.200, Int. 9.10.90, 4x720K
+    launch = SCIV.EXE
     imports = v1.002-int-0.000.629-4x720k
     anchorfile = RESOURCE.000
     file[]: crc = 2a60566b; size =      1013; name = __INSTH.BAT ; optional = true
@@ -295,7 +300,6 @@ end
 //
 game[v2.0-int-6.25.92-5x1.44m]:
     name = v2.0, Int. 6.25.92, 5x1.44M
-    EXE_NAME = SCIDHUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = d37d0f00; size =      2994; name = 141.HEP
     file[]: crc = 07e56667; size =      4046; name = 141.SCR
@@ -379,7 +383,6 @@ end
 //
 game[v2.0-int-6.25.92-quest-for-glory-collection-series]:
     name = Quest for Glory: Collection Series (v2.0-int-6.25.92)
-    EXE_NAME = SCIDHUV.EXE
     imports = v2.0-int-6.25.92-5x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = fa7a09c1; size =       322; name = 120.HEP
@@ -426,7 +429,6 @@ end
 //
 game[v2.0-int-6.25.92-gog]:
     name = GOG (v2.0-int-6.25.92)
-    EXE_NAME = SCIDHUV.EXE
     imports = v2.0-int-6.25.92-quest-for-glory-collection-series
     anchorfile = 96.SCR
     file[]: crc = 5539387d; size =      3307; name = AUDBLAST.DRV

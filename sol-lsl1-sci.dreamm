@@ -8,11 +8,10 @@ icon = sol-lsl1-sci.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SCIDHUV.EXE
 TANDY = 0
 
 //
@@ -184,7 +183,7 @@ end
 //
 game[v2.0-int-7.9.91-4x720k]:
     name = v2.0, Int. 7.9.91, 4x720K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV

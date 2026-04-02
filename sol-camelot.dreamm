@@ -8,7 +8,7 @@ icon = sol-camelot.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 ramkb = 1024
 filter = sierra, adventure
@@ -138,7 +138,7 @@ game[v1.001-int-0.000.685-4x720k]:
     file[]: crc = 4dbb7572; size =    729143; name = RESOURCE.004
     file[]: crc = 7c76c2fc; size =      7278; name = RESOURCE.MAP
     file[]: crc = fd6dee90; size =     44443; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 05dbf64a; size =      2466; name = STD.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
@@ -153,7 +153,6 @@ game[v1.001-int-0.000.685-10-360k]:
     name = v1.001, Int. 0.000.685, 10x360K
     imports = v1.001-int-0.000.685-4x720k
     anchorfile = RESOURCE.001
-    file[]: crc = eb5d9c63; size =      2087; name = __INSTH.BAT ; optional = true
     file[]: crc = e7fdd081; size =      1601; name = README.TXT  ; optional = true
     file[]: crc = 59cadbee; size =    212461; name = RESOURCE.001
     file[]: crc = 929de5b4; size =    317865; name = RESOURCE.002

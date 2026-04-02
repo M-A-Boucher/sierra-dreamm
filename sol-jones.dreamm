@@ -8,12 +8,11 @@ icon = sol-jones.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIV256.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 4
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SCIV256.EXE
 TANDY = 0
 
 //
@@ -150,7 +149,7 @@ end
 //
 game[v1.000.060-int-10.19.90-1x720k]:
     name = v1.000.060, Int. 10.19.90, 1x720K, 16 Color
-    EXE_NAME = SCIV.EXE
+    launch = SCIV.EXE
     imports = v1.000.060-int-10.19.90-1x1.2m
     anchorfile = RESOURCE.001
     file[]: crc = 45e4742a; size =       453; name = __INSTH.BAT ; optional = true
@@ -174,7 +173,7 @@ end
 //
 game[v1.000.060-int-10.19.90-2x360k]:
     name = v1.000.060, Int. 10.19.90, 2x360K, 16 Color
-    EXE_NAME = SCIV.EXE
+    launch = SCIV.EXE
     imports = v1.000.060-int-10.19.90-1x720k
     anchorfile = RESOURCE.001
     file[]: crc = a4aec6e0; size =       625; name = __INSTH.BAT ; optional = true

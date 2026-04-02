@@ -8,11 +8,10 @@ icon = sol-longbow.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SCIDHUV.EXE
 TANDY = 0
 
 //
@@ -225,7 +224,7 @@ end
 //
 game[v1.0-int-12.9.91-4x1.2m]:
     name = v1.0, Int. 12.9.91, 4x1.2M, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 9c8a5136; size =     12408; name = 180.SCR
     file[]: crc = 0892f836; size =      6850; name = 185.SCR
@@ -274,7 +273,7 @@ end
 //
 game[v1.0-int-12.9.91-7x720k]:
     name = v1.0, Int. 12.9.91, 7x720K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     imports = v1.0-int-12.9.91-4x1.2m
     anchorfile = RESOURCE.000
     file[]: crc = 4f0bfb51; size =      1871; name = INSTALL.SCR ; optional = true

@@ -8,11 +8,10 @@ icon = sol-goldrush.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SIERRA.COM
 mips = $(MIPS_286_10)
 ramkb = 1024
 filter = sierra, adventure
-EXE_NAME = SIERRA.COM
 
 //
 // graphics configuration
@@ -101,7 +100,7 @@ end
 //
 game[v3.0-int-3.002.149-2x1.44m]:
     name = v3.0, Int. 3.002.149, 2x1.44M, The Software Farm, Inc (1998)
-    EXE_NAME = GR.COM
+    launch = GR.COM
     imports = v2.01-int-3.002.149-2x720k
     anchorfile = GRVOL.0
     file[]: crc = cf4020ce; size =        42; name = _GR.BAT     ; optional = true

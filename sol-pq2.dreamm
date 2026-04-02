@@ -8,12 +8,11 @@ icon = sol-pq2.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 nothrottle = 3
 ramkb = 1024
 filter = sierra, adventure
-EXE_NAME = SCIV.EXE
 TANDY = 0
 
 //
@@ -114,7 +113,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 game[v1.001.000-int-0.000.397-3x720k]:
     name = v1.001.000, Int. 0.000.397, 3x720K
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     anchorfile = RESOURCE.001
     file[]: crc = 02b02d33; size =       788; name = __INSTH.BAT ; optional = true
     file[]: crc = ae656423; size =      5857; name = ADL.DRV
@@ -150,7 +149,7 @@ end
 //
 game[v1.001.000-int-0.000.397-6x360k]:
     name = v1.001.000, Int. 0.000.397, 6x360K
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     imports = v1.001.000-int-0.000.397-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = 67028ff2; size =      1305; name = __INSTH.BAT ; optional = true
@@ -169,7 +168,6 @@ end
 //
 game[v1.001.006-int-0.000.409-3x720k]:
     name = v1.001.006, Int. 0.000.409, 3x720K
-    EXE_NAME = SCIV.EXE
     imports = v1.001.000-int-0.000.397-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = ceabd678; size =       811; name = __INSTH.BAT ; optional = true
@@ -195,7 +193,6 @@ end
 //
 game[v1.001.006-int-0.000.409-6x360k]:
     name = v1.001.006, Int. 0.000.409, 6x360K
-    EXE_NAME = SCIV.EXE
     imports = v1.001.006-int-0.000.409-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = c34200da; size =      1328; name = __INSTH.BAT ; optional = true

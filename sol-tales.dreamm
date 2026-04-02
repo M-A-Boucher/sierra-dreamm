@@ -8,11 +8,10 @@ icon = sol-tales.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_386DX_33)
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SCIDHUV.EXE
 TANDY = 0
 
 //
@@ -152,7 +151,7 @@ end
 //
 game[v1.0-int-11.23.91-4x720k]:
     name = v1.0, Int. 11.23.91, 4x720K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 5704cdfc; size =     15460; name = 230.SCR
     file[]: crc = ef583030; size =     10304; name = 230.TEX

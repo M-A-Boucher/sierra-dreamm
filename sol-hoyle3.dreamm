@@ -8,12 +8,11 @@ icon = sol-hoyle3.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 3
 ramkb = 4096
 filter = sierra, adventure
-EXE_NAME = SCIDHUV.EXE
 TANDY = 0
 
 //
@@ -121,7 +120,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 game[v1.0-int-11.2.91-2x720k]:
     name = v1.0, Int. 11.2.91, 2x720K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = c5831cb6; size =     17412; name = 600.SCR
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
@@ -164,7 +163,7 @@ end
 //
 game[v1.0-int-11.2.91-4x360k]:
     name = v1.0, Int. 11.2.91, 4x360K, 16 Color
-    EXE_NAME = SCIDUV.EXE
+    launch = SCIDUV.EXE
     imports = v1.0-int-11.2.91-2x720k
     anchorfile = RESOURCE.000
     file[]: crc = b1af1c1d; size =      2186; name = INSTALL.SCR ; optional = true

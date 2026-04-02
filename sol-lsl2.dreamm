@@ -8,11 +8,10 @@ icon = sol-lsl2.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\$(EXE_NAME)
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 ramkb = 1024
 filter = sierra, adventure
-EXE_NAME = SIERRA.COM
 TANDY = 0
 
 //
@@ -106,7 +105,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 game[v1.000.011-int-0.000.343-3x720k]:
     name = v1.000.011, Int. 0.000.343, 3x720K
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     anchorfile = RESOURCE.001
     file[]: crc = 0b7d719d; size =       788; name = __INSTH.BAT ; optional = true
     file[]: crc = 2604f137; size =      5684; name = ADL.DRV
@@ -141,7 +140,7 @@ end
 //
 game[v1.000.011-int-0.000.343-6x360k]:
     name = v1.000.011, Int. 0.000.343, 6x360K
-    EXE_NAME = SIERRA.EXE
+    launch = SIERRA.EXE
     imports = v1.000.011-int-0.000.343-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = fc61d381; size =      1307; name = __INSTH.BAT ; optional = true
@@ -159,7 +158,6 @@ end
 //
 game[v1.002.000-int-0.000.409-3x720k]:
     name = v1.002.000, Int. 0.000.409, 3x720K
-    EXE_NAME = SCIV.EXE
     imports = v1.000.011-int-0.000.343-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = 99f4395e; size =       814; name = __INSTH.BAT ; optional = true
@@ -189,7 +187,6 @@ end
 //
 game[v1.002.000-int-0.000.409-6x360k]:
     name = v1.002.000, Int. 0.000.409, 6x360K
-    EXE_NAME = SCIV.EXE
     imports = v1.002.000-int-0.000.409-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = 3f59ab83; size =      1333; name = __INSTH.BAT ; optional = true
@@ -207,7 +204,6 @@ end
 //
 game[v1.002.000-int-0.000.409-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.002.000, Int. 0.000.409)
-    EXE_NAME = SIERRA.COM
     anchorfile = RESOURCE.001
     file[]: crc = ae656423; size =      5857; name = ADL.DRV
     file[]: crc = f6658b70; size =      1952; name = EGA320.DRV
@@ -228,7 +224,7 @@ game[v1.002.000-int-0.000.409-leisure-suit-larry-collectors-series]:
     file[]: crc = 9088001c; size =        68; name = RESOURCE.CFG
     file[]: crc = b32f24ab; size =      5628; name = RESOURCE.MAP
     file[]: crc = a72ed4bc; size =     73697; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 68bab91d; size =      1325; name = STD.DRV
 end
 
