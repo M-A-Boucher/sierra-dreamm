@@ -8,7 +8,7 @@ icon = sol-pqswat.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRAH.EXE RESOURCE.CFG
+launch = $(rootpath)\SIERRAH.EXE
 mips = $(MIPS_P100)
 ramkb = 16384
 videohw = svga
@@ -22,22 +22,30 @@ dynamicfile[]:
         soundDrv  = MIDNONE.DRV
         audioDrv  = DACBLAST.DRV
         joyDrv    = NO
-        CD        = NO
         mouseDrv  = NONE
         memoryDrv = NONE
-        minMemory = 3200k
-        maxMemory = 12m
-        audioSize = 112k
-        brightness= 0
-        directory = .
+        CD        = NO
+        minCPU    = 486
+        minDOS    = 500
+        mode      = protected
+        CPU       = 486
+        CPUSpeed  = 63
+        VideoSpeed= 400
+        CDROM     = 2
         language  = 1
+        maxmemory = 12m
+        staticmemory = 300k
+        audioSize = 32k
+        cmd       = SWAT.BAT
+        smartdrv  = YES
+        directory = .
         resMap    = .
         resAUD    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
         resSFX    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
-        rescdisc  = .
+        resCDisc  = .
         patchDir  = .\PATCHES
+        robot     = .\ROBOTS
         movieDir  = .\VMD
-        robots    = .\ROBOTS
     ]]]
 end
 
@@ -68,15 +76,7 @@ game[v1.1-cd]:
     file[]: crc = abdfe5c5; size =      6439; name = RESMDT.002
     file[]: crc = 0b57a5d0; size =      6841; name = RESMDT.003
     file[]: crc = 8fbb4648; size =      7069; name = RESMDT.004
-    file[]: crc = 00d5ead1; size = 100826901; name = DISC1/RESOURCE.AUD
-    file[]: crc = 7e1f7b14; size =  38554381; name = DISC2/RESOURCE.AUD
-    file[]: crc = 1c9887ff; size =  49250278; name = DISC3/RESOURCE.AUD
-    file[]: crc = 0d9c6c53; size = 102938502; name = DISC4/RESOURCE.AUD
     file[]: crc = 398c8732; size =       295; name = RESOURCE.CFG
-    file[]: crc = 7ccbbb67; size =  11286867; name = DISC1/RESOURCE.SFX
-    file[]: crc = 3ab544ae; size =  12665558; name = DISC2/RESOURCE.SFX
-    file[]: crc = 29bcaf57; size =  14384027; name = DISC3/RESOURCE.SFX
-    file[]: crc = 7a53ee71; size =  18860104; name = DISC4/RESOURCE.SFX
     file[]: crc = f2daf05c; size =       424; name = RESOURCE.WIN
     file[]: crc = 9ece1854; size =  29312320; name = RESSCI.001
     file[]: crc = 9a4fa659; size =  31599543; name = RESSCI.002
@@ -89,6 +89,14 @@ game[v1.1-cd]:
     file[]: crc = 10f8de39; size =    730305; name = SIERRAWH.EXE
     file[]: crc = 32766bce; size =         9; name = VERSION.TXT
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
+    file[]: crc = 00d5ead1; size = 100826901; name = DISC1/RESOURCE.AUD
+    file[]: crc = 7ccbbb67; size =  11286867; name = DISC1/RESOURCE.SFX
+    file[]: crc = 7e1f7b14; size =  38554381; name = DISC2/RESOURCE.AUD
+    file[]: crc = 3ab544ae; size =  12665558; name = DISC2/RESOURCE.SFX
+    file[]: crc = 1c9887ff; size =  49250278; name = DISC3/RESOURCE.AUD
+    file[]: crc = 29bcaf57; size =  14384027; name = DISC3/RESOURCE.SFX
+    file[]: crc = 0d9c6c53; size = 102938502; name = DISC4/RESOURCE.AUD
+    file[]: crc = 7a53ee71; size =  18860104; name = DISC4/RESOURCE.SFX
     file[]: crc = 9ee4b186; size =      1756; name = PATCHES\3290.HEP
     file[]: crc = 921f7b62; size =      5142; name = PATCHES\3290.SCR
     file[]: crc = 65e60b14; size =       502; name = PATCHES\3390.HEP
