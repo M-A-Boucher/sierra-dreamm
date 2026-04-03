@@ -94,7 +94,7 @@ config[sound]:
         AUDIO_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
-    option[mtblast]:
+    option[mtblast]: // Unofficial
         name = Unofficial MTBLAST.DRV
         audiohw = sb16+mt32; priority = 3
         AUDIO_DRIVER = MTBLAST.DRV
@@ -263,7 +263,7 @@ game[v1.018-int-0.000.685-3x720k]:
     file[]: crc = e180fa4e; size =    703370; name = RESOURCE.003
     file[]: crc = c46efb65; size =      5730; name = RESOURCE.MAP
     file[]: crc = bc924e4f; size =     76609; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 10eff0eb; size =     11288; name = SNDBLAST.DRV
     file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 7ada0c74; size =        25; name = SQ3.BAT     ; optional = true
@@ -291,7 +291,66 @@ game[v1.018-int-0.000.685-6x360k]:
     file[]: crc = d3ab119a; size =    332946; name = RESOURCE.005
     file[]: crc = 6d08437a; size =    361358; name = RESOURCE.006
     file[]: crc = 873084e1; size =      6078; name = RESOURCE.MAP
-    file[]: remove = SNDBLAST.DRV
+    file[]: crc = 10eff0eb; size =     11288; name = SNDBLAST.DRV
+end
+
+//
+// v1.052, Int. 12.27.90, German, 3x720K
+//
+game[v1.052-int-12.27.90-de-3x720k]:
+    name = v1.052, Int. 12.27.90, German, 3x720K
+    anchorfile = RESOURCE.001
+    file[]: crc = 3aa43ae0; size =       727; name = __INSTH.BAT ; optional = true
+    file[]: crc = 61744042; size =      8871; name = ADL.DRV
+    file[]: crc = 020754a3; size =      2049; name = CGA320M.DRV
+    file[]: crc = 02f91723; size =      5825; name = CMS.DRV
+    file[]: crc = 64b24400; size =      2814; name = EGA320.DRV
+    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
+    file[]: crc = 6b532402; size =      1974; name = EXPLORER.DRV; optional = true
+    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 2b2452fe; size =      2212; name = HERCMONO.DRV
+    file[]: crc = c71d1f55; size =       450; name = IBMKBD.DRV
+    file[]: crc = 6a0fb8f6; size =      3699; name = IBMPS1.DRV
+    file[]: crc = b58fa305; size =     13175; name = INSTALL.EXE ; optional = true
+    file[]: crc = aec0f3a7; size =      7023; name = INSTALL.HLP ; optional = true
+    file[]: crc = 8b945d70; size =       724; name = INSTGAME.BAT; optional = true
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = b9c0705c; size =      3014; name = JR.DRV
+    file[]: crc = 83750b7b; size =      2761; name = MCGA320.DRV
+    file[]: crc = 734ac2e9; size =      3178; name = MT32.DRV
+    file[]: crc = 4f7cb9d7; size =    567245; name = RESOURCE.001
+    file[]: crc = 819faa01; size =    596768; name = RESOURCE.002
+    file[]: crc = 9611227a; size =    693573; name = RESOURCE.003
+    file[]: crc = 6a6688b5; size =      5154; name = RESOURCE.MAP
+    file[]: crc = 66a72410; size =     57618; name = SCIV.EXE
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
+    file[]: crc = 5fc4227a; size =     11483; name = SNDBLAST.DRV
+    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 7ada0c74; size =        25; name = SQ3.BAT
+    file[]: crc = 500f96bb; size =      2473; name = STD.DRV
+    file[]: crc = fb4b92ee; size =      3453; name = TANDY.DRV
+    file[]: crc = 9452a841; size =      2796; name = TANDY320.DRV
+    file[]: crc = 7b4bedd3; size =       491; name = TANDYKBD.DRV
+    file[]: crc = ba9e0366; size =         7; name = VERSION
+end
+
+//
+// v1.052, Int. 12.27.90, German, 8x360K
+//
+game[v1.052-int-12.27.90-de-8x360k]:
+    name = v1.052, Int. 12.27.90, German, 8x360K
+    imports = v1.052-int-12.27.90-de-3x720k
+    anchorfile = RESOURCE.001
+    file[]: crc = 358e077d; size =      1607; name = __INSTH.BAT ; optional = true
+    file[]: crc = af73160f; size =    117869; name = RESOURCE.001
+    file[]: crc = e425821e; size =    336101; name = RESOURCE.002
+    file[]: crc = 1cdb974b; size =    350391; name = RESOURCE.003
+    file[]: crc = 58a9ecf8; size =    349750; name = RESOURCE.004
+    file[]: crc = 5f79fca9; size =    322107; name = RESOURCE.005
+    file[]: crc = 10fa92ba; size =    320643; name = RESOURCE.006
+    file[]: crc = f86cabf9; size =    344287; name = RESOURCE.007
+    file[]: crc = 4a5a918a; size =    316774; name = RESOURCE.008
+    file[]: crc = 8fe5f704; size =      7584; name = RESOURCE.MAP
 end
 
 //

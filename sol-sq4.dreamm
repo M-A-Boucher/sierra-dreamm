@@ -289,6 +289,72 @@ game[v1.1-int-4.29.91-6x1.2m]:
 end
 
 //
+// v1.0, Int. 11.21.91, German, 6x1.44M
+//
+game[v1.0-int-11.21.91-de-6x1.44m]:
+    name = v1.0, Int. 11.21.91, German, 6x1.44M
+    launch = SIERRA.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 8cb0fe4d; size =        43; name = INSTALL.BAT ; optional = true
+    file[]: crc = 16094b00; size =     32347; name = INSTALL.EXE ; optional = true
+    file[]: crc = ba9ffac4; size =     13806; name = INSTALL.HLP ; optional = true
+    file[]: crc = eae08c2b; size =       259; name = INSTALL.MSG ; optional = true
+    file[]: crc = 2b03d2c6; size =      3683; name = INSTALL.SCR ; optional = true
+    file[]: crc = 9226020c; size =      4645; name = INSTALL.TXT ; optional = true
+    file[]: crc = 6831675f; size =      2581; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 4d370aa5; size =      3688; name = MTBLAST.DRV ; replace = MTBLAST6.DRV
+    file[]: crc = a8366e66; size =       228; name = README      ; optional = true
+    file[]: crc = 9703a0a2; size =    206032; name = RESOURCE.000
+    file[]: crc = c86dfea6; size =   1270577; name = RESOURCE.001
+    file[]: crc = d87cb004; size =   1242817; name = RESOURCE.002
+    file[]: crc = 3b219ba9; size =   1321146; name = RESOURCE.003
+    file[]: crc = 820605a6; size =   1254368; name = RESOURCE.004
+    file[]: crc = 0989f3f2; size =   1098717; name = RESOURCE.005
+    file[]: crc = 012c06dd; size =        36; name = RESOURCE.CFG; optional = true
+    file[]: crc = e23e4a8f; size =      6153; name = RESOURCE.MAP
+    file[]: crc = 7abcb08c; size =     62528; name = SIERRA.EXE
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 0c9cc099; size =        77; name = SQ4.BAT     ; optional = true
+    file[]: crc = af0940d1; size =        69; name = SQ42.BAT    ; optional = true
+    file[]: crc = 2bc07d59; size =        86; name = SQ43.BAT    ; optional = true
+    file[]: crc = 0ae66d78; size =        73; name = SQ44.BAT    ; optional = true
+    file[]: crc = 79de16c7; size =        66; name = SQ45.BAT    ; optional = true
+    file[]: crc = 8dd83268; size =        83; name = SQ46.BAT    ; optional = true
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// v1.0, Int. 11.21.91, German, 7x1.2M
+//
+game[v1.0-int-11.21.91-de-7x1.2m]:
+    name = v1.0, Int. 11.21.91, German, 7x1.2M
+    imports = v1.0-int-11.21.91-de-6x1.44m
+    launch = SIERRA.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = 69fa4f39; size =      3803; name = INSTALL.SCR ; optional = true
+    file[]: crc = 78af4fff; size =      6339; name = RESOURCE.MAP
+    file[]: crc = 1dca5816; size =   1065442; name = RESOURCE.001
+    file[]: crc = 905dff53; size =    858402; name = RESOURCE.002
+    file[]: crc = c23ffa31; size =   1172738; name = RESOURCE.003
+    file[]: crc = 0c340861; size =   1064761; name = RESOURCE.004
+    file[]: crc = 7d6bf2ac; size =   1156765; name = RESOURCE.005
+    file[]: crc = cb21ec86; size =    924059; name = RESOURCE.006
+
+end
+
+//
 // v1.3, Italian, 6x1.44M
 //
 game[v1.3-it-6x1.44m]:
