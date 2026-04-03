@@ -58,9 +58,17 @@ game[v1.0-cd]:
     name = v1.0, CD
     anchorfile = SIERRAH.EXE
     anchordepth = 2
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
     file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
     file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
+    file[]: crc = cf5ac77e; size =       262; name = RESOURCE.CFG
     file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
     file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN
     file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
@@ -70,6 +78,7 @@ game[v1.0-cd]:
     file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE
     file[]: crc = cea7602b; size =       355; name = TORIN1
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 32741db9; size =      9301; name = ENGLISH\CONTACT.TXT
     file[]: crc = d26a89c0; size =      1633; name = ENGLISH\LANGUAGE.INF
     file[]: crc = 439a4cd5; size =     17222; name = ENGLISH\README.TXT
@@ -228,17 +237,6 @@ game[v1.0-cd]:
     file[]: crc = fdfc0605; size =      2600; name = GERMAN\MSG\57000.MSG
     file[]: crc = 467248fc; size =      1643; name = GERMAN\MSG\64990.MSG
     file[]: crc = 574558b7; size =      1089; name = GERMAN\MSG\64994.MSG
-
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = cf5ac77e; size =       262; name = RESOURCE.CFG
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
-
     file[]: crc = 8425f555; size =  21034036; name = MOVIE\10000.VMD
     file[]: crc = eeaba050; size =   7031530; name = MOVIE\10001.VMD
     file[]: crc = 8102a9f0; size =      1866; name = PATCHES\20400.HEP
