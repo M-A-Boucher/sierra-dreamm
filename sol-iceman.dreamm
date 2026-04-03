@@ -225,7 +225,7 @@ game[v1.033-int-6.8.90-4x720k]:
     file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
-    file[]: crc = ba032cc2; size =        25; name = ICE.BAT
+    file[]: crc = ba032cc2; size =        25; name = ICE.BAT     ; optional = true
     file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
     file[]: crc = bbd3280f; size =      9794; name = INSTALL.HLP ; optional = true
     file[]: crc = be3ebadb; size =       671; name = INSTGAME.BAT; optional = true
