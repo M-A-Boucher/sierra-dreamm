@@ -9,41 +9,10 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRAH.EXE
-mips = $(MIPS_P100)
+mips = $(MIPS_486DX_33)
 ramkb = 16384
 videohw = svga
 filter = sierra, adventure
-
-//
-// sound configuration
-//
-config[sound]:
-    title = Sound Configuration
-    option[sadl]:
-        name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = sb16+adlib
-        AUDIO_DRIVER = SADL.DRV
-        condition = file_exists("$$(rootpath)\\SADL.DRV")
-    end
-    option[sb16]:
-        name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
-        AUDIO_DRIVER = SBPRO.DRV
-        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
-    end
-    option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        AUDIO_DRIVER = MT32.DRV
-        condition = file_exists("$$(rootpath)\\MT32.DRV")
-    end
-    option[gmidi]:
-        name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 3
-        AUDIO_DRIVER = GENMIDI.DRV
-        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
-    end
-end
 
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
@@ -52,11 +21,20 @@ dynamicfile[]:
         soundDrv  = MIDNONE.DRV
         audioDrv  = DACBLAST.DRV
         joyDrv    = NO
-        CD        = NO
         mouseDrv  = NONE
         memoryDrv = NONE
-        minMemory = 3200k
-        audiosize = 112k
+        CD        = NO
+        minCPU    = 486
+        minDOS    = 500
+        mode      = protected
+        CPU       = 486
+        CPUSpeed  = 63
+        VideoSpeed= 400
+        CDROM     = 2
+        language  = 1
+        maxmemory = 12m
+        staticmemory = 300k
+        audioSize = 32k
         brightness= 0
         language  = 1
         resMap    = .\
@@ -64,7 +42,6 @@ dynamicfile[]:
         resSFX    = .\
         patchDir  = .\PATCHES;.\MOVIE
         movieDir  = .\MOVIE
-        dacsize   = 30720
     ]]]
 end
 
@@ -272,6 +249,66 @@ game[v1.0-cd]:
     file[]: crc = bfc8cd33; size =       966; name = PATCHES\51500.SCR
     file[]: crc = cb356a92; size =      1224; name = PATCHES\64866.HEP
     file[]: crc = 82882f10; size =      4856; name = PATCHES\64866.SCR
+    file[]: crc = 5612bb30; size =       274; name = PATCHES\8000.HEP
+    file[]: crc = 2be2ef0a; size =       532; name = PATCHES\8000.SCR
+end
+
+//
+// GOG (v1.0)
+//
+game[v1.0-gog]:
+    name = GOG (v1.0)
+    anchorfile = SIERRAH.EXE
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = 426aa7ad; size =       361; name = GAMEDAT.SHP
+    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE ; optional = true;
+    file[]: crc = 5ce081fc; size =     21746; name = INSTALL.HLP ; optional = true;
+    file[]: crc = 98b7288c; size =      4171; name = INSTALL.SCR ; optional = true;
+    file[]: crc = 38b46fdc; size =      9589; name = INSTALL.TXT ; optional = true;
+    file[]: crc = 387551b9; size =   2752813; name = Manual.pdf  ; optional = true;
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
+    file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
+    file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
+    file[]: crc = 6d6f4d7d; size =       576; name = RESOURCE.CFG; optional = true;
+    file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
+    file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
+    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
+    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
+    file[]: crc = 9657d6e2; size =       163; name = TORIN.BAT  ; optional = true;
+    file[]: crc = 2fce5f75; size =     24064; name = TORIN.EXE
+    file[]: crc = cea7602b; size =       355; name = TORIN.TXT  ; optional = true;
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+    file[]: crc = 8425f555; size =  21034036; name = MOVIE\10000.VMD
+    file[]: crc = eeaba050; size =   7031530; name = MOVIE\10001.VMD
+    file[]: crc = 4c34daa3; size =      1374; name = PATCHES\12000.HEP
+    file[]: crc = 19b4d0c1; size =      2932; name = PATCHES\12000.SCR
+    file[]: crc = 8102a9f0; size =      1866; name = PATCHES\20400.HEP
+    file[]: crc = 16695f28; size =      6374; name = PATCHES\20400.SCR
+    file[]: crc = 123480be; size =      1946; name = PATCHES\20700.HEP
+    file[]: crc = 711882ce; size =      6068; name = PATCHES\20700.SCR
+    file[]: crc = 3862ddec; size =      1764; name = PATCHES\51200.HEP
+    file[]: crc = 17ebf9b3; size =      4414; name = PATCHES\51200.SCR
+    file[]: crc = 99a1dc84; size =       454; name = PATCHES\51500.HEP
+    file[]: crc = bfc8cd33; size =       966; name = PATCHES\51500.SCR
+    file[]: crc = 1884aa12; size =      3468; name = PATCHES\64000.HEP
+    file[]: crc = 4c01d110; size =      2484; name = PATCHES\64000.SCR
+    file[]: crc = 152320de; size =       504; name = PATCHES\64865.HEP
+    file[]: crc = 0afda7fc; size =      3786; name = PATCHES\64865.SCR
+    file[]: crc = cb356a92; size =      1224; name = PATCHES\64866.HEP
+    file[]: crc = 82882f10; size =      4856; name = PATCHES\64866.SCR
+    file[]: crc = 068e71cc; size =       496; name = PATCHES\64892.HEP
+    file[]: crc = 5f1bf5ea; size =      3570; name = PATCHES\64892.SCR
+    file[]: crc = 46564d71; size =       278; name = PATCHES\64893.HEP
+    file[]: crc = d58d06ff; size =      5682; name = PATCHES\64893.SCR
+    file[]: crc = 8aaf2013; size =      1934; name = PATCHES\64897.HEP
+    file[]: crc = 35e6c12f; size =      4364; name = PATCHES\64897.SCR
     file[]: crc = 5612bb30; size =       274; name = PATCHES\8000.HEP
     file[]: crc = 2be2ef0a; size =       532; name = PATCHES\8000.SCR
 end
