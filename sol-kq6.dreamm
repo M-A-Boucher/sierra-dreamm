@@ -15,9 +15,6 @@ ramkb = 4096
 filter = sierra, adventure
 SPEECH =
 
-// Note: DCOMPAUD.EXE, SEQ.EXE and SYNC.EXE need to be executed manually. Need to find a solution for this issue.
-//       This results in the AUD resource not be decompressed, the movie .SEQ files and .SYNC files missing.
-
 //
 // graphics configuration
 //
@@ -89,9 +86,29 @@ dynamicfile[]:
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
-	minHunk=204k
-	audioSize=32k
+        minHunk=204k
+        audioSize=32k
         patchDir=.
+    ]]]
+end
+
+dynamicfile[]:
+    condition = file_size("$$(rootpath)\\RESOURCE.AUD") < 2542894 && !file_exists("$$(rootpath)\\BOAT.SEQ") && !file_exists("$$(rootpath)\\3002.SYN")
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        ECHO Hang tight, this only happens once.
+        DCOMPAUD.EXE .\
+        SEQ.EXE
+        SYNC.EXE
+        SIERRA.EXE
+    ]]]
+end
+
+dynamicfile[]:
+    condition = file_size("$$(rootpath)\\RESOURCE.AUD") == 2542894 && file_exists("$$(rootpath)\\BOAT.SEQ") && file_exists("$$(rootpath)\\3002.SYN")
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        SIERRA.EXE
     ]]]
 end
 
@@ -102,14 +119,14 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[launch]:
-code = [[[$(CRLF)
-	if (!file_exists("RESOURCE.000"))
-		file_copy("RESOURCE.000", "TEMP/RESOURCE.P01", "TEMP/RESOURCE.P02", "TEMP/RESOURCE.P03", "TEMP/RESOURCE.P04", "TEMP/RESOURCE.P05", "TEMP/RESOURCE.P06", "TEMP/RESOURCE.P07")
-	if (!file_exists("RESOURCE.AUD"))
-		file_copy("RESOURCE.AUD", "TEMP/AUDIO.P01", "TEMP/AUDIO.P02")
-	if (!file_exists("SEQ.EXE"))
-		file_copy("SEQ.EXE", "TEMP/INTRO.P01", "TEMP/INTRO.P02", "TEMP/INTRO.P03", "TEMP/INTRO.P04")
-	]]]
+    code = [[[$(CRLF)
+        if (!file_exists("RESOURCE.000"))
+            file_copy("RESOURCE.000", "TEMP/RESOURCE.P01", "TEMP/RESOURCE.P02", "TEMP/RESOURCE.P03", "TEMP/RESOURCE.P04", "TEMP/RESOURCE.P05", "TEMP/RESOURCE.P06", "TEMP/RESOURCE.P07")
+        if (!file_exists("RESOURCE.AUD"))
+            file_copy("RESOURCE.AUD", "TEMP/AUDIO.P01", "TEMP/AUDIO.P02")
+        if (!file_exists("SEQ.EXE"))
+            file_copy("SEQ.EXE", "TEMP/INTRO.P01", "TEMP/INTRO.P02", "TEMP/INTRO.P03", "TEMP/INTRO.P04")
+    ]]]
 end
 
 //
@@ -146,6 +163,7 @@ end
 //
 game[v1.0-int-9.28.92-9x1.44m]:
     name = v1.0, Int. 9.28.92, 9x1.44M
+    launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = SIERRA.EXE
     file[]: crc = c03d9f74; size =      1272; name = 100.HEP
@@ -235,6 +253,7 @@ end
 //
 game[v1.0-int-9.28.92-11x1.2m]:
     name = v1.0, Int. 9.28.92, 11x1.2M
+    launch = DREAMM.BAT
     imports = v1.0-int-9.28.92-9x1.44m
     anchorfile = SIERRA.EXE
     file[]: crc = 7833244d; size =      1836; name = 21.HEP
@@ -288,6 +307,7 @@ end
 //
 game[v1.0-int-11.13.92-fr-10x1.44m]:
     name = v1.0, Int. 11.13.92, French, 10x1.44M
+    launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = SIERRA.EXE
     file[]: crc = 34ac739d; size =      2799; name = 0.FON
@@ -463,11 +483,11 @@ game[v1.0-int-11.13.92-fr-10x1.44m]:
 end
 
 //
-// v1.0, Int. 11.13.92, German, 10x1.44M
+// v1.0, Int. 11.18.92, German, 10x1.44M
 //
-game[v1.0-int-11.13.92-de-10x1.44m]:
+game[v1.0-int-11.18.92-de-10x1.44m]:
     name = v1.0, Int. 11.13.92, German, 10x1.44M
-    launch = sync.exe
+    launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = SIERRA.EXE
     file[]: crc = 34ac739d; size =      2799; name = 0.FON
@@ -1184,16 +1204,16 @@ demo[demo]:
     file[]: crc = a523dde8; size =       272; name = RESOURCE.CFG; optional = true
     file[]: crc = 46e52d41; size =       272; name = RESOURCE.DIS; optional = true
     file[]: crc = 7201edba; size =       276; name = RESOURCE.GEN; optional = true
-    file[]: crc = 0a6e48d4; size =       706; name = RESOURCE.MAP
+    file[]: crc = 0a6e48d4; size =       706; name = RESOURCE.MAP; optional = true
     file[]: crc = c861a77d; size =       277; name = RESOURCE.MS ; optional = true
-    file[]: crc = 4e4f213a; size =      8260; name = RESOURCE.MSG
+    file[]: crc = 4e4f213a; size =      8260; name = RESOURCE.MSG; optional = true
     file[]: crc = c12ffe06; size =       273; name = RESOURCE.MT ; optional = true
     file[]: crc = 5df29cc5; size =       275; name = RESOURCE.PRO; optional = true
     file[]: crc = aea23ada; size =       273; name = RESOURCE.PS1; optional = true
     file[]: crc = 16d0ffd1; size =       305; name = RESOURCE.SB ; optional = true
     file[]: crc = a523dde8; size =       272; name = RESOURCE.STD; optional = true
     file[]: crc = 7c5856eb; size =     87575; name = SCAN.SEQ
-    file[]: crc = f6481593; size =       263; name = SIERRA.BAT  ; optional = true
+    file[]: crc = f6481593; size =       263; name = SIERRA.BAT
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
     file[]: crc = 0171d37d; size =        13; name = VERSION

@@ -10,11 +10,11 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_P75)
-nothrottle = 1
+nothrottle = 2
 ramkb = 8192
 videohw = vga;
 filter = sierra, adventure
-SPEECH = AUDNONE.DRV
+SPEECH = AUDBLAST.DRV
 
 //
 // graphics configuration
@@ -99,6 +99,24 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    condition = file_size("$$(rootpath)\\RESOURCE.SFX") < 3635434
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        ECHO Hang tight, this only happens once.
+        AUDDCOMP.EXE .\
+        SIERRA.EXE
+    ]]]
+end
+
+dynamicfile[]:
+    condition = file_size("$$(rootpath)\\RESOURCE.SFX") == 3635434
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        SIERRA.EXE
+    ]]]
+end
+
 //
 // filesystem
 //
@@ -108,7 +126,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 script[launch]:
     code = [[[$(CRLF)
         if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "DISK1/RESOURCE.000", "DISK2/RESOURCE.000", "DISK3/RESOURCE.000", "DISK4/RESOURCE.000", "DISK5/RESOURCE.000")
+            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005")
     ]]]
 end
 
@@ -117,6 +135,7 @@ end
 //
 game[v1.0-int-11.6.93-6x1.44m]:
     name = v1.0, Int. 11.6.93, 6x1.44M
+    launch = DREAMM.BAT
     anchorfile = SIERRA.EXE
     file[]: crc = 8024d06b; size =      4350; name = 230.HEP
     file[]: crc = 8ec46412; size =     24142; name = 230.MSG
@@ -147,6 +166,7 @@ game[v1.0-int-11.6.93-6x1.44m]:
     file[]: crc = 31a56eec; size =      4888; name = AUDGUS.DRV
     file[]: crc = 03ff90f2; size =      5262; name = AUDMSSYS.DRV
     file[]: crc = 940c3211; size =      1109; name = AUDNONE.DRV
+    file[]: crc = 77f9f4a6; size =     16607; name = AUDDCOMP.EXE
     file[]: crc = c296ca99; size =      7436; name = AUDPRO.DRV
     file[]: crc = bb669840; size =      5432; name = AUDPRO16.DRV
     file[]: crc = 7abda9a7; size =      6231; name = AUDPS1.DRV
@@ -184,8 +204,25 @@ game[v1.0-int-11.6.93-6x1.44m]:
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 6570b93b; size =      8267; name = VGA320.DRV
     file[]: crc = 3dd0d005; size =      8323; name = VGA320BW.DRV
-    file[]: crc = c510fb0b; size =    282348; name = LSL6_SFX.EXE       ; optional = true
-    file[]: crc = 77f9f4a6; size =     16607; name = AUDDCOMP.EXE       ; optional = true
+    // The following files from LSL6_SFX.EXE
+    file[]: crc = 6a1f5a41; size =     17432; name = BEAN_DIP.WAV
+    file[]: crc = c255283c; size =     52796; name = BRKGLASS.WAV
+    file[]: crc = 931487d7; size =     14552; name = BURP.WAV
+    file[]: crc = c913de47; size =     48726; name = CLANG.WAV
+    file[]: crc = da15f7e7; size =    113008; name = EXPLODE.WAV
+    file[]: crc = 11cf9ddc; size =     87084; name = GAG.WAV
+    file[]: crc = c2c05117; size =     42540; name = GARGLE.WAV
+    file[]: crc = 91e86eea; size =     27278; name = GOOSED.WAV
+    file[]: crc = 06c2b72b; size =      8854; name = GULP.WAV
+    file[]: crc = 6e5e0492; size =     44972; name = ICEDUMP.WAV
+    file[]: crc = a6d8181d; size =     23030; name = KISS.WAV
+    file[]: crc = 404d166e; size =     50476; name = OOOH.WAV
+    file[]: crc = ae1764d3; size =     37548; name = SCREAM.WAV
+    file[]: crc = aa042175; size =     28716; name = SPIT.WAV
+    file[]: crc = 1bf3a8d2; size =     20076; name = TESTING.WAV
+    file[]: crc = b697133c; size =     18476; name = WHIP.WAV
+    file[]: crc = 7aa13764; size =     42124; name = YEOW.WAV
+    file[]: crc = f109430c; size =     20780; name = ZIPPER.WAV
 end
 
 //
@@ -193,13 +230,13 @@ end
 //
 game[v1.0-int-11.18.93-6x1.44m]:
     name = v1.0, Int. 11.18.93, 6x1.44M
+    launch = DREAMM.BAT
     imports = v1.0-int-11.6.93-6x1.44m
     anchorfile = 860.SCR
     file[]: crc = ea22f1ee; size =      2425; name = 740.MSG
     file[]: crc = 06a7d90f; size =      2788; name = 860.HEP
     file[]: crc = e4b111e8; size =      9220; name = 860.SCR
     file[]: crc = 744c92ba; size =      5202; name = 93.MSG
-    file[]: crc = 7ab46115; size =    188065; name = LSL6_SFX.EXE; optional = true
     file[]: crc = 487b4eba; size =        61; name = VERSION
 end
 
@@ -227,7 +264,7 @@ game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
 end
 
 //
-// v1.0, CD SVGA, SVGA
+// v1.0, CD, SVGA
 //
 game[v1.0-cd-svga]:
     name = v1.0, CD, SVGA
@@ -355,6 +392,7 @@ game[v1.0-cd-svga]:
     file[]: crc = cdd4760c; size =        11; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
 end
+
 
 //
 // v1.0, CD, VGA
