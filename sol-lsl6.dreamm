@@ -232,12 +232,32 @@ game[v1.0-int-11.18.93-6x1.44m]:
     name = v1.0, Int. 11.18.93, 6x1.44M
     launch = DREAMM.BAT
     imports = v1.0-int-11.6.93-6x1.44m
-    anchorfile = 860.SCR
+    anchorfile = SIERRA.EXE
     file[]: crc = ea22f1ee; size =      2425; name = 740.MSG
     file[]: crc = 06a7d90f; size =      2788; name = 860.HEP
     file[]: crc = e4b111e8; size =      9220; name = 860.SCR
     file[]: crc = 744c92ba; size =      5202; name = 93.MSG
     file[]: crc = 487b4eba; size =        61; name = VERSION
+    // The following files from LSL6_SFX.EXE
+    file[]: crc = 3b6c3086; size =      8760; name = BEAN_DIP.WAV
+    file[]: crc = 66f1b03a; size =     26442; name = BRKGLASS.WAV
+    file[]: crc = 3bd97ca5; size =      7272; name = BURP.WAV
+    file[]: crc = d542c55c; size =     24406; name = CLANG.WAV
+    file[]: crc = da15f7e7; size =    113008; remove = EXPLODE.WAV
+    file[]: crc = 72d0a866; size =     43586; name = GAG.WAV
+    file[]: crc = aa85a0e8; size =     21314; name = GARGLE.WAV
+    file[]: crc = 16901669; size =     13682; name = GOOSED.WAV
+    file[]: crc = fedf2737; size =      4470; name = GULP.WAV
+    file[]: crc = 58f0ef62; size =     22530; name = ICEDUMP.WAV
+    file[]: crc = 0d2e9bdc; size =     11558; name = KISS.WAV
+    file[]: crc = b95b2d86; size =     25282; name = OOOH.WAV
+    file[]: crc = dd472494; size =     18818; name = SCREAM.WAV
+    file[]: crc = f5a7f4cd; size =     14402; name = SPIT.WAV
+    file[]: crc = 40f32891; size =     10082; name = TESTING.WAV
+    file[]: crc = 72489db5; size =      9222; name = WHIP.WAV
+    file[]: crc = 00a7709d; size =     21106; name = YEOW.WAV
+    file[]: crc = 74d37391; size =     10434; name = ZIPPER.WAV
+
 end
 
 //
@@ -264,7 +284,7 @@ game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
 end
 
 //
-// v1.0, CD, SVGA
+// v1.0, CD SVGA, SVGA
 //
 game[v1.0-cd-svga]:
     name = v1.0, CD, SVGA
