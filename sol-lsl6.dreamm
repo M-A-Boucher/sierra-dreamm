@@ -137,6 +137,8 @@ game[v1.0-int-11.6.93-6x1.44m]:
     name = v1.0, Int. 11.6.93, 6x1.44M
     launch = DREAMM.BAT
     anchorfile = SIERRA.EXE
+    file[]: crc = 69d64ada; size =       500; name = 1800.HEP
+    file[]: crc = b0af8348; size =       468; name = 1800.SCR
     file[]: crc = 8024d06b; size =      4350; name = 230.HEP
     file[]: crc = 8ec46412; size =     24142; name = 230.MSG
     file[]: crc = d930f0aa; size =     13392; name = 230.SCR
@@ -158,8 +160,6 @@ game[v1.0-int-11.6.93-6x1.44m]:
     file[]: crc = c418f96e; size =     39052; name = 740.SND
     file[]: crc = 3ac637c4; size =      1122; name = 990.HEP
     file[]: crc = 6a7a97d4; size =      2816; name = 990.SCR
-    file[]: crc = 69d64ada; size =       500; name = 1800.HEP
-    file[]: crc = b0af8348; size =       468; name = 1800.SCR
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 731ef9fd; size =      8836; name = AUDBLAST.DRV
     file[]: crc = 045a1fe1; size =      6705; name = AUDDISNY.DRV
@@ -183,15 +183,11 @@ game[v1.0-int-11.6.93-6x1.44m]:
     file[]: crc = 62339557; size =      4544; name = INSTALL.SCR ; optional = true
     file[]: crc = 72d63d0a; size =      9464; name = INSTALL.TXT ; optional = true
     file[]: crc = 0da742fc; size =      6274; name = INTERP.ERR
-    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV; optional = true
+    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
     file[]: crc = 55a7d515; size =      7340; name = README      ; optional = true
     file[]: crc = 84f1d59b; size =        35; name = README.BAT  ; optional = true
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
-    file[]: crc = 3f875756; size =      7318; name = SIERRA.BMP  ; optional = true
-    file[]: crc = a81768de; size =    159184; name = SIERRA.EXE
-    file[]: crc = c91b2ce5; size =        47; name = VERSION
     file[]: crc = a46775fe; size =    345000; name = RESOURCE.001
     file[]: crc = 0580706d; size =   1357996; name = RESOURCE.002
     file[]: crc = 1df7ea25; size =   1357996; name = RESOURCE.003
@@ -200,8 +196,12 @@ game[v1.0-int-11.6.93-6x1.44m]:
     file[]: crc = 1fb82faf; size =       172; name = RESOURCE.CFG; optional = true
     file[]: crc = b07ea93f; size =      6973; name = RESOURCE.MAP
     file[]: crc = 79349da8; size =    939156; name = RESOURCE.SFX
+    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
+    file[]: crc = 3f875756; size =      7318; name = SIERRA.BMP  ; optional = true
+    file[]: crc = a81768de; size =    159184; name = SIERRA.EXE
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = c91b2ce5; size =        47; name = VERSION
     file[]: crc = 6570b93b; size =      8267; name = VGA320.DRV
     file[]: crc = 3dd0d005; size =      8323; name = VGA320BW.DRV
     // The following files from LSL6_SFX.EXE
@@ -267,11 +267,15 @@ game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 11.18.93)
     imports = v1.0-int-11.18.93-6x1.44m
     anchorfile = RESOURCE.000
-    anchordepth = 2
+    anchordepth = 1
     file[]: crc = 3010a99c; size =       524; name = 830.HEP
     file[]: crc = 3f5b33ea; size =       772; name = 830.SCR
+    file[]: crc = 77f9f4a6; size =     16607; remove = AUDDCOMP.EXE
     file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
     file[]: crc = ed4805f8; size =      1250; name = INSTALL.SCR ; optional = true
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
+    file[]: crc = 9a12e87e; size =     76816; name = RAVE.DLL    ; optional = true
+    file[]: crc = 469d451c; size =      7338; name = README.TXT  ; optional = true
     file[]: crc = e9d3ad99; size =   5789138; name = RESOURCE.000
     file[]: crc = a46775fe; size =    345000; remove = RESOURCE.001
     file[]: crc = 0580706d; size =   1357996; remove = RESOURCE.002
@@ -280,7 +284,13 @@ game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
     file[]: crc = 4c27a5cd; size =   1370150; remove = RESOURCE.005
     file[]: crc = 41abddb9; size =       203; name = RESOURCE.CFG; optional = true
     file[]: crc = 4153253d; size =   3635434; name = RESOURCE.SFX
-    file[]: crc = 1c800eea; size =      2038; name = SIERRA.INF  ; optional = true
+    file[]: crc = dd430004; size =     15360; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = 3f875756; size =      7318; name = SIERRA.BMP  ; optional = true
+    file[]: crc = a81768de; size =    159184; name = SIERRA.EXE
+    file[]: crc = 9d435043; size =      2057; name = SIERRA.INF  ; optional = true
+    file[]: crc = ab7f3710; size =       138; name = SIERRA.INI  ; optional = true
+    file[]: crc = 0c67f6a6; size =    185344; name = SIERRAW.EXE ; optional = true
+    file[]: crc = 883ead96; size =       766; name = SIERRAW.ICO ; optional = true
 end
 
 //
@@ -412,7 +422,6 @@ game[v1.0-cd-svga]:
     file[]: crc = cdd4760c; size =        11; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
 end
-
 
 //
 // v1.0, CD, VGA
