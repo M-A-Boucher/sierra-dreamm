@@ -67,6 +67,9 @@ dynamicfile[]:
         audioSize = 64k
         smartdrv  = YES
         vmdSkip   = NO
+        hires     = 630,450
+        midiBuffSize5=30000
+        midiBuffSize6=65000
         directory = .\
         movieDir  = .\VMD
         patchDir  = .\;.\PATCHES
