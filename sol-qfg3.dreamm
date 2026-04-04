@@ -10,9 +10,10 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 4
+nothrottle = 2
 ramkb = 4096
 filter = sierra, adventure
+AUDIO_DRIVER = AUDNONE.DRV
 
 //
 // graphics configuration
@@ -56,11 +57,11 @@ config[sound]:
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
-    option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        SOUND_DRIVER = PROAUDIO.DRV
-        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
+    option[sb16]:
+        name = $(SB16_NAME) 
+        audiohw = sb16
+        SOUND_DRIVER = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
@@ -81,7 +82,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
-        audioDrv=AUDBLAST.DRV
+        audioDrv=$(AUDIO_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
@@ -198,10 +199,36 @@ game[v1.1-int-11.9.92-5x1.44m]:
 end
 
 //
+// Base Files for Quest for Glory - Collection Series 
+//
+fragment[collection-series-base]:
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 38aa1298; size =      5817; name = AUDBLAST.DRV
+    file[]: crc = 28458b6a; size =      4842; name = AUDDISNY.DRV
+    file[]: crc = 1b46fd88; size =       715; name = AUDNONE.DRV
+    file[]: crc = 7766e030; size =      5262; name = AUDPRO.DRV
+    file[]: crc = 653c2086; size =      4415; name = AUDPS1.DRV
+    file[]: crc = 5ed2a7a6; size =      4487; name = AUDTANDY.DRV
+    file[]: crc = 88f33e4b; size =      5811; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
+    file[]: crc = 459f98d3; size =      5958; name = RESOURCE.MAP
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = bcf69f6a; size =      5836; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
 // Quest for Glory - Collection Series (v1.1, Int. 11.9.92)
 //
 game[v1.1-int-11.9.92-quest-for-glory-collection-series]:
     name = Quest for Glory - Collection Series (v1.1, Int. 11.9.92)
+    imports = collection-series-base
     anchorfile = RESOURCE.000
     file[]: crc = 7ebd7543; size =      2390; name = 140.HEP
     file[]: crc = ab1e312c; size =      7840; name = 140.SCR
@@ -244,26 +271,12 @@ game[v1.1-int-11.9.92-quest-for-glory-collection-series]:
     file[]: crc = 05cd5346; size =      2780; name = 780.SCR
     file[]: crc = f3df4b66; size =       662; name = 852.HEP
     file[]: crc = fd97dc18; size =      2092; name = 852.SCR
-    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = 38aa1298; size =      5817; name = AUDBLAST.DRV
-    file[]: crc = 28458b6a; size =      4842; name = AUDDISNY.DRV
-    file[]: crc = 1b46fd88; size =       715; name = AUDNONE.DRV
-    file[]: crc = 7766e030; size =      5262; name = AUDPRO.DRV
-    file[]: crc = 653c2086; size =      4415; name = AUDPS1.DRV
-    file[]: crc = 5ed2a7a6; size =      4487; name = AUDTANDY.DRV
-    file[]: crc = 88f33e4b; size =      5811; name = AUDTHUND.DRV
-    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
-    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
-    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
-    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
     file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
     file[]: crc = 7bb84bb8; size =     16588; name = INSTALL.HLP ; optional = true
     file[]: crc = 32c770b3; size =      1748; name = INSTALL.SCR ; optional = true
     file[]: crc = 27f56298; size =      8458; name = INSTALL.TXT ; optional = true
     file[]: crc = a012c6d4; size =      5845; name = INTERP.ERR
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
-    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
     file[]: crc = 960a232c; size =      1048; name = PKCOMP.INF  ; optional = true
     file[]: crc = 011d912c; size =      9884; name = PROAUDIO.DRV
     file[]: crc = 6c404c0d; size =        34; name = QG3E.BAT    ; optional = true
@@ -272,13 +285,374 @@ game[v1.1-int-11.9.92-quest-for-glory-collection-series]:
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
     file[]: crc = fa76a505; size =       223; name = RESOURCE.CFG; optional = true
-    file[]: crc = 459f98d3; size =      5958; name = RESOURCE.MAP
     file[]: crc = 94ae61ce; size =    246888; name = RESOURCE.MSG
     file[]: crc = 7be0254a; size =     67778; name = SIERRA.EXE
-    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
-    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
     file[]: crc = c69f28c9; size =        36; name = VERSION
-    file[]: crc = bcf69f6a; size =      5836; name = VGA320.DRV
+end
+
+//
+// Quest for Glory - Collection Series, French (v1.1, Int. 3.3.93)
+//
+game[v1.1-int-3.3.93-fr-quest-for-glory-collection-series]:
+    name = Quest for Glory - Collection Series, French (v1.1, Int. 3.3.93)
+    imports = collection-series-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 7b388472; size =      2543; name = 0.FON
+    file[]: crc = 9ac7afe6; size =      3184; name = 0.HEP
+    file[]: crc = e993e471; size =     12098; name = 0.SCR
+    file[]: crc = 7b388472; size =      2543; name = 1.FON
+    file[]: crc = 7f9fff90; size =      2065; name = 1000.FON
+    file[]: crc = 832f1545; size =      2595; name = 1000.V56
+    file[]: crc = 50d3c5fe; size =       372; name = 102.HEP
+    file[]: crc = 5b4193b0; size =      1414; name = 102.SCR
+    file[]: crc = acdbd49b; size =      1044; name = 120.HEP
+    file[]: crc = 13f64ff8; size =      1344; name = 120.SCR
+    file[]: crc = a6e155b2; size =      3331; name = 123.FON
+    file[]: crc = 5a807623; size =      1956; name = 130.HEP
+    file[]: crc = c1b8f10f; size =      2634; name = 130.SCR
+    file[]: crc = d3b3b784; size =     14349; name = 132.V56
+    file[]: crc = 09baff30; size =     18416; name = 135.V56
+    file[]: crc = 618e0189; size =      2570; name = 140.HEP
+    file[]: crc = 99489f06; size =      8918; name = 140.SCR
+    file[]: crc = 1c9e6af6; size =      6764; name = 141.V56
+    file[]: crc = 0b2c5c55; size =     45752; name = 145.P56
+    file[]: crc = f65c0c7d; size =     15585; name = 145.V56
+    file[]: crc = 61d950b3; size =       376; name = 15.HEP
+    file[]: crc = 16d9651f; size =      2402; name = 15.SCR
+    file[]: crc = 0f7317f7; size =         5; name = 15.TEX
+    file[]: crc = ab40a038; size =      4850; name = 16.HEP
+    file[]: crc = f92732b0; size =      6606; name = 16.SCR
+    file[]: crc = 7ae86f13; size =       232; name = 19.HEP
+    file[]: crc = 0cb31c5c; size =       816; name = 19.SCR
+    file[]: crc = fabb197c; size =       132; name = 23.HEP
+    file[]: crc = 50055c7b; size =      1992; name = 23.SCR
+    file[]: crc = 409fcdac; size =       292; name = 233.HEP
+    file[]: crc = 28a1323a; size =      1112; name = 233.SCR
+    file[]: crc = 4aca2738; size =      1092; name = 25.HEP
+    file[]: crc = ca82ca86; size =      2590; name = 25.SCR
+    file[]: crc = c0925da1; size =      3327; name = 2510.FON
+    file[]: crc = 9591a15e; size =       800; name = 26.HEP
+    file[]: crc = e58a33ba; size =      2840; name = 26.SCR
+    file[]: crc = d88f7504; size =      2069; name = 3.FON
+    file[]: crc = 7b388472; size =      2543; name = 300.FON
+    file[]: crc = 4bd85d8a; size =       488; name = 305.HEP
+    file[]: crc = 0a747a05; size =     22461; name = 305.P56
+    file[]: crc = 711e38ad; size =       300; name = 305.SCR
+    file[]: crc = de740a24; size =      2831; name = 310.FON
+    file[]: crc = 915ce536; size =      4194; name = 340.HEP
+    file[]: crc = fa17ee9f; size =      5262; name = 340.SCR
+    file[]: crc = b2ae686a; size =      3362; name = 360.HEP
+    file[]: crc = 7d037f1c; size =      8148; name = 360.SCR
+    file[]: crc = d88f7504; size =      2069; name = 4.FON
+    file[]: crc = 0edc085f; size =      1966; name = 400.HEP
+    file[]: crc = 72354a1a; size =     13776; name = 400.SCR
+    file[]: crc = 9e178035; size =       656; name = 41.HEP
+    file[]: crc = cffa7c22; size =        62; name = 41.SCR
+    file[]: crc = 60336667; size =      1562; name = 462.V56
+    file[]: crc = dac80bd6; size =       988; name = 47.HEP
+    file[]: crc = 4ba60f00; size =      6328; name = 47.SCR
+    file[]: crc = 3aace773; size =     16805; name = 470.V56
+    file[]: crc = 9ab6f2d6; size =      1682; name = 52.HEP
+    file[]: crc = a90bf88b; size =      1660; name = 52.SCR
+    file[]: crc = 81feb5d7; size =      2596; name = 54.HEP
+    file[]: crc = 975c1312; size =      5066; name = 54.SCR
+    file[]: crc = c802eb5a; size =      4839; name = 553.V56
+    file[]: crc = 63bf422e; size =       368; name = 61.HEP
+    file[]: crc = 4c0bfe61; size =       844; name = 61.SCR
+    file[]: crc = dc9d0685; size =       208; name = 63.HEP
+    file[]: crc = 3c6060e5; size =      6752; name = 63.SCR
+    file[]: crc = 166eb309; size =       512; name = 65535.MAP
+    file[]: crc = def70bcb; size =       266; name = 7.HEP
+    file[]: crc = 21bf9766; size =      2998; name = 7.SCR
+    file[]: crc = e764a48a; size =       112; name = 705.HEP
+    file[]: crc = 2ad2c433; size =       672; name = 705.SCR
+    file[]: crc = 83880fe6; size =      2256; name = 810.HEP
+    file[]: crc = 7fd2b862; size =      3790; name = 810.SCR
+    file[]: crc = ac8454d7; size =      2568; name = 850.HEP
+    file[]: crc = 891bee33; size =      8830; name = 850.SCR
+    file[]: crc = ae7ea9e2; size =       824; name = 880.HEP
+    file[]: crc = b1050c2c; size =       488; name = 880.SCR
+    file[]: crc = 2444f05d; size =     12997; name = 884.V56
+    file[]: crc = b3dc4b8a; size =       968; name = 890.HEP
+    file[]: crc = a44144f7; size =      5314; name = 890.SCR
+    file[]: crc = 77d17fb9; size =     15443; name = 920.V56
+    file[]: crc = 697f03d3; size =     14251; name = 921.V56
+    file[]: crc = 07dca87a; size =     27309; name = 922.V56
+    file[]: crc = 14f00672; size =     20750; name = 923.V56
+    file[]: crc = c1221c16; size =     12732; name = 925.V56
+    file[]: crc = 61e287bd; size =     10361; name = 933.V56
+    file[]: crc = d88f7504; size =      2069; name = 999.FON
+    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
+    file[]: crc = 6d8ac436; size =     18928; name = INSTALL.HLP ; optional = true
+    file[]: crc = 8de710d5; size =      1937; name = INSTALL.SCR ; optional = true
+    file[]: crc = 1c4a9cc2; size =      9696; name = INSTALL.TXT ; optional = true
+    file[]: crc = 2d233af9; size =      6251; name = INTERP.ERR
+    file[]: crc = 13ddb8e5; size =       511; name = MESSAGE.MAP
+    file[]: crc = cb368f4e; size =      3352; name = PKCOMP.INF  ; optional = true
+    file[]: crc = 3fda1789; size =        34; name = QG3F.BAT    ; optional = true
+    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
+    file[]: crc = 2949c312; size =      2287; name = README.OLD  ; optional = true
+    file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
+    file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+    file[]: crc = b9a38f79; size =       240; name = RESOURCE.CFG; optional = true
+    file[]: crc = c49dc5bc; size =    267210; name = RESOURCE.MSG
+    file[]: crc = 4ba12f75; size =     67822; name = SIERRA.EXE
+    file[]: crc = 4390fa63; size =        51; name = VERSION
+end
+
+//
+// Quest for Glory - Collection Series, German (v1.1, Int. 11.16.92)
+//
+game[v1.1-int-11.16.92-fr-quest-for-glory-collection-series]:
+    name = Quest for Glory - Collection Series, German (v1.1, Int. 11.16.92)
+    imports = collection-series-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 34c84c20; size =      2641; name = 0.FON
+    file[]: crc = 9ac7afe6; size =      3184; name = 0.HEP
+    file[]: crc = e993e471; size =     12098; name = 0.SCR
+    file[]: crc = 34c84c20; size =      2641; name = 1.FON
+    file[]: crc = 7f9fff90; size =      2065; name = 1000.FON
+    file[]: crc = 832f1545; size =      2595; name = 1000.V56
+    file[]: crc = 50d3c5fe; size =       372; name = 102.HEP
+    file[]: crc = 0f86b033; size =      1404; name = 102.SCR
+    file[]: crc = acdbd49b; size =      1044; name = 120.HEP
+    file[]: crc = 13f64ff8; size =      1344; name = 120.SCR
+    file[]: crc = a6e155b2; size =      3331; name = 123.FON
+    file[]: crc = 09469d87; size =     15034; name = 132.V56
+    file[]: crc = a239bbb1; size =     19327; name = 135.V56
+    file[]: crc = f4770420; size =      2570; name = 140.HEP
+    file[]: crc = 2c0246f6; size =      8304; name = 140.SCR
+    file[]: crc = 64e0ad5d; size =     46434; name = 145.P56
+    file[]: crc = 6cd849cf; size =     16265; name = 145.V56
+    file[]: crc = 61d950b3; size =       376; name = 15.HEP
+    file[]: crc = a7d3c821; size =      2246; name = 15.SCR
+    file[]: crc = 0f7317f7; size =         5; name = 15.TEX
+    file[]: crc = 7ae86f13; size =       232; name = 19.HEP
+    file[]: crc = 0cb31c5c; size =       816; name = 19.SCR
+    file[]: crc = 4aca2738; size =      1092; name = 25.HEP
+    file[]: crc = ca82ca86; size =      2590; name = 25.SCR
+    file[]: crc = 62b2af56; size =      3327; name = 2510.FON
+    file[]: crc = 9591a15e; size =       800; name = 26.HEP
+    file[]: crc = e58a33ba; size =      2840; name = 26.SCR
+    file[]: crc = d88f7504; size =      2069; name = 3.FON
+    file[]: crc = 34c84c20; size =      2641; name = 300.FON
+    file[]: crc = 4bd85d8a; size =       488; name = 305.HEP
+    file[]: crc = 3a8bb6cd; size =     22434; name = 305.P56
+    file[]: crc = 711e38ad; size =       300; name = 305.SCR
+    file[]: crc = 777c63d3; size =      2831; name = 310.FON
+    file[]: crc = 915ce536; size =      4194; name = 340.HEP
+    file[]: crc = fa17ee9f; size =      5262; name = 340.SCR
+    file[]: crc = b2ae686a; size =      3362; name = 360.HEP
+    file[]: crc = 7d037f1c; size =      8148; name = 360.SCR
+    file[]: crc = d88f7504; size =      2069; name = 4.FON
+    file[]: crc = 0edc085f; size =      1966; name = 400.HEP
+    file[]: crc = 72354a1a; size =     13776; name = 400.SCR
+    file[]: crc = 9e178035; size =       656; name = 41.HEP
+    file[]: crc = cffa7c22; size =        62; name = 41.SCR
+    file[]: crc = 69879264; size =      1640; name = 462.V56
+    file[]: crc = dac80bd6; size =       988; name = 47.HEP
+    file[]: crc = 4ba60f00; size =      6328; name = 47.SCR
+    file[]: crc = 57143ba9; size =     16900; name = 470.V56
+    file[]: crc = 9ab6f2d6; size =      1682; name = 52.HEP
+    file[]: crc = a90bf88b; size =      1660; name = 52.SCR
+    file[]: crc = 2a5727b8; size =      4757; name = 553.V56
+    file[]: crc = 63bf422e; size =       368; name = 61.HEP
+    file[]: crc = 4c0bfe61; size =       844; name = 61.SCR
+    file[]: crc = dc9d0685; size =       208; name = 63.HEP
+    file[]: crc = 3c6060e5; size =      6752; name = 63.SCR
+    file[]: crc = 166eb309; size =       512; name = 65535.MAP
+    file[]: crc = def70bcb; size =       266; name = 7.HEP
+    file[]: crc = a12b23cc; size =      2962; name = 7.SCR
+    file[]: crc = e764a48a; size =       112; name = 705.HEP
+    file[]: crc = 2ad2c433; size =       672; name = 705.SCR
+    file[]: crc = 83880fe6; size =      2256; name = 810.HEP
+    file[]: crc = 7fd2b862; size =      3790; name = 810.SCR
+    file[]: crc = ac8454d7; size =      2568; name = 850.HEP
+    file[]: crc = 891bee33; size =      8830; name = 850.SCR
+    file[]: crc = ae7ea9e2; size =       824; name = 880.HEP
+    file[]: crc = b1050c2c; size =       488; name = 880.SCR
+    file[]: crc = 6b67d2cd; size =     12155; name = 884.V56
+    file[]: crc = b3dc4b8a; size =       968; name = 890.HEP
+    file[]: crc = a44144f7; size =      5314; name = 890.SCR
+    file[]: crc = c5060c16; size =     14595; name = 920.V56
+    file[]: crc = 2f031d09; size =     14534; name = 921.V56
+    file[]: crc = ad13f0a5; size =     26102; name = 922.V56
+    file[]: crc = fbd7c75c; size =     20051; name = 923.V56
+    file[]: crc = c30b0ee4; size =     16247; name = 925.V56
+    file[]: crc = 109c1c1a; size =     10323; name = 933.V56
+    file[]: crc = d88f7504; size =      2069; name = 999.FON
+    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
+    file[]: crc = 2f2995f0; size =     17040; name = INSTALL.HLP ; optional = true
+    file[]: crc = 8fc38d04; size =       959; name = INSTALL.SCR ; optional = true
+    file[]: crc = d3f7bfa2; size =      9821; name = INSTALL.TXT ; optional = true
+    file[]: crc = d01e830f; size =      6212; name = INTERP.ERR
+    file[]: crc = 9dc76c43; size =       511; name = MESSAGE.MAP
+    file[]: crc = 746259e7; size =      3051; name = PKCOMP.INF  ; optional = true
+    file[]: crc = b87cdcca; size =        34; name = QG3G.BAT    ; optional = true
+    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
+    file[]: crc = df892559; size =      2539; name = README.OLD  ; optional = true
+    file[]: crc = c067b1b5; size =   5868042; name = RESOURCE.000
+    file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+    file[]: crc = 8a1ce532; size =       206; name = RESOURCE.CFG; optional = true
+    file[]: crc = 1eb74355; size =    279694; name = RESOURCE.MSG
+    file[]: crc = 4ba12f75; size =     67822; name = SIERRA.EXE
+    file[]: crc = 295c9846; size =        51; name = VERSION
+end
+
+//
+// Quest for Glory - Collection Series, Italian (v1.1, Int. 4.26.93)
+//
+game[v1.1-int-4.26.93-it-quest-for-glory-collection-series]:
+    name = Quest for Glory - Collection Series, Italian (v1.1, Int. 4.26.93)
+    imports = collection-series-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 7b388472; size =      2543; name = 0.FON
+    file[]: crc = 9ac7afe6; size =      3184; name = 0.HEP
+    file[]: crc = e993e471; size =     12098; name = 0.SCR
+    file[]: crc = 7b388472; size =      2543; name = 1.FON
+    file[]: crc = 17fb9f45; size =      2065; name = 1000.FON
+    file[]: crc = 14e68800; size =      2660; name = 1000.V56
+    file[]: crc = 50d3c5fe; size =       372; name = 102.HEP
+    file[]: crc = 715c08d3; size =      1418; name = 102.SCR
+    file[]: crc = acdbd49b; size =      1044; name = 120.HEP
+    file[]: crc = 13f64ff8; size =      1344; name = 120.SCR
+    file[]: crc = c9463b07; size =      3331; name = 123.FON
+    file[]: crc = 5a807623; size =      1956; name = 130.HEP
+    file[]: crc = b371337d; size =      2634; name = 130.SCR
+    file[]: crc = 2c5e2c0f; size =     15761; name = 132.V56
+    file[]: crc = 5f6fb12f; size =      2660; name = 140.HEP
+    file[]: crc = 3e426da4; size =       381; name = 140.MSG
+    file[]: crc = f85d138d; size =      8962; name = 140.SCR
+    file[]: crc = 6e77b585; size =     46252; name = 145.P56
+    file[]: crc = bea777ce; size =     18195; name = 145.V56
+    file[]: crc = 61d950b3; size =       376; name = 15.HEP
+    file[]: crc = e3c2ba9f; size =      2454; name = 15.SCR
+    file[]: crc = 0f7317f7; size =         5; name = 15.TEX
+    file[]: crc = ab40a038; size =      4850; name = 16.HEP
+    file[]: crc = f92732b0; size =      6606; name = 16.SCR
+    file[]: crc = 7ae86f13; size =       232; name = 19.HEP
+    file[]: crc = 582026ba; size =      3739; name = 19.MSG
+    file[]: crc = 0cb31c5c; size =       816; name = 19.SCR
+    file[]: crc = fabb197c; size =       132; name = 23.HEP
+    file[]: crc = 50055c7b; size =      1992; name = 23.SCR
+    file[]: crc = 409fcdac; size =       292; name = 233.HEP
+    file[]: crc = 28a1323a; size =      1112; name = 233.SCR
+    file[]: crc = 4aca2738; size =      1092; name = 25.HEP
+    file[]: crc = ca82ca86; size =      2590; name = 25.SCR
+    file[]: crc = c0925da1; size =      3327; name = 2510.FON
+    file[]: crc = 9591a15e; size =       800; name = 26.HEP
+    file[]: crc = e58a33ba; size =      2840; name = 26.SCR
+    file[]: crc = 5d3b7ee6; size =      2113; name = 260.FON
+    file[]: crc = 173b589f; size =     27273; name = 290.MSG
+    file[]: crc = d88f7504; size =      2069; name = 3.FON
+    file[]: crc = 7b388472; size =      2543; name = 300.FON
+    file[]: crc = 4bd85d8a; size =       488; name = 305.HEP
+    file[]: crc = cb238626; size =     22382; name = 305.P56
+    file[]: crc = 711e38ad; size =       300; name = 305.SCR
+    file[]: crc = de740a24; size =      2831; name = 310.FON
+    file[]: crc = 915ce536; size =      4194; name = 340.HEP
+    file[]: crc = fa17ee9f; size =      5262; name = 340.SCR
+    file[]: crc = b2ae686a; size =      3362; name = 360.HEP
+    file[]: crc = 7d037f1c; size =      8148; name = 360.SCR
+    file[]: crc = d88f7504; size =      2069; name = 4.FON
+    file[]: crc = 0edc085f; size =      1966; name = 400.HEP
+    file[]: crc = 72354a1a; size =     13776; name = 400.SCR
+    file[]: crc = 9e178035; size =       656; name = 41.HEP
+    file[]: crc = cffa7c22; size =        62; name = 41.SCR
+    file[]: crc = 01bf0e1c; size =      1608; name = 462.V56
+    file[]: crc = dac80bd6; size =       988; name = 47.HEP
+    file[]: crc = c139b771; size =      6356; name = 47.SCR
+    file[]: crc = fbfe9f0a; size =     16785; name = 470.V56
+    file[]: crc = 9ab6f2d6; size =      1682; name = 52.HEP
+    file[]: crc = a90bf88b; size =      1660; name = 52.SCR
+    file[]: crc = 81feb5d7; size =      2596; name = 54.HEP
+    file[]: crc = 975c1312; size =      5066; name = 54.SCR
+    file[]: crc = b1a0562d; size =      4749; name = 553.V56
+    file[]: crc = 63bf422e; size =       368; name = 61.HEP
+    file[]: crc = 6c5f05ae; size =       854; name = 61.SCR
+    file[]: crc = dc9d0685; size =       208; name = 63.HEP
+    file[]: crc = 3c6060e5; size =      6752; name = 63.SCR
+    file[]: crc = 166eb309; size =       512; name = 65535.MAP
+    file[]: crc = def70bcb; size =       266; name = 7.HEP
+    file[]: crc = fc25f92b; size =      2998; name = 7.SCR
+    file[]: crc = e764a48a; size =       112; name = 705.HEP
+    file[]: crc = c835e81c; size =       762; name = 705.SCR
+    file[]: crc = 83880fe6; size =      2256; name = 810.HEP
+    file[]: crc = 7fd2b862; size =      3790; name = 810.SCR
+    file[]: crc = ac8454d7; size =      2568; name = 850.HEP
+    file[]: crc = 891bee33; size =      8830; name = 850.SCR
+    file[]: crc = ae7ea9e2; size =       824; name = 880.HEP
+    file[]: crc = 9bd02d61; size =       504; name = 880.SCR
+    file[]: crc = b3dc4b8a; size =       968; name = 890.HEP
+    file[]: crc = 9709ae3e; size =      5314; name = 890.SCR
+    file[]: crc = 62df68e5; size =     14898; name = 920.V56
+    file[]: crc = f874d059; size =     14327; name = 921.V56
+    file[]: crc = d290f1dc; size =     27046; name = 922.V56
+    file[]: crc = 3a16330e; size =     20304; name = 923.V56
+    file[]: crc = 29d9b625; size =     11808; name = 925.V56
+    file[]: crc = 4327acf0; size =     19526; name = 930.V56
+    file[]: crc = 835f0a6f; size =      9819; name = 933.V56
+    file[]: crc = d88f7504; size =      2069; name = 999.FON
+    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
+    file[]: crc = 991dd895; size =     17934; name = INSTALL.HLP ; optional = true
+    file[]: crc = 6c7d7c4d; size =      2108; name = INSTALL.SCR ; optional = true
+    file[]: crc = 93e0ccd9; size =      9648; name = INSTALL.TXT ; optional = true
+    file[]: crc = c7461158; size =      6512; name = INTERP.ERR
+    file[]: crc = cf1befe0; size =       511; name = MESSAGE.MAP
+    file[]: crc = 3d471c97; size =      3405; name = PKCOMP.INF  ; optional = true
+    file[]: crc = 3eaf8a7d; size =        36; name = QG3I.BAT    ; optional = true
+    file[]: crc = 6c3f9149; size =      1925; name = README      ; optional = true
+    file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
+    file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+    file[]: crc = f0af3b57; size =       216; name = RESOURCE.CFG; optional = true
+    file[]: crc = e36a2527; size =    259018; name = RESOURCE.MSG
+    file[]: crc = 4ba12f75; size =     67822; name = SIERRA.EXE
+    file[]: crc = 04c1cf73; size =        36; name = VERSION
+end
+
+//
+// Quest for Glory - Collection Series, Spanish (v1.0, Int. 6.30.94)
+//
+game[v1.0-int-6.30.94-es-quest-for-glory-collection-series]:
+    name = Quest for Glory - Collection Series, Spanish (v1.0, Int. 6.30.94)
+    anchorfile = RESOURCE.000
+    file[]: crc = b05060f7; size =      2520; name = 510.HEP
+    file[]: crc = 6b6729b3; size =      6392; name = 510.SCR
+    file[]: crc = 166eb309; size =       512; name = 65535.MAP
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
+    file[]: crc = 885ee375; size =      3995; name = AUDMSSYS.DRV
+    file[]: crc = 2deb6ee1; size =      1100; name = AUDNONE.DRV
+    file[]: crc = f13c1f73; size =      6113; name = AUDPRO.DRV
+    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
+    file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
+    file[]: crc = 1a0937b6; size =     76541; name = INSTALL.EXE ; optional = true
+    file[]: crc = 47cc2ed4; size =     18213; name = INSTALL.HLP ; optional = true
+    file[]: crc = b984a374; size =      1394; name = INSTALL.SCR ; optional = true
+    file[]: crc = c182bfae; size =     10032; name = INSTALL.TXT ; optional = true
+    file[]: crc = 2655df63; size =      6368; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = eb6ee723; size =       511; name = MESSAGE.MAP
+    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 98b8e476; size =      1137; name = PKCOMP.INF  ; optional = true
+    file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
+    file[]: crc = 50f8aa03; size =        36; name = QG3S.BAT    ; optional = true
+    file[]: crc = c8208ac9; size =      1508; name = README
+    file[]: crc = 3cc2bca6; size =        27; name = README.BAT
+    file[]: crc = 8571cc90; size =   5884098; name = RESOURCE.000
+    file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+    file[]: crc = 05c85fac; size =       233; name = RESOURCE.CFG; optional = true
+    file[]: crc = db704b72; size =      5978; name = RESOURCE.MAP
+    file[]: crc = 09aa1dfa; size =    256014; name = RESOURCE.MSG
+    file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
+    file[]: crc = 4ba12f75; size =     67822; name = SIERRA.EXE
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 56cdea56; size =        55; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
