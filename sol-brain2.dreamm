@@ -224,4 +224,45 @@ game[v1.1-int-2.3.93-3x1.44m]:
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = RESOURCE.000
+    file[]: crc = e4dbd303; size =       128; name = 65535.MAP
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = b751833b; size =      6512; name = AUDBLAST.DRV
+    file[]: crc = bd1d6dc5; size =      5250; name = AUDDISNY.DRV
+    file[]: crc = 530d8d41; size =      1070; name = AUDNONE.DRV
+    file[]: crc = 6ae32077; size =      6064; name = AUDPRO.DRV
+    file[]: crc = 7f5de9c0; size =      4043; name = AUDPRO16.DRV
+    file[]: crc = b6c467e1; size =      4823; name = AUDPS1.DRV
+    file[]: crc = d186dc93; size =      6602; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = d8668005; size =     76296; name = INSTALL.EXE
+    file[]: crc = 4199a10a; size =     17710; name = INSTALL.HLP
+    file[]: crc = 232b6813; size =       507; name = INSTALL.SCR
+    file[]: crc = f1a8f56b; size =      9439; name = INSTALL.TXT
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 2691ff2e; size =       624; name = READ.ME
+    file[]: crc = 875603ba; size =        24; name = README.BAT
+    file[]: crc = d3fb9616; size =    586560; name = RESOURCE.000
+    file[]: crc = a88864ce; size =     44358; name = RESOURCE.AUD
+    file[]: crc = a74af574; size =       234; name = RESOURCE.CFG
+    file[]: crc = a945ebb1; size =       986; name = RESOURCE.MAP
+    file[]: crc = d94cccc6; size =     67778; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = e9e20b62; size =         8; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
 end
