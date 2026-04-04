@@ -11,7 +11,7 @@ rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 ramkb = 4096
 filter = sierra, adventure
-SPEECH = DACNONE.DRV
+AUDIO_DRIVER = DACNONE.DRV
 
 //
 // sound configuration
@@ -21,31 +21,31 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        AUDIO_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = adlib
-        AUDIO_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16; priority = 1
-        AUDIO_DRIVER = SBPRO.DRV
+        SOUND_DRIVER = SBPRO.DRV
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = sb16+mt32; priority = 3
-        AUDIO_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
         audiohw = gmidi; priority = 2
-        AUDIO_DRIVER = GENMIDI.DRV
+        SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
@@ -54,8 +54,8 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv=VGA
-        soundDrv=$(AUDIO_DRIVER)
-        audioDrv=$(SPEECH)
+        soundDrv=$(SOUND_DRIVER)
+        audioDrv=$(AUDIO_DRIVER)
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
         minMemory=1500k
@@ -227,7 +227,7 @@ end
 //
 game[v1.0-cd]:
     name = CD (v1.0)
-    SPEECH = DACBLAST.DRV
+    AUDIO_DRIVER = DACBLAST.DRV
     anchorfile = RESOURCE.000
     file[]: crc = 6b7f71ed; size =       908; name = 100.HEP
     file[]: crc = 959b3e4f; size =      1600; name = 100.SCR
@@ -275,7 +275,7 @@ game[v1.0-cd]:
     file[]: crc = dfcfc57b; size =   2626716; name = RESOURCE.SFX
     file[]: crc = 03cc4fe3; size =       170; name = RESOURCE.WIN; optional = true
     file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
-    file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL
     file[]: crc = 3c327c24; size =     22048; name = SETUP.EXE   ; optional = true
     file[]: crc = c3ef09ab; size =    228991; name = SETUP.SOL   ; optional = true
     file[]: crc = 3f875756; size =      7318; name = SIERRA.BMP  ; optional = true
@@ -295,7 +295,7 @@ end
 //
 game[v1.0-gog]:
     name = GOG (v1.0)
-    SPEECH = DACBLAST.DRV
+    AUDIO_DRIVER = DACBLAST.DRV
     imports = v1.0-cd
     anchorfile = RESOURCE.000
     file[]: crc = e2d01ede; size =      1852; name = 10.HEP

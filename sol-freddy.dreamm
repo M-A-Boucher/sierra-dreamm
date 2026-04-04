@@ -47,31 +47,31 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = sb16+speaker
-        AUDIO_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = sb16+adlib
-        AUDIO_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16; priority = 1
-        AUDIO_DRIVER = SBPRO.DRV
+        SOUND_DRIVER = SBPRO.DRV
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = sb16+mt32; priority = 3
-        AUDIO_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
         audiohw = sb16+gmidi; priority = 2
-        AUDIO_DRIVER = GENMIDI.DRV
+        SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
@@ -80,7 +80,7 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(AUDIO_DRIVER)
+        soundDrv=$(SOUND_DRIVER)
         audioDrv=AUDBLAST.DRV
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV

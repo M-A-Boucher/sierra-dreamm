@@ -21,7 +21,7 @@ TANDY = false
 //
 config[machine]:
     title = Machine Configuration
-    option[tandy]: name = $(TVIDEO_NAME); machine = tandy; videohw = cga; TANDY = true; VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY3V.DRV; condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
+    option[tandy]: name = $(TVIDEO_NAME); machine = tandy; videohw = cga; TANDY = true; VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
     option[pc]:    name = PC;             machine = pc;    priority = 1;
 end
 
@@ -42,12 +42,12 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    option[speaker]:  name = $(SPEAKER_NAME);               audiohw = speaker;    AUDIO_DRIVER = STD.DRV;       condition = file_exists("$$(rootpath)\\STD.DRV");
-    option[adlib]:    name = $(ADLIB_NAME);                 audiohw = adlib;      AUDIO_DRIVER = ADL.DRV;       condition = file_exists("$$(rootpath)\\ADL.DRV");
-    option[cms]:      name = $(CMS_NAME);                   audiohw = cms;        AUDIO_DRIVER = CMS.DRV;       condition = file_exists("$$(rootpath)\\CMS.DRV");
-    option[sb16]:     name = $(SB16_NAME);                  audiohw = sb16;       AUDIO_DRIVER = SNDBLAST.DRV;  condition = file_exists("$$(rootpath)\\SNDBLAST.DRV"); priority = 1
-    option[mt32]:     name = $(MT32_NAME);                  audiohw = mt32;       AUDIO_DRIVER = MT32.DRV;      condition = file_exists("$$(rootpath)\\MT32.DRV")    ; priority = 2
-    option[mtblast]:  name = $(MT32_NAME) + $(SB16_NAME);   audiohw = mt32+sb16;  AUDIO_DRIVER = MTBLAST.DRV;   condition = file_exists("$$(rootpath)\\MTBLAST.DRV") ; priority = 3
+    option[speaker]:  name = $(SPEAKER_NAME);               audiohw = speaker;    SOUND_DRIVER = STD.DRV;       condition = file_exists("$$(rootpath)\\STD.DRV");
+    option[adlib]:    name = $(ADLIB_NAME);                 audiohw = adlib;      SOUND_DRIVER = ADL.DRV;       condition = file_exists("$$(rootpath)\\ADL.DRV");
+    option[cms]:      name = $(CMS_NAME);                   audiohw = cms;        SOUND_DRIVER = CMS.DRV;       condition = file_exists("$$(rootpath)\\CMS.DRV");
+    option[sb16]:     name = $(SB16_NAME);                  audiohw = sb16;       SOUND_DRIVER = SNDBLAST.DRV;  condition = file_exists("$$(rootpath)\\SNDBLAST.DRV"); priority = 1
+    option[mt32]:     name = $(MT32_NAME);                  audiohw = mt32;       SOUND_DRIVER = MT32.DRV;      condition = file_exists("$$(rootpath)\\MT32.DRV")    ; priority = 2
+    option[mtblast]:  name = $(MT32_NAME) + $(SB16_NAME);   audiohw = mt32+sb16;  SOUND_DRIVER = MTBLAST.DRV;   condition = file_exists("$$(rootpath)\\MTBLAST.DRV") ; priority = 3
     condition = !$(TANDY)
 end
 
@@ -55,7 +55,7 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(AUDIO_DRIVER)
+        soundDrv=$(SOUND_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV

@@ -13,7 +13,7 @@ mips = $(MIPS_486DX4_100)
 nothrottle = 4
 ramkb = 4096
 filter = sierra, adventure
-SPEECH =
+AUDIO_DRIVER =
 
 //
 // graphics configuration
@@ -48,31 +48,31 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = sb16+speaker
-        AUDIO_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = sb16+adlib
-        AUDIO_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16; priority = 1
-        AUDIO_DRIVER = SBPRO.DRV
+        SOUND_DRIVER = SBPRO.DRV
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = sb16+mt32; priority = 3
-        AUDIO_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
         audiohw = sb16+gmidi; priority = 2
-        AUDIO_DRIVER = GENMIDI.DRV
+        SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
@@ -81,8 +81,8 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(AUDIO_DRIVER)
-        audioDrv=$(SPEECH)
+        soundDrv=$(SOUND_DRIVER)
+        audioDrv=$(AUDIO_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
@@ -677,7 +677,7 @@ end
 //
 game[v1.000.00g-cd]:
     name = v1.000.00G, CD
-    SPEECH = AUDBLAST.DRV
+    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = SIERRA.EXE
     anchordepth = 1
     file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
@@ -804,7 +804,7 @@ end
 //
 game[1.000.00-kings-quest-collectors-edition]:
     name = King's Quest - Collector's Edition (v1.00)
-    SPEECH = AUDBLAST.DRV
+    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = RESOURCE.000
     file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
     file[]: crc = be1217b7; size =      5862; name = 420.SCR

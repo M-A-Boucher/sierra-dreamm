@@ -15,7 +15,7 @@ ramkb = 4096
 videohw = vga;
 filter = sierra, adventure
 TANDY = 0
-SPEECH = 
+AUDIO_DRIVER = 
 
 //
 // graphics configuration
@@ -25,7 +25,7 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; machine = tandy; nothrottle = 2.8
-        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = TANDY.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
     option[ega]:
@@ -63,43 +63,43 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = sb16+speaker
-        AUDIO_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = sb16+adlib
-        AUDIO_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
         audiohw = sb16+cms
-        AUDIO_DRIVER = CMS.DRV
+        SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16
-        AUDIO_DRIVER = SNDBLAST.DRV
+        SOUND_DRIVER = SNDBLAST.DRV
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = sb16+mt32; priority = 2
-        AUDIO_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[mtblast]:
         name = $(MT32_NAME) + $(SB16_NAME)
         audiohw = sb16+mt32; priority = 3
-        AUDIO_DRIVER = MTBLAST.DRV
+        SOUND_DRIVER = MTBLAST.DRV
         condition = file_exists("$$(rootpath)\\MTBLAST.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
         audiohw = gmidi; priority = 1
-        AUDIO_DRIVER = GENMIDI.DRV
+        SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
@@ -108,8 +108,8 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(AUDIO_DRIVER)
-        audioDrv=$(SPEECH)
+        soundDrv=$(SOUND_DRIVER)
+        audioDrv=$(AUDIO_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
@@ -410,7 +410,7 @@ end
 game[v1.0-cd]:
     name = v1.0, CD
     launch = SIERRA.EXE
-    SPEECH = AUDBLAST.DRV
+    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = RESOURCE.000
     file[]: crc = bc2487b9; size =      2846; name = 335.HEP
     file[]: crc = b42ec293; size =      3160; name = 335.SCR
@@ -480,7 +480,7 @@ game[v1.0-cd-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v1.0 CD)
     imports = v1.0-cd
     launch = SIERRA.EXE
-    SPEECH = AUDBLAST.DRV
+    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = AUDBLAST.DRV
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
     file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true

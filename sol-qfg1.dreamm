@@ -23,7 +23,7 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; AUDIO_DRIVER = JR.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
     end
     option[hercmono]:
@@ -85,31 +85,31 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = sb16+speaker
-        AUDIO_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = sb16+adlib
-        AUDIO_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
         audiohw = sb16+cms
-        AUDIO_DRIVER = CMS.DRV
+        SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16
-        AUDIO_DRIVER = SNDBLAST.DRV
+        SOUND_DRIVER = SNDBLAST.DRV
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = sb16+mt32; priority = 2
-        AUDIO_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
 end
@@ -118,7 +118,7 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(AUDIO_DRIVER)
+        soundDrv=$(SOUND_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
