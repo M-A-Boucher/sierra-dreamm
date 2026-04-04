@@ -277,4 +277,52 @@ game[v1.0-cd]:
     file[]: crc = 9f7e188a; size =      8252; name = VGA320.DRV
 end
 
+//
+// Interactive Demo
+//
+demo[interactive-demo]:
+    name = Interactive Demo
+    anchorfile = RESOURCE.000
+    file[]: crc = 2e97e1e3; size =      1684; name = 220.HEP
+    file[]: crc = d0969820; size =     15370; name = 220.MSG
+    file[]: crc = 7bdf75c1; size =      1890; name = 220.SCR
+    file[]: crc = 8df9f5fc; size =      1289; name = 220.SHM
+    file[]: crc = 48570c54; size =        50; name = 65535.MAP
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
+    file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
+    file[]: crc = 79b5e277; size =      3953; name = AUDMSSYS.DRV
+    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
+    file[]: crc = a446ffa4; size =      6064; name = AUDPRO.DRV
+    file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
+    file[]: crc = 33b05d68; size =      4823; name = AUDPS1.DRV
+    file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = fc6a6e25; size =       766; name = FPDEMO.ICO  ; optional = true
+    file[]: crc = c413b79a; size =       545; name = FPDEMO.PIF  ; optional = true
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = d8668005; size =     76296; name = INSTALL.EXE ; optional = true
+    file[]: crc = 4199a10a; size =     17710; name = INSTALL.HLP ; optional = true
+    file[]: crc = 80c24bed; size =       511; name = INSTALL.SCR ; optional = true
+    file[]: crc = f1a8f56b; size =      9439; name = INSTALL.TXT ; optional = true
+    file[]: crc = 18896cc7; size =      6032; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 3edcf0de; size =      3687; name = READ.ME     ; optional = true
+    file[]: crc = 36d95666; size =        25; name = README.BAT  ; optional = true
+    file[]: crc = 48c842a6; size =    867724; name = RESOURCE.000
+    file[]: crc = a74cdb6f; size =    536098; name = RESOURCE.AUD
+    file[]: crc = 0dc5ff64; size =       249; name = RESOURCE.CFG; optional = true
+    file[]: crc = ad91c324; size =      1909; name = RESOURCE.MAP
+    file[]: crc = 33312260; size =     68460; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = b657f9f6; size =        74; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
 end

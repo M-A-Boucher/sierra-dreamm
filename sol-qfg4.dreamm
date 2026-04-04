@@ -14,6 +14,38 @@ filter = sierra, adventure
 AUDIO_DRIVER = DACNONE.DRV
 
 //
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 3
+        VIDEO_DRIVER = VGA.DRV
+        condition = file_exists("$$(rootpath)\\VGA.DRV")
+    end
+end
+
+
+//
 // sound configuration
 //
 config[sound]:
@@ -53,7 +85,7 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=VGA
+        videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
         audioDrv=$(AUDIO_DRIVER)
         kbdDrv=IBMKBD.DRV
@@ -328,6 +360,51 @@ game[v1.0-gog]:
     file[]: crc = 8125052d; size =   5049077; name = Quest for Glory 4 - manual.pdf; optional = true
     file[]: crc = 69fc0468; size =       356; name = RESOURCE.CFG; optional = true
     file[]: crc = 32682373; size =     20991; name = TS.001
+end
+
+//
+// Demo *** doesn't load ***
+//
+demo[demo]:
+    name = Demo
+    AUDIO_DRIVER = AUDNONE.DRV
+    anchorfile = RESOURCE.000
+    file[]: crc = 0d77235c; size =       117; name = 65535.MAP
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 5d4f2374; size =      7670; name = AUDBLAST.DRV
+    file[]: crc = 045a1fe1; size =      6705; name = AUDDISNY.DRV
+    file[]: crc = 03ff90f2; size =      5262; name = AUDMSSYS.DRV
+    file[]: crc = 940c3211; size =      1109; name = AUDNONE.DRV
+    file[]: crc = c296ca99; size =      7436; name = AUDPRO.DRV
+    file[]: crc = bb669840; size =      5432; name = AUDPRO16.DRV
+    file[]: crc = 7abda9a7; size =      6231; name = AUDPS1.DRV
+    file[]: crc = 38e24fd1; size =      7708; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = d8668005; size =     76296; name = INSTALL.EXE ; optional = true
+    file[]: crc = 4199a10a; size =     17710; name = INSTALL.HLP ; optional = true
+    file[]: crc = 8e97ca65; size =       507; name = INSTALL.SCR ; optional = true
+    file[]: crc = f1a8f56b; size =      9439; name = INSTALL.TXT ; optional = true
+    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
+    file[]: crc = 71492e16; size =        20; name = MESSAGE.MAP
+    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
+    file[]: crc = 66095ad4; size =      2145; name = READ.ME     ; optional = true
+    file[]: crc = 9cb24c58; size =        27; name = README.BAT  ; optional = true
+    file[]: crc = ffbef77b; size =    623154; name = RESOURCE.000
+    file[]: crc = a76b1161; size =       239; name = RESOURCE.CFG; optional = true
+    file[]: crc = 6433e2c5; size =       922; name = RESOURCE.MAP
+    file[]: crc = d72c25f0; size =      5026; name = RESOURCE.MSG
+    file[]: crc = 644c267f; size =   1630308; name = RESOURCE.SFX
+    file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
+    file[]: crc = f9e01edf; size =     72772; name = SIERRA.EXE
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = cb008a0e; size =        17; name = VERSION
+    file[]: crc = 7980e4bd; size =      8199; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
 end

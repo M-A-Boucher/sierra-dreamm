@@ -156,4 +156,46 @@ game[v1.0-int-2.5.93-4x1.44m]:
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = RESOURCE.000
+    file[]: crc = c5908ed2; size =       802; name = 150.HEP
+    file[]: crc = cd1b236d; size =      1018; name = 150.SCR
+    file[]: crc = cdb35437; size =     18717; name = 92.V56
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = a417fae3; size =      6210; name = AUDBLAST.DRV
+    file[]: crc = bdbf3d5c; size =      4947; name = AUDDISNY.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = b9127737; size =      5761; name = AUDPRO.DRV
+    file[]: crc = 8bd548ad; size =      3660; name = AUDPRO16.DRV
+    file[]: crc = 6a378d82; size =      4520; name = AUDPS1.DRV
+    file[]: crc = 507df03a; size =      6300; name = AUDTHUND.DRV
+    file[]: crc = 7d0a70c2; size =        31; name = ECO2DEMO.1  ; optional = true
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = d8668005; size =     76296; name = INSTALL.EXE ; optional = true
+    file[]: crc = 4199a10a; size =     17710; name = INSTALL.HLP ; optional = true
+    file[]: crc = 7070bd8c; size =       511; name = INSTALL.SCR ; optional = true
+    file[]: crc = f1a8f56b; size =      9439; name = INSTALL.TXT ; optional = true
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
+    file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = abcc8d09; size =       681; name = READ.ME     ; optional = true
+    file[]: crc = 875603ba; size =        24; name = README.BAT  ; optional = true
+    file[]: crc = 45ffd7d6; size =    525992; name = RESOURCE.000
+    file[]: crc = 1dd576a8; size =       305; name = RESOURCE.CFG; optional = true
+    file[]: crc = ef325074; size =      1321; name = RESOURCE.MAP
+    file[]: crc = d55492d1; size =     67812; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = 8cc0e189; size =        11; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
 end
