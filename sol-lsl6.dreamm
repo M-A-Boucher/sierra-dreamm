@@ -294,13 +294,9 @@ game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
 end
 
 //
-// v1.0, CD SVGA, SVGA
 //
-game[v1.0-cd-svga]:
-    name = v1.0, CD, SVGA
-    AUDIO_DRIVER = DACBLAST.DRV
-    anchorfile = RESOURCE.000
-    anchordepth = 2
+//
+fragment[map-base]:
     file[]: crc = e1fc6c95; size =       675; name = 0.MAP
     file[]: crc = d10a4847; size =       108; name = 130.MAP
     file[]: crc = 34e98307; size =       318; name = 140.MAP
@@ -364,6 +360,18 @@ game[v1.0-cd-svga]:
     file[]: crc = 1004e1c0; size =      2166; name = 85.MAP
     file[]: crc = 90e49d86; size =       817; name = 850.MAP
     file[]: crc = cfd02dde; size =       794; name = 860.MAP
+    file[]: crc = 350b48f4; size =      5973; name = 93.MSG
+end
+
+//
+// v1.0, CD SVGA, SVGA
+//
+game[v1.0-cd-svga]:
+    name = v1.0, CD, SVGA
+    AUDIO_DRIVER = DACBLAST.DRV
+    imports = map-base
+    anchorfile = RESOURCE.000
+    anchordepth = 2
     file[]: crc = 294ec80d; size =      4786; name = 0.HEP
     file[]: crc = 565d5d3c; size =      8460; name = 0.SCR
     file[]: crc = d44f5c0b; size =      2102; name = 140.HEP
@@ -391,7 +399,6 @@ game[v1.0-cd-svga]:
     file[]: crc = ecfc3a66; size =      3282; name = 840.SCR
     file[]: crc = c8bb9348; size =      2862; name = 860.HEP
     file[]: crc = 2a93e91f; size =      9512; name = 860.SCR
-    file[]: crc = 350b48f4; size =      5973; name = 93.MSG
     file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
     file[]: crc = 30cd9ed7; size =       811; name = CHECKCD.BAT ; optional = true
     file[]: crc = a577da3b; size =      4717; name = DACBLAST.DRV
@@ -429,72 +436,9 @@ end
 game[v1.0-cd-vga]:
     name = v1.0, CD, VGA
     AUDIO_DRIVER = AUDBLAST.DRV
+    imports = map-base
     anchorfile = RESOURCE.000
     anchordepth = 2
-    file[]: crc = e1fc6c95; size =       675; name = 0.MAP
-    file[]: crc = d10a4847; size =       108; name = 130.MAP
-    file[]: crc = 34e98307; size =       318; name = 140.MAP
-    file[]: crc = 7c313068; size =        45; name = 190.MAP
-    file[]: crc = d44c3ade; size =       724; name = 200.MAP
-    file[]: crc = dbc3e883; size =       444; name = 205.MAP
-    file[]: crc = 6df8976d; size =       676; name = 210.MAP
-    file[]: crc = a02f205b; size =      1949; name = 230.MAP
-    file[]: crc = 69375ed5; size =       710; name = 240.MAP
-    file[]: crc = 6bffdfbf; size =       925; name = 250.MAP
-    file[]: crc = d5e907ac; size =        52; name = 260.MAP
-    file[]: crc = f0363217; size =       269; name = 270.MAP
-    file[]: crc = e1007ae6; size =       437; name = 280.MAP
-    file[]: crc = 13f8a510; size =       115; name = 300.MAP
-    file[]: crc = 3d94cb02; size =       227; name = 305.MAP
-    file[]: crc = d7a65752; size =      1242; name = 310.MAP
-    file[]: crc = 41ddf3ce; size =       612; name = 320.MAP
-    file[]: crc = 7b8c88ad; size =      1767; name = 330.MAP
-    file[]: crc = 8284f8e0; size =       409; name = 340.MAP
-    file[]: crc = ff5f9ac6; size =       507; name = 350.MAP
-    file[]: crc = 9fb11e99; size =        80; name = 360.MAP
-    file[]: crc = dc863abc; size =       696; name = 370.MAP
-    file[]: crc = 2e029996; size =       521; name = 380.MAP
-    file[]: crc = c6cc1ddd; size =       771; name = 390.MAP
-    file[]: crc = 2bb646cc; size =       773; name = 400.MAP
-    file[]: crc = 737798d9; size =      1078; name = 410.MAP
-    file[]: crc = 1d28b7cb; size =       521; name = 420.MAP
-    file[]: crc = df787cf7; size =       940; name = 430.MAP
-    file[]: crc = fe972506; size =       465; name = 440.MAP
-    file[]: crc = 178cbbdf; size =       635; name = 460.MAP
-    file[]: crc = 4b112bb4; size =        66; name = 500.MAP
-    file[]: crc = 830ac1d5; size =       276; name = 505.MAP
-    file[]: crc = 8a1fc2b5; size =      1410; name = 510.MAP
-    file[]: crc = b1ffb6ca; size =       567; name = 520.MAP
-    file[]: crc = e4bb6092; size =       311; name = 530.MAP
-    file[]: crc = 6ce3ce7b; size =       570; name = 560.MAP
-    file[]: crc = 58ba216e; size =        94; name = 570.MAP
-    file[]: crc = 90a57dd9; size =       297; name = 580.MAP
-    file[]: crc = 32414c44; size =       630; name = 590.MAP
-    file[]: crc = 068ae1ee; size =       703; name = 600.MAP
-    file[]: crc = b7544364; size =      1424; name = 610.MAP
-    file[]: crc = 94e684d7; size =       451; name = 611.MAP
-    file[]: crc = 9f9ffba6; size =       885; name = 620.MAP
-    file[]: crc = 99f102ad; size =      1249; name = 630.MAP
-    file[]: crc = 93977f4f; size =       150; name = 640.MAP
-    file[]: crc = 13387deb; size =       171; name = 650.MAP
-    file[]: crc = f5e6bebb; size =       185; name = 660.MAP
-    file[]: crc = 6f99521a; size =       101; name = 680.MAP
-    file[]: crc = 8e699a36; size =        94; name = 690.MAP
-    file[]: crc = bf4e78f8; size =       276; name = 700.MAP
-    file[]: crc = 86fcbed3; size =       234; name = 710.MAP
-    file[]: crc = 52e4ab97; size =      1664; name = 720.MAP
-    file[]: crc = ff7af038; size =        24; name = 740.MAP
-    file[]: crc = 3a99ff09; size =       290; name = 800.MAP
-    file[]: crc = 20e4b514; size =       472; name = 810.MAP
-    file[]: crc = b712195f; size =       143; name = 82.MAP
-    file[]: crc = bc881eff; size =       668; name = 820.MAP
-    file[]: crc = 88b96a8f; size =       157; name = 825.MAP
-    file[]: crc = e3e4a106; size =       206; name = 830.MAP
-    file[]: crc = faf63149; size =       332; name = 840.MAP
-    file[]: crc = 1004e1c0; size =      2166; name = 85.MAP
-    file[]: crc = 90e49d86; size =       817; name = 850.MAP
-    file[]: crc = cfd02dde; size =       794; name = 860.MAP
-    file[]: crc = 350b48f4; size =      5973; name = 93.MSG
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = b96e2cf3; size =      5805; name = AUDARIA.DRV
     file[]: crc = e0ee1c21; size =      9410; name = AUDBLAST.DRV
