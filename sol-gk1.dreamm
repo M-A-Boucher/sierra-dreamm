@@ -82,7 +82,7 @@ dynamicfile[]:
         mouseDrv  = STDMOUSE.DRV
         memoryDrv = ARM.DRV
         minMemory = 2M
-        audioSize = 63k 
+        audioSize = 32k 
         sync      = .\AUD
 	    audio     = .;.\SFX;.\PATCHES;.\AUD 
 	    movieDir  = .\SEQ 
