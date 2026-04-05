@@ -312,6 +312,9 @@ game[v1.0-int-12.22.93-11x1.44m]:
     file[]: crc = 395d45f1; size =        40; name = VERSION
 end
 
+//
+// Base files for v1.0, CD
+//
 fragment[v1.0-cd-base]:
     file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
     file[]: crc = a772d755; size =       364; name = ALT.MAP
@@ -651,8 +654,11 @@ addon[v1.0a-cd]:
     file[]: crc = b3e3f689; size =    584450; name = SIERRAW.EXE
 end
 
-upgrader[v1.0a-cd-installer]:
-    name = v1.0a, CD, Installer
+//
+// Upgrader for v1.0a, CD
+//
+upgrader[v1.0a-cd-upgrader]:
+    name = v1.0a, CD
     upgradeids = v1.0-cd
     launch = GKCD.EXE
     imports = v1.0-cd-base
