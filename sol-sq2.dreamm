@@ -106,16 +106,6 @@ game[v2.0a-int-2.912-3x360k]:
 end
 
 //
-// v2.0A, Int. 2.912, 3x360K, Copy Protection Removed
-//
-game[v2.0a-int-2.912-3x360k-cr]:
-    name = v2.0A, Int. 2.912, 3x360K, Copy Protection Removed
-    imports = v2.0a-int-2.912-3x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
-end
-
-//
 // v2.0C, Int. 2.915, 3x360K, Copy Protection *** MISSING ***
 //
 
@@ -146,16 +136,6 @@ game[v2.0c-int-2.917-3x360k]:
 end
 
 //
-// v2.0C, Int. 2.917, 3x360K, Copy Protection Removed
-//
-game[v2.0c-int-2.917-3x360k-cr]:
-    name = v2.0C, Int. 2.917, 3x360K, Copy Protection Removed
-    imports = v2.0c-int-2.917-3x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
-end
-
-//
 // v2.0D, Int. 2.936, 3x360K, Copy Protection
 //
 game[v2.0d-int-2.936-3x360k]:
@@ -181,17 +161,6 @@ game[v2.0d-int-2.936-3x360k]:
     file[]: crc = f062c41f; size =    215534; name = VOL.2
     file[]: crc = 2f236481; size =    196056; name = VOL.3
 end
-
-//
-// v2.0D, Int. 2.936, 3x360K, Copy Protection Removed
-//
-game[v2.0d-int-2.936-3x360k-cr]:
-    name = v2.0D, Int. 2.936, 3x360K, Copy Protection Removed
-    imports = v2.0d-int-2.936-3x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
-end
-
 //
 // v2.0F, Int. 2.936, 3x360K, Copy Protection
 //
@@ -222,16 +191,6 @@ game[v2.0f-int-2.936-3x360k]:
 end
 
 //
-// v2.0F, Int. 2.936, 3x360K, Copy Protection Removed
-//
-game[v2.0f-int-2.936-3x360k-cr]:
-    name = v2.0F, Int. 2.936, 3x360K, Copy Protection Removed
-    imports = v2.0f-int-2.936-3x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
-end
-
-//
 // v2.0A, Int. 2.912, 2x720K, Copy Protection
 //
 game[v2.0a-int-2.912-2x720k]:
@@ -258,16 +217,6 @@ game[v2.0a-int-2.912-2x720k]:
     file[]: crc = 6dbdff2f; size =    411126; name = VOL.2
     file[]: crc = 14a285ac; size =         2; name = VOL.3
     file[]: crc = aeb974ec; size =      6828; name = WORDS.TOK
-end
-
-//
-// v2.0A, Int. 2.912, 2x720K, Copy Protection Removed
-//
-game[v2.0a-int-2.912-2x720k-cr]:
-    name = v2.0A, Int. 2.912, 2x720K, Copy Protection Removed
-    imports = v2.0a-int-2.912-2x720k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
 end
 
 //
@@ -302,16 +251,6 @@ game[v2.0c-int-2.917-2x720k]:
 end
 
 //
-// v2.0C, Int. 2.917, 2x720K, Copy Protection Removed
-//
-game[v2.0c-int-2.917-2x720k-cr]:
-    name = v2.0C, Int. 2.917, 2x720K, Copy Protection Removed
-    imports = v2.0c-int-2.917-2x720k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
-end
-
-//
 // v2.0D, Int. 2.936, 2x720K, Copy Protection
 //
 game[v2.0d-int-2.936-2x720k]:
@@ -338,20 +277,9 @@ game[v2.0d-int-2.936-2x720k]:
 end
 
 //
-// v2.0D, Int. 2.936, 2x720K, Copy Protection Removed
-//
-game[v2.0d-int-2.936-2x720k-cr]:
-    name = v2.0D, Int. 2.936, 2x720K, Copy Protection Removed
-    imports = v2.0d-int-2.936-2x720k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
-end
-
-//
-// v2.0F, Int. 2.936, 2x720K, Copy Protection
-//
+// v2.0F, Int. 2.936, 2x720K
 game[v2.0f-int-2.936-2x720k]:
-    name = v2.0F, Int. 2.936, 2x720K, Copy Protection
+    name = v2.0F, Int. 2.936, 2x720K
     anchorfile = VOL.0
     file[]: crc = 1c0fbaf9; size =     39424; name = AGI
     file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
@@ -373,16 +301,6 @@ game[v2.0f-int-2.936-2x720k]:
     file[]: crc = 56ddcb7f; size =    161225; name = VOL.1
     file[]: crc = 0684fac1; size =    411824; name = VOL.2
     file[]: crc = aeb974ec; size =      6828; name = WORDS.TOK
-end
-
-//
-// v2.0F, Int. 2.936, 2x720K, Copy Protection Removed
-//
-game[v2.0f-int-2.936-2x720k-cr]:
-    name = v2.0F, Int. 2.936, 2x720K, Copy Protection Removed
-    imports = v2.0f-int-2.936-2x720k
-    anchorfile = SIERRA.COM
-    file[]: crc = b7bb35fa; size =      3121; name = SIERRA.COM
 end
 
 //

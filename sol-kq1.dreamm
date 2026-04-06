@@ -76,10 +76,10 @@ script[agikey]:
 end
 
 //
-// v1.0U, Int. 2.272, 2x360K, Copy Protection
+// v1.0U, Int. 2.272, 2x360K
 //
 game[v1.0u-int-2.272-2x360k]:
-    name = v1.0U, Int. 2.272, 2x360K, Copy Protection
+    name = v1.0U, Int. 2.272, 2x360K
     anchorfile = VOL.0
     file[]: crc = c392a757; size =     34817; name = AGI
     file[]: crc = 3d5d7bad; size =      6656; name = AGIDATA.OVL
@@ -100,86 +100,10 @@ game[v1.0u-int-2.272-2x360k]:
 end
 
 //
-// v1.0U, Int. 2.272, 2x360K, Copy Protection Removed
-//
-game[v1.0u-int-2.272-2x360k-cr]:
-    name = v1.0U, Int. 2.272, 2x360K, Copy Protection Removed
-    imports = v1.0u-int-2.272-2x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = e7460485; size =      2266; name = SIERRA.COM
-end
-
-//
-// v2.0F, Int. 2.425, 2x360K, Copy Protection
-//
-game[v2.0f-int-2.425-2x360k]:
-    name = v2.0F, Int. 2.425, 2x360K, Copy Protection
-    anchorfile = VOL.0
-    file[]: crc = 3078abe6; size =     38400; name = AGI
-    file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
-    file[]: crc = ca8b4741; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 8e14b45e; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
-    file[]: crc = 211da9c5; size =      1536; name = HGC_GRAF.OVL
-    file[]: crc = e1d5c430; size =      1024; name = HGC_OBJS.OVL
-    file[]: crc = 4d0b9afd; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = c49114dd; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 4d098292; size =       315; name = LOGDIR
-    file[]: crc = 2f7911a0; size =       331; name = OBJECT
-    file[]: crc = f5d23f58; size =       255; name = PICDIR
-    file[]: crc = e807d13a; size =      2944; name = SIERRA.COM
-    file[]: crc = e8a07a2c; size =       144; name = SNDDIR
-    file[]: crc = 72791dbd; size =       432; name = VIEWDIR
-    file[]: crc = d337fbfd; size =     48472; name = VOL.0
-    file[]: crc = 5b5e75a0; size =    200630; name = VOL.1
-    file[]: crc = 32884bdb; size =     90501; name = VOL.2
-    file[]: crc = eba7ec7e; size =      3144; name = WORDS.TOK
-end
-
-//
-// v2.0F, Int. 2.425, 2x360K, Copy Protection Removed
-//
-game[v1.0f-int-2.235-2x360k-cr]:
-    name = v2.0F, Int. 2.425, 2x360K, Copy Protection Removed
-    imports = v2.0f-int-2.425-2x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = bcd08844; size =      2944; name = SIERRA.COM
-end
-
-//
-// v2.0F, Int. 2.917, 2x360K, Copy Protection
-//
-game[v2.0f-int-2.917-2x360k]:
-    name = v2.0F, Int. 2.917, 2x360K, Copy Protection
-    imports = v2.0f-int-2.425-2x360k
-    anchorfile = AGI
-    file[]: crc = d4138394; size =     39424; name = AGI
-    file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
-    file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 67e8b0ad; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
-    file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
-    file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 3b977587; size =      3121; name = SIERRA.COM
-    file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
-end
-
-//
-// v2.0F, Int. 2.917, 2x360K, Copy Protection Removed
-//
-game[v1.0u-int-2.917-2x360k-cr]:
-    name = v2.0F, Int. 2.917, 2x360K, Copy Protection Removed
-    imports = v2.0f-int-2.917-2x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = c4943f6f; size =      3121; name = SIERRA.COM
-end
-
-//
-// v2.0F, Int. 2.425, 1x720K, Copy Protection
+// v2.0F, Int. 2.425, 1x720K (Identical to v2.0F, Int. 2.425, 2x360K)
 //
 game[v2.0f-int-2.425-1x720k]:
-    name = v2.0F, Int. 2.425, 1x720K, Copy Protection
+    name = v2.0F, Int. 2.425, 1x720K
     anchorfile = VOL.0
     file[]: crc = 3078abe6; size =     38400; name = AGI
     file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
@@ -202,46 +126,43 @@ game[v2.0f-int-2.425-1x720k]:
     file[]: crc = eba7ec7e; size =      3144; name = WORDS.TOK
 end
 
-//
-// v2.0F, Int. 2.425, 1x720K, Copy Protection Removed
-//
-game[v2.0f-int-2.425-1x720k-cr]:
-    name = v2.0F, Int. 2.425, 1x720K, Copy Protection Removed
-    imports = v2.0f-int-2.425-1x720k
-    anchorfile = SIERRA.COM
-    file[]: crc = bcd08844; size =      2944; name = SIERRA.COM
-end
 
 //
-// v2.0F, Int. 2.917, 1x720K, Copy Protection
+// v2.0F, Int. 2.917, 1x720K, (Identical to v2.0F, Int. 2.917, 2x360K)
 //
 game[v2.0f-int-2.917-1x720k]:
-    name = v2.0F, Int. 2.917, 1x720K, Copy Protection
-    imports = v2.0f-int-2.425-1x720k
+    name = v2.0F, Int. 2.917, 1x720K
     anchorfile = VOL.2
     file[]: crc = d4138394; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
     file[]: crc = 67e8b0ad; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
+    file[]: crc = 4d098292; size =       315; name = LOGDIR
+    file[]: crc = 2f7911a0; size =       331; name = OBJECT
+    file[]: crc = f5d23f58; size =       255; name = PICDIR
     file[]: crc = 3b977587; size =      3121; name = SIERRA.COM
+    file[]: crc = e8a07a2c; size =       144; name = SNDDIR
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
+    file[]: crc = 72791dbd; size =       432; name = VIEWDIR
     file[]: crc = d337fbfd; size =     48472; name = VOL.0
     file[]: crc = 5b5e75a0; size =    200630; name = VOL.1
     file[]: crc = b310ac5c; size =     90891; name = VOL.2
+    file[]: crc = eba7ec7e; size =      3144; name = WORDS.TOK
 end
 
 //
-// v2.0F, Int. 2.917, 1x720K, Copy Protection Removed
+// King's Quest - Collector's Edition (v2.0F, Int. 2.917)
 //
-game[v2.0f-int-2.917-1x720k-cr]:
-    name = v2.0F, Int. 2.917, 1x720K, Copy Protection Removed
+game[v2.0f-int-2.917-kings-quest-collectors-edition]:
+    name = King's Quest - Collector's Edition (v2.0F, Int. 2.917)
     imports = v2.0f-int-2.917-1x720k
     anchorfile = SIERRA.COM
-    file[]: crc = c4943f6f; size =      3121; name = SIERRA.COM
+    file[]: crc = 5dce7127; size =      3121; name = SIERRA.COM
 end
 
 //
@@ -252,16 +173,6 @@ game[v2.0f-int-2.917-gog]:
     imports = v2.0f-int-2.917-1x720k
     anchorfile = KQ1.COM
     file[]: crc = 9fd66691; size =      3121; name = SIERRA.COM  ; replace = KQ1.COM
-end
-
-//
-// King's Quest - Collector's Edition (v2.0F, Int. 2.917)
-//
-game[v2.0f-int-2.917-kings-quest-collectors-edition]:
-    name = King's Quest - Collector's Edition (v2.0F, Int. 2.917)
-    imports = v2.0f-int-2.917-1x720k
-    anchorfile = VOL.0
-    file[]: crc = 5dce7127; size =      3121; name = SIERRA.COM
 end
 
 end

@@ -47,7 +47,7 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[agikey]:
-    condition = is_game() && !$(NO_AGIKEY)
+    condition = is_game()
     code = [[[$(CRLF)
         file = file_open("$$(rootpath)\\AGI");
         keyblob = blob_create();
@@ -76,10 +76,10 @@ script[agikey]:
 end
 
 //
-// v1.01, Int. 2.272, 3x360K, Copy Protection
+// v1.01, Int. 2.272, 3x360K
 //
 game[v1.01-int-2.272-3x360k]:
-    name = v1.01, Int. 2.272, 3x360K, Copy Protection
+    name = v1.01, Int. 2.272, 3x360K
     anchorfile = VOL.0
     file[]: crc = 9fd023a1; size =     34817; name = AGI
     file[]: crc = 3d5d7bad; size =      6656; name = AGIDATA.OVL
@@ -100,20 +100,10 @@ game[v1.01-int-2.272-3x360k]:
 end
 
 //
-// v1.01, Int. 2.272, 3x360K, Copy Protection Removed
-//
-game[v1.01-int-2.272-3x360k-cr]:
-    name = v1.01, Int. 2.272, 3x360K, Copy Protection Removed
-    imports = v1.01-int-2.272-3x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = e7460485; size =      2266; name = SIERRA.COM
-end
-
-//
-// v2.00, Int. 2.4.35, 3x360K, Copy Protection
+// v2.00, Int. 2.4.35, 3x360K
 //
 game[v2.00-int-2.4.35-3x360k]:
-    name = v2.00, Int. 2.4.35, 3x360K, Copy Protection
+    name = v2.00, Int. 2.4.35, 3x360K
     anchorfile = VOL.0
     file[]: crc = fcd148ab; size =     38400; name = AGI
     file[]: crc = 0a908dc6; size =      7680; name = AGIDATA.OVL
@@ -138,21 +128,10 @@ game[v2.00-int-2.4.35-3x360k]:
 end
 
 //
-// v2.00, Int. 2.4.35, 3x360K, Copy Protection Removed
-//
-game[v2.00-Int-2.4.35-3x360k-cr]:
-    name = v2.00, Int. 2.4.35, 3x360K, Copy Protection Removed
-    imports = v2.00-int-2.4.35-3x360k
-    NO_AGIKEY = true
-    anchorfile = SIERRA.COM
-    file[]: crc = 37f73674; size =      2944; name = SIERRA.COM
-end
-
-//
-// v2.14, Int. 2.936, 3x360K, Copy Protection
+// v2.14, Int. 2.936, 3x360K
 //
 game[v2.14-int-2.936-3x360k]:
-    name = v2.14, Int. 2.936, 3x360K, Copy Protection
+    name = v2.14, Int. 2.936, 3x360K
     imports = v2.00-int-2.4.35-3x360k
     anchorfile = VOL.0
     file[]: crc = ea640c2e; size =     39424; name = AGI
@@ -174,16 +153,6 @@ game[v2.14-int-2.936-3x360k]:
     file[]: crc = ff81d661; size =    202058; name = VOL.2
     file[]: crc = 3cd48b57; size =    206032; name = VOL.3
     file[]: crc = 119108e8; size =      5670; name = WORDS.TOK
-end
-
-//
-// v2.14, Int. 2.936, 3x360K, Copy Protection Removed
-//
-game[v2.14-int-2.936-3x360k-cr]:
-    name = v2.14, Int. 2.936, 3x360K, Copy Protection Removed
-    imports = v2.14-int-2.936-3x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = c94a3987; size =      3121; name = SIERRA.COM
 end
 
 //
@@ -214,17 +183,6 @@ game[v2.00-int-2.4.35-2x720k]:
 end
 
 //
-// v2.00, Int. 2.4.35, 2x720K, Copy Protection Removed
-//
-game[v2.00-Int-2.4.35-2x720k-cr]:
-    name = v2.00, Int. 2.4.35, 2x720K, Copy Protection Removed
-    imports = v2.00-int-2.4.35-2x720k
-    NO_AGIKEY = true
-    anchorfile = SIERRA.COM
-    file[]: crc = 37f73674; size =      2944; name = SIERRA.COM
-end
-
-//
 // v2.14, Int. 2.936, 2x720K Copy Protection
 //
 game[v2.14-int-2.936-2x720k]:
@@ -251,17 +209,6 @@ game[v2.14-int-2.936-2x720k]:
     file[]: crc = 9704a378; size =    206032; name = VOL.2
     file[]: crc = 7e9b95cc; size =        13; name = VOL.3
     file[]: crc = 119108e8; size =      5670; name = WORDS.TOK
-end
-
-//
-// v2.14, Int. 2.936, 2x720K, Copy Protection Removed
-//
-game[v2.14-int-2.936-2x720k-cr]:
-    name = v2.14, Int. 2.936, 2x720K, Copy Protection Removed
-    imports = v2.14-int-2.936-2x720k
-    NO_AGIKEY = true
-    anchorfile = SIERRA.COM
-    file[]: crc = c94a3987; size =      3121; name = SIERRA.COM
 end
 
 //
