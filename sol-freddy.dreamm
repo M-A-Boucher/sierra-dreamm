@@ -180,8 +180,50 @@ game[v1.0-int-4.16.93-7x1.2m]:
     file[]: crc = 1ff5cfea; size =   1212928; name = RESOURCE.003
     file[]: crc = 3a603e0c; size =   1212928; name = RESOURCE.004
     file[]: crc = 5d98ee39; size =    381518; name = RESOURCE.005
-    file[]: crc = 18df82aa; size =   1064900; name = RESOURCE.AUD
-    file[]: crc = 356fed16; size =      5816; name = RESOURCE.MAP
+end
+
+//
+// v1.0, Int. 8.11.93, German, 8x1.44M
+//
+game[v1.0-int-8.11.93-de-8x1.44m]:
+    name = v1.0, Int. 8.11.93, German, 8x1.44M
+    imports = v1.0-int-4.16.93-6x1.44m
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = b739327b; size =      5647; name = 0.MSG
+    file[]: crc = 987572d0; size =       370; name = 14.HEP
+    file[]: crc = a52d39fa; size =       434; name = 14.SCR
+    file[]: crc = d55d0afe; size =      2738; name = 170.HEP
+    file[]: crc = ddc3c139; size =      2250; name = 170.SCR
+    file[]: crc = 3e5a2a39; size =      7610; name = 1700.V56
+    file[]: crc = 7dd0967f; size =      8112; name = 1701.V56
+    file[]: crc = 8a3b2c32; size =      7909; name = 1702.V56
+    file[]: crc = dd99bc7d; size =      7828; name = 1703.V56
+    file[]: crc = 1e63b54d; size =      8456; name = 1704.V56
+    file[]: crc = 3d96264a; size =      4878; name = 18.MSG
+    file[]: crc = 42ad5c8b; size =     26318; name = 2141.WAV
+    file[]: crc = 4554e15a; size =      1658; name = 24.MSG
+    file[]: crc = 1ef4f1b0; size =     75454; name = 2925.WAV
+    file[]: crc = 696e9a5b; size =     17184; name = 2926.WAV
+    file[]: crc = 895c46f8; size =     63412; name = 2935.WAV
+    file[]: crc = bb603469; size =    132976; name = 2948.WAV
+    file[]: crc = 4ff6dbd5; size =    117910; name = 2952.WAV
+    file[]: crc = 5918c575; size =     67096; name = 2953.WAV
+    file[]: crc = 797181b3; size =     52460; name = 2954.WAV
+    file[]: crc = cc6d2064; size =     12074; name = 620.MSG
+    file[]: crc = d6976af4; size =      2364; name = 90.HEP
+    file[]: crc = 9f52bf9c; size =      3544; name = 90.SCR
+    file[]: crc = f74f4fe4; size =     76230; name = INSTALL.EXE ; optional = true
+    file[]: crc = a5dc13fd; size =     18469; name = INSTALL.HLP ; optional = true
+    file[]: crc = 57bae374; size =      5270; name = INSTALL.SCR ; optional = true
+    file[]: crc = 1f4b25ae; size =     10983; name = INSTALL.TXT ; optional = true
+    file[]: crc = a2c9f602; size =      6588; name = INTERP.ERR  ; optional = true
+    file[]: crc = 368fd833; size =      2611; name = MESSAGE.MAP
+    file[]: crc = 73f4e288; size =      5622; name = READ.ME     ; optional = true
+    file[]: crc = de2e2e3a; size =        30; name = README.BAT  ; optional = true
+    file[]: crc = 42b20546; size =       134; name = RESOURCE.CFG; optional = true
+    file[]: crc = e87989d3; size =    911164; name = RESOURCE.MSG
+    file[]: crc = cae48442; size =        49; name = VERSION
 end
 
 //
@@ -289,7 +331,7 @@ demo[interactive-demo]:
     file[]: crc = 8df9f5fc; size =      1289; name = 220.SHM
     file[]: crc = 48570c54; size =        50; name = 65535.MAP
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV
+    file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV; optional = true
     file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
     file[]: crc = 79b5e277; size =      3953; name = AUDMSSYS.DRV
     file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
@@ -297,7 +339,7 @@ demo[interactive-demo]:
     file[]: crc = e30f94c4; size =      4073; name = AUDPRO16.DRV
     file[]: crc = 33b05d68; size =      4823; name = AUDPS1.DRV
     file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
-    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV  ; optional = true
     file[]: crc = fc6a6e25; size =       766; name = FPDEMO.ICO  ; optional = true
     file[]: crc = c413b79a; size =       545; name = FPDEMO.PIF  ; optional = true
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
