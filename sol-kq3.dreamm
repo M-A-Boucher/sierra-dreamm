@@ -127,7 +127,7 @@ game[v2.00-int-2.4.35-3x360k]:
     file[]: crc = 89469be1; size =       390; name = LOGDIR
     file[]: crc = 80bb91c4; size =       796; name = OBJECT
     file[]: crc = 582eb496; size =       531; name = PICDIR
-    file[]: crc = b2418d1c; size =      2944; name = SIERRA.COM
+    file[]: crc = be418d1c; size =      2944; name = SIERRA.COM
     file[]: crc = 0158cbe8; size =       120; name = SNDDIR
     file[]: crc = 95ba445c; size =       756; name = VIEWDIR
     file[]: crc = 06d71677; size =     78613; name = VOL.0
