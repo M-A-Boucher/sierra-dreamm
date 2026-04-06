@@ -8,7 +8,7 @@ icon = sol-kq1-sci.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_286_10)
 nothrottle = 5
 ramkb = 1024
@@ -171,6 +171,7 @@ end
 //
 game[v1.000.051, Int. 4.8.91-3x720k]:
     name = v1.000.051, Int. 4.8.91, 3x720K
+    imports = v1.000.051-int-9.19.90-3x720k
     anchorfile = RESOURCE.001
     file[]: crc = 278b1011; size =      3013; name = TANDY1.DRV  ; optional = true
 end
