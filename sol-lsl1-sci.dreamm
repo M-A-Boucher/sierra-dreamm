@@ -111,7 +111,7 @@ end
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = C:\; 	      srcpath = ram; 		 writable = true;
+mount[]: vpath = C:\; 	      srcpath = ram;             writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
@@ -193,10 +193,10 @@ game[v2.0-int-7.9.91-4x720k]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v2.1, Int. 7.9.91)
+// Leisure Suit Larry's Greatest Hits and Misses (v2.1, Int. 7.9.91)
 //
 game[v2.1-int-7.9.91-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v2.1, Int. 7.9.91)
+    name = Leisure Suit Larry's Greatest Hits and Misses (v2.1, Int. 7.9.91)
     imports = v2.1-int-7.9.91-3x1.44m
     file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
     file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV

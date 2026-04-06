@@ -107,22 +107,15 @@ game[v1.000.011-int-0.000.343-3x720k]:
     name = v1.000.011, Int. 0.000.343, 3x720K
     launch = SIERRA.EXE
     anchorfile = RESOURCE.001
-    file[]: crc = 0b7d719d; size =       788; name = __INSTH.BAT ; optional = true
     file[]: crc = 2604f137; size =      5684; name = ADL.DRV
-    file[]: crc = df1dd41f; size =      2388; name = CGA320BW.DRV
-    file[]: crc = 2f1fb5ef; size =      2388; name = CGA320C.DRV
+    file[]: crc = df1dd41f; size =      2388; name = CGA320BW.DRV; optional = true
+    file[]: crc = 2f1fb5ef; size =      2388; name = CGA320C.DRV ; optional = true
     file[]: crc = f6658b70; size =      1952; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 3d43a22c; size =       442; name = IBMKBD.DRV
-    file[]: crc = 13f3796d; size =      4941; name = IMF.DRV
-    file[]: crc = 884d0075; size =     18201; name = INSTALL.EXE ; optional = true
-    file[]: crc = b2acb2f7; size =       895; name = INSTGAME.BAT; optional = true
+    file[]: crc = 13f3796d; size =      4941; name = IMF.DRV     ; optional = true
     file[]: crc = 5da73437; size =       494; name = JOYSTICK.DRV
-    file[]: crc = 33a201cd; size =      1865; name = JR.DRV
-    file[]: crc = fba52757; size =        33; name = LSL2.BAT    ; optional = true
-    file[]: crc = ef8f0d1c; size =       191; name = LSL2.QA     ; optional = true
-    file[]: crc = 3f0d0f87; size =      1552; name = MCGA320.DRV
+    file[]: crc = 33a201cd; size =      1865; name = JR.DRV      ; optional = true
+    file[]: crc = 3f0d0f87; size =      1552; name = MCGA320.DRV ; optional = true
     file[]: crc = 1eae84b9; size =      2771; name = MT32.DRV
     file[]: crc = 2f278e8c; size =    474642; name = RESOURCE.001
     file[]: crc = a6649f0f; size =    407014; name = RESOURCE.002
@@ -131,8 +124,8 @@ game[v1.000.011-int-0.000.343-3x720k]:
     file[]: crc = a81fee92; size =     71679; name = SIERRA.EXE
     file[]: crc = c9d29874; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 683d10f8; size =      1310; name = STD.DRV
-    file[]: crc = 1276b6ae; size =      1648; name = TANDY320.DRV
-    file[]: crc = 3820b6b6; size =       477; name = TANDYKBD.DRV
+    file[]: crc = 1276b6ae; size =      1648; name = TANDY320.DRV; optional = true
+    file[]: crc = 3820b6b6; size =       477; name = TANDYKBD.DRV; optional = true
 end
 
 //
@@ -143,7 +136,6 @@ game[v1.000.011-int-0.000.343-6x360k]:
     launch = SIERRA.EXE
     imports = v1.000.011-int-0.000.343-3x720k
     anchorfile = RESOURCE.001
-    file[]: crc = fc61d381; size =      1307; name = __INSTH.BAT ; optional = true
     file[]: crc = b1fc0228; size =    140526; name = RESOURCE.001
     file[]: crc = b5de1232; size =    348672; name = RESOURCE.002
     file[]: crc = 588b0c0e; size =    236676; name = RESOURCE.003
@@ -158,27 +150,23 @@ end
 //
 game[v1.002.000-int-0.000.409-3x720k]:
     name = v1.002.000, Int. 0.000.409, 3x720K
+    launch = SCIV.EXE
     imports = v1.000.011-int-0.000.343-3x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 99f4395e; size =       814; name = __INSTH.BAT ; optional = true
     file[]: crc = ae656423; size =      5857; name = ADL.DRV
-    file[]: crc = 00d6319d; size =      2029; name = CGA320BW.DRV
-    file[]: crc = 7e2226e0; size =      2388; name = CGA320C.DRV
-    file[]: crc = 1434cc00; size =      2193; name = HERCMONO.DRV
-    file[]: crc = 2d9e6a69; size =      2005; name = IMF.DRV
-    file[]: crc = ab24a940; size =     18409; name = INSTALL.EXE ; optional = true
-    file[]: crc = 950f8985; size =       868; name = INSTGAME.BAT; optional = true
-    file[]: crc = 989ba92f; size =      2069; name = JR.DRV
-    file[]: crc = 65e0161f; size =       222; name = LSL2.QA     ; optional = true
+    file[]: crc = 00d6319d; size =      2029; name = CGA320BW.DRV; optional = true
+    file[]: crc = 7e2226e0; size =      2388; name = CGA320C.DRV ; optional = true
+    file[]: crc = 1434cc00; size =      2193; name = HERCMONO.DRV; optional = true
+    file[]: crc = 2d9e6a69; size =      2005; name = IMF.DRV     ; optional = true
+    file[]: crc = 989ba92f; size =      2069; name = JR.DRV      ; optional = true
     file[]: crc = b1b6d83f; size =      2539; name = MT32.DRV
-    file[]: crc = 9083e28b; size =      1660; name = PCJR320.DRV
+    file[]: crc = 9083e28b; size =      1660; name = PCJR320.DRV ; optional = true
     file[]: crc = d3c85df4; size =    477625; name = RESOURCE.001
     file[]: crc = 467357e8; size =    406935; name = RESOURCE.002
     file[]: crc = 14dd5d33; size =    592533; name = RESOURCE.003
     file[]: crc = 6d7d7c65; size =      4758; name = RESOURCE.MAP
     file[]: crc = a72ed4bc; size =     73697; name = SCIV.EXE
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
-    file[]: crc = 7b260a61; size =       502; name = SPACE.COM   ; optional = true
     file[]: crc = 68bab91d; size =      1325; name = STD.DRV
 end
 
@@ -187,9 +175,9 @@ end
 //
 game[v1.002.000-int-0.000.409-6x360k]:
     name = v1.002.000, Int. 0.000.409, 6x360K
+    launch = SCIV.EXE
     imports = v1.002.000-int-0.000.409-3x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 3f59ab83; size =      1333; name = __INSTH.BAT ; optional = true
     file[]: crc = bcaeb1da; size =    143847; name = RESOURCE.001
     file[]: crc = 7807636d; size =    348331; name = RESOURCE.002
     file[]: crc = e5f695e7; size =    236550; name = RESOURCE.003
@@ -200,32 +188,14 @@ game[v1.002.000-int-0.000.409-6x360k]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.002.000, Int. 0.000.409)
+// Leisure Suit Larry's Greatest Hits and Misses (v1.002.000, Int. 0.000.409)
 //
 game[v1.002.000-int-0.000.409-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.002.000, Int. 0.000.409)
+    name = Leisure Suit Larry's Greatest Hits and Misses (v1.002.000, Int. 0.000.409)
+    launch = SCIV.EXE
+    imports = v1.002.000-int-0.000.409-6x360k
     anchorfile = RESOURCE.001
-    file[]: crc = ae656423; size =      5857; name = ADL.DRV
-    file[]: crc = f6658b70; size =      1952; name = EGA320.DRV
-    file[]: crc = 3d43a22c; size =       442; name = IBMKBD.DRV
-    file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
-    file[]: crc = 3a1d2fad; size =     17556; name = INSTALL.HLP ; optional = true
-    file[]: crc = d7219e51; size =       997; name = INSTALL.SCR ; optional = true
-    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
-    file[]: crc = 5da73437; size =       494; name = JOYSTICK.DRV
-    file[]: crc = eae27b0b; size =       766; name = LSL2.ICO    ; optional = true
-    file[]: crc = b1b6d83f; size =      2539; name = MT32.DRV
-    file[]: crc = bcaeb1da; size =    143847; name = RESOURCE.001
-    file[]: crc = 7807636d; size =    348331; name = RESOURCE.002
-    file[]: crc = e5f695e7; size =    236550; name = RESOURCE.003
-    file[]: crc = 830540db; size =    204861; name = RESOURCE.004
-    file[]: crc = 6a501f98; size =    277732; name = RESOURCE.005
-    file[]: crc = f624731f; size =    345683; name = RESOURCE.006
-    file[]: crc = 9088001c; size =        68; name = RESOURCE.CFG
-    file[]: crc = b32f24ab; size =      5628; name = RESOURCE.MAP
-    file[]: crc = a72ed4bc; size =     73697; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
-    file[]: crc = 68bab91d; size =      1325; name = STD.DRV
+    file[]: crc = a81fee92; size =     71679; remove = SIERRA.EXE
 end
 
 end

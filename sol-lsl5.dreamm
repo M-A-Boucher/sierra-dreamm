@@ -313,10 +313,10 @@ game[v1.0-int-11.14.91-8x1.44m]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 9.11.91)
+// Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 9.11.91)
 //
 game[v1.0-int-9.11.91-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 9.11.91)
+    name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 9.11.91)
     imports = v1.0-int-9.11.91-8x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = 534b8408; size =      3741; remove = CMS.DRV

@@ -297,10 +297,10 @@ game[v1.050-int-1.16.91-de-4x720k]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021, Int. 5.15.90)
+// Leisure Suit Larry's Greatest Hits and Misses (v1.021, Int. 5.15.90)
 //
 game[v1.021-int-5.15.90-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.021, Int. 5.15.90)
+    name = Leisure Suit Larry's Greatest Hits and Misses (v1.021, Int. 5.15.90)
     anchorfile = RESOURCE.CFG
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
     file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
