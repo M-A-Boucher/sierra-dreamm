@@ -116,30 +116,17 @@ game[v1.0-int-11.13.91-3x1.44m]:
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 01a55f12; size =     40993; name = INSTALL.EXE ; optional = true
-    file[]: crc = c7e49415; size =     14583; name = INSTALL.HLP ; optional = true
-    file[]: crc = 425b624c; size =      2881; name = INSTALL.SCR ; optional = true
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
-    file[]: crc = 1c8e83b5; size =      1765; name = READ.ME     ; optional = true
-    file[]: crc = 2a9686bc; size =        31; name = README.BAT  ; optional = true
     file[]: crc = 93412e5e; size =    984439; name = RESOURCE.000
     file[]: crc = 851b8b93; size =    238019; name = RESOURCE.001
     file[]: crc = c7312f42; size =   1414142; name = RESOURCE.002
     file[]: crc = a22386fe; size =   1344719; name = RESOURCE.003
-    file[]: crc = fd1c79c6; size =        35; name = RESOURCE.CFG; optional = true
     file[]: crc = b5ad3421; size =      3249; name = RESOURCE.MAP
     file[]: crc = 74276dcd; size =     60755; name = SCIDHUV.EXE
-    file[]: crc = 751cc00f; size =        40; name = SIERRA.BAT  ; optional = true
-    file[]: crc = 2b657ffe; size =        37; name = SIERRAH.BAT ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
-    file[]: crc = 4022ad52; size =        48; name = TALES.BAT   ; optional = true
-    file[]: crc = 0ed0ab6c; size =        45; name = TALESH.BAT  ; optional = true
-    file[]: crc = f62c2b48; size =        35; name = TALESRS.BAT ; optional = true
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = e9e20b62; size =         8; name = VERSION
     file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
@@ -167,30 +154,18 @@ game[v1.0-int-11.23.91-4x720k]:
     file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 8af78c52; size =     41062; name = INSTALL.EXE ; optional = true
-    file[]: crc = 90d1d716; size =     14440; name = INSTALL.HLP ; optional = true
-    file[]: crc = eac56752; size =      1487; name = INSTALL.SCR ; optional = true
-    file[]: crc = a159941c; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
-    file[]: crc = e5440acb; size =      1941; name = READ.ME     ; optional = true
     file[]: crc = c766ef6d; size =     17819; name = RESOURCE.000
     file[]: crc = 694e6f46; size =    478401; name = RESOURCE.001
     file[]: crc = 1041f342; size =    663713; name = RESOURCE.002
     file[]: crc = 254d10e1; size =    560255; name = RESOURCE.003
     file[]: crc = 6ce469f7; size =    651109; name = RESOURCE.004
-    file[]: crc = 19d878bb; size =        35; name = RESOURCE.CFG; optional = true
     file[]: crc = 376e05b7; size =      3219; name = RESOURCE.MAP
     file[]: crc = 2dc7b0a8; size =     58571; name = SCIDUV.EXE
-    file[]: crc = 032a3658; size =        39; name = SIERRA.BAT  ; optional = true
-    file[]: crc = 760124a2; size =        36; name = SIERRAH.BAT ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
-    file[]: crc = bcdea9b1; size =        47; name = TALES.BAT   ; optional = true
-    file[]: crc = 7e6db69e; size =        44; name = TALESH.BAT  ; optional = true
-    file[]: crc = f62c2b48; size =        35; name = TALESRS.BAT ; optional = true
     file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV

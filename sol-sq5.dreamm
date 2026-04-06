@@ -221,14 +221,8 @@ game[v1.0-int-2.5.93-5x1.44m]:
     file[]: crc = 5b28b2d4; size =      8991; name = 992.V56
     file[]: crc = 3f1f03fe; size =     11138; name = 995.V56
     file[]: crc = 6793fd20; size =      1252; name = 999.FON
-    file[]: crc = 0142dc19; size =    142232; name = INSTALL.EXE ; optional = true
-    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
-    file[]: crc = 37ca4770; size =      2632; name = INSTALL.SCR ; optional = true
-    file[]: crc = 0c7a9d30; size =      8737; name = INSTALL.TXT ; optional = true
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
     file[]: crc = 15bcc3bd; size =       446; name = MESSAGE.MAP
-    file[]: crc = b9f693d5; size =      3893; name = README      ; optional = true
-    file[]: crc = 537da83b; size =        65; name = RESOURCE.CFG; optional = true
     file[]: crc = d1e35249; size =    125988; name = RESOURCE.MSG
     file[]: crc = 8368d0f5; size =         6; name = VERSION
 end
@@ -363,8 +357,6 @@ game[v1.01-int-3.1.93-fr-5x1.44m]:
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
     file[]: crc = 239042f5; size =       446; name = MESSAGE.MAP
     file[]: crc = ed57ebc3; size =    140374; name = RESOURCE.MSG
-    file[]: crc = 82cc00f8; size =      3029; name = README      ; optional = true
-
 end
 
 //
@@ -522,7 +514,6 @@ game[v1.01-int-3.1.93-de-5x1.44m]:
     file[]: crc = ad6be7d9; size =      2647; name = OLD1008.FON ; optional = true
     file[]: crc = 9bd55090; size =      2780; name = OLD1605.FON ; optional = true
     file[]: crc = fb962052; size =      2559; name = OLD999.FON  ; optional = true
-    file[]: crc = 1d5bd610; size =      4621; name = README      ; optional = true
 end
 
 //
@@ -532,21 +523,13 @@ game[v1.01-int-3.1.93-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v1.01, Int. 3.1.93)
     imports = v1.01-int-3.1.93-5x1.44m
     anchorfile = RESOURCE.000
-    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = 0350d856; size =      2262; name = INSTALL.SCR ; optional = true
-    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
     file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
-    file[]: crc = b9f693d5; size =      3893; name = README      ; replace = README.; optional = true
     file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
     file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
     file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
     file[]: crc = 835d9135; size =   1454000; remove = RESOURCE.003
     file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
     file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
-    file[]: crc = 296bb385; size =        81; name = RESOURCE.CFG; optional = true
-    file[]: crc = eeab4ca0; size =        83; name = SQ5.BAT     ; optional = true
-    file[]: crc = 395f4572; size =       766; name = SQ5.ICO     ; optional = true
-    file[]: crc = 8a2e3a77; size =       281; name = SQ5INST.BAT ; optional = true
 end
 
 //
@@ -557,23 +540,13 @@ game[v1.01-int-3.1.93-fr-space-quest-collectors-edition]:
     imports = v1.01-int-3.1.93-fr-5x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = 33b05d68; size =      4823; remove = AUDPS1.DRV
-    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = f94d63f1; size =     21170; name = INSTALL.HLP ; optional = true
-    file[]: crc = 1cefda09; size =      2423; name = INSTALL.SCR ; optional = true
-    file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT ; optional = true
     file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
-    file[]: crc = 7035e6d3; size =      2831; name = README      ;optional = true
     file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
     file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
     file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
     file[]: crc = 835d9135; size =   1454000; remove = RESOURCE.003
     file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
     file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
-    file[]: crc = eb08f3e0; size =        90; name = RESOURCE.CFG; optional = true
-    file[]: crc = c5cfda55; size =        85; name = SQ5.BAT     ; optional = true
-    file[]: crc = 40090983; size =       766; name = SQ5A.ICO    ; optional = true
-    file[]: crc = c5cfda55; size =        85; name = SQ5FREN.BAT ; optional = true
-    file[]: crc = f7cdd06f; size =       285; name = SQ5INST.BAT ; optional = true
     file[]: crc = c6c6fb9e; size =      1465; remove = TANDY3V.DRV
 
 end
@@ -586,13 +559,8 @@ game[v1.01-int-3.1.93-de-space-quest-collectors-edition]:
     imports = v1.01-int-3.1.93-de-5x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = 33b05d68; size =      4823; remove = AUDPS1.DRV
-    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = 263a02b3; size =     21770; name = INSTALL.HLP ; optional = true
-    file[]: crc = 8596b70c; size =      2562; name = INSTALL.SCR ; optional = true
-    file[]: crc = f513db5c; size =     11032; name = INSTALL.TXT ; optional = true
     file[]: crc = 9feb32ab; size =      9646; remove = MICROSOF.DRV
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
-    file[]: crc = faa52f02; size =      4380; name = README      ; optional = true
     file[]: crc = df6a5a2c; size =   5496486; name = RESOURCE.000
     file[]: crc = 31fbf9c0; size =    350000; remove = RESOURCE.001
     file[]: crc = 46da6004; size =   1454000; remove = RESOURCE.002
@@ -600,10 +568,6 @@ game[v1.01-int-3.1.93-de-space-quest-collectors-edition]:
     file[]: crc = 4927fa75; size =   1454000; remove = RESOURCE.004
     file[]: crc = 3aefc94f; size =    784486; remove = RESOURCE.005
     file[]: crc = afb02c90; size =    888406; name = RESOURCE.AUD
-    file[]: crc = e83598ee; size =        89; name = RESOURCE.CFG; optional = true
-    file[]: crc = c5cfda55; size =        85; name = SQ5.BAT     ; optional = true
-    file[]: crc = 0989f7a2; size =       766; name = SQ5B.ICO    ; optional = true
-    file[]: crc = 62c36598; size =       284; name = SQ5INST.BAT ; optional = true
     file[]: crc = c6c6fb9e; size =      1465; remove = TANDY3V.DRV
 
 end
