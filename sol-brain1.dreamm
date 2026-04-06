@@ -94,6 +94,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 game[v1.0-int-9.24.91-2x1.44m]:
     name = v1.0, Int. 10.30.91, 2x1.44M
+    launch = SCIDHUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 0cff14ca; size =     14634; name = 440.SCR
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
@@ -103,31 +104,18 @@ game[v1.0-int-9.24.91-2x1.44m]:
     file[]: crc = 3e2f8fba; size =      2107; name = AUDPRO.DRV
     file[]: crc = 4625581d; size =      1347; name = AUDPS1.DRV
     file[]: crc = 0ac9ee85; size =      1486; name = AUDTANDY.DRV
-    file[]: crc = ddfd48ea; size =        32; name = BRAIN.BAT
-    file[]: crc = beb1a067; size =        29; name = BRAINH.BAT
-    file[]: crc = 00809d1c; size =        35; name = BRAINRS.BAT
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = 2259e131; size =      3947; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT
-    file[]: crc = db64c3bd; size =     42395; name = INSTALL.EXE
-    file[]: crc = ae7febe4; size =     14075; name = INSTALL.HLP
-    file[]: crc = 7196670b; size =      2821; name = INSTALL.SCR
-    file[]: crc = 73e48627; size =      4189; name = INSTALL.TXT
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
-    file[]: crc = f39eeeb2; size =      1271; name = READ.ME
-    file[]: crc = a9349e23; size =        57; name = README.BAT
     file[]: crc = e2ca0e91; size =    346731; name = RESOURCE.000
     file[]: crc = f6505edc; size =    794832; name = RESOURCE.001
     file[]: crc = 4a550d17; size =   1280907; name = RESOURCE.002
-    file[]: crc = fd1c79c6; size =        35; name = RESOURCE.CFG
     file[]: crc = fd36d836; size =      2739; name = RESOURCE.MAP
     file[]: crc = cfee9de6; size =     54895; name = SCIDHUV.EXE
-    file[]: crc = 6a511e72; size =        24; name = SIERRA.BAT
-    file[]: crc = 20ad7f60; size =        21; name = SIERRAH.BAT
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = 8ec4273a; size =         7; name = VERSION
@@ -140,9 +128,9 @@ end
 //
 game[v1.0-int-10.30.91-8x360k]:
     name = v1.0, Int. 10.30.91, 8x360K
+    launch = SCIDHUV.EXE
     imports = v1.0-int-9.24.91-2x1.44m
     anchorfile = RESOURCE.000
-    file[]: crc = 7eb91b97; size =      1931; name = INSTALL.SCR
     file[]: crc = da12b211; size =     25929; name = RESOURCE.000
     file[]: crc = b034804f; size =     99404; name = RESOURCE.001
     file[]: crc = 55d7c9ae; size =    322459; name = RESOURCE.002
@@ -161,8 +149,8 @@ end
 //
 game[v1.0-int-11.12.91-3xx720k]:
     name = v1.0, Int. 11.12.91, 3x720K, 16 Color
-    imports = v1.0-int-9.24.91-2x1.44m
     launch = SCIDUV.EXE
+    imports = v1.0-int-9.24.91-2x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = 0cff14ca; size =     14634; remove = 440.SCR
     file[]: crc = a99541a4; size =      2331; name = AUDBLAST.DRV
@@ -170,15 +158,8 @@ game[v1.0-int-11.12.91-3xx720k]:
     file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
     file[]: crc = cc5064c5; size =      1381; name = AUDPS1.DRV
     file[]: crc = 11f24e99; size =      1484; name = AUDTANDY.DRV
-    file[]: crc = ad4f1110; size =        31; name = BRAIN.BAT
-    file[]: crc = ea8c7087; size =        28; name = BRAINH.BAT
     file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 01a55f12; size =     40993; name = INSTALL.EXE
-    file[]: crc = c7e49415; size =     14583; name = INSTALL.HLP
-    file[]: crc = ece0ba34; size =      1373; name = INSTALL.SCR
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT
-    file[]: crc = 56e362ef; size =      1389; name = READ.ME
     file[]: crc = b6c8dfa2; size =    300857; name = RESOURCE.000
     file[]: crc = db8858f5; size =    222108; name = RESOURCE.001
     file[]: crc = 1f58a3ab; size =    633662; name = RESOURCE.002
@@ -199,6 +180,7 @@ end
 //
 game[v1.1-int-1.16.92-2x1.44m]:
     name = v1.1, Int. 1.16.92, 2x1.44M
+    launch = SCIDHUV.EXE
     imports = v1.0-int-9.24.91-2x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = 604c6637; size =     19952; name = 120.SCR
@@ -212,12 +194,7 @@ game[v1.1-int-1.16.92-2x1.44m]:
     file[]: crc = b612a992; size =      1775; name = AUDTANDY.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 0bfdba53; size =     41064; name = INSTALL.EXE
-    file[]: crc = d0344cbf; size =     14662; name = INSTALL.HLP
-    file[]: crc = 6a86abca; size =      1221; name = INSTALL.SCR
-    file[]: crc = 17c9a8bb; size =      4638; name = INSTALL.TXT
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = 56e362ef; size =      1389; name = READ.ME
     file[]: crc = 914b150c; size =    347071; name = RESOURCE.000
     file[]: crc = 916deec3; size =    796776; name = RESOURCE.001
     file[]: crc = 84e06305; size =   1283812; name = RESOURCE.002

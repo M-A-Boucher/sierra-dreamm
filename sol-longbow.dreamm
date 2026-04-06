@@ -113,6 +113,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 game[v1.0-int-11.20.91-6x1.44m]:
     name = v1.0, Int. 11.20.91, 6x1.44M
+    launch = SCIDHUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 272496f7; size =      3970; name = 100.SCR
     file[]: crc = 5ebb7a66; size =      2715; name = 1162.TEX
@@ -193,6 +194,7 @@ end
 //
 game[v1.0-int-11.20.91-7x1.2m]:
     name = v1.0, Int. 11.20.91, 7x1.2M
+    launch = SCIDHUV.EXE
     imports = v1.0-int-11.20.91-6x1.44m
     anchorfile = RESOURCE.000
     file[]: crc = b4cd667a; size =     16452; remove = 210.SCR
@@ -274,6 +276,7 @@ end
 //
 game[v1.1-int-1.13.92-6x1.44m]:
     name = v1.1, Int. 1.13.92, 6x1.44M
+    launch = SCIDHUV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 157ddb8f; size =     14102; name = 140.SCR
     file[]: crc = b39e24c8; size =      6816; name = 185.SCR
