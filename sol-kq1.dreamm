@@ -81,17 +81,13 @@ end
 game[v1.0u-int-2.272-2x360k]:
     name = v1.0U, Int. 2.272, 2x360K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = b76adfbe; size =       503; name = _INSTALL.BAT; optional = true
     file[]: crc = c392a757; size =     34817; name = AGI
     file[]: crc = 3d5d7bad; size =      6656; name = AGIDATA.OVL
     file[]: crc = e7c78dc1; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 33daae91; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM
-    file[]: crc = 1cce2885; size =       342; name = INSTALLH.BAT; optional = true
     file[]: crc = fde4aeac; size =       512; name = JR_GRAF.OVL
     file[]: crc = 0ac519a7; size =       315; name = LOGDIR
-    file[]: crc = 45c18be4; size =       102; name = MAKEPATH.COM; optional = true
     file[]: crc = a93dbf4f; size =       339; name = OBJECT
     file[]: crc = d74dff1a; size =       255; name = PICDIR
     file[]: crc = 5d802179; size =      2266; name = SIERRA.COM
@@ -119,21 +115,16 @@ end
 game[v2.0f-int-2.425-2x360k]:
     name = v2.0F, Int. 2.425, 2x360K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = 08b95dc5; size =       764; name = _INSTALL.BAT; optional = true
-    file[]: crc = 06e2a0b4; size =        39; name = _KQ1.BAT.   ; optional = true
     file[]: crc = 3078abe6; size =     38400; name = AGI
     file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
     file[]: crc = ca8b4741; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 8e14b45e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 211da9c5; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = e1d5c430; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 4d0b9afd; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = 8b05b732; size =      1214; name = INSTALLH.BAT; optional = true
     file[]: crc = c49114dd; size =       512; name = JR_GRAF.OVL
     file[]: crc = 4d098292; size =       315; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 2f7911a0; size =       331; name = OBJECT
     file[]: crc = f5d23f58; size =       255; name = PICDIR
     file[]: crc = e807d13a; size =      2944; name = SIERRA.COM
@@ -141,7 +132,7 @@ game[v2.0f-int-2.425-2x360k]:
     file[]: crc = 72791dbd; size =       432; name = VIEWDIR
     file[]: crc = d337fbfd; size =     48472; name = VOL.0
     file[]: crc = 5b5e75a0; size =    200630; name = VOL.1
-    file[]: crc = b310ac5c; size =     90891; name = VOL.2
+    file[]: crc = 32884bdb; size =     90501; name = VOL.2
     file[]: crc = eba7ec7e; size =      3144; name = WORDS.TOK
 end
 
@@ -162,7 +153,6 @@ game[v2.0f-int-2.917-2x360k]:
     name = v2.0F, Int. 2.917, 2x360K, Copy Protection
     imports = v2.0f-int-2.425-2x360k
     anchorfile = AGI
-    file[]: crc = 4980534b; size =       748; name = _INSTALL.BAT; optional = true
     file[]: crc = d4138394; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
@@ -170,9 +160,7 @@ game[v2.0f-int-2.917-2x360k]:
     file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = eb6127ab; size =      1247; name = INSTALLH.BAT; optional = true
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 6fea617e; size =        12; name = KQ101078.QA ; optional = true
     file[]: crc = 3b977587; size =      3121; name = SIERRA.COM
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
 end
@@ -193,21 +181,16 @@ end
 game[v2.0f-int-2.425-1x720k]:
     name = v2.0F, Int. 2.425, 1x720K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = 08b95dc5; size =       764; name = _INSTALL.BAT; optional = true
-    file[]: crc = 06e2a0b4; size =        39; name = _KQ1.BAT.   ; optional = true
     file[]: crc = 3078abe6; size =     38400; name = AGI
     file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
     file[]: crc = ca8b4741; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 8e14b45e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 211da9c5; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = e1d5c430; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 4d0b9afd; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = 8b05b732; size =      1214; name = INSTALLH.BAT; optional = true
     file[]: crc = c49114dd; size =       512; name = JR_GRAF.OVL
     file[]: crc = 4d098292; size =       315; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 2f7911a0; size =       331; name = OBJECT
     file[]: crc = f5d23f58; size =       255; name = PICDIR
     file[]: crc = e807d13a; size =      2944; name = SIERRA.COM
@@ -244,7 +227,6 @@ game[v2.0f-int-2.917-1x720k]:
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 6fea617e; size =        12; name = KQ101078.QA ; optional = true
     file[]: crc = 3b977587; size =      3121; name = SIERRA.COM
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
     file[]: crc = d337fbfd; size =     48472; name = VOL.0

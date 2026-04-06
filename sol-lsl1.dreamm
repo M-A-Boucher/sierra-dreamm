@@ -81,21 +81,16 @@ end
 game[v1.0-int-2.440-2x360k]:
     name = v1.0, Int. 2.440, 2x360K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = 12673af0; size =       767; name = _INSTALL.BAT; optional = true
-    file[]: crc = 740237d2; size =        37; name = _LL.BAT     ; optional = true
     file[]: crc = 06f3692b; size =     38400; name = AGI
     file[]: crc = 6bfc498a; size =      7680; name = AGIDATA.OVL
     file[]: crc = a2930a66; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM.    ; optional = true
     file[]: crc = d12b9d1e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 98062f34; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = e6b99395; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 1ddf5411; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = d1c20c32; size =      1257; name = INSTALLH.BAT; optional = true
     file[]: crc = 03dce7ca; size =       512; name = JR_GRAF.OVL
     file[]: crc = 2f82e0b1; size =       177; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 1cb5f786; size =       311; name = OBJECT
     file[]: crc = fddfaf76; size =       138; name = PICDIR
     file[]: crc = 33aee334; size =      2944; name = SIERRA.COM
@@ -123,8 +118,7 @@ end
 game[v1.0-int-2.917-2x360k]:
     name = v1.0, Int. 2.917, 2x360K, Copy Protection
     imports = v1.0-int-2.440-2x360k
-    anchorfile = VOL.0
-    file[]: crc = 1d07be28; size =       751; name = _INSTALL.BAT; optional = true
+    anchorfile = SIERRA.COM
     file[]: crc = 3b740147; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
@@ -133,7 +127,6 @@ game[v1.0-int-2.917-2x360k]:
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 389fa06d; size =        13; name = LSL01088.QA ; optional = true
     file[]: crc = 265f05aa; size =      3121; name = SIERRA.COM
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
 end
@@ -154,21 +147,16 @@ end
 game[v1.0-int-2.440-1x720k]:
     name = v1.0, Int. 2.440, 1x720K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = 12673af0; size =       767; name = _INSTALL.BAT; optional = true
-    file[]: crc = 740237d2; size =        37; name = _LL.BAT     ; optional = true
     file[]: crc = 06f3692b; size =     38400; name = AGI
     file[]: crc = 6bfc498a; size =      7680; name = AGIDATA.OVL
     file[]: crc = a2930a66; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = d12b9d1e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 98062f34; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = e6b99395; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 1ddf5411; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = d1c20c32; size =      1257; name = INSTALLH.BAT; optional = true
     file[]: crc = 03dce7ca; size =       512; name = JR_GRAF.OVL
     file[]: crc = 2f82e0b1; size =       177; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 1cb5f786; size =       311; name = OBJECT
     file[]: crc = fddfaf76; size =       138; name = PICDIR
     file[]: crc = 33aee334; size =      2944; name = SIERRA.COM
@@ -191,16 +179,13 @@ game[v1.0-int-2.440-1x720k-cr]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 2.440)
+// Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 2.440)
 //
 game[v1.0-int-2.440-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 2.440)
+    name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 2.440)
     imports = v1.0-int-2.440-1x720k
     anchorfile = SIERRA.COM
-    file[]: crc = 2f6bcc0d; size =        42; name = _LSL1.BAT   ; optional = true
-    file[]: crc = 066ed68d; size =      2944; name = LSL1.COM    ; optional = true
-    file[]: crc = 6867857a; size =       766; name = LSL1.ICO    ; optional = true
-    file[]: crc = 066ed68d; size =      2944; name = SIERRA.COM  ; optional = true
+    file[]: crc = 066ed68d; size =      2944; name = SIERRA.COM
 end
 
 //
@@ -209,8 +194,7 @@ end
 game[v1.0-int-2.917-1x720k]:
     name = v1.0, Int. 2.917, 1x720K, Copy Protection
     imports = v1.0-int-2.440-1x720k
-    anchorfile = VOL.0
-    file[]: crc = a738c62e; size =       766; name = _INSTALL.BAT; optional = true
+    anchorfile = SIERRA.COM
     file[]: crc = 3b740147; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
@@ -218,9 +202,7 @@ game[v1.0-int-2.917-1x720k]:
     file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = d1c20c32; size =      1257; name = INSTALLH.BAT; optional = true
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 389fa06d; size =        13; name = LSL01088.QA ; optional = true
     file[]: crc = 265f05aa; size =      3121; name = SIERRA.COM
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
 end

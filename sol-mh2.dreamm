@@ -52,17 +52,12 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v3.02b-int-3.002.149-3x720k]:
     name = v3.02B, Int. 3.002.149, 3x720K
     anchorfile = MH2VOL.0
-    file[]: crc = 36d8590b; size =       860; name = _INSTALL.BAT; optional = true
-    file[]: crc = e6396ff0; size =        38; name = _MH2.BAT    ; optional = true
     file[]: crc = b693ecfa; size =     40520; name = AGI
     file[]: crc = e943259e; size =      7488; name = AGIDATA.OVL
     file[]: crc = e2bf4b38; size =       684; name = CGA_GRAF.OVL
     file[]: crc = fc3f867e; size =       591; name = EGA_GRAF.OVL
-    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM   ; optional = true
     file[]: crc = 031a1241; size =      3075; name = HGC_GRAF.OVL
-    file[]: crc = e4fa4022; size =      1348; name = INSTALLH.BAT; optional = true
     file[]: crc = ea3c9728; size =       470; name = JR_GRAF.OVL
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 26060c01; size =      2588; name = MH2DIR
     file[]: crc = 5cde8dc6; size =    118759; name = MH2VOL.0
     file[]: crc = 615bcf61; size =    242963; name = MH2VOL.1
@@ -72,7 +67,6 @@ game[v3.02b-int-3.002.149-3x720k]:
     file[]: crc = 9cc661f0; size =     42536; name = MH2VOL.10
     file[]: crc = ea256b19; size =     14521; name = MH2VOL.11
     file[]: crc = 894f2085; size =       399; name = OBJECT
-    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
     file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
     file[]: crc = d65b7244; size =       362; name = VG_GRAF.OVL
     file[]: crc = ec7b44a3; size =       278; name = WORDS.TOK
@@ -85,7 +79,6 @@ game[v3.02b-int-3.002.149-8x360k]:
     name = v3.02B, Int. 3.002.149, 8x360K
     imports = v3.02b-int-3.002.149-3x720k
     anchorfile = MH2VOL.0
-    file[]: crc = 598b9ef5; size =      1785; name = _INSTALL.BAT; optional = true
     file[]: crc = 96f3242a; size =      2588; name = MH2DIR
     file[]: crc = 11f5aef9; size =    115338; name = MH2VOL.0
     file[]: crc = 4ce8b97c; size =     45850; name = MH2VOL.1
@@ -103,7 +96,6 @@ game[v3.02b-int-3.002.149-8x360k]:
     file[]: crc = 63adb8cb; size =     48327; name = MH2VOL.13
     file[]: crc = 3422f8a2; size =      3477; name = MH2VOL.14
     file[]: crc = 3869443b; size =     12708; name = MH2VOL.15
-    file[]: crc = a7c5a2f7; size =        12; remove = RESETDSK.COM
 end
 
 //

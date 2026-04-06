@@ -61,8 +61,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v2.0e-int-2.915-2x720k]:
     name = v2.0E, Int. 2.915, 2x720K
     anchorfile = VOL.0
-    file[]: crc = d0b4a941; size =       999; name = _INSTALL.BAT; optional = true
-    file[]: crc = 5c13cccf; size =        36; name = _PQ.BAT     ; optional = true
     file[]: crc = 9c60cf86; size =     39424; name = AGI
     file[]: crc = 5745a47b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 9f7d2517; size =      1024; name = CGA_GRAF.OVL
@@ -71,10 +69,8 @@ game[v2.0e-int-2.915-2x720k]:
     file[]: crc = 3f18f45e; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = c449b9a5; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 3838825f; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = abc7aa3c; size =      1239; name = INSTALLH.BAT; optional = true
     file[]: crc = 91502785; size =       512; name = JR_GRAF.OVL
     file[]: crc = 496bad30; size =       360; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 8b985ad2; size =       369; name = OBJECT
     file[]: crc = 34dd13ed; size =       351; name = PICDIR
     file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
@@ -109,7 +105,6 @@ game[v2.0g-int-2.917-2x720k]:
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
     file[]: crc = 0e851173; size =       360; name = LOGDIR
     file[]: crc = 5bf41c35; size =       351; name = PICDIR
-    file[]: crc = 389fa06d; size =        13; name = PQ101088.QA ; optional = true
     file[]: crc = 89a3a183; size =       126; name = SNDDIR
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
     file[]: crc = 8a93212e; size =       768; name = VIEWDIR

@@ -82,21 +82,16 @@ end
 game[v2.0a-int-2.912-3x360k]:
     name = v2.0A, Int. 2.912, 3x360K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = 25554bdd; size =      1010; name = _INSTALL.BAT; optional = true
-    file[]: crc = 4d79317e; size =        38; name = _SQ2.BAT    ; optional = true
     file[]: crc = 50d0603d; size =     39424; name = AGI
     file[]: crc = 925bedc9; size =      8192; name = AGIDATA.OVL
     file[]: crc = c8fcc528; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 0ae98926; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 7b59fb4c; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = a27c8af7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = da1a4910; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = eece1ea6; size =      1247; name = INSTALLH.BAT; optional = true
     file[]: crc = aeff2330; size =       512; name = JR_GRAF.OVL
     file[]: crc = 1a33142d; size =       423; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = b67fcb84; size =       331; name = OBJECT
     file[]: crc = 4824d141; size =       441; name = PICDIR
     file[]: crc = dadd2078; size =      3121; name = SIERRA.COM
@@ -142,7 +137,6 @@ game[v2.0c-int-2.917-3x360k]:
     file[]: crc = 0360a5c6; size =       426; name = LOGDIR
     file[]: crc = f00aabff; size =       444; name = PICDIR
     file[]: crc = c84b6cac; size =       210; name = SNDDIR
-    file[]: crc = 6a49ab10; size =        35; name = SQ201088.QA ; optional = true
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
     file[]: crc = abfe5251; size =       720; name = VIEWDIR
     file[]: crc = 7b88cd4f; size =     70302; name = VOL.0
@@ -180,7 +174,6 @@ game[v2.0d-int-2.936-3x360k]:
     file[]: crc = eab977f8; size =       426; name = LOGDIR
     file[]: crc = 9cbea791; size =       444; name = PICDIR
     file[]: crc = 1c9fadbc; size =       210; name = SNDDIR
-    file[]: crc = 9b2cbd7c; size =        18; name = SQ203248.QA ; optional = true
     file[]: crc = 086a550b; size =       512; name = VG_GRAF.OVL
     file[]: crc = 7dde8222; size =       720; name = VIEWDIR
     file[]: crc = 687ad2e2; size =     70309; name = VOL.0
@@ -206,25 +199,19 @@ game[v2.0f-int-2.936-3x360k]:
     name = v2.0F, Int. 2.936, 3x360K, Copy Protection
     imports = v2.0a-int-2.912-3x360k
     anchorfile = VOL.0
-    file[]: crc = 25554bdd; size =      1010; name = _INSTALL.BAT; optional = true
-    file[]: crc = 4d79317e; size =        38; name = _SQ2.BAT    ; optional = true
     file[]: crc = 1c0fbaf9; size =     39424; name = AGI
     file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
     file[]: crc = a8f00e6b; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 99f00f0f; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 8ca5a1da; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = bbd13bbf; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 3b17b970; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = eece1ea6; size =      1247; name = INSTALLH.BAT; optional = true
     file[]: crc = 2c7b7b15; size =       512; name = JR_GRAF.OVL
     file[]: crc = aff0879b; size =       426; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = b67fcb84; size =       331; name = OBJECT
     file[]: crc = b6db0c39; size =       444; name = PICDIR
     file[]: crc = 7700a783; size =       210; name = SNDDIR
-    file[]: crc = f7551952; size =        83; name = SQ21589     ; optional = true
     file[]: crc = 086a550b; size =       512; name = VG_GRAF.OVL
     file[]: crc = 2b4c4013; size =       720; name = VIEWDIR
     file[]: crc = fd471c99; size =     70313; name = VOL.0
@@ -250,21 +237,16 @@ end
 game[v2.0a-int-2.912-2x720k]:
     name = v2.0A, Int. 2.912, 2x720K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = 25554bdd; size =      1010; name = _INSTALL.BAT; optional = true
-    file[]: crc = 4d79317e; size =        38; name = _SQ2.BAT    ; optional = true
     file[]: crc = 50d0603d; size =     39424; name = AGI
     file[]: crc = 925bedc9; size =      8192; name = AGIDATA.OVL
     file[]: crc = c8fcc528; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 0ae98926; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 7b59fb4c; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = a27c8af7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = da1a4910; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = eece1ea6; size =      1247; name = INSTALLH.BAT; optional = true
     file[]: crc = aeff2330; size =       512; name = JR_GRAF.OVL
     file[]: crc = 772e92b4; size =       423; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = b67fcb84; size =       331; name = OBJECT
     file[]: crc = bec735f8; size =       441; name = PICDIR
     file[]: crc = dadd2078; size =      3121; name = SIERRA.COM
@@ -310,7 +292,6 @@ game[v2.0c-int-2.917-2x720k]:
     file[]: crc = 29f1a7cc; size =       426; name = LOGDIR
     file[]: crc = 78bb1368; size =       444; name = PICDIR
     file[]: crc = ce6176a3; size =       210; name = SNDDIR
-    file[]: crc = 6a49ab10; size =        35; name = SQ201088.QA ; optional = true
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
     file[]: crc = 1c69203f; size =       720; name = VIEWDIR
     file[]: crc = 7b88cd4f; size =     70302; name = VOL.0
@@ -348,7 +329,6 @@ game[v2.0d-int-2.936-2x720k]:
     file[]: crc = 7beb7519; size =       426; name = LOGDIR
     file[]: crc = 366a8993; size =       444; name = PICDIR
     file[]: crc = 1f150fac; size =       210; name = SNDDIR
-    file[]: crc = 9b2cbd7c; size =        18; name = SQ203248.QA ; optional = true
     file[]: crc = 086a550b; size =       512; name = VG_GRAF.OVL
     file[]: crc = e18b87a6; size =       720; name = VIEWDIR
     file[]: crc = 687ad2e2; size =     70309; name = VOL.0
@@ -373,26 +353,20 @@ end
 game[v2.0f-int-2.936-2x720k]:
     name = v2.0F, Int. 2.936, 2x720K, Copy Protection
     anchorfile = VOL.0
-    file[]: crc = bd089c8e; size =       764; name = _INSTALL.BAT; optional = true
-    file[]: crc = 4d79317e; size =        38; name = _SQ2.BAT    ; optional = true
     file[]: crc = 1c0fbaf9; size =     39424; name = AGI
     file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
     file[]: crc = a8f00e6b; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM     ; optional = true
     file[]: crc = 99f00f0f; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 8ca5a1da; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = bbd13bbf; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 3b17b970; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = eece1ea6; size =      1247; name = INSTALLH.BAT; optional = true
     file[]: crc = 2c7b7b15; size =       512; name = JR_GRAF.OVL
     file[]: crc = 4af29aa5; size =       426; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = b67fcb84; size =       331; name = OBJECT
     file[]: crc = c3509c67; size =       444; name = PICDIR
     file[]: crc = dadd2078; size =      3121; name = SIERRA.COM
     file[]: crc = e129a2f5; size =       210; name = SNDDIR
-    file[]: crc = f7551952; size =        83; name = SQ21589     ; optional = true
     file[]: crc = 086a550b; size =       512; name = VG_GRAF.OVL
     file[]: crc = 1ddb9f8d; size =       720; name = VIEWDIR
     file[]: crc = fd471c99; size =     70313; name = VOL.0

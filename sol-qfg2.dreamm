@@ -121,22 +121,14 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.000-int-10.31.90-4x1.2m-1x360k]:
     name = v1.000, Int. 10.31.90, 4x1.2M+1x360K
     anchorfile = RESOURCE.000
-    file[]: crc = 13bae658; size =      1094; name = __INSTH.BAT ; optional = true
-    file[]: crc = 810e1345; size =        27; name = _HDTRIAL.BAT; optional = true
     file[]: crc = 13d5ecb7; size =      7969; name = ADL.DRV
     file[]: crc = 9129b3df; size =      2049; name = CGA320M.DRV
     file[]: crc = e947e4fa; size =      3727; name = CMS.DRV
     file[]: crc = a28a9e4d; size =      3273; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
     file[]: crc = 69161c49; size =      1782; name = FONT.000
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 2b2452fe; size =      2212; name = HERCMONO.DRV
     file[]: crc = 1f125b48; size =       449; name = IBMKBD.DRV
     file[]: crc = 92f029f1; size =      4326; name = IBMPS1.DRV
-    file[]: crc = 7b8c8d10; size =     24064; name = INST.EXE    ; optional = true
-    file[]: crc = ae135a5d; size =       921; name = INSTALL.BAT ; optional = true
-    file[]: crc = a62f5337; size =      6464; name = INSTALL.HLP ; optional = true
-    file[]: crc = de939ad6; size =       727; name = INSTGAME.BAT; optional = true
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = db0e22be; size =      2763; name = MCGA320.DRV
     file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
@@ -149,14 +141,11 @@ game[v1.000-int-10.31.90-4x1.2m-1x360k]:
     file[]: crc = d9b85173; size =     62859; name = SCIV.EXE
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 9b05367c; size =      9638; name = SNDBLAST.DRV
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = c1c37f45; size =      1352; name = STD.DRV
     file[]: crc = ea6c816f; size =      4402; name = TANDY.DRV
     file[]: crc = b5eec20c; size =      2796; name = TANDY320.DRV
     file[]: crc = bd56949b; size =      3886; name = TANDY3V.DRV
     file[]: crc = f13c8668; size =       476; name = TANDYKBD.DRV
-    file[]: crc = a5f636a0; size =        10; name = TRIAL.BAT   ; optional = true
-    file[]: crc = ceb56145; size =       900; name = TSTDRIVE.EXE; optional = true
     file[]: crc = 8ec4273a; size =         7; name = VERSION
     file[]: crc = 2203a631; size =      2449; name = VOCAB.913
     file[]: crc = eea35d5e; size =       112; name = VOCAB.994
@@ -177,7 +166,6 @@ game[v1.000-int-11.15.90-4x1.2m-1x360k]:
     file[]: crc = d86c73b9; size =     61931; name = SCIV.EXE
     file[]: crc = 7f06c06f; size =     13868; name = SCRIPT.570
     file[]: crc = 50fdbdf3; size =      9258; name = SCRIPT.630
-
 end
 
 //
@@ -187,12 +175,9 @@ game[v1.102-int-11.20.90-4x1.2m-1x360k]:
     name = v1.102, Int. 11.20.90, 4x1.2M+1x360K
     imports = v1.000-int-10.31.90-4x1.2m-1x360k
     anchorfile = RESOURCE.000
-    file[]: crc = a3ee1ad7; size =      1071; name = __INSTH.BAT ; optional = true
     file[]: crc = 3cdb7101; size =      7976; name = ADL.DRV
     file[]: crc = a65e8550; size =      3734; name = CMS.DRV
     file[]: crc = 84b67aa4; size =      4354; name = IBMPS1.DRV
-    file[]: crc = a76ee788; size =     13355; name = INST.EXE    ; optional = true
-    file[]: crc = c202bb91; size =      2169; name = INSTALL.BAT ; optional = true
     file[]: crc = 61f5361f; size =      2745; name = MCGA320.DRV
     file[]: crc = 58dd3f24; size =    212119; name = RESOURCE.000
     file[]: crc = e5b9bc71; size =    867866; name = RESOURCE.001
@@ -236,20 +221,13 @@ end
 game[v1.000-int-10.31.90-9x720k]:
     name = v1.000, Int. 10.31.90, 9x720K
     anchorfile = RESOURCE.000
-    file[]: crc = 23a6ebee; size =      1853; name = __INSTH.BAT ; optional = true
-    file[]: crc = 810e1345; size =        27; name = _HDTRIAL.BAT; optional = true
     file[]: crc = 13d5ecb7; size =      7969; name = ADL.DRV
     file[]: crc = 9129b3df; size =      2049; name = CGA320M.DRV
     file[]: crc = e947e4fa; size =      3727; name = CMS.DRV
     file[]: crc = a28a9e4d; size =      3273; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 2b2452fe; size =      2212; name = HERCMONO.DRV
     file[]: crc = 1f125b48; size =       449; name = IBMKBD.DRV
     file[]: crc = 92f029f1; size =      4326; name = IBMPS1.DRV
-    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
-    file[]: crc = a62f5337; size =      6464; name = INSTALL.HLP ; optional = true
-    file[]: crc = de939ad6; size =       727; name = INSTGAME.BAT; optional = true
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = db0e22be; size =      2763; name = MCGA320.DRV
     file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
@@ -269,13 +247,11 @@ game[v1.000-int-10.31.90-9x720k]:
     file[]: crc = 50fdbdf3; size =      9258; name = SCRIPT.630
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 9b05367c; size =      9638; name = SNDBLAST.DRV
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = c1c37f45; size =      1352; name = STD.DRV
     file[]: crc = ea6c816f; size =      4402; name = TANDY.DRV
     file[]: crc = b5eec20c; size =      2796; name = TANDY320.DRV
     file[]: crc = bd56949b; size =      3886; name = TANDY3V.DRV
     file[]: crc = f13c8668; size =       476; name = TANDYKBD.DRV
-    file[]: crc = a5f636a0; size =        10; name = TRIAL.BAT   ; optional = true
     file[]: crc = 8ec4273a; size =         7; name = VERSION
 end
 
@@ -286,11 +262,9 @@ game[v1.102-int-11.20.90-9x720k]:
     name = v1.102, Int. 11.20.90, 9x720K
     imports = v1.000-int-10.31.90-9x720k
     anchorfile = RESOURCE.000
-    file[]: crc = 0d4d124c; size =      1807; name = __INSTH.BAT ; optional = true
     file[]: crc = 3cdb7101; size =      7976; name = ADL.DRV
     file[]: crc = a65e8550; size =      3734; name = CMS.DRV
     file[]: crc = 84b67aa4; size =      4354; name = IBMPS1.DRV
-    file[]: crc = a76ee788; size =     13355; name = INSTALL.EXE ; optional = true
     file[]: crc = 61f5361f; size =      2745; name = MCGA320.DRV
     file[]: crc = 58dd3f24; size =    212119; name = RESOURCE.000
     file[]: crc = e4c38622; size =    331995; name = RESOURCE.001
@@ -343,25 +317,16 @@ end
 game[v1.105-int-12.7.90-quest-for-glory-collection-series]:
     name = Quest for Glory - Collection Series (v1.105, Int. 12.7.90)
     anchorfile = RESOURCE.000
-    file[]: crc = 0d4d124c; size =      1807; name = __INSTH.BAT
-    file[]: crc = 810e1345; size =        27; name = _HDTRIAL.BAT
     file[]: crc = 3cdb7101; size =      7976; name = ADL.DRV
     file[]: crc = 9129b3df; size =      2049; name = CGA320M.DRV
     file[]: crc = a65e8550; size =      3734; name = CMS.DRV
     file[]: crc = a28a9e4d; size =      3273; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 2b2452fe; size =      2212; name = HERCMONO.DRV
     file[]: crc = 1f125b48; size =       449; name = IBMKBD.DRV
     file[]: crc = 84b67aa4; size =      4354; name = IBMPS1.DRV
-    file[]: crc = a76ee788; size =     13355; name = INSTALL.EXE ; optional = true
-    file[]: crc = a62f5337; size =      6464; name = INSTALL.HLP ; optional = true
-    file[]: crc = de939ad6; size =       727; name = INSTGAME.BAT; optional = true
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 61f5361f; size =      2745; name = MCGA320.DRV
     file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
-    file[]: crc = e0cb92d3; size =        36; name = QG2.BAT     ; optional = true
-    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
     file[]: crc = 3d60805e; size =    212120; name = RESOURCE.000
     file[]: crc = e6be9764; size =    331973; name = RESOURCE.001
     file[]: crc = a26df998; size =    467505; name = RESOURCE.002
@@ -372,14 +337,11 @@ game[v1.105-int-12.7.90-quest-for-glory-collection-series]:
     file[]: crc = ff752068; size =    490794; name = RESOURCE.007
     file[]: crc = 13ed83df; size =    483289; name = RESOURCE.008
     file[]: crc = 1b8b43ec; size =    485303; name = RESOURCE.009
-    file[]: crc = bff3abdd; size =        74; name = RESOURCE.CFG; optional = true
     file[]: crc = 7a4a2ac6; size =      8166; name = RESOURCE.MAP
     file[]: crc = d5420a3b; size =     59150; name = SCIV.EXE
-    file[]: crc = 8113df52; size =     59150; name = SCIV.OLD    ; optional = true
     file[]: crc = f80f264f; size =      2518; name = SCRIPT.805
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = e3e152cb; size =      9672; name = SNDBLAST.DRV
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = dcccb200; size =      1448; name = STD.DRV
     file[]: crc = da0485b5; size =      4430; name = TANDY.DRV
     file[]: crc = faa0ee15; size =      2999; name = TANDY320.DRV

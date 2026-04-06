@@ -52,8 +52,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v2.0-int-3.002.086-6x360k]:
     name = v2.0, Int. 3.002.086, 6x360K
     anchorfile = KQ4VOL.0
-    file[]: crc = 93fcb825; size =      1622; name = _INSTALL.BAT; optional = true
-    file[]: crc = 464817d8; size =        39; name = _KQ4.BAT    ; optional = true
     file[]: crc = 358e74c6; size =     40866; name = AGI
     file[]: crc = 2a7d5309; size =      8064; name = AGIDATA.OVL
     file[]: crc = 775dfe5a; size =       684; name = CGA_GRAF.OVL
@@ -62,7 +60,6 @@ game[v2.0-int-3.002.086-6x360k]:
     file[]: crc = ad49fad2; size =      1445; name = HGC_GRAF.OVL
     file[]: crc = 3f741835; size =       599; name = HGC_OBJS.OVL
     file[]: crc = 6952076e; size =       341; name = IBM_OBJS.OVL
-    file[]: crc = 7631470c; size =      1413; name = INSTALLH.BAT; optional = true
     file[]: crc = c774bc20; size =       465; name = JR_GRAF.OVL
     file[]: crc = ae3134b7; size =      2786; name = KQ4DIR
     file[]: crc = b8ccac67; size =     52189; name = KQ4VOL.0
@@ -75,9 +72,7 @@ game[v2.0-int-3.002.086-6x360k]:
     file[]: crc = ea302203; size =     29969; name = KQ4VOL.9
     file[]: crc = db4f8d19; size =     12895; name = KQ4VOL.10
     file[]: crc = 3b383bcb; size =     12143; name = KQ4VOL.11
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 9a24c702; size =       713; name = OBJECT
-    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
     file[]: crc = b5e186ad; size =      3115; name = SIERRA.COM
     file[]: crc = a59579a0; size =       362; name = VG_GRAF.OVL
     file[]: crc = 0e4ca342; size =      6107; name = WORDS.TOK
@@ -128,8 +123,6 @@ end
 game[v2.0-int-3.002.086-3x720k]:
     name = v2.0, Int. 3.002.086, 3x720K
     anchorfile = KQ4VOL.0
-    file[]: crc = 93fcb825; size =      1622; name = _INSTALL.BAT; optional = true
-    file[]: crc = 464817d8; size =        39; name = _KQ4.BAT    ; optional = true
     file[]: crc = 358e74c6; size =     40866; name = AGI
     file[]: crc = 2a7d5309; size =      8064; name = AGIDATA.OVL
     file[]: crc = 775dfe5a; size =       684; name = CGA_GRAF.OVL
@@ -138,16 +131,13 @@ game[v2.0-int-3.002.086-3x720k]:
     file[]: crc = ad49fad2; size =      1445; name = HGC_GRAF.OVL
     file[]: crc = 3f741835; size =       599; name = HGC_OBJS.OVL
     file[]: crc = 6952076e; size =       341; name = IBM_OBJS.OVL
-    file[]: crc = 6e082ad2; size =      1413; name = INSTALLH.BAT; optional = true
     file[]: crc = c774bc20; size =       465; name = JR_GRAF.OVL
     file[]: crc = da8ed9b8; size =      2786; name = KQ4DIR
     file[]: crc = 99ea7f33; size =     94974; name = KQ4VOL.0
     file[]: crc = 8b0345f0; size =    378232; name = KQ4VOL.1
     file[]: crc = 314f238b; size =    568050; name = KQ4VOL.2
     file[]: crc = a4b07ea0; size =    339399; name = KQ4VOL.3
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 9a24c702; size =       713; name = OBJECT
-    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
     file[]: crc = b5e186ad; size =      3115; name = SIERRA.COM
     file[]: crc = a59579a0; size =       362; name = VG_GRAF.OVL
     file[]: crc = 0e4ca342; size =      6107; name = WORDS.TOK
@@ -179,8 +169,6 @@ game[v2.3-int-3.002.086-3x720k]:
     file[]: crc = c456d0e8; size =    379139; name = KQ4VOL.1
     file[]: crc = 3ddbd561; size =    576496; name = KQ4VOL.2
     file[]: crc = c5d5cd1f; size =    332944; name = KQ4VOL.3
-    file[]: crc = 9688dbe7; size =       152; name = QAFILE
-    file[]: crc = 8e191976; size =       151; name = QAFILE.BAK
     file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
     file[]: crc = b4bfe4d4; size =      6107; name = WORDS.TOK
 end
