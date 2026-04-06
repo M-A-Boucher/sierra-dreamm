@@ -8,7 +8,7 @@ icon = sol-iceman.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
+launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 nothrottle = 6
 ramkb = 1024
@@ -22,7 +22,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy
+        videohw = cga; machine = tandy; nothrottle = 3
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
@@ -66,19 +66,19 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
+        audiohw = speaker; nothrottle = 4
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = adlib
+        audiohw = adlib; nothrottle = 4
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = cms; priority = 1
+        audiohw = cms; nothrottle = 4; priority = 1
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
@@ -115,31 +115,22 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.022-int-0.000.668-4x720k]:
     name = v1.022, Int. 0.000.668, 4x720K
     anchorfile = RESOURCE.000
-    file[]: crc = 50e0ddd2; size =       874; name = __INSTH.BAT ; optional = true
     file[]: crc = 9f2cea3f; size =      9778; name = ADL.DRV
     file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
     file[]: crc = 02f91723; size =      5825; name = CMS.DRV
-    file[]: crc = dc49b0c1; size =      2554; name = CSM1.DRV
+    file[]: crc = dc49b0c1; size =      2554; name = CSM1.DRV    ; optional = true
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 9ed55bc3; size =      2902; name = FB01.DRV
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
+    file[]: crc = 9ed55bc3; size =      2902; name = FB01.DRV    ; optional = true
     file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
-    file[]: crc = ba032cc2; size =        25; name = ICE.BAT     ; optional = true
-    file[]: crc = c552d30c; size =      2736; name = IMF.DRV
-    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
-    file[]: crc = bbd3280f; size =      9794; name = INSTALL.HLP ; optional = true
-    file[]: crc = be3ebadb; size =       671; name = INSTGAME.BAT; optional = true
+    file[]: crc = c552d30c; size =      2736; name = IMF.DRV     ; optional = true
     file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
     file[]: crc = a362ae54; size =      3013; name = JR.DRV
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
     file[]: crc = 86aadb8d; size =      3179; name = MT32.DRV
-    file[]: crc = 3c0ee52b; size =      2517; name = MT540.DRV
+    file[]: crc = 3c0ee52b; size =      2517; name = MT540.DRV   ; optional = true
     file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
-    file[]: crc = 4f3e6bcf; size =        41; name = README.BAT  ; optional = true
-    file[]: crc = 299f085f; size =       847; name = README.TXT  ; optional = true
     file[]: crc = e2eb7b35; size =     26974; name = RESOURCE.000
     file[]: crc = 397a1c87; size =    438601; name = RESOURCE.001
     file[]: crc = d9e471be; size =    566571; name = RESOURCE.002
@@ -147,8 +138,7 @@ game[v1.022-int-0.000.668-4x720k]:
     file[]: crc = 75c1b262; size =    669179; name = RESOURCE.004
     file[]: crc = b94ba9d4; size =      5670; name = RESOURCE.MAP
     file[]: crc = 1c680980; size =     76499; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
+    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 05dbf64a; size =      2466; name = STD.DRV
     file[]: crc = 0ac2441a; size =      3445; name = TANDY.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
@@ -163,7 +153,6 @@ game[v1.022-int-0.000.668-9x360k]:
     name = v1.022, Int. 0.000.668, 9x360K
     imports = v1.022-int-0.000.668-4x720k
     anchorfile = RESOURCE.001
-    file[]: crc = b2ea96b5; size =      1734; name = __INSTH.BAT ; optional = true
     file[]: crc = 42e2b7bd; size =    126839; name = RESOURCE.001
     file[]: crc = 1f4f00e6; size =    307001; name = RESOURCE.002
     file[]: crc = 21b0d55d; size =    318060; name = RESOURCE.003
@@ -183,11 +172,11 @@ game[v1.023-int-0.000.668-4x720k]:
     name = v1.023, Int. 0.000.668, 4x720K
     imports = v1.022-int-0.000.668-4x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 6ae85110; size =    126833; name = RESOURCE.001
+    file[]: crc = a1ea0043; size =    438501; name = RESOURCE.001
     file[]: crc = e2c8b0fc; size =    566464; name = RESOURCE.002
     file[]: crc = 1767d124; size =    622118; name = RESOURCE.003
     file[]: crc = 5735df4a; size =    669188; name = RESOURCE.004
-    file[]: crc = e2cc2de0; size =      6252; name = RESOURCE.MAP
+    file[]: crc = 3cdac292; size =      5670; name = RESOURCE.MAP
     file[]: crc = 268b51e8; size =         7; name = VERSION
 end
 
@@ -214,28 +203,8 @@ end
 //
 game[v1.033-int-6.8.90-4x720k]:
     name = v1.033, Int. 6.8.90, 4x720K
+    imports = v1.023-int-0.000.668-4x720k
     anchorfile = RESOURCE.000
-    file[]: crc = 50e0ddd2; size =       874; name = __INSTH.BAT ; optional = true
-    file[]: crc = 9f2cea3f; size =      9778; name = ADL.DRV
-    file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
-    file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
-    file[]: crc = 02f91723; size =      5825; name = CMS.DRV
-    file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
-    file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
-    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
-    file[]: crc = ba032cc2; size =        25; name = ICE.BAT     ; optional = true
-    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
-    file[]: crc = bbd3280f; size =      9794; name = INSTALL.HLP ; optional = true
-    file[]: crc = be3ebadb; size =       671; name = INSTGAME.BAT; optional = true
-    file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
-    file[]: crc = a362ae54; size =      3013; name = JR.DRV
-    file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
-    file[]: crc = 86aadb8d; size =      3179; name = MT32.DRV
-    file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
-    file[]: crc = 4f3e6bcf; size =        41; name = README.BAT. ; optional = true
-    file[]: crc = 299f085f; size =       847; name = README.TXT  ; optional = true
     file[]: crc = 714742ed; size =     26989; name = RESOURCE.000
     file[]: crc = faf55d38; size =    438872; name = RESOURCE.001
     file[]: crc = bb73ec6d; size =    566549; name = RESOURCE.002
@@ -243,12 +212,6 @@ game[v1.033-int-6.8.90-4x720k]:
     file[]: crc = 57bcba25; size =    670883; name = RESOURCE.004
     file[]: crc = 94287a52; size =      5700; name = RESOURCE.MAP
     file[]: crc = bc924e4f; size =     76609; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
-    file[]: crc = 05dbf64a; size =      2466; name = STD.DRV
-    file[]: crc = 0ac2441a; size =      3445; name = TANDY.DRV
-    file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
-    file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
     file[]: crc = 9e37368d; size =         7; name = VERSION
 end
 
@@ -259,7 +222,6 @@ game[v1.033-int-6.8.90-9x360k]:
     name = v1.033, Int. 6.8.90, 9x360K
     imports = v1.033-int-6.8.90-4x720k
     anchorfile = RESOURCE.001
-    file[]: crc = b2ea96b5; size =      1734; name = __INSTH.BAT ; optional = true
     file[]: crc = 07c4be21; size =    126775; name = RESOURCE.001
     file[]: crc = 04af11a4; size =    307014; name = RESOURCE.002
     file[]: crc = 3ced5766; size =    318066; name = RESOURCE.003
