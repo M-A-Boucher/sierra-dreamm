@@ -9,7 +9,7 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIV.EXE
-mips = $(MIPS_386DX_33)
+mips = $(MIPS_286_10)
 ramkb = 4096
 filter = sierra, adventure
 TANDY = 0
@@ -120,23 +120,16 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.000.104-int-0.000.519-1x720k]:
     name = v1.000.104, Int. 0.000.519, 1x720K
     anchorfile = RESOURCE.001
-    file[]: crc = 1f892f50; size =       495; name = __INSTH.BAT ; optional = true
     file[]: crc = c948dbb9; size =      8848; name = ADL.DRV
     file[]: crc = 053f0464; size =      2017; name = CGA320BW.DRV
     file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
     file[]: crc = 5d34c5dd; size =      5760; name = CMS.DRV
     file[]: crc = f141a6ba; size =      2467; name = CSM1.DRV
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
     file[]: crc = 1984ab02; size =      2407; name = FB01.DRV
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 909742d2; size =      2193; name = HERCMONO.DRV
-    file[]: crc = 26106952; size =        27; name = HOYLE.BAT   ; optional = true
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
     file[]: crc = aa615ea4; size =      2238; name = IMF.DRV
-    file[]: crc = 7b8c8d10; size =     24064; name = INSTALL.EXE ; optional = true
-    file[]: crc = 84285bfa; size =      8675; name = INSTALL.HLP ; optional = true
-    file[]: crc = 2b06c27f; size =       817; name = INSTGAME.BAT; optional = true
     file[]: crc = 703e1ddf; size =      2936; name = JR.DRV
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
     file[]: crc = 311cb067; size =      3006; name = MT32.DRV
@@ -160,8 +153,6 @@ game[v1.000.104-int-0.000.519-3x360k]:
     name = v1.000.104, Int. 0.000.519, 3x360K
     imports = v1.000.104-int-0.000.519-1x720k
     anchorfile = RESOURCE.001
-    file[]: crc = d4025390; size =       839; name = __INSTH.BAT ; optional = true
-    file[]: crc = e1095094; size =       817; name = INSTGAME.BAT; optional = true
     file[]: crc = 83533133; size =    162805; name = RESOURCE.001
     file[]: crc = 863841af; size =    342149; name = RESOURCE.002
     file[]: crc = 8084fe5e; size =    328925; name = RESOURCE.003
@@ -198,8 +189,6 @@ game[v1.000.113-int-0.000.530-3x360k]:
     name = v1.000.113, Int. 0.000.530, 3x360K
     imports = v1.000.113-int-0.000.530-1x720k
     anchorfile = RESOURCE.001
-    file[]: crc = d4025390; size =       839; name = __INSTH.BAT ; optional = true
-    file[]: crc = e1095094; size =       817; name = INSTGAME.BAT; optional = true
     file[]: crc = 5834c1c5; size =    162783; name = RESOURCE.001
     file[]: crc = 46dcf91d; size =    342309; name = RESOURCE.002
     file[]: crc = 07a9ef92; size =    328912; name = RESOURCE.003
@@ -213,10 +202,8 @@ game[v1.000.115-int-7.26.90-1x720k]:
     name = v1.000.115, Int. 7.26.90, 1x720K
     imports = v1.000.113-int-0.000.530-1x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 1f892f50; size =       495; name = __INSTH.BAT ; optional = true
     file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
-    file[]: crc = 0f306a42; size =      8674; name = INSTALL.HLP ; optional = true
     file[]: crc = c3f3e3da; size =    519525; name = RESOURCE.001
     file[]: crc = e3312cbb; size =      4386; name = RESOURCE.MAP
     file[]: crc = 1c680980; size =     76499; name = SCIV.EXE
@@ -229,12 +216,8 @@ game[v1.000.115-int-7.26.90-3x360k]:
     name = v1.000.115, Int. 7.26.90, 3x360K
     imports = v1.000.115-int-7.26.90-1x720k
     anchorfile = RESOURCE.001
-    file[]: crc = d4025390; size =       839; name = __INSTH.BAT ; optional = true
-    file[]: crc = 26106952; size =        27; name = HOYLE.BAT   ; optional = true
-    file[]: crc = e1095094; size =       817; name = INSTGAME.BAT; optional = true
     file[]: crc = f62b96b3; size =    163280; name = RESOURCE.001
     file[]: crc = 5fa8e245; size =      7818; name = RESOURCE.MAP
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
 
 end
 
