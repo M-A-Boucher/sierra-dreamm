@@ -112,26 +112,16 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.001-int-0.000.685-4x720k]:
     name = v1.000.046, Int. 0.000.685, 4x720K
     anchorfile = RESOURCE.001
-    file[]: crc = c62381a5; size =      1049; name = __INSTH.BAT ; optional = true
     file[]: crc = 9f2cea3f; size =      9778; name = ADL.DRV
-    file[]: crc = bb23b5b7; size =        37; name = CAMELOT.BAT ; optional = true
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
     file[]: crc = 02f91723; size =      5825; name = CMS.DRV
-    file[]: crc = a8854f60; size =       369; name = DRVCOPY.BAT ; optional = true
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
-    file[]: crc = a76ee788; size =     13355; name = INSTALL.EXE ; optional = true
-    file[]: crc = e3ead3c6; size =      6223; name = INSTALL.HLP ; optional = true
-    file[]: crc = d7cb99cb; size =       836; name = INSTGAME.BAT; optional = true
     file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
     file[]: crc = a362ae54; size =      3013; name = JR.DRV
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
     file[]: crc = 86aadb8d; size =      3179; name = MT32.DRV
-    file[]: crc = 4f3e6bcf; size =        41; name = README.BAT  ; optional = true
-    file[]: crc = c415c60a; size =      1597; name = README.TXT  ; optional = true
     file[]: crc = 6dbc7908; size =    596774; name = RESOURCE.001
     file[]: crc = ec9d1389; size =    722250; name = RESOURCE.002
     file[]: crc = 7dfa925e; size =    723712; name = RESOURCE.003
@@ -139,7 +129,6 @@ game[v1.001-int-0.000.685-4x720k]:
     file[]: crc = 7c76c2fc; size =      7278; name = RESOURCE.MAP
     file[]: crc = fd6dee90; size =     44443; name = SCIV.EXE
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 05dbf64a; size =      2466; name = STD.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
     file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
@@ -153,7 +142,6 @@ game[v1.001-int-0.000.685-10-360k]:
     name = v1.001, Int. 0.000.685, 10x360K
     imports = v1.001-int-0.000.685-4x720k
     anchorfile = RESOURCE.001
-    file[]: crc = e7fdd081; size =      1601; name = README.TXT  ; optional = true
     file[]: crc = 59cadbee; size =    212461; name = RESOURCE.001
     file[]: crc = 929de5b4; size =    317865; name = RESOURCE.002
     file[]: crc = 77befc5d; size =    359145; name = RESOURCE.003

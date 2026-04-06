@@ -169,25 +169,17 @@ game[v1.0-int-11.20.91-6x1.44m]:
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 6cfe3c1a; size =     41078; name = INSTALL.EXE ; optional = true
-    file[]: crc = 441610ee; size =     14429; name = INSTALL.HLP ; optional = true
-    file[]: crc = 4a983fca; size =      1825; name = INSTALL.SCR ; optional = true
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
-    file[]: crc = cf1e5615; size =       368; name = READ.ME     ; optional = true
     file[]: crc = 8246a91a; size =   1296607; name = RESOURCE.000
     file[]: crc = 1d7d81d1; size =   1379267; name = RESOURCE.001
     file[]: crc = e7132fb0; size =   1234140; name = RESOURCE.002
     file[]: crc = 64f65f65; size =    823610; name = RESOURCE.003
     file[]: crc = 80af3db1; size =   1260237; name = RESOURCE.004
     file[]: crc = 0a109417; size =   1284609; name = RESOURCE.005
-    file[]: crc = c05dc3ea; size =        19; name = RESOURCE.CFG; optional = true
     file[]: crc = 02ae509a; size =      6045; name = RESOURCE.MAP
-    file[]: crc = 4b8679d5; size =        20; name = ROBIN2.BAT  ; optional = true
-    file[]: crc = bfd3a781; size =        10; name = ROBIN3.BAT  ; optional = true
     file[]: crc = 1e9a9ddb; size =     60755; name = SCIDHUV.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
@@ -208,7 +200,6 @@ game[v1.0-int-11.20.91-7x1.2m]:
     file[]: crc = 567e2b45; size =      9088; remove = 540.SCR
     file[]: crc = fad3a4d5; size =      7438; remove = 561.SCR
     file[]: crc = d3a6c5c4; size =     11712; remove = 570.SCR
-    file[]: crc = 8b6c33b3; size =      1909; name = INSTALL.SCR ; optional = true
     file[]: crc = 484460c7; size =   1096767; name = RESOURCE.000
     file[]: crc = feb5fa77; size =   1133226; name = RESOURCE.001
     file[]: crc = 01b88bc7; size =   1128555; name = RESOURCE.002
@@ -242,24 +233,16 @@ game[v1.0-int-12.9.91-4x1.2m]:
     file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 6cfe3c1a; size =     41078; name = INSTALL.EXE ; optional = true
-    file[]: crc = a6e13209; size =     14432; name = INSTALL.HLP ; optional = true
-    file[]: crc = bb7bbbd9; size =      1401; name = INSTALL.SCR ; optional = true
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 518a264e; size =      2850; name = MCGA320.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
-    file[]: crc = cf1e5615; size =       368; name = READ.ME     ; optional = true
     file[]: crc = a0185053; size =    934643; name = RESOURCE.000
     file[]: crc = c1e88128; size =   1196133; name = RESOURCE.001
     file[]: crc = e4e4c8c6; size =   1152478; name = RESOURCE.002
     file[]: crc = c5784237; size =   1171439; name = RESOURCE.003
-    file[]: crc = c05dc3ea; size =        19; name = RESOURCE.CFG; optional = true
     file[]: crc = 8ff7402c; size =      6021; name = RESOURCE.MAP
-    file[]: crc = 0d501fd6; size =        19; name = ROBIN2.BAT  ; optional = true
-    file[]: crc = 8c3b1ac0; size =         9; name = ROBIN3.BAT  ; optional = true
     file[]: crc = 1808fe65; size =    105089; name = SCIDUV.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
@@ -276,7 +259,6 @@ game[v1.0-int-12.9.91-7x720k]:
     launch = SCIDUV.EXE
     imports = v1.0-int-12.9.91-4x1.2m
     anchorfile = RESOURCE.000
-    file[]: crc = 4f0bfb51; size =      1871; name = INSTALL.SCR ; optional = true
     file[]: crc = 8e66118a; size =    718161; name = RESOURCE.000
     file[]: crc = be0c4c15; size =    705680; name = RESOURCE.001
     file[]: crc = 23afe1a6; size =    700633; name = RESOURCE.002
@@ -308,25 +290,17 @@ game[v1.1-int-1.13.92-6x1.44m]:
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 6cfe3c1a; size =     41078; name = INSTALL.EXE ; optional = true
-    file[]: crc = a6e13209; size =     14432; name = INSTALL.HLP ; optional = true
-    file[]: crc = 4a983fca; size =      1825; name = INSTALL.SCR ; optional = true
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
-    file[]: crc = cf1e5615; size =       368; name = READ.ME     ; optional = true
     file[]: crc = 6f4f28f1; size =   1297120; name = RESOURCE.000
     file[]: crc = d507c4d4; size =   1366155; name = RESOURCE.001
     file[]: crc = 5faad746; size =   1234743; name = RESOURCE.002
     file[]: crc = 660d1b7e; size =    823686; name = RESOURCE.003
     file[]: crc = b01b6da7; size =   1261462; name = RESOURCE.004
     file[]: crc = af133b6e; size =   1284720; name = RESOURCE.005
-    file[]: crc = c05dc3ea; size =        19; name = RESOURCE.CFG; optional = true
     file[]: crc = d94b5242; size =      6027; name = RESOURCE.MAP
-    file[]: crc = 4b8679d5; size =        20; name = ROBIN2.BAT  ; optional = true
-    file[]: crc = bfd3a781; size =        10; name = ROBIN3.BAT  ; optional = true
     file[]: crc = 1e9a9ddb; size =     60755; name = SCIDHUV.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
