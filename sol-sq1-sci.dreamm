@@ -81,27 +81,19 @@ game[v2.0-int-8.20.91-5x1.44m]:
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = f4376541; size =     39723; name = INSTALL.EXE ; optional = true
-    file[]: crc = 75dbbdf0; size =      8565; name = INSTALL.HLP ; optional = true
-    file[]: crc = 9c5b0117; size =      2776; name = INSTALL.SCR ; optional = true
-    file[]: crc = 73e48627; size =      4189; name = INSTALL.TXT ; optional = true
     file[]: crc = c0e9961f; size =      1636; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV
     file[]: crc = 9b5ef36d; size =     11942; name = PROAUDIO.DRV
-    file[]: crc = ddce3a69; size =      1078; name = README      ; optional = true
     file[]: crc = 6a286ec6; size =   1016436; name = RESOURCE.000
     file[]: crc = fa687c02; size =   1038757; name = RESOURCE.001
     file[]: crc = d9c5a453; size =   1169831; name = RESOURCE.002
     file[]: crc = b19b78f5; size =   1213262; name = RESOURCE.003
     file[]: crc = 58d2a8e1; size =   1203051; name = RESOURCE.004
-    file[]: crc = 72d1160c; size =        17; name = RESOURCE.CFG; optional = true
     file[]: crc = e8d39de9; size =      5913; name = RESOURCE.MAP
     file[]: crc = 60931701; size =     62238; name = SCIDHUV.EXE
     file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
-    file[]: crc = c0a4fc3e; size =        31; name = SQ1RS.BAT   ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
@@ -126,27 +118,19 @@ game[v2.0-int-8.28.91-6x720k]:
     file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = aab85b87; size =     77409; name = INSTALL.EXE ; optional = true
-    file[]: crc = 97c926bc; size =     14028; name = INSTALL.HLP ; optional = true
-    file[]: crc = 13548812; size =      2832; name = INSTALL.SCR ; optional = true
-    file[]: crc = 73e48627; size =      4189; name = INSTALL.TXT ; optional = true
     file[]: crc = db410bc1; size =      1656; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 8445d7c9; size =      2747; name = MCGA320.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
     file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV
     file[]: crc = 9b5ef36d; size =     11942; name = PROAUDIO.DRV
-    file[]: crc = ddce3a69; size =      1078; name = README      ; optional = true
     file[]: crc = 1f98b2ef; size =    844999; name = RESOURCE.000
     file[]: crc = 7f7c045d; size =   1187068; name = RESOURCE.001
     file[]: crc = 3ab26f21; size =    824263; name = RESOURCE.002
     file[]: crc = 4eb2c521; size =    694311; name = RESOURCE.003
-    file[]: crc = 1d95aee6; size =        31; name = RESOURCE.CFG; optional = true
     file[]: crc = bdc6aa1c; size =      5745; name = RESOURCE.MAP
     file[]: crc = 8409c9b9; size =    108707; name = SCIDUV.EXE
     file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
-    file[]: crc = c0a4fc3e; size =        31; name = SQ1RS.BAT   ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
@@ -164,14 +148,12 @@ game[v2.0-int-8.11.92-4x1.2]:
     anchorfile = RESOURCE.000
     file[]: crc = 0cc8a418; size =       883; name = 433.V16
     file[]: crc = 95d9cbee; size =       399; name = 533.V16
-    file[]: crc = a06263b1; size =      3060; name = INSTALL.SCR ; optional = true
     file[]: crc = c1a0aa9f; size =    409145; name = RESOURCE.000
     file[]: crc = 6d7c1fdd; size =    647747; name = RESOURCE.001
     file[]: crc = fb5f8d16; size =    697438; name = RESOURCE.002
     file[]: crc = ccc06c23; size =    669070; name = RESOURCE.003
     file[]: crc = 0ab73fdf; size =    684119; name = RESOURCE.004
     file[]: crc = 729b0475; size =    695589; name = RESOURCE.005
-    file[]: crc = 1d95aee6; size =        31; name = RESOURCE.CFG; optional = true
     file[]: crc = bec1f6ae; size =      6003; name = RESOURCE.MAP
 end
 
@@ -184,8 +166,6 @@ game[v2.0-int-8.11.92-5x1.44m]:
     anchorfile = 433.V56
     file[]: crc = e37de82a; size =      2703; name = 433.V56
     file[]: crc = 6930926d; size =      1960; name = 533.V56
-    file[]: crc = f8ad4abe; size =      2844; name = INSTALL.SCR ; optional = true
-    file[]: crc = a3362d04; size =        29; name = RESOURCE.CFG; optional = true
 end
 
 //
@@ -196,18 +176,9 @@ game[v2.0-int-8.11.92-space-quest-collectors-edition]:
     imports = v2.0-int-8.11.92-5x1.44m
     anchorfile = MTBLAST.DRV
     file[]: crc = bfcb766f; size =      4364; remove = IBMPS1.DRV
-    file[]: crc = 5f6f9c26; size =    178512; name = INSTALL.EXE ; optional = true
-    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
-    file[]: crc = 2f5991c4; size =      1965; name = INSTALL.SCR ; optional = true
-    file[]: crc = d4bce6c5; size =      9501; name = INSTALL.TXT ; optional = true
     file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
-    file[]: crc = 648e58de; size =       106; name = RESOURCE.CFG; optional = true
-    file[]: crc = fd9f688a; size =        22; name = SIERRA.BAT  ; optional = true
     file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
     file[]: crc = b8d689c1; size =      1301; name = SQ1GMPAT    ; optional = true
-    file[]: crc = 7599dba0; size =       281; name = SQ1INST.BAT ; optional = true
-    file[]: crc = c5cfda55; size =        85; name = SQ1SCI.BAT  ; optional = true
-    file[]: crc = c5cfda55; size =        85; name = SQ1VGA.BAT  ; optional = true
     file[]: crc = cecb955a; size =      3950; remove = TANDY3V.DRV
     file[]: crc = 6814b17f; size =      4498; remove = TANDY3VD.DRV
 end
