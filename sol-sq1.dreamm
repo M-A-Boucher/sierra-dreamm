@@ -13,7 +13,7 @@ audiohw = speaker
 mips = $(MIPS_286_10)
 ramkb = 1024
 filter = sierra, adventure
-MACHINE = pc
+CRACKED = 0
 
 //
 // graphics configuration
@@ -49,7 +49,7 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[agikey]:
-    condition = is_game()
+    condition = is_game() && !$(CRACKED)
     code = [[[$(CRLF)
         file = file_open("$$(rootpath)\\AGI");
         keyblob = blob_create();
@@ -150,7 +150,6 @@ game[v2.2-int-2.426-1x720k]:
     file[]: crc = 7c9d455a; size =      4793; name = WORDS.TOK
 end
 
-
 //
 // v2.2, Int. 2.917, 1x720K (Identical to v2.2, Int. 2.917, 2x360K)
 //
@@ -175,6 +174,7 @@ end
 //
 game[v2.2-int-2.917-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.2, Int. 2.917)
+    CRACKED = 1
     imports = v2.2-int-2.917-1x720k
     anchorfile = VOL.0
     file[]: crc = 72fca229; size =      3121; name = SIERRA.COM

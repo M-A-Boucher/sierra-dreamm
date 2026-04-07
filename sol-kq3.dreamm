@@ -12,6 +12,7 @@ launch = $(rootpath)\SIERRA.COM
 mips = $(MIPS_286_10)
 ramkb = 1024
 filter = sierra, adventure
+CRACKED = 0
 
 //
 // graphics configuration
@@ -47,7 +48,7 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[agikey]:
-    condition = is_game()
+    condition = is_game() && !$(CRACKED)
     code = [[[$(CRLF)
         file = file_open("$$(rootpath)\\AGI");
         keyblob = blob_create();
@@ -156,10 +157,10 @@ game[v2.14-int-2.936-3x360k]:
 end
 
 //
-// v2.00, Int. 2.4.35, 2x720K Copy Protection
+// v2.00, Int. 2.4.35, 2x720K
 //
 game[v2.00-int-2.4.35-2x720k]:
-    name = v2.00, Int. 2.4.35, 2x720K, Copy Protection
+    name = v2.00, Int. 2.4.35, 2x720K
     anchorfile = VOL.0
     file[]: crc = fcd148ab; size =     38400; name = AGI
     file[]: crc = 0a908dc6; size =      7680; name = AGIDATA.OVL
@@ -173,7 +174,7 @@ game[v2.00-int-2.4.35-2x720k]:
     file[]: crc = a34f44e4; size =       390; name = LOGDIR
     file[]: crc = 80bb91c4; size =       796; name = OBJECT
     file[]: crc = 0c39343d; size =       531; name = PICDIR
-    file[]: crc = b2418d1c; size =      2944; name = SIERRA.COM
+    file[]: crc = be418d1c; size =      2944; name = SIERRA.COM
     file[]: crc = 528b4578; size =       120; name = SNDDIR
     file[]: crc = a759f921; size =       756; name = VIEWDIR
     file[]: crc = 06d71677; size =     78613; name = VOL.0
@@ -183,16 +184,16 @@ game[v2.00-int-2.4.35-2x720k]:
 end
 
 //
-// v2.14, Int. 2.936, 2x720K Copy Protection
+// v2.14, Int. 2.936, 2x720K
 //
 game[v2.14-int-2.936-2x720k]:
-    name = v2.14, Int. 2.936, 2x720K, Copy Protection
-    imports = v2.00-int-2.4.35-2x720k
+    name = v2.14, Int. 2.936, 2x720K
     anchorfile = VOL.0
     file[]: crc = ea640c2e; size =     39424; name = AGI
     file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
     file[]: crc = a8f00e6b; size =      1024; name = CGA_GRAF.OVL
     file[]: crc = 99f00f0f; size =      1024; name = EGA_GRAF.OVL
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 8ca5a1da; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = bbd13bbf; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 3b17b970; size =       512; name = IBM_OBJS.OVL
@@ -218,6 +219,7 @@ game[v2.14-int-2.936-kings-quest-collectors-edition]:
     name = King's Quest - Collector's Edition (v2.14, Int. 2.936)
     imports = v2.14-int-2.936-2x720k
     anchorfile = SIERRA.COM
+    CRACKED = 1
     file[]: crc = de7f5d15; size =      3121; name = SIERRA.COM
 end
 
