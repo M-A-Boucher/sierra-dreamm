@@ -53,27 +53,33 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = sb16+speaker
+        audiohw = speaker
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = sb16+adlib
+        audiohw = adlib
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = sb16+cms
+        audiohw = cms; priority = 1
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; nothrottle = 6; priority = 2
+        audiohw = sb16+mt32; nothrottle = 6; priority = 3
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
@@ -170,6 +176,17 @@ game[v1.0-int-11.23.91-4x720k]:
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
     file[]: crc = 8ec4273a; size =         7; name = VERSION
+end
+
+//
+// General MIDI Patch
+//
+addon[gmidi]:
+    name = General MIDI Patch
+    upgradeids = v1.0-int-11.13.91-3x1.44m, v1.0-int-11.23.91-4x720k
+    anchorfile = TALEGM.PAT
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = 522669f9; size =      1301; name = 4.PAT
 end
 
 end

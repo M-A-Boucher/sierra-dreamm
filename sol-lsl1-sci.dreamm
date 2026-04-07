@@ -39,13 +39,13 @@ config[graphics]:
     end
     option[vgamono]:
         name = Monochrome $(VGA_NAME);
-        videohw = vga; nothrottle = 4.5
+        videohw = vga; nothrottle = 3
         VIDEO_DRIVER = VGA320BW.DRV
         condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
     end
     option[vga]:
         name = $(VGA_NAME);
-        videohw = vga; nothrottle = 4.5; priority = 2
+        videohw = vga; nothrottle = 3; priority = 2
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
@@ -71,7 +71,7 @@ config[sound]:
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = cms; priority = 1
+        audiohw = cms
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
@@ -83,15 +83,21 @@ config[sound]:
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32; priority = 2
+        audiohw = mt32; priority = 3
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[mtblast]:
         name = $(MT32_NAME) + $(SB16_NAME)
-        audiohw = sb16+mt32; priority = 3
+        audiohw = sb16+mt32; priority = 4
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
@@ -200,6 +206,22 @@ game[v2.1-int-7.9.91-leisure-suit-larry-collectors-series]:
     imports = v2.1-int-7.9.91-3x1.44m
     file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
     file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
+end
+
+//
+// General MIDI Patch
+//
+addon[gmidi]:
+    name = General MIDI Patch
+    upgradeids = [[[,
+        v2.0-int-6.26.91-3x1.44m
+        v2.1-int-7.9.91-3x1.44m
+        v2.0-int-7.9.91-4x720k
+        v2.1-int-7.9.91-leisure-suit-larry-collectors-series
+    ]]]
+    anchorfile = LL1_GM.PAT
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a28008a0; size =      1301; name = 4.PAT
 end
 
 end

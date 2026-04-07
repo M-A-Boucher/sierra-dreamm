@@ -10,7 +10,7 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 3
+nothrottle = 2
 ramkb = 4096
 filter = sierra, adventure
 TANDY = 0
@@ -84,15 +84,21 @@ config[sound]:
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
+        audiohw = sb16+mt32; priority = 3
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[mtblast]:
         name = $(MT32_NAME) + $(SB16_NAME)
-        audiohw = sb16+mt32; priority = 3
+        audiohw = sb16+mt32; priority = 4
         SOUND_DRIVER = MTBLAST.DRV
         condition = file_exists("$$(rootpath)\\MTBLAST.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = gmidi; priority = 2
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
@@ -126,16 +132,8 @@ game[v1.0-int-11.2.91-2x720k]:
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
     file[]: crc = cfee5c7f; size =      3199; name = EGA320.DRV
-    file[]: crc = 754bbc24; size =        44; name = HOYLE3.BAT  ; optional = true
-    file[]: crc = c6e4cb3b; size =        43; name = HOYLE3H.BAT ; optional = true
-    file[]: crc = 994857c0; size =        39; name = HOYLE3RS.BAT; optional = true
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = 2259e131; size =      3947; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 268f5945; size =     41057; name = INSTALL.EXE ; optional = true
-    file[]: crc = 26f8b8f1; size =     14386; name = INSTALL.HLP ; optional = true
-    file[]: crc = 10b3d742; size =      3870; name = INSTALL.SCR ; optional = true
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 8445d7c9; size =      2747; name = MCGA320.DRV
@@ -144,11 +142,8 @@ game[v1.0-int-11.2.91-2x720k]:
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
     file[]: crc = fc79970f; size =    319905; name = RESOURCE.000
     file[]: crc = d9cf1d09; size =    526438; name = RESOURCE.001
-    file[]: crc = 494753a3; size =        35; name = RESOURCE.CFG; optional = true
     file[]: crc = 88b103c4; size =      2205; name = RESOURCE.MAP
     file[]: crc = cb4fbd4a; size =     94815; name = SCIDUV.EXE
-    file[]: crc = 95cc3407; size =        38; name = SIERRA.BAT  ; optional = true
-    file[]: crc = 5f5dce5e; size =        35; name = SIERRAH.BAT ; optional = true
     file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
@@ -166,7 +161,6 @@ game[v1.0-int-11.2.91-4x360k]:
     launch = SCIDUV.EXE
     imports = v1.0-int-11.2.91-2x720k
     anchorfile = RESOURCE.000
-    file[]: crc = b1af1c1d; size =      2186; name = INSTALL.SCR ; optional = true
     file[]: crc = 8857f13a; size =     12070; name = RESOURCE.000
     file[]: crc = 453f59fe; size =    307835; name = RESOURCE.001
     file[]: crc = 3cf18f82; size =    288631; name = RESOURCE.002
@@ -183,16 +177,8 @@ game[v1.0-int-11.2.91-2x1.44m]:
     file[]: crc = c5831cb6; size =     17412; name = 600.SCR
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
-    file[]: crc = 05f6a1d6; size =        45; name = HOYLE3.BAT  ; optional = true
-    file[]: crc = 483f661d; size =        43; name = HOYLE3H.BAT ; optional = true
-    file[]: crc = 994857c0; size =        39; name = HOYLE3RS.BAT; optional = true
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = 2259e131; size =      3947; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 268f5945; size =     41057; name = INSTALL.EXE ; optional = true
-    file[]: crc = 26f8b8f1; size =     14386; name = INSTALL.HLP ; optional = true
-    file[]: crc = 9c871f44; size =      4049; name = INSTALL.SCR ; optional = true
-    file[]: crc = 6a6f38fc; size =      4567; name = INSTALL.TXT ; optional = true
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
@@ -200,11 +186,8 @@ game[v1.0-int-11.2.91-2x1.44m]:
     file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
     file[]: crc = 9a83616a; size =    541845; name = RESOURCE.000
     file[]: crc = 5534b7d6; size =    845795; name = RESOURCE.001
-    file[]: crc = 0b217c00; size =        35; name = RESOURCE.CFG; optional = true
     file[]: crc = 2d087d56; size =      2247; name = RESOURCE.MAP
     file[]: crc = 4f3e2e2c; size =     96361; name = SCIDHUV.EXE
-    file[]: crc = 98a6ee62; size =        38; name = SIERRA.BAT  ; optional = true
-    file[]: crc = fb698b53; size =        37; name = SIERRAH.BAT ; optional = true
     file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
@@ -213,6 +196,21 @@ game[v1.0-int-11.2.91-2x1.44m]:
     file[]: crc = e9e20b62; size =         8; name = VERSION
     file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
     file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+end
+
+//
+// General MIDI Patch
+//
+addon[gmidi]:
+    name = General MIDI Patch
+    upgradeids = [[[,
+        v1.0-int-11.2.91-2x720k
+        v1.0-int-11.2.91-4x360k
+        v1.0-int-11.2.91-2x1.44m
+    ]]]
+    anchorfile = HOY3GM.PAT
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = c13a4742; size =      1301; name = 4.PAT
 end
 
 end

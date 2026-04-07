@@ -95,6 +95,12 @@ config[sound]:
         SOUND_DRIVER = MTBLAST.DRV
         condition = file_exists("$$(rootpath)\\MTBLAST.DRV")
     end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 4
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
 end
 
 dynamicfile[]:
@@ -227,6 +233,22 @@ game[v2.0-int-8.11.92-space-quest-collectors-edition]:
     file[]: crc = b8d689c1; size =      1301; name = SQ1GMPAT    ; optional = true
     file[]: crc = cecb955a; size =      3950; remove = TANDY3V.DRV
     file[]: crc = 6814b17f; size =      4498; remove = TANDY3VD.DRV
+end
+
+//
+// General MIDI Patch
+//
+addon[gmidi]:
+    name = General MIDI Patch
+    upgradeids = [[[,
+        v2.0-int-8.20.91-5x1.44m
+        v2.0-int-8.28.91-6x720k
+        v2.0-int-8.11.92-4x1.2
+        v2.0-int-8.11.92-5x1.44m
+    ]]]
+    anchorfile = SQ1_GM.PAT
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = b8d689c1; size =      1301; name = 4.PAT
 end
 
 end

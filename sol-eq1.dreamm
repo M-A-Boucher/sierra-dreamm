@@ -53,15 +53,21 @@ config[sound]:
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = sb16+cms; nothrottle = 10
+        audiohw = sb16+cms; nothrottle = 10; priority = 1
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; nothrottle = 10; priority = 2
+        audiohw = sb16+mt32; nothrottle = 10; priority = 3
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
@@ -87,7 +93,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 // v1.0, Int. 12.23.91, 3x1.44M-1x720K
 //
-game[v1.0-int-12.23.91-5x1.44m-1x720k]:
+game[v1.0-int-12.23.91-3x1.44m-1x720k]:
     name = v1.0, Int. 12.23.91, 3x1.44M-1x720K
     anchorfile = RESOURCE.000
     file[]: crc = bbfd7872; size =     18762; name = 0.SCR
@@ -115,24 +121,16 @@ game[v1.0-int-12.23.91-5x1.44m-1x720k]:
     file[]: crc = b2631db1; size =      1713; name = AUDPS1.DRV
     file[]: crc = b612a992; size =      1775; name = AUDTANDY.DRV
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
-    file[]: crc = 5b1c781e; size =        31; name = ECORS.BAT   ; optional = true
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 8af78c52; size =     41062; name = INSTALL.EXE ; optional = true
-    file[]: crc = 0475e263; size =     14652; name = INSTALL.HLP ; optional = true
-    file[]: crc = 7134449b; size =      1311; name = INSTALL.SCR ; optional = true
-    file[]: crc = 314486bd; size =      4639; name = INSTALL.TXT ; optional = true
     file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = 5381d012; size =      1918; name = README      ; optional = true
     file[]: crc = 301c5032; size =   1099239; name = RESOURCE.000
     file[]: crc = 51b7948d; size =   1413719; name = RESOURCE.001
     file[]: crc = a4159e79; size =   1241816; name = RESOURCE.002
     file[]: crc = 75e26d97; size =    586832; name = RESOURCE.003
-    file[]: crc = 252869ff; size =        43; name = RESOURCE.CFG; optional = true
     file[]: crc = 70a1d215; size =      4053; name = RESOURCE.MAP
     file[]: crc = 6515dae8; size =     63095; name = SCIDHUV.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
@@ -147,13 +145,24 @@ end
 //
 game[v1.0-int-12.23.91-4x1.2m]:
     name = v1.0, Int. 12.23.91, 4x1.2M
-    imports = v1.0-int-12.23.91-5x1.44m-1x720k
+    imports = v1.0-int-12.23.91-3x1.44m-1x720k
     anchorfile = RESOURCE.000
     file[]: crc = ac480c4d; size =    858490; name = RESOURCE.000
     file[]: crc = 57964522; size =   1212161; name = RESOURCE.001
     file[]: crc = 1cee5361; size =   1129316; name = RESOURCE.002
     file[]: crc = 398401f3; size =   1145616; name = RESOURCE.003
     file[]: crc = 30c95dc0; size =      4059; name = RESOURCE.MAP
+end
+
+//
+// General MIDI Patch
+//
+addon[gmidi]:
+    name = General MIDI Patch
+    upgradeids = v1.0-int-12.23.91-3x1.44m-1x720k, v1.0-int-12.23.91-4x1.2m
+    anchorfile = ECO1GM.PAT
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = 4159050c; size =      1301; name = 4.PAT
 end
 
 end

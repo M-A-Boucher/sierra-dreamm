@@ -385,7 +385,6 @@ game[v1.0-cd]:
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
     file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV ; optional = true
     file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
-    file[]: crc = d0a1851d; size =      3357; name = README      ; optional = true
     file[]: crc = ce475558; size =   5157378; name = RESOURCE.000
     file[]: crc = 624eb224; size = 168882321; name = RESOURCE.AUD
     file[]: crc = 1677d9f4; size =      7054; name = RESOURCE.MAP
@@ -410,6 +409,27 @@ game[v1.0-cd-space-quest-collectors-edition]:
     AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = AUDBLAST.DRV
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
+end
+
+//
+// General MIDI Patch
+//
+addon[gmidi]:
+    name = General MIDI Patch
+    upgradeids = [[[,
+        v1.052-int-3.4.91-6x1.44m
+        v1.052-int-3.4.91-6x1.2m
+        v1.060-int-3.13.91-3x1.2m
+        v1.060-int-3.13.91-6x720k
+        v1.1-int-4.29.91-6x1.44m
+        v1.1-int-4.29.91-6x1.2m
+        v1.0-int-11.21.91-de-6x1.44m
+        v1.0-int-11.21.91-de-7x1.2m
+        v1.3-it-6x1.44m
+    ]]]
+    anchorfile = SQ4_GM.PAT
+    file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
+    file[]: crc = 756dcd4b; size =      1301; name = 4.PAT
 end
 
 end
