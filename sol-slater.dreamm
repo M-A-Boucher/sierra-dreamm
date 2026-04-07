@@ -1,0 +1,153 @@
+//
+// Slater & Charlie Go Camping
+//
+desc[sol-slater]:
+
+name = Slater & Charlie Go Camping
+icon = sol-slater.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.EXE
+mips = $(MIPS_486DX_33)
+nothrottle = 2
+ramkb = 4096
+filter = sierra, adventure
+AUDIO_DRIVER = AUDNONE.DRV
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
+    option[vgamono]:
+        name = Monochrome $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 2
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = sb16+speaker
+        SOUND_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        SOUND_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 1
+        SOUND_DRIVER = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 3
+        SOUND_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv=$(VIDEO_DRIVER)
+        soundDrv=$(SOUND_DRIVER)
+        joyDrv=JOYSTICK.DRV
+        kbdDrv=IBMKBD.DRV
+        mouseDrv=STDMOUSE.DRV
+        minHunk   = 204k
+        patchDir  = .\
+        sync      = .\
+        audio      = .\
+        audioSize = 12k
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[launch]:
+    code = [[[$(CRLF)
+        if (!file_exists("RESOURCE.000"))
+            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003")
+    ]]]
+end
+
+//
+// v1.0, Int. 5.19.93, 3x1.44M *** doesn't load ***
+//
+game[v1.0-int-5.19.93-3x1.44m]:
+    name = v1.0, Int. 5.19.93, 3x1.44M
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = f1f4eed2; size =       155; name = 943.TEX
+    file[]: crc = 8ae6bb35; size =       119; name = 952.TEX
+    file[]: crc = a575e624; size =        70; name = 999.TEX
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
+    file[]: crc = 66b548c3; size =     15613; name = AUDDCOMP.EXE
+    file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
+    file[]: crc = 885ee375; size =      3995; name = AUDMSSYS.DRV
+    file[]: crc = 2deb6ee1; size =      1100; name = AUDNONE.DRV
+    file[]: crc = f13c1f73; size =      6113; name = AUDPRO.DRV
+    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
+    file[]: crc = 6dc64007; size =      4859; name = AUDPS1.DRV
+    file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
+    file[]: crc = fb892275; size =      4044; name = RESOURCE.MAP
+    file[]: crc = 20bf28d2; size =      1132; name = RESOURCE.MSG
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 07e72d4e; size =        36; name = MESSAGE.MAP
+    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
+    file[]: crc = 5450710b; size =      2570; name = MT32.DRV
+    file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
+    file[]: crc = f09b99da; size =    545624; name = RESOURCE.001
+    file[]: crc = 950cb0e9; size =   1450640; name = RESOURCE.002
+    file[]: crc = 51fa0855; size =    259862; name = RESOURCE.003
+    file[]: crc = 372144bc; size =   1152115; name = RESOURCE.AUD
+    file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
+    file[]: crc = bb05a352; size =    154794; name = SIERRA.EXE
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+end
