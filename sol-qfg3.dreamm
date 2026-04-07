@@ -98,10 +98,10 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[launch]:
-code = [[[$(CRLF)
-	if (!file_exists("RESOURCE.000"))
-		file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005", "RESOURCE.006")
-	]]]
+    code = [[[$(CRLF)
+        if (!file_exists("RESOURCE.000"))
+            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005", "RESOURCE.006")
+    ]]]
 end
 
 //
