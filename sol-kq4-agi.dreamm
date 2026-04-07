@@ -113,8 +113,6 @@ game[v2.3-int-3.002.086-6x360k]:
     file[]: crc = e7877368; size =    157703; name = KQ4VOL.5
     file[]: crc = 5757f438; size =    175235; name = KQ4VOL.6
     file[]: crc = 3076bae9; size =     30019; name = KQ4VOL.9
-    file[]: crc = 9688dbe7; size =       152; name = QAFILE      ; optional = true
-    file[]: crc = 7b4abcf3; size =       139; name = QAFILE.BAK  ; optional = true
 end
 
 //
