@@ -76,10 +76,10 @@ script[agikey]:
 end
 
 //
-// v2.00, Int. 2.439, 2x360K, Copy Protection
+// v2.00, Int. 2.439, 2x360K
 //
 game[v2.00-int-2.439-2x360k]:
-    name = v2.00, Int. 2.439, 2x360K, Copy Protection
+    name = v2.00, Int. 2.439, 2x360K
     launch = SIERRA.COM
     anchorfile = VOL.0
     file[]: crc = 044da781; size =     38400; name = AGI
@@ -104,55 +104,12 @@ game[v2.00-int-2.439-2x360k]:
 end
 
 //
-// v2.00, Int. 2.439, 2x360K, Copy Protection Removed
+// v2.10, Int. 3.002.098, 1x720K *** Unverified ***
 //
-game[v2.00-int-2.439-2x360k-cr]:
-    name = v2.00, Int. 2.439, 2x360K, Copy Protection Removed
-    imports = v2.00-int-2.439-2x360k
-    anchorfile = SIERRA.COM
-    file[]: crc = 4563e6f0; size =      2944; name = SIERRA.COM
-end
-
-//
-// v2.10, Int. 3.002.098, 2x360K, Copy Protection *** MISSING ***
-//
-
-//
-// v2.10, Int. 3.002.098, 2x360K, Copy Protection Removed
-//
-game[v2.10-int-3.002.098-2x360k-cr]:
-    name = v2.10, Int. 3.002.098, 2x360K, Copy Protection Removed
+game[v2.10-int-3.002.098-1x720k]:
+    name = v2.10, Int. 3.002.098, 1x720K
     launch = SIERRA.EXE
-    anchorfile = VOL.0
-    file[]: crc = 6d990c16; size =      8080; name = AGIDATA.OVL
-    file[]: crc = 2691d449; size =      1217; name = BCDIR
-    file[]: crc = 08aa1057; size =     22603; name = BCVOL.0
-    file[]: crc = 02eed913; size =    168138; name = BCVOL.1
-    file[]: crc = dbd154d0; size =    114352; name = BCVOL.2
-    file[]: crc = 8736a089; size =       684; name = CGA_GRAF.OVL
-    file[]: crc = 15f00bfd; size =       591; name = EGA_GRAF.OVL
-    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
-    file[]: crc = 43312c25; size =      1445; name = HGC_GRAF.OVL
-    file[]: crc = e6e6ee8b; size =       599; name = HGC_OBJS.OVL
-    file[]: crc = 2fcbeb6a; size =       341; name = IBM_OBJS.OVL
-    file[]: crc = c9b7edf8; size =       465; name = JR_GRAF.OVL
-    file[]: crc = 14b3c6ab; size =       312; name = OBJECT
-    file[]: crc = 9ab69f1b; size =     40898; name = SIERRA.EXE
-    file[]: crc = 372a41f9; size =       362; name = VG_GRAF.OVL
-    file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
-end
-
-//
-// v2.10, Int. 3.002.098, 1x720K, Copy Protection *** MISSING ***
-//
-
-//
-// v2.10, Int. 3.002.098, 1x720K, Copy Protection Removed
-//
-game[v2.10-int-3.002.098-1x720k-cr]:
-    name = v2.10, Int. 3.002.098, 1x720K, Copy Protection Removed
-    launch = SIERRA.EXE
-    anchorfile = VOL.0
+    anchorfile = BCVOL.0
     file[]: crc = 6d990c16; size =      8080; name = AGIDATA.OVL
     file[]: crc = b3af0f26; size =      1217; name = BCDIR
     file[]: crc = 08aa1057; size =     22603; name = BCVOL.0
@@ -168,6 +125,19 @@ game[v2.10-int-3.002.098-1x720k-cr]:
     file[]: crc = 9ab69f1b; size =     40898; name = SIERRA.EXE
     file[]: crc = 372a41f9; size =       362; name = VG_GRAF.OVL
     file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
+end
+
+//
+// v2.10, Int. 3.002.098, 2x360K *** Unverified ***
+//
+game[v2.10-int-3.002.098-2x360k]:
+    name = v2.10, Int. 3.002.098, 2x360K
+    launch = SIERRA.EXE
+    imports = v2.10-int-3.002.098-1x720k
+    anchorfile = BCVOL.0
+    file[]: crc = 2691d449; size =      1217; name = BCDIR
+    file[]: crc = 02eed913; size =    168138; name = BCVOL.1
+    file[]: crc = dbd154d0; size =    114352; name = BCVOL.2
 end
 
 end
