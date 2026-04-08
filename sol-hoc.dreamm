@@ -9,8 +9,8 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\HOC.EXE
-mips = $(MIPS_MAX)
-nothrottle = 4
+mips = $(MIPS_486DX_33)
+nothrottle = 2
 ramkb = 8192
 filter = dynamix, adventure
 videohw = vga
@@ -33,7 +33,7 @@ config[sound]:
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32; nothrottle = 6; priority = 1
+        audiohw = mt32; nothrottle = 3; priority = 1
         AUDIODRV = 0x10
     end
 end
