@@ -1,10 +1,10 @@
 //
 // Rise of the Dragon
 //
-desc[dyn-dragon]:
+desc[sol-dragon]:
 
 name = Rise of the Dragon
-icon = dyn-dragon.png
+icon = sol-dragon.png
 machine = pc
 osenv = dos
 rootpath = C:\

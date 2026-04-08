@@ -1,10 +1,10 @@
 //
 // The Adventures of Willy Beamish
 //
-desc[dyn-willy]:
+desc[sol-willy]:
 
 name = The Adventures of Willy Beamish
-icon = dyn-willy.png
+icon = sol-willy.png
 machine = pc
 osenv = dos
 rootpath = C:\
