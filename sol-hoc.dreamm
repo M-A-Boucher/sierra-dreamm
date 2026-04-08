@@ -1,0 +1,225 @@
+//
+// Heart of China
+//
+desc[sol-hoc]:
+
+name = Heart of China
+icon = sol-hoc.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\HOC.EXE
+mips = $(MIPS_MAX)
+nothrottle = 4
+ramkb = 8192
+filter = dynamix, adventure
+videohw = vga
+VIDEODRV = 0x08
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIODRV = 0x00
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIODRV = 0x20
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32; nothrottle = 6; priority = 1
+        AUDIODRV = 0x10
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[
+        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+    ]]]
+end
+
+dynamicfile[]: path = A:\HOC 1; attributes = 8; contents = $(NULL)
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+
+script[autoinstall]:
+    condition = is_installer()
+    code = [[[$(CRLF)
+        keyboard_type("3");
+        keyboard_type("\r");
+        keyboard_type("\033");
+    ]]]
+end
+
+//
+// v1.0, Int. 5.21.91, 6x1.44M
+//
+game[v1.0-int-5.21.91-6x1.44m]:
+    name = v1.0, Int. 5.21.91, 6x1.44M
+    anchorfile = VOLUME.001
+    file[]: crc = 8ea3ed42; size =    288832; name = HOC.EXE
+    file[]: crc = 38b5d329; size =     29280; name = INSTALL.COM
+    file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
+    file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
+    file[]: crc = c894ba4a; size =   1096322; name = VOLUME.001
+    file[]: crc = 3e6fe104; size =   1446645; name = VOLUME.002
+    file[]: crc = 42ec6aa4; size =   1447042; name = VOLUME.003
+    file[]: crc = 9897af0e; size =   1396553; name = VOLUME.004
+    file[]: crc = 42f8b3cc; size =   1427086; name = VOLUME.005
+    file[]: crc = 3a64c7d2; size =   1451359; name = VOLUME.006
+    file[]: crc = 0adf64ae; size =     10008; name = VOLUME.RMF
+end
+
+//
+// v1.0, Int. 5.21.91, 6x1.44M, Installer
+//
+installer[v1.0-int-5.21.91-6x1.44m-installer]:
+    name = v1.0, Int. 5.21.91, 6x1.44M, Installer
+    installid = v1.0-int-5.21.91-6x1.44m
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = INSTALL.COM
+    anchorfile = VOLUME.000
+    file[]: crc = 38b5d329; size =     29280; name = INSTALL.COM
+    file[]: crc = 800633a1; size =    312320; name = VOLUME.000
+    file[]: crc = c894ba4a; size =   1096322; name = VOLUME.001
+    file[]: crc = 3e6fe104; size =   1446645; name = VOLUME.002
+    file[]: crc = 42ec6aa4; size =   1447042; name = VOLUME.003
+    file[]: crc = 9897af0e; size =   1396553; name = VOLUME.004
+    file[]: crc = 42f8b3cc; size =   1427086; name = VOLUME.005
+    file[]: crc = 3a64c7d2; size =   1451359; name = VOLUME.006
+
+end
+
+//
+// v1.0, Int. 5.21.91, 7x1.2M
+//
+game[v1.0-int-5.21.91-7x1.2m]:
+    name = v1.0, Int. 5.21.91, 7x1.2M
+    anchorfile = VOLUME.001
+    file[]: crc = 8ea3ed42; size =    288832; name = HOC.EXE
+    file[]: crc = b9993cd4; size =     29280; name = INSTALL.COM
+    file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
+    file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
+    file[]: crc = ffa977c4; size =    851843; name = VOLUME.001
+    file[]: crc = 3d9779e1; size =   1206502; name = VOLUME.002
+    file[]: crc = 30c3d043; size =   1205605; name = VOLUME.003
+    file[]: crc = 0b68d065; size =   1204074; name = VOLUME.004
+    file[]: crc = d46fff64; size =   1211793; name = VOLUME.005
+    file[]: crc = 7a52bb56; size =   1212325; name = VOLUME.006
+    file[]: crc = ccbc8f3e; size =   1209097; name = VOLUME.007
+    file[]: crc = f8a75eb3; size =      9791; name = VOLUME.RMF
+end
+
+//
+// v1.0, Int. 5.21.91, 7x1.2M, Installer
+//
+installer[v1.0-int-5.21.91-7x1.2m-installer]:
+    name = v1.0, Int. 5.21.91, 7x1.2M, Installer
+    installid = v1.0-int-5.21.91-7x1.2m
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = INSTALL.COM
+    anchorfile = VOLUME.000
+    file[]: crc = b9993cd4; size =     29280; name = INSTALL.COM
+    file[]: crc = 8487cb05; size =    312108; name = VOLUME.000
+    file[]: crc = ffa977c4; size =    851843; name = VOLUME.001
+    file[]: crc = 3d9779e1; size =   1206502; name = VOLUME.002
+    file[]: crc = 30c3d043; size =   1205605; name = VOLUME.003
+    file[]: crc = 0b68d065; size =   1204074; name = VOLUME.004
+    file[]: crc = d46fff64; size =   1211793; name = VOLUME.005
+    file[]: crc = 7a52bb56; size =   1212325; name = VOLUME.006
+    file[]: crc = ccbc8f3e; size =   1209097; name = VOLUME.007
+end
+
+//
+// v1.0, Int. 6.18.91, 4x1.2M, 16 Color
+//
+game[v1.0-int-6.18.91-4x1.2m]:
+    name = v1.0, Int. 6.18.91, 4x1.2M, 16 Color
+    videohw = ega
+    VIDEODRV = 0x02
+    anchorfile = VOLUME.001
+    file[]: crc = a5e9b453; size =    290496; name = HOC.EXE
+    file[]: crc = 69b936c6; size =     29216; name = INSTALL.COM
+    file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
+    file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
+    file[]: crc = bd1d3111; size =    867861; name = VOLUME.001
+    file[]: crc = f22d921b; size =   1136561; name = VOLUME.002
+    file[]: crc = 7f879df4; size =   1174769; name = VOLUME.003
+    file[]: crc = f35b48e1; size =    728154; name = VOLUME.004
+    file[]: crc = 7cf27985; size =      8106; name = VOLUME.RMF
+end
+
+//
+// v1.0, Int. 6.18.91, 4x1.2M, 16 Color, Installer
+//
+installer[v1.0-int-6.18.91-4x1.2m-installer]:
+    name = v1.0, Int. 6.18.91, 4x1.2M, 16 Color, Installer
+    installid = v1.0-int-6.18.91-4x1.2m
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = INSTALL.COM
+    anchorfile = VOLUME.000
+    file[]: crc = 69b936c6; size =     29216; name = INSTALL.COM
+    file[]: crc = 88267102; size =    309218; name = VOLUME.000
+    file[]: crc = bd1d3111; size =    867861; name = VOLUME.001
+    file[]: crc = f22d921b; size =   1136561; name = VOLUME.002
+    file[]: crc = 7f879df4; size =   1174769; name = VOLUME.003
+    file[]: crc = f35b48e1; size =    728154; name = VOLUME.004
+end
+
+//
+// v1.0, Int. 6.18.91, 6x720K, 16 Color
+//
+game[v1.0-int-6.18.91-6x720k]:
+    name = v1.0, Int. 6.18.91, 6x720K, 16 Color
+    videohw = ega
+    VIDEODRV = 0x02
+    anchorfile = VOLUME.001
+    file[]: crc = a5e9b453; size =    290496; name = HOC.EXE
+    file[]: crc = b091ef7d; size =     29216; name = INSTALL.COM
+    file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
+    file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
+    file[]: crc = 15f428ed; size =    342873; name = VOLUME.001
+    file[]: crc = 25666087; size =    714245; name = VOLUME.002
+    file[]: crc = a5101ea9; size =    706469; name = VOLUME.003
+    file[]: crc = 80aab24b; size =    722711; name = VOLUME.004
+    file[]: crc = a995bfbc; size =    727756; name = VOLUME.005
+    file[]: crc = 259e244c; size =    723229; name = VOLUME.006
+    file[]: crc = 7a91c1af; size =      8208; name = VOLUME.RMF
+end
+
+//
+// v1.0, Int. 6.18.91, 6x720K, 16 Color, Installer
+//
+installer[v1.0-int-6.18.91-6x720k-installer]:
+    name = v1.0, Int. 6.18.91, 6x720K, 16 Color, Installer
+    installid = v1.0-int-6.18.91-6x720k
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = INSTALL.COM
+    anchorfile = VOLUME.000
+    file[]: crc = b091ef7d; size =     29216; name = INSTALL.COM
+    file[]: crc = 4d5dd479; size =    309263; name = VOLUME.000
+    file[]: crc = 15f428ed; size =    342873; name = VOLUME.001
+    file[]: crc = 25666087; size =    714245; name = VOLUME.002
+    file[]: crc = a5101ea9; size =    706469; name = VOLUME.003
+    file[]: crc = 80aab24b; size =    722711; name = VOLUME.004
+    file[]: crc = a995bfbc; size =    727756; name = VOLUME.005
+    file[]: crc = 259e244c; size =    723229; name = VOLUME.006
+end
+
+end
