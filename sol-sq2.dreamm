@@ -77,10 +77,10 @@ script[agikey]:
 end
 
 //
-// v2.0A, Int. 2.912, 3x360K, Copy Protection
+// v2.0A, Int. 2.912, 3x360K
 //
 game[v2.0a-int-2.912-3x360k]:
-    name = v2.0A, Int. 2.912, 3x360K, Copy Protection
+    name = v2.0A, Int. 2.912, 3x360K
     anchorfile = VOL.0
     file[]: crc = 50d0603d; size =     39424; name = AGI
     file[]: crc = 925bedc9; size =      8192; name = AGIDATA.OVL
@@ -106,14 +106,14 @@ game[v2.0a-int-2.912-3x360k]:
 end
 
 //
-// v2.0C, Int. 2.915, 3x360K, Copy Protection *** MISSING ***
+// v2.0C, Int. 2.915, 3x360K *** MISSING ***
 //
 
 //
-// v2.0C, Int. 2.917, 3x360K, Copy Protection
+// v2.0C, Int. 2.917, 3x360K
 //
 game[v2.0c-int-2.917-3x360k]:
-    name = v2.0C, Int. 2.917, 3x360K, Copy Protection
+    name = v2.0C, Int. 2.917, 3x360K
     imports = v2.0a-int-2.912-3x360k
     anchorfile = VOL.0
     file[]: crc = edede1fa; size =     39424; name = AGI
