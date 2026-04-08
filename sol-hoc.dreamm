@@ -15,12 +15,50 @@ ramkb = 8192
 filter = dynamix, adventure
 videohw = vga
 VIDEODRV = 0x08
+TANDY = 0
+EGA_VERSION = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    condition = $(EGA_VERSION)
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy
+        TANDY = 1
+        VIDEODRV = 0x03
+        AUDIODRV = 0x00
+    end
+    option[cga]:       
+        name = CGA (2 colors)
+        videohw = cga
+        VIDEODRV = 0x04
+    end
+    option[mcga]:
+        name = MCGA (2 colors)
+        videohw = mcga
+        VIDEODRV = 0x04
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEODRV = 0x02
+    end
+    option[vga]:
+        name = VGA (16 colors)
+        videohw = vga
+        VIDEODRV = 0x02
+    end
+end
 
 //
 // sound configuration
 //
 config[sound]:
     title = Sound Configuration
+    condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
@@ -70,7 +108,6 @@ game[v1.0-int-5.21.91-6x1.44m]:
     name = v1.0, Int. 5.21.91, 6x1.44M
     anchorfile = VOLUME.001
     file[]: crc = 8ea3ed42; size =    288832; name = HOC.EXE
-    file[]: crc = 38b5d329; size =     29280; name = INSTALL.COM
     file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
     file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
     file[]: crc = c894ba4a; size =   1096322; name = VOLUME.001
@@ -110,7 +147,6 @@ game[v1.0-int-5.21.91-7x1.2m]:
     name = v1.0, Int. 5.21.91, 7x1.2M
     anchorfile = VOLUME.001
     file[]: crc = 8ea3ed42; size =    288832; name = HOC.EXE
-    file[]: crc = b9993cd4; size =     29280; name = INSTALL.COM
     file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
     file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
     file[]: crc = ffa977c4; size =    851843; name = VOLUME.001
@@ -149,11 +185,9 @@ end
 //
 game[v1.0-int-6.18.91-4x1.2m]:
     name = v1.0, Int. 6.18.91, 4x1.2M, 16 Color
-    videohw = ega
-    VIDEODRV = 0x02
+    EGA_VERSION = 1
     anchorfile = VOLUME.001
     file[]: crc = a5e9b453; size =    290496; name = HOC.EXE
-    file[]: crc = 69b936c6; size =     29216; name = INSTALL.COM
     file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
     file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
     file[]: crc = bd1d3111; size =    867861; name = VOLUME.001
@@ -186,11 +220,9 @@ end
 //
 game[v1.0-int-6.18.91-6x720k]:
     name = v1.0, Int. 6.18.91, 6x720K, 16 Color
-    videohw = ega
-    VIDEODRV = 0x02
+    EGA_VERSION = 1
     anchorfile = VOLUME.001
     file[]: crc = a5e9b453; size =    290496; name = HOC.EXE
-    file[]: crc = b091ef7d; size =     29216; name = INSTALL.COM
     file[]: crc = 0687d1e4; size =     11486; name = TANK.GI
     file[]: crc = a96aba2f; size =     40257; name = TANK.TBL
     file[]: crc = 15f428ed; size =    342873; name = VOLUME.001

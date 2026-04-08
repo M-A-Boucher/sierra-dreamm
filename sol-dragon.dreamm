@@ -28,6 +28,7 @@ config[graphics]:
         videohw = cga; machine = tandy
         TANDY = 1
         VIDEODRV = 0x03
+        AUDIODRV = 0x00
     end
     option[cga]:       
         name = CGA (2 colors)
@@ -56,6 +57,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
@@ -115,7 +117,6 @@ game[v1.113.90-int-1.116.90-7x1.2m]:
     name = v1.113.90, Int. 1.116.90, 7x1.2M
     anchorfile = DRAGON.EXE
     file[]: crc = 70ba720b; size =    102094; name = DRAGON.EXE
-    file[]: crc = 3466401c; size =     21152; name = INSTALL.COM ; optional = true
     file[]: crc = 5d18003e; size =    769811; name = VOLUME.001
     file[]: crc = 3e7e036f; size =   1192993; name = VOLUME.002
     file[]: crc = 3ab66d23; size =   1175962; name = VOLUME.003
@@ -134,7 +135,6 @@ game[v1.118.90-int-1.119.90-3x1.2m]:
     videohw = ega
     anchorfile = DRAGON.EXE
     file[]: crc = 0a84d954; size =    102390; name = DRAGON.EXE
-    file[]: crc = 0ebf77fd; size =     21168; name = INSTALL.COM ; optional = true
     file[]: crc = 731029b0; size =    845289; name = VOLUME.001
     file[]: crc = 38e38690; size =   1178221; name = VOLUME.002
     file[]: crc = 983c8876; size =   1050100; name = VOLUME.003

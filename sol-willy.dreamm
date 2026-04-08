@@ -70,7 +70,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.0-int-9.25.91-6x1.44m]:
     name = v1.01, Int. 9.25.91, 6x1.44M
     anchorfile = WILLY.EXE
-    file[]: crc = 8d8a7fb7; size =     30887; name = INSTALL.COM ; optional = true
     file[]: crc = 8f2b2594; size =   1263007; name = VOLUME.001
     file[]: crc = 84b4788c; size =   1435102; name = VOLUME.002
     file[]: crc = 2f90b0e6; size =   1445681; name = VOLUME.003
@@ -87,7 +86,6 @@ end
 game[v1.0-int-9.25.91-7x1.2m]:
     name = v1.0, Int. 9.25.91, 7x1.2M
     anchorfile = WILLY.EXE
-    file[]: crc = d1b5fa6b; size =     30887; name = INSTALL.COM ; optional = true
     file[]: crc = 414f8f64; size =   1170013; name = VOLUME.001
     file[]: crc = e4403c95; size =   1212873; name = VOLUME.002
     file[]: crc = de66393b; size =   1212877; name = VOLUME.003
@@ -107,7 +105,6 @@ game[v1.0-int-10.29.91-9x720k]:
     videohw = ega
     VIDEODRV = 0x02
     anchorfile = WILLY.EXE
-    file[]: crc = 49b8af5b; size =     30903; name = INSTALL.COM ; optional = true
     file[]: crc = e2013065; size =    684659; name = VOLUME.001
     file[]: crc = b5fa5458; size =    729648; name = VOLUME.002
     file[]: crc = a17f68f7; size =    729423; name = VOLUME.003
@@ -127,7 +124,6 @@ end
 game[v1.01-int-10.11.91-6x1.44m]:
     name = v1.01, Int. 10.11.91, 6x1.44M
     anchorfile = WILLY.EXE
-    file[]: crc = 7333fdf9; size =     30887; name = INSTALL.COM ; optional = true
     file[]: crc = 8c062088; size =   1263366; name = VOLUME.001
     file[]: crc = caf3ecf8; size =   1439905; name = VOLUME.002
     file[]: crc = 720684b5; size =   1445859; name = VOLUME.003
@@ -144,7 +140,6 @@ end
 game[v1.01-int-10.11.91-7x1.2m]:
     name = v1.01, Int. 10.11.91, 7x1.2M
     anchorfile = WILLY.EXE
-    file[]: crc = 0f9675fc; size =     30887; name = INSTALL.COM ; optional = true
     file[]: crc = 947df176; size =   1170240; name = VOLUME.001
     file[]: crc = 0821624f; size =   1213390; name = VOLUME.002
     file[]: crc = 07794209; size =   1211296; name = VOLUME.003
