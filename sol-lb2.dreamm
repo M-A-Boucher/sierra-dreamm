@@ -81,7 +81,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
-        audioDrv=AUDNONE.DRV
+        audioDrv=AUDBLAST.DRV
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
@@ -91,30 +91,31 @@ dynamicfile[]:
    ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04+RESOURCE.P05 GAME\RESOURCE.000
+        CD GAME
+        DCOMPAUD.EXE .\
+        DEL DCOMPAUD.EXE
+        DEL RESOURCE.P0*
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-//
-// Combines parts into a single RESOURCE.000
-//
-script[launch]:
-code = [[[$(CRLF)
-	if (!file_exists("RESOURCE.000"))
-		file_copy("RESOURCE.000", "TEMP/RESOURCE.P01", "TEMP/RESOURCE.P02", "TEMP/RESOURCE.P03", "TEMP/RESOURCE.P04", "TEMP/RESOURCE.P05")
-	]]]
-end
-
-//
-// v1.0, Int. 6.16.92, 5x1.44M
-//
-game[v1.0-int-6.16.92-5x1.44m]:
-    name = v1.0, Int. 6.16.92, 5x1.44M
-    anchorfile = RESOURCE.P01
-    file[]: crc = 87ef1238; size =       562; name = 0.MAP
+fragment[v1.0-base]:
     file[]: crc = c14bbf55; size =      2508; name = 0.HEP
+    file[]: crc = 87ef1238; size =       562; name = 0.MAP
     file[]: crc = 61eb2b9e; size =      2434; name = 0.MSG
     file[]: crc = 3415f454; size =      8666; name = 0.SCR
     file[]: crc = 80f8721b; size =       222; name = 13.HEP
@@ -174,28 +175,13 @@ game[v1.0-int-6.16.92-5x1.44m]:
     file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 7e16538c; size =     53856; name = INSTALL.EXE ; optional = true
-    file[]: crc = 0ec938c2; size =     16313; name = INSTALL.HLP ; optional = true
-    file[]: crc = 7d51429c; size =      1500; name = INSTALL.SCR ; optional = true
-    file[]: crc = 0cad1096; size =      8337; name = INSTALL.TXT ; optional = true
     file[]: crc = 234dbfc8; size =      2591; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 7e7c9fbe; size =       624; name = MESSAGE.MAP
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = eb9f470c; size =        26; name = RA.BAT      ; optional = true
-    file[]: crc = 1dc6d8d5; size =        29; name = RARS.BAT    ; optional = true
-    file[]: crc = d294a9b6; size =      2915; name = README      ; optional = true
-    file[]: crc = ba16d0d2; size =    878080; name = RESOURCE.AUD
-    file[]: crc = 3bacaf85; size =       152; name = RESOURCE.CFG; optional = true
     file[]: crc = b6b9d4bd; size =      6489; name = RESOURCE.MAP
     file[]: crc = 11b4b472; size =    276697; name = RESOURCE.MSG
-    file[]: crc = 9f7faa67; size =    800000; name = TEMP\RESOURCE.P01
-    file[]: crc = 4eb1d165; size =   1450000; name = TEMP\RESOURCE.P02
-    file[]: crc = 8b75ac6c; size =   1450000; name = TEMP\RESOURCE.P03
-    file[]: crc = 4a7e809e; size =   1335964; name = TEMP\RESOURCE.P04
     file[]: crc = 1789d6fc; size =    119217; name = SCIDHUV.EXE
-    file[]: crc = adfbdeb3; size =        19; name = SIERRA.BAT  ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = 576e3bcf; size =        48; name = VERSION
     file[]: crc = 7a6fc517; size =      5846; name = VGA320.DRV
@@ -203,26 +189,53 @@ game[v1.0-int-6.16.92-5x1.44m]:
 end
 
 //
-// v1.0, Int. 6.16.92, 6x1.2M
+// v1.0, Int. 6.16.92
 //
-game[v1.1-int-6.16.92-6x1.2m]:
-    name = v1.0, Int. 6.16.92, 6x1.2M
-    imports = v1.0-int-6.16.92-5x1.44m
-    anchorfile = RESOURCE.P01
-    file[]: crc = 286cffba; size =      1617; name = INSTALL.SCR ; optional = true
-    file[]: crc = 101c8cc2; size =    500000; name = TEMP\RESOURCE.P01
-    file[]: crc = 4c419cc8; size =   1200000; name = TEMP\RESOURCE.P02
-    file[]: crc = 93e9e24a; size =   1200000; name = TEMP\RESOURCE.P03
-    file[]: crc = ca929f16; size =   1200000; name = TEMP\RESOURCE.P04
-    file[]: crc = fa9668ef; size =    935964; name = TEMP\RESOURCE.P05
+game[v1.0-int-6.16.92]:
+    name = v1.0, Int. 6.16.92
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = ad10706c; size =       562; name = 0.MAP
+    file[]: crc = 18bd74e9; size =   5035964; name = RESOURCE.000
+    file[]: crc = 7c280aa5; size =   1738878; name = RESOURCE.AUD
 end
 
 //
-// v1.1, Int. 7.14.92, 5x1.44M
+// v1.0, Int. 6.16.92, 5x1.44M, Installer
 //
-game[v1.1-int-7.14.92-5x1.44m]:
-    name = v1.1, Int. 7.14.92, 5x1.44M
+installer[v1.0-int-6.16.92-5x1.44m-installer]:
+    name = v1.0, Int. 6.16.92, 5x1.44M, Installer
+    installid = v1.0-int-6.16.92
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base
     anchorfile = RESOURCE.P01
+    file[]: crc = 14a1a93a; size =     15621; name = DCOMPAUD.EXE
+    file[]: crc = ba16d0d2; size =    878080; name = RESOURCE.AUD
+    file[]: crc = 9f7faa67; size =    800000; name = RESOURCE.P01
+    file[]: crc = 4eb1d165; size =   1450000; name = RESOURCE.P02
+    file[]: crc = 8b75ac6c; size =   1450000; name = RESOURCE.P03
+    file[]: crc = 4a7e809e; size =   1335964; name = RESOURCE.P04
+end
+
+//
+// v1.0, Int. 6.16.92, 6x1.2M, Installer
+//
+installer[v1.1-int-6.16.92-6x1.2m-installer]:
+    name = v1.0, Int. 6.16.92, 6x1.2M, Installer
+    installid = v1.0-int-6.16.92
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-int-6.16.92-5x1.44m-installer
+    anchorfile = RESOURCE.P01
+    file[]: crc = 101c8cc2; size =    500000; name = RESOURCE.P01
+    file[]: crc = 4c419cc8; size =   1200000; name = RESOURCE.P02
+    file[]: crc = 93e9e24a; size =   1200000; name = RESOURCE.P03
+    file[]: crc = ca929f16; size =   1200000; name = RESOURCE.P04
+    file[]: crc = fa9668ef; size =    935964; name = RESOURCE.P05
+end
+
+fragment[v1.1-base]:
     file[]: crc = 87ef1238; size =       562; name = 0.MAP
     file[]: crc = ec4186c2; size =      2486; name = 310.HEP
     file[]: crc = 8e9c3f76; size =      3520; name = 310.SCR
@@ -241,33 +254,48 @@ game[v1.1-int-7.14.92-5x1.44m]:
     file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 88fb8cb7; size =        96; name = INSTALL.BAT ; optional = true
-    file[]: crc = 7e16538c; size =     53856; name = INSTALL.EXE ; optional = true
-    file[]: crc = 0ec938c2; size =     16313; name = INSTALL.HLP ; optional = true
-    file[]: crc = ff81e667; size =      1523; name = INSTALL.SCR ; optional = true
-    file[]: crc = 0cad1096; size =      8337; name = INSTALL.TXT ; optional = true
     file[]: crc = 234dbfc8; size =      2591; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = d0170008; size =       630; name = MESSAGE.MAP
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = eb9f470c; size =        26; name = RA.BAT      ; optional = true
-    file[]: crc = 1dc6d8d5; size =        29; name = RARS.BAT    ; optional = true
-    file[]: crc = d294a9b6; size =      2915; name = README      ; optional = true
-    file[]: crc = ba16d0d2; size =    878080; name = RESOURCE.AUD
-    file[]: crc = 00ce3916; size =        94; name = RESOURCE.CFG; optional = true
     file[]: crc = f240ff4f; size =      6483; name = RESOURCE.MAP
     file[]: crc = d6c9f5e6; size =    278354; name = RESOURCE.MSG
-    file[]: crc = 35593c77; size =    800000; name = TEMP\RESOURCE.P01
-    file[]: crc = b71c9a6d; size =   1450000; name = TEMP\RESOURCE.P02
-    file[]: crc = 8e751e4a; size =   1450000; name = TEMP\RESOURCE.P03
-    file[]: crc = b1c22e5e; size =   1328766; name = TEMP\RESOURCE.P04
     file[]: crc = 1789d6fc; size =    119217; name = SCIDHUV.EXE
-    file[]: crc = adfbdeb3; size =        19; name = SIERRA.BAT  ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = 3176bb06; size =        46; name = VERSION
     file[]: crc = 7a6fc517; size =      5846; name = VGA320.DRV
     file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
+end
+
+//
+// v1.1, Int. 7.14.92, 5x1.44M
+//
+game[v1.1-int-7.14.92-5x1.44m]:
+    name = v1.1, Int. 7.14.92, 5x1.44M
+    imports = v1.1-base
+    anchorfile = RESOURCE.000
+    file[]: crc = ad10706c; size =       562; name = 0.MAP
+    file[]: crc = e83358bb; size =   5028766; name = RESOURCE.000
+    file[]: crc = 7c280aa5; size =   1738878; name = RESOURCE.AUD
+end
+
+//
+// v1.1, Int. 7.14.92, 5x1.44M
+//
+installer[v1.1-int-7.14.92-5x1.44m-installer]:
+    name = v1.1, Int. 7.14.92, 5x1.44M, Installer
+    installid = v1.1-int-7.14.92-5x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.1-base
+    anchorfile = RESOURCE.P01
+    file[]: crc = 14a1a93a; size =     15621; name = DCOMPAUD.EXE
+    file[]: crc = ba16d0d2; size =    878080; name = RESOURCE.AUD
+    file[]: crc = 35593c77; size =    800000; name = RESOURCE.P01
+    file[]: crc = b71c9a6d; size =   1450000; name = RESOURCE.P02
+    file[]: crc = 8e751e4a; size =   1450000; name = RESOURCE.P03
+    file[]: crc = b1c22e5e; size =   1328766; name = RESOURCE.P04
 end
 
 //
@@ -363,42 +391,20 @@ game[v1.1-cd]:
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = 044b8a83; size =    103141; name = INSTALL.EX$ ; optional = true
-    file[]: crc = 54fd068e; size =    175952; name = INSTALL.EXE ; optional = true
-    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
-    file[]: crc = e1c5a1c8; size =       155; name = INSTALL.INI ; optional = true
-    file[]: crc = 2c9d521d; size =      7264; name = INSTALL.INS ; optional = true
-    file[]: crc = 1479a577; size =       183; name = INSTALL.LGO ; optional = true
-    file[]: crc = e3545711; size =      2017; name = INSTALL.SCR ; optional = true
-    file[]: crc = 3b84f25e; size =      9438; name = INSTALL.TXT ; optional = true
     file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 68a4a3b7; size =     24918; name = LAURT.BMP   ; optional = true
     file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
     file[]: crc = a95e72fe; size =      8653; name = PROAUDIO.DRV
-    file[]: crc = 72134b16; size =       596; name = RA.BAT      ; optional = true
-    file[]: crc = 43ea4e7e; size =      2159; name = README      ; optional = true
-    file[]: crc = b296232f; size =        29; name = README.BAT  ; optional = true
     file[]: crc = 5a24259f; size =   5598672; name = RESOURCE.000
     file[]: crc = 53416101; size = 355217113; name = RESOURCE.AUD
-    file[]: crc = 77f8a728; size =       126; name = RESOURCE.CFG; optional = true
-    file[]: crc = b9b8b357; size =       186; name = RESOURCE.GEN; optional = true
     file[]: crc = 27ba1778; size =      7274; name = RESOURCE.MAP
-    file[]: crc = cdf048f4; size =       183; name = RESOURCE.MT ; optional = true
-    file[]: crc = cecda11c; size =       185; name = RESOURCE.PRO; optional = true
-    file[]: crc = 29d6c11f; size =       182; name = RESOURCE.SB ; optional = true
-    file[]: crc = e60aaa48; size =       182; name = RESOURCE.STD; optional = true
-    file[]: crc = 99752b38; size =       182; name = RESOURCE.THN; optional = true
     file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
     file[]: crc = de121aa6; size =    179712; name = SCIWV.EXE
     file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
-    file[]: crc = c52dab59; size =      7198; name = SIERRA.BMP  ; optional = true
     file[]: crc = da4d51f7; size =     69357; name = SIERRA.EXE
     file[]: crc = b31b2668; size =       101; name = SIERRA.INI  ; optional = true
-    file[]: crc = 4b60e844; size =       766; name = SIERRAW.ICO ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = d530492e; size =     31618; name = TITLE.BMP   ; optional = true
     file[]: crc = 6a5ca6d2; size =         5; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
