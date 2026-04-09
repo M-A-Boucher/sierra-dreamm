@@ -52,23 +52,16 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v2.01-int-3.002.149-2x720k]:
     name = v2.01, Int. 3.002.149, 2x720K
     anchorfile = GRVOL.1
-    file[]: crc = d4abbaf5; size =        37; name = _GR.BAT.    ; optional = true
-    file[]: crc = 03c52a24; size =       586; name = _INSTALL.BAT; optional = true
     file[]: crc = dfcb5f07; size =     40520; name = AGI
     file[]: crc = e943259e; size =      7488; name = AGIDATA.OVL
     file[]: crc = e2bf4b38; size =       684; name = CGA_GRAF.OVL
     file[]: crc = fc3f867e; size =       591; name = EGA_GRAF.OVL
-    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM   ; optional = true
-    file[]: crc = b5ce25a6; size =        68; name = GR122388.QA ; optional = true
     file[]: crc = f23766f7; size =      2399; name = GRDIR
     file[]: crc = 4446a980; size =     78086; name = GRVOL.0
     file[]: crc = eca59845; size =    552584; name = GRVOL.1
     file[]: crc = 031a1241; size =      3075; name = HGC_GRAF.OVL
-    file[]: crc = 052116f9; size =      1244; name = INSTALLH.BAT; optional = true
     file[]: crc = ea3c9728; size =       470; name = JR_GRAF.OVL
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM; optional = true
     file[]: crc = 6f8e1901; size =      1814; name = OBJECT
-    file[]: crc = a7c5a2f7; size =        12; name = RESETDSK.COM; optional = true
     file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
     file[]: crc = d65b7244; size =       362; name = VG_GRAF.OVL
     file[]: crc = 6f42a9a1; size =      6110; name = WORDS.TOK
@@ -81,7 +74,6 @@ game[v2.01-int-3.002.149-5x360k]:
     name = v2.01, Int. 3.002.149, 5x360K
     imports = v2.01-int-3.002.149-2x720k
     anchorfile = GRVOL.12
-    file[]: crc = 66797504; size =       904; name = _INSTALL.BAT; optional = true
     file[]: crc = 6dfff5b6; size =      2399; name = GRDIR
     file[]: crc = e6cbcdae; size =     25070; name = GRVOL.0
     file[]: crc = 985699e5; size =    207528; name = GRVOL.1
@@ -103,12 +95,7 @@ game[v3.0-int-3.002.149-2x1.44m]:
     launch = GR.COM
     imports = v2.01-int-3.002.149-2x720k
     anchorfile = GRVOL.0
-    file[]: crc = cf4020ce; size =        42; name = _GR.BAT     ; optional = true
-    file[]: crc = 10842f8f; size =      1532; name = _INSTALL.BAT; optional = true
-    file[]: crc = b5786357; size =     89504; name = _MSTEST.EXE ; optional = true
-    file[]: crc = c2a1322f; size =      5052; name = GOLDRUSH.MST; optional = true
     file[]: crc = 829dbdef; size =      3134; name = GR.COM
-    file[]: crc = bef7aaa2; size =       766; name = GR.ICO      ; optional = true
     file[]: crc = 743170e9; size =      1332; name = GR.INF      ; optional = true
     file[]: crc = b5ce25a6; size =        68; remove = GR122388.QA
     file[]: crc = bbd5a547; size =      2399; name = GRDIR
@@ -124,11 +111,9 @@ game[v3.0-int-3.002.149-2x1.44m]:
     file[]: crc = 5a9638c2; size =     65440; name = MSINSSTF.DLL; optional = true
     file[]: crc = 77c31cc6; size =     14896; name = MSSHLSTF.DLL; optional = true
     file[]: crc = d342f37d; size =      6144; name = MSUILSTF.DLL; optional = true
-    file[]: crc = 039ab396; size =      2815; name = readme.txt  ; optional = true
     file[]: crc = 7a7b8d78; size =     24624; name = SETUP.EXE   ; optional = true
     file[]: crc = d40ee760; size =       533; name = SETUP.LST   ; optional = true
     file[]: crc = ce4efa87; size =     55620; name = SETUPAPI.INC; optional = true
-    file[]: crc = 95cf05e7; size =      1418; name = SETUPDOS.BAT; optional = true
     file[]: crc = 6f42a9a1; size =      6110; name = WORDS.TOK
 end
 
