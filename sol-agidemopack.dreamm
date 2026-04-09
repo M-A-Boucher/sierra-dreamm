@@ -61,10 +61,8 @@ demo[pack-1]:
     file[]: crc = 3f18f45e; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = c449b9a5; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = 3838825f; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = 93e80acd; size =      1240; name = INSTALLH.BAT
     file[]: crc = 91502785; size =       512; name = JR_GRAF.OVL
     file[]: crc = 1d38ad82; size =       666; name = LOGDIR
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM
     file[]: crc = 05853ab3; size =         8; name = OBJECT
     file[]: crc = a9a88072; size =       699; name = PICDIR
     file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
@@ -84,9 +82,6 @@ demo[pack-2]:
     name = Pack 2
     imports = pack-1
     anchorfile = VOL.0
-    file[]: crc = 5c201ce2; size =        40; name = _DEMO.BAT
-    file[]: crc = 88ba328c; size =       495; name = _INSTALL.BAT
-    file[]: crc = ee668bc2; size =        21; name = DEMO.BAT
     file[]: crc = 85e73dfe; size =       666; name = LOGDIR
     file[]: crc = 50f70a71; size =       699; name = PICDIR
     file[]: crc = acbf5a63; size =       669; name = SNDDIR
@@ -111,7 +106,6 @@ demo[pack-3]:
     file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = d6a27c03; size =       406; name = INSTALL.BAT
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
     file[]: crc = a124de2b; size =       606; name = LOGDIR
     file[]: crc = f044aa1c; size =       627; name = PICDIR
@@ -131,24 +125,18 @@ end
 demo[pack-4]:
     name = Pack 4
     anchorfile = DMVOL.0
-    file[]: crc = 5c201ce2; size =        40; name = _DEMO.BAT
-    file[]: crc = dde3455c; size =       364; name = _INSTALL.BAT
     file[]: crc = d23ffe33; size =     40898; name = AGI
     file[]: crc = 31b45b19; size =      8080; name = AGIDATA.OVL
     file[]: crc = 3e704f41; size =       684; name = CGA_GRAF.OVL
-    file[]: crc = 89f76449; size =        18; name = DM091388.QA
     file[]: crc = d43258d5; size =      2552; name = DMDIR
     file[]: crc = c2ef86b5; size =     13266; name = DMVOL.0
     file[]: crc = 2ee9890f; size =    237339; name = DMVOL.1
     file[]: crc = dcbcf113; size =       591; name = EGA_GRAF.OVL
-    file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = f84e2cd6; size =      1445; name = HGC_GRAF.OVL
     file[]: crc = 17ff101e; size =       599; name = HGC_OBJS.OVL
     file[]: crc = a43d0869; size =       341; name = IBM_OBJS.OVL
-    file[]: crc = ed5d5354; size =       814; name = INSTALLH.BAT
     file[]: crc = c24a735d; size =       465; name = JR_GRAF.OVL
-    file[]: crc = a04a3ac3; size =        74; name = MAKEPATH.COM
     file[]: crc = 05853ab3; size =         8; name = OBJECT
     file[]: crc = 9d4eb9a4; size =      3115; name = SIERRA.COM
     file[]: crc = fecfc877; size =       362; name = VG_GRAF.OVL
