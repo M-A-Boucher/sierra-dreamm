@@ -142,10 +142,10 @@ game[v2.2-int-2.426-2x360k]:
 end
 
 //
-// v2.2, Int. 2.917, 1x720K (Identical to v2.2, Int. 2.917, 2x360K)
+// v2.2, Int. 2.917 (1x720K and 2x360K are identical)
 //
-game[v2.2-int-2.917-1x720k]:
-    name = v2.2, Int. 2.917, 1x720K
+game[v2.2-int-2.917]:
+    name = v2.2, Int. 2.917
     anchorfile = VOL.0
     file[]: crc = c82541e1; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL

@@ -76,10 +76,10 @@ script[agikey]:
 end
 
 //
-// v1.0, Int. 2.440, 1x720K (Identical to v1.0, Int. 2.440, 2x360K)
+// v1.0, Int. 2.440 (1x720K and 2x360K are identical)
 //
-game[v1.0-int-2.440-1x720k]:
-    name = v1.0, Int. 2.440, 1x720K
+game[v1.0-int-2.440]:
+    name = v1.0, Int. 2.440
     anchorfile = VOL.0
     file[]: crc = 06f3692b; size =     38400; name = AGI
     file[]: crc = 6bfc498a; size =      7680; name = AGIDATA.OVL
@@ -107,17 +107,17 @@ end
 //
 game[v1.0-int-2.440-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 2.440)
-    imports = v1.0-int-2.440-1x720k
+    imports = v1.0-int-2.440
     anchorfile = SIERRA.COM
     file[]: crc = 066ed68d; size =      2944; name = SIERRA.COM
 end
 
 //
-// v1.0, Int. 2.917, 1x720K (Identical to v1.0, Int. 2.917, 2x360K)
+// v1.0, Int. 2.917 (1x720K and 2x360K are identical)
 //
-game[v1.0-int-2.917-1x720k]:
-    name = v1.0, Int. 2.917, 1x720K
-    imports = v1.0-int-2.440-1x720k
+game[v1.0-int-2.917]:
+    name = v1.0, Int. 2.917
+    imports = v1.0-int-2.440
     anchorfile = SIERRA.COM
     file[]: crc = 3b740147; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL

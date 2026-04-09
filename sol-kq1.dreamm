@@ -100,10 +100,10 @@ game[v1.0u-int-2.272-2x360k]:
 end
 
 //
-// v2.0F, Int. 2.425, 1x720K (Identical to v2.0F, Int. 2.425, 2x360K)
+// v2.0F, Int. 2.425 (1x720K and 2x360K are identical)
 //
-game[v2.0f-int-2.425-1x720k]:
-    name = v2.0F, Int. 2.425, 1x720K
+game[v2.0f-int-2.425]:
+    name = v2.0F, Int. 2.425
     anchorfile = VOL.0
     file[]: crc = 3078abe6; size =     38400; name = AGI
     file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
@@ -128,10 +128,10 @@ end
 
 
 //
-// v2.0F, Int. 2.917, 1x720K, (Identical to v2.0F, Int. 2.917, 2x360K)
+// v2.0F, Int. 2.917 (1x720K and 2x360K are identical)
 //
-game[v2.0f-int-2.917-1x720k]:
-    name = v2.0F, Int. 2.917, 1x720K
+game[v2.0f-int-2.917]:
+    name = v2.0F, Int. 2.917
     anchorfile = VOL.2
     file[]: crc = d4138394; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
@@ -160,7 +160,7 @@ end
 //
 game[v2.0f-int-2.917-kings-quest-collectors-edition]:
     name = King's Quest - Collector's Edition (v2.0F, Int. 2.917)
-    imports = v2.0f-int-2.917-1x720k
+    imports = v2.0f-int-2.917
     anchorfile = SIERRA.COM
     file[]: crc = 5dce7127; size =      3121; name = SIERRA.COM
 end
@@ -170,7 +170,7 @@ end
 //
 game[v2.0f-int-2.917-gog]:
     name = GOG (v2.0F, Int. 2.917)
-    imports = v2.0f-int-2.917-1x720k
+    imports = v2.0f-int-2.917
     anchorfile = KQ1.COM
     file[]: crc = 9fd66691; size =      3121; name = SIERRA.COM  ; replace = KQ1.COM
 end
