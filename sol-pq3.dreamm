@@ -11,7 +11,6 @@ rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
-videohw = vga;
 filter = sierra, adventure
 TANDY = 0
 
