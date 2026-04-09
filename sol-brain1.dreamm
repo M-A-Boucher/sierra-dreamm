@@ -12,7 +12,7 @@ launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 5
 ramkb = 4096
-filter = sierra, adventure
+filter = sierra, puzzle
 
 //
 // graphics configuration
