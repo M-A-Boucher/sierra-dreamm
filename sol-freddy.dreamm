@@ -160,10 +160,10 @@ fragment[v1.0-base]:
 end
 
 //
-// v1.0, Int. 4.16.93, 6x1.44M (Identical to v1.0, Int. 4.16.93, 7x1.2M)
+// v1.0, Int. 4.16.93
 //
-game[v1.0-int-4.16.93-6x1.44m]:
-    name = v1.0, Int. 4.16.93, 6x1.44M
+game[v1.0-int-4.16.93]:
+    name = v1.0, Int. 4.16.93
     imports = v1.0-base
     anchorfile = RESOURCE.000
     file[]: crc = 7cded47f; size =   5233230; name = RESOURCE.000
@@ -175,7 +175,7 @@ end
 //
 installer[v1.0-int-4.16.93-6x1.44m-installer]:
     name = v1.0, Int. 4.16.93, 6x1.44M, Installer
-    installid = v1.0-int-4.16.93-6x1.44m
+    installid = v1.0-int-4.16.93
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
@@ -194,7 +194,7 @@ end
 //
 installer[v1.0-int-4.16.93-7x1.2m-installer]:
     name = v1.0, Int. 4.16.93, 7x1.2M, Installer
-    installid = v1.0-int-4.16.93-6x1.44m
+    installid = v1.0-int-4.16.93
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-int-4.16.93-6x1.44m-installer
@@ -212,7 +212,7 @@ end
 //
 game[v1.0-int-8.11.93-de-8x1.44m]:
     name = v1.0, Int. 8.11.93, German, 8x1.44M
-    imports = v1.0-int-4.16.93-6x1.44m
+    imports = v1.0-int-4.16.93
     anchorfile = RESOURCE.000
     file[]: crc = b739327b; size =      5647; name = 0.MSG
     file[]: crc = 987572d0; size =       370; name = 14.HEP
