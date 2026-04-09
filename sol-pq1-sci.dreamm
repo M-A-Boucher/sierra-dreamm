@@ -90,25 +90,31 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 GAME\RESOURCE.000
+        CD GAME
+        DEL RESOURCE.001
+        DEL RESOURCE.002
+        DEL RESOURCE.003
+        DEL RESOURCE.004
+        DEL RESOURCE.005
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005")
-    ]]]
-end
-
-//
-// v2.0, Int. 8.27.92, 5x1.44M
-//
-game[v2.0-int-8.27.92-5x1.44m]:
-    name = v2.0, Int. 8.27.92, 5x1.44M
-    anchorfile = RESOURCE.001
+fragment[v2.0-base]:
     file[]: crc = 24cc5b74; size =      2404; name = 30.HEP
     file[]: crc = 89f00eab; size =      3436; name = 30.SCR
     file[]: crc = 1162dd7d; size =     11318; name = 31.MSG
@@ -137,24 +143,11 @@ game[v2.0-int-8.27.92-5x1.44m]:
     file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 7e16538c; size =     53856; name = INSTALL.EXE ; optional = true
-    file[]: crc = 742a3feb; size =     16253; name = INSTALL.HLP ; optional = true
-    file[]: crc = 4a1c23c6; size =      1315; name = INSTALL.SCR ; optional = true
-    file[]: crc = bf80fca4; size =      8317; name = INSTALL.TXT ; optional = true
     file[]: crc = a012c6d4; size =      5845; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = d14c652d; size =       390; name = MESSAGE.MAP
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = bfd3a781; size =        10; name = PQ.BAT      ; optional = true
-    file[]: crc = e7e37912; size =        39; name = PQRS.BAT    ; optional = true
-    file[]: crc = 0a040800; size =      2274; name = README      ; optional = true
-    file[]: crc = 86ceac59; size =    760000; name = RESOURCE.001
-    file[]: crc = 386d5e92; size =   1450000; name = RESOURCE.002
-    file[]: crc = 139c4de3; size =   1450000; name = RESOURCE.003
-    file[]: crc = 6697c30e; size =   1450000; name = RESOURCE.004
-    file[]: crc = fb76ae38; size =   1291433; name = RESOURCE.005
-    file[]: crc = 18f24fa3; size =        54; name = RESOURCE.CFG; optional = true
     file[]: crc = 952ea157; size =      5013; name = RESOURCE.MAP
     file[]: crc = 490de64f; size =    216140; name = RESOURCE.MSG
     file[]: crc = b1d1ccd3; size =    144836; name = SCIDHUV.EXE
@@ -162,6 +155,33 @@ game[v2.0-int-8.27.92-5x1.44m]:
     file[]: crc = bf2c3da7; size =         7; name = VERSION
     file[]: crc = 5aba02e9; size =      5832; name = VGA320.DRV
     file[]: crc = f5cc5d71; size =      4523; name = VGA320BW.DRV
+end
+
+//
+// v2.0, Int. 8.27.92, 5x1.44M
+//
+game[v2.0-int-8.27.92-5x1.44m]:
+    name = v2.0, Int. 8.27.92, 5x1.44M
+    imports = v2.0-base
+    anchorfile = RESOURCE.00
+    file[]: crc = b960c611; size =   6401433; name = RESOURCE.000
+end
+
+//
+// v2.0, Int. 8.27.92, 5x1.44M, Installer
+//
+installer[v2.0-int-8.27.92-5x1.44m-installer]:
+    name = v2.0, Int. 8.27.92, 5x1.44M, Installer
+    installid = v2.0-int-8.27.92-5x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v2.0-base
+    anchorfile = RESOURCE.001
+    file[]: crc = 86ceac59; size =    760000; name = RESOURCE.001
+    file[]: crc = 386d5e92; size =   1450000; name = RESOURCE.002
+    file[]: crc = 139c4de3; size =   1450000; name = RESOURCE.003
+    file[]: crc = 6697c30e; size =   1450000; name = RESOURCE.004
+    file[]: crc = fb76ae38; size =   1291433; name = RESOURCE.005
 end
 
 //
@@ -174,24 +194,6 @@ game[v2.0-int-8.27.92-police-quest-collection]:
     file[]: crc = 73bc24de; size =      1574; name = 45.HEP
     file[]: crc = 45ab580a; size =      2004; name = 45.SCR
     file[]: crc = 2b872bc5; size =       586; name = 996.VOC
-    file[]: crc = 1387704d; size =       703; name = DRIVERS.TXT ; optional = true
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
-    file[]: crc = 8eca5e14; size =        35; name = FIX.BAT     ; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
-    file[]: crc = 47953e8c; size =      3377; name = INSTALL.BAT ; optional = true
-    file[]: crc = 7647ea26; size =       768; name = POPDIR.COM  ; optional = true
-    file[]: crc = 121da461; size =        54; name = PQ1_VGA.BAT ; optional = true
-    file[]: crc = 251276dd; size =       768; name = PUSHDIR.COM ; optional = true
-    file[]: crc = 18bf4d9d; size =      2090; name = READ.ME     ; optional = true
-    file[]: crc = b960c611; size =   6401433; name = RESOURCE.000
-    file[]: crc = 86ceac59; size =    760000; remove = RESOURCE.001
-    file[]: crc = 386d5e92; size =   1450000; remove = RESOURCE.002
-    file[]: crc = 139c4de3; size =   1450000; remove = RESOURCE.003
-    file[]: crc = 6697c30e; size =   1450000; remove = RESOURCE.004
-    file[]: crc = fb76ae38; size =   1291433; remove = RESOURCE.005
-    file[]: crc = 4c9b97fd; size =       255; name = RESOURCE.CFG
-    file[]: crc = 30ed5d5a; size =        42; name = RESOURCE.PQ1
-    file[]: crc = 6b71137c; size =      3170; name = WHAT.EXE    ; optional = true
 end
 
 end
