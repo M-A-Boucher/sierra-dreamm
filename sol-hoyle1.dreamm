@@ -139,7 +139,6 @@ game[v1.000.104-int-0.000.519-1x720k]:
     file[]: crc = d49998a7; size =      4386; name = RESOURCE.MAP
     file[]: crc = 6a4f933e; size =     75107; name = SCIV.EXE
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = a6ea7a9f; size =      2417; name = STD.DRV
     file[]: crc = cf19b8f4; size =      3385; name = TANDY.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
