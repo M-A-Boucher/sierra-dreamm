@@ -22,13 +22,11 @@ config[graphics]:
     title = Graphics Configuration
     option[vgamono]:
         name = Monochrome $(VGA_NAME)
-        videohw = vga
         VIDEO_DRIVER = VGA320BW.DRV
         condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
     end
     option[vga]:
-        name = $(VGA_NAME)
-        videohw = vga;  priority = 1
+        name = $(VGA_NAME); priority = 1
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
