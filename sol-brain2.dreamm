@@ -84,27 +84,30 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.P01+RESOURCE.P02 GAME\RESOURCE.000
+        COPY RESOURCE.A01+RESOURCE.A02 GAME\RESOURCE.AUD
+        CD GAME
+        DEL RESOURCE.P0*
+        DEL RESOURCE.A0*
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.P01", "RESOURCE.P02")
-        if (!file_exists("RESOURCE.AUD"))
-            file_copy("RESOURCE.AUD", "RESOURCE.A01", "RESOURCE.A02")
-    ]]]
-end
-
-//
-// v1.0, Int. 10.27.92, 3x1.44M
-//
-game[v1.0-int-10.27.92-3x1.44m]:
-    name = v1.0, Int. 10.27.92, 3x1.44M
-    anchorfile = RESOURCE.P01
+fragment[v1.0-base]:
     file[]: crc = 04f44ebd; size =       536; name = 185.HEP
     file[]: crc = 17af0d50; size =      1622; name = 185.SCR
     file[]: crc = 2a2fc426; size =       602; name = 20.MAP
@@ -148,11 +151,7 @@ game[v1.0-int-10.27.92-3x1.44m]:
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 5450710b; size =      2570; name = MT32.DRV
     file[]: crc = 011d912c; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = 2b849af7; size =    429000; name = RESOURCE.A01
-    file[]: crc = 7d2b0f5f; size =   1451696; name = RESOURCE.A02
     file[]: crc = 2133c27d; size =      3281; name = RESOURCE.MAP
-    file[]: crc = d3565b13; size =   1085000; name = RESOURCE.P01
-    file[]: crc = 559beda3; size =   1018560; name = RESOURCE.P02
     file[]: crc = d94cccc6; size =     67778; name = SIERRA.EXE
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
@@ -162,11 +161,33 @@ game[v1.0-int-10.27.92-3x1.44m]:
 end
 
 //
-// v1.1, Int. 2.3.93, 3x1.44M
+// v1.0, Int. 10.27.92, 3x1.44M
 //
-game[v1.1-int-2.3.93-3x1.44m]:
-    name = v1.1, Int. 2.3.93, 3x1.44M
+game[v1.0-int-10.27.92-3x1.44m]:
+    name = v1.0, Int. 10.27.92, 3x1.44M
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = aeae0356; size =   2103560; name = RESOURCE.000
+    file[]: crc = ac5d18ec; size =   1880696; name = RESOURCE.AUD
+
+end
+
+//
+// v1.0, Int. 10.27.92, 3x1.44M, Installer
+//
+installer[v1.0-int-10.27.92-3x1.44m-installer]:
+    name = v1.0, Int. 10.27.92, 3x1.44M, Installer
+    installid = v1.0-int-10.27.92-3x1.44m
+    launch = DREAMM.BAT
+    imports = v1.0-base
     anchorfile = RESOURCE.P01
+    file[]: crc = 2b849af7; size =    429000; name = RESOURCE.A01
+    file[]: crc = 7d2b0f5f; size =   1451696; name = RESOURCE.A02
+    file[]: crc = d3565b13; size =   1085000; name = RESOURCE.P01
+    file[]: crc = 559beda3; size =   1018560; name = RESOURCE.P02
+end
+
+fragment[v1.1-base]:
     file[]: crc = c00a1fc9; size =       602; name = 20.MAP
     file[]: crc = c14bafcf; size =      1552; name = 340.HEP
     file[]: crc = 7a4e299e; size =      1956; name = 340.SCR
@@ -192,18 +213,40 @@ game[v1.1-int-2.3.93-3x1.44m]:
     file[]: crc = 338ece09; size =       186; name = MESSAGE.MAP
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = 56425985; size =    600000; name = RESOURCE.A01
-    file[]: crc = 5ac79c35; size =    800048; name = RESOURCE.A02
     file[]: crc = a0624a7b; size =      3101; name = RESOURCE.MAP
     file[]: crc = 64e2c13e; size =    155228; name = RESOURCE.MSG
-    file[]: crc = 70b60459; size =   1100000; name = RESOURCE.P01
-    file[]: crc = 8c238ce9; size =    847866; name = RESOURCE.P02
     file[]: crc = d94cccc6; size =     67778; name = SIERRA.EXE
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
     file[]: crc = f536d131; size =        46; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// v1.1, Int. 2.3.93, 3x1.44M
+//
+game[v1.1-int-2.3.93-3x1.44m]:
+    name = v1.1, Int. 2.3.93, 3x1.44M
+    imports = v1.1-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 94bdc12d; size =   1947866; name = RESOURCE.000
+    file[]: crc = 46122494; size =   1400048; name = RESOURCE.AUD
+end
+
+//
+// v1.1, Int. 2.3.93, 3x1.44M, Installer
+//
+installer[v1.1-int-2.3.93-3x1.44m-installer]:
+    name = v1.1, Int. 2.3.93, 3x1.44M, Installer
+    installid = v1.1-int-2.3.93-3x1.44m
+    launch = DREAMM.BAT
+    imports = v1.1-base
+    anchorfile = RESOURCE.P01
+    file[]: crc = 56425985; size =    600000; name = RESOURCE.A01
+    file[]: crc = 5ac79c35; size =    800048; name = RESOURCE.A02
+    file[]: crc = 70b60459; size =   1100000; name = RESOURCE.P01
+    file[]: crc = 8c238ce9; size =    847866; name = RESOURCE.P02
 end
 
 //
