@@ -137,39 +137,29 @@ end
 game[v1.011-int-9.20.90-2x720k]:
     name = v1.011, Int. 9.20.90, 2x720K
     anchorfile = RESOURCE.001
-    file[]: crc = 3268fa17; size =       671; name = __INSTH.BAT ; optional = true
     file[]: crc = 9f2cea3f; size =      9778; name = ADL.DRV
     file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
     file[]: crc = 02f91723; size =      5825; name = CMS.DRV
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = b1c59e17; size =       574; name = EXISTS.COM  ; optional = true
     file[]: crc = c866db6d; size =      1953; name = EXPLORER.DRV; optional = true
-    file[]: crc = 71a2c71f; size =       507; name = GODIR.COM   ; optional = true
     file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
-    file[]: crc = a76ee788; size =     13355; name = INSTALL.EXE ; optional = true
-    file[]: crc = 2142c8e4; size =      9698; name = INSTALL.HLP ; optional = true
-    file[]: crc = d57dbbc6; size =       807; name = INSTGAME.BAT; optional = true
     file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
     file[]: crc = a362ae54; size =      3013; name = JR.DRV
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
-    file[]: crc = 37df6499; size =        15; name = MG.BAT      ; optional = true
     file[]: crc = 86aadb8d; size =      3179; name = MT32.DRV
     file[]: crc = a2e978ac; size =      1660; name = PCJR320.DRV
-    file[]: crc = cfe21e21; size =      1357; name = README.BAT  ; optional = true
     file[]: crc = 40d1a345; size =    239906; name = RESOURCE.001
     file[]: crc = c4f37aac; size =    719398; name = RESOURCE.002
     file[]: crc = 5c4966c3; size =      2598; name = RESOURCE.MAP
     file[]: crc = fd6dee90; size =     44443; name = SCIV.EXE
     file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
-    file[]: crc = 37d01d27; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 06a89f36; size =        60; name = STATE.RST   ; optional = true
     file[]: crc = 05dbf64a; size =      2466; name = STD.DRV
     file[]: crc = 0ac2441a; size =      3445; name = TANDY.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
     file[]: crc = 700299a0; size =       473; name = TANDYKBD.DRV
-    file[]: crc = 6da449bc; size =       840; name = TMP         ; optional = true
     file[]: crc = 37ba2a68; size =         7; name = VERSION
 end
 
@@ -180,8 +170,6 @@ game[v1.011-int-9.20.90-5x360k]:
     name = v1.011, Int. 9.20.90, 5x360K
     imports = v1.011-int-9.20.90-2x720k
     anchorfile = RESOURCE.001
-    file[]: crc = d11170eb; size =      1376; name = __INSTH.BAT ; optional = true
-    file[]: crc = d252a7d4; size =       977; name = INSTGAME.BAT; optional = true
     file[]: crc = c38d6841; size =    140375; name = RESOURCE.000
     file[]: crc = 6d8c8fd6; size =     52648; name = RESOURCE.001
     file[]: crc = 71f450e5; size =    204401; name = RESOURCE.002
@@ -225,20 +213,13 @@ game[v2.000-5x1.44m]:
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 7e16538c; size =     53856; name = INSTALL.EXE
-    file[]: crc = 0ec938c2; size =     16313; name = INSTALL.HLP
-    file[]: crc = c19f8361; size =      2042; name = INSTALL.SCR
-    file[]: crc = 0cad1096; size =      8337; name = INSTALL.TXT
     file[]: crc = 4deab5e2; size =      2605; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 57d9ca21; size =        28; name = MGH.BAT
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = 5bff80a3; size =      2134; name = README
     file[]: crc = 226ea4ed; size =   1134000; name = TEMP\RESOURCE.A01
     file[]: crc = bf64d0ed; size =   1457150; name = TEMP\RESOURCE.A02
     file[]: crc = 4054bffe; size =    152658; name = TEMP\RESOURCE.A03
-    file[]: crc = 7c61fe4f; size =        55; name = RESOURCE.CFG
     file[]: crc = c4c71c33; size =      7026; name = RESOURCE.MAP
     file[]: crc = 2507e047; size =   1200000; name = TEMP\RESOURCE.P01
     file[]: crc = f220417b; size =   1457150; name = TEMP\RESOURCE.P02
