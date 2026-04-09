@@ -134,27 +134,20 @@ game[v1.0-int-4.16.93-6x1.44m]:
     file[]: crc = 6dc64007; size =      4859; name = AUDPS1.DRV
     file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
-    file[]: crc = 1dd12a76; size =        24; name = FPFP.BAT    ; optional = true
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = 6ea3c94f; size =     75896; name = INSTALL.EXE ; optional = true
-    file[]: crc = 5e8e91da; size =     17637; name = INSTALL.HLP ; optional = true
-    file[]: crc = 6cd7f210; size =      4740; name = INSTALL.SCR ; optional = true
-    file[]: crc = 3b84f25e; size =      9438; name = INSTALL.TXT ; optional = true
     file[]: crc = 407fc3c1; size =      6158; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = c546223c; size =       596; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV; optional = true
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 6bd30391; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 346e45d1; size =      5577; name = READ.ME     ; optional = true
     file[]: crc = edf74a58; size =   1456640; name = RESOURCE.001
     file[]: crc = 9e82855c; size =   1456640; name = RESOURCE.002
     file[]: crc = 9d8aaa1d; size =   1456640; name = RESOURCE.003
     file[]: crc = e6d6bb40; size =    863310; name = RESOURCE.004
     file[]: crc = 18df82aa; size =   1064900; name = RESOURCE.AUD
-    file[]: crc = b583b37e; size =       133; name = RESOURCE.CFG; optional = true
     file[]: crc = 356fed16; size =      5816; name = RESOURCE.MAP
     file[]: crc = 005841fd; size =    331706; name = RESOURCE.MSG
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
@@ -213,15 +206,8 @@ game[v1.0-int-8.11.93-de-8x1.44m]:
     file[]: crc = cc6d2064; size =     12074; name = 620.MSG
     file[]: crc = d6976af4; size =      2364; name = 90.HEP
     file[]: crc = 9f52bf9c; size =      3544; name = 90.SCR
-    file[]: crc = f74f4fe4; size =     76230; name = INSTALL.EXE ; optional = true
-    file[]: crc = a5dc13fd; size =     18469; name = INSTALL.HLP ; optional = true
-    file[]: crc = 57bae374; size =      5270; name = INSTALL.SCR ; optional = true
-    file[]: crc = 1f4b25ae; size =     10983; name = INSTALL.TXT ; optional = true
-    file[]: crc = a2c9f602; size =      6588; name = INTERP.ERR  ; optional = true
+    file[]: crc = a2c9f602; size =      6588; name = INTERP.ERR
     file[]: crc = 368fd833; size =      2611; name = MESSAGE.MAP
-    file[]: crc = 73f4e288; size =      5622; name = READ.ME     ; optional = true
-    file[]: crc = de2e2e3a; size =        30; name = README.BAT  ; optional = true
-    file[]: crc = 42b20546; size =       134; name = RESOURCE.CFG; optional = true
     file[]: crc = e87989d3; size =    911164; name = RESOURCE.MSG
     file[]: crc = cae48442; size =        49; name = VERSION
 end
@@ -289,22 +275,15 @@ game[v1.0-cd]:
     file[]: crc = 2a87a0b8; size =      7871; name = AUDPRO.DRV
     file[]: crc = c15ebf91; size =      5821; name = AUDPRO16.DRV
     file[]: crc = 29d12de2; size =      8141; name = AUDTHUND.DRV
-    file[]: crc = 697f1258; size =    175996; name = BOOTDISK.EXE; optional = true
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
-    file[]: crc = fd841739; size =     77191; name = INSTALL.EXE ; optional = true
-    file[]: crc = 529f6fee; size =     20894; name = INSTALL.HLP ; optional = true
-    file[]: crc = da9f98ba; size =     11847; name = INSTALL.SCR ; optional = true
-    file[]: crc = 1e23be7f; size =      9501; name = INSTALL.TXT ; optional = true
     file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV; optional = true
     file[]: crc = a596f36e; size =      7089; name = MMAWARE.DLL ; optional = true
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 66f45660; size =      2347; name = READ.ME     ; optional = true
     file[]: crc = aa7a41ad; size =   5490246; name = RESOURCE.000
     file[]: crc = b0eb9e36; size = 599841365; name = RESOURCE.AUD
-    file[]: crc = 91d9b4c1; size =       195; name = RESOURCE.CFG; optional = true
     file[]: crc = c76ff860; size =      6058; name = RESOURCE.MAP
     file[]: crc = 84be194a; size =  16743534; name = RESOURCE.SFX
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
@@ -313,7 +292,6 @@ game[v1.0-cd]:
     file[]: crc = 5279fc0e; size =      3044; name = SIERRA.INF  ; optional = true
     file[]: crc = 5e2e5db4; size =       136; name = SIERRA.INI  ; optional = true
     file[]: crc = 38bfe902; size =    187392; name = SIERRAW.EXE ; optional = true
-    file[]: crc = fc6a6e25; size =       766; name = SIERRAW.ICO ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 8ec4273a; size =         7; name = VERSION
     file[]: crc = 9f7e188a; size =      8252; name = VGA320.DRV
@@ -345,20 +323,13 @@ demo[interactive-demo]:
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = d8668005; size =     76296; name = INSTALL.EXE ; optional = true
-    file[]: crc = 4199a10a; size =     17710; name = INSTALL.HLP ; optional = true
-    file[]: crc = 80c24bed; size =       511; name = INSTALL.SCR ; optional = true
-    file[]: crc = f1a8f56b; size =      9439; name = INSTALL.TXT ; optional = true
     file[]: crc = 18896cc7; size =      6032; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 9feb32ab; size =      9646; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = 3edcf0de; size =      3687; name = READ.ME     ; optional = true
-    file[]: crc = 36d95666; size =        25; name = README.BAT  ; optional = true
     file[]: crc = 48c842a6; size =    867724; name = RESOURCE.000
     file[]: crc = a74cdb6f; size =    536098; name = RESOURCE.AUD
-    file[]: crc = 0dc5ff64; size =       249; name = RESOURCE.CFG; optional = true
     file[]: crc = ad91c324; size =      1909; name = RESOURCE.MAP
     file[]: crc = 33312260; size =     68460; name = SIERRA.EXE
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
