@@ -89,16 +89,10 @@ demo[spaced-out]:
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = 3b13540f; size =      2610; name = INTERP.ERR
-    file[]: crc = 94cc3e16; size =       314; name = LANGUAGE.INF; optional = true
-    file[]: crc = d085ca91; size =       766; name = NICK.ICO    ; optional = true
-    file[]: crc = 5098d157; size =      2189; name = PLAY.BAT    ; optional = true
-    file[]: crc = 44403838; size =     12256; name = PLAY2.EXE   ; optional = true
-    file[]: crc = a56dbd90; size =      1232; name = README      ; optional = true
     file[]: crc = 0cb787bb; size =    364921; name = RESOURCE.001
     file[]: crc = e55c6559; size =       139; name = RESOURCE.CFG
     file[]: crc = 19a4d300; size =       879; name = RESOURCE.MAP
     file[]: crc = b1d1ccd3; size =    144836; name = SCIDHUV.EXE
-    file[]: crc = 65ff9f7f; size =       633; name = SIERRA.INF  ; optional = true
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = c77a5de9; size =         5; name = VERSION
     file[]: crc = 5aba02e9; size =      5832; name = VGA320.DRV
@@ -141,16 +135,9 @@ demo[casino]:
     file[]: crc = 0d7c2e25; size =         5; remove = BACKGAM.OPT
     file[]: crc = b7a37779; size =         4; remove = CHECKERS.OPT
     file[]: crc = e616d774; size =        21; remove = GAME.OPT
-    file[]: crc = ac92c2fa; size =       766; name = NICK.ICO    ; optional = true
-    file[]: crc = ac92c2fa; size =       766; name = NICKS.ICO   ; optional = true
-    file[]: crc = 5dd80c8e; size =       380; name = PLAY.BAT    ; optional = true
     file[]: crc = 44403838; size =     12256; name = PLAY2.EXE
-    file[]: crc = 0c51023c; size =      2126; name = README      ; optional = true
-    file[]: crc = 0c51023c; size =      2126; name = README.TXT  ; optional = true
     file[]: crc = d3ab06fd; size =    344830; name = RESOURCE.001
-    file[]: crc = 46f91b6c; size =       147; name = RESOURCE.CFG; optional = true
     file[]: crc = f8d841a1; size =       783; name = RESOURCE.MAP
-    file[]: crc = 6b516fb2; size =      1540; name = SIERRA.INF  ; optional = true
 end
 
 end
