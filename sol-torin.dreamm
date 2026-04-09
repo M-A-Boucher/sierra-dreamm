@@ -264,23 +264,15 @@ game[v1.0-gog]:
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
     file[]: crc = 426aa7ad; size =       361; name = GAMEDAT.SHP
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE ; optional = true;
-    file[]: crc = 5ce081fc; size =     21746; name = INSTALL.HLP ; optional = true;
-    file[]: crc = 98b7288c; size =      4171; name = INSTALL.SCR ; optional = true;
-    file[]: crc = 38b46fdc; size =      9589; name = INSTALL.TXT ; optional = true;
-    file[]: crc = 387551b9; size =   2752813; name = Manual.pdf  ; optional = true;
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
     file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
     file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
-    file[]: crc = 6d6f4d7d; size =       576; name = RESOURCE.CFG; optional = true;
     file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
     file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
     file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
     file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
-    file[]: crc = 9657d6e2; size =       163; name = TORIN.BAT  ; optional = true;
     file[]: crc = 2fce5f75; size =     24064; name = TORIN.EXE
-    file[]: crc = cea7602b; size =       355; name = TORIN.TXT  ; optional = true;
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 8425f555; size =  21034036; name = MOVIE\10000.VMD
