@@ -75,11 +75,30 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
+        audioDrv=AUDBLAST.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
         memoryDrv=ARM.DRV
         minHunk=257k
         audioSize=8k
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 GAME\RESOURCE.000
+        COPY RESOURCE.A01+RESOURCE.A02 GAME\RESOURCE.AUD
+        CD GAME
+        PKDECOMP.EXE RESOURCE.AUD
+        DEL PKDECOMP.EXE
+        DEL RESOURCE.P0*
+        DEL RESOURCE.A0*
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
     ]]]
 end
 
@@ -89,22 +108,7 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-code = [[[$(CRLF)
-	if (!file_exists("RESOURCE.000"))
-		file_copy("RESOURCE.000", "DISK1/RESOURCE.000", "DISK2/RESOURCE.000", "DISK3/RESOURCE.000")
-	if (!file_exists("RESOURCE.AUD"))
-		file_copy("RESOURCE.AUD", "DISK2/RESOURCE.AUD", "DISK3/RESOURCE.AUD")
-	]]]
-end
-
-//
-// v2.0, Int. 3.26.93, 4x1.44M
-//
-game[v2.0-int-3.26.93-4x1.44m]:
-    name = v2.0, Int. 3.26.93, 4x1.44M
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
+fragment[v2.0-base]:
     file[]: crc = e9a371d6; size =      4664; name = 600.HEP
     file[]: crc = 239666b3; size =     16054; name = 600.SCR
     file[]: crc = 95d13a20; size =        11; name = 600.TEX
@@ -117,31 +121,15 @@ game[v2.0-int-3.26.93-4x1.44m]:
     file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
     file[]: crc = 6dc64007; size =      4859; name = AUDPS1.DRV
     file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
-    file[]: crc = 4b20aa12; size =        25; name = CLASSIC.BAT ; optional = true
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = 2b142519; size =        24; name = HOYLE.BAT   ; optional = true
-    file[]: crc = 18e00cec; size =      5628; name = HLPCONV.TXT ; optional = true
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = fa2d6fda; size =     75676; name = INSTALL.EXE ; optional = true
-    file[]: crc = 1067fec2; size =     17555; name = INSTALL.HLP ; optional = true
-    file[]: crc = 11560757; size =      4949; name = INSTALL.SCR ; optional = true
-    file[]: crc = 3b84f25e; size =      9438; name = INSTALL.TXT ; optional = true
     file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
-    file[]: crc = e8141961; size =     19918; name = PKDECOMP.EXE; optional = true
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 75eda5d3; size =      3301; name = README      ; optional = true
-    file[]: crc = c4f90c50; size =        32; name = README.BAT  ; optional = true
-    file[]: crc = 40754d1e; size =    440320; name = DISK1\RESOURCE.000
-    file[]: crc = 9cefe719; size =   1454080; name = DISK2\RESOURCE.000
-    file[]: crc = 176f40e3; size =    105732; name = DISK3\RESOURCE.000
-    file[]: crc = dee54de6; size =   1276928; name = DISK3\RESOURCE.AUD
-    file[]: crc = 2e0dcd7a; size =   1454439; name = DISK4\RESOURCE.AUD
-    file[]: crc = 78d91da1; size =       154; name = RESOURCE.CFG; optional = true
     file[]: crc = ca7cd100; size =      4352; name = RESOURCE.MAP
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = 3fd65a7a; size =    152354; name = SIERRA.EXE
@@ -153,21 +141,63 @@ game[v2.0-int-3.26.93-4x1.44m]:
 end
 
 //
+// v2.0, Int. 3.26.93, 4x1.44M
+//
+game[v2.0-int-3.26.93-4x1.44m]:
+    name = v2.0, Int. 3.26.93, 4x1.44M
+    imports = v2.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = b31bc686; size =   2000132; name = RESOURCE.000
+    file[]: crc = 7797ff61; size =   3542466; name = RESOURCE.AUD
+end
+
+//
+// v2.0, Int. 3.26.93, 4x1.44M, Installer
+//
+installer[v2.0-int-3.26.93-4x1.44m-installer]:
+    name = v2.0, Int. 3.26.93, 4x1.44M, Installer
+    installid = v2.0-int-3.26.93-4x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v2.0-base
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = e8141961; size =     19918; name = PKDECOMP.EXE
+    file[]: crc = 40754d1e; size =    440320; name = RESOURCE.P01
+    file[]: crc = 9cefe719; size =   1454080; name = RESOURCE.P02
+    file[]: crc = 176f40e3; size =    105732; name = RESOURCE.P03
+    file[]: crc = dee54de6; size =   1276928; name = RESOURCE.A01
+    file[]: crc = 2e0dcd7a; size =   1454439; name = RESOURCE.A02
+end
+
+
+//
 // v2.0, Int. 7.16.93, 4x1.44M
 //
 game[v2.0-int-7.16.93-4x1.44m]:
     name = v2.0, Int. 7.16.93, 4x1.44M
     imports = v2.0-int-3.26.93-4x1.44m
     anchorfile = 937.SCR
-    anchordepth = 2
+    anchordepth = 1
     file[]: crc = ef98fb41; size =       146; name = 937.HEP
     file[]: crc = 2656ad08; size =      3818; name = 937.SCR
-    file[]: crc = 75728a04; size =      3301; name = README     ; optional = true
     file[]: crc = f6b81d98; size =       284; name = VERSION
-    file[]: crc = f74f4fe4; size =     76230; name = INSTALL.EXE; optional = true
-    file[]: crc = 4199a10a; size =     17710; name = INSTALL.HLP; optional = true
-    file[]: crc = 265ae558; size =      4901; name = INSTALL.SCR; optional = true
-    file[]: crc = f1a8f56b; size =      9439; name = INSTALL.TXT; optional = true
+end
+
+//
+// v2.0, Int. 7.16.93, 4x1.44M, Installer
+//
+installer[v2.0-int-7.16.93-4x1.44m-installer]:
+    name = v2.0, Int. 7.16.93, 4x1.44M, Installer
+    installid = v2.0-int-7.16.93-4x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v2.0-int-3.26.93-4x1.44m-installer
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = ef98fb41; size =       146; name = 937.HEP
+    file[]: crc = 2656ad08; size =      3818; name = 937.SCR
+    file[]: crc = f6b81d98; size =       284; name = VERSION
 end
 
 end
