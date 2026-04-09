@@ -106,18 +106,16 @@ game[v1.0-cd]:
     file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
     file[]: crc = 845f0ad6; size =  41150806; name = RESOURCE.000
     file[]: crc = 3f2d1d93; size = 435838311; name = RESOURCE.AUD
-    file[]: crc = 757436f3; size =       227; name = RESOURCE.CFG; optional = true
     file[]: crc = 0c88fc54; size =     10528; name = RESOURCE.MAP
     file[]: crc = 475f47fa; size =     10528; name = RESOURCE.MDT
     file[]: crc = 2b5b6bc6; size =  36011811; name = RESOURCE.SFX
-    file[]: crc = 3f12b27c; size =       375; name = RESOURCE.WIN; optional = true
     file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
     file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
     file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
     file[]: crc = 7b42d20c; size =      8504; name = SIERRA.ERR
     file[]: crc = 7a93dc56; size =    926521; name = SIERRA.EXE
     file[]: crc = 740def2f; size =      4584; name = SIERRA.INF  ; optional = true
-    file[]: crc = 3bb23f6b; size =    803516; name = SIERRAW.EXE
+    file[]: crc = 3bb23f6b; size =    803516; name = SIERRAW.EXE ; optional = true
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 96f8dd46; size =   2196926; name = MOVIES\1075.VMD
@@ -187,12 +185,10 @@ game[v1.0-fr-cd]:
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
     file[]: crc = e3e5e4e1; size =  40932397; name = RESOURCE.000
     file[]: crc = 63d7e84e; size = 390456408; name = RESOURCE.AUD
-    file[]: crc = 6b642dc7; size =       230; name = RESOURCE.CFG; optional = true
     file[]: crc = 7ec92038; size =       370; name = RESOURCE.LST
     file[]: crc = ea9e4323; size =     10534; name = RESOURCE.MAP
     file[]: crc = cbf016a8; size =     10534; name = RESOURCE.MDT
     file[]: crc = 6d40f0b7; size =  35717637; name = RESOURCE.SFX
-    file[]: crc = 69d63c71; size =       396; name = RESOURCE.WIN; optional = true
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
@@ -232,11 +228,9 @@ game[v1.0-de-cd]:
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
     file[]: crc = b69b04a3; size =  40933685; name = RESOURCE.000
     file[]: crc = 33de37be; size = 457451460; name = RESOURCE.AUD
-    file[]: crc = 346684c5; size =       219; name = RESOURCE.CFG; optional = true
     file[]: crc = 8e68a4e6; size =     10534; name = RESOURCE.MAP
     file[]: crc = 5093ae2a; size =     10534; name = RESOURCE.MDT
     file[]: crc = aa5728f4; size =  35730127; name = RESOURCE.SFX
-    file[]: crc = 09d8cbac; size =       396; name = RESOURCE.WIN; optional = true
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
@@ -268,9 +262,7 @@ game[v1.11-cd]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = b7d37c38; size =      2584; remove = DACPRO8.DRV
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
-    file[]: crc = ebfd9f39; size =       183; name = RESOURCE.CFG; optional = true
     file[]: crc = 7431b34c; size =     10528; name = RESOURCE.MAP
-    file[]: crc = 56ae60e7; size =       375; name = RESOURCE.WIN; optional = true
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 022a3d8d; size =    942697; name = SIERRA.EXE
