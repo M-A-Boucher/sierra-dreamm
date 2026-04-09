@@ -91,26 +91,33 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 GAME\RESOURCE.000
+        CD GAME
+        AUDDCOMP.EXE .\
+        DEL AUDDCOMP.EXE
+        DEL RESOURCE.001
+        DEL RESOURCE.002
+        DEL RESOURCE.003
+        DEL RESOURCE.004
+        DEL RESOURCE.005
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005")
-    ]]]
-end
-
-//
-// v1.0, Int. 4.16.93, 6x1.44M
-//
-game[v1.0-int-4.16.93-6x1.44m]:
-    name = v1.0, Int. 4.16.93, 6x1.44M
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
+fragment[v1.0-base]:
     file[]: crc = 8e47f64c; size =     21743; name = 15.MSG
     file[]: crc = 34972edc; size =      3080; name = 300.HEP
     file[]: crc = 0e51d52c; size =      4896; name = 300.SCR
@@ -125,7 +132,6 @@ game[v1.0-int-4.16.93-6x1.44m]:
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
     file[]: crc = 9a9ea8c3; size =       726; name = AUDCDROM.DRV
-    file[]: crc = 161aa46b; size =     27359; name = AUDDCOMP.EXE
     file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
     file[]: crc = 885ee375; size =      3995; name = AUDMSSYS.DRV
     file[]: crc = 2deb6ee1; size =      1100; name = AUDNONE.DRV
@@ -140,14 +146,8 @@ game[v1.0-int-4.16.93-6x1.44m]:
     file[]: crc = 407fc3c1; size =      6158; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = c546223c; size =       596; name = MESSAGE.MAP
-    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV; optional = true
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 6bd30391; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = edf74a58; size =   1456640; name = RESOURCE.001
-    file[]: crc = 9e82855c; size =   1456640; name = RESOURCE.002
-    file[]: crc = 9d8aaa1d; size =   1456640; name = RESOURCE.003
-    file[]: crc = e6d6bb40; size =    863310; name = RESOURCE.004
-    file[]: crc = 18df82aa; size =   1064900; name = RESOURCE.AUD
     file[]: crc = 356fed16; size =      5816; name = RESOURCE.MAP
     file[]: crc = 005841fd; size =    331706; name = RESOURCE.MSG
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
@@ -160,14 +160,46 @@ game[v1.0-int-4.16.93-6x1.44m]:
 end
 
 //
-// v1.0, Int. 4.16.93, 7x1.2M
+// v1.0, Int. 4.16.93, 6x1.44M (Identical to v1.0, Int. 4.16.93, 7x1.2M)
 //
-game[v1.0-int-4.16.93-7x1.2m]:
-    name = v1.0, Int. 4.16.93, 7x1.2M
-    imports = v1.0-int-4.16.93-6x1.44m
+game[v1.0-int-4.16.93-6x1.44m]:
+    name = v1.0, Int. 4.16.93, 6x1.44M
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 7cded47f; size =   5233230; name = RESOURCE.000
+    file[]: crc = cd21fead; size =   4123462; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 4.16.93, 6x1.44M, Installer
+//
+installer[v1.0-int-4.16.93-6x1.44m-installer]:
+    name = v1.0, Int. 4.16.93, 6x1.44M, Installer
+    installid = v1.0-int-4.16.93-6x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base
     anchorfile = SIERRA.EXE
     anchordepth = 1
-    file[]: crc = eb7eb55b; size =      5265; name = INSTALL.SCR ; optional = true
+    file[]: crc = 161aa46b; size =     27359; name = AUDDCOMP.EXE
+    file[]: crc = edf74a58; size =   1456640; name = RESOURCE.001
+    file[]: crc = 9e82855c; size =   1456640; name = RESOURCE.002
+    file[]: crc = 9d8aaa1d; size =   1456640; name = RESOURCE.003
+    file[]: crc = e6d6bb40; size =    863310; name = RESOURCE.004
+    file[]: crc = 18df82aa; size =   1064900; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 4.16.93, 7x1.2M, Installer
+//
+installer[v1.0-int-4.16.93-7x1.2m-installer]:
+    name = v1.0, Int. 4.16.93, 7x1.2M, Installer
+    installid = v1.0-int-4.16.93-6x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-int-4.16.93-6x1.44m-installer
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
     file[]: crc = 6ab862a0; size =   1212928; name = RESOURCE.001
     file[]: crc = 7ed9a458; size =   1212928; name = RESOURCE.002
     file[]: crc = 1ff5cfea; size =   1212928; name = RESOURCE.003
@@ -181,6 +213,45 @@ end
 game[v1.0-int-8.11.93-de-8x1.44m]:
     name = v1.0, Int. 8.11.93, German, 8x1.44M
     imports = v1.0-int-4.16.93-6x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = b739327b; size =      5647; name = 0.MSG
+    file[]: crc = 987572d0; size =       370; name = 14.HEP
+    file[]: crc = a52d39fa; size =       434; name = 14.SCR
+    file[]: crc = d55d0afe; size =      2738; name = 170.HEP
+    file[]: crc = ddc3c139; size =      2250; name = 170.SCR
+    file[]: crc = 3e5a2a39; size =      7610; name = 1700.V56
+    file[]: crc = 7dd0967f; size =      8112; name = 1701.V56
+    file[]: crc = 8a3b2c32; size =      7909; name = 1702.V56
+    file[]: crc = dd99bc7d; size =      7828; name = 1703.V56
+    file[]: crc = 1e63b54d; size =      8456; name = 1704.V56
+    file[]: crc = 3d96264a; size =      4878; name = 18.MSG
+    file[]: crc = 42ad5c8b; size =     26318; name = 2141.WAV
+    file[]: crc = 4554e15a; size =      1658; name = 24.MSG
+    file[]: crc = 1ef4f1b0; size =     75454; name = 2925.WAV
+    file[]: crc = 696e9a5b; size =     17184; name = 2926.WAV
+    file[]: crc = 895c46f8; size =     63412; name = 2935.WAV
+    file[]: crc = bb603469; size =    132976; name = 2948.WAV
+    file[]: crc = 4ff6dbd5; size =    117910; name = 2952.WAV
+    file[]: crc = 5918c575; size =     67096; name = 2953.WAV
+    file[]: crc = 797181b3; size =     52460; name = 2954.WAV
+    file[]: crc = cc6d2064; size =     12074; name = 620.MSG
+    file[]: crc = d6976af4; size =      2364; name = 90.HEP
+    file[]: crc = 9f52bf9c; size =      3544; name = 90.SCR
+    file[]: crc = a2c9f602; size =      6588; name = INTERP.ERR
+    file[]: crc = 368fd833; size =      2611; name = MESSAGE.MAP
+    file[]: crc = e87989d3; size =    911164; name = RESOURCE.MSG
+    file[]: crc = cae48442; size =        49; name = VERSION
+end
+
+//
+// v1.0, Int. 8.11.93, German, 8x1.44M, Installer
+//
+installer[v1.0-int-8.11.93-de-8x1.44m-installer]:
+    name = v1.0, Int. 8.11.93, German, 8x1.44M, Installer
+    installid = v1.0-int-8.11.93-de-8x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-int-4.16.93-6x1.44m-installer
     anchorfile = SIERRA.EXE
     anchordepth = 1
     file[]: crc = b739327b; size =      5647; name = 0.MSG
@@ -318,8 +389,6 @@ demo[interactive-demo]:
     file[]: crc = 33b05d68; size =      4823; name = AUDPS1.DRV
     file[]: crc = 9c55c951; size =      6606; name = AUDTHUND.DRV
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV  ; optional = true
-    file[]: crc = fc6a6e25; size =       766; name = FPDEMO.ICO  ; optional = true
-    file[]: crc = c413b79a; size =       545; name = FPDEMO.PIF  ; optional = true
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
