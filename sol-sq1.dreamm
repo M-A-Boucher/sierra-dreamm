@@ -175,7 +175,7 @@ end
 game[v2.2-int-2.917-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.2, Int. 2.917)
     CRACKED = 1
-    imports = v2.2-int-2.917-1x720k
+    imports = v2.2-int-2.917
     anchorfile = VOL.0
     file[]: crc = 72fca229; size =      3121; name = SIERRA.COM
 end
