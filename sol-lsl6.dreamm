@@ -54,13 +54,13 @@ config[sound]:
     title = Sound Configuration
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
+        audiohw = sb16+speaker
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = adlib
+        audiohw = sb16+adlib
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
@@ -100,20 +100,22 @@ dynamicfile[]:
 end
 
 dynamicfile[]:
-    condition = file_size("$$(rootpath)\\RESOURCE.SFX") < 3635434
     path = $(rootpath)/DREAMM.BAT
     contents = [[[$(CRLF)
-        ECHO Hang tight, this only happens once.
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 GAME\RESOURCE.000
+        CD GAME
         AUDDCOMP.EXE .\
-        SIERRA.EXE
-    ]]]
-end
-
-dynamicfile[]:
-    condition = file_size("$$(rootpath)\\RESOURCE.SFX") == 3635434
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        SIERRA.EXE
+        DEL AUDDCOMP.EXE
+        DEL RESOURCE.001
+        DEL RESOURCE.002
+        DEL RESOURCE.003
+        DEL RESOURCE.004
+        DEL RESOURCE.005
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
     ]]]
 end
 
@@ -123,20 +125,7 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005")
-    ]]]
-end
-
-//
-// v1.0, Int. 11.6.93, 6x1.44M
-//
-game[v1.0-int-11.6.93-6x1.44m]:
-    name = v1.0, Int. 11.6.93, 6x1.44M
-    launch = DREAMM.BAT
-    anchorfile = SIERRA.EXE
+fragment[v1.0-base]:
     file[]: crc = 69d64ada; size =       500; name = 1800.HEP
     file[]: crc = b0af8348; size =       468; name = 1800.SCR
     file[]: crc = 8024d06b; size =      4350; name = 230.HEP
@@ -180,13 +169,7 @@ game[v1.0-int-11.6.93-6x1.44m]:
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = a46775fe; size =    345000; name = RESOURCE.001
-    file[]: crc = 0580706d; size =   1357996; name = RESOURCE.002
-    file[]: crc = 1df7ea25; size =   1357996; name = RESOURCE.003
-    file[]: crc = f5410085; size =   1357996; name = RESOURCE.004
-    file[]: crc = 4c27a5cd; size =   1370150; name = RESOURCE.005
     file[]: crc = b07ea93f; size =      6973; name = RESOURCE.MAP
-    file[]: crc = 79349da8; size =    939156; name = RESOURCE.SFX
     file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = a81768de; size =    159184; name = SIERRA.EXE
@@ -216,11 +199,40 @@ game[v1.0-int-11.6.93-6x1.44m]:
 end
 
 //
+// v1.0, Int. 11.6.93, 6x1.44M
+//
+game[v1.0-int-11.6.93-6x1.44m]:
+    name = v1.0, Int. 11.6.93, 6x1.44M
+    imports = v1.0-base
+    anchorfile = SIERRA.EXE
+    file[]: crc = 77f9f4a6; size =     16607; remove = AUDDCOMP.EXE
+    file[]: crc = e9d3ad99; size =   5789138; name = RESOURCE.000
+    file[]: crc = 4153253d; size =   3635434; name = RESOURCE.SFX
+end
+
+//
+// v1.0, Int. 11.6.93, 6x1.44M, Installer
+//
+installer[v1.0-int-11.6.93-6x1.44m-installer]:
+    name = v1.0, Int. 11.6.93, 6x1.44M, Installer
+    installid = v1.0-int-11.6.93-6x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base
+    anchorfile = SIERRA.EXE
+    file[]: crc = a46775fe; size =    345000; name = RESOURCE.001
+    file[]: crc = 0580706d; size =   1357996; name = RESOURCE.002
+    file[]: crc = 1df7ea25; size =   1357996; name = RESOURCE.003
+    file[]: crc = f5410085; size =   1357996; name = RESOURCE.004
+    file[]: crc = 4c27a5cd; size =   1370150; name = RESOURCE.005
+    file[]: crc = 79349da8; size =    939156; name = RESOURCE.SFX
+end
+
+//
 // v1.0, Int. 11.18.93, 6x1.44M
 //
 game[v1.0-int-11.18.93-6x1.44m]:
     name = v1.0, Int. 11.18.93, 6x1.44M
-    launch = DREAMM.BAT
     imports = v1.0-int-11.6.93-6x1.44m
     anchorfile = SIERRA.EXE
     file[]: crc = ea22f1ee; size =      2425; name = 740.MSG
@@ -247,30 +259,58 @@ game[v1.0-int-11.18.93-6x1.44m]:
     file[]: crc = 72489db5; size =      9222; name = WHIP.WAV
     file[]: crc = 00a7709d; size =     21106; name = YEOW.WAV
     file[]: crc = 74d37391; size =     10434; name = ZIPPER.WAV
-
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 11.18.93)
+// v1.0, Int. 11.18.93, 6x1.44M, Installer
+//
+installer[v1.0-int-11.18.93-6x1.44m-installer]:
+    name = v1.0, Int. 11.18.93, 6x1.44M, Installer
+    installid = v1.0-int-11.6.93-6x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base, v1.0-int-11.6.93-6x1.44m-installer
+    anchorfile = SIERRA.EXE
+    file[]: crc = ea22f1ee; size =      2425; name = 740.MSG
+    file[]: crc = 06a7d90f; size =      2788; name = 860.HEP
+    file[]: crc = e4b111e8; size =      9220; name = 860.SCR
+    file[]: crc = 744c92ba; size =      5202; name = 93.MSG
+    file[]: crc = 487b4eba; size =        61; name = VERSION
+    // The following files from LSL6_SFX.EXE
+    file[]: crc = 3b6c3086; size =      8760; name = BEAN_DIP.WAV
+    file[]: crc = 66f1b03a; size =     26442; name = BRKGLASS.WAV
+    file[]: crc = 3bd97ca5; size =      7272; name = BURP.WAV
+    file[]: crc = d542c55c; size =     24406; name = CLANG.WAV
+    file[]: crc = da15f7e7; size =    113008; remove = EXPLODE.WAV
+    file[]: crc = 72d0a866; size =     43586; name = GAG.WAV
+    file[]: crc = aa85a0e8; size =     21314; name = GARGLE.WAV
+    file[]: crc = 16901669; size =     13682; name = GOOSED.WAV
+    file[]: crc = fedf2737; size =      4470; name = GULP.WAV
+    file[]: crc = 58f0ef62; size =     22530; name = ICEDUMP.WAV
+    file[]: crc = 0d2e9bdc; size =     11558; name = KISS.WAV
+    file[]: crc = b95b2d86; size =     25282; name = OOOH.WAV
+    file[]: crc = dd472494; size =     18818; name = SCREAM.WAV
+    file[]: crc = f5a7f4cd; size =     14402; name = SPIT.WAV
+    file[]: crc = 40f32891; size =     10082; name = TESTING.WAV
+    file[]: crc = 72489db5; size =      9222; name = WHIP.WAV
+    file[]: crc = 00a7709d; size =     21106; name = YEOW.WAV
+    file[]: crc = 74d37391; size =     10434; name = ZIPPER.WAV
+end
+
+//
+// Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 11.18.93)
 //
 game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses - Collector's Series (v1.0, Int. 11.18.93)
+    name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 11.18.93)
     imports = v1.0-int-11.18.93-6x1.44m
-    anchorfile = RESOURCE.000
+    anchorfile = 830.HEP
     anchordepth = 1
     file[]: crc = 3010a99c; size =       524; name = 830.HEP
     file[]: crc = 3f5b33ea; size =       772; name = 830.SCR
     file[]: crc = 77f9f4a6; size =     16607; remove = AUDDCOMP.EXE
     file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
-    file[]: crc = e9d3ad99; size =   5789138; name = RESOURCE.000
-    file[]: crc = a46775fe; size =    345000; remove = RESOURCE.001
-    file[]: crc = 0580706d; size =   1357996; remove = RESOURCE.002
-    file[]: crc = 1df7ea25; size =   1357996; remove = RESOURCE.003
-    file[]: crc = f5410085; size =   1357996; remove = RESOURCE.004
-    file[]: crc = 4c27a5cd; size =   1370150; remove = RESOURCE.005
-    file[]: crc = 4153253d; size =   3635434; name = RESOURCE.SFX
+    file[]: crc = 9a12e87e; size =     76816; name = RAVE.DLL    ; optional = true
     file[]: crc = dd430004; size =     15360; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = a81768de; size =    159184; name = SIERRA.EXE
     file[]: crc = 9d435043; size =      2057; name = SIERRA.INF  ; optional = true
     file[]: crc = ab7f3710; size =       138; name = SIERRA.INI  ; optional = true
     file[]: crc = 0c67f6a6; size =    185344; name = SIERRAW.EXE ; optional = true
