@@ -10,6 +10,7 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)/sierra.com
 mips = $(MIPS_286_10)
+nothrottle = 2.5
 ramkb = 1024
 filter = sierra, adventure
 
@@ -21,22 +22,27 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; nothrottle = 2; machine = tandy; priority = 1
-        condition = file_exists("$$(rootpath)\\jr_graf.ovl")
+        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
     end
     option[hercules]:  
         name = $(HERCULES_NAME)
-        videohw = hercules; nothrottle = 2.5
-        condition = file_exists("$$(rootpath)\\hgc_graf.ovl")
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
     end
     option[cga]:       
         name = $(CGA_NAME)  
-        videohw = cga; nothrottle = 2.5
-        condition = file_exists("$$(rootpath)\\cga_graf.ovl")
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[ega]:
         name = $(EGA_NAME)
-        videohw = ega; nothrottle = 2.5
-        condition = file_exists("$$(rootpath)\\ega_graf.ovl")
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
     end
 end
 
