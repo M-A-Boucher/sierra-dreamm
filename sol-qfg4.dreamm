@@ -125,8 +125,6 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-
-
 fragment[v1.0-base]:
     file[]: crc = 2ba3a5d8; size =      4088; name = 250.HEP
     file[]: crc = 17a9717a; size =      7450; name = 250.SCR
