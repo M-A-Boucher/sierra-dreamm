@@ -115,21 +115,28 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.A01+RESOURCE.A02+RESOURCE.A03 GAME\RESOURCE.AUD
+        COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 GAME\RESOURCE.000
+        CD GAME
+        DEL RESOURCE.A0*
+        DEL RESOURCE.P0*
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
-
-script[launch]:
-    condition = file_exists("SCIDHUV.EXE")
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "TEMP/RESOURCE.P01", "TEMP/RESOURCE.P02", "TEMP/RESOURCE.P03")
-	if (!file_exists("RESOURCE.AUD"))
-            file_copy("RESOURCE.AUD", "TEMP/RESOURCE.A01", "TEMP/RESOURCE.A02", "TEMP/RESOURCE.A03")
-    ]]]
-end
 
 //
 // v1.011, Int. 9.20.90, 2x720K
@@ -180,13 +187,7 @@ game[v1.011-int-9.20.90-5x360k]:
     file[]: crc = 2f455ff1; size =     44443; name = SCIV.EXE
 end
 
-//
-// v2.000, 5x1.44M
-//
-game[v2.000-5x1.44m]:
-    name = v2.000, 5x1.44M
-    launch = SCIDHUV.EXE
-    anchorfile = SCIDHUV.EXE
+fragment[v2.000-base]:
     file[]: crc = d320a55c; size =       506; name = 0.MAP
     file[]: crc = a0d9ab77; size =      2678; name = 104.HEP
     file[]: crc = a7ef959c; size =      5006; name = 104.SCR
@@ -217,19 +218,46 @@ game[v2.000-5x1.44m]:
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = 226ea4ed; size =   1134000; name = TEMP\RESOURCE.A01
-    file[]: crc = bf64d0ed; size =   1457150; name = TEMP\RESOURCE.A02
-    file[]: crc = 4054bffe; size =    152658; name = TEMP\RESOURCE.A03
     file[]: crc = c4c71c33; size =      7026; name = RESOURCE.MAP
-    file[]: crc = 2507e047; size =   1200000; name = TEMP\RESOURCE.P01
-    file[]: crc = f220417b; size =   1457150; name = TEMP\RESOURCE.P02
-    file[]: crc = 3eb78683; size =    291825; name = TEMP\RESOURCE.P03
     file[]: crc = e6bceb70; size =     66607; name = SCIDHUV.EXE
-    file[]: crc = cf27954c; size =        15; name = SIERRA.BAT
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
     file[]: crc = bf2c3da7; size =         7; name = VERSION
     file[]: crc = 5aba02e9; size =      5832; name = VGA320.DRV
 end
+
+//
+// v2.000
+//
+game[v2.000]:
+    name = v2.000
+    launch = SCIDHUV.EXE
+    imports = v2.000-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 3ebcc6c8; size =   2948975; name = RESOURCE.000
+    file[]: crc = fcebda59; size =   2743808; name = RESOURCE.AUD
+
+end
+
+//
+// v2.000, 5x1.44M, Installer
+//
+installer[v2.000-5x1.44m-installer]:
+    name = v2.000, Installer
+    installid = v2.000
+    launch = DREAMM.BAT
+    imports = v2.000-base
+    anchorfile = SCIDHUV.EXE
+    file[]: crc = 226ea4ed; size =   1134000; name = RESOURCE.A01
+    file[]: crc = bf64d0ed; size =   1457150; name = RESOURCE.A02
+    file[]: crc = 4054bffe; size =    152658; name = RESOURCE.A03
+    file[]: crc = 2507e047; size =   1200000; name = RESOURCE.P01
+    file[]: crc = f220417b; size =   1457150; name = RESOURCE.P02
+    file[]: crc = 3eb78683; size =    291825; name = RESOURCE.P03
+end
+
+//
+// v2.000, 6x1.2M, Installer *** MISSING ***
+//
 
 end
