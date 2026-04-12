@@ -85,26 +85,33 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 GAME\RESOURCE.000
+        CD GAME
+        DCOMPAUD.EXE .\
+        DEL DCOMPAUD.EXE
+        DEL RESOURCE.001
+        DEL RESOURCE.002
+        DEL RESOURCE.003
+        DEL RESOURCE.004
+        DEL RESOURCE.005
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005")
-    ]]]
-end
-
-//
-// v1.0, Int. 2.5.93, 5x1.44M
-//
-game[v1.0-int-2.5.93-5x1.44m]:
-    name = v1.0, Int. 2.5.93, 5x1.44M
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
+fragment[v1.0-base]:
     file[]: crc = 84fcf10d; size =      3474; name = 120.HEP
     file[]: crc = e542d821; size =     12770; name = 120.SCR
     file[]: crc = 42ef8a6d; size =      4510; name = 230.HEP
@@ -135,19 +142,46 @@ game[v1.0-int-2.5.93-5x1.44m]:
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
+    file[]: crc = 595e3a60; size =      5179; name = RESOURCE.MAP
+    file[]: crc = da4d51f7; size =     69357; name = SIERRA.EXE
+    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
+    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// v1.0, Int. 2.5.93
+//
+game[v1.0-int-2.5.93]:
+    name = v1.0, Int. 2.5.93
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 8ae0b6aa; size =    550000; name = RESOURCE.000
+    file[]: crc = 5efe6023; size =    877634; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 2.5.93, 5x1.44M, Installer
+//
+installer[v1.0-int-2.5.93-5x1.44m-installer]:
+    name = v1.0, Int. 2.5.93, 5x1.44M, Installer
+    installid = v1.0-int-2.5.93
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
     file[]: crc = 8ae0b6aa; size =    550000; name = RESOURCE.001
     file[]: crc = 42e2813d; size =   1455000; name = RESOURCE.002
     file[]: crc = 7c261199; size =   1455000; name = RESOURCE.003
     file[]: crc = 3db16c7d; size =   1455000; name = RESOURCE.004
     file[]: crc = 0ac64b6d; size =    544574; name = RESOURCE.005
     file[]: crc = 5efe6023; size =    877634; name = RESOURCE.AUD
-    file[]: crc = 595e3a60; size =      5179; name = RESOURCE.MAP
-    file[]: crc = da4d51f7; size =     69357; name = SIERRA.EXE
-    file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
-    file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
-    file[]: crc = a89bc926; size =        55; name = VERSION
-    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
-    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
+
+//
+// v1.0, Int. 2.5.93, 6x1.2M, Installer *** MISSING ***
+//
 
 end

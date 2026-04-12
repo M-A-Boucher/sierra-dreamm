@@ -91,25 +91,34 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006 GAME\RESOURCE.000
+        CD GAME
+        AUDIO.EXE
+        DEL AUDIO.EXE
+        DEL RESOURCE.001
+        DEL RESOURCE.002
+        DEL RESOURCE.003
+        DEL RESOURCE.004
+        DEL RESOURCE.005
+        DEL RESOURCE.006
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003", "RESOURCE.004", "RESOURCE.005", "RESOURCE.006")
-    ]]]
-end
-
-//
-// v1.0, Int. 9.15.92, 5x1.44M
-//
-game[v1.0-int-9.28.92-5x1.44m]:
-    name = v1.0, Int. 9.15.92, 5x1.44M
-    anchorfile = RESOURCE.001
+fragment[v1.x-base]:
     file[]: crc = c9b2241d; size =      3026; name = 280.HEP
     file[]: crc = af7a119a; size =      6468; name = 280.SCR
     file[]: crc = ba69a100; size =      3014; name = 460.HEP
@@ -120,7 +129,7 @@ game[v1.0-int-9.28.92-5x1.44m]:
     file[]: crc = f1c089c5; size =      9291; name = ADL.DRV
     file[]: crc = 38aa1298; size =      5817; name = AUDBLAST.DRV
     file[]: crc = 28458b6a; size =      4842; name = AUDDISNY.DRV
-    file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE   ; optional = true
+    file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE
     file[]: crc = 1b46fd88; size =       715; name = AUDNONE.DRV
     file[]: crc = 7766e030; size =      5262; name = AUDPRO.DRV
     file[]: crc = 653c2086; size =      4415; name = AUDPS1.DRV
@@ -130,21 +139,10 @@ game[v1.0-int-9.28.92-5x1.44m]:
     file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
-    file[]: crc = 7bb84bb8; size =     16588; name = INSTALL.HLP ; optional = true
-    file[]: crc = 320f4a3e; size =      1708; name = INSTALL.SCR ; optional = true
-    file[]: crc = 27f56298; size =      8458; name = INSTALL.TXT ; optional = true
     file[]: crc = a012c6d4; size =      5845; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = cc6c80c2; size =       511; name = MESSAGE.MAP
     file[]: crc = 5450710b; size =      2570; name = MT32.DRV
-    file[]: crc = 2631575b; size =      2082; name = README      ; optional = true
-    file[]: crc = addf14e3; size =     52000; name = RESOURCE.001
-    file[]: crc = 3465b8b3; size =   1454000; name = RESOURCE.002
-    file[]: crc = 6e0dccd7; size =   1454000; name = RESOURCE.003
-    file[]: crc = baee8faf; size =   1454000; name = RESOURCE.004
-    file[]: crc = f17acd68; size =   1453442; name = RESOURCE.005
-    file[]: crc = e80d88bc; size =        52; name = RESOURCE.CFG; optional = true
     file[]: crc = 139390cc; size =      5958; name = RESOURCE.MAP
     file[]: crc = 1a99fd1a; size =    246796; name = RESOURCE.MSG
     file[]: crc = 7be0254a; size =     67778; name = SIERRA.EXE
@@ -156,14 +154,43 @@ game[v1.0-int-9.28.92-5x1.44m]:
 end
 
 //
+// v1.0, Int. 9.15.92
+//
+game[v1.0-int-9.15.92]:
+    name = v1.0, Int. 9.15.92
+    imports = v1.x-base
+    anchorfile = RESOURCE.000
+    file[]: crc = a63905e0; size =   5867442; name = RESOURCE.000
+    file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 9.15.92, 5x1.44M, Installer
+//
+installer[v1.0-int-9.15.92-5x1.44m-installer]:
+    name = v1.0, Int. 9.15.92, 5x1.44M, Installer
+    installid = v1.0-int-9.15.92
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.x-base
+    anchorfile = RESOURCE.001
+    file[]: crc = addf14e3; size =     52000; name = RESOURCE.001
+    file[]: crc = 3465b8b3; size =   1454000; name = RESOURCE.002
+    file[]: crc = 6e0dccd7; size =   1454000; name = RESOURCE.003
+    file[]: crc = baee8faf; size =   1454000; name = RESOURCE.004
+    file[]: crc = f17acd68; size =   1453442; name = RESOURCE.005
+end
+
+//
 // v1.0, Int. 9.15.92, 6x1.2M
 //
-game[v1.0-int-9.28.92-6x1.2m]:
-    name = v1.0, Int. 9.15.92, 6x1.2M
-    imports = v1.0-int-9.28.92-5x1.44m
+installer[v1.0-int-9.15.92-6x1.2m-installer]:
+    name = v1.0, Int. 9.15.92, 6x1.2M, Installer
+    installid = v1.0-int-9.15.92
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.x-base
     anchorfile = RESOURCE.006
-    file[]: crc = cca2e623; size =      1795; name = INSTALL.SCR ; optional = true
-    file[]: crc = addf14e3; size =     52000; remove = RESOURCE.001
     file[]: crc = 2e5b06b9; size =   1210000; name = RESOURCE.002
     file[]: crc = cd2313c5; size =   1210000; name = RESOURCE.003
     file[]: crc = b758ebab; size =   1210000; name = RESOURCE.004
@@ -172,11 +199,35 @@ game[v1.0-int-9.28.92-6x1.2m]:
 end
 
 //
-// v1.1, Int. 11.9.92, 5x1.44M
+// v1.1, Int. 11.9.92
 //
-game[v1.1-int-11.9.92-5x1.44m]:
-    name = v1.1, Int. 11.9.92, 5x1.44M
-    imports = v1.0-int-9.28.92-5x1.44m
+game[v1.1-int-11.9.92]:
+    name = v1.1, Int. 11.9.92
+    imports = v1.x-base
+    anchorfile = RESOURCE.000
+    file[]: crc = c9b2241d; size =      3026; remove = 280.HEP
+    file[]: crc = af7a119a; size =      6468; remove = 280.SCR
+    file[]: crc = ba69a100; size =      3014; remove = 460.HEP
+    file[]: crc = bd0afecb; size =     10172; remove = 460.SCR
+    file[]: crc = aabc381c; size =       200; remove = 51.HEP
+    file[]: crc = 62b5552f; size =       802; remove = 51.SCR
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
+    file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
+    file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+    file[]: crc = 94ae61ce; size =    246888; name = RESOURCE.MSG
+    file[]: crc = c69f28c9; size =        36; name = VERSION
+end
+
+//
+// v1.1, Int. 11.9.92, 5x1.44M, Installer
+//
+installer[v1.1-int-11.9.92-5x1.44m-installer]:
+    name = v1.1, Int. 11.9.92, 5x1.44M, Installer
+    installid = v1.1-int-11.9.92
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.x-base
     anchorfile = RESOURCE.001
     file[]: crc = c9b2241d; size =      3026; remove = 280.HEP
     file[]: crc = af7a119a; size =      6468; remove = 280.SCR
@@ -185,9 +236,7 @@ game[v1.1-int-11.9.92-5x1.44m]:
     file[]: crc = aabc381c; size =       200; remove = 51.HEP
     file[]: crc = 62b5552f; size =       802; remove = 51.SCR
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = 32c770b3; size =      1748; name = INSTALL.SCR ; optional = true
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
-    file[]: crc = 7a2fd6b3; size =      2094; name = README      ; optional = true
     file[]: crc = 21963517; size =     52000; name = RESOURCE.001
     file[]: crc = b1d53649; size =   1454000; name = RESOURCE.002
     file[]: crc = fe6c116b; size =   1454000; name = RESOURCE.003
@@ -197,6 +246,10 @@ game[v1.1-int-11.9.92-5x1.44m]:
     file[]: crc = 94ae61ce; size =    246888; name = RESOURCE.MSG
     file[]: crc = c69f28c9; size =        36; name = VERSION
 end
+
+//
+// v1.1, Int. 11.9.92, 6x1.2M, Installer *** MISSING ***
+//
 
 //
 // Base Files for Quest for Glory - Collection Series 
@@ -271,20 +324,11 @@ game[v1.1-int-11.9.92-quest-for-glory-collection-series]:
     file[]: crc = 05cd5346; size =      2780; name = 780.SCR
     file[]: crc = f3df4b66; size =       662; name = 852.HEP
     file[]: crc = fd97dc18; size =      2092; name = 852.SCR
-    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
-    file[]: crc = 7bb84bb8; size =     16588; name = INSTALL.HLP ; optional = true
-    file[]: crc = 32c770b3; size =      1748; name = INSTALL.SCR ; optional = true
-    file[]: crc = 27f56298; size =      8458; name = INSTALL.TXT ; optional = true
     file[]: crc = a012c6d4; size =      5845; name = INTERP.ERR
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
-    file[]: crc = 960a232c; size =      1048; name = PKCOMP.INF  ; optional = true
     file[]: crc = 011d912c; size =      9884; name = PROAUDIO.DRV
-    file[]: crc = 6c404c0d; size =        34; name = QG3E.BAT    ; optional = true
-    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
-    file[]: crc = 7a2fd6b3; size =      2094; name = README.OLD  ; optional = true
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
-    file[]: crc = fa76a505; size =       223; name = RESOURCE.CFG; optional = true
     file[]: crc = 94ae61ce; size =    246888; name = RESOURCE.MSG
     file[]: crc = 7be0254a; size =     67778; name = SIERRA.EXE
     file[]: crc = c69f28c9; size =        36; name = VERSION
@@ -382,16 +426,8 @@ game[v1.1-int-3.3.93-fr-quest-for-glory-collection-series]:
     file[]: crc = c1221c16; size =     12732; name = 925.V56
     file[]: crc = 61e287bd; size =     10361; name = 933.V56
     file[]: crc = d88f7504; size =      2069; name = 999.FON
-    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
-    file[]: crc = 6d8ac436; size =     18928; name = INSTALL.HLP ; optional = true
-    file[]: crc = 8de710d5; size =      1937; name = INSTALL.SCR ; optional = true
-    file[]: crc = 1c4a9cc2; size =      9696; name = INSTALL.TXT ; optional = true
     file[]: crc = 2d233af9; size =      6251; name = INTERP.ERR
     file[]: crc = 13ddb8e5; size =       511; name = MESSAGE.MAP
-    file[]: crc = cb368f4e; size =      3352; name = PKCOMP.INF  ; optional = true
-    file[]: crc = 3fda1789; size =        34; name = QG3F.BAT    ; optional = true
-    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
-    file[]: crc = 2949c312; size =      2287; name = README.OLD  ; optional = true
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
     file[]: crc = b9a38f79; size =       240; name = RESOURCE.CFG; optional = true
@@ -481,19 +517,10 @@ game[v1.1-int-11.16.92-fr-quest-for-glory-collection-series]:
     file[]: crc = c30b0ee4; size =     16247; name = 925.V56
     file[]: crc = 109c1c1a; size =     10323; name = 933.V56
     file[]: crc = d88f7504; size =      2069; name = 999.FON
-    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
-    file[]: crc = 2f2995f0; size =     17040; name = INSTALL.HLP ; optional = true
-    file[]: crc = 8fc38d04; size =       959; name = INSTALL.SCR ; optional = true
-    file[]: crc = d3f7bfa2; size =      9821; name = INSTALL.TXT ; optional = true
     file[]: crc = d01e830f; size =      6212; name = INTERP.ERR
     file[]: crc = 9dc76c43; size =       511; name = MESSAGE.MAP
-    file[]: crc = 746259e7; size =      3051; name = PKCOMP.INF  ; optional = true
-    file[]: crc = b87cdcca; size =        34; name = QG3G.BAT    ; optional = true
-    file[]: crc = 28b42af9; size =     33345; name = README      ; optional = true
-    file[]: crc = df892559; size =      2539; name = README.OLD  ; optional = true
     file[]: crc = c067b1b5; size =   5868042; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
-    file[]: crc = 8a1ce532; size =       206; name = RESOURCE.CFG; optional = true
     file[]: crc = 1eb74355; size =    279694; name = RESOURCE.MSG
     file[]: crc = 4ba12f75; size =     67822; name = SIERRA.EXE
     file[]: crc = 295c9846; size =        51; name = VERSION
@@ -593,18 +620,10 @@ game[v1.1-int-4.26.93-it-quest-for-glory-collection-series]:
     file[]: crc = 4327acf0; size =     19526; name = 930.V56
     file[]: crc = 835f0a6f; size =      9819; name = 933.V56
     file[]: crc = d88f7504; size =      2069; name = 999.FON
-    file[]: crc = 1e1a0606; size =     55969; name = INSTALL.EXE ; optional = true
-    file[]: crc = 991dd895; size =     17934; name = INSTALL.HLP ; optional = true
-    file[]: crc = 6c7d7c4d; size =      2108; name = INSTALL.SCR ; optional = true
-    file[]: crc = 93e0ccd9; size =      9648; name = INSTALL.TXT ; optional = true
     file[]: crc = c7461158; size =      6512; name = INTERP.ERR
     file[]: crc = cf1befe0; size =       511; name = MESSAGE.MAP
-    file[]: crc = 3d471c97; size =      3405; name = PKCOMP.INF  ; optional = true
-    file[]: crc = 3eaf8a7d; size =        36; name = QG3I.BAT    ; optional = true
-    file[]: crc = 6c3f9149; size =      1925; name = README      ; optional = true
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
-    file[]: crc = f0af3b57; size =       216; name = RESOURCE.CFG; optional = true
     file[]: crc = e36a2527; size =    259018; name = RESOURCE.MSG
     file[]: crc = 4ba12f75; size =     67822; name = SIERRA.EXE
     file[]: crc = 04c1cf73; size =        36; name = VERSION
@@ -629,23 +648,16 @@ game[v1.0-int-6.30.94-es-quest-for-glory-collection-series]:
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
-    file[]: crc = 1a0937b6; size =     76541; name = INSTALL.EXE ; optional = true
-    file[]: crc = 47cc2ed4; size =     18213; name = INSTALL.HLP ; optional = true
-    file[]: crc = b984a374; size =      1394; name = INSTALL.SCR ; optional = true
-    file[]: crc = c182bfae; size =     10032; name = INSTALL.TXT ; optional = true
     file[]: crc = 2655df63; size =      6368; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = eb6ee723; size =       511; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
-    file[]: crc = 98b8e476; size =      1137; name = PKCOMP.INF  ; optional = true
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 50f8aa03; size =        36; name = QG3S.BAT    ; optional = true
     file[]: crc = c8208ac9; size =      1508; name = README
     file[]: crc = 3cc2bca6; size =        27; name = README.BAT
     file[]: crc = 8571cc90; size =   5884098; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
-    file[]: crc = 05c85fac; size =       233; name = RESOURCE.CFG; optional = true
     file[]: crc = db704b72; size =      5978; name = RESOURCE.MAP
     file[]: crc = 09aa1dfa; size =    256014; name = RESOURCE.MSG
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
@@ -673,24 +685,12 @@ demo[demo]:
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = 2c6e8e36; size =     52606; name = INSTALL.EXE ; optional = true
-    file[]: crc = 40c5dae4; size =     16542; name = INSTALL.HLP ; optional = true
-    file[]: crc = e68b914a; size =       748; name = INSTALL.SCR ; optional = true
-    file[]: crc = f97af3e2; size =      8175; name = INSTALL.TXT ; optional = true
     file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
-    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT  ; optional = true
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = 54f4b725; size =      2570; name = MT32.DRV
     file[]: crc = 1504c83a; size =    648702; name = RESOURCE.000
     file[]: crc = 90c60116; size =    200704; name = RESOURCE.AUD
-    file[]: crc = 9530690c; size =       184; name = RESOURCE.CFG; optional = true
-    file[]: crc = f3bca97c; size =       188; name = RESOURCE.GEN; optional = true
     file[]: crc = 5d8752e6; size =       687; name = RESOURCE.MAP
-    file[]: crc = 863b78d2; size =       187; name = RESOURCE.MT ; optional = true
-    file[]: crc = 9d6a27a4; size =       182; name = RESOURCE.PRO; optional = true
-    file[]: crc = b68f949b; size =       185; name = RESOURCE.PS1; optional = true
-    file[]: crc = baaad593; size =       184; name = RESOURCE.SB ; optional = true
-    file[]: crc = 9530690c; size =       184; name = RESOURCE.STD; optional = true
-    file[]: crc = ef7a27f8; size =       188; name = RESOURCE.TDY; optional = true
     file[]: crc = 4647611f; size =     67192; name = SIERRA.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV

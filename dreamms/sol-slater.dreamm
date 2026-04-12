@@ -80,16 +80,34 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        joyDrv=JOYSTICK.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
+        videoDrv  = $(VIDEO_DRIVER)
+        soundDrv  = $(SOUND_DRIVER)
+        joyDrv    = JOYSTICK.DRV
+        kbdDrv    = IBMKBD.DRV
+        mouseDrv  = STDMOUSE.DRV
         minHunk   = 204k
         patchDir  = .\
         sync      = .\
-        audio      = .\
+        audio     = .\
         audioSize = 12k
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003 GAME\RESOURCE.000
+        CD GAME
+        AUDDCOMP.EXE .\
+        DEL AUDDCOMP.EXE
+        DEL RESOURCE.001
+        DEL RESOURCE.002
+        DEL RESOURCE.003
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
     ]]]
 end
 
@@ -99,26 +117,12 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[launch]:
-    code = [[[$(CRLF)
-        if (!file_exists("RESOURCE.000"))
-            file_copy("RESOURCE.000", "RESOURCE.001", "RESOURCE.002", "RESOURCE.003")
-    ]]]
-end
-
-//
-// v1.0, Int. 5.19.93, 3x1.44M *** doesn't load ***
-//
-game[v1.0-int-5.19.93-3x1.44m]:
-    name = v1.0, Int. 5.19.93, 3x1.44M
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
+fragment[v1.0-base]:
     file[]: crc = f1f4eed2; size =       155; name = 943.TEX
     file[]: crc = 8ae6bb35; size =       119; name = 952.TEX
     file[]: crc = a575e624; size =        70; name = 999.TEX
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
-    file[]: crc = 66b548c3; size =     15613; name = AUDDCOMP.EXE
     file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
     file[]: crc = 885ee375; size =      3995; name = AUDMSSYS.DRV
     file[]: crc = 2deb6ee1; size =      1100; name = AUDNONE.DRV
@@ -131,17 +135,13 @@ game[v1.0-int-5.19.93-3x1.44m]:
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
     file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
-    file[]: crc = fb892275; size =      4044; name = RESOURCE.MAP
-    file[]: crc = 20bf28d2; size =      1132; name = RESOURCE.MSG
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 07e72d4e; size =        36; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = 5450710b; size =      2570; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = f09b99da; size =    545624; name = RESOURCE.001
-    file[]: crc = 950cb0e9; size =   1450640; name = RESOURCE.002
-    file[]: crc = 51fa0855; size =    259862; name = RESOURCE.003
-    file[]: crc = 372144bc; size =   1152115; name = RESOURCE.AUD
+    file[]: crc = fb892275; size =      4044; name = RESOURCE.MAP
+    file[]: crc = 20bf28d2; size =      1132; name = RESOURCE.MSG
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = bb05a352; size =    154794; name = SIERRA.EXE
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
@@ -149,5 +149,37 @@ game[v1.0-int-5.19.93-3x1.44m]:
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
+
+//
+// v1.0, Int. 5.19.93
+//
+game[v1.0-int-5.19.93]:
+    name = v1.0, Int. 5.19.93
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = abc326e1; size =   2256126; name = RESOURCE.000
+    file[]: crc = c6127be8; size =   4439298; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 5.19.93, 3x1.44M, Installer
+//
+installer[v1.0-int-5.19.93-3x1.44m-installer]:
+    name = v1.0, Int. 5.19.93, 3x1.44M, Installer
+    installid = v1.0-int-5.19.93
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = f09b99da; size =    545624; name = RESOURCE.001
+    file[]: crc = 950cb0e9; size =   1450640; name = RESOURCE.002
+    file[]: crc = 51fa0855; size =    259862; name = RESOURCE.003
+    file[]: crc = 372144bc; size =   1152115; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 5.19.93, 4x1.2M, Installer *** MISSING ***
+//
 
 end
