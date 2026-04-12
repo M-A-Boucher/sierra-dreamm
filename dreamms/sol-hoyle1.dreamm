@@ -11,7 +11,7 @@ rootpath = C:\
 launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_286_10)
 ramkb = 4096
-filter = sierra, adventure
+filter = sierra, tabletop, card
 TANDY = 0
 
 //
