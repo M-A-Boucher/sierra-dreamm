@@ -127,18 +127,25 @@ dynamicfile[]:
     ]]]
 end
 
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY *.* GAME\
+        COPY RESOURCE.P00+RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04 GAME\RESOURCE.000
+        CD GAME
+        DEL RESOURCE.P0*
+        REN VERSION. VERSION
+        DEL COMMAND.COM
+        DEL DREAMM.BAT
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
-
-script[launch]:
-code = [[[$(CRLF)
-	if (!file_exists("RESOURCE.000"))
-		file_copy("RESOURCE.000", "TEMP/RESOURCE.000", "TEMP/RESOURCE.P00", "TEMP/RESOURCE.P01", "TEMP/RESOURCE.P02", "TEMP/RESOURCE.P03", "TEMP/RESOURCE.P04")
-	]]]
-end
 
 //
 // v1.000, Int. 0.000.566, 4x720K
@@ -272,13 +279,7 @@ game[v1.200-int-9.10.90-4x720k]:
     file[]: crc = 927da40e; size =      6432; name = RESOURCE.MAP
 end
 
-//
-// v2.0, Int. 6.25.92, 5x1.44M
-//
-game[v2.0-int-6.25.92-5x1.44m]:
-    name = v2.0, Int. 6.25.92, 5x1.44M
-    launch = SCIDHUV.EXE
-    anchorfile = RESOURCE.000
+fragment[v2.0-base]:
     file[]: crc = d37d0f00; size =      2994; name = 141.HEP
     file[]: crc = 07e56667; size =      4046; name = 141.SCR
     file[]: crc = 740e6fc0; size =      3178; name = 15.HEP
@@ -335,11 +336,6 @@ game[v2.0-int-6.25.92-5x1.44m]:
     file[]: crc = 4deab5e2; size =      2605; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = a4d2025e; size =    930000; name = TEMP/RESOURCE.000
-    file[]: crc = 578a710a; size =   1420000; name = TEMP/RESOURCE.P01
-    file[]: crc = 8cff2290; size =   1420000; name = TEMP/RESOURCE.P02
-    file[]: crc = cb5b4955; size =   1420000; name = TEMP/RESOURCE.P03
-    file[]: crc = 41669a3b; size =   1380147; name = TEMP/RESOURCE.P04
     file[]: crc = 5ca1cc2f; size =      8469; name = RESOURCE.MAP
     file[]: crc = 2ee7f809; size =    118753; name = SCIDHUV.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
@@ -349,12 +345,43 @@ game[v2.0-int-6.25.92-5x1.44m]:
 end
 
 //
-// Quest for Glory: Collection Series (v2.0-int-6.25.92)
+// v2.0, Int. 6.25.92
+//
+game[v2.0-int-6.25.92]:
+    name = v2.0, Int. 6.25.92
+    launch = SCIDHUV.EXE
+    imports = v2.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = f52edad3; size =   6570147; name = RESOURCE.000
+end
+
+//
+// v2.0, Int. 6.25.92, 5x1.44M, Installer
+//
+installer[v2.0-int-6.25.92-5x1.44m-installer]:
+    name = v2.0, Int. 6.25.92, 5x1.44M, Installer
+    installid = v2.0-int-6.25.92-5x1.44m
+    launch = DREAMM.BAT
+    imports = v2.0-base
+    anchorfile = SCIDHUV.EXE
+    file[]: crc = a4d2025e; size =    930000; name = RESOURCE.P00
+    file[]: crc = 578a710a; size =   1420000; name = RESOURCE.P01
+    file[]: crc = 8cff2290; size =   1420000; name = RESOURCE.P02
+    file[]: crc = cb5b4955; size =   1420000; name = RESOURCE.P03
+    file[]: crc = 41669a3b; size =   1380147; name = RESOURCE.P04
+end
+
+//
+// v2.0, Int. 6.25.92, 6x1.2M, Installer *** MISSING ***
+//
+
+//
+// Quest for Glory: Collection Series (v2.0, Int. 6.25.92)
 //
 game[v2.0-int-6.25.92-quest-for-glory-collection-series]:
-    name = Quest for Glory: Collection Series (v2.0-int-6.25.92)
+    name = Quest for Glory: Collection Series (v2.0, Int. 6.25.92)
     launch = SCIDHUV.EXE
-    imports = v2.0-int-6.25.92-5x1.44m
+    imports = v2.0-int-6.25.92
     anchorfile = RESOURCE.000
     file[]: crc = fa7a09c1; size =       322; name = 120.HEP
     file[]: crc = 6f1f99e8; size =      2010; name = 120.SCR
@@ -379,13 +406,6 @@ game[v2.0-int-6.25.92-quest-for-glory-collection-series]:
     file[]: crc = b177f129; size =      2018; name = 70.SCR
     file[]: crc = a3b9dd4f; size =     22682; name = 93.V56
     file[]: crc = 98d5d1ae; size =      1630; name = 988.V56
-    file[]: crc = f52edad3; size =   6570147; name = RESOURCE.000
-    file[]: crc = a4d2025e; size =    930000; remove = TEMP/RESOURCE.000
-    file[]: crc = 578a710a; size =   1420000; remove = TEMP/RESOURCE.P01
-    file[]: crc = 8cff2290; size =   1420000; remove = TEMP/RESOURCE.P02
-    file[]: crc = cb5b4955; size =   1420000; remove = TEMP/RESOURCE.P03
-    file[]: crc = 41669a3b; size =   1380147; remove = TEMP/RESOURCE.P04
-    file[]: crc = 0fd54ed6; size =       261; name = RESOURCE.CFG; optional = true
     file[]: crc = 252c6b75; size =    147387; name = SCIDHUV.EXE
 end
 
@@ -393,7 +413,7 @@ end
 // GOG (v2.0-int-6.25.92)
 //
 game[v2.0-int-6.25.92-gog]:
-    name = GOG (v2.0-int-6.25.92)
+    name = GOG (v2.0, Int. 6.25.92)
     launch = SCIDHUV.EXE
     imports = v2.0-int-6.25.92-quest-for-glory-collection-series
     anchorfile = 96.SCR
