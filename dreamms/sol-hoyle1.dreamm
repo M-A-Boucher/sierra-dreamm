@@ -217,7 +217,6 @@ game[v1.000.115-int-7.26.90-3x360k]:
     anchorfile = RESOURCE.001
     file[]: crc = f62b96b3; size =    163280; name = RESOURCE.001
     file[]: crc = 5fa8e245; size =      7818; name = RESOURCE.MAP
-
 end
 
 end

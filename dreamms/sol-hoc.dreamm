@@ -91,7 +91,6 @@ dynamicfile[]: path = A:\HOC 1; attributes = 8; contents = $(NULL)
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-
 script[autoinstall]:
     condition = is_installer()
     code = [[[$(CRLF)

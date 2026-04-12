@@ -170,7 +170,6 @@ installer[v2.0-int-3.26.93-4x1.44m-installer]:
     file[]: crc = 2e0dcd7a; size =   1454439; name = RESOURCE.A02
 end
 
-
 //
 // v2.0, Int. 7.16.93, 4x1.44M
 //
