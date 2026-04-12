@@ -1,14 +1,13 @@
 # sierra-dreamm
+## How to this .dreammpack with DREAMM
+Download the latest here: https://github.com/M-A-Boucher/sierra-dreamm/releases/latest/download/sierra.dreammpack
 
-## How to use .dreamm files with DREAMM
-To install these, create a folder called **ifsdreamm** next to wherever the DREAMM executable is installed. On macOS, this means going into the DREAMM.app package (right-click the DREAMM.app and select "Show Package Contents"), and creating an **ifsdreamm** folder inside `DREAMM.app/Contents/MacOS`.
+In DREAMM 4.0x6 (or later), select **Manage DREAMMPacks...** from the cog menu. Then click on **View DREAMMPack Folder**. Copy the sierra.dreammpack file to this folder, close and relaunch DREAMM.
 
-Inside the **ifsdreamm** folder, you will need to create a folder called **game**. Inside **game** is where you put the `.dreamm` files.
-Alternatively, if you run DREAMM from a command line, you can point DREAMM to any folder with a **game** folder with the `.dreamm` files with `-ifspath` option.
+You should now be able to import and play many Sierra (and Dynamix) adventure games in DREAMM.
 
-Launch DREAMM and you should now be able to import and play many Sierra (and Dynamix) adventure games in DREAMM.
-
-Notes on AGI games with Softguard Superlok v2 copy protection, the agiscript currently doesn't work on the following titles:
+#### Notes on AGI games with Softguard Superlok v2 copy protection
+The agiscript currently doesn't currently work on the following titles:
 - KQ3 v2.00, Int. 2.2.4.35, 2x720K and 3x360K
 - KQ3 v2.14, Int. 2.935, 2x720K and 3x360K
 - SQ1 v2.2, Int. 2.426
