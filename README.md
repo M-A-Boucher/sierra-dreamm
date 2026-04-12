@@ -1,10 +1,12 @@
-# sierra-dreamm
-## How to this .dreammpack with DREAMM
+# Sierra Games Pack for DREAMM
+## How to use this .dreammpack with DREAMM
 Download the latest here: https://github.com/M-A-Boucher/sierra-dreamm/releases/latest/download/sierra.dreammpack
 
-In DREAMM 4.0x6 (or later), select **Manage DREAMMPacks...** from the cog menu. Then click on **View DREAMMPack Folder**. Copy the sierra.dreammpack file to this folder, close and relaunch DREAMM.
+In DREAMM 4.0x6 (or later), select **Manage DREAMMPacks...** from the cog menu. Drag and drop the sierra.dreammpack you just downloaded onto the window. 
 
 You should now be able to import and play many Sierra (and Dynamix) adventure games in DREAMM.
+
+Alternatively, click on **View DREAMMPack Folder**. Copy the sierra.dreammpack file to this folder, close and relaunch DREAMM.
 
 #### Notes on AGI games with Softguard Superlok v2 copy protection
 The agiscript currently doesn't currently work on the following titles:
