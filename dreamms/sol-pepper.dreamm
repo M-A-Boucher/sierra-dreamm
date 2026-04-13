@@ -132,7 +132,6 @@ fragment[v1.0-base]:
     file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
     file[]: crc = 6dc64007; size =      4859; name = AUDPS1.DRV
     file[]: crc = 628e7ec2; size =      6579; name = AUDTHUND.DRV
-    file[]: crc = b4d8689a; size =     14963; name = DCOMPAUD.EXE
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 43386f83; size =       760; name = IBMKBD.DRV
@@ -157,8 +156,8 @@ game[v1.0-int-2.5.93]:
     name = v1.0, Int. 2.5.93
     imports = v1.0-base
     anchorfile = RESOURCE.000
-    file[]: crc = 8ae0b6aa; size =    550000; name = RESOURCE.000
-    file[]: crc = 5efe6023; size =    877634; name = RESOURCE.AUD
+    file[]: crc = 9107cc59; size =   5459574; name = RESOURCE.000
+    file[]: crc = 53aaffe2; size =   3404966; name = RESOURCE.AUD
 end
 
 //
@@ -172,6 +171,7 @@ installer[v1.0-int-2.5.93-5x1.44m-installer]:
     imports = v1.0-base
     anchorfile = SIERRA.EXE
     anchordepth = 1
+    file[]: crc = b4d8689a; size =     14963; name = DCOMPAUD.EXE
     file[]: crc = 8ae0b6aa; size =    550000; name = RESOURCE.001
     file[]: crc = 42e2813d; size =   1455000; name = RESOURCE.002
     file[]: crc = 7c261199; size =   1455000; name = RESOURCE.003

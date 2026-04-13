@@ -129,7 +129,6 @@ fragment[v1.x-base]:
     file[]: crc = f1c089c5; size =      9291; name = ADL.DRV
     file[]: crc = 38aa1298; size =      5817; name = AUDBLAST.DRV
     file[]: crc = 28458b6a; size =      4842; name = AUDDISNY.DRV
-    file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE
     file[]: crc = 1b46fd88; size =       715; name = AUDNONE.DRV
     file[]: crc = 7766e030; size =      5262; name = AUDPRO.DRV
     file[]: crc = 653c2086; size =      4415; name = AUDPS1.DRV
@@ -174,6 +173,7 @@ installer[v1.0-int-9.15.92-5x1.44m-installer]:
     launch = DREAMM.BAT
     imports = v1.x-base
     anchorfile = RESOURCE.001
+    file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE
     file[]: crc = addf14e3; size =     52000; name = RESOURCE.001
     file[]: crc = 3465b8b3; size =   1454000; name = RESOURCE.002
     file[]: crc = 6e0dccd7; size =   1454000; name = RESOURCE.003
@@ -182,7 +182,7 @@ installer[v1.0-int-9.15.92-5x1.44m-installer]:
 end
 
 //
-// v1.0, Int. 9.15.92, 6x1.2M
+// v1.0, Int. 9.15.92, 6x1.2M, Installer
 //
 installer[v1.0-int-9.15.92-6x1.2m-installer]:
     name = v1.0, Int. 9.15.92, 6x1.2M, Installer
@@ -191,6 +191,7 @@ installer[v1.0-int-9.15.92-6x1.2m-installer]:
     launch = DREAMM.BAT
     imports = v1.x-base
     anchorfile = RESOURCE.006
+    file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE
     file[]: crc = 2e5b06b9; size =   1210000; name = RESOURCE.002
     file[]: crc = cd2313c5; size =   1210000; name = RESOURCE.003
     file[]: crc = b758ebab; size =   1210000; name = RESOURCE.004
@@ -215,6 +216,7 @@ game[v1.1-int-11.9.92]:
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
     file[]: crc = 5bd84b8a; size =    916832; name = RESOURCE.AUD
+    file[]: crc = 459f98d3; size =      5958; name = RESOURCE.MAP
     file[]: crc = 94ae61ce; size =    246888; name = RESOURCE.MSG
     file[]: crc = c69f28c9; size =        36; name = VERSION
 end
@@ -236,6 +238,7 @@ installer[v1.1-int-11.9.92-5x1.44m-installer]:
     file[]: crc = aabc381c; size =       200; remove = 51.HEP
     file[]: crc = 62b5552f; size =       802; remove = 51.SCR
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
     file[]: crc = 21963517; size =     52000; name = RESOURCE.001
     file[]: crc = b1d53649; size =   1454000; name = RESOURCE.002

@@ -82,6 +82,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv  = $(VIDEO_DRIVER)
         soundDrv  = $(SOUND_DRIVER)
+        audioDrv  = AUDBLAST.DRV
         joyDrv    = JOYSTICK.DRV
         kbdDrv    = IBMKBD.DRV
         mouseDrv  = STDMOUSE.DRV
@@ -172,6 +173,7 @@ installer[v1.0-int-5.19.93-3x1.44m-installer]:
     imports = v1.0-base
     anchorfile = SIERRA.EXE
     anchordepth = 1
+    file[]: crc = 66b548c3; size =     15613; name = AUDDCOMP.EXE
     file[]: crc = f09b99da; size =    545624; name = RESOURCE.001
     file[]: crc = 950cb0e9; size =   1450640; name = RESOURCE.002
     file[]: crc = 51fa0855; size =    259862; name = RESOURCE.003

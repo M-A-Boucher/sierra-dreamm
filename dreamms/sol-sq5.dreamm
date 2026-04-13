@@ -1,9 +1,9 @@
 //
-// Space Quest V
+// Space Quest V: Roger Wilco in The Next Mutation
 //
 desc[sol-sq5]:
 
-name = Space Quest V
+name = Space Quest V: Roger Wilco in The Next Mutation
 icon = sol-sq5.png
 machine = pc
 osenv = dos
