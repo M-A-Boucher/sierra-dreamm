@@ -360,7 +360,7 @@ end
 //
 installer[v2.0-int-6.25.92-5x1.44m-installer]:
     name = v2.0, Int. 6.25.92, 5x1.44M, Installer
-    installid = v2.0-int-6.25.92-5x1.44m
+    installid = v2.0-int-6.25.92
     launch = DREAMM.BAT
     imports = v2.0-base
     anchorfile = SCIDHUV.EXE
