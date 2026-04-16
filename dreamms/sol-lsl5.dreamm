@@ -104,13 +104,14 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        joyDrv=JOYSTICK.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
-        minHunk=206k
-        patchDir=.
+        videoDrv = $(VIDEO_DRIVER)
+        soundDrv = $(SOUND_DRIVER)
+        joyDrv   = JOYSTICK.DRV
+        kbdDrv   = IBMKBD.DRV
+        mouseDrv = STDMOUSE.DRV
+        language = $(LANGUAGE)
+        minHunk  = 206k
+        patchDir = .
     ]]]
 end
 
@@ -241,6 +242,48 @@ game[v1.0-int-9.24.91-8x720k]:
     file[]: crc = 79f1668c; size =    568551; name = RESOURCE.006
     file[]: crc = 10917c99; size =    593429; name = RESOURCE.007
     file[]: crc = 49c1958a; size =      6597; name = RESOURCE.MAP
+end
+
+//
+// v1.0, Int. 1.17.92, French, 8x1.44M
+//
+game[v1.0-int-1.17.92-fr-8x1.44m]:
+    name = v1.0, Int. 1.17.92, French, 8x1.44M
+    LANGUAGE = 33
+    anchorfile = RESOURCE.000
+    file[]: crc = c951ef47; size =     14662; name = 760.SCR
+    file[]: crc = f72f7e81; size =     10153; name = 760.TEX
+    file[]: crc = 63fd77b8; size =      2062; name = 961.V56
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = a230b10d; size =      2678; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 8445d7c9; size =      2747; name = MCGA320.DRV
+    file[]: crc = ef6f4334; size =         9; name = MEMORY.DRV  ; optional = true
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV
+    file[]: crc = aeb54a86; size =      5526; name = MTPRO.DRV
+    file[]: crc = be98ebcf; size =     12128; name = PROAUDIO.DRV
+    file[]: crc = ec6b2444; size =    958096; name = RESOURCE.000
+    file[]: crc = 310500ef; size =   1196765; name = RESOURCE.001
+    file[]: crc = 32b1dacd; size =    948898; name = RESOURCE.002
+    file[]: crc = 701b5804; size =   1006608; name = RESOURCE.003
+    file[]: crc = e6efe825; size =    971293; name = RESOURCE.004
+    file[]: crc = d8ed64be; size =    920524; name = RESOURCE.005
+    file[]: crc = 8d99e3fd; size =    946540; name = RESOURCE.006
+    file[]: crc = 108e3c92; size =    958842; name = RESOURCE.007
+    file[]: crc = e281d082; size =      7023; name = RESOURCE.MAP
+    file[]: crc = 165210ca; size =     62544; name = SCIDHUV.EXE
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
+    file[]: crc = 59b13f87; size =        47; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
 end
 
 //
