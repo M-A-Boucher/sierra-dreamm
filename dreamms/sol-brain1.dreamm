@@ -9,8 +9,7 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
-mips = $(MIPS_486DX_33)
-nothrottle = 5
+mips = $(MIPS_386DX_33)
 ramkb = 4096
 filter = sierra, puzzle
 
@@ -166,6 +165,7 @@ game[v1.0-int-11.12.91-3xx720k]:
     file[]: crc = 1f58a3ab; size =    633662; name = RESOURCE.002
     file[]: crc = 710dd0fa; size =    430388; name = RESOURCE.003
     file[]: crc = 8e289c5b; size =      2730; name = RESOURCE.MAP
+    file[]: crc = cfee9de6; size =     54895; remove = SCIDHUV.EXE
     file[]: crc = 0c947d26; size =     52562; name = SCIDUV.EXE
     file[]: crc = 9c090003; size =        23; name = SIERRA.BAT
     file[]: crc = 912ac2ca; size =        20; name = SIERRAH.BAT
