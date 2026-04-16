@@ -119,6 +119,16 @@ game[v1.0-int-2.440-leisure-suit-larry-collectors-series]:
 end
 
 //
+// GOG (v1.0, Int. 2.440)
+//
+game[v1.0-int-2.440-gog]:
+    name = GOG (v1.0, Int. 2.440)
+    imports = v1.0-int-2.440-leisure-suit-larry-collectors-series
+    anchorfile = SIERRA.COM
+    file[]: crc = 2bff3b8f; size =      2944; name = SIERRA.COM
+end
+
+//
 // v1.0, Int. 2.917 (1x720K and 2x360K are identical)
 //
 game[v1.0-int-2.917]:
