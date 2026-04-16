@@ -351,7 +351,7 @@ addon[gmidi]:
         v1.0-int-9.24.91-4x1.2m
         v1.0-int-9.24.91-8x720k
         v1.0-int-11.14.91-de-8x1.44m
-        v1.0-int-9.11.91-leisure-suit-larry-collectors-series
+        v1.0-int-9.11.91-cd
     ]]]
     anchorfile = LL5_GM.PAT
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV

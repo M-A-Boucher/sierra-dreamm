@@ -1765,7 +1765,7 @@ end
 //
 installer[v1.000-de-kings-quest-collectors-edition-installer]:
     name = King's Quest - Collector's Edition, German (v1.000), Installer
-    installid = v1.000-de-kings-quest-collectors-edition-installer
+    installid = v1.000-de-kings-quest-collectors-edition
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.000-de-base
