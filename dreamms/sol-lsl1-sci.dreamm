@@ -199,10 +199,10 @@ game[v2.0-int-7.9.91-4x720k]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses (v2.1, Int. 7.9.91)
+// v2.1, Int. 7.9.91, CD
 //
-game[v2.1-int-7.9.91-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses (v2.1, Int. 7.9.91)
+game[v2.1-int-7.9.91-cd]:
+    name = v2.1, Int. 7.9.91, CD
     imports = v2.1-int-7.9.91-3x1.44m
     file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
     file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
