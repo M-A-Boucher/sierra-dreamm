@@ -152,6 +152,22 @@ game[v1.01-int-10.11.91-7x1.2m]:
 end
 
 //
+// v1.01, Int. 10.11.91, French, 6x1.44M *** Unverified ***
+//
+game[v1.01-int-10.11.91-fr-6x1.44m]:
+    name = v1.01, Int. 10.11.91, French, 6x1.44M
+    anchorfile = WILLY.EXE
+    file[]: crc = 85641aae; size =   1358304; name = VOLUME.001
+    file[]: crc = b210ec01; size =   1441526; name = VOLUME.002
+    file[]: crc = d1bf16c0; size =   1435490; name = VOLUME.003
+    file[]: crc = 199b5077; size =   1439993; name = VOLUME.004
+    file[]: crc = 2cd4597a; size =   1437924; name = VOLUME.005
+    file[]: crc = f295531d; size =   1196242; name = VOLUME.006
+    file[]: crc = 08f4fc40; size =      9896; name = VOLUME.RMF
+    file[]: crc = d05e90de; size =    225920; name = WILLY.EXE
+end
+
+//
 // v1.0, CD  *** doesn't launch ***
 //
 game[v1.0-cd]:
