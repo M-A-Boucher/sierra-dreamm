@@ -13,7 +13,6 @@ mips = $(MIPS_386DX_33)
 nothrottle = 4
 ramkb = 4096
 filter = sierra, adventure
-AUDIO_DRIVER =
 
 //
 // graphics configuration
@@ -82,13 +81,12 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
-        audioDrv=$(AUDIO_DRIVER)
+        audioDrv=AUDBLAST.DRV
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
         minHunk=204k
-        audioSize=32k
-        patchDir=.
+        audioSize=8k
     ]]]
 end
 
@@ -112,6 +110,7 @@ dynamicfile[]:
         DEL RESOURCE.P0*
         DEL AUDIO.P0*
         DEL INTRO.P0*
+        DEL COMMAND.COM
         DEL DREAMM.BAT
     ]]]
 end
@@ -484,7 +483,6 @@ game[v1.0-int-9.28.92-11x1.2m]:
     file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
     file[]: crc = 34e9a5c4; size =   7863324; name = RESOURCE.000
     file[]: crc = 5208f168; size =   2542894; name = RESOURCE.AUD
-    file[]: crc = 00121b27; size =       153; name = RESOURCE.CFG
     file[]: crc = 81e16491; size =      8703; name = RESOURCE.MAP
     file[]: crc = 407d7672; size =    258590; name = RESOURCE.MSG
     file[]: crc = 7c5856eb; size =     87575; name = SCAN.SEQ
@@ -729,7 +727,6 @@ game[v1.0-int-11.13.92-fr-10x1.44m]:
     file[]: crc = 653c2086; size =      4415; name = AUDPS1.DRV
     file[]: crc = 88f33e4b; size =      5811; name = AUDTHUND.DRV
     file[]: crc = 842d2e4e; size =       149; name = CD.AD
-    file[]: crc = d94adb3c; size =        38; name = COMMAND.COM
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = c4ed7144; size =    410871; name = FS3B.SEQ
     file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
@@ -1119,7 +1116,6 @@ game[v1.0-int-11.18.92-de-10x1.44m]:
     file[]: crc = 88f33e4b; size =      5811; name = AUDTHUND.DRV
     file[]: crc = 2640dd45; size =    104350; name = BOAT.SEQ
     file[]: crc = 5b2a2516; size =        90; name = CD.AD
-    file[]: crc = d94adb3c; size =        38; name = COMMAND.COM
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = 9ee3c049; size =    799706; name = FS3A.SEQ
     file[]: crc = c4ed7144; size =    410871; name = FS3B.SEQ
@@ -1138,7 +1134,6 @@ game[v1.0-int-11.18.92-de-10x1.44m]:
     file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
     file[]: crc = 34e9a5c4; size =   7863324; name = RESOURCE.000
     file[]: crc = 5208f168; size =   2542894; name = RESOURCE.AUD
-    file[]: crc = 00121b27; size =       153; name = RESOURCE.CFG
     file[]: crc = 81e16491; size =      8703; name = RESOURCE.MAP
     file[]: crc = 72fdbc09; size =    282822; name = RESOURCE.MSG
     file[]: crc = 7c5856eb; size =     87575; name = SCAN.SEQ
@@ -1334,24 +1329,50 @@ installer[v1.0-int-11.18.92-de-10x1.44m-installer]:
 end
 
 //
-// v1.000.00G, CD
+// v1.000.00, CD
 //
-game[v1.000.00g-cd]:
-    name = v1.000.00G, CD
-    AUDIO_DRIVER = AUDBLAST.DRV
+game[v1.000.00-cd]:
+    name = v1.000.00, CD
     anchorfile = SIERRA.EXE
     anchordepth = 1
-    file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
-    file[]: crc = be1217b7; size =      5862; name = 420.SCR
+    file[]: crc = 15650cbc; size =      2390; name = 0.HEP
+    file[]: crc = 03138720; size =      7116; name = 0.SCR
+    file[]: crc = e7d28349; size =         9; name = 0.TEX
+    file[]: crc = be92590f; size =      1392; name = 100.HEP
+    file[]: crc = 2ff69bfa; size =      1716; name = 100.SCR
+    file[]: crc = f4e9e0e7; size =      1222; name = 130.HEP
+    file[]: crc = 98dfdfce; size =      2438; name = 130.SCR
+    file[]: crc = 5cc2d5f7; size =     16856; name = 202.V56
+    file[]: crc = c416e25b; size =      1230; name = 283.HEP
+    file[]: crc = 864b2e5e; size =      2888; name = 283.SCR
+    file[]: crc = 71585975; size =      1446; name = 390.HEP
+    file[]: crc = fc6f0e26; size =      3756; name = 390.SCR
     file[]: crc = 3f8ec141; size =       758; name = 425.HEP
-    file[]: crc = 9fe474ab; size =      2320; name = 425.SCR
-    file[]: crc = 6c1e89a3; size =      3250; name = 460.HEP
-    file[]: crc = 403dadc0; size =      9308; name = 460.SCR
-    file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
-    file[]: crc = 1749937b; size =     11578; name = 470.SCR
-    file[]: crc = f21484f5; size =       622; name = 65535.MAP
+    file[]: crc = 08b70e50; size =      2320; name = 425.SCR
+    file[]: crc = 8972dbef; size =      1006; name = 481.HEP
+    file[]: crc = 16e3a48a; size =      3574; name = 481.SCR
+    file[]: crc = dbbeec89; size =       388; name = 482.HEP
+    file[]: crc = d2e86840; size =      1702; name = 482.SCR
+    file[]: crc = ca730577; size =      3136; name = 580.HEP
+    file[]: crc = 37d5c787; size =      7598; name = 580.SCR
+    file[]: crc = 0c0ba1d7; size =       622; name = 65535.MAP
+    file[]: crc = 0305036e; size =       132; name = 744.HEP
+    file[]: crc = 7cd1e484; size =      1450; name = 744.SCR
+    file[]: crc = 1a1bb72a; size =     12691; name = 7502.V56
+    file[]: crc = 87b688d1; size =      3670; name = 781.HEP
+    file[]: crc = ab5ea77e; size =      6002; name = 781.SCR
+    file[]: crc = f2cfc6ec; size =      1686; name = 790.HEP
+    file[]: crc = 9baae17c; size =      3272; name = 790.SCR
+    file[]: crc = fb47e261; size =     13856; name = 894.V56
+    file[]: crc = 1bed0415; size =       372; name = 928.HEP
+    file[]: crc = 56302d23; size =      3634; name = 928.SCR
+    file[]: crc = f25a2147; size =       194; name = 995.HEP
+    file[]: crc = f4f32d36; size =      3576; name = 995.SCR
+    file[]: crc = 77d62c1c; size =       322; name = 999.HEP
+    file[]: crc = 9cb5e751; size =      2350; name = 999.SCR
+    file[]: crc = a575e624; size =        70; name = 999.TEX
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
-    file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
+    file[]: crc = ff18d4b3; size =      7670; name = AUDBLAST.DRV
     file[]: crc = 71be3286; size =       726; name = AUDCDROM.DRV
     file[]: crc = bc615980; size =      6914; name = AUDDISNY.DRV
     file[]: crc = 03ff90f2; size =      5262; name = AUDMSSYS.DRV
@@ -1373,20 +1394,19 @@ game[v1.000.00g-cd]:
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
     file[]: crc = 2f04e1a1; size =     60112; name = PROGLIB.DLL ; optional = true
     file[]: crc = 80fb46cb; size =     77840; name = RAVE.DLL    ; optional = true
-    file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000
-    file[]: crc = 79a58691; size = 350789703; name = RESOURCE.AUD
-    file[]: crc = 0423bf92; size =      9215; name = RESOURCE.MAP
+    file[]: crc = 16751a21; size =   8376008; name = RESOURCE.000
+    file[]: crc = d3d48cb0; size = 350787931; name = RESOURCE.AUD
+    file[]: crc = 10695431; size =      9215; name = RESOURCE.MAP
     file[]: crc = c0bf3202; size =    259510; name = RESOURCE.MSG
-    file[]: crc = cb4db32c; size =       126; name = RESOURCE.SAV
-    file[]: crc = b566f302; size =   6574524; name = RESOURCE.SFX
+    file[]: crc = fcc89b21; size =   6574524; name = RESOURCE.SFX
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = 7916d720; size =    190464; name = SCIWV.EXE   ; optional = true
+    file[]: crc = 4a2bbdea; size =    190464; name = SCIWV.EXE   ; optional = true
     file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
     file[]: crc = c426e44b; size =    174155; name = SIERRA.EXE
-    file[]: crc = 0814154b; size =       142; name = SIERRA.INI  ; optional = true
+    file[]: crc = a7d55c29; size =       157; name = SIERRA.INI  ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = 48b93051; size =        17; name = VERSION
+    file[]: crc = dc7b9e4d; size =        17; name = VERSION
     file[]: crc = ba0faac1; size =      7305; name = VGA320.DRV
     file[]: crc = a389e296; size =      8258; name = VGA320BW.DRV
 
@@ -1439,15 +1459,29 @@ game[v1.000.00g-cd]:
     file[]: crc = edca4a86; size =   2114190; name = OPEN2.SEQ
     file[]: crc = b1f106d3; size =   1207440; name = SCAN.SEQ
     file[]: crc = ee72d75f; size =   1023651; name = SCOP.SEQ
+
 end
 
 //
-// King's Quest - Collector's Edition (v1.00)
+// v1.000.00G, CD
 //
-game[1.000.00-kings-quest-collectors-edition]:
-    name = King's Quest - Collector's Edition (v1.00)
-    AUDIO_DRIVER = AUDBLAST.DRV
-    anchorfile = RESOURCE.000
+game[v1.000.00g-cd]:
+    name = v1.000.00G, CD
+    imports = v1.000.00-cd
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = 15650cbc; size =      2390; remove = 0.HEP
+    file[]: crc = 03138720; size =      7116; remove = 0.SCR
+    file[]: crc = e7d28349; size =         9; remove = 0.TEX
+    file[]: crc = be92590f; size =      1392; remove = 100.HEP
+    file[]: crc = 2ff69bfa; size =      1716; remove = 100.SCR
+    file[]: crc = f4e9e0e7; size =      1222; remove = 130.HEP
+    file[]: crc = 98dfdfce; size =      2438; remove = 130.SCR
+    file[]: crc = 5cc2d5f7; size =     16856; remove = 202.V56
+    file[]: crc = c416e25b; size =      1230; remove = 283.HEP
+    file[]: crc = 864b2e5e; size =      2888; remove = 283.SCR
+    file[]: crc = 71585975; size =      1446; remove = 390.HEP
+    file[]: crc = fc6f0e26; size =      3756; remove = 390.SCR
     file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
     file[]: crc = be1217b7; size =      5862; name = 420.SCR
     file[]: crc = 3f8ec141; size =       758; name = 425.HEP
@@ -1456,106 +1490,53 @@ game[1.000.00-kings-quest-collectors-edition]:
     file[]: crc = 403dadc0; size =      9308; name = 460.SCR
     file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
     file[]: crc = 1749937b; size =     11578; name = 470.SCR
+    file[]: crc = 8972dbef; size =      1006; remove = 481.HEP
+    file[]: crc = 16e3a48a; size =      3574; remove = 481.SCR
+    file[]: crc = dbbeec89; size =       388; remove = 482.HEP
+    file[]: crc = d2e86840; size =      1702; remove = 482.SCR
+    file[]: crc = ca730577; size =      3136; remove = 580.HEP
+    file[]: crc = 37d5c787; size =      7598; remove = 580.SCR
     file[]: crc = f21484f5; size =       622; name = 65535.MAP
-    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 0305036e; size =       132; remove = 744.HEP
+    file[]: crc = 7cd1e484; size =      1450; remove = 744.SCR
+    file[]: crc = 1a1bb72a; size =     12691; remove = 7502.V56
+    file[]: crc = 87b688d1; size =      3670; remove = 781.HEP
+    file[]: crc = ab5ea77e; size =      6002; remove = 781.SCR
+    file[]: crc = f2cfc6ec; size =      1686; remove = 790.HEP
+    file[]: crc = 9baae17c; size =      3272; remove = 790.SCR
+    file[]: crc = fb47e261; size =     13856; remove = 894.V56
+    file[]: crc = 1bed0415; size =       372; remove = 928.HEP
+    file[]: crc = 56302d23; size =      3634; remove = 928.SCR
+    file[]: crc = f25a2147; size =       194; remove = 995.HEP
+    file[]: crc = f4f32d36; size =      3576; remove = 995.SCR
+    file[]: crc = 77d62c1c; size =       322; remove = 999.HEP
+    file[]: crc = 9cb5e751; size =      2350; remove = 999.SCR
+    file[]: crc = a575e624; size =        70; remove = 999.TEX
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
-    file[]: crc = 71be3286; size =       726; name = AUDCDROM.DRV
-    file[]: crc = bc615980; size =      6914; name = AUDDISNY.DRV
-    file[]: crc = 03ff90f2; size =      5262; name = AUDMSSYS.DRV
-    file[]: crc = 940c3211; size =      1109; name = AUDNONE.DRV
-    file[]: crc = 1ee52e99; size =      7699; name = AUDPRO.DRV
-    file[]: crc = 3d2c8d37; size =      5695; name = AUDPRO16.DRV
-    file[]: crc = faf6148f; size =      6494; name = AUDPS1.DRV
-    file[]: crc = 3b2b33a8; size =      8050; name = AUDTHUND.DRV
-    file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = e9ed051d; size =       758; name = IBMKBD.DRV
-    file[]: crc = f071ccf2; size =      4018; name = IBMPS1.DRV
-    file[]: crc = c402b0f0; size =      6205; name = INTERP.ERR
-    file[]: crc = 69a81a68; size =      2372; name = INTERP.TXT
-    file[]: crc = 1141d7d1; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 622f9c3d; size =       440; name = MESSAGE.MAP
-    file[]: crc = fb390b67; size =      9725; name = MICROSOF.DRV
-    file[]: crc = 2d4101d1; size =      6442; name = MMAWARE.DLL ; optional = true
-    file[]: crc = 8eab3dce; size =      2542; name = MT32.DRV
-    file[]: crc = fc703838; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 6a8670b9; size =     60112; name = PROGLIB.DLL ; optional = true
-    file[]: crc = 4306bce2; size =     77840; name = RAVE.DLL    ; optional = true
-    file[]: crc = 34e5f82b; size =   8376352; name = RESOURCE.000
-    file[]: crc = 40ce1107; size = 350789703; name = RESOURCE.AUD
-    file[]: crc = 96b8ed96; size =      9215; name = RESOURCE.MAP
-    file[]: crc = adc2d5d6; size =    259510; name = RESOURCE.MSG
-    file[]: crc = 0ad46523; size =       126; name = RESOURCE.SAV
-    file[]: crc = bc82fa2d; size =   6574524; name = RESOURCE.SFX
-    file[]: crc = 24ded5af; size =      9766; name = SBPRO.DRV
-    file[]: crc = 19434de6; size =     15872; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = 233a8b16; size =    190464; name = SCIWV.EXE   ; optional = true
-    file[]: crc = 4872e99f; size =    174155; name = SIERRA.EXE
-    file[]: crc = 247eb2f0; size =       142; name = SIERRA.INI  ; optional = true
-    file[]: crc = 5fba79c6; size =       766; name = SIERRAW.ICO ; optional = true
-    file[]: crc = 1e3460c8; size =      1481; name = STD.DRV
-    file[]: crc = 78e0c5a5; size =  31022220; name = TOON.AVI    ; optional = true
-    file[]: crc = c68097a4; size =        45; name = VERSION
-    file[]: crc = 9433064a; size =      7305; name = VGA320.DRV
-    file[]: crc = f1557c62; size =      8258; name = VGA320BW.DRV
+    file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000
+    file[]: crc = 79a58691; size = 350789703; name = RESOURCE.AUD
+    file[]: crc = 0423bf92; size =      9215; name = RESOURCE.MAP
+    file[]: crc = b566f302; size =   6574524; name = RESOURCE.SFX
+    file[]: crc = 7916d720; size =    190464; name = SCIWV.EXE   ; optional = true
+    file[]: crc = 0814154b; size =       142; name = SIERRA.INI  ; optional = true
+    file[]: crc = 48b93051; size =        17; name = VERSION
 
-    file[]: crc = d3b708bf; size =    134005; name = ALEX.BIN
-    file[]: crc = 96493086; size =     29889; name = ALLARIA.BIN
-    file[]: crc = a84bffec; size =     65241; name = ALLARIAD.BIN
-    file[]: crc = a87be491; size =    108765; name = BEAST.BIN
-    file[]: crc = d74a093d; size =     28033; name = BEAUTESS.BIN
-    file[]: crc = 75ecafec; size =     29845; name = BEAUTPEA.BIN
-    file[]: crc = c54edb02; size =     74269; name = BOOKSH.BIN
-    file[]: crc = 784a0c5c; size =     84937; name = BOOKWORM.BIN
-    file[]: crc = bc5204cb; size =     71349; name = CALIPHID.BIN
-    file[]: crc = 12d01d2f; size =     45377; name = CALIPHIM.BIN
-    file[]: crc = e874bbb5; size =     51449; name = CASSIMA.BIN
-    file[]: crc = 7e01a735; size =     35157; name = CELESTE.BIN
-    file[]: crc = 893a650f; size =     79209; name = FERRYM.BIN
-    file[]: crc = 7981b4dc; size =    196241; name = GNOMES.BIN
-    file[]: crc = 56c3c5da; size =     36965; name = GRAHAM.BIN
-    file[]: crc = 44f31769; size =    103917; name = HEADDRU.BIN
-    file[]: crc = 153f18b6; size =    122523; name = JOLLO.BIN
-    file[]: crc = 07604dda; size =     71025; name = LAMPSELL.BIN
-    file[]: crc = ee397700; size =     70025; name = PAWNSHOP.BIN
-    file[]: crc = a9c0e139; size =     39857; name = PRINCE.BIN
-    file[]: crc = 25eab83c; size =     34929; name = ROSELLA.BIN
-    file[]: crc = b9832bd1; size =     86039; name = SALADIN.BIN
-    file[]: crc = 64e0ec68; size =     49531; name = SIGHT.BIN
-    file[]: crc = 22f4998b; size =     67015; name = SMELL.BIN
-    file[]: crc = 3052af56; size =     66355; name = SMELLNO.BIN
-    file[]: crc = 2b3e6247; size =     38773; name = SOUND.BIN
-    file[]: crc = 2b3e6247; size =     38773; name = SOUNDNO.BIN
-    file[]: crc = c7569c19; size =    136253; name = TASTE.BIN
-    file[]: crc = bbb7a49e; size =    127783; name = TOUCH.BIN
-    file[]: crc = 1cbfb58a; size =     34097; name = VALANICE.BIN
-    file[]: crc = ef7a8e4c; size =     50335; name = VIZIER.BIN
-    file[]: crc = 69c770ab; size =     61083; name = WINGG.BIN
-
-    file[]: crc = a82c293d; size =   7511866; name = BIRDS.SEQ
-    file[]: crc = 934092fe; size =   3217234; name = BOAT.SEQ
-    file[]: crc = 13d96571; size =   3344865; name = CD1.SEQ
-    file[]: crc = a907a151; size =   3512028; name = CD6.SEQ
-    file[]: crc = 6920e211; size =    832262; name = CLOSE.SEQ
-    file[]: crc = 28b8b563; size =   2030233; name = CLOUD.SEQ
-    file[]: crc = 32b0a2de; size =   1079442; name = FPAN.SEQ
-    file[]: crc = c776a127; size =    625866; name = FS1.SEQ
-    file[]: crc = a124b36b; size =    124440; name = FS2Y.SEQ
-    file[]: crc = 5b6ebdea; size =    333563; name = FS2Z.SEQ
-    file[]: crc = 35c6a330; size =    580742; name = LAND.SEQ
-    file[]: crc = 1499d6c6; size =   3139935; name = NSHP.SEQ
-    file[]: crc = 7fbda208; size =   2500543; name = OPEN.SEQ
-    file[]: crc = 19c36a5e; size =   2114190; name = OPEN2.SEQ
-    file[]: crc = 1aa4643e; size =   1207440; name = SCAN.SEQ
-    file[]: crc = 9b36214d; size =   1023651; name = SCOP.SEQ
 end
 
 //
-// King's Quest - Collector's Edition, German (v1.00) *** create installer to decompress audio ***
+// King's Quest - Collector's Edition (v1.00)
 //
-game[1.000.00-de-kings-quest-collectors-edition]:
-    name = King's Quest - Collector's Edition, German (v1.00)
+game[1.000.00-kings-quest-collectors-edition]:
+    name = King's Quest - Collector's Edition (v1.00)
+    imports = v1.000.00g-cd
     anchorfile = RESOURCE.000
-    anchordepth = 1
+    file[]: crc = f2472c07; size =        45; name = VERSION
+end
+
+//
+// King's Quest - Collector's Edition, German (v1.00), Base Files
+//
+fragment[v1.000-de-base]:
     file[]: crc = 34ac739d; size =      2799; name = 0.FON
     file[]: crc = e66f0998; size =      2344; name = 0.HEP
     file[]: crc = e5931878; size =      6624; name = 0.SCR
@@ -1739,7 +1720,6 @@ game[1.000.00-de-kings-quest-collectors-edition]:
     file[]: crc = 88f33e4b; size =      5811; name = AUDTHUND.DRV
     file[]: crc = 2640dd45; size =    104350; name = BOAT.SEQ
     file[]: crc = 5b2a2516; size =        90; name = CD.AD
-    file[]: crc = 0743aa85; size =     22589; name = DCOMPAUD.EXE
     file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
     file[]: crc = 9ee3c049; size =    799706; name = FS3A.SEQ
     file[]: crc = c4ed7144; size =    410871; name = FS3B.SEQ
@@ -1758,7 +1738,6 @@ game[1.000.00-de-kings-quest-collectors-edition]:
     file[]: crc = 34191be0; size =     67724; name = PO.SEQ
     file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
     file[]: crc = 34e9a5c4; size =   7863324; name = RESOURCE.000
-    file[]: crc = f30b1b92; size =   1361244; name = RESOURCE.AUD
     file[]: crc = 81e16491; size =      8703; name = RESOURCE.MAP
     file[]: crc = 72fdbc09; size =    282822; name = RESOURCE.MSG
     file[]: crc = 7c5856eb; size =     87575; name = SCAN.SEQ
@@ -1767,6 +1746,32 @@ game[1.000.00-de-kings-quest-collectors-edition]:
     file[]: crc = de571b6b; size =        55; name = VERSION
     file[]: crc = ba0faac1; size =      7305; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// King's Quest - Collector's Edition, German (v1.000)
+//
+game[v1.000-de-kings-quest-collectors-edition]:
+    name = King's Quest - Collector's Edition, German (v1.000)
+    imports = v1.000-de-base
+    anchorfile = RESOURCE.AUD
+    anchordepth = 1
+    file[]: crc = 1fc0c642; size =       728; name = 65535.MAP
+    file[]: crc = 5208f168; size =   2542894; name = RESOURCE.AUD
+end
+
+//
+// King's Quest - Collector's Edition, German (v1.000), Installer
+//
+installer[v1.000-de-kings-quest-collectors-edition-installer]:
+    name = King's Quest - Collector's Edition, German (v1.000), Installer
+    installid = v1.000-de-kings-quest-collectors-edition-installer
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.000-de-base
+    anchorfile = RESOURCE.AUD
+    file[]: crc = 0743aa85; size =     22589; name = DCOMPAUD.EXE
+    file[]: crc = f30b1b92; size =   1361244; name = RESOURCE.AUD
 end
 
 //

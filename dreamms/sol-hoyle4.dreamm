@@ -10,7 +10,7 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 nothrottle = 1.5
-mips = $(MIPS_486DX2_66)
+mips = $(MIPS_386DX_33)
 ramkb = 4096
 filter = sierra, tabletop, card
 

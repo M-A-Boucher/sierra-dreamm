@@ -13,7 +13,6 @@ mips = $(MIPS_486DX_33)
 nothrottle = 2
 ramkb = 4096
 filter = sierra, adventure
-AUDIO_DRIVER = AUDNONE.DRV
 
 //
 // graphics configuration
@@ -82,7 +81,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
-        audioDrv=$(AUDIO_DRIVER)
+        audioDrv=AUDBLAST.DRV
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV

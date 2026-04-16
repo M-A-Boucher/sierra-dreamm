@@ -11,7 +11,6 @@ rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_386DX_33)
 nothrottle = 4
-videohw = vga;
 ramkb = 4096
 filter = sierra, adventure
 
@@ -81,6 +80,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
+        audioDrv=AUDBLAST.DRV
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV

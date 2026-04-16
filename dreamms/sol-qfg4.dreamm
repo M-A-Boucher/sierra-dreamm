@@ -11,7 +11,6 @@ rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 ramkb = 4096
 filter = sierra, adventure
-AUDIO_DRIVER = DACBLAST.DRV
 
 //
 // graphics configuration
@@ -86,7 +85,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
-        audioDrv=$(AUDIO_DRIVER)
+        audioDrv=DACBLAST.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
         minMemory=1500k
@@ -303,7 +302,6 @@ end
 //
 game[v1.0-cd]:
     name = CD (v1.0)
-    AUDIO_DRIVER = DACBLAST.DRV
     anchorfile = RESOURCE.000
     file[]: crc = 6b7f71ed; size =       908; name = 100.HEP
     file[]: crc = 959b3e4f; size =      1600; name = 100.SCR
@@ -354,7 +352,6 @@ end
 //
 game[v1.0-gog]:
     name = GOG (v1.0)
-    AUDIO_DRIVER = DACBLAST.DRV
     imports = v1.0-cd
     anchorfile = RESOURCE.000
     file[]: crc = e2d01ede; size =      1852; name = 10.HEP
@@ -387,7 +384,6 @@ end
 //
 demo[demo]:
     name = Demo
-    AUDIO_DRIVER = AUDNONE.DRV
     anchorfile = RESOURCE.000
     file[]: crc = 0d77235c; size =       117; name = 65535.MAP
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV

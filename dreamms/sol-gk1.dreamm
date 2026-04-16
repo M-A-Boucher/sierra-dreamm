@@ -14,7 +14,6 @@ nothrottle = 3
 videohw = svga
 ramkb = 8192
 filter = sierra, adventure
-AUDIO_DRIVER = DACBLAST.DRV
 
 //
 // graphics configuration
@@ -78,7 +77,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv  = $(VIDEO_DRIVER)
         soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = $(AUDIO_DRIVER)
+        audioDrv  = DACBLAST.DRV
         mouseDrv  = STDMOUSE.DRV
         memoryDrv = ARM.DRV
         minMemory = 2M
@@ -813,7 +812,6 @@ end
 //
 game[v1.0-cd]:
     name = v1.0, CD
-    AUDIO_DRIVER = DACBLAST.DRV
     imports = v1.0-cd-base
     anchorfile = SIERRA.EXE
     anchordepth = 1
@@ -861,7 +859,6 @@ end
 //
 game[v1.1-cd]:
     name = v1.1, CD
-    AUDIO_DRIVER = DACBLAST.DRV
     imports = v1.0-cd
     anchorfile = SIERRA.EXE
     file[]: crc = a577da3b; size =      4717; name = DACBLAST.DRV
