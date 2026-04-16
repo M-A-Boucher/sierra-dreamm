@@ -13,7 +13,6 @@ mips = $(MIPS_486DX_33)
 nothrottle = 2
 ramkb = 4096
 filter = sierra, adventure
-AUDIO_DRIVER = AUDNONE.DRV
 
 //
 // graphics configuration
