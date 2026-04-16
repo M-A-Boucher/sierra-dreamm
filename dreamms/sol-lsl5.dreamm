@@ -283,18 +283,19 @@ game[v1.0-int-11.14.91-de-8x1.44m]:
 end
 
 //
-// Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 9.11.91)
+// v1.0, Int. 9.11.91, CD
 //
-game[v1.0-int-9.11.91-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 9.11.91)
+game[v1.0-int-9.11.91-cd]:
+    name = v1.0, Int. 9.11.91, CD
     imports = v1.0-int-9.11.91-8x1.44m
-    anchorfile = RESOURCE.000
-    file[]: crc = 534b8408; size =      3741; remove = CMS.DRV
+    anchorfile = MTBLAST.DRV
+    anchordepth = 1
+    file[]:                                   name = CMS.DRV     ; optional = true
     file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
     file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
-    file[]: crc = cecb955a; size =      3950; remove = TANDY3V.DRV
-    file[]: crc = 6814b17f; size =      4498; remove = TANDY3VD.DRV
-    file[]: crc = 2418c236; size =       563; remove = TANDYKBD.DRV
+    file[]:                                   name = TANDY3V.DRV ; optional = true
+    file[]:                                   name = TANDY3VD.DRV; optional = true
+    file[]:                                   name = TANDYKBD.DRV; optional = true
 end
 
 //
