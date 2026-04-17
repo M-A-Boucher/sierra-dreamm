@@ -10,7 +10,7 @@ Alternatively, click on **View DREAMMPack Folder**. Copy the sierra.dreammpack f
 
 ## Notes 
 ### AGI games with Softguard Superlok v2 copy protection
-The agiscript currently doesn't currently work on the following titles:
+The agikey script currently doesn't currently work on the following titles:
 - KQ3 v2.00, Int. 2.2.4.35, 2x720K and 3x360K
 - KQ3 v2.14, Int. 2.935, 2x720K and 3x360K
 - SQ1 v2.2, Int. 2.426
