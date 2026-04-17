@@ -16,3 +16,10 @@ The agiscript currently doesn't currently work on the following titles:
 - SQ1 v2.2, Int. 2.917
 
 All of the BC, KQ1, KQ2, LSL1, SQ2 and some early KQ3 and SQ1 copy protections get defeated with the script.
+
+## Credits
+A huge thank you to the following people that have helped with this .dreammpack:
+- treloret
+- univbee
+
+And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
