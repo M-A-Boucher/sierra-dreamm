@@ -8,7 +8,8 @@ You should now be able to import and play many Sierra (and Dynamix) adventure ga
 
 Alternatively, click on **View DREAMMPack Folder**. Copy the sierra.dreammpack file to this folder, close and relaunch DREAMM.
 
-#### Notes on AGI games with Softguard Superlok v2 copy protection
+## Notes 
+### AGI games with Softguard Superlok v2 copy protection
 The agiscript currently doesn't currently work on the following titles:
 - KQ3 v2.00, Int. 2.2.4.35, 2x720K and 3x360K
 - KQ3 v2.14, Int. 2.935, 2x720K and 3x360K
