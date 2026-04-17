@@ -263,10 +263,10 @@ game[v1.1-int-4.29.91-6x1.2m]:
 end
 
 //
-// v1.0, Int. 11.21.91, French, 6x1.44M *** Unverified ***
+// v1.0, Int. 12.26.91, French, 6x1.44M
 //
-game[v1.0-int-11.21.91-fr-6x1.44m]:
-    name = v1.0, Int. 11.21.91, French, 6x1.44M
+game[v1.0-int-12.26.91-fr-6x1.44m]:
+    name = v1.0, Int. 12.26.91, French, 6x1.44M
     LANGUAGE = 33;
     launch = SIERRA.EXE
     anchorfile = RESOURCE.000

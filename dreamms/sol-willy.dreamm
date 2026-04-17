@@ -152,10 +152,10 @@ game[v1.01-int-10.11.91-7x1.2m]:
 end
 
 //
-// v1.01, Int. 10.11.91, French, 6x1.44M *** Unverified ***
+// v1.0, Int. 9.25.91, French, 6x1.44M
 //
-game[v1.01-int-10.11.91-fr-6x1.44m]:
-    name = v1.01, Int. 10.11.91, French, 6x1.44M
+game[v1.0-int-9.25.91-fr-6x1.44m]:
+    name = v1.01, Int. 9.25.91, French, 6x1.44M
     anchorfile = WILLY.EXE
     file[]: crc = 85641aae; size =   1358304; name = VOLUME.001
     file[]: crc = b210ec01; size =   1441526; name = VOLUME.002
