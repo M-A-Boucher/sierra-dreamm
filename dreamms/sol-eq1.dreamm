@@ -72,13 +72,14 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        audioDrv=AUDBLAST.DRV
-        joyDrv=JOYSTICK.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
-        minHunk=200k
+        videoDrv = $(VIDEO_DRIVER)
+        soundDrv = $(SOUND_DRIVER)
+        audioDrv = AUDBLAST.DRV
+        joyDrv   = JOYSTICK.DRV
+        kbdDrv   = IBMKBD.DRV
+        mouseDrv = STDMOUSE.DRV
+        language = $(LANGUAGE)
+        minHunk  = 200k
     ]]]
 end
 
@@ -150,6 +151,44 @@ game[v1.0-int-12.23.91-4x1.2m]:
     file[]: crc = 1cee5361; size =   1129316; name = RESOURCE.002
     file[]: crc = 398401f3; size =   1145616; name = RESOURCE.003
     file[]: crc = 30c95dc0; size =      4059; name = RESOURCE.MAP
+end
+
+//
+// v1.0, Int. 5.3.94, French, 4x1.2M *** Unverified ***
+//
+game[v1.0-int-5.3.94-fr-4x1.2m]:
+    name = v1.0, Int. 5.3.94, French, 4x1.2M
+    LANGUAGE = 33
+    anchorfile = RESOURCE.000
+    file[]: crc = d6448fa4; size =     16134; name = 1180.MSG
+    file[]: crc = 77b062bd; size =      6917; name = 1221.MSG
+    file[]: crc = b40ec8be; size =      7734; name = 1222.MSG
+    file[]: crc = 128bd1ab; size =      5387; name = 1223.MSG
+    file[]: crc = 14b769c0; size =      8061; name = 1343.MSG
+    file[]: crc = c83275fb; size =     11314; name = 1540.MSG
+    file[]: crc = ef078fd2; size =      5712; name = 222.SCR
+    file[]: crc = bf73bc68; size =      5964; name = 3341.V56
+    file[]: crc = d1f0de8a; size =     17430; name = 480.SCR
+    file[]: crc = 4ff4867b; size =      4123; name = 604.V56
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = 69c7f0b2; size =      2572; name = AUDBLAST.DRV
+    file[]: crc = 8dce9906; size =        47; name = AUDNONE.DRV
+    file[]: crc = 48ab1007; size =      2317; name = AUDPRO.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = 970ca3b0; size =      2624; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = 75b71ff3; size =    973723; name = RESOURCE.000
+    file[]: crc = b9456810; size =   1205841; name = RESOURCE.001
+    file[]: crc = 3dd57ee9; size =   1173872; name = RESOURCE.002
+    file[]: crc = 3996d8c7; size =   1141520; name = RESOURCE.003
+    file[]: crc = 286ac555; size =      4407; name = RESOURCE.MAP
+    file[]: crc = 6515dae8; size =     63095; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = c03b6898; size =        56; name = VERSION
+    file[]: crc = 2172aaf7; size =      5846; name = VGA320.DRV
+    file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
 end
 
 //
