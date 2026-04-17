@@ -95,13 +95,14 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        audioDrv=$(AUDIO_DRIVER)
-        joyDrv=JOYSTICK.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
-        minHunk=180k
+        videoDrv  = $(VIDEO_DRIVER)
+        soundDrv  = $(SOUND_DRIVER)
+        audioDrv  = $(AUDIO_DRIVER)
+        joyDrv    = JOYSTICK.DRV
+        kbdDrv    = IBMKBD.DRV
+        mouseDrv  = STDMOUSE.DRV
+        language  = $(LANGUAGE)
+        minHunk   = 180k
         audioSize = 32k
     ]]]
 end
@@ -379,8 +380,9 @@ end
 //
 game[v0.000.149-fr-8x1.44m]:
     name = v0.000.149, French, 8x1.44M
+    LANGUAGE = 33
     imports = v0.000.149-base
-    anchorfile = RESOURCE.000
+    anchorfile = RESOURCE.007
     file[]: crc = 9ee0552b; size =      2671; name = INTERP.TXT
     file[]: crc = 8ce322f8; size =    332806; name = RESOURCE.000
     file[]: crc = 7e27a601; size =   1136827; name = RESOURCE.001
@@ -398,8 +400,9 @@ end
 //
 game[v0.000.149-de-8x1.44m]:
     name = v0.000.149, German, 8x1.44M
+    LANGUAGE = 49
     imports = v0.000.149-base
-    anchorfile = RESOURCE.000
+    anchorfile = RESOURCE.007
     file[]: crc = 970ca3b0; size =      2624; name = INTERP.TXT
     file[]: crc = 0a2ab8cb; size =    336826; name = RESOURCE.000
     file[]: crc = 1851137b; size =   1136919; name = RESOURCE.001
@@ -418,8 +421,9 @@ end
 //
 game[v0.000.149-de-9x1.2m]:
     name = v0.000.149, German, 9x1.2M
+    LANGUAGE = 49
     imports = v0.000.149-de-8x1.44m
-    anchorfile = RESOURCE.000
+    anchorfile = RESOURCE.008
     file[]: crc = ad55334a; size =   1181515; name = RESOURCE.001
     file[]: crc = 0441a137; size =   1103150; name = RESOURCE.002
     file[]: crc = e8cd5dcb; size =    966071; name = RESOURCE.003
@@ -436,8 +440,9 @@ end
 //
 game[v0.000.149-it-8x1.44m]:
     name = v0.000.149, Italian, 8x1.44M
+    LANGUAGE = 39
     imports = v0.000.149-base
-    anchorfile = RESOURCE.000
+    anchorfile = RESOURCE.006
     file[]: crc = f89f15ac; size =      2642; name = INTERP.TXT
     file[]: crc = 4352c151; size =    332246; name = RESOURCE.000
     file[]: crc = 19ba1914; size =   1136389; name = RESOURCE.001
@@ -445,7 +450,6 @@ game[v0.000.149-it-8x1.44m]:
     file[]: crc = 51c3482d; size =   1323676; name = RESOURCE.003
     file[]: crc = f9720d10; size =   1331097; name = RESOURCE.004
     file[]: crc = fc547ac9; size =   1267757; name = RESOURCE.005
-    file[]: crc = 8f613618; size =   1209325; name = RESOURCE.006
     file[]: crc = 8f613618; size =   1209325; name = RESOURCE.006
     file[]: crc = 268e1e28; size =      8283; name = RESOURCE.MAP
 end

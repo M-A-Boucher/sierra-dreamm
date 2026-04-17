@@ -291,6 +291,7 @@ end
 //
 game[v1.0-int-11.14.91-de-8x1.44m]:
     name = v1.0, Int. 11.14.91, German, 8x1.44M
+    LANGUAGE = 49
     anchorfile = RESOURCE.000
     file[]: crc = 63fd77b8; size =      2062; name = 961.V56
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV

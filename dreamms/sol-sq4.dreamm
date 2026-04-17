@@ -267,8 +267,8 @@ end
 //
 game[v1.0-int-12.26.91-fr-6x1.44m]:
     name = v1.0, Int. 12.26.91, French, 6x1.44M
-    LANGUAGE = 33;
     launch = SIERRA.EXE
+    LANGUAGE = 33
     anchorfile = RESOURCE.000
     file[]: crc = 2ea35bf0; size =     12518; name = 391.SCR
     file[]: crc = e3fbd318; size =     19209; name = 391.TEX
@@ -314,6 +314,7 @@ end
 game[v1.0-int-11.21.91-de-6x1.44m]:
     name = v1.0, Int. 11.21.91, German, 6x1.44M
     launch = SIERRA.EXE
+    LANGUAGE = 49
     anchorfile = RESOURCE.000
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
     file[]: crc = 534b8408; size =      3741; name = CMS.DRV
@@ -322,7 +323,7 @@ game[v1.0-int-11.21.91-de-6x1.44m]:
     file[]: crc = 6831675f; size =      2581; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 903dd811; size =      1976; name = MT32.DRV
-    file[]: crc = 4d370aa5; size =      3688; name = MTBLAST.DRV ; replace = MTBLAST6.DRV
+    file[]: crc = 4d370aa5; size =      3688; name = MTBLAST.DRV
     file[]: crc = 9703a0a2; size =    206032; name = RESOURCE.000
     file[]: crc = c86dfea6; size =   1270577; name = RESOURCE.001
     file[]: crc = d87cb004; size =   1242817; name = RESOURCE.002
@@ -348,15 +349,15 @@ game[v1.0-int-11.21.91-de-7x1.2m]:
     name = v1.0, Int. 11.21.91, German, 7x1.2M
     imports = v1.0-int-11.21.91-de-6x1.44m
     launch = SIERRA.EXE
+    LANGUAGE = 49
     anchorfile = RESOURCE.000
-    file[]: crc = 78af4fff; size =      6339; name = RESOURCE.MAP
     file[]: crc = 1dca5816; size =   1065442; name = RESOURCE.001
     file[]: crc = 905dff53; size =    858402; name = RESOURCE.002
     file[]: crc = c23ffa31; size =   1172738; name = RESOURCE.003
     file[]: crc = 0c340861; size =   1064761; name = RESOURCE.004
     file[]: crc = 7d6bf2ac; size =   1156765; name = RESOURCE.005
     file[]: crc = cb21ec86; size =    924059; name = RESOURCE.006
-
+    file[]: crc = 78af4fff; size =      6339; name = RESOURCE.MAP
 end
 
 //
@@ -365,6 +366,7 @@ end
 game[v1.3-it-6x1.44m]:
     name = v1.3, Italian, 6x1.44M
     launch = SIERRA.EXE
+    LANGUAGE = 39
     anchorfile = RESOURCE.000
     file[]: crc = cc4e621b; size =     16980; name = 0.SCR
     file[]: crc = 6d391a37; size =      3543; name = 0.TEX
