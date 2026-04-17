@@ -394,6 +394,96 @@ installer[v1.0-int-12.22.93-11x1.44m-installer]:
 end
 
 //
+// v1.0, Int. 1.17.94, French, 11x1.44M
+//
+game[v1.0-int-1.17.94-fr-11x1.44m]:
+    name = v1.0, Int. 1.17.94, French, 11x1.44M
+    anchorfile = RESOURCE.000
+    file[]: crc = 3282b2e4; size =     10399; name = 3024.V56
+    file[]: crc = 353ee5c2; size =      5782; name = 3025.V56
+    file[]: crc = d5f24394; size =       252; name = 65535.MAP
+    file[]: crc = 5cb3fb14; size =      2154; name = 800.HEP
+    file[]: crc = 5f0c8527; size =     10122; name = 800.SCR
+    file[]: crc = d505477c; size =      7420; name = 815.HEP
+    file[]: crc = 6d474d53; size =      9048; name = 815.SCR
+    file[]: crc = 1591b0cc; size =      7361; name = 9561.V56
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = 0385a3ac; size =      4717; name = DACBLAST.DRV
+    file[]: crc = ab47a093; size =      2745; name = DACMSSYS.DRV
+    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
+    file[]: crc = efe84434; size =      2956; name = DACPRO.DRV
+    file[]: crc = ba17233a; size =      3098; name = DACPRO16.DRV
+    file[]: crc = 85c36f83; size =      3752; name = DACTHUND.DRV
+    file[]: crc = eda422e5; size =      3111; name = GENMIDI.DRV
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 57b54010; size =      3104; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = 90fa701b; size =  13033072; name = RESOURCE.000
+    file[]: crc = cb9dfe17; size =     10801; name = RESOURCE.MAP
+    file[]: crc = 6043c09f; size =   2288746; name = RESOURCE.SFX
+    file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = 86256eaa; size =      8263; name = SIERRA.ERR
+    file[]: crc = 7af250c7; size =    691840; name = SIERRA.EXE
+    file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = 62ee4f45; size =        63; name = VERSION
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
+end
+
+//
+// v1.0, Int. 1.17.94, French, 11x1.44M, Installer
+//
+installer[v1.0-int-1.17.94-fr-11x1.44m-installer]:
+    name = v1.0, Int. 1.17.94, French, 11x1.44M, Installer
+    installid = v1.0-int-1.17.94-fr-11x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = RESOURCE.SFX
+    anchordepth = 1
+    file[]: crc = 3282b2e4; size =     10399; name = 3024.V56
+    file[]: crc = 353ee5c2; size =      5782; name = 3025.V56
+    file[]: crc = c84c5e2a; size =       252; name = 65535.MAP
+    file[]: crc = 5cb3fb14; size =      2154; name = 800.HEP
+    file[]: crc = 5f0c8527; size =     10122; name = 800.SCR
+    file[]: crc = d505477c; size =      7420; name = 815.HEP
+    file[]: crc = 6d474d53; size =      9048; name = 815.SCR
+    file[]: crc = 1591b0cc; size =      7361; name = 9561.V56
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = 387e84b9; size =     16607; name = AUDDCOMP.EXE
+    file[]: crc = 0385a3ac; size =      4717; name = DACBLAST.DRV
+    file[]: crc = ab47a093; size =      2745; name = DACMSSYS.DRV
+    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
+    file[]: crc = efe84434; size =      2956; name = DACPRO.DRV
+    file[]: crc = ba17233a; size =      3098; name = DACPRO16.DRV
+    file[]: crc = 85c36f83; size =      3752; name = DACTHUND.DRV
+    file[]: crc = eda422e5; size =      3111; name = GENMIDI.DRV
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 57b54010; size =      3104; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = 5a7970b6; size =    696000; name = RESOURCE.001
+    file[]: crc = bc9e3acb; size =   1447000; name = RESOURCE.002
+    file[]: crc = b4c7c0f5; size =   1447000; name = RESOURCE.003
+    file[]: crc = f332c577; size =   1447000; name = RESOURCE.004
+    file[]: crc = f1677a36; size =   1447000; name = RESOURCE.005
+    file[]: crc = 38d38c4c; size =   1447000; name = RESOURCE.006
+    file[]: crc = 27ea06db; size =   1447000; name = RESOURCE.007
+    file[]: crc = 8542ea9b; size =   1447000; name = RESOURCE.008
+    file[]: crc = 2f0fcc1a; size =   1447000; name = RESOURCE.009
+    file[]: crc = f01dbf8a; size =    761072; name = RESOURCE.010
+    file[]: crc = cb9dfe17; size =     10801; name = RESOURCE.MAP
+    file[]: crc = 3c990c9f; size =    590291; name = RESOURCE.SFX
+    file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
+    file[]: crc = 86256eaa; size =      8263; name = SIERRA.ERR
+    file[]: crc = 7af250c7; size =    691840; name = SIERRA.EXE
+    file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = 62ee4f45; size =        63; name = VERSION
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
+end
+
+//
 // v1.0, Int. 1.17.94, German, 11x1.44M
 //
 game[v1.0-int-1.17.94-de-11x1.44m]:
