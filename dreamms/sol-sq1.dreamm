@@ -5,7 +5,7 @@ desc[sol-sq1]:
 
 name = Space Quest: Chapter I - The Sarien Encounter
 icon = sol-sq1.png
-machine = $(MACHINE)
+machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\sierra.com
