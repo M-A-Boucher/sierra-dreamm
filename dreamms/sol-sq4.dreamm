@@ -15,6 +15,7 @@ ramkb = 4096
 videohw = vga;
 filter = sierra, adventure
 TANDY = 0
+LANGUAGE = 1
 AUDIO_DRIVER = 
 
 //

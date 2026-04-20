@@ -9,7 +9,7 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
-mips = $(MIPS_386DX_33)
+mips = $(MIPS_486DX_33)
 nothrottle = 4
 ramkb = 4096
 filter = sierra, adventure
@@ -79,14 +79,16 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        audioDrv=AUDBLAST.DRV
-        joyDrv=JOYSTICK.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
-        minHunk=204k
-        audioSize=8k
+        videoDrv  = $(VIDEO_DRIVER)
+        soundDrv  = $(SOUND_DRIVER)
+        audioDrv  = AUDBLAST.DRV
+        joyDrv    = JOYSTICK.DRV
+        kbdDrv    = IBMKBD.DRV
+        mouseDrv  = STDMOUSE.DRV
+        minHunk   = 207k
+        sync      = .\
+        audio     = .\
+        audioSize = 8K
     ]]]
 end
 
@@ -118,8 +120,9 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = D:\;         srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
 // v1.0 Base Files
@@ -1382,17 +1385,20 @@ game[v1.000.00-cd]:
     file[]: crc = faf6148f; size =      6494; name = AUDPS1.DRV
     file[]: crc = 3b2b33a8; size =      8050; name = AUDTHUND.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
+    file[]: crc = 61cec9ff; size =   1204352; name = HDLOGO.AVI  ; optional = true
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
     file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 566201ff; size =        44; name = KQ6CD
+    file[]: crc = 5d0deb99; size =  34118072; name = MAKINGKQ.AVI; optional = true
     file[]: crc = 12c92c34; size =       440; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 2f04e1a1; size =     60112; name = PROGLIB.DLL ; optional = true
+    file[]: crc = 2f04e1a1; size =     60112; name = PROGLIB.DLL
     file[]: crc = 80fb46cb; size =     77840; name = RAVE.DLL    ; optional = true
     file[]: crc = 16751a21; size =   8376008; name = RESOURCE.000
     file[]: crc = d3d48cb0; size = 350787931; name = RESOURCE.AUD
@@ -1402,47 +1408,47 @@ game[v1.000.00-cd]:
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL  ; optional = true
     file[]: crc = 4a2bbdea; size =    190464; name = SCIWV.EXE   ; optional = true
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
+    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE
     file[]: crc = c426e44b; size =    174155; name = SIERRA.EXE
     file[]: crc = a7d55c29; size =       157; name = SIERRA.INI  ; optional = true
+    file[]: crc = 97044033; size =       766; name = SIERRAW.ICO ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 41f55cc9; size =  31022220; name = TOON.AVI    ; optional = true
     file[]: crc = dc7b9e4d; size =        17; name = VERSION
     file[]: crc = ba0faac1; size =      7305; name = VGA320.DRV
     file[]: crc = a389e296; size =      8258; name = VGA320BW.DRV
-
-    file[]: crc = e4e00f29; size =    134005; name = ALEX.BIN
-    file[]: crc = 827d4ea1; size =     29889; name = ALLARIA.BIN
-    file[]: crc = fffa1b46; size =     65241; name = ALLARIAD.BIN
-    file[]: crc = 9a54b769; size =    108765; name = BEAST.BIN
-    file[]: crc = 09bae8be; size =     28033; name = BEAUTESS.BIN
-    file[]: crc = 83795493; size =     29845; name = BEAUTPEA.BIN
-    file[]: crc = 145bfaef; size =     74269; name = BOOKSH.BIN
-    file[]: crc = 594ed257; size =     84937; name = BOOKWORM.BIN
-    file[]: crc = e0086944; size =     71349; name = CALIPHID.BIN
-    file[]: crc = 257d9bb5; size =     45377; name = CALIPHIM.BIN
-    file[]: crc = 463d11e9; size =     51449; name = CASSIMA.BIN
-    file[]: crc = a9efba84; size =     35157; name = CELESTE.BIN
-    file[]: crc = a56756c3; size =     79209; name = FERRYM.BIN
-    file[]: crc = 85a28b5f; size =    196241; name = GNOMES.BIN
-    file[]: crc = 6eb5cf3e; size =     36965; name = GRAHAM.BIN
-    file[]: crc = d0b8773a; size =    103917; name = HEADDRU.BIN
-    file[]: crc = 5ea1b73e; size =    122523; name = JOLLO.BIN
-    file[]: crc = fbbeccec; size =     71025; name = LAMPSELL.BIN
-    file[]: crc = 92c402ab; size =     70025; name = PAWNSHOP.BIN
-    file[]: crc = 72046822; size =     39857; name = PRINCE.BIN
-    file[]: crc = 49c9a347; size =     34929; name = ROSELLA.BIN
-    file[]: crc = 924637ab; size =     86039; name = SALADIN.BIN
-    file[]: crc = 1ec166d1; size =     49531; name = SIGHT.BIN
-    file[]: crc = 1ae4fb3e; size =     67015; name = SMELL.BIN
-    file[]: crc = 9645c6b6; size =     66355; name = SMELLNO.BIN
-    file[]: crc = 45559d18; size =     38773; name = SOUND.BIN
-    file[]: crc = 2c11b50b; size =     38773; name = SOUNDNO.BIN
-    file[]: crc = 69a8c617; size =    136253; name = TASTE.BIN
-    file[]: crc = 86c2692f; size =    127783; name = TOUCH.BIN
-    file[]: crc = 8b96774a; size =     34097; name = VALANICE.BIN
-    file[]: crc = b3a87020; size =     50335; name = VIZIER.BIN
-    file[]: crc = d9bbda57; size =     61083; name = WINGG.BIN
-
+    file[]: crc = e4e00f29; size =    134005; name = ACTORS\ALEX.BIN
+    file[]: crc = 827d4ea1; size =     29889; name = ACTORS\ALLARIA.BIN
+    file[]: crc = fffa1b46; size =     65241; name = ACTORS\ALLARIAD.BIN
+    file[]: crc = 9a54b769; size =    108765; name = ACTORS\BEAST.BIN
+    file[]: crc = 09bae8be; size =     28033; name = ACTORS\BEAUTESS.BIN
+    file[]: crc = 83795493; size =     29845; name = ACTORS\BEAUTPEA.BIN
+    file[]: crc = 145bfaef; size =     74269; name = ACTORS\BOOKSH.BIN
+    file[]: crc = 594ed257; size =     84937; name = ACTORS\BOOKWORM.BIN
+    file[]: crc = e0086944; size =     71349; name = ACTORS\CALIPHID.BIN
+    file[]: crc = 257d9bb5; size =     45377; name = ACTORS\CALIPHIM.BIN
+    file[]: crc = 463d11e9; size =     51449; name = ACTORS\CASSIMA.BIN
+    file[]: crc = a9efba84; size =     35157; name = ACTORS\CELESTE.BIN
+    file[]: crc = a56756c3; size =     79209; name = ACTORS\FERRYM.BIN
+    file[]: crc = 85a28b5f; size =    196241; name = ACTORS\GNOMES.BIN
+    file[]: crc = 6eb5cf3e; size =     36965; name = ACTORS\GRAHAM.BIN
+    file[]: crc = d0b8773a; size =    103917; name = ACTORS\HEADDRU.BIN
+    file[]: crc = 5ea1b73e; size =    122523; name = ACTORS\JOLLO.BIN
+    file[]: crc = fbbeccec; size =     71025; name = ACTORS\LAMPSELL.BIN
+    file[]: crc = 92c402ab; size =     70025; name = ACTORS\PAWNSHOP.BIN
+    file[]: crc = 72046822; size =     39857; name = ACTORS\PRINCE.BIN
+    file[]: crc = 49c9a347; size =     34929; name = ACTORS\ROSELLA.BIN
+    file[]: crc = 924637ab; size =     86039; name = ACTORS\SALADIN.BIN
+    file[]: crc = 1ec166d1; size =     49531; name = ACTORS\SIGHT.BIN
+    file[]: crc = 1ae4fb3e; size =     67015; name = ACTORS\SMELL.BIN
+    file[]: crc = 9645c6b6; size =     66355; name = ACTORS\SMELLNO.BIN
+    file[]: crc = 45559d18; size =     38773; name = ACTORS\SOUND.BIN
+    file[]: crc = 2c11b50b; size =     38773; name = ACTORS\SOUNDNO.BIN
+    file[]: crc = 69a8c617; size =    136253; name = ACTORS\TASTE.BIN
+    file[]: crc = 86c2692f; size =    127783; name = ACTORS\TOUCH.BIN
+    file[]: crc = 8b96774a; size =     34097; name = ACTORS\VALANICE.BIN
+    file[]: crc = b3a87020; size =     50335; name = ACTORS\VIZIER.BIN
+    file[]: crc = d9bbda57; size =     61083; name = ACTORS\WINGG.BIN
     file[]: crc = aa1f268a; size =   7511866; name = BIRDS.SEQ
     file[]: crc = 608a650d; size =   3217234; name = BOAT.SEQ
     file[]: crc = 632af368; size =   3344865; name = CD1.SEQ
@@ -1459,7 +1465,7 @@ game[v1.000.00-cd]:
     file[]: crc = edca4a86; size =   2114190; name = OPEN2.SEQ
     file[]: crc = b1f106d3; size =   1207440; name = SCAN.SEQ
     file[]: crc = ee72d75f; size =   1023651; name = SCOP.SEQ
-
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
@@ -1520,7 +1526,7 @@ game[v1.000.00g-cd]:
     file[]: crc = 7916d720; size =    190464; name = SCIWV.EXE   ; optional = true
     file[]: crc = 0814154b; size =       142; name = SIERRA.INI  ; optional = true
     file[]: crc = 48b93051; size =        17; name = VERSION
-
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
