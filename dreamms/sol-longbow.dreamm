@@ -321,6 +321,37 @@ game[v1.1-int-1.13.92-6x1.44m]:
 end
 
 //
+// v1.0, Int. 3.12.92, German, 6x1.44M *** doesn't load ***
+//
+game[v1.0-int-3.12.92-de-6x1.44m]:
+    name = v1.0, Int. 3.12.92, German, 6x1.44M
+    launch = SCIDHUV.EXE
+    imports = v1.1-int-1.13.92-6x1.44m
+    anchorfile = RESOURCE.000
+    file[]: crc = 157ddb8f; size =     14102; remove = 140.SCR
+    file[]: crc = b39e24c8; size =      6816; remove = 185.SCR
+    file[]: crc = f640a2e4; size =      4066; remove = 312.SCR
+    file[]: crc = 33c93d08; size =     10128; remove = 320.SCR
+    file[]: crc = ba401939; size =      6280; name = 621.SCR
+    file[]: crc = 1c327ccb; size =         3; name = 621.TEX
+    file[]: crc = f4666133; size =     17268; remove = 750.SCR
+    file[]: crc = b820a60c; size =      2651; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = cab24165; size =    977281; name = RESOURCE.000
+    file[]: crc = 6170920a; size =   1167657; name = RESOURCE.001
+    file[]: crc = 49bc269b; size =   1172521; name = RESOURCE.002
+    file[]: crc = ca25ae17; size =   1165249; name = RESOURCE.003
+    file[]: crc = 56ebe99b; size =   1101869; name = RESOURCE.004
+    file[]: crc = 9f430974; size =   1176914; name = RESOURCE.005
+    file[]: crc = 36064d17; size =   1123585; name = RESOURCE.006
+    file[]: crc = 1efee329; size =      6285; name = RESOURCE.MAP
+    file[]: crc = b668cd9e; size =     60755; name = SCIDHUV.EXE
+    file[]: crc = 5a0337d4; size =      3007; remove = TANDY320.DRV
+    file[]: crc = 200cc608; size =       581; remove = TANDYKBD.DRV
+    file[]: crc = d4bbbce3; size =        10; name = VERSION
+end
+
+//
 // General MIDI Patch
 //
 addon[gmidi]:
