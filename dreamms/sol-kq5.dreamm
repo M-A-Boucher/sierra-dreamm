@@ -485,12 +485,12 @@ game[v1.000.052-cd]:
     file[]: crc = 16e53b62; size =       978; name = 99.SCR
     file[]: crc = d44245eb; size =      8070; name = ADL.DRV
     file[]: crc = face5fc7; size =      3027; name = AUDBLAST.DRV
-    file[]: crc = 580b41fd; size =      2284; name = AUDDISNY.DRV
+    file[]: crc = 580b41fd; size =      2284; name = AUDDISNY.DRV; optional = true
     file[]: crc = 1205bb52; size =  97103872; name = AUDIO001.002
     file[]: crc = 1eded4aa; size =     16850; name = AUDIO001.MAP
-    file[]: crc = d4e68c01; size =      2618; name = AUDPRO.DRV
-    file[]: crc = bbe3cc16; size =      1852; name = AUDPS1.DRV
-    file[]: crc = 983ee66f; size =      1914; name = AUDTANDY.DRV
+    file[]: crc = d4e68c01; size =      2618; name = AUDPRO.DRV  ; optional = true
+    file[]: crc = bbe3cc16; size =      1852; name = AUDPS1.DRV  ; optional = true
+    file[]: crc = 983ee66f; size =      1914; name = AUDTANDY.DRV; optional = true
     file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
@@ -502,14 +502,27 @@ game[v1.000.052-cd]:
     file[]: crc = 932c103d; size =    571368; name = RESOURCE.000
     file[]: crc = 5cbc3ac7; size =  16800210; name = RESOURCE.001
     file[]: crc = 77ba0ffd; size =     13122; name = RESOURCE.MAP
-    file[]: crc = 18f5ba6b; size =     13312; name = SCIDLL.DLL
+    file[]: crc = 18f5ba6b; size =     13312; name = SCIDLL.DLL  ; optional = true
     file[]: crc = 9772c8cb; size =    140288; name = SCIKQ5.EXE
     file[]: crc = 027971c8; size =    138499; name = SIERRA.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
-    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV ; optional = true
     file[]: crc = f98e5250; size =        11; name = VERSION
     file[]: crc = 2172aaf7; size =      5846; name = VGA320.DRV
     file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
+end
+
+//
+// King's Quest - Collector's Edition (v1.000.052)
+//
+game[v1.000.052-kings-quest-collectors-edition]:
+    name = King's Quest - Collector's Edition (v1.000.052)
+    AUDIO_DRIVER = AUDBLAST.DRV
+    imports = v1.000.052-cd
+    anchorfile = SCIKQ5.EXE
+    anchordepth = 1
+    file[]: crc = 1233be6b; size =    140288; name = SCIKQ5.EXE
+    file[]: crc = 015d36a0; size =       203; name = WINRES.CFG
 end
 
 //
@@ -518,11 +531,7 @@ end
 game[v1.000.052-gog]:
     name = GOG (v1.000.052)
     AUDIO_DRIVER = AUDBLAST.DRV
-    imports = v1.000.052-cd
-    anchorfile = SCIKQ5.EXE
-    anchordepth = 1
-    file[]:                                   name = RESOURCE.000
-    file[]:                                   name = SCIKQ5.EXE
-end
-
+    imports = v1.000.052-kings-quest-collectors-edition
+    anchorfile = RESOURCE.000
+    file[]: crc = 4200f1ba; size =    571368; name = RESOURCE.000
 end

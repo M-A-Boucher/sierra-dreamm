@@ -1519,6 +1519,7 @@ game[v1.000.00g-cd]:
     file[]: crc = 9cb5e751; size =      2350; remove = 999.SCR
     file[]: crc = a575e624; size =        70; remove = 999.TEX
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
+    file[]: crc = d8f2ac7f; size =         9; name = KQ6CD
     file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000
     file[]: crc = 79a58691; size = 350789703; name = RESOURCE.AUD
     file[]: crc = 0423bf92; size =      9215; name = RESOURCE.MAP
