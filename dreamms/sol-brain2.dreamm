@@ -106,6 +106,11 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
+script[mouse]:
+    condition = is_game() || is_demo()
+    code = mouse_force_relative_zero(true)
+end
+
 fragment[v1.0-base]:
     file[]: crc = 04f44ebd; size =       536; name = 185.HEP
     file[]: crc = 17af0d50; size =      1622; name = 185.SCR

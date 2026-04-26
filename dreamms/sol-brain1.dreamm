@@ -89,6 +89,10 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
+script[mouse]:
+    code = mouse_force_relative_zero(true)
+end
+
 //
 // v1.0, Int. 10.30.91, 2x1.44M
 //
