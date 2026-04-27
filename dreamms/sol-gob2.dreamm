@@ -1,0 +1,103 @@
+//
+// Gobliins 2: The Prince Buffoon
+//
+desc[sol-gob2]:
+
+name = Gobliins 2: The Prince Buffoon
+icon = sol-gob2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\LOADER.EXE
+mips = $(MIPS_486DX_33)
+ramkb = 8192
+filter = coktel vision, sierra, puzzle
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        SOUND = 0x01 0x00
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        SOUND = 0x01 0x40
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        SOUND = 0x05 0x40
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\MDO.CFG
+    contents = [[[
+        [[BINARY:0x00 0x00 0x13 0x00 $(SOUND) 0x00 0x01 0x01 0x00 0x07 0x00 0x13 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x05 0x00 0x00]]
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        MKDIR GAME
+        COPY DISK3.$00+DISK3.$01 DISK3.STK
+        COPY *.STK GAME\
+        COPY *.GDR GAME\
+        COPY MDO.DEF GAME\
+        COPY ALL.ASK GAME\
+        COPY *.EXE GAME\
+        DEL DISK3.STK
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0, Int. 2.10.93, 2x1.44M
+//
+game[v1.0-int-2.10.93-2x1.44m]:
+    name = v1.0, Int. 2.10.93, 2x1.44M
+    anchorfile = DISK2.STK
+    file[]: crc = 73d7f23a; size =     12952; name = ALL.ASK
+    file[]: crc = 11549a07; size =    970686; name = DISK2.STK
+    file[]: crc = 04019131; size =    899411; name = DISK3.STK
+    file[]: crc = 2b69612d; size =    805146; name = INTRO.STK
+    file[]: crc = 2f584902; size =      3524; name = L360.GDR
+    file[]: crc = f97edb7f; size =     14299; name = LEGA.GDR
+    file[]: crc = 6b196fac; size =     89398; name = LOADER.EXE
+    file[]: crc = 36f1f893; size =      4844; name = LVGA.GDR
+    file[]: crc = 94faee6e; size =       142; name = MDO.DEF
+end
+
+//
+// v1.0, Int. 2.10.93, 2x1.44M, Installer
+//
+installer[v1.0-int-2.10.93-2x1.44m-installer]:
+    name = v1.0, Int. 2.10.93, 2x1.44M, Installer
+    installid = v1.0-int-2.10.93-2x1.44m
+    launch = $(rootpath)\DREAMM.BAT
+    anchorfile = DISK2.STK
+    file[]: crc = 73d7f23a; size =     12952; name = ALL.ASK
+    file[]: crc = 11549a07; size =    970686; name = DISK2.STK
+    file[]: crc = 6ceb914c; size =    311296; name = DISK3.$00
+    file[]: crc = e60e8f21; size =    588115; name = DISK3.$01
+    file[]: crc = 2b69612d; size =    805146; name = INTRO.STK
+    file[]: crc = 2f584902; size =      3524; name = L360.GDR
+    file[]: crc = f97edb7f; size =     14299; name = LEGA.GDR
+    file[]: crc = 6b196fac; size =     89398; name = LOADER.EXE
+    file[]: crc = 36f1f893; size =      4844; name = LVGA.GDR
+    file[]: crc = 94faee6e; size =       142; name = MDO.DEF
+end
+
+end

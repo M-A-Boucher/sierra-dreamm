@@ -1,0 +1,62 @@
+//
+// Gobliiins
+//
+desc[sol-gob1]:
+
+name = Gobliiins
+icon = sol-gob1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\LOADER.EXE VGA MOUSE LG_US SOUND $(SOUND) 
+mips = $(MIPS_486DX_33)
+ramkb = 8192
+filter = coktel vision, sierra, puzzle
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        SOUND = $(NULL)
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        SOUND = ADLIB MIDI
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        SOUND = BLASTER MIDI
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0, Int. 9.11.92, 2x1.44M
+//
+game[v1.0-int-9.11.92-2x1.44m]:
+    name = v1.0, Int. 9.11.92, 2x1.44M
+    anchorfile = DISK4.STK
+    file[]: crc = 92fdf247; size =      5830; name = ALL.ASK
+    file[]: crc = c209b551; size =    496145; name = DISK1.STK
+    file[]: crc = ad991442; size =    628628; name = DISK2.STK
+    file[]: crc = 9627b236; size =    644169; name = DISK3.STK
+    file[]: crc = deb4d18e; size =    571911; name = DISK4.STK
+    file[]: crc = d05bd5b2; size =    233466; name = INTRO.STK
+    file[]: crc = f97edb7f; size =     14299; name = LEGA.GDR
+    file[]: crc = 12c20366; size =     80202; name = LOADER.EXE
+    file[]: crc = 36f1f893; size =      4844; name = LVGA.GDR
+end
+
+end

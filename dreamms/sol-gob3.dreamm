@@ -1,0 +1,100 @@
+//
+// Goblin's Quest 3
+//
+desc[sol-gob3]:
+
+name = Goblin's Quest 3
+icon = sol-gob3.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\GOB3.EXE
+mips = 1
+ramkb = 8192
+filter = coktel vision, sierra, puzzle
+videohw = vga
+audio = sb16
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+    end
+end
+
+script[autoinstall]:
+    condition = is_installer();
+    code = [[[$(CRLF)
+        keyboard_type("`3B");
+        keyboard_type("`43");
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+
+//
+// v1.0, Int. 3.17.94, 5x1.44M
+//
+game[v1.0-int-3.17.94-5x1.44m]:
+    name = v1.0, Int. 3.17.94, 5x1.44M
+    anchorfile = GOB3.EXE
+    file[]: crc = 76aafabc; size =   3946534; name = EXT.STK
+    file[]: crc = d01cab27; size =    232192; name = GOB3.EXE
+    file[]: crc = b4dd097c; size =   2951256; name = IMD.ITK
+    file[]: crc = 987238bb; size =     45344; name = IMD.LTK
+    file[]: crc = 5a947329; size =    159444; name = INTRO.STK
+    file[]: crc = 40f2c3db; size =       185; name = MDO.DEF
+    file[]: crc = 9f08a924; size =     71133; name = SETUP.EXE
+    file[]: crc = 24020297; size =    448000; name = TOT.STK
+end
+
+//
+// v1.0, Int. 3.17.94, 5x1.44M, Installer
+//
+installer[v1.0-int-3.17.94-5x1.44m-installer]:
+    name = v1.0, Int. 3.17.94, 5x1.44M, Installer
+    installid = v1.0-int-3.17.94-5x1.44m
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = $(rootpath)\INSTALL.EXE
+    anchorfile = GOB3.#04
+    file[]: crc = 12cbb64a; size =    627200; name = EXT.$00
+    file[]: crc = 64aef423; size =        21; name = GO.BAT      ; optional = true
+    file[]: crc = e54fee31; size =    117180; name = GOB3.#04
+    file[]: crc = 4d4bde34; size =     15264; name = IMD.#03
+    file[]: crc = 257d42e3; size =     15935; name = INSTALL.ASK
+    file[]: crc = a3580da6; size =      5723; name = INSTALL.EXE
+    file[]: crc = 6f19cfae; size =       762; name = INSTALL.INF
+    file[]: crc = f101586d; size =    149622; name = INTRO.#02
+    file[]: crc = 77d21f92; size =       185; name = MDO.BAK
+    file[]: crc = 40f2c3db; size =       185; name = MDO.DEF
+    file[]: crc = 97a2f331; size =      4264; name = README      ; optional = true
+    file[]: crc = 2e285da6; size =        29; name = README.BAT  ; optional = true
+    file[]: crc = 9f08a924; size =     71133; name = SETUP.EXE   ; optional = true
+    file[]: crc = af201440; size =    423111; name = TOT.#01
+    file[]: crc = 08f2ed65; size =        40; name = VERSION     ; optional = true
+    file[]: crc = f871adf0; size =   1457664; name = EXT.$01
+    file[]: crc = 52952b84; size =   1457664; name = EXT.$02
+    file[]: crc = 5eeaeafc; size =    260653; name = EXT.$03
+    file[]: crc = 63f306d0; size =   1196544; name = IMD.$04
+    file[]: crc = 376197c0; size =   1451935; name = IMD.$05
+end
+
+end
