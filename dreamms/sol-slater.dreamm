@@ -96,18 +96,8 @@ end
 dynamicfile[]:
     path = $(rootpath)/DREAMM.BAT
     contents = [[[$(CRLF)
-        MKDIR GAME
-        COPY *.* GAME\
-        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003 GAME\RESOURCE.000
-        CD GAME
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003 RESOURCE.000
         AUDDCOMP.EXE .\
-        DEL AUDDCOMP.EXE
-        DEL RESOURCE.001
-        DEL RESOURCE.002
-        DEL RESOURCE.003
-        REN VERSION. VERSION
-        DEL COMMAND.COM
-        DEL DREAMM.BAT
     ]]]
 end
 

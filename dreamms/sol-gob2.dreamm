@@ -45,16 +45,7 @@ end
 
 dynamicfile[]:
     path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        MKDIR GAME
-        COPY DISK3.$00+DISK3.$01 DISK3.STK
-        COPY *.STK GAME\
-        COPY *.GDR GAME\
-        COPY MDO.DEF GAME\
-        COPY ALL.ASK GAME\
-        COPY *.EXE GAME\
-        DEL DISK3.STK
-    ]]]
+    contents = COPY DISK3.$00+DISK3.$01 DISK3.STK
 end
 
 //
