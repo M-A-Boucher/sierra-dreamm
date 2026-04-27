@@ -7,6 +7,7 @@
 You should now be able to import and play many Sierra (and Dynamix) adventure games in DREAMM.
 
 Alternatively:
+
 3. Click on **View DREAMMPack Folder**.
 4. Copy the sierra.dreammpack file to this folder, close and relaunch DREAMM.
 
