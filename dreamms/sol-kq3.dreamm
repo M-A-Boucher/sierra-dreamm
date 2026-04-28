@@ -54,7 +54,7 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[agikey]:
-    condition = is_game() $$ !$(CRACKED)
+    condition = is_game() && !$(CRACKED)
     code = [[[$(CRLF)
         file = file_open("$$(rootpath)\\AGI");
         keyblob = blob_create();
