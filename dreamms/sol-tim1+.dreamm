@@ -1,0 +1,151 @@
+//
+// Even More! Incredible Machine
+//
+desc[sol-tim1+]:
+
+name = Even More! Incredible Machine
+icon = sol-tim1+.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\TIM.EXE
+mips = $(MIPS_P75)
+ramkb = 8192
+filter = dynamix, sierra, puzzle
+videohw = svga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIODRV = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIODRV = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIODRV = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 1
+        AUDIODRV = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        AUDIODRV = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        soundDrv  = $(AUDIODRV)
+        audioDrv  = AUDBLAST.DRV
+        joyDrv    = NO
+        memoryDrv = ARM.DRV
+        mouseDrv  = none
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+
+script[mouse]:
+    code = mouse_force_relative_zero(true)
+end
+
+//
+// v1.11, CD
+//
+game[v1.11-cd]:
+    name = v1.11, CD
+    anchorfile = TIM.EXE 
+    file[]: crc = fb47b62a; size =      3329; name = 6_JACKS.TIM
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = 71be3286; size =       726; name = AUDCDROM.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = 2b59a3b8; size =       214; name = BLASTER
+    file[]: crc = 92f60a37; size =       740; name = CATOMATC.TIM
+    file[]: crc = 31ecc158; size =      1895; name = COOL_OFF.TIM
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = 8c93858f; size =       215; name = IBMPS1
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = 74161209; size =      1920; name = MEL_HOME.TIM
+    file[]: crc = c318e1e1; size =      3376; name = MOUSE.TIM
+    file[]: crc = cbfd0c9c; size =       214; name = MT32
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 14abae54; size =       217; name = PA
+    file[]: crc = 14abae54; size =       217; name = PRO
+    file[]: crc = 14abae54; size =       217; name = PROAUDIO
+    file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
+    file[]: crc = 8c93858f; size =       215; name = PS1
+    file[]: crc = 0b3cb08c; size =   9316909; name = PUZZLES.VOC
+    file[]: crc = e036633b; size =    843374; name = RESOURCE.001
+    file[]: crc = 83cca2cd; size =      2109; name = RESOURCE.MAP
+    file[]: crc = cbfd0c9c; size =       214; name = ROLAND
+    file[]: crc = 2b59a3b8; size =       214; name = SBLAST
+    file[]: crc = 0c22d8a3; size =      9701; name = SBPRO.DRV
+    file[]: crc = 2b59a3b8; size =       214; name = SNDBLAST
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 2b59a3b8; size =       214; name = TBOARD
+    file[]: crc = 2b59a3b8; size =       214; name = THUNDER
+    file[]: crc = 702837af; size =    123121; name = TIM.EXE
+    file[]: crc = 3afeb2e5; size =      1046; name = TONSOFUN.TIM
+    file[]:                                   name = CD\CDDA.SOU; cdda = 61/153/164/183/134/170/189/156/140/181/195/153/196/168/182/140/154/165/186/171
+end
+
+//
+// v1.0, 1x1.44M
+//
+game[v1.0-1x1.44m]:
+    name = v1.0, 1x1.44M
+    anchorfile = TIM.EXE 
+    file[]: crc = fb47b62a; size =      3329; name = 6_JACKS.TIM
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = c5843dff; size =      1070; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = 08a3bd51; size =      2072; name = AUDTANDY.DRV
+    file[]: crc = 92f60a37; size =       740; name = CATOMATC.TIM
+    file[]: crc = 31ecc158; size =      1895; name = COOL_OFF.TIM
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = 74161209; size =      1920; name = MEL_HOME.TIM
+    file[]: crc = c318e1e1; size =      3376; name = MOUSE.TIM
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
+    file[]: crc = ba580f9d; size =    196578; name = RESOURCE.001
+    file[]: crc = 72117e09; size =    163032; name = RESOURCE.002
+    file[]: crc = 551a5543; size =    342018; name = RESOURCE.003
+    file[]: crc = ba940f87; size =    166516; name = RESOURCE.004
+    file[]: crc = d423e179; size =      2098; name = RESOURCE.MAP
+    file[]: crc = 0c22d8a3; size =      9701; name = SBPRO.DRV
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 8a86086a; size =    118055; name = TIM.EXE
+    file[]: crc = 3afeb2e5; size =      1046; name = TONSOFUN.TIM
+end
+
+end

@@ -1,0 +1,206 @@
+//
+// The Incredible Machine 2
+//
+desc[sol-tim2]:
+
+name = The Incredible Machine 2
+icon = sol-tim2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\TIM2.EXE
+mips = $(MIPS_P75)
+ramkb = 8192
+filter = dynamix, sierra, puzzle
+videohw = svga
+
+//
+// language configuration
+//
+config[language]:
+    title = Language Configuration
+    option[speaker]:
+        name = English
+        LANGUAGE = English
+    end
+    option[french]:
+        name = Français
+        LANGUAGE = French
+    end
+    option[german]:
+        name = Deutsh
+        LANGUAGE = German
+    end
+    option[spanish]:
+        name = Español
+        LANGUAGE = Spanish
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIODRV = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        AUDIODRV = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIODRV = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 1
+        AUDIODRV = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 2
+        AUDIODRV = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        soundDrv  = $(AUDIODRV)
+        audioDrv  = AUDBLAST.DRV
+        joyDrv    = NO
+        memoryDrv = ARM.DRV
+        mouseDrv  = NONE
+        language  = $(LANGUAGE)
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+
+script[mouse]:
+    code = mouse_force_relative_zero(true)
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        UNCHUNK.EXE COMPRESS.000 .\
+        UNCHUNK.EXE COMPRESS.001 .\
+pause
+    ]]]
+end
+
+//
+// v1.0, CD
+//
+game[v1.0-cd]:
+    name = v1.0, CD
+    anchorfile = TIM2.EXE 
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = 89fb9811; size =       232; name = BLASTER
+    file[]: crc = a37d4adf; size =    112099; name = ENGLISH.DAT
+    file[]: crc = 13ba0636; size =    303993; name = FRENCH.DAT
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = 322948eb; size =    332115; name = GERMAN.DAT
+    file[]: crc = 92739d5d; size =   5215352; name = GOALS.VOC
+    file[]: crc = f566194a; size =  11541965; name = HELP.VOC
+    file[]: crc = 78a5dc40; size =   4052283; name = HINT1.VOC
+    file[]: crc = 0c4ca6de; size =   2559540; name = HINT2.VOC
+    file[]: crc = af5563c0; size =   1201834; name = HINT3.VOC
+    file[]: crc = 1c36b542; size =    410410; name = HINT4.VOC
+    file[]: crc = de86d9dd; size =    153482; name = HINT5.VOC
+    file[]: crc = e66a15f4; size =    212810; name = HINT6.VOC
+    file[]: crc = ba317d6d; size =     31466; name = HINT7.VOC
+    file[]: crc = 8f7fed82; size =       236; name = IBMPS1
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = 889a26fb; size =       235; name = MT32
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = df552bd4; size =       238; name = PA
+    file[]: crc = df552bd4; size =       238; name = PRO
+    file[]: crc = df552bd4; size =       238; name = PROAUDIO
+    file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
+    file[]: crc = 00ab5575; size =   3003466; name = PROFESOR.VOC
+    file[]: crc = 8f7fed82; size =       236; name = PS1
+    file[]: crc = bbbfda41; size =   3692848; name = RESOURCE.001
+    file[]: crc = 93d3f4be; size =     11757; name = RESOURCE.MAP
+    file[]: crc = 889a26fb; size =       235; name = ROLAND
+    file[]: crc = 1c64eae9; size =       235; name = SBLAST
+    file[]: crc = 0c22d8a3; size =      9701; name = SBPRO.DRV
+    file[]: crc = 1c64eae9; size =       235; name = SNDBLAST
+    file[]: crc = 80df6672; size =    297040; name = SPANISH.DAT
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 1c64eae9; size =       235; name = TBOARD
+    file[]: crc = 1c64eae9; size =       235; name = THUNDER
+    file[]: crc = b6eeba67; size =    457168; name = TIM2.EXE
+    file[]:                                   name = CD\CDDA.SOU; cdda = 173/167/193/191/160/165/165/154/117/170/189/143/137/172/183/192/195/134/178/180/4
+end
+
+fragment[v1.0-2x1.44m-base]:
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = dd1feb47; size =   1149832; name = COMPRESS.000
+    file[]: crc = 34c4e430; size =   1455676; name = COMPRESS.001
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
+    file[]: crc = 0c22d8a3; size =      9701; name = SBPRO.DRV
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+end
+
+//
+// v1.0, 2x1.44M
+//
+game[v1.0-2x1.44m]:
+    name = v1.0, 2x1.44M
+    imports = v1.0-2x1.44m-base
+    anchorfile = TIM2.EXE
+    file[]: crc = fe345287; size =     35105; name = ENGLISH.DAT
+    file[]: crc = 776279c0; size =    244089; name = FRENCH.DAT
+    file[]: crc = 5ed1dff2; size =    272246; name = GERMAN.DAT
+    file[]: crc = 1b5f3fed; size =   3689142; name = RESOURCE.001
+    file[]: crc = e14fa6e7; size =     11757; name = RESOURCE.MAP
+    file[]: crc = d5d4f51c; size =    237174; name = SPANISH.DAT
+    file[]: crc = 550abc8a; size =    449936; name = TIM2.EXE
+
+end
+
+//
+// v1.0, 2x1.44M, Installer
+//
+installer[v1.0-2x1.44m-installer]:
+    name = v1.0, 2x1.44M, Installer
+    installid = v1.0-2x1.44m
+    mips = $(MIPS_MAX)
+    launch = $(rootpath)\DREAMM.BAT
+    imports = v1.0-2x1.44m-base
+    anchorfile = UNCHUNK.EXE 
+    file[]: crc = dd1feb47; size =   1149832; name = COMPRESS.000
+    file[]: crc = 34c4e430; size =   1455676; name = COMPRESS.001
+    file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+end
+
+end
