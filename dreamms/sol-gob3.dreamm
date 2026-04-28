@@ -76,7 +76,6 @@ installer[v1.0-int-3.17.94-5x1.44m-installer]:
     launch = $(rootpath)\INSTALL.EXE
     anchorfile = GOB3.#04
     file[]: crc = 12cbb64a; size =    627200; name = EXT.$00
-    file[]: crc = 64aef423; size =        21; name = GO.BAT      ; optional = true
     file[]: crc = e54fee31; size =    117180; name = GOB3.#04
     file[]: crc = 4d4bde34; size =     15264; name = IMD.#03
     file[]: crc = 257d42e3; size =     15935; name = INSTALL.ASK
@@ -85,11 +84,7 @@ installer[v1.0-int-3.17.94-5x1.44m-installer]:
     file[]: crc = f101586d; size =    149622; name = INTRO.#02
     file[]: crc = 77d21f92; size =       185; name = MDO.BAK
     file[]: crc = 40f2c3db; size =       185; name = MDO.DEF
-    file[]: crc = 97a2f331; size =      4264; name = README      ; optional = true
-    file[]: crc = 2e285da6; size =        29; name = README.BAT  ; optional = true
-    file[]: crc = 9f08a924; size =     71133; name = SETUP.EXE   ; optional = true
     file[]: crc = af201440; size =    423111; name = TOT.#01
-    file[]: crc = 08f2ed65; size =        40; name = VERSION     ; optional = true
     file[]: crc = f871adf0; size =   1457664; name = EXT.$01
     file[]: crc = 52952b84; size =   1457664; name = EXT.$02
     file[]: crc = 5eeaeafc; size =    260653; name = EXT.$03
