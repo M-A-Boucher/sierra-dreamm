@@ -1,0 +1,68 @@
+//
+// The Incredible Machine
+//
+desc[sol-tim1]:
+
+name = The Incredible Machine
+icon = sol-tim1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\TIM.EXE
+mips = $(MIPS_486DX2_66)
+ramkb = 8192
+filter = dynamix, sierra, puzzle
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIO = 0x00
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+        AUDIO = 0x02
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[
+        [[BINARY:0x02 $(AUDIO) 0xFE]]
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+script[mouse]:
+    code = mouse_force_relative_zero(true)
+end
+
+//
+// v1.0, 1x1.44M
+//
+game[v1.0-1x1.44m]:
+    name = v1.0, 1x1.44M
+    anchorfile = TIM.EXE 
+    file[]: crc = 92f60a37; size =       740; name = CATOMATC.TIM
+    file[]: crc = c318e1e1; size =      3376; name = MOUSE.TIM
+    file[]: crc = ba580f9d; size =    196578; name = RESOURCE.001
+    file[]: crc = 72117e09; size =    163032; name = RESOURCE.002
+    file[]: crc = 1e1b1424; size =    220123; name = RESOURCE.003
+    file[]: crc = c118556c; size =      2815; name = RESOURCE.004
+    file[]: crc = dbda03c4; size =      1338; name = RESOURCE.MAP
+    file[]: crc = f7a50b12; size =    111951; name = TIM.EXE
+    file[]: crc = 3afeb2e5; size =      1046; name = TONSOFUN.TIM
+end
+
+end
