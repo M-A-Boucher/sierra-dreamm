@@ -12,6 +12,7 @@ launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
 nothrottle = 3
 ramkb = 8096
+audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 TANDY = 0
 
@@ -22,7 +23,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy
+        videohw = cga; audiohw = speaker; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
     end
@@ -84,33 +85,51 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = sb16+speaker
-        SOUND_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = sb16+cms
-        SOUND_DRIVER = CMS.DRV
+        SOUND_DRIVER = CMS.DRV; AUDIOHW = cms
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16
-        SOUND_DRIVER = SNDBLAST.DRV
+        SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
     option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        SOUND_DRIVER = MT32.DRV
+        name = $(MT32_NAME); priority = 2
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME); priority = 1
+        SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+//
+// SFX configuration
+//
+config[sfx]:
+    title = SFX Configuration
+    condition = !$(TANDY)
+    option[on]:
+        name = On
+        AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\AUDBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = AUDNONE.DRV; SFX = $(NULL)
+        condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
     end
 end
 
@@ -119,6 +138,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
+        audioDrv=$(AUDIO_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV
@@ -129,7 +149,7 @@ end
 
 dynamicfile[]:
     path = $(rootpath)/DREAMM.BAT
-    contents = COPY RESOURCE.P00+RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04 GAME\RESOURCE.000
+    contents = COPY RESOURCE.P00+RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04 RESOURCE.000
 end
 
 //

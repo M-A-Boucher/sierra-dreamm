@@ -12,6 +12,7 @@ launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_386DX_33)
 nothrottle = 2
 ramkb = 8192
+audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 
 //
@@ -46,27 +47,40 @@ config[sound]:
     title = Sound Configuration
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = sb16+speaker
-        SOUND_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        SOUND_DRIVER = MT32.DRV
+        name = $(MT32_NAME); priority = 2
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
-        name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 1
-        SOUND_DRIVER = GENMIDI.DRV
+        name = $(GMIDI_NAME); priority = 1
+        SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+//
+// SFX configuration
+//
+config[sfx]:
+    title = SFX Configuration
+    option[on]:
+        name = On
+        AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\AUDBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = AUDNONE.DRV; SFX = $(NULL)
+        condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
     end
 end
 
@@ -75,7 +89,7 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         videoDrv=$(VIDEO_DRIVER)
         soundDrv=$(SOUND_DRIVER)
-        audioDrv=AUDNONE.DRV
+        audioDrv=$(AUDIO_DRIVER)
         joyDrv=JOYSTICK.DRV
         kbdDrv=IBMKBD.DRV
         mouseDrv=STDMOUSE.DRV

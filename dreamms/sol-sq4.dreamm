@@ -13,10 +13,10 @@ mips = $(MIPS_486DX_33)
 nothrottle = 4
 ramkb = 4096
 videohw = vga;
+audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 TANDY = 0
 LANGUAGE = 1
-AUDIO_DRIVER = 
 
 //
 // graphics configuration
@@ -25,7 +25,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy; nothrottle = 2.8
+        videohw = cga; audiohw = speaker; machine = tandy; nothrottle = 2.8
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
@@ -63,45 +63,55 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = sb16+speaker
-        SOUND_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = sb16+cms
-        SOUND_DRIVER = CMS.DRV
+        SOUND_DRIVER = CMS.DRV; AUDIOHW = cms
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16
-        SOUND_DRIVER = SNDBLAST.DRV
-        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
+        SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        SOUND_DRIVER = MT32.DRV
+        name = $(MT32_NAME); priority = 2
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[mtblast]:
-        name = $(MT32_NAME) + $(SB16_NAME)
-        audiohw = sb16+mt32; priority = 3
-        SOUND_DRIVER = MTBLAST.DRV
+        name = $(MT32_NAME) + $(SB16_NAME); priority = 3
+        SOUND_DRIVER = MTBLAST.DRV; AUDIOHW = sb16+mt32
         condition = file_exists("$$(rootpath)\\MTBLAST.DRV")
     end
     option[gmidi]:
-        name = $(GMIDI_NAME)
-        audiohw = gmidi; priority = 1
-        SOUND_DRIVER = GENMIDI.DRV
+        name = $(GMIDI_NAME); priority = 1
+        SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+//
+// SFX configuration
+//
+config[sfx]:
+    title = SFX Configuration
+    option[on]:
+        name = On
+        AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\AUDBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = AUDNONE.DRV; SFX = $(NULL)
+        condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
     end
 end
 
@@ -405,7 +415,6 @@ end
 game[v1.0-cd]:
     name = v1.0, CD
     launch = SIERRA.EXE
-    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = RESOURCE.000
     file[]: crc = bc2487b9; size =      2846; name = 335.HEP
     file[]: crc = b42ec293; size =      3160; name = 335.SCR
@@ -456,7 +465,6 @@ game[v1.0-cd-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v1.0 CD)
     imports = v1.0-cd
     launch = SIERRA.EXE
-    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = AUDBLAST.DRV
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
 end

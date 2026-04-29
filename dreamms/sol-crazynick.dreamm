@@ -89,7 +89,6 @@ demo[spaced-out]:
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = 3b13540f; size =      2610; name = INTERP.ERR
     file[]: crc = 0cb787bb; size =    364921; name = RESOURCE.001
-    file[]: crc = e55c6559; size =       139; name = RESOURCE.CFG
     file[]: crc = 19a4d300; size =       879; name = RESOURCE.MAP
     file[]: crc = b1d1ccd3; size =    144836; name = SCIDHUV.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV

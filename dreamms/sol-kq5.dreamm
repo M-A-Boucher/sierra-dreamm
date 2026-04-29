@@ -13,6 +13,7 @@ mips = $(MIPS_386DX_33)
 nothrottle = 4
 ramkb = 4096
 videohw = vga;
+audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 TANDY = 0
 AUDIO_DRIVER = 
@@ -62,33 +63,46 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = sb16+speaker
-        SOUND_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = ADL.DRV
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = sb16+cms; priority = 1
-        SOUND_DRIVER = CMS.DRV
+        SOUND_DRIVER = CMS.DRV; AUDIOHW = cms
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME)
-        audiohw = sb16; priority = 2
-        SOUND_DRIVER = SNDBLAST.DRV
+        name = $(SB16_NAME); priority = 1
+        SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
     option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 3
-        SOUND_DRIVER = MT32.DRV
+        name = $(MT32_NAME); priority = 2
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+//
+// Speech configuration
+//
+config[speech]:
+    title = Speech Configuration
+    condition = is_game()
+    option[on]:
+        name = On
+        AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\AUDBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = $(NULL); SFX = $(NULL)
+        condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
     end
 end
 
@@ -459,7 +473,6 @@ end
 //
 game[v1.000.052-cd]:
     name = v1.000.052, CD
-    AUDIO_DRIVER = AUDBLAST.DRV
     anchorfile = RESOURCE.001
     file[]: crc = a4780234; size =      9960; name = 0.SCR
     file[]: crc = 1ad06e0e; size =        50; name = 0.TEX
@@ -517,7 +530,6 @@ end
 //
 game[v1.000.052-kings-quest-collectors-edition]:
     name = King's Quest - Collector's Edition (v1.000.052)
-    AUDIO_DRIVER = AUDBLAST.DRV
     imports = v1.000.052-cd
     anchorfile = SCIKQ5.EXE
     anchordepth = 1
@@ -530,7 +542,6 @@ end
 //
 game[v1.000.052-gog]:
     name = GOG (v1.000.052)
-    AUDIO_DRIVER = AUDBLAST.DRV
     imports = v1.000.052-kings-quest-collectors-edition
     anchorfile = RESOURCE.000
     file[]: crc = 4200f1ba; size =    571368; name = RESOURCE.000
