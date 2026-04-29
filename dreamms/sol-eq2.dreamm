@@ -50,28 +50,28 @@ config[sound]:
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
-    option[adlib]:
-        name = $(ADLIB_NAME)
-        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
-        condition = file_exists("$$(rootpath)\\ADL.DRV")
-    end
     option[cms]:
         name = $(CMS_NAME)
         SOUND_DRIVER = CMS.DRV; AUDIOHW = cms
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
     option[sb16]:
-        name = $(SB16_NAME)
+        name = $(SB16_NAME); priority = 1
         SOUND_DRIVER = PROAUDIO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
     end
     option[mt32]:
-        name = $(MT32_NAME); priority = 1
+        name = $(MT32_NAME)
         SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
-        name = $(GMIDI_NAME); priority = 1
+        name = $(GMIDI_NAME)
         SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
@@ -97,14 +97,14 @@ end
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        audioDrv=$(AUDIO_DRIVER)
-        joyDrv=JOYSTICK.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
-        memoryDrv=ARM.DRV
-        minhunk=200k
+        videoDrv  = $(VIDEO_DRIVER)
+        soundDrv  = $(SOUND_DRIVER)
+        audioDrv  = $(AUDIO_DRIVER)
+        joyDrv    = JOYSTICK.DRV
+        kbdDrv    = IBMKBD.DRV
+        mouseDrv  = STDMOUSE.DRV
+        memoryDrv = ARM.DRV
+        minhunk   = 200k
     ]]]
 end
 

@@ -30,7 +30,7 @@ config[sound]:
         SOUND = 0x01 0x40
     end
     option[sb16]:
-        name = $(SB16_NAME)
+        name = $(SB16_NAME); priority = 1
         audiohw = sb16
         SOUND = 0x05 0x40
     end

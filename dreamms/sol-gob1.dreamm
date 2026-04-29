@@ -30,7 +30,7 @@ config[sound]:
         SOUND = ADLIB MIDI
     end
     option[sb16]:
-        name = $(SB16_NAME)
+        name = $(SB16_NAME); priority = 1
         audiohw = sb16
         SOUND = BLASTER MIDI
     end

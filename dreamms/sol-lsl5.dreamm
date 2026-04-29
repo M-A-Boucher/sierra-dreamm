@@ -59,21 +59,21 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = sb16+speaker
+        audiohw = speaker
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
-    option[adlib]:
-        name = $(ADLIB_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = ADL.DRV
-        condition = file_exists("$$(rootpath)\\ADL.DRV")
-    end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = sb16+cms
+        audiohw = cms
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        SOUND_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
@@ -83,19 +83,19 @@ config[sound]:
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 3
+        audiohw = mt32
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[mtblast]:
         name = $(MT32_NAME) + $(SB16_NAME)
-        audiohw = sb16+mt32; priority = 4
+        audiohw = mt32
         SOUND_DRIVER = MTBLAST.DRV
         condition = file_exists("$$(rootpath)\\MTBLAST.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 2
+        audiohw = gmidi
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
@@ -109,8 +109,8 @@ dynamicfile[]:
         joyDrv   = JOYSTICK.DRV
         kbdDrv   = IBMKBD.DRV
         mouseDrv = STDMOUSE.DRV
-        language = $(LANGUAGE)
         minHunk  = 206k
+        language = $(LANGUAGE)
         patchDir = .
     ]]]
 end

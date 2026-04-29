@@ -70,12 +70,12 @@ config[sound]:
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16
+        audiohw = sb16; priority = 1
         AUDIODRV = 0x40
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32; nothrottle = 6; priority = 1
+        audiohw = mt32; nothrottle = 6
         AUDIODRV = 0x10
     end
 end

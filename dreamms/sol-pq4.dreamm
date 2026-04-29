@@ -12,9 +12,9 @@ launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_P75)
 nothrottle = 3
 ramkb = 4096
+audiohw = $(AUDIOHW)+$(SFX)
 videohw = vga;
 filter = sierra, adventure
-AUDIO_DRIVER = DACBLAST.DRV
 
 //
 // graphics configuration
@@ -42,41 +42,50 @@ config[sound]:
     title = Sound Configuration
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
-        SOUND_DRIVER = STD.DRV
-        AUDIO_DRIVER = DACNONE.DRV
-        condition = file_exists("$$(rootpath)\\STD.DRV") && file_exists("$$(rootpath)\\DACNONE.DRV")
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
+        condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME)
-        audiohw = adlib
-        SOUND_DRIVER = ADL.DRV
-        AUDIO_DRIVER = DACNONE.DRV
-        condition = file_exists("$$(rootpath)\\ADL.DRV") && file_exists("$$(rootpath)\\DACNONE.DRV")
+        name = $(ADLIB_NAME); priority = 1
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = SADL.DRV
+        SOUND_DRIVER = SADL.DRV; AUDIOHW = sb16+adlib
         condition = file_exists("$$(rootpath)\\SADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
-        SOUND_DRIVER = SBPRO.DRV
+        SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        SOUND_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 3
-        SOUND_DRIVER = GENMIDI.DRV
+        SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+//
+// SFX configuration
+//
+config[sfx]:
+    title = SFX Configuration
+    option[on]:
+        name = On
+        AUDIO_DRIVER = DACBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\DACBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = DACNONE.DRV; SFX = $(NULL)
+        condition = file_exists("$$(rootpath)\\DACNONE.DRV")
     end
 end
 
