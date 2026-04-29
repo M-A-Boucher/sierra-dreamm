@@ -25,5 +25,6 @@ All of the BC, KQ1, KQ2, LSL1, SQ2 and some early KQ3 and SQ1 copy protections g
 A huge thank you to the following people that have helped with this .dreammpack:
 - treloret
 - univbee
+- CookieMonster123
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
