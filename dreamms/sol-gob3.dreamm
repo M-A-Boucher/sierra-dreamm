@@ -13,7 +13,6 @@ mips = 1
 ramkb = 8192
 filter = coktel vision, sierra, puzzle
 videohw = vga
-audio = sb16
 
 //
 // sound configuration
