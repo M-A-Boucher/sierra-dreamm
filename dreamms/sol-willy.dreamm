@@ -51,7 +51,7 @@ dynamicfile[]:
     condition = $(IS_CD)
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
-        soundDrv  = DTD.DRV
+        soundDrv  = SNDBLAST.DRV 220
         joyDrv    = NO
         mouseDrv  = STDMOUSE.DRV
         memoryDrv = ARM.DRV
@@ -168,20 +168,15 @@ game[v1.0-int-9.25.91-fr-6x1.44m]:
 end
 
 //
-// v1.0, CD  *** doesn't launch ***
+// v1.0, CD
 //
 game[v1.0-cd]:
     name = v1.0, CD
     IS_CD = 1
+    launch = WILLY.EXE RESOURCE.CFG
     audiohw = sb16
     anchorfile = WILLY.EXE 
-    file[]: crc = 8e0c3df8; size =      1641; name = INSTALL.144 ; optional = true
-    file[]: crc = 487c4b07; size =        25; name = INSTALL.BAT ; optional = true
-    file[]: crc = e61d4f6e; size =     14601; name = INSTALL.HLP ; optional = true
-    file[]: crc = ce7a965b; size =       957; name = INSTALL.SCR ; optional = true
-    file[]: crc = 0369e9b7; size =      8116; name = INSTALL.TXT ; optional = true
     file[]: crc = 97044ffa; size =        96; name = PROAUDIO.DRV
-    file[]: crc = 6a663870; size =      3149; name = README      ; optional = true
     file[]: crc = b680f0fc; size = 151525997; name = RESOURCE.001
     file[]: crc = ab07b29d; size =     50521; name = RESOURCE.EXE
     file[]: crc = bbb15bce; size =     27237; name = RESOURCE.MAP
