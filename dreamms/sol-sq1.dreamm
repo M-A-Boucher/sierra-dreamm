@@ -14,7 +14,7 @@ mips = $(MIPS_286_10)
 nothrottle = 2
 ramkb = 1024
 filter = sierra, adventure
-CRACKED = 0
+KEY_TWEAK = 0x00
 
 //
 // graphics configuration
@@ -55,28 +55,24 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[agikey]:
-    condition = is_game() && !$(CRACKED)
+    condition = is_game()
     code = [[[$(CRLF)
-        file = file_open("$$(rootpath)\\AGI");
-        keyblob = blob_create();
-        if (file)
-        {
-            file_seek(file, 0x100);
-            datablob = file_read(file, 0x80);
-            file_close(file);
+        datablob = blob_extract(file_load_blob("$$(rootpath)\\AGI"), 0x100, 0x80);
+        echo("datablob = " + datablob);
 
-            echo(datablob);
-            for (index = 0; index < 0x80; index++)
-                blob_insert(keyblob, -1, ((blob_value(datablob, index) << 2) | (blob_value(datablob, (index + 1) & 0x7f) >> 6)) & 0xff);
-            echo(keyblob);
-        }
+        keyblob = blob_create();
+        for (index = 0; index < 0x7f; index++)
+            blob_fill(keyblob, index, 1, ((blob_value(datablob, index) << 2) | (blob_value(datablob, index + 1) >> 6)) & 0xff);
+        blob_fill(keyblob, index, 1, ((blob_value(datablob, 0x7f) << 2) | (blob_value(datablob, 0x00) >> 6)) & 0xff ^ $(KEY_TWEAK));
+        echo("keyblob = " + keyblob);
+
         wait("progload");
         base = cpu_csbase();
         patchptr = cpu_findmem(base + 0x100, 0x10000, 0xbb,0x00,-1, 0xb4,0x48, 0xcd,0x21);
         keyptr = cpu_findmem(base + 0x100, 0x10000, "keyOfs");
         if (patchptr != 0 && keyptr != 0 && keyblob)
         {
-            echo("Patching at ", hexstr(ptr));
+            echo("Patching at " + hexstr(patchptr) + ", key at " + hexstr(keyptr + 8));
             cpu_writemem(patchptr, 1, 0xc3);
             cpu_writemem(keyptr + 8, keyblob);
         }
@@ -134,6 +130,7 @@ end
 //
 game[v2.2-int-2.426]:
     name = v2.2, Int. 2.426
+    KEY_TWEAK = 0x02
     anchorfile = VOL.0
     file[]: crc = d2f241d0; size =     38400; name = AGI
     file[]: crc = 451381ec; size =      7680; name = AGIDATA.OVL
@@ -180,7 +177,6 @@ end
 //
 game[v2.2-int-2.917-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.2, Int. 2.917)
-    CRACKED = 1
     imports = v2.2-int-2.917
     anchorfile = VOL.0
     file[]: crc = 72fca229; size =      3121; name = SIERRA.COM
