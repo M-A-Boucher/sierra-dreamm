@@ -5,78 +5,11 @@ desc[sol-kq1]:
 
 name = King's Quest: Quest for the Crown
 icon = sol-kq1.png
-machine = pc
-osenv = dos
-rootpath = C:\
-launch = $(rootpath)/SIERRA.COM
-mips = $(MIPS_286_10)
-nothrottle = 2.5
-ramkb = 1024
 filter = sierra, adventure
-KEY_TWEAK = 0x00
+nothrottle = 2.5
 
-//
-// graphics configuration
-//
-config[graphics]:
-    title = Graphics Configuration
-    option[tandy]:
-        name = $(TVIDEO_NAME)
-        videohw = cga; nothrottle = 2; machine = tandy; priority = 1
-        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
-    end
-    option[hercules]:  
-        name = $(HERCULES_NAME)
-        videohw = hercules
-        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
-    end
-    option[cga]:       
-        name = $(CGA_NAME)  
-        videohw = cga
-        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
-    end
-    option[ega]:
-        name = $(EGA_NAME)
-        videohw = ega
-        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
-    end
-    option[vga]:
-        name = $(VGA_NAME)
-        videohw = vga
-        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
-    end
-end
-
-//
-// filesystem
-//
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
-
-script[agikey]:
-    condition = is_game()
-    code = [[[$(CRLF)
-        datablob = blob_extract(file_load_blob("$$(rootpath)\\AGI"), 0x100, 0x80);
-        echo("datablob = " + datablob);
-
-        keyblob = blob_create();
-        for (index = 0; index < 0x7f; index++)
-            blob_fill(keyblob, index, 1, ((blob_value(datablob, index) << 2) | (blob_value(datablob, index + 1) >> 6)) & 0xff);
-        blob_fill(keyblob, index, 1, ((blob_value(datablob, 0x7f) << 2) | (blob_value(datablob, 0x00) >> 6)) & 0xff ^ $(KEY_TWEAK));
-        echo("keyblob = " + keyblob);
-
-        wait("progload");
-        base = cpu_csbase();
-        patchptr = cpu_findmem(base + 0x100, 0x10000, 0xbb,0x00,-1, 0xb4,0x48, 0xcd,0x21);
-        keyptr = cpu_findmem(base + 0x100, 0x10000, "keyOfs");
-        if (patchptr != 0 && keyptr != 0 && keyblob)
-        {
-            echo("Patching at " + hexstr(patchptr) + ", key at " + hexstr(keyptr + 8));
-            cpu_writemem(patchptr, 1, 0xc3);
-            cpu_writemem(keyptr + 8, keyblob);
-        }
-    ]]]
-end
+$(include agibase.txt)
+$(include agikeyscript.txt)
 
 //
 // v1.0U, Int. 2.272, 2x360K

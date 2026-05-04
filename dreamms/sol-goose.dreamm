@@ -5,52 +5,10 @@ desc[sol-goose]:
 
 name = Mixed-Up Mother Goose
 icon = sol-goose.png
-machine = pc
-osenv = dos
-rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
-mips = $(MIPS_286_10)
-nothrottle = 2
-ramkb = 1024
 filter = sierra, adventure
+nothrottle = 2
 
-//
-// graphics configuration
-//
-config[graphics]:
-    title = Graphics Configuration
-    option[tandy]:
-        name = $(TVIDEO_NAME)
-        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
-        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
-    end
-    option[hercules]:  
-        name = $(HERCULES_NAME)
-        videohw = hercules
-        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
-    end
-    option[cga]:       
-        name = $(CGA_NAME)  
-        videohw = cga
-        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
-    end
-    option[ega]:
-        name = $(EGA_NAME)
-        videohw = ega
-        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
-    end
-    option[vga]:
-        name = $(VGA_NAME)
-        videohw = vga
-        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
-    end
-end
-
-//
-// filesystem
-//
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);   writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+$(include agibase.txt)
 
 //
 // v1.00D, Int. 2.915, 1x720K
