@@ -5,7 +5,7 @@
 2. In DREAMM 4.0x12 (or later), select **Manage DREAMMPacks...** from the cog menu. 
 3. Drag and drop the sierra.dreammpack you just downloaded onto the window.
 
-You should now be able to import and play many Sierra (and Dynamix) adventure games in DREAMM.
+You should now be able to scan for Sierra, Dynamix, Coktel Vision games on your computer or drag and drop image files of these games onto DREAMM to import them.
 
 Alternatively:
 
