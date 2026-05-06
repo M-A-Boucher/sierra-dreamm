@@ -19,3 +19,7 @@ A huge thank you to the following people that have helped with this .dreammpack:
 - CookieMonster123
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
+
+# Other .dreammpacks
+- 3DRealms/Apogee: https://github.com/M-A-Boucher/3drealms-dreamm
+- id Software: https://github.com/M-A-Boucher/idsoftware-dreamm
