@@ -15,13 +15,13 @@ ramkb = 4096
 filter = dynamix, sierra, adventure
 videohw = vga
 VIDEODRV = 0x08
-IS_CD = 0
 
 //
 // sound configuration
 //
 config[sound]:
     title = Sound Configuration
+    condition = !file_exists("$$(rootpath)\\SNDBLAST.DRV")
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
@@ -29,18 +29,18 @@ config[sound]:
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16
+        audiohw = sb16; priority = 1
         AUDIODRV = 0x04
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32; nothrottle = 6; priority = 1
+        audiohw = mt32; nothrottle = 6
         AUDIODRV = 0x03
     end
 end
 
 dynamicfile[]:
-    condition = !$(IS_CD)
+    condition = !file_exists("$$(rootpath)\\SNDBLAST.DRV")
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[
         [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
@@ -48,7 +48,7 @@ dynamicfile[]:
 end
 
 dynamicfile[]:
-    condition = $(IS_CD)
+    condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         soundDrv  = SNDBLAST.DRV 220
@@ -172,7 +172,6 @@ end
 //
 game[v1.0-cd]:
     name = v1.0, CD
-    IS_CD = 1
     launch = WILLY.EXE RESOURCE.CFG
     audiohw = sb16
     anchorfile = WILLY.EXE 
