@@ -2,7 +2,7 @@
 
 # How to use this .dreammpack with DREAMM
 1. Download the latest here: https://github.com/M-A-Boucher/sierra-dreamm/releases/latest/download/sierra.dreammpack
-2. In DREAMM 4.0x12 (or later), select **Manage DREAMMPacks...** from the cog menu. 
+2. In DREAMM 4.0x13 (or later), select **Manage DREAMMPacks...** from the cog menu. 
 3. Drag and drop the sierra.dreammpack you just downloaded onto the window.
 
 You should now be able to scan for Sierra, Dynamix, Coktel Vision games on your computer or drag and drop image files of these games onto DREAMM to import them.
