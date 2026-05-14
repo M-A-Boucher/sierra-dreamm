@@ -102,7 +102,7 @@ end
 dynamicfile[]:
     path = $(rootpath)/DREAMM.BAT
     contents = [[[$(CRLF)
-        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 GAME\RESOURCE.000
+        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
         DCOMPAUD.EXE .\
     ]]]
 end
@@ -147,6 +147,7 @@ fragment[v1.0-base]:
     file[]: crc = da4d51f7; size =     69357; name = SIERRA.EXE
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = a89bc926; size =        55; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end

@@ -93,6 +93,11 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
+script[mouse]:
+    condition = is_game() || is_demo()
+    code = mouse_force_relative_zero(true)
+end
+
 //
 // v1.113.90, Int. 1.116.90, 6x1.44M
 //

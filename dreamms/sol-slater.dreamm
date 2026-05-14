@@ -99,6 +99,7 @@ dynamicfile[]:
         kbdDrv    = IBMKBD.DRV
         mouseDrv  = STDMOUSE.DRV
         minHunk   = 204k
+        language  = 1
         patchDir  = .\
         sync      = .\
         audio     = .\
@@ -149,6 +150,7 @@ fragment[v1.0-base]:
     file[]: crc = bb05a352; size =    154794; name = SIERRA.EXE
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
+    file[]: crc = 3ab56df6; size =        54; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
