@@ -14,6 +14,11 @@ Alternatively:
 
 # Supported games
 
+Supported: <img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/faba15aa-1328-464a-9a33-1ea8b7e84218" /> <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" /> 
+
+Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https://github.com/user-attachments/assets/6186eb77-1e1b-4b08-ab00-0b435c0ee5ad" /> 
+<img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/5e336d61-32f9-4e59-8ada-7a9fdd4a701f" />
+
 |                                                                                	| Languages 	| Platforms 	|
 |--------------------------------------------------------------------------------	|-----------	|-------	|
 | The Adventures of Willy Beamish                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
@@ -26,6 +31,7 @@ Alternatively:
 | Conquests of Camelot: The Search for the Grail                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
 | Conquests of the Longbow: The Legend of Robin Hood                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
 | Crazy Nick's Picks                                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> 	|
+| Donald Duck's Playground                                                        | 🇺🇸         	|<img width="24" height="24" alt="dos-unsupported" src="https://github.com/user-attachments/assets/6186eb77-1e1b-4b08-ab00-0b435c0ee5ad" />     	|
 | EcoQuest: The Search for Cetus                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
 | Freddy Pharkas Frontier Pharmacist                                             	| 🇺🇸🇩🇪     	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Gabriel Knight: Sins of the Fathers                                            	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
@@ -86,6 +92,7 @@ Alternatively:
 | Space Quest V: Roger Wilco in The Next Mutation                                	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Space Quest VI: Roger Wilco in The Spinal Frontier                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
 | Torin's Passage                                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Winnie the Pooh in the Hundred Acre Wood                                       	| 🇺🇸         	|<img width="24" height="24" alt="dos-unsupported" src="https://github.com/user-attachments/assets/6186eb77-1e1b-4b08-ab00-0b435c0ee5ad" />     	|
 
 # Credits
 A huge thank you to the following people that have helped with this .dreammpack:
