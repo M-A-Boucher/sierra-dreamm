@@ -14,7 +14,7 @@ Alternatively:
 
 # Supported games
 
-|                                                                                	| Languages 	| Platform 	|
+|                                                                                	| Languages 	| Platforms 	|
 |--------------------------------------------------------------------------------	|-----------	|-------	|
 | The Adventures of Willy Beamish                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | AGI Demo Pack                                                                  	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />  	|
