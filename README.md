@@ -18,6 +18,7 @@ Alternatively:
 |--------------------------------------------------------------------------------	|-----------	|-------	|
 | The Adventures of Willy Beamish                                                	| 🇺🇸         	|       	|
 | AGI Demo Pack                                                                  	| 🇺🇸         	| Demos  	|
+| The Beast Within: A Gabriel Knight Mystery                                      | 🇺🇸🇫🇷🇩🇪     |         |
 | Black Cauldron                                                                 	| 🇺🇸         	|       	|
 | Castle of Dr. Brain                                                            	| 🇺🇸         	|       	|
 | Code-Name: ICEMAN                                                              	| 🇺🇸         	|       	|
