@@ -14,78 +14,78 @@ Alternatively:
 
 # Supported games
 
-|                                                                                	| Languages 	| Notes 	|
+|                                                                                	| Languages 	| Platform 	|
 |--------------------------------------------------------------------------------	|-----------	|-------	|
-| The Adventures of Willy Beamish                                                	| 🇺🇸         	|       	|
-| AGI Demo Pack                                                                  	| 🇺🇸         	| Demos  	|
-| The Beast Within: A Gabriel Knight Mystery                                      | 🇺🇸🇫🇷🇩🇪     |         |
-| Black Cauldron                                                                 	| 🇺🇸         	|       	|
-| Castle of Dr. Brain                                                            	| 🇺🇸         	|       	|
-| Code-Name: ICEMAN                                                              	| 🇺🇸         	|       	|
-| Colonel's Bequest (Laura Bow 1)                                                	| 🇺🇸         	|       	|
-| Conquests of Camelot: The Search for the Grail                                 	| 🇺🇸         	|       	|
-| Conquests of the Longbow: The Legend of Robin Hood                             	| 🇺🇸         	|       	|
-| Crazy Nick's Picks                                                             	| 🇺🇸         	| Demos 	|
-| EcoQuest: The Search for Cetus                                                 	| 🇺🇸         	|       	|
-| Freddy Pharkas Frontier Pharmacist                                             	| 🇺🇸🇩🇪     	|       	|
-| Gabriel Knight: Sins of the Fathers                                            	| 🇺🇸🇫🇷🇩🇪    	|       	|
-| Gobliiins                                                                      	| 🇺🇸         	|       	|
-| Gobliins 2: The Prince Buffoon                                                 	| 🇺🇸         	|       	|
-| Goblin's Quest 3                                                               	| 🇺🇸         	|       	|
-| Gold Rush!                                                                     	| 🇺🇸         	|       	|
-| Mixed-Up Fairy Tales                                                           	| 🇺🇸         	|       	|
-| Mixed-Up Mother Goose                                                          	| 🇺🇸         	|       	|
-| Mixed-Up Mother Goose (SCI)                                                    	| 🇺🇸         	|       	|
-| Heart of China                                                                 	| 🇺🇸         	|       	|
-| Hoyle - Official Book of Games - Volume 1                                      	| 🇺🇸         	|       	|
-| Hoyle - Official Book of Games - Volume 2                                      	| 🇺🇸         	|       	|
-| Hoyle - Official Book of Games - Volume 3                                      	| 🇺🇸         	|       	|
-| Hoyle Classic Card Games                                                       	| 🇺🇸         	|       	|
-| The Incredible Machine                                                         	| 🇺🇸         	|       	|
-| Even More! Incredible Machine                                                  	| 🇺🇸         	|       	|
-| The Incredible Machine 2                                                       	| 🇺🇸         	|       	|
-| Jones in the Fast Lane                                                         	| 🇺🇸         	|       	|
-| King's Quest: Quest for the Crown                                              	| 🇺🇸         	|       	|
-| King's Quest I: Quest for the Crown (SCI)                                      	| 🇺🇸         	|       	|
-| King's Quest II: Romancing the Throne                                          	| 🇺🇸         	|       	|
-| King's Quest III: To Heir is Human                                             	| 🇺🇸         	|       	|
-| King's Quest IV: Perils of Rosella (AGI)                                       	| 🇺🇸         	|       	|
-| King's Quest IV: Perils of Rosella (SCI)                                       	| 🇺🇸         	|       	|
-| King's Quest V: Absence Makes the Heart Go Yonder                              	| 🇺🇸🇫🇷🇩🇪🇮🇹  	|       	|
-| King's Quest VI: Heir Today, Gone Tomorrow                                     	| 🇺🇸🇫🇷🇩🇪    	|       	|
-| King's Quest 7: The Princeless Bride                                           	| 🇺🇸         	|       	|
-| Laura Bow 2: The Dagger of Amon Ra                                             	| 🇺🇸🇫🇷🇩🇪    	|       	|
-| Leisure Suit Larry in the Land of the Lounge Lizards                           	| 🇺🇸         	|       	|
-| Leisure Suit Larry 1 in the Land of the Lounge Lizards (SCI)                   	| 🇺🇸         	|       	|
-| Leisure Suit Larry Goes Looking for Love (In Several Wrong Places)             	| 🇺🇸         	|       	|
-| Leisure Suit Larry III: Passionate Patti in Pursuit of the Pulsating Pectorals 	| 🇺🇸🇫🇷🇩🇪    	|       	|
-| Leisure Suit Larry 5: Passionate Patti Does a Little Undercover Work           	| 🇺🇸🇫🇷🇩🇪    	|       	|
-| Leisure Suit Larry In Shape Up or Slip Out!                                    	| 🇺🇸         	|       	|
-| Leisure Suit Larry: Love for Sail!                                             	| 🇺🇸         	|       	|
-| Manhunter: New York                                                            	| 🇺🇸         	|       	|
-| Manhunter: San Francisco                                                       	| 🇺🇸         	|       	|
-| Pepper's Adventures in Time                                                    	| 🇺🇸         	|       	|
-| Phantasmagoria                                                                 	| 🇺🇸         	|       	|
-| Police Quest: In Pursuit of the Death Angel                                    	| 🇺🇸         	|       	|
-| Police Quest: In Pursuit of the Death Angel (SCI)                              	| 🇺🇸         	|       	|
-| Police Quest II: The Vengeance                                                 	| 🇺🇸         	|       	|
-| Police Quest III: The Kindred                                                  	| 🇺🇸🇩🇪      	|       	|
-| Police Quest: Open Season                                                      	| 🇺🇸         	|       	|
-| Police Quest: SWAT                                                             	| 🇺🇸         	|       	|
-| Quest for Glory I: So You Want To Be A Hero (aka Hero's Quest)                 	| 🇺🇸         	|       	|
-| Quest for Glory II: Trial by Fire                                              	| 🇺🇸         	|       	|
-| Quest for Glory III: Wages of War                                              	| 🇺🇸🇫🇷🇩🇪🇮🇹🇪🇸 |       	|
-| Quest for Glory: Shadows of Darkness                                           	| 🇺🇸         	|       	|
-| Rise of the Dragon                                                             	| 🇺🇸         	|       	|
-| Slater & Charlie Go Camping                                                    	| 🇺🇸         	|       	|
-| Space Quest: Chapter I - The Sarien Encounter                                  	| 🇺🇸         	|       	|
-| Space Quest I: Roger Wilco in The Sarien Encounter                             	| 🇺🇸         	|       	|
-| Space Quest II: Chapter II - Vohaul's Revenge                                  	| 🇺🇸         	|       	|
-| Space Quest III: The Pirates of Pestulon                                       	| 🇺🇸🇩🇪      	|       	|
-| Space Quest IV: Roger Wilco and The Time Rippers                               	| 🇺🇸🇫🇷🇩🇪🇮🇹  	|       	|
-| Space Quest V: Roger Wilco in The Next Mutation                                	| 🇺🇸🇫🇷🇩🇪    	|       	|
-| Space Quest VI: Roger Wilco in The Spinal Frontier                             	| 🇺🇸         	|       	|
-| Torin's Passage                                                                	| 🇺🇸         	|       	|
+| The Adventures of Willy Beamish                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| AGI Demo Pack                                                                  	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />  	|
+| The Beast Within: A Gabriel Knight Mystery                                      | 🇺🇸🇫🇷🇩🇪     |<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />         |
+| Black Cauldron                                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />      	|
+| Castle of Dr. Brain                                                            	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />      	|
+| Code-Name: ICEMAN                                                              	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />      	|
+| Colonel's Bequest (Laura Bow 1)                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
+| Conquests of Camelot: The Search for the Grail                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
+| Conquests of the Longbow: The Legend of Robin Hood                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
+| Crazy Nick's Picks                                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> 	|
+| EcoQuest: The Search for Cetus                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
+| Freddy Pharkas Frontier Pharmacist                                             	| 🇺🇸🇩🇪     	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Gabriel Knight: Sins of the Fathers                                            	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Gobliiins                                                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Gobliins 2: The Prince Buffoon                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Goblin's Quest 3                                                               	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Gold Rush!                                                                     	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Mixed-Up Fairy Tales                                                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Mixed-Up Mother Goose                                                          	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Mixed-Up Mother Goose (SCI)                                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Heart of China                                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Hoyle - Official Book of Games - Volume 1                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Hoyle - Official Book of Games - Volume 2                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Hoyle - Official Book of Games - Volume 3                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Hoyle Classic Card Games                                                       	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| The Incredible Machine                                                         	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Even More! Incredible Machine                                                  	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| The Incredible Machine 2                                                       	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Jones in the Fast Lane                                                         	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest: Quest for the Crown                                              	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest I: Quest for the Crown (SCI)                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest II: Romancing the Throne                                          	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest III: To Heir is Human                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest IV: Perils of Rosella (AGI)                                       	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest IV: Perils of Rosella (SCI)                                       	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| King's Quest V: Absence Makes the Heart Go Yonder                              	| 🇺🇸🇫🇷🇩🇪🇮🇹  	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
+| King's Quest VI: Heir Today, Gone Tomorrow                                     	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
+| King's Quest 7: The Princeless Bride                                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
+| Laura Bow 2: The Dagger of Amon Ra                                             	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Leisure Suit Larry in the Land of the Lounge Lizards                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Leisure Suit Larry 1 in the Land of the Lounge Lizards (SCI)                   	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Leisure Suit Larry Goes Looking for Love (In Several Wrong Places)             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Leisure Suit Larry III: Passionate Patti in Pursuit of the Pulsating Pectorals 	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Leisure Suit Larry 5: Passionate Patti Does a Little Undercover Work           	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Leisure Suit Larry In Shape Up or Slip Out!                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Leisure Suit Larry: Love for Sail!                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Manhunter: New York                                                            	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Manhunter: San Francisco                                                       	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Pepper's Adventures in Time                                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
+| Phantasmagoria                                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Police Quest: In Pursuit of the Death Angel                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Police Quest: In Pursuit of the Death Angel (SCI)                              	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Police Quest II: The Vengeance                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Police Quest III: The Kindred                                                  	| 🇺🇸🇩🇪      	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Police Quest: Open Season                                                      	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Police Quest: SWAT                                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Quest for Glory I: So You Want To Be A Hero (aka Hero's Quest)                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Quest for Glory II: Trial by Fire                                              	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Quest for Glory III: Wages of War                                              	| 🇺🇸🇫🇷🇩🇪🇮🇹🇪🇸 |<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Quest for Glory: Shadows of Darkness                                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Rise of the Dragon                                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Slater & Charlie Go Camping                                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Space Quest: Chapter I - The Sarien Encounter                                  	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Space Quest I: Roger Wilco in The Sarien Encounter                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Space Quest II: Chapter II - Vohaul's Revenge                                  	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Space Quest III: The Pirates of Pestulon                                       	| 🇺🇸🇩🇪      	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Space Quest IV: Roger Wilco and The Time Rippers                               	| 🇺🇸🇫🇷🇩🇪🇮🇹  	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Space Quest V: Roger Wilco in The Next Mutation                                	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Space Quest VI: Roger Wilco in The Spinal Frontier                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Torin's Passage                                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
 
 # Credits
 A huge thank you to the following people that have helped with this .dreammpack:
