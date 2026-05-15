@@ -10,7 +10,7 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_386DX_33)
-nothrottle = 4
+nothrottle = 3
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
@@ -50,20 +50,10 @@ config[sound]:
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
-    option[cms]:
-        name = $(CMS_NAME)
-        SOUND_DRIVER = CMS.DRV; AUDIOHW = cms
-        condition = file_exists("$$(rootpath)\\CMS.DRV")
-    end
     option[adlib]:
-        name = $(ADLIB_NAME)
+        name = $(ADLIB_NAME); priority = 1
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
-    end
-    option[sb16]:
-        name = $(SB16_NAME); priority = 1
-        SOUND_DRIVER = PROAUDIO.DRV; AUDIOHW = sb16
-        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
