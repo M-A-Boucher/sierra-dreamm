@@ -1,4 +1,4 @@
-<img width="2440" height="540" alt="dreampackbannersol" src="https://github.com/user-attachments/assets/4c53c5c0-bed4-4485-95f3-df350afd856a" />
+<img width="2440" height="540" alt="Sierra Dreammpack Banner" src="https://github.com/user-attachments/assets/ee61ee86-4eca-46bb-bcf8-2c2d9c1d276f" />
 
 # How to use this .dreammpack with DREAMM
 1. Download the latest here: https://github.com/M-A-Boucher/sierra-dreamm/releases/latest/download/sierra.dreammpack
