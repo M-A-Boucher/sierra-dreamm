@@ -1,9 +1,9 @@
 //
-// King's Quest V: Absence Makes the Heart Go Yonder
+// King’s Quest V: Absence Makes the Heart Go Yonder
 //
 desc[sol-kq5]:
 
-name = King's Quest V: Absence Makes the Heart Go Yonder
+name = King’s Quest V: Absence Makes the Heart Go Yonder
 icon = sol-kq5.png
 machine = pc
 osenv = dos

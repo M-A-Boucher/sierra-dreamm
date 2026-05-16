@@ -1,9 +1,9 @@
 //
-// Pepper's Adventures in Time
+// Pepper’s Adventures in Time
 //
 desc[sol-pepper]:
 
-name = Pepper's Adventures in Time
+name = Pepper’s Adventures in Time
 icon = sol-pepper.png
 machine = pc
 osenv = dos

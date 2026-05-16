@@ -1,9 +1,9 @@
 //
-// Donald Duck's Playground
+// Donald Duck’s Playground
 //
 desc[sol-donald]:
 
-name = Donald Duck's Playground
+name = Donald Duck’s Playground
 icon = sol-donald.png
 machine = pc
 osenv = bios

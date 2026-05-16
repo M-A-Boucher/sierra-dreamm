@@ -1,9 +1,9 @@
 //
-// King's Quest II: Romancing the Throne
+// King’s Quest II: Romancing the Throne
 //
 desc[sol-kq2]:
 
-name = King's Quest II: Romancing the Throne
+name = King’s Quest II: Romancing the Throne
 icon = sol-kq2.png
 filter = sierra, adventure
 nothrottle = 2.5

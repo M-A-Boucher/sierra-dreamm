@@ -1,9 +1,9 @@
 //
-// King's Quest IV: The Perils of Rosella - SCI
+// King’s Quest IV: The Perils of Rosella - SCI
 //
 desc[sol-kq4-sci]:
 
-name = King's Quest IV: The Perils of Rosella - SCI
+name = King’s Quest IV: The Perils of Rosella - SCI
 icon = sol-kq4-sci.png
 machine = pc
 osenv = dos

@@ -1,9 +1,9 @@
 //
-// Torin's Passage
+// Torin’s Passage
 //
 desc[sol-torin]:
 
-name = Torin's Passage
+name = Torin’s Passage
 icon = sol-torin.png
 machine = pc
 osenv = dos

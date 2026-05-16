@@ -1,9 +1,9 @@
 //
-// King's Quest I: Quest for the Crown - SCI
+// King’s Quest I: Quest for the Crown - SCI
 //
 desc[sol-kq1-sci]:
 
-name = King's Quest I: Quest for the Crown - SCI
+name = King’s Quest I: Quest for the Crown - SCI
 icon = sol-kq1-sci.png
 machine = pc
 osenv = dos

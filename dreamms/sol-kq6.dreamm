@@ -1,9 +1,9 @@
 //
-// King's Quest VI: Heir Today, Gone Tomorrow
+// King’s Quest VI: Heir Today, Gone Tomorrow
 //
 desc[sol-kq6]:
 
-name = King's Quest VI: Heir Today, Gone Tomorrow
+name = King’s Quest VI: Heir Today, Gone Tomorrow
 icon = sol-kq6.png
 machine = pc
 osenv = dos

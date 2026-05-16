@@ -1,9 +1,9 @@
 //
-// King's Quest 7: The Princeless Bride
+// King’s Quest 7: The Princeless Bride
 //
 desc[sol-kq7]:
 
-name = King's Quest 7: The Princeless Bride
+name = King’s Quest 7: The Princeless Bride
 icon = sol-kq7.png
 machine = pc
 osenv = dos

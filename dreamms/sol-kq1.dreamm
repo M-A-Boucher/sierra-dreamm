@@ -1,9 +1,9 @@
 //
-// King's Quest: Quest for the Crown
+// King’s Quest: Quest for the Crown
 //
 desc[sol-kq1]:
 
-name = King's Quest: Quest for the Crown
+name = King’s Quest: Quest for the Crown
 icon = sol-kq1.png
 filter = sierra, adventure
 nothrottle = 2.5
