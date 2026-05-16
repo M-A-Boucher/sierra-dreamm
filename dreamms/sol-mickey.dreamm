@@ -1,0 +1,278 @@
+//
+// Mickey’s Adventure in Space
+//
+desc[sol-mickey]:
+
+name = Mickey’s Adventure in Space
+icon = sol-mickey.png
+machine = pc
+osenv = dos
+rootpath = C:\
+audiohw = speaker
+mips = $(MIPS_8086)
+ramkb = 640
+filters = sierra, adventure
+
+config[graphics]:
+    title = Graphics Configuration
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga
+    end
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+fragment[base]:
+    file[]: crc = 1462b25f; size =      2489; name = 1.PIC
+    file[]: crc = c902c20f; size =      1449; name = 10.PIC
+    file[]: crc = 170fa8ff; size =      2314; name = 100.PIC
+    file[]: crc = 59832fed; size =      1430; name = 101.PIC
+    file[]: crc = fd6f58a3; size =      1310; name = 102.PIC
+    file[]: crc = d3a1bc96; size =      1454; name = 103.PIC
+    file[]: crc = e7c3e860; size =      2028; name = 106.PIC
+    file[]: crc = a13116f5; size =      1674; name = 107.PIC
+    file[]: crc = ee87f700; size =      1203; name = 108.PIC
+    file[]: crc = 5d94581e; size =      1523; name = 109.PIC
+    file[]: crc = b8920a4a; size =      2489; name = 11.PIC
+    file[]: crc = 1bc58d6a; size =       923; name = 110.PIC
+    file[]: crc = 1b678c33; size =      1684; name = 112.PIC
+    file[]: crc = f7f2bf71; size =      1794; name = 113.PIC
+    file[]: crc = 39e64e8a; size =      1451; name = 114.PIC
+    file[]: crc = 09fe5ad1; size =      1594; name = 115.PIC
+    file[]: crc = 056af8f8; size =      1195; name = 116.PIC
+    file[]: crc = b4bb3b9c; size =      1400; name = 117.PIC
+    file[]: crc = 52f12a84; size =      1254; name = 118.PIC
+    file[]: crc = e7d1fc1f; size =      2054; name = 119.PIC
+    file[]: crc = c80e08a1; size =      1896; name = 12.PIC
+    file[]: crc = f4453cec; size =      1501; name = 120.PIC
+    file[]: crc = 4625dd18; size =      1396; name = 121.PIC
+    file[]: crc = 944e385d; size =      1018; name = 122.PIC
+    file[]: crc = 95af689d; size =      1439; name = 123.PIC
+    file[]: crc = 2fa337c6; size =      1370; name = 124.PIC
+    file[]: crc = 790aa16b; size =      1512; name = 125.PIC
+    file[]: crc = dce104da; size =      1222; name = 126.PIC
+    file[]: crc = 6b5eca8e; size =      1681; name = 127.PIC
+    file[]: crc = 59ebdd5e; size =      1260; name = 128.PIC
+    file[]: crc = c0302d2b; size =      1414; name = 129.PIC
+    file[]: crc = 8215c417; size =      1414; name = 13.PIC
+    file[]: crc = 604c296d; size =      1345; name = 130.PIC
+    file[]: crc = c0fdb975; size =      1435; name = 131.PIC
+    file[]: crc = 4c103215; size =      1518; name = 132.PIC
+    file[]: crc = a1af4665; size =      1664; name = 133.PIC
+    file[]: crc = 4e08ad41; size =      1724; name = 134.PIC
+    file[]: crc = fb26c504; size =      1491; name = 135.PIC
+    file[]: crc = 08ee910a; size =      1837; name = 136.PIC
+    file[]: crc = 60247abb; size =      1484; name = 137.PIC
+    file[]: crc = 38f43823; size =      1354; name = 138.PIC
+    file[]: crc = 984a0e96; size =      1912; name = 139.PIC
+    file[]: crc = c9dbd398; size =      1292; name = 14.PIC
+    file[]: crc = 6ac22cda; size =      1503; name = 140.PIC
+    file[]: crc = f8c6ce15; size =      1242; name = 141.PIC
+    file[]: crc = 3791aef2; size =      1651; name = 142.PIC
+    file[]: crc = eebc63f5; size =      1374; name = 143.PIC
+    file[]: crc = 907d8a5f; size =      1648; name = 144.PIC
+    file[]: crc = 621db3dc; size =      1671; name = 145.PIC
+    file[]: crc = 57d307ee; size =      1654; name = 146.PIC
+    file[]: crc = 30c4e023; size =      1410; name = 147.PIC
+    file[]: crc = 11984159; size =      1628; name = 148.PIC
+    file[]: crc = 8c5d0e2e; size =      1643; name = 149.PIC
+    file[]: crc = 3671c5c2; size =      1404; name = 15.PIC
+    file[]: crc = c2b5bfd3; size =      1428; name = 150.PIC
+    file[]: crc = 1be88b50; size =      1601; name = 151.PIC
+    file[]: crc = 95af689d; size =      1439; name = 152.PIC
+    file[]: crc = 4d98a68d; size =      1557; name = 153.PIC
+    file[]: crc = cb2dfa4b; size =      1308; name = 154.PIC
+    file[]: crc = 21212ddb; size =      1109; name = 155.PIC
+    file[]: crc = bbdf38f1; size =      1543; name = 159.PIC
+    file[]: crc = f7d2d6b1; size =      1074; name = 16.PIC
+    file[]: crc = bed0f7cf; size =      1331; name = 160.PIC
+    file[]: crc = 8487a903; size =      1172; name = 161.PIC
+    file[]: crc = 80bd0275; size =      1545; name = 165.PIC
+    file[]: crc = 6d8d5ba4; size =      1386; name = 17.PIC
+    file[]: crc = 76a96288; size =      1279; name = 172.PIC
+    file[]: crc = e01c730d; size =       859; name = 18.PIC
+    file[]: crc = 7ad855ec; size =      1703; name = 183.PIC
+    file[]: crc = 3dc9470a; size =      2973; name = 184.PIC
+    file[]: crc = 2aa76438; size =      1694; name = 185.PIC
+    file[]: crc = 20465499; size =      1087; name = 19.PIC
+    file[]: crc = 6a4949fd; size =      1625; name = 2.PIC
+    file[]: crc = 6c3e45a0; size =      1480; name = 20.PIC
+    file[]: crc = c0a76d86; size =      2221; name = 200.PIC
+    file[]: crc = 016c339a; size =      1575; name = 201.PIC
+    file[]: crc = a0bedacb; size =      1607; name = 202.PIC
+    file[]: crc = c5532fdc; size =      1375; name = 203.PIC
+    file[]: crc = d51294ae; size =      1403; name = 204.PIC
+    file[]: crc = d91b62e9; size =      1663; name = 206.PIC
+    file[]: crc = 4da056d5; size =      1417; name = 207.PIC
+    file[]: crc = 87ce7ab0; size =      1262; name = 21.PIC
+    file[]: crc = b9840959; size =      1072; name = 22.PIC
+    file[]: crc = a25004fd; size =       821; name = 23.PIC
+    file[]: crc = bef7093a; size =      1099; name = 24.PIC
+    file[]: crc = 10fb3bd6; size =      1798; name = 240.PIC
+    file[]: crc = 69dd04b9; size =      2126; name = 25.PIC
+    file[]: crc = 2123019c; size =       772; name = 26.PIC
+    file[]: crc = c5341922; size =       886; name = 27.PIC
+    file[]: crc = 00d657a8; size =      1199; name = 28.PIC
+    file[]: crc = 839857fd; size =      1043; name = 29.PIC
+    file[]: crc = cacc4e5b; size =      2699; name = 3.PIC
+    file[]: crc = 8f01812d; size =      1246; name = 30.PIC
+    file[]: crc = aa76d98b; size =      2619; name = 31.PIC
+    file[]: crc = 0c2e9fa4; size =      2277; name = 32.PIC
+    file[]: crc = f9e2e6b3; size =      1655; name = 33.PIC
+    file[]: crc = 64ed8579; size =      1629; name = 34.PIC
+    file[]: crc = 02434ddd; size =      1304; name = 35.PIC
+    file[]: crc = 31905f0c; size =      2246; name = 36.PIC
+    file[]: crc = aa3509f4; size =      1581; name = 37.PIC
+    file[]: crc = e4979642; size =      1506; name = 38.PIC
+    file[]: crc = 7104c8e5; size =      2873; name = 39.PIC
+    file[]: crc = a968a9d8; size =      2007; name = 4.PIC
+    file[]: crc = 3d2e3e38; size =      1621; name = 40.PIC
+    file[]: crc = 482253c9; size =      1594; name = 41.PIC
+    file[]: crc = d42a91b4; size =      2601; name = 42.PIC
+    file[]: crc = ae249b50; size =      1591; name = 43.PIC
+    file[]: crc = c20391f6; size =      1379; name = 44.PIC
+    file[]: crc = b863de36; size =      1488; name = 45.PIC
+    file[]: crc = 0181f10b; size =      1428; name = 46.PIC
+    file[]: crc = b8862a50; size =      1347; name = 47.PIC
+    file[]: crc = 42bc9936; size =      1486; name = 48.PIC
+    file[]: crc = 5e0ea9dc; size =      1426; name = 49.PIC
+    file[]: crc = b985645e; size =      2127; name = 5.PIC
+    file[]: crc = d1366787; size =      2805; name = 50.PIC
+    file[]: crc = 5c15000b; size =      1424; name = 51.PIC
+    file[]: crc = bba8ab10; size =       979; name = 52.PIC
+    file[]: crc = 1a2be388; size =      1695; name = 53.PIC
+    file[]: crc = 0b9dd73b; size =      1497; name = 54.PIC
+    file[]: crc = 24d411ba; size =      1877; name = 55.PIC
+    file[]: crc = 8dd3d155; size =      1373; name = 56.PIC
+    file[]: crc = 4dbddefc; size =      1384; name = 57.PIC
+    file[]: crc = 375f04fc; size =       630; name = 58.PIC
+    file[]: crc = 60d0c99a; size =      1598; name = 59.PIC
+    file[]: crc = e2585a11; size =      1464; name = 6.PIC
+    file[]: crc = 23760d9e; size =      1386; name = 60.PIC
+    file[]: crc = 9c79b438; size =      1727; name = 61.PIC
+    file[]: crc = 1c9618fa; size =      1790; name = 62.PIC
+    file[]: crc = 82d21c74; size =      2685; name = 63.PIC
+    file[]: crc = 16083772; size =      1621; name = 64.PIC
+    file[]: crc = ccef9610; size =      1811; name = 65.PIC
+    file[]: crc = e6606bad; size =      1261; name = 66.PIC
+    file[]: crc = e78e5987; size =      1300; name = 67.PIC
+    file[]: crc = 46456a8b; size =      1443; name = 68.PIC
+    file[]: crc = 8ec209f8; size =      1676; name = 69.PIC
+    file[]: crc = 716399e0; size =      1486; name = 7.PIC
+    file[]: crc = 5adf3b18; size =      1559; name = 70.PIC
+    file[]: crc = 078c9713; size =      1897; name = 71.PIC
+    file[]: crc = d5db90d5; size =      1646; name = 72.PIC
+    file[]: crc = 480522b4; size =      1713; name = 73.PIC
+    file[]: crc = 6366a139; size =      1480; name = 74.PIC
+    file[]: crc = 5a1d925e; size =      1644; name = 75.PIC
+    file[]: crc = 70cee718; size =      1629; name = 76.PIC
+    file[]: crc = a7638d9b; size =      1976; name = 77.PIC
+    file[]: crc = 17885495; size =      2124; name = 78.PIC
+    file[]: crc = 5c602c95; size =      1102; name = 79.PIC
+    file[]: crc = 2d6134a1; size =      1606; name = 8.PIC
+    file[]: crc = 797085f1; size =      1489; name = 80.PIC
+    file[]: crc = 4e6c76c2; size =      2261; name = 81.PIC
+    file[]: crc = 4e6fd3cd; size =      1138; name = 82.PIC
+    file[]: crc = 8ecaa20a; size =      1240; name = 83.PIC
+    file[]: crc = 30c54b0b; size =      2757; name = 84.PIC
+    file[]: crc = 4d7a08a6; size =      2038; name = 85.PIC
+    file[]: crc = fda214b8; size =      1723; name = 86.PIC
+    file[]: crc = e2db55fe; size =      1680; name = 87.PIC
+    file[]: crc = b4299f61; size =      1587; name = 88.PIC
+    file[]: crc = f7662f38; size =      1451; name = 89.PIC
+    file[]: crc = 8690135e; size =      2880; name = 9.PIC
+    file[]: crc = 9fd98cd6; size =      1867; name = 90.PIC
+    file[]: crc = 73adcbf6; size =      2086; name = 91.PIC
+    file[]: crc = 3a65e18a; size =      1611; name = 92.PIC
+    file[]: crc = eee93779; size =      1139; name = 93.PIC
+    file[]: crc = 5e372abc; size =      1511; name = 94.PIC
+    file[]: crc = 1dc7532b; size =      1493; name = 95.PIC
+    file[]: crc = 500dca8c; size =      1991; name = 96.PIC
+    file[]: crc = a5adf239; size =      1694; name = 97.PIC
+    file[]: crc = 743ed27a; size =      1899; name = 98.PIC
+    file[]: crc = e67d960b; size =      1289; name = 99.PIC
+    file[]: crc = 1bd6baa3; size =     13696; name = LOGOS.BCG
+    file[]: crc = 6621f651; size =     13883; name = DAT\EARTH.DAT
+    file[]: crc = 8cb6688e; size =      7162; name = DAT\JUPITER.DAT
+    file[]: crc = 3bce34db; size =      6039; name = DAT\MARS.DAT
+    file[]: crc = df9152b3; size =      6685; name = DAT\MERCURY.DAT
+    file[]: crc = 8eb5e634; size =     13619; name = DAT\NEPTUNE.DAT
+    file[]: crc = 86abf7fd; size =      5672; name = DAT\PLUTO.DAT
+    file[]: crc = 9fcd736c; size =      5907; name = DAT\SATURN.DAT
+    file[]: crc = e14a4042; size =      8559; name = DAT\SPACSHIP.DAT
+    file[]: crc = aa5ad2f8; size =      6862; name = DAT\URANUS.DAT
+    file[]: crc = 778de8a5; size =      6368; name = DAT\VENUS.DAT
+    file[]: crc = 95bfe9ba; size =       491; name = OBJ\BONE.OOO
+    file[]: crc = 350f5fc3; size =        18; name = OBJ\CBAR.OOO
+    file[]: crc = 67f98985; size =       229; name = OBJ\CRYS1.OOO
+    file[]: crc = 97b01b0e; size =       838; name = OBJ\DESKSTUF.OOO
+    file[]: crc = a4ecd087; size =       213; name = OBJ\EARTHW.OOO
+    file[]: crc = 69dd04b9; size =      2126; name = OBJ\FINALE.OOO
+    file[]: crc = bef7093a; size =      1099; name = OBJ\FINALE2.OOO
+    file[]: crc = 60ed9b43; size =        97; name = OBJ\FLASHLIT.OOO
+    file[]: crc = 54ffa6c7; size =       371; name = OBJ\GLASSES.OOO
+    file[]: crc = f89b14d5; size =       277; name = OBJ\IOW.OOO
+    file[]: crc = 6d9262ca; size =       243; name = OBJ\MERW.OOO
+    file[]: crc = d5e95945; size =       159; name = OBJ\MRW.OOO
+    file[]: crc = 691f8df2; size =       269; name = OBJ\OBW.OOO
+    file[]: crc = 9cc050b5; size =       250; name = OBJ\PLW.OOO
+    file[]: crc = 0c756715; size =       403; name = OBJ\RAFT.OOO
+    file[]: crc = 3da8f7b3; size =       255; name = OBJ\ROCK35.OOO
+    file[]: crc = 01fc2320; size =       246; name = OBJ\ROK1.OOO
+    file[]: crc = 01fc2320; size =       246; name = OBJ\ROK2.OOO
+    file[]: crc = fd399447; size =       596; name = OBJ\ROPE.OOO
+    file[]: crc = 5cda98af; size =       367; name = OBJ\SCALE.OOO
+    file[]: crc = d62b7180; size =       382; name = OBJ\SCARF.OOO
+    file[]: crc = bfd9269f; size =       589; name = OBJ\SCARFC64.OOO
+    file[]: crc = 082080c0; size =       130; name = OBJ\SPW.OOO
+    file[]: crc = eb76a94d; size =       310; name = OBJ\TITW.OOO
+    file[]: crc = f4a4cca5; size =       229; name = OBJ\TRW.OOO
+    file[]: crc = 1a6831d8; size =       162; name = OBJ\VENW.OOO
+    file[]: crc = e44e3b4a; size =       110; name = OBJ\WRENCH.OOO
+    file[]: crc = c650e2c1; size =        26; name = OBJ\XL31.OOO
+    file[]: crc = 240b8dde; size =        26; name = OBJ\XL31E.OOO
+    file[]: crc = 588ac8c6; size =        28; name = OBJ\XL32.OOO
+    file[]: crc = 48dd58ca; size =        28; name = OBJ\XL32E.OOO
+    file[]: crc = 615cea6c; size =        30; name = OBJ\XL33.OOO
+    file[]: crc = 3de62673; size =        30; name = OBJ\XL33E.OOO
+end
+
+//
+// 1985, 1x720K
+//
+game[1985-1x720k]:
+    name = 1985, 1x720K
+    imports = base
+    launch = MAIN
+    anchorfile = MICKEY.COM
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
+    file[]: crc = 36819568; size =     54992; name = MAIN
+    file[]: crc = c03a7403; size =      2684; name = MICKEY.COM
+end
+
+//
+// 1985, 2x360K
+//
+game[1985-2x360k]:
+    name = 1985, 2x360K
+    imports = base
+    launch = MICKEY.EXE
+    anchorfile = MICKEY.EXE
+    file[]: crc = 97a2a462; size =     55136; name = MICKEY.EXE
+end
+
+end

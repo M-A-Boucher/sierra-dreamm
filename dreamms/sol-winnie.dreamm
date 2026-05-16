@@ -1,0 +1,266 @@
+//
+// Winnie the Pooh in the Hundred Acre Wood
+//
+desc[sol-winnie]:
+
+name = Winnie the Pooh in the Hundred Acre Wood
+icon = sol-winnie.png
+machine = pc
+osenv = dos
+audiohw = speaker
+mips = $(MIPS_8086)
+ramkb = 640
+filters = sierra, adventure
+BOOTER = 0
+
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath)  ; writable = true; condition = !$(BOOTER)
+mount[]: vpath = C:\; srcpath = $(ifsinstallpath); condition = !$(BOOTER)
+
+mount[]: vpath = A:\; srcpath = $(ifsdeltapath)  ; writable = true; condition = $(BOOTER)
+mount[]: vpath = A:\; srcpath = $(ifsinstallpath); condition = $(BOOTER)
+
+//
+// 1987, 1x720K
+//
+game[1987-1x720k]:
+    name = 1987, 1x720K
+    launch = C:\MAIN
+    anchorfile = WINNIE.COM
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
+    file[]: crc = 4e48e5d0; size =      1599; name = LOGO.PIC
+    file[]: crc = 377abb72; size =     19457; name = MAIN
+    file[]: crc = 858b47af; size =     18945; name = MAINJR
+    file[]: crc = f0bf7faa; size =       442; name = OBJ.01
+    file[]: crc = d510615c; size =       542; name = OBJ.02
+    file[]: crc = 412fdce5; size =       474; name = OBJ.03
+    file[]: crc = 15beac55; size =       659; name = OBJ.04
+    file[]: crc = 815122e8; size =       439; name = OBJ.05
+    file[]: crc = f0bf7faa; size =       442; name = OBJ.06
+    file[]: crc = 9ba9646a; size =       618; name = OBJ.07
+    file[]: crc = c91d9819; size =       751; name = OBJ.08
+    file[]: crc = 9a02d21f; size =       994; name = OBJ.09
+    file[]: crc = 21ac907a; size =       271; name = OBJ.10
+    file[]: crc = ab57f3a4; size =       274; name = OBJ.11
+    file[]: crc = 545e3c41; size =       351; name = OBJ.12
+    file[]: crc = c05218be; size =       458; name = OBJ.13
+    file[]: crc = 5126db66; size =       487; name = OBJ.14
+    file[]: crc = dd5bc5d7; size =       596; name = OBJ.15
+    file[]: crc = bad0e789; size =       465; name = OBJ.16
+    file[]: crc = ed6a3966; size =       705; name = OBJ.17
+    file[]: crc = 15cc4ad6; size =       775; name = OBJ.18
+    file[]: crc = d87ebea5; size =       815; name = OBJ.19
+    file[]: crc = 2e322906; size =       505; name = OBJ.20
+    file[]: crc = 659668a9; size =       421; name = OBJ.21
+    file[]: crc = dc24a5f0; size =       921; name = OBJ.22
+    file[]: crc = 7b42fdf6; size =       961; name = OBJ.23
+    file[]: crc = 2d659671; size =       389; name = OBJ.24
+    file[]: crc = 4dac96b9; size =       693; name = OBJ.25
+    file[]: crc = 413ab80f; size =       510; name = OBJ.26
+    file[]: crc = 00180925; size =       611; name = OBJ.27
+    file[]: crc = b8828ffb; size =       606; name = OBJ.28
+    file[]: crc = 3561e0ed; size =       621; name = OBJ.29
+    file[]: crc = a13a0b9d; size =       677; name = OBJ.30
+    file[]: crc = 33b8b39e; size =       825; name = OBJ.31
+    file[]: crc = e97483e8; size =       661; name = OBJ.32
+    file[]: crc = a5a5ca33; size =       673; name = OBJ.33
+    file[]: crc = 7d7946b7; size =       775; name = OBJ.34
+    file[]: crc = 3bf08514; size =       758; name = OBJ.35
+    file[]: crc = f5fdb4e8; size =      1030; name = OBJ.36
+    file[]: crc = 91fa5f38; size =       574; name = OBJ.37
+    file[]: crc = aa7955a8; size =       389; name = OBJ.38
+    file[]: crc = 304bd947; size =       659; name = OBJ.39
+    file[]: crc = 77fd893d; size =       657; name = OBJ.40
+    file[]: crc = 52990504; size =        12; name = RND
+    file[]: crc = 24ea64f9; size =       120; name = SAVEGAME
+    file[]: crc = dbdea1b8; size =       584; name = SND.01
+    file[]: crc = a9e05838; size =       762; name = SND.02
+    file[]: crc = d0065d79; size =        32; name = SND.03
+    file[]: crc = 2ae582e3; size =        32; name = SND.04
+    file[]: crc = 2a7203d6; size =       103; name = SND.05
+    file[]: crc = d39e1987; size =       136; name = SND.06
+    file[]: crc = 6d20d882; size =       602; name = SND.07
+    file[]: crc = f45c55bb; size =        13; name = SND.08
+    file[]: crc = 912db6bc; size =       489; name = SND.09
+    file[]: crc = fecf66de; size =       479; name = SND.10
+    file[]: crc = 39a90a45; size =       390; name = SND.11
+    file[]: crc = 48085035; size =      1334; name = TITLE.PIC
+    file[]: crc = 5d969401; size =      2797; name = WINNIE.COM
+    file[]: crc = 89e801fd; size =      1877; name = ROOMS\RM.01
+    file[]: crc = 1c030cc6; size =      1117; name = ROOMS\RM.02
+    file[]: crc = e8febd03; size =      1542; name = ROOMS\RM.03
+    file[]: crc = c83f0041; size =      1491; name = ROOMS\RM.04
+    file[]: crc = 3c9e788a; size =      1762; name = ROOMS\RM.05
+    file[]: crc = 6dc1582c; size =      1791; name = ROOMS\RM.06
+    file[]: crc = 06f2c00e; size =      1522; name = ROOMS\RM.07
+    file[]: crc = d9879408; size =      1677; name = ROOMS\RM.08
+    file[]: crc = 9ffb6433; size =      1609; name = ROOMS\RM.09
+    file[]: crc = 2aa1861d; size =      2023; name = ROOMS\RM.10
+    file[]: crc = 82b2814b; size =      1650; name = ROOMS\RM.11
+    file[]: crc = cf393f8a; size =      1494; name = ROOMS\RM.12
+    file[]: crc = 788d4881; size =      1542; name = ROOMS\RM.13
+    file[]: crc = 1421c1bc; size =      1700; name = ROOMS\RM.14
+    file[]: crc = e743e464; size =      1402; name = ROOMS\RM.15
+    file[]: crc = 9f62891a; size =      1825; name = ROOMS\RM.16
+    file[]: crc = ef39d454; size =      1444; name = ROOMS\RM.17
+    file[]: crc = bdd84141; size =      1208; name = ROOMS\RM.18
+    file[]: crc = a4548066; size =      1462; name = ROOMS\RM.19
+    file[]: crc = d75fa4da; size =      1304; name = ROOMS\RM.20
+    file[]: crc = 58cecc85; size =      1616; name = ROOMS\RM.21
+    file[]: crc = 82ea8a70; size =      1325; name = ROOMS\RM.22
+    file[]: crc = 32cb38c0; size =      1230; name = ROOMS\RM.23
+    file[]: crc = 2bf0b33d; size =      1583; name = ROOMS\RM.24
+    file[]: crc = e0910ed6; size =      1116; name = ROOMS\RM.25
+    file[]: crc = 0cab2005; size =      1304; name = ROOMS\RM.26
+    file[]: crc = 2aa06287; size =      1804; name = ROOMS\RM.27
+    file[]: crc = 30df4576; size =      3094; name = ROOMS\RM.28
+    file[]: crc = bc44781d; size =      1591; name = ROOMS\RM.29
+    file[]: crc = ef28d9be; size =      1053; name = ROOMS\RM.30
+    file[]: crc = 9f194d76; size =      1001; name = ROOMS\RM.31
+    file[]: crc = 5e8d15b7; size =      1449; name = ROOMS\RM.32
+    file[]: crc = ac92f7fd; size =      1358; name = ROOMS\RM.33
+    file[]: crc = aeff8035; size =      1751; name = ROOMS\RM.34
+    file[]: crc = 1efeb567; size =       620; name = ROOMS\RM.35
+    file[]: crc = 679767ec; size =       117; name = ROOMS\RM.36
+    file[]: crc = a06e34c8; size =      1040; name = ROOMS\RM.37
+    file[]: crc = 80859afc; size =      1535; name = ROOMS\RM.38
+    file[]: crc = fdeb9596; size =      1454; name = ROOMS\RM.39
+    file[]: crc = 5642e525; size =      1351; name = ROOMS\RM.40
+    file[]: crc = 1281774c; size =      1429; name = ROOMS\RM.41
+    file[]: crc = c0e56c7c; size =       846; name = ROOMS\RM.42
+    file[]: crc = 5e405aec; size =      1299; name = ROOMS\RM.43
+    file[]: crc = de65c6dd; size =      1159; name = ROOMS\RM.44
+    file[]: crc = 351237c9; size =      1683; name = ROOMS\RM.45
+    file[]: crc = 39159812; size =      1841; name = ROOMS\RM.46
+    file[]: crc = ae194ac9; size =       840; name = ROOMS\RM.47
+    file[]: crc = 7dde851f; size =      1238; name = ROOMS\RM.48
+    file[]: crc = 92ce2aaa; size =      1788; name = ROOMS\RM.49
+    file[]: crc = 047d2929; size =      1288; name = ROOMS\RM.50
+    file[]: crc = 70ad70e9; size =       657; name = ROOMS\RM.51
+    file[]: crc = f176816b; size =      1199; name = ROOMS\RM.52
+    file[]: crc = 2a47d897; size =      1354; name = ROOMS\RM.53
+    file[]: crc = e0997ed6; size =      1149; name = ROOMS\RM.54
+    file[]: crc = f8b64d5c; size =      1449; name = ROOMS\RM.55
+    file[]: crc = 900fb78e; size =      1885; name = ROOMS\RM.56
+    file[]: crc = 2058d7e0; size =      1395; name = ROOMS\RM.57
+    file[]: crc = 410da6db; size =      3971; name = ROOMS\RM.58
+    file[]: crc = 96d64c25; size =       106; name = ROOMS\RM.59
+    file[]: crc = 999ee4c7; size =      1023; name = ROOMS\RM.60
+    file[]: crc = 3a937626; size =      3477; name = ROOMS\RM.61
+    file[]: crc = 3001e10f; size =      1319; name = ROOMS\RM.62
+end
+
+//
+// 1985, 1x360K
+//
+game[1985-1x360k]:
+    name = 1985, 1x360K
+    osenv = bios
+    BOOTER = 1
+    anchorfile = FTRACK00SIDE0.~RAW~
+    file[]: crc = 0702AD49; size =    12514; name = FTRACK00SIDE0.~RAW~
+    file[]: crc = 58D2B974; size =    12514; name = FTRACK00SIDE1.~RAW~
+    file[]: crc = DD349FE6; size =    12514; name = FTRACK01SIDE0.~RAW~
+    file[]: crc = CBF4F82F; size =    12514; name = FTRACK01SIDE1.~RAW~
+    file[]: crc = 1F28F699; size =    12514; name = FTRACK02SIDE0.~RAW~
+    file[]: crc = D3CAEFD8; size =    12514; name = FTRACK02SIDE1.~RAW~
+    file[]: crc = 8C74276D; size =    12514; name = FTRACK03SIDE0.~RAW~
+    file[]: crc = F5055CF6; size =    12514; name = FTRACK03SIDE1.~RAW~
+    file[]: crc = 5558CCBD; size =    12514; name = FTRACK04SIDE0.~RAW~
+    file[]: crc = FBD0BA24; size =    12514; name = FTRACK04SIDE1.~RAW~
+    file[]: crc = 69A37AC9; size =    12514; name = FTRACK05SIDE0.~RAW~
+    file[]: crc = 0A4EFB43; size =    12514; name = FTRACK05SIDE1.~RAW~
+    file[]: crc = EF908AF4; size =    12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = 67C52EC0; size =    12514; name = FTRACK06SIDE1.~RAW~
+    file[]: crc = E8EA5A49; size =    12514; name = FTRACK07SIDE0.~RAW~
+    file[]: crc = 060CDA35; size =    12514; name = FTRACK07SIDE1.~RAW~
+    file[]: crc = 346B491A; size =    12514; name = FTRACK08SIDE0.~RAW~
+    file[]: crc = C8F0C282; size =    12514; name = FTRACK08SIDE1.~RAW~
+    file[]: crc = 177B9509; size =    12514; name = FTRACK09SIDE0.~RAW~
+    file[]: crc = 2892ABCD; size =    12514; name = FTRACK09SIDE1.~RAW~
+    file[]: crc = 2F4265A0; size =    12514; name = FTRACK10SIDE0.~RAW~
+    file[]: crc = E1C5AB29; size =    12514; name = FTRACK10SIDE1.~RAW~
+    file[]: crc = A8ED1A16; size =    12514; name = FTRACK11SIDE0.~RAW~
+    file[]: crc = EA1C799E; size =    12514; name = FTRACK11SIDE1.~RAW~
+    file[]: crc = 19A6A71C; size =    12514; name = FTRACK12SIDE0.~RAW~
+    file[]: crc = E8548FCE; size =    12514; name = FTRACK12SIDE1.~RAW~
+    file[]: crc = 01876BF4; size =    12514; name = FTRACK13SIDE0.~RAW~
+    file[]: crc = 5EF2ABF4; size =    12514; name = FTRACK13SIDE1.~RAW~
+    file[]: crc = 383A31C9; size =    12514; name = FTRACK14SIDE0.~RAW~
+    file[]: crc = DDBCD12B; size =    12514; name = FTRACK14SIDE1.~RAW~
+    file[]: crc = C30A1496; size =    12514; name = FTRACK15SIDE0.~RAW~
+    file[]: crc = 99AC7606; size =    12514; name = FTRACK15SIDE1.~RAW~
+    file[]: crc = 06079B7E; size =    12514; name = FTRACK16SIDE0.~RAW~
+    file[]: crc = D0B52C2F; size =    12514; name = FTRACK16SIDE1.~RAW~
+    file[]: crc = B881CA2C; size =    12514; name = FTRACK17SIDE0.~RAW~
+    file[]: crc = 01211268; size =    12514; name = FTRACK17SIDE1.~RAW~
+    file[]: crc = 4083C167; size =    12514; name = FTRACK18SIDE0.~RAW~
+    file[]: crc = E58A336F; size =    12514; name = FTRACK18SIDE1.~RAW~
+    file[]: crc = 660889A5; size =    12514; name = FTRACK19SIDE0.~RAW~
+    file[]: crc = 8BD90F41; size =    12514; name = FTRACK19SIDE1.~RAW~
+    file[]: crc = 477CED4F; size =    12514; name = FTRACK20SIDE0.~RAW~
+    file[]: crc = 47075DC7; size =    12514; name = FTRACK20SIDE1.~RAW~
+    file[]: crc = 34BCBAFE; size =    12514; name = FTRACK21SIDE0.~RAW~
+    file[]: crc = 922911C6; size =    12514; name = FTRACK21SIDE1.~RAW~
+    file[]: crc = B42A1D89; size =    12514; name = FTRACK22SIDE0.~RAW~
+    file[]: crc = 6E35A29A; size =    12514; name = FTRACK22SIDE1.~RAW~
+    file[]: crc = 4EA93949; size =    12514; name = FTRACK23SIDE0.~RAW~
+    file[]: crc = 36BC5C76; size =    12514; name = FTRACK23SIDE1.~RAW~
+    file[]: crc = 37342482; size =    12514; name = FTRACK24SIDE0.~RAW~
+    file[]: crc = E1D94AE6; size =    12514; name = FTRACK24SIDE1.~RAW~
+    file[]: crc = 67C63A8D; size =    12514; name = FTRACK25SIDE0.~RAW~
+    file[]: crc = 2AC3D71B; size =    12514; name = FTRACK25SIDE1.~RAW~
+    file[]: crc = 054B67E7; size =    12514; name = FTRACK26SIDE0.~RAW~
+    file[]: crc = 40DA7EF2; size =    12514; name = FTRACK26SIDE1.~RAW~
+    file[]: crc = D593579E; size =    12514; name = FTRACK27SIDE0.~RAW~
+    file[]: crc = 63E7688E; size =    12514; name = FTRACK27SIDE1.~RAW~
+    file[]: crc = 6B49D02A; size =    12514; name = FTRACK28SIDE0.~RAW~
+    file[]: crc = 65B873AB; size =    12514; name = FTRACK28SIDE1.~RAW~
+    file[]: crc = 4AC91F9C; size =    12514; name = FTRACK29SIDE0.~RAW~
+    file[]: crc = 5AD1EB4D; size =    12514; name = FTRACK29SIDE1.~RAW~
+    file[]: crc = D32986CF; size =    12514; name = FTRACK30SIDE0.~RAW~
+    file[]: crc = 902515CB; size =    12514; name = FTRACK30SIDE1.~RAW~
+    file[]: crc = C37F828A; size =    12514; name = FTRACK31SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK31SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK32SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK32SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK33SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK33SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK34SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK34SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK35SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK35SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE1.~RAW~
+end
+
+end
