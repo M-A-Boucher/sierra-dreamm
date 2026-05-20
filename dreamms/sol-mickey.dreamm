@@ -8,17 +8,13 @@ icon = sol-mickey.png
 machine = pc
 osenv = dos
 rootpath = C:\
-audiohw = speaker
 mips = $(MIPS_8086)
 ramkb = 640
-filters = sierra, adventure
+audiohw = speaker
+filter = sierra, adventure
 
 config[graphics]:
     title = Graphics Configuration
-    option[hercules]:  
-        name = $(HERCULES_NAME)
-        videohw = hercules
-    end
     option[cga]:       
         name = $(CGA_NAME)  
         videohw = cga

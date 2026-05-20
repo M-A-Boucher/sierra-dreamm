@@ -38,7 +38,7 @@ game[v1.0Q-int-2.001-1x360k]:
     name = v1.0Q, Int. 2.001, 1x360K, Booter
     launch = MAIN
     anchorfile = FTRACK00SIDE0.~RAW~
-    file[]: crc = 6F4351E8; size =    12514; name = FTRACK00SIDE0.~RAW~
+    file[]: crc = 6F4351E8; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = E9EACD6D; size =    12514; name = FTRACK00SIDE1.~RAW~
     file[]: crc = 234471AC; size =    12514; name = FTRACK01SIDE0.~RAW~
     file[]: crc = 6BB276F0; size =    12514; name = FTRACK01SIDE1.~RAW~
