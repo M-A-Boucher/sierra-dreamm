@@ -5,21 +5,64 @@ desc[sol-lsl1]:
 
 name = Leisure Suit Larry in the Land of the Lounge Lizards
 icon = sol-lsl1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+audiohw = speaker
+mips = $(MIPS_8086)
+ramkb = 640
 filter = sierra, adventure
-nothrottle = 2
 
-$(include agibase.txt)
-$(include agikeyscript.txt)
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
+    end
+    option[hercules]:
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
 
 //
 // v1.0, Int. 2.440 (1x720K and 2x360K are identical)
 //
 game[v1.0-int-2.440]:
     name = v1.0, Int. 2.440
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 06f3692b; size =     38400; name = AGI
     file[]: crc = 6bfc498a; size =      7680; name = AGIDATA.OVL
     file[]: crc = a2930a66; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = d12b9d1e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 98062f34; size =      1536; name = HGC_GRAF.OVL
@@ -36,6 +79,7 @@ game[v1.0-int-2.440]:
     file[]: crc = 4917e107; size =    146558; name = VOL.1
     file[]: crc = 42c8cd81; size =    237821; name = VOL.2
     file[]: crc = 295fe597; size =      6597; name = WORDS.TOK
+    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -44,8 +88,8 @@ end
 game[v1.0-int-2.440-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 2.440)
     imports = v1.0-int-2.440
-    anchorfile = SIERRA.COM
     file[]: crc = 066ed68d; size =      2944; name = SIERRA.COM
+    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -54,7 +98,6 @@ end
 game[v1.0-int-2.440-gog]:
     name = GOG (v1.0, Int. 2.440)
     imports = v1.0-int-2.440-leisure-suit-larry-collectors-series
-    anchorfile = SIERRA.COM
     file[]: crc = 2bff3b8f; size =      2944; name = SIERRA.COM
 end
 
@@ -64,7 +107,6 @@ end
 game[v1.0-int-2.917]:
     name = v1.0, Int. 2.917
     imports = v1.0-int-2.440
-    anchorfile = SIERRA.COM
     file[]: crc = 3b740147; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL

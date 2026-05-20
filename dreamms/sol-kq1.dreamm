@@ -5,21 +5,238 @@ desc[sol-kq1]:
 
 name = King’s Quest: Quest for the Crown
 icon = sol-kq1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+audiohw = speaker
+mips = $(MIPS_8086)
+ramkb = 640
 filter = sierra, adventure
-nothrottle = 2.5
 
-$(include agibase.txt)
-$(include agikeyscript.txt)
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
+    end
+    option[hercules]:
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
+
+game[booter-cga]:
+    name = CGA booter
+    osenv = bios
+    machine = pcjr
+    anchorfile = FTRACK00SIDE0.~RAW~
+    file[]: crc = 0341628D; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
+    file[]: crc = 036A54BE; size =    12514; name = FTRACK00SIDE1.~RAW~
+    file[]: crc = ECD7DBD9; size =    12514; name = FTRACK01SIDE0.~RAW~
+    file[]: crc = 691F8C8F; size =    12514; name = FTRACK01SIDE1.~RAW~
+    file[]: crc = A10272E1; size =    12514; name = FTRACK02SIDE0.~RAW~
+    file[]: crc = 32369B3A; size =    12514; name = FTRACK02SIDE1.~RAW~
+    file[]: crc = B5ECB02F; size =    12514; name = FTRACK03SIDE0.~RAW~
+    file[]: crc = 5D7C4EC8; size =    12514; name = FTRACK03SIDE1.~RAW~
+    file[]: crc = A4930E76; size =    12514; name = FTRACK04SIDE0.~RAW~
+    file[]: crc = 4F7D3917; size =    12514; name = FTRACK04SIDE1.~RAW~
+    file[]: crc = 319A197A; size =    12514; name = FTRACK05SIDE0.~RAW~
+    file[]: crc = 35B0F667; size =    12514; name = FTRACK05SIDE1.~RAW~
+    file[]: crc = 24BCE9BA; size =    12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = B3B45B9C; size =    12514; name = FTRACK06SIDE1.~RAW~
+    file[]: crc = 97AC4BA9; size =    12514; name = FTRACK07SIDE0.~RAW~
+    file[]: crc = 55E28A10; size =    12514; name = FTRACK07SIDE1.~RAW~
+    file[]: crc = 8583D157; size =    12514; name = FTRACK08SIDE0.~RAW~
+    file[]: crc = 6D759DEA; size =    12514; name = FTRACK08SIDE1.~RAW~
+    file[]: crc = A25A681E; size =    12514; name = FTRACK09SIDE0.~RAW~
+    file[]: crc = 5D49EEF6; size =    12514; name = FTRACK09SIDE1.~RAW~
+    file[]: crc = 7F99C19A; size =    12514; name = FTRACK10SIDE0.~RAW~
+    file[]: crc = 5BC9B3F9; size =    12514; name = FTRACK10SIDE1.~RAW~
+    file[]: crc = A6E88FE9; size =    12514; name = FTRACK11SIDE0.~RAW~
+    file[]: crc = 228E8530; size =    12514; name = FTRACK11SIDE1.~RAW~
+    file[]: crc = F37F81ED; size =    12514; name = FTRACK12SIDE0.~RAW~
+    file[]: crc = D6E4F9FD; size =    12514; name = FTRACK12SIDE1.~RAW~
+    file[]: crc = 47CC9B71; size =    12514; name = FTRACK13SIDE0.~RAW~
+    file[]: crc = DC8B4260; size =    12514; name = FTRACK13SIDE1.~RAW~
+    file[]: crc = DA41C110; size =    12514; name = FTRACK14SIDE0.~RAW~
+    file[]: crc = 8F281CDD; size =    12514; name = FTRACK14SIDE1.~RAW~
+    file[]: crc = AED504A9; size =    12514; name = FTRACK15SIDE0.~RAW~
+    file[]: crc = 7888636F; size =    12514; name = FTRACK15SIDE1.~RAW~
+    file[]: crc = 4454E25B; size =    12514; name = FTRACK16SIDE0.~RAW~
+    file[]: crc = 07471676; size =    12514; name = FTRACK16SIDE1.~RAW~
+    file[]: crc = 48F7689F; size =    12514; name = FTRACK17SIDE0.~RAW~
+    file[]: crc = 88AEB1FA; size =    12514; name = FTRACK17SIDE1.~RAW~
+    file[]: crc = DBBB5339; size =    12514; name = FTRACK18SIDE0.~RAW~
+    file[]: crc = 1A94B78A; size =    12514; name = FTRACK18SIDE1.~RAW~
+    file[]: crc = 76D38258; size =    12514; name = FTRACK19SIDE0.~RAW~
+    file[]: crc = 22C6823E; size =    12514; name = FTRACK19SIDE1.~RAW~
+    file[]: crc = D13696DC; size =    12514; name = FTRACK20SIDE0.~RAW~
+    file[]: crc = 8884FAC3; size =    12514; name = FTRACK20SIDE1.~RAW~
+    file[]: crc = 70974747; size =    12514; name = FTRACK21SIDE0.~RAW~
+    file[]: crc = 49CB1E37; size =    12514; name = FTRACK21SIDE1.~RAW~
+    file[]: crc = EE895E2B; size =    12514; name = FTRACK22SIDE0.~RAW~
+    file[]: crc = 1F3707F4; size =    12514; name = FTRACK22SIDE1.~RAW~
+    file[]: crc = 9512B91F; size =    12514; name = FTRACK23SIDE0.~RAW~
+    file[]: crc = 9C19E0FE; size =    12514; name = FTRACK23SIDE1.~RAW~
+    file[]: crc = CB6F9FA6; size =    12514; name = FTRACK24SIDE0.~RAW~
+    file[]: crc = B4851843; size =    12514; name = FTRACK24SIDE1.~RAW~
+    file[]: crc = 460ED212; size =    12514; name = FTRACK25SIDE0.~RAW~
+    file[]: crc = 6E0FD0C1; size =    12514; name = FTRACK25SIDE1.~RAW~
+    file[]: crc = AC836C44; size =    12514; name = FTRACK26SIDE0.~RAW~
+    file[]: crc = 77E6BF47; size =    12514; name = FTRACK26SIDE1.~RAW~
+    file[]: crc = 2CE4193D; size =    12514; name = FTRACK27SIDE0.~RAW~
+    file[]: crc = E42C1403; size =    12514; name = FTRACK27SIDE1.~RAW~
+    file[]: crc = 02AD0397; size =    12514; name = FTRACK28SIDE0.~RAW~
+    file[]: crc = 8F9ACA9C; size =    12514; name = FTRACK28SIDE1.~RAW~
+    file[]: crc = 4FE85D67; size =    12514; name = FTRACK29SIDE0.~RAW~
+    file[]: crc = 57EB1828; size =    12514; name = FTRACK29SIDE1.~RAW~
+    file[]: crc = 3269CC7D; size =    12514; name = FTRACK30SIDE0.~RAW~
+    file[]: crc = C6FD05B8; size =    12514; name = FTRACK30SIDE1.~RAW~
+    file[]: crc = 4D5D263F; size =    12514; name = FTRACK31SIDE0.~RAW~
+    file[]: crc = 4DEED96F; size =    12514; name = FTRACK31SIDE1.~RAW~
+    file[]: crc = 921973C0; size =    12514; name = FTRACK32SIDE0.~RAW~
+    file[]: crc = B26A756C; size =    12514; name = FTRACK32SIDE1.~RAW~
+    file[]: crc = DFD8BF39; size =    12514; name = FTRACK33SIDE0.~RAW~
+    file[]: crc = 4C937557; size =    12514; name = FTRACK33SIDE1.~RAW~
+    file[]: crc = 381914A1; size =    12514; name = FTRACK34SIDE0.~RAW~
+    file[]: crc = 434CD6D9; size =    12514; name = FTRACK34SIDE1.~RAW~
+    file[]: crc = D105111B; size =    12514; name = FTRACK35SIDE0.~RAW~
+    file[]: crc = 884A7BA1; size =    12514; name = FTRACK35SIDE1.~RAW~
+    file[]: crc = 599653FD; size =    12514; name = FTRACK36SIDE0.~RAW~
+    file[]: crc = FA8D8960; size =    12514; name = FTRACK36SIDE1.~RAW~
+    file[]: crc = ABA43A5A; size =    12514; name = FTRACK37SIDE0.~RAW~
+    file[]: crc = 3092B547; size =    12514; name = FTRACK37SIDE1.~RAW~
+    file[]: crc = FBEDB4F5; size =    12514; name = FTRACK38SIDE0.~RAW~
+    file[]: crc = 654FB0E9; size =    12514; name = FTRACK38SIDE1.~RAW~
+    file[]: crc = F42204BF; size =    12514; name = FTRACK39SIDE0.~RAW~
+    file[]: crc = 516AFEF0; size =    12514; name = FTRACK39SIDE1.~RAW~
+end
+
+game[booter-pcjr]:
+    name = PCjr booter
+    osenv = bios
+    machine = pcjr
+    anchorfile = FTRACK00SIDE0.~RAW~
+    file[]: crc = 37DC84DD; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
+    file[]: crc = E24096A5; size =    12514; name = FTRACK00SIDE1.~RAW~
+    file[]: crc = F1D522B4; size =    12514; name = FTRACK01SIDE0.~RAW~
+    file[]: crc = 7F295981; size =    12514; name = FTRACK01SIDE1.~RAW~
+    file[]: crc = 8D8F6143; size =    12514; name = FTRACK02SIDE0.~RAW~
+    file[]: crc = 5AA86B2D; size =    12514; name = FTRACK02SIDE1.~RAW~
+    file[]: crc = 4BCF0657; size =    12514; name = FTRACK03SIDE0.~RAW~
+    file[]: crc = 45268FF7; size =    12514; name = FTRACK03SIDE1.~RAW~
+    file[]: crc = 6BDF8095; size =    12514; name = FTRACK04SIDE0.~RAW~
+    file[]: crc = 4F7D3917; size =    12514; name = FTRACK04SIDE1.~RAW~
+    file[]: crc = 319A197A; size =    12514; name = FTRACK05SIDE0.~RAW~
+    file[]: crc = 35B0F667; size =    12514; name = FTRACK05SIDE1.~RAW~
+    file[]: crc = E1ED1BA4; size =    12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = B3B45B9C; size =    12514; name = FTRACK06SIDE1.~RAW~
+    file[]: crc = DDDAFD17; size =    12514; name = FTRACK07SIDE0.~RAW~
+    file[]: crc = BB785C46; size =    12514; name = FTRACK07SIDE1.~RAW~
+    file[]: crc = 7F956199; size =    12514; name = FTRACK08SIDE0.~RAW~
+    file[]: crc = FEBC3D9E; size =    12514; name = FTRACK08SIDE1.~RAW~
+    file[]: crc = 8D1D207C; size =    12514; name = FTRACK09SIDE0.~RAW~
+    file[]: crc = F96CB754; size =    12514; name = FTRACK09SIDE1.~RAW~
+    file[]: crc = 7C55EE0E; size =    12514; name = FTRACK10SIDE0.~RAW~
+    file[]: crc = FB031921; size =    12514; name = FTRACK10SIDE1.~RAW~
+    file[]: crc = 0279DBAD; size =    12514; name = FTRACK11SIDE0.~RAW~
+    file[]: crc = EC1B1105; size =    12514; name = FTRACK11SIDE1.~RAW~
+    file[]: crc = 447C52FA; size =    12514; name = FTRACK12SIDE0.~RAW~
+    file[]: crc = F8573DDF; size =    12514; name = FTRACK12SIDE1.~RAW~
+    file[]: crc = A18D94FF; size =    12514; name = FTRACK13SIDE0.~RAW~
+    file[]: crc = 98BE558A; size =    12514; name = FTRACK13SIDE1.~RAW~
+    file[]: crc = 92BDDDAC; size =    12514; name = FTRACK14SIDE0.~RAW~
+    file[]: crc = F43C1F1C; size =    12514; name = FTRACK14SIDE1.~RAW~
+    file[]: crc = 9FC41836; size =    12514; name = FTRACK15SIDE0.~RAW~
+    file[]: crc = D35A1F3E; size =    12514; name = FTRACK15SIDE1.~RAW~
+    file[]: crc = 18188213; size =    12514; name = FTRACK16SIDE0.~RAW~
+    file[]: crc = D0D78AA3; size =    12514; name = FTRACK16SIDE1.~RAW~
+    file[]: crc = D78AD361; size =    12514; name = FTRACK17SIDE0.~RAW~
+    file[]: crc = B67E5999; size =    12514; name = FTRACK17SIDE1.~RAW~
+    file[]: crc = 97EB2EBC; size =    12514; name = FTRACK18SIDE0.~RAW~
+    file[]: crc = CF2513C4; size =    12514; name = FTRACK18SIDE1.~RAW~
+    file[]: crc = 32585FE6; size =    12514; name = FTRACK19SIDE0.~RAW~
+    file[]: crc = 138C17FC; size =    12514; name = FTRACK19SIDE1.~RAW~
+    file[]: crc = 4E1454D6; size =    12514; name = FTRACK20SIDE0.~RAW~
+    file[]: crc = E28E034D; size =    12514; name = FTRACK20SIDE1.~RAW~
+    file[]: crc = 19C128AC; size =    12514; name = FTRACK21SIDE0.~RAW~
+    file[]: crc = 1AE8E5E8; size =    12514; name = FTRACK21SIDE1.~RAW~
+    file[]: crc = 763B2DAB; size =    12514; name = FTRACK22SIDE0.~RAW~
+    file[]: crc = 796BA8ED; size =    12514; name = FTRACK22SIDE1.~RAW~
+    file[]: crc = CF877AD9; size =    12514; name = FTRACK23SIDE0.~RAW~
+    file[]: crc = 42B20111; size =    12514; name = FTRACK23SIDE1.~RAW~
+    file[]: crc = BAECE857; size =    12514; name = FTRACK24SIDE0.~RAW~
+    file[]: crc = 078DCD6C; size =    12514; name = FTRACK24SIDE1.~RAW~
+    file[]: crc = 40BE1505; size =    12514; name = FTRACK25SIDE0.~RAW~
+    file[]: crc = 7B18F7A7; size =    12514; name = FTRACK25SIDE1.~RAW~
+    file[]: crc = B024D39D; size =    12514; name = FTRACK26SIDE0.~RAW~
+    file[]: crc = 9C5A98A7; size =    12514; name = FTRACK26SIDE1.~RAW~
+    file[]: crc = 3309ECBE; size =    12514; name = FTRACK27SIDE0.~RAW~
+    file[]: crc = ED5EFEA8; size =    12514; name = FTRACK27SIDE1.~RAW~
+    file[]: crc = 5E68BB78; size =    12514; name = FTRACK28SIDE0.~RAW~
+    file[]: crc = 8915BFD1; size =    12514; name = FTRACK28SIDE1.~RAW~
+    file[]: crc = 74A0222F; size =    12514; name = FTRACK29SIDE0.~RAW~
+    file[]: crc = 06EE9BA7; size =    12514; name = FTRACK29SIDE1.~RAW~
+    file[]: crc = 4F96234E; size =    12514; name = FTRACK30SIDE0.~RAW~
+    file[]: crc = 76B9E41F; size =    12514; name = FTRACK30SIDE1.~RAW~
+    file[]: crc = 25CED5F3; size =    12514; name = FTRACK31SIDE0.~RAW~
+    file[]: crc = 98E730FA; size =    12514; name = FTRACK31SIDE1.~RAW~
+    file[]: crc = FEB83DAA; size =    12514; name = FTRACK32SIDE0.~RAW~
+    file[]: crc = 658183D0; size =    12514; name = FTRACK32SIDE1.~RAW~
+    file[]: crc = F57ED93F; size =    12514; name = FTRACK33SIDE0.~RAW~
+    file[]: crc = 4E330790; size =    12514; name = FTRACK33SIDE1.~RAW~
+    file[]: crc = 4025664F; size =    12514; name = FTRACK34SIDE0.~RAW~
+    file[]: crc = 431DB8DC; size =    12514; name = FTRACK34SIDE1.~RAW~
+    file[]: crc = 4B37A8BE; size =    12514; name = FTRACK35SIDE0.~RAW~
+    file[]: crc = 886D68C0; size =    12514; name = FTRACK35SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE1.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE0.~RAW~
+    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE1.~RAW~
+end
 
 //
 // v1.0U, Int. 2.272, 2x360K
 //
 game[v1.0u-int-2.272-2x360k]:
     name = v1.0U, Int. 2.272, 2x360K
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = c392a757; size =     34817; name = AGI
     file[]: crc = 3d5d7bad; size =      6656; name = AGIDATA.OVL
     file[]: crc = e7c78dc1; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = 33daae91; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 29a3dcf2; size =        98; name = EXIST.COM
     file[]: crc = fde4aeac; size =       512; name = JR_GRAF.OVL
@@ -33,6 +250,7 @@ game[v1.0u-int-2.272-2x360k]:
     file[]: crc = 553fe9c2; size =    198087; name = VOL.1
     file[]: crc = 32884bdb; size =     90501; name = VOL.2
     file[]: crc = 24e1310e; size =      2970; name = WORDS.TOK
+    file[]: crc = EF908AF4; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
@@ -40,10 +258,11 @@ end
 //
 game[v2.0f-int-2.425]:
     name = v2.0F, Int. 2.425
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 3078abe6; size =     38400; name = AGI
     file[]: crc = f3e89085; size =      7680; name = AGIDATA.OVL
     file[]: crc = ca8b4741; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = 8e14b45e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 211da9c5; size =      1536; name = HGC_GRAF.OVL
@@ -60,6 +279,7 @@ game[v2.0f-int-2.425]:
     file[]: crc = 5b5e75a0; size =    200630; name = VOL.1
     file[]: crc = b310ac5c; size =     90891; name = VOL.2
     file[]: crc = eba7ec7e; size =      3144; name = WORDS.TOK
+    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
@@ -67,27 +287,17 @@ end
 //
 game[v2.0f-int-2.917]:
     name = v2.0F, Int. 2.917
-    anchorfile = VOL.2
+    imports = v2.0f-int-2.425
     file[]: crc = d4138394; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
     file[]: crc = 67e8b0ad; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
     file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
     file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 4d098292; size =       315; name = LOGDIR
-    file[]: crc = 2f7911a0; size =       331; name = OBJECT
-    file[]: crc = f5d23f58; size =       255; name = PICDIR
     file[]: crc = 3b977587; size =      3121; name = SIERRA.COM
-    file[]: crc = e8a07a2c; size =       144; name = SNDDIR
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
-    file[]: crc = 72791dbd; size =       432; name = VIEWDIR
-    file[]: crc = d337fbfd; size =     48472; name = VOL.0
-    file[]: crc = 5b5e75a0; size =    200630; name = VOL.1
-    file[]: crc = b310ac5c; size =     90891; name = VOL.2
-    file[]: crc = eba7ec7e; size =      3144; name = WORDS.TOK
 end
 
 //
@@ -98,6 +308,7 @@ game[v2.0f-int-2.917-kings-quest-collectors-edition]:
     imports = v2.0f-int-2.917
     anchorfile = SIERRA.COM
     file[]: crc = 5dce7127; size =      3121; name = SIERRA.COM
+    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -108,6 +319,7 @@ game[v2.0f-int-2.917-gog]:
     imports = v2.0f-int-2.917
     anchorfile = KQ1.COM
     file[]: crc = 9fd66691; size =      3121; name = SIERRA.COM  ; replace = KQ1.COM
+    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 
 end

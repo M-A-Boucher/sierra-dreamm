@@ -5,136 +5,61 @@ desc[sol-sq2]:
 
 name = Space Quest II: Chapter II - Vohaul's Revenge
 icon = sol-sq2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+audiohw = speaker
+mips = $(MIPS_8086)
+ramkb = 640
 filter = sierra, adventure
-nothrottle = 1
-
-$(include agibase.txt)
-$(include agikeyscript.txt)
 
 //
-// v2.0A, Int. 2.912, 3x360K
+// graphics configuration
 //
-game[v2.0a-int-2.912-3x360k]:
-    name = v2.0A, Int. 2.912, 3x360K
-    anchorfile = VOL.0
-    file[]: crc = 50d0603d; size =     39424; name = AGI
-    file[]: crc = 925bedc9; size =      8192; name = AGIDATA.OVL
-    file[]: crc = c8fcc528; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 0ae98926; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
-    file[]: crc = 7b59fb4c; size =      1536; name = HGC_GRAF.OVL
-    file[]: crc = a27c8af7; size =      1024; name = HGC_OBJS.OVL
-    file[]: crc = da1a4910; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = aeff2330; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 1a33142d; size =       423; name = LOGDIR
-    file[]: crc = b67fcb84; size =       331; name = OBJECT
-    file[]: crc = 4824d141; size =       441; name = PICDIR
-    file[]: crc = dadd2078; size =      3121; name = SIERRA.COM
-    file[]: crc = 9ef333f1; size =       210; name = SNDDIR
-    file[]: crc = 0997fbf5; size =       512; name = VG_GRAF.OVL
-    file[]: crc = fc5a8af4; size =       720; name = VIEWDIR
-    file[]: crc = 40aa0099; size =     70315; name = VOL.0
-    file[]: crc = 06bfce29; size =    161022; name = VOL.1
-    file[]: crc = e00e23a0; size =    215433; name = VOL.2
-    file[]: crc = 0a93e37d; size =    195698; name = VOL.3
-    file[]: crc = aeb974ec; size =      6828; name = WORDS.TOK
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)  
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
+    end
 end
 
-//
-// v2.0C, Int. 2.915, 3x360K *** MISSING ***
-//
-
-//
-// v2.0C, Int. 2.917, 3x360K
-//
-game[v2.0c-int-2.917-3x360k]:
-    name = v2.0C, Int. 2.917, 3x360K
-    imports = v2.0a-int-2.912-3x360k
-    anchorfile = VOL.0
-    file[]: crc = edede1fa; size =     39424; name = AGI
-    file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
-    file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 67e8b0ad; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 7c999ac8; size =      1536; name = HGC_GRAF.OVL
-    file[]: crc = 4232dbd7; size =      1024; name = HGC_OBJS.OVL
-    file[]: crc = a0a04da4; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
-    file[]: crc = 0360a5c6; size =       426; name = LOGDIR
-    file[]: crc = f00aabff; size =       444; name = PICDIR
-    file[]: crc = c84b6cac; size =       210; name = SNDDIR
-    file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
-    file[]: crc = abfe5251; size =       720; name = VIEWDIR
-    file[]: crc = 7b88cd4f; size =     70302; name = VOL.0
-    file[]: crc = 28acb3d4; size =    161203; name = VOL.1
-    file[]: crc = d5b46dbe; size =    215510; name = VOL.2
-    file[]: crc = 27ed0af1; size =    195592; name = VOL.3
-end
-
-//
-// v2.0D, Int. 2.936, 3x360K
-//
-game[v2.0d-int-2.936-3x360k]:
-    name = v2.0D, Int. 2.936, 3x360K
-    imports = v2.0a-int-2.912-3x360k
-    anchorfile = VOL.0
-    file[]: crc = 1c0fbaf9; size =     39424; name = AGI
-    file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
-    file[]: crc = a8f00e6b; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 99f00f0f; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
-    file[]: crc = 8ca5a1da; size =      1536; name = HGC_GRAF.OVL
-    file[]: crc = bbd13bbf; size =      1024; name = HGC_OBJS.OVL
-    file[]: crc = 3b17b970; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = 2c7b7b15; size =       512; name = JR_GRAF.OVL
-    file[]: crc = eab977f8; size =       426; name = LOGDIR
-    file[]: crc = 9cbea791; size =       444; name = PICDIR
-    file[]: crc = 1c9fadbc; size =       210; name = SNDDIR
-    file[]: crc = 086a550b; size =       512; name = VG_GRAF.OVL
-    file[]: crc = 7dde8222; size =       720; name = VIEWDIR
-    file[]: crc = 687ad2e2; size =     70309; name = VOL.0
-    file[]: crc = 679e2fad; size =    161310; name = VOL.1
-    file[]: crc = f062c41f; size =    215534; name = VOL.2
-    file[]: crc = 2f236481; size =    196056; name = VOL.3
-end
-
-//
-// v2.0F, Int. 2.936, 3x360K
-//
-game[v2.0f-int-2.936-3x360k]:
-    name = v2.0F, Int. 2.936, 3x360K
-    imports = v2.0a-int-2.912-3x360k
-    anchorfile = VOL.0
-    file[]: crc = 1c0fbaf9; size =     39424; name = AGI
-    file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
-    file[]: crc = a8f00e6b; size =      1024; name = CGA_GRAF.OVL
-    file[]: crc = 99f00f0f; size =      1024; name = EGA_GRAF.OVL
-    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
-    file[]: crc = 8ca5a1da; size =      1536; name = HGC_GRAF.OVL
-    file[]: crc = bbd13bbf; size =      1024; name = HGC_OBJS.OVL
-    file[]: crc = 3b17b970; size =       512; name = IBM_OBJS.OVL
-    file[]: crc = 2c7b7b15; size =       512; name = JR_GRAF.OVL
-    file[]: crc = aff0879b; size =       426; name = LOGDIR
-    file[]: crc = b67fcb84; size =       331; name = OBJECT
-    file[]: crc = b6db0c39; size =       444; name = PICDIR
-    file[]: crc = 7700a783; size =       210; name = SNDDIR
-    file[]: crc = 086a550b; size =       512; name = VG_GRAF.OVL
-    file[]: crc = 2b4c4013; size =       720; name = VIEWDIR
-    file[]: crc = fd471c99; size =     70313; name = VOL.0
-    file[]: crc = 56ddcb7f; size =    161225; name = VOL.1
-    file[]: crc = 8c203d09; size =    215666; name = VOL.2
-    file[]: crc = ff8c15da; size =    196169; name = VOL.3
-    file[]: crc = aeb974ec; size =      6828; name = WORDS.TOK
-end
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 
 //
 // v2.0A, Int. 2.912, 2x720K
 //
 game[v2.0a-int-2.912-2x720k]:
     name = v2.0A, Int. 2.912, 2x720K
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 50d0603d; size =     39424; name = AGI
     file[]: crc = 925bedc9; size =      8192; name = AGIDATA.OVL
     file[]: crc = c8fcc528; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = 0ae98926; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 7b59fb4c; size =      1536; name = HGC_GRAF.OVL
@@ -153,10 +78,29 @@ game[v2.0a-int-2.912-2x720k]:
     file[]: crc = 6dbdff2f; size =    411126; name = VOL.2
     file[]: crc = 14a285ac; size =         2; name = VOL.3
     file[]: crc = aeb974ec; size =      6828; name = WORDS.TOK
+    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~
+end
+
+//
+// v2.0A, Int. 2.912, 3x360K
+//
+game[v2.0a-int-2.912-3x360k]:
+    name = v2.0A, Int. 2.912, 3x360K
+    imports = v2.0a-int-2.912-2x720k
+    file[]: crc = 1a33142d; size =       423; name = LOGDIR
+    file[]: crc = 4824d141; size =       441; name = PICDIR
+    file[]: crc = 9ef333f1; size =       210; name = SNDDIR
+    file[]: crc = fc5a8af4; size =       720; name = VIEWDIR
+    file[]: crc = e00e23a0; size =    215433; name = VOL.2
+    file[]: crc = 0a93e37d; size =    195698; name = VOL.3
 end
 
 //
 // v2.0C, Int. 2.915, 2x720K *** MISSING ***
+//
+
+//
+// v2.0C, Int. 2.915, 3x360K *** MISSING ***
 //
 
 //
@@ -165,7 +109,6 @@ end
 game[v2.0c-int-2.917-2x720k]:
     name = v2.0C, Int. 2.917, 2x720K
     imports = v2.0a-int-2.912-2x720k
-    anchorfile = VOL.0
     file[]: crc = edede1fa; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
@@ -183,7 +126,20 @@ game[v2.0c-int-2.917-2x720k]:
     file[]: crc = 28acb3d4; size =    161203; name = VOL.1
     file[]: crc = 60c77d16; size =    411093; name = VOL.2
     file[]: crc = 00000000; size =         0; remove = VOL.3       
+end
 
+//
+// v2.0C, Int. 2.917, 3x360K
+//
+game[v2.0c-int-2.917-3x360k]:
+    name = v2.0C, Int. 2.917, 3x360K
+    imports = v2.0c-int-2.917-2x720k
+    file[]: crc = 0360a5c6; size =       426; name = LOGDIR
+    file[]: crc = f00aabff; size =       444; name = PICDIR
+    file[]: crc = c84b6cac; size =       210; name = SNDDIR
+    file[]: crc = abfe5251; size =       720; name = VIEWDIR
+    file[]: crc = d5b46dbe; size =    215510; name = VOL.2
+    file[]: crc = 27ed0af1; size =    195592; name = VOL.3
 end
 
 //
@@ -191,8 +147,7 @@ end
 //
 game[v2.0d-int-2.936-2x720k]:
     name = v2.0D, Int. 2.936, 2x720K
-    imports = v2.0a-int-2.912-2x720k
-    anchorfile = VOL.0
+    imports = v2.0c-int-2.917-2x720k
     file[]: crc = 1c0fbaf9; size =     39424; name = AGI
     file[]: crc = d2aa52f4; size =      8192; name = AGIDATA.OVL
     file[]: crc = a8f00e6b; size =      1024; name = CGA_GRAF.OVL
@@ -213,7 +168,23 @@ game[v2.0d-int-2.936-2x720k]:
 end
 
 //
+// v2.0D, Int. 2.936, 3x360K
+//
+game[v2.0d-int-2.936-3x360k]:
+    name = v2.0D, Int. 2.936, 3x360K
+    imports = v2.0d-int-2.936-2x720k
+    file[]: crc = 200435c7; size =      3072; name = HGC_FONT
+    file[]: crc = eab977f8; size =       426; name = LOGDIR
+    file[]: crc = 9cbea791; size =       444; name = PICDIR
+    file[]: crc = 1c9fadbc; size =       210; name = SNDDIR
+    file[]: crc = 7dde8222; size =       720; name = VIEWDIR
+    file[]: crc = f062c41f; size =    215534; name = VOL.2
+    file[]: crc = 2f236481; size =    196056; name = VOL.3
+end
+
+//
 // v2.0F, Int. 2.936, 2x720K
+//
 game[v2.0f-int-2.936-2x720k]:
     name = v2.0F, Int. 2.936, 2x720K
     imports = v2.0d-int-2.936-2x720k
@@ -229,6 +200,21 @@ game[v2.0f-int-2.936-2x720k]:
 end
 
 //
+// v2.0F, Int. 2.936, 3x360K
+//
+game[v2.0f-int-2.936-3x360k]:
+    name = v2.0F, Int. 2.936, 3x360K
+    imports = v2.0f-int-2.936-2x720k
+    file[]: crc = aff0879b; size =       426; name = LOGDIR
+    file[]: crc = b67fcb84; size =       331; name = OBJECT
+    file[]: crc = b6db0c39; size =       444; name = PICDIR
+    file[]: crc = 7700a783; size =       210; name = SNDDIR
+    file[]: crc = 2b4c4013; size =       720; name = VIEWDIR
+    file[]: crc = 8c203d09; size =    215666; name = VOL.2
+    file[]: crc = ff8c15da; size =    196169; name = VOL.3
+end
+
+//
 // Space Quest - Collector's Edition (v2.0F, Int. 2.936)
 //
 game[v2.0f-int-2.936-sq-collectors-edition]:
@@ -236,6 +222,7 @@ game[v2.0f-int-2.936-sq-collectors-edition]:
     imports = v2.0f-int-2.936-2x720k
     anchorfile = SIERRA.COM
     file[]: crc = 984b800c; size =      3121; name = SIERRA.COM
+    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 
 end

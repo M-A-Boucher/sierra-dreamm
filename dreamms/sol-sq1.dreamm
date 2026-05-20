@@ -5,21 +5,64 @@ desc[sol-sq1]:
 
 name = Space Quest: Chapter I - The Sarien Encounter
 icon = sol-sq1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM
+audiohw = speaker
+mips = $(MIPS_8086)
+ramkb = 640
 filter = sierra, adventure
-nothrottle = 2
 
-$(include agibase.txt)
-$(include agikeyscript.txt)
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
+    end
+    option[hercules]:
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
 
 //
 // v1.0X, Int. 2.089, 2x360K
 //
 game[v1.0x-int-2.089-2x360k]:
     name = v1.0X, Int. 2.089, 2x360K
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 40952762; size =     34305; name = AGI
     file[]: crc = b13b4d17; size =      6656; name = AGIDATA.OVL
     file[]: crc = e31a5247; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = fda12866; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = c3e532c7; size =       512; name = JR_GRAF.OVL
     file[]: crc = 938a1123; size =       372; name = LOGDIR
@@ -32,6 +75,7 @@ game[v1.0x-int-2.089-2x360k]:
     file[]: crc = e1c1abd6; size =    228674; name = VOL.1
     file[]: crc = b972ab4d; size =    296732; name = VOL.2
     file[]: crc = 3e10d10a; size =      4656; name = WORDS.TOK
+    file[]: crc = EF908AF4; size =     12514; name = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -40,7 +84,6 @@ end
 game[v1.1a-int-2.272-2x360k]:
     name = v1.1A, Int. 2.272, 2x360K
     imports = v1.0x-int-2.089-2x360k
-    anchorfile = VOL.0
     file[]: crc = a5012bbd; size =     34817; name = AGI
     file[]: crc = 3d5d7bad; size =      6656; name = AGIDATA.OVL
     file[]: crc = e7c78dc1; size =      1024; name = CGA_GRAF.OVL
@@ -62,11 +105,11 @@ end
 //
 game[v2.2-int-2.426]:
     name = v2.2, Int. 2.426
-    KEY_TWEAK = 0x02
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = d2f241d0; size =     38400; name = AGI
     file[]: crc = 451381ec; size =      7680; name = AGIDATA.OVL
     file[]: crc = ed543aa5; size =      1024; name = CGA_GRAF.OVL
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = 8e14b45e; size =      1024; name = EGA_GRAF.OVL
     file[]: crc = 200435c7; size =      3072; name = HGC_FONT
     file[]: crc = 4793a021; size =      1536; name = HGC_GRAF.OVL
@@ -83,6 +126,7 @@ game[v2.2-int-2.426]:
     file[]: crc = 8908c96f; size =    222807; name = VOL.1
     file[]: crc = 0ea18761; size =    264177; name = VOL.2
     file[]: crc = 7c9d455a; size =      4793; name = WORDS.TOK
+    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -91,7 +135,6 @@ end
 game[v2.2-int-2.917]:
     name = v2.2, Int. 2.917
     imports = v2.2-int-2.426
-    anchorfile = VOL.0
     file[]: crc = 7e712dee; size =     39424; name = AGI
     file[]: crc = 477bd79b; size =      8192; name = AGIDATA.OVL
     file[]: crc = 838c18ac; size =      1024; name = CGA_GRAF.OVL
@@ -102,6 +145,7 @@ game[v2.2-int-2.917]:
     file[]: crc = dc361ea6; size =       512; name = JR_GRAF.OVL
     file[]: crc = d4a8580b; size =      3121; name = SIERRA.COM
     file[]: crc = ca491b69; size =       512; name = VG_GRAF.OVL
+
 end
 
 //
@@ -112,6 +156,7 @@ game[v2.2-int-2.917-space-quest-collectors-edition]:
     imports = v2.2-int-2.917
     anchorfile = VOL.0
     file[]: crc = 72fca229; size =      3121; name = SIERRA.COM
+    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 
 end
