@@ -5,7 +5,7 @@ desc[sol-donald]:
 
 name = Donald Duck’s Playground
 icon = sol-donald.png
-machine = pc
+machine = pcjr
 osenv = bios
 ramkb = 640
 mips = $(MIPS_8086)
@@ -13,11 +13,23 @@ audiohw = speaker
 videohw = ega
 filter = sierra, adventure
 
+config[graphics]:
+    title = Graphics Configuration
+    option[pcjr]:
+        name = $(TVIDEO_NAME)
+        machine = pcjr; priority = 1
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        machine = pc
+    end
+end
+
 //
 // filesystem
 //
-mount[]: vpath = A:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = A:\;         srcpath = $(ifsinstallpath)
+mount[]: vpath = A:\;         srcpath = $(ifsdeltapath); writable = true
 
 //
 // v1.0Q, Int. 2.001, 1x360K, Booter
