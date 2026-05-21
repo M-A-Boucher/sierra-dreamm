@@ -50,6 +50,11 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 
+dynamicfile[]:
+    path = A:\_KQ3.BAT
+    contents = $(NULL)
+end
+
 //
 // v1.01, Int. 2.272, 3x360K
 //

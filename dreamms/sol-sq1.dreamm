@@ -9,7 +9,6 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.COM
-audiohw = speaker
 mips = $(MIPS_8086)
 ramkb = 640
 filter = sierra, adventure
@@ -52,6 +51,11 @@ end
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
+
+dynamicfile[]:
+    path = A:\_SQ.BAT
+    contents = $(NULL)
+end
 
 //
 // v1.0X, Int. 2.089, 2x360K

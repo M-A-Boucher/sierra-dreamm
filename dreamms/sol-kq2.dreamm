@@ -52,11 +52,16 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)        ; writable = true;
 
+dynamicfile[]:
+    path = A:\_KQ2.BAT
+    contents = $(NULL)
+end
+
 //
-// v1.1H, 2x360K
+// v1.1H, 2x360K, Booter
 //
 game[v1.1h-2x360k]:
-    name = v1.1H, 2x360K
+    name = v1.1H, 2x360K, Booter
     osenv = bios
     machine = pcjr
     anchorfile = FTRACK00SIDE0.~RAW~

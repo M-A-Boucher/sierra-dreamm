@@ -53,6 +53,11 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
 
+dynamicfile[]:
+    path = A:\_KQ1.BAT
+    contents = $(NULL)
+end
+
 game[booter-cga]:
     name = CGA booter
     osenv = bios

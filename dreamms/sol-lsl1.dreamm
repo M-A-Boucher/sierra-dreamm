@@ -53,12 +53,17 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
 
+dynamicfile[]:
+    path = A:\_LL.BAT
+    contents = $(NULL)
+end
+
 //
 // v1.0, Int. 2.440 (1x720K and 2x360K are identical)
 //
 game[v1.0-int-2.440]:
     name = v1.0, Int. 2.440
-    anchorfile = FTRACK06SIDE0.~RAW~
+    anchorfile = VOL.0
     file[]: crc = 06f3692b; size =     38400; name = AGI
     file[]: crc = 6bfc498a; size =      7680; name = AGIDATA.OVL
     file[]: crc = a2930a66; size =      1024; name = CGA_GRAF.OVL

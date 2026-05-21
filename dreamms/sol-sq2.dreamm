@@ -50,6 +50,11 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 
+dynamicfile[]:
+    path = A:\_SQ2.BAT
+    contents = $(NULL)
+end
+
 //
 // v2.0A, Int. 2.912, 2x720K
 //
