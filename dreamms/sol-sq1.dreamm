@@ -9,7 +9,8 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.COM
-mips = $(MIPS_8086)
+audiohw = speaker
+mips = $(MIPS_286_10)
 ramkb = 640
 filter = sierra, adventure
 

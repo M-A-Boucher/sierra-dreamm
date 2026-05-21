@@ -10,7 +10,7 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.COM
 audiohw = speaker
-mips = $(MIPS_8086)
+mips = $(MIPS_286_10)
 ramkb = 640
 filter = sierra, adventure
 
@@ -57,9 +57,10 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)        ; writable = true
 //
 game[v1.1j-int-1.12-2x360k]:
     name = v1.1J, Int. 1.12, 2x360K, Booter
-    anchorfile = FTRACK00SIDE0.~RAW~
     machine = pcjr
     osenv = bios
+    mips = $(MIPS_8086)
+    anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = B333E8C5; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~
     file[]: crc = 68B55522; size =    12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = 7B34FFC6; size =    12514; name = DISK1\FTRACK01SIDE0.~RAW~
@@ -231,9 +232,10 @@ end
 //
 game[v1.1m-int-1.12-2x360k]:
     name = v1.1M, Int. 1.12, 2x360K, Booter
-    anchorfile = FTRACK00SIDE0.~RAW~
     machine = pcjr
     osenv = bios
+    mips = $(MIPS_8086)
+    anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 93FC2D16; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~
     file[]: crc = 004602E2; size =    12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = 0A42B343; size =    12514; name = DISK1\FTRACK01SIDE0.~RAW~

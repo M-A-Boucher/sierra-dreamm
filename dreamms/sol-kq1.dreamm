@@ -10,7 +10,7 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.COM
 audiohw = speaker
-mips = $(MIPS_8086)
+mips = $(MIPS_286_10)
 ramkb = 640
 filter = sierra, adventure
 
@@ -58,10 +58,14 @@ dynamicfile[]:
     contents = $(NULL)
 end
 
+//
+// CGA, 1x360K, Booter
+//
 game[booter-cga]:
-    name = CGA booter
+    name = CGA, 1x360K, Booter
     osenv = bios
-    machine = pcjr
+    videohw = ega
+    mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 0341628D; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 036A54BE; size =    12514; name = FTRACK00SIDE1.~RAW~
@@ -145,10 +149,14 @@ game[booter-cga]:
     file[]: crc = 516AFEF0; size =    12514; name = FTRACK39SIDE1.~RAW~
 end
 
+//
+// PCjr, 1x360K, Booter
+//
 game[booter-pcjr]:
-    name = PCjr booter
+    name = PCjr, 1x360K, Booter
     osenv = bios
     machine = pcjr
+    mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 37DC84DD; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = E24096A5; size =    12514; name = FTRACK00SIDE1.~RAW~
