@@ -4,13 +4,13 @@
 desc[sol-crazynicks]:
 
 name = Crazy Nick's Software Picks
-icon = sol-crazynicks.png
+icon = sol-crazynick.png
 machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
-mips = 10
-ramkb = 2048
+mips = $(MIPS_386DX_33)
+ramkb = 4096
 filter = sierra, demo
 
 //

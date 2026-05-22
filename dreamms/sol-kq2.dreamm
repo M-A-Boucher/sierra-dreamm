@@ -46,6 +46,22 @@ config[graphics]:
     end
 end
 
+//
+// machine configuration
+//
+config[machine]:
+    title = Machine Configuration
+    condition = file_exists("$$(rootpath)\\DISK1\\FTRACK00SIDE0.~RAW~")
+    option[pcjr]:
+        name = PCjr
+        machine = pcjr
+    end
+    option[pc]:
+        name = PC
+        machine = pc
+    end
+end
+
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true; disc = 1
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
@@ -63,7 +79,6 @@ end
 game[v1.1h-2x360k]:
     name = v1.1H, 2x360K, Booter
     osenv = bios
-    machine = pcjr
     mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 80739B5B; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
