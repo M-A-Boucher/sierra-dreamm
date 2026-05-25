@@ -1,0 +1,92 @@
+//
+// Lost Mind of Dr. Brain
+//
+desc[sol-brain3]:
+
+name = Lost Mind of Dr. Brain
+icon = sol-brain3.png
+machine = pc
+osenv = windows 95
+rootpath = C:\
+launch = $(rootpath)\DRBRAIN3.EXE
+mips = $(MIPS_MAX)
+audiohw = gmidi
+filter = sierra, puzzle
+winres = 640x480x8
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = DRBRAIN3.EXE
+    file[]: crc = 16ada9c8; size =   5387776; name = 0DREAM01.DLL
+    file[]: crc = c73eaf14; size =   7901696; name = 0DREAM02.DLL
+    file[]: crc = 98b8aa17; size =   9769216; name = 0GLOBAL.DLL
+    file[]: crc = 01dfc3f4; size =  14753792; name = 0MAZE01.DLL
+    file[]: crc = 96b33068; size =  17072128; name = 0MAZE02.DLL
+    file[]: crc = 166a0925; size =  17162752; name = 0MAZE03.DLL
+    file[]: crc = 5154c7d2; size =    348672; name = 0SONG01.DLL
+    file[]: crc = 6129c7e5; size =    189696; name = 0SONG02.DLL
+    file[]: crc = d52230a8; size =    229888; name = 0SONG03.DLL
+    file[]: crc = fc3ede5f; size =    389888; name = 0SONG04.DLL
+    file[]: crc = 8c499ade; size =    208384; name = 0SONG05.DLL
+    file[]: crc = 17c3dabe; size =    215808; name = 0SONG06.DLL
+    file[]: crc = 65a47250; size =    394752; name = 0SONG07.DLL
+    file[]: crc = ec46a093; size =    285952; name = 0SONG08.DLL
+    file[]: crc = f187bd92; size =    237568; name = 0SONG09.DLL
+    file[]: crc = 912fd1ff; size =    245248; name = 0SONG10.DLL
+    file[]: crc = 3fdaeeff; size =    533248; name = 0SONG11.DLL
+    file[]: crc = dd851b1e; size =    475392; name = 0SONG12.DLL
+    file[]: crc = 245e8ed1; size =    584704; name = 0SONG13.DLL
+    file[]: crc = 7960091c; size =    451072; name = 0SONG14.DLL
+    file[]: crc = 02425f52; size =    573696; name = 0SONG15.DLL
+    file[]: crc = 9fa0ea04; size =    648192; name = 0SONG16.DLL
+    file[]: crc = 989bc4bd; size =    533504; name = 0SONG17.DLL
+    file[]: crc = bb5672a3; size =    411392; name = 0SONG18.DLL
+    file[]: crc = d2065bde; size =    722944; name = 0SONG19.DLL
+    file[]: crc = d58c2cba; size =    594944; name = 0SONG20.DLL
+    file[]: crc = d663597c; size =    966400; name = 0SONG21.DLL
+    file[]: crc = 8a74dbc4; size =   1079040; name = 0SONG22.DLL
+    file[]: crc = d3467587; size =   1330944; name = 0SONG23.DLL
+    file[]: crc = 9e9d9832; size =    954880; name = 0SONG24.DLL
+    file[]: crc = 3d9660af; size =   1014272; name = 0SONG25.DLL
+    file[]: crc = c94f1882; size =   1037056; name = 0SONG26.DLL
+    file[]: crc = 87858450; size =   1059072; name = 0SONG27.DLL
+    file[]: crc = 7df5404a; size =   1252096; name = 0SONG28.DLL
+    file[]: crc = fa4e6207; size =   1445376; name = 0SONG29.DLL
+    file[]: crc = 60e93769; size =   1074176; name = 0SONG30.DLL
+    file[]: crc = 5c52f590; size =    108288; name = 1TOOLBAR.DLL
+    file[]: crc = 7a1671dd; size =  11644963; name = 24001.SND
+    file[]: crc = 5d474d4c; size =    416512; name = 2SIERRA.DLL
+    file[]: crc = 76c67c60; size =    454656; name = 3LOGO.DLL
+    file[]: crc = 7ff6f15c; size =   1177856; name = 4NEWRES.DLL
+    file[]: crc = 90984f3f; size =   9071104; name = 5INTRO.DLL
+    file[]: crc = 1b0b0364; size =  16654336; name = 6LAB.DLL
+    file[]: crc = c97ee565; size =   4517632; name = 7FINAL.DLL
+    file[]: crc = 3734a4e1; size =     57344; name = 8DEMO.DLL
+    file[]: crc = b9bc7850; size =   7615744; name = 9CAD.DLL
+    file[]: crc = c086b760; size =  13195520; name = 9CLEFT.DLL
+    file[]: crc = 746d740e; size =   4421632; name = 9DREAM.DLL
+    file[]: crc = 71eeefbe; size =  14017280; name = 9FILE.DLL
+    file[]: crc = 4aca358b; size =   7907840; name = 9MAZE.DLL
+    file[]: crc = 7d19c060; size =  16697088; name = 9MUSIC.DLL
+    file[]: crc = 7d784f84; size =  13558016; name = 9PENTODE.DLL
+    file[]: crc = 78f7ff55; size =   9908480; name = 9PROGRAM.DLL
+    file[]: crc = e74f49ec; size =   9258496; name = 9TRAIN.DLL
+    file[]: crc = 25054b75; size =  12401152; name = 9WORD.DLL
+    file[]: crc = 765cd553; size =    506080; name = DRBRAIN3.EXE
+    file[]: crc = f13556a6; size =         8; name = INSTALLD.DB3; optional = true
+    file[]: crc = 4f959e66; size =       456; name = LANGUAGE.INF; optional = true
+    file[]: crc = 99903e7f; size =     30880; name = SETUP.EXE   ; optional = true
+    file[]: crc = 55df4d2d; size =    457707; name = SETUP.SOL
+    file[]: crc = 22aab44e; size =       900; name = SIERRA.INF  ; optional = true
+end
+
+end

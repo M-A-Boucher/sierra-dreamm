@@ -10,46 +10,67 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_386DX_33)
-nothrottle = 4
 ramkb = 4096
 videohw = vga;
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 TANDY = 0
 AUDIO_DRIVER = 
+WIN = 0
+
+//
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos]: 
+        name = DOS
+    end
+    option[win]:
+        name = Windows 3.1
+        osenv = windows 3.1
+        audiohw = gmidi
+        mips = $(MIPS_MAX)
+        winres = 640x480x8
+        launch = $(rootpath)\SCIKQ5.EXE
+        WIN = 1
+        condition = file_exists("$$(rootpath)\\SCIKQ5.EXE")
+    end
+end
 
 //
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = !$(WIN)
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy; nothrottle = 2.8
+        videohw = cga; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
     option[ega]:
         name = $(EGA_NAME)
-        videohw = ega; nothrottle = 4; priority = 1
+        videohw = ega; priority = 1
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end
     option[mcga]:     
         name = $(MCGA_NAME)
-        videohw = mcga; nothrottle = 4
+        videohw = mcga
         VIDEO_DRIVER = MCGA320.DRV
         condition = file_exists("$$(rootpath)\\MCGA320.DRV")
     end
     option[vgamono]:
         name = Monochrome $(VGA_NAME);
-        videohw = vga; nothrottle = 4.5
+        videohw = vga
         VIDEO_DRIVER = VGA320BW.DRV
         condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
     end
     option[vga]:
         name = $(VGA_NAME);
-        videohw = vga; nothrottle = 4.5; priority = 2
+        videohw = vga; priority = 2
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
@@ -60,7 +81,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !$(TANDY) && !$(WIN)
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -72,12 +93,12 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME)
+        name = $(ADLIB_NAME); priority = 1
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME); priority = 1
+        name = $(SB16_NAME)
         SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
@@ -116,8 +137,8 @@ dynamicfile[]:
         kbdDrv    = IBMKBD.DRV
         mouseDrv  = STDMOUSE.DRV
         language  = $(LANGUAGE)
-        minHunk   = 180k
-        audioSize = 32k
+        minHunk   = 240K
+        diskAudio = VOL
     ]]]
 end
 
@@ -515,7 +536,7 @@ game[v1.000.052-cd]:
     file[]: crc = 932c103d; size =    571368; name = RESOURCE.000
     file[]: crc = 5cbc3ac7; size =  16800210; name = RESOURCE.001
     file[]: crc = 77ba0ffd; size =     13122; name = RESOURCE.MAP
-    file[]: crc = 18f5ba6b; size =     13312; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = 18f5ba6b; size =     13312; name = SCIDLL.DLL
     file[]: crc = 9772c8cb; size =    140288; name = SCIKQ5.EXE
     file[]: crc = 027971c8; size =    138499; name = SIERRA.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
@@ -523,6 +544,51 @@ game[v1.000.052-cd]:
     file[]: crc = f98e5250; size =        11; name = VERSION
     file[]: crc = 2172aaf7; size =      5846; name = VGA320.DRV
     file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
+end
+
+//
+// v1.000.052, CD, SierraOriginals
+//
+game[v1.000.052-cd-originals]:
+    name = v1.000.052, CD, SierraOriginals
+    anchorfile = RESOURCE.001
+    file[]: crc = bffcfa92; size =        73; name = 10126.SYN
+    file[]: crc = 1922c2af; size =     12288; name = 124.SCR
+    file[]: crc = 11a1fceb; size =     62596; name = 1699.SND
+    file[]: crc = 44eee277; size =       138; name = 1799.SND
+    file[]: crc = 44c97cb2; size =       834; name = 1849.SND
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 7f9c7904; size =      2419; name = AUDBLAST.DRV
+    file[]: crc = 2ecd335f; size =      2272; name = AUDCOMPU.DRV
+    file[]: crc = 34c3aac6; size =      1992; name = AUDDISNY.DRV
+    file[]: crc = 11ada3af; size =      1986; name = AUDDISNY.OLD
+    file[]: crc = 267167de; size = 120332288; name = AUDIO001.002
+    file[]: crc = aca5a56a; size =     21340; name = AUDIO001.MAP
+    file[]: crc = 58032be6; size =      2164; name = AUDPRO.DRV
+    file[]: crc = 7796f5ae; size =      1514; name = AUDPS1.DRV
+    file[]: crc = 74171a26; size =      1622; name = AUDTANDY.DRV
+    file[]: crc = bbf9ff5e; size =      1616; name = AUDTANDY.OLD
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 0c55d80b; size =      4357; name = MCGA320.DRV
+    file[]: crc = fdc6f217; size =       910; name = MCGA320M.DRV
+    file[]: crc = fbe3a725; size =     15537; name = METER.DLL
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 932c103d; size =    571368; name = RESOURCE.000
+    file[]: crc = 5cbc3ac7; size =  16800210; name = RESOURCE.001
+    file[]: crc = 77ba0ffd; size =     13122; name = RESOURCE.MAP
+    file[]: crc = 741351aa; size =     13312; name = SCIDLL.DLL
+    file[]: crc = 57967e66; size =    137216; name = SCIKQ5.EXE
+    file[]: crc = f4de1528; size =     55820; name = SETUP.EXE
+    file[]: crc = 9b280939; size =       675; name = SETUP.INF
+    file[]: crc = dfc16d10; size =    137784; name = SIERRA.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = f98e5250; size =        11; name = VERSION.
+    file[]: crc = 2172aaf7; size =      5846; name = VGA320.DRV
+    file[]: crc = 3e86fb97; size =      5909; name = VGA320BW.DRV
+    file[]: crc = 1c580618; size =       203; name = WINRES.CFG
 end
 
 //

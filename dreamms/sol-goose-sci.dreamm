@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
-nothrottle = 5
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
@@ -23,7 +22,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; audiohw = speaker; machine = tandy; nothrottle = 4
+        videohw = cga; audiohw = speaker; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
     end
@@ -83,12 +82,12 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME)
+        name = $(ADLIB_NAME); priority = 1
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME); priority = 1
+        name = $(SB16_NAME)
         SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
@@ -265,5 +264,130 @@ end
 //
 // v2.000, 6x1.2M, Installer *** MISSING ***
 //
+
+//
+// 1991, CD
+//
+game[1991-cd]:
+    name = 1991, CD
+    launch = SIERRA.EXE
+    anchorfile = RESOURCE.001
+    file[]: crc = 3cdb7101; size =      7976; name = ADL.DRV
+    file[]: crc = 88c58ff4; size =      9864; name = AUDBLAST.DRV
+    file[]: crc = 834facc0; size =      9864; name = AUDBLASX.DRV
+    file[]: crc = 161183d3; size =      5082; name = AUDDISNY.DRV
+    file[]: crc = 57a9b83e; size =  26850049; name = AUDIO001.002
+    file[]: crc = 8afe5d25; size =      5860; name = AUDIO001.MAP
+    file[]: crc = 7ab2b647; size =  32030720; name = AUDIO033.002
+    file[]: crc = 12f24204; size =      5830; name = AUDIO033.MAP
+    file[]: crc = 425b8fca; size =  30652416; name = AUDIO034.002
+    file[]: crc = a7bc78d6; size =      5830; name = AUDIO034.MAP
+    file[]: crc = ab3b90fd; size =  31016960; name = AUDIO049.002
+    file[]: crc = 4d3d3424; size =      5830; name = AUDIO049.MAP
+    file[]: crc = c587d76f; size =  31414272; name = AUDIO081.002
+    file[]: crc = 8256993e; size =      5860; name = AUDIO081.MAP
+    file[]: crc = 87a85cfe; size =  32499712; name = AUDIO133.002
+    file[]: crc = 5c04dd24; size =      5830; name = AUDIO133.MAP
+    file[]: crc = 14d67a14; size =  32430080; name = AUDIO134.002
+    file[]: crc = 3754d86b; size =      5830; name = AUDIO134.MAP
+    file[]: crc = 9edc5405; size =  31477760; name = AUDIO181.002
+    file[]: crc = 5e56686f; size =      5860; name = AUDIO181.MAP
+    file[]: crc = bcbcf983; size =      9204; name = AUDPS1.DRV
+    file[]: crc = 9657f789; size =      9363; name = AUDTANDY.DRV
+    file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
+    file[]: crc = ac0a9845; size =   4369438; name = RESOURCE.001
+    file[]: crc = 353dff37; size =      5790; name = RESOURCE.MAP
+    file[]: crc = 32f7b79d; size =    114541; name = SIERRA.EXE
+    file[]: crc = 80f1c797; size =    124553; name = SIERRADZ.EXE ; optional = true
+    file[]: crc = dcccb200; size =      1448; name = STD.DRV
+    file[]: crc = 8ee60889; size =      4426; name = VGA320.DRV
+end
+
+//
+// Deluxe, 1995, CD
+//
+game[1995-cd]:
+    name = Deluxe, 1995, CD
+    launch = $(rootpath)\SIERRAW.EXE
+    anchorfile = RESOURCE.000
+    osenv = windows 3.1
+    mips = $(MIPS_MAX)
+    winres = 640x480x16
+    file[]: crc = 7c86ab70; size =       990; name = 0.MAP
+    file[]: crc = 98b8aa17; size =   9769216; name = 0GLOBAL.DLL
+    file[]: crc = 5154c7d2; size =    348672; name = 0SONG01.DLL
+    file[]: crc = 3fdaeeff; size =    533248; name = 0SONG11.DLL
+    file[]: crc = d663597c; size =    966400; name = 0SONG21.DLL
+    file[]: crc = 3e4d39eb; size =       241; name = 1.MAP
+    file[]: crc = 0a01a15e; size =       206; name = 12.MAP
+    file[]: crc = 8b40503e; size =       136; name = 13.MAP
+    file[]: crc = 1e9ba8d8; size =       108; name = 15.MAP
+    file[]: crc = df41b1d2; size =       143; name = 18.MAP
+    file[]: crc = 5c52f590; size =    108288; name = 1TOOLBAR.DLL
+    file[]: crc = ed8ee0b7; size =       136; name = 21.MAP
+    file[]: crc = 78567249; size =       164; name = 23.MAP
+    file[]: crc = 7a1671dd; size =  11644963; name = 24001.SND
+    file[]: crc = cc8005fb; size =       143; name = 27.MAP
+    file[]: crc = 5d474d4c; size =    416512; name = 2SIERRA.DLL
+    file[]: crc = a9b92a60; size =       192; name = 3.MAP
+    file[]: crc = b89b678c; size =       157; name = 31.MAP
+    file[]: crc = 05598875; size =       150; name = 33.MAP
+    file[]: crc = 2fd0b418; size =       192; name = 36.MAP
+    file[]: crc = e8823dad; size =       150; name = 37.MAP
+    file[]: crc = 76c67c60; size =    454656; name = 3LOGO.DLL
+    file[]: crc = 0d3b8d8d; size =       179; name = 400.MAP
+    file[]: crc = 9dddb28c; size =       136; name = 41.MAP
+    file[]: crc = f667fdb7; size =       164; name = 43.MAP
+    file[]: crc = e74daa4c; size =       206; name = 5.MAP
+    file[]: crc = 90984f3f; size =   9071104; name = 5INTRO.DLL
+    file[]: crc = 3b725422; size =       562; name = 65535.MAP
+    file[]: crc = 5be3fc87; size =  16654336; name = 6LAB.DLL
+    file[]: crc = 236e4abf; size =       143; name = 7.MAP
+    file[]: crc = 3734a4e1; size =     57344; name = 8DEMO.DLL
+    file[]: crc = a83b2f88; size =       136; name = 9.MAP
+    file[]: crc = 71eeefbe; size =  14017280; name = 9FILE.DLL
+    file[]: crc = c50d0b2c; size =  16697088; name = 9MUSIC.DLL
+    file[]: crc = 78f7ff55; size =   9908480; name = 9PROGRAM.DLL
+    file[]: crc = 957403ba; size =   5619415; name = DEMARCHG.VMD
+    file[]: crc = 6faa4a5c; size =    506400; name = DRBRAIN.EXE
+    file[]: crc = 41b5ab4f; size =    472592; name = E.EXE
+    file[]: crc = 2aa530cd; size =       100; name = E.SCN
+    file[]: crc = 45719e58; size =      1293; name = LANGUAGE.INF
+    file[]: crc = 9e669b35; size =  15150768; name = RESOURCE.000
+    file[]: crc = b887ca52; size = 101492194; name = RESOURCE.AUD
+    file[]: crc = e8a4ec49; size =       431; name = RESOURCE.CFG; optional = true
+    file[]: crc = 9a77f06e; size =      4741; name = RESOURCE.MAP
+    file[]: crc = 414c4a90; size =      4741; name = RESOURCE.MDT
+    file[]: crc = dd8f266a; size =  11880122; name = RESOURCE.SFX
+    file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL
+    file[]: crc = c93d7f96; size =     25888; name = SETUP.EXE   ; optional = true
+    file[]: crc = c6c38014; size =    270261; name = SETUP.SOL   ; optional = true
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = bdf226ee; size =      1480; name = SIERRA.INF
+    file[]: crc = 8c8643c2; size =    729796; name = SIERRAW.EXE
+    file[]: crc = c9517d3d; size =      1095; name = SPANISH\0.MAP
+    file[]: crc = 880d9f56; size =       241; name = SPANISH\1.MAP
+    file[]: crc = e666f101; size =       199; name = SPANISH\12.MAP
+    file[]: crc = ced16c07; size =       129; name = SPANISH\13.MAP
+    file[]: crc = 48e3cc04; size =       101; name = SPANISH\15.MAP
+    file[]: crc = 3b1494eb; size =       143; name = SPANISH\18.MAP
+    file[]: crc = 83482b26; size =       129; name = SPANISH\21.MAP
+    file[]: crc = efeb8d63; size =       164; name = SPANISH\23.MAP
+    file[]: crc = 4bfc96fd; size =       143; name = SPANISH\27.MAP
+    file[]: crc = e1f9056e; size =       192; name = SPANISH\3.MAP
+    file[]: crc = 92faf22d; size =       157; name = SPANISH\31.MAP
+    file[]: crc = 0f2bb157; size =       143; name = SPANISH\33.MAP
+    file[]: crc = bc204ade; size =       185; name = SPANISH\36.MAP
+    file[]: crc = ffdd6b0e; size =       150; name = SPANISH\37.MAP
+    file[]: crc = 440ae1ca; size =       179; name = SPANISH\400.MAP
+    file[]: crc = 7ce2fe94; size =       129; name = SPANISH\41.MAP
+    file[]: crc = 9153184f; size =       164; name = SPANISH\43.MAP
+    file[]: crc = 3c488e56; size =       143; name = SPANISH\5.MAP
+    file[]: crc = d6b9f0df; size =       143; name = SPANISH\7.MAP
+    file[]: crc = 06085215; size =       136; name = SPANISH\9.MAP
+    file[]: crc = 9af6be8a; size = 109491074; name = SPANISH\RESOURCE.AUD
+end
 
 end

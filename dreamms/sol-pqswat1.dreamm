@@ -1,10 +1,10 @@
 //
 // Police Quest: SWAT
 //
-desc[sol-pqswat]:
+desc[sol-pqswat1]:
 
 name = Police Quest: SWAT
-icon = sol-pqswat.png
+icon = sol-pqswat1.png
 machine = pc
 osenv = dos
 rootpath = C:\
