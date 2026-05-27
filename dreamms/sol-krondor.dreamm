@@ -1,0 +1,263 @@
+//
+// Betrayal at Krondor
+//
+desc[sol-krondor]:
+
+name = Betrayal at Krondor
+icon = sol-krondor.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\KRONDOR.EXE
+mips = $(MIPS_P100)
+ramkb = 8192
+videohw = vga;
+audiohw = $(AUDIOHW)
+filter = sierra, adventure
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); priority = 1
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 2
+        SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
+        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        soundDrv  = $(SOUND_DRIVER)
+        joyDrv    = NO
+        mouseDrv  = NO
+        memoryDrv = ARM.DRV
+        minEMS    = 1024
+        minCPU    = 386
+        minDOS    = 500
+        size      = 15000
+        S         = 500
+	cd        = NO
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)/DRIVE.CFG
+    condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
+    contents = [[[$(CRLF)
+        C 
+        D 
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        UNCHUNK RESOURCE.000 .
+        UNCHUNK RESOURCE.001 .
+        UNCHUNK RESOURCE.002 .
+        UNCHUNK RESOURCE.003 .
+        UNCHUNK RESOURCE.004 .
+        UNCHUNK RESOURCE.005 .
+        UNCHUNK RESOURCE.006 .
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath).    ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+
+script[mouse]:
+    condition = is_game() || is_demo()
+    code = mouse_force_relative_zero(true)
+end
+
+//
+// Base files for v1.0
+//
+fragment[v1.0-base]:
+    file[]: crc = b5a5ffe4; size =       107; name = ADL.DRV
+    file[]: crc = fe394644; size =       116; name = GENMIDI.DRV
+    file[]: crc = 57b85fb7; size =    453904; name = KRONDOR.EXE
+    file[]: crc = 0baeb6c4; size =       109; name = MT32.DRV
+    file[]: crc = 46fbecdf; size =        97; name = SNDBLAST.DRV
+    file[]: crc = fe78b9a7; size =       118; name = STD.DRV
+end
+
+//
+// v1.0, Int. 6.15.93, 7x1.44M
+//
+game[v1.0-int-6.15.93-7x1.44m]:
+    name = v1.0, Int. 6.15.93, 7x1.44M
+    imports = v1.0-base
+    anchorfile = KRONDOR.001
+    file[]: crc = b5a5ffe4; size =       107; name = ADL.DRV
+    file[]: crc = 00878a70; size =   1486774; name = FRP.SX
+    file[]: crc = fe394644; size =       116; name = GENMIDI.DRV
+    file[]: crc = 11a488dd; size =  11561609; name = KRONDOR.001
+    file[]: crc = 57b85fb7; size =    453904; name = KRONDOR.EXE
+    file[]: crc = 54e53797; size =     14149; name = KRONDOR.RMF
+    file[]: crc = 0baeb6c4; size =       109; name = MT32.DRV
+    file[]: crc = 46fbecdf; size =        97; name = SNDBLAST.DRV
+    file[]: crc = ceba5fa5; size =    334605; name = STARTUP.GAM
+    file[]: crc = fe78b9a7; size =       118; name = STD.DRV
+    file[]: crc = 461a46ba; size =     40742; name = SX.OVL
+    file[]: crc = 7bcb9289; size =     44582; name = VMCODE.OVL
+end
+
+//
+// v1.0, Int. 6.15.93, 7x1.44M, Installer
+//
+installer[v1.0-int-6.15.93-7x1.44m-installer]:
+    name = v1.0, Int. 6.15.93, 7x1.44M, Installer
+    installid = v1.0-int-6.15.93-7x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = e5db9dc6; size =    752329; name = RESOURCE.000
+    file[]: crc = 37961677; size =   1456291; name = RESOURCE.001
+    file[]: crc = 4067e71e; size =   1456081; name = RESOURCE.002
+    file[]: crc = f288447c; size =   1456537; name = RESOURCE.003
+    file[]: crc = 268eb549; size =   1456220; name = RESOURCE.004
+    file[]: crc = ff4529de; size =   1456340; name = RESOURCE.005
+    file[]: crc = 7256b8bd; size =    939410; name = RESOURCE.006
+    file[]: crc = ca0e1137; size =     15862; name = UNCHUNK.EXE
+end
+
+//
+// Base files for v1.01
+//
+fragment[v1.01-base]:
+    imports = v1.0-base
+    file[]: crc = 1ce3751f; size =    453920; name = KRONDOR.EXE
+end
+
+//
+// v1.01, Int. 6.28.93, 7x1.44M
+//
+game[v1.01-int-6.28.93-7x1.44m]:
+    name = v1.01, Int. 6.28.93, 7x1.44M
+    imports = v1.01-base
+    anchorfile = KRONDOR.001
+    file[]: crc = 00878a70; size =   1486774; name = FRP.SX
+    file[]: crc = a4cdc747; size =  11561634; name = KRONDOR.001
+    file[]: crc = c9e4b862; size =     14149; name = KRONDOR.RMF
+    file[]: crc = ceba5fa5; size =    334605; name = STARTUP.GAM
+    file[]: crc = 461a46ba; size =     40742; name = SX.OVL
+    file[]: crc = 7bcb9289; size =     44582; name = VMCODE.OVL
+
+end
+
+//
+// v1.01, Int. 6.28.93, 7x1.44M, Installer
+//
+installer[v1.01-int-6.28.93-7x1.44m-installer]:
+    name = v1.0, Int. 6.28.93, 7x1.44M, Installer
+    installid = v1.0-int-6.28.93-7x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.01-base
+    anchorfile = RESOURCE.000
+    file[]: crc = e5db9dc6; size =    752329; name = RESOURCE.000
+    file[]: crc = 131daaaa; size =   1456272; name = RESOURCE.001
+    file[]: crc = c9fb5c38; size =   1456333; name = RESOURCE.002
+    file[]: crc = e22ff9b0; size =   1456121; name = RESOURCE.003
+    file[]: crc = 2a25b08b; size =   1456044; name = RESOURCE.004
+    file[]: crc = f00bcede; size =   1456529; name = RESOURCE.005
+    file[]: crc = 968f1358; size =    945890; name = RESOURCE.006
+    file[]: crc = ca0e1137; size =     15862; name = UNCHUNK.EXE
+end
+
+//
+// Base files for v1.02
+//
+fragment[v1.02-base]:
+    imports = v1.01-base
+    file[]: crc = b5c120a7; size =    454960; name = KRONDOR.EXE
+end
+
+//
+// v1.02, Int. 9.21.93, 7x1.44M
+//
+game[v1.02-int-9.21.93-7x1.44m]:
+    name = v1.02, Int. 9.21.93, 7x1.44M
+    imports = v1.02-base
+    anchorfile = KRONDOR.001
+    file[]: crc = 00878a70; size =   1486774; name = FRP.SX
+    file[]: crc = 3c1a8a55; size =  11562208; name = KRONDOR.001
+    file[]: crc = 13b21912; size =     14149; name = KRONDOR.RMF
+    file[]: crc = d72a793f; size =    334605; name = STARTUP.GAM
+    file[]: crc = 461a46ba; size =     40742; name = SX.OVL
+    file[]: crc = 7bcb9289; size =     44582; name = VMCODE.OVL
+
+end
+
+//
+// v1.02, Int. 9.21.93, 7x1.44M, Installer
+//
+installer[v1.02-int-9.21.93-7x1.44m-installer]:
+    name = v1.02, Int. 9.21.93, 7x1.44M, Installer
+    installid = v1.0-int-9.21.93-7x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.02-base
+    anchorfile = RESOURCE.000
+    file[]: crc = e5db9dc6; size =    752329; name = RESOURCE.000
+    file[]: crc = bca01e49; size =   1456238; name = RESOURCE.001
+    file[]: crc = 27dcbb96; size =   1456531; name = RESOURCE.002
+    file[]: crc = 9e1e1340; size =   1456181; name = RESOURCE.003
+    file[]: crc = cb62d9b4; size =   1456069; name = RESOURCE.004
+    file[]: crc = 17d13ca0; size =   1456224; name = RESOURCE.005
+    file[]: crc = d861f510; size =    900345; name = RESOURCE.006
+    file[]: crc = ca0e1137; size =     15862; name = UNCHUNK.EXE
+end
+
+//
+// v1.02, CD
+//
+game[v1.02-cd]:
+    name = v1.02, CD
+    anchorfile = KRONDOR.001
+    file[]: crc = b5a5ffe4; size =       107; name = ADL.DRV
+    file[]: crc = 00878a70; size =   1486774; name = FRP.SX
+    file[]: crc = fe394644; size =       116; name = GENMIDI.DRV
+    file[]: crc = d89e0563; size =  11562652; name = KRONDOR.001
+    file[]: crc = d7b6aa1d; size =    456048; name = KRONDOR.EXE
+    file[]: crc = f1c23f87; size =     14165; name = KRONDOR.RMF
+    file[]: crc = 0baeb6c4; size =       109; name = MT32.DRV
+    file[]: crc = cf3770f2; size =       177; name = RESOURCE.CFG
+    file[]: crc = 46fbecdf; size =        97; name = SNDBLAST.DRV
+    file[]: crc = d72a793f; size =    334605; name = STARTUP.GAM
+    file[]: crc = fe78b9a7; size =       118; name = STD.DRV
+    file[]: crc = 461a46ba; size =     40742; name = SX.OVL
+    file[]: crc = 7bcb9289; size =     44582; name = VMCODE.OVL
+    file[]:                                   name = CD\CDDA.SOU; cdda = 97/113/62/50/84/42/26/33/12/66/51/47/48/64/46/51/77/73/57/65/77/58/105/71/56/45/43/47/45/34/80/52/56/72/12/41/69/63/30/37/91/44/67/50/54/9/9/11/9/15/16/16/14/14/12/75/54/60/9/57/75/83
+end
+
+end

@@ -25,7 +25,7 @@ mount[]: vpath = A:\;         srcpath = $(ifsdeltapath); writable = true
 game[1x160k]:
     name = 1x160K, Booter
     anchorfile = FTRACK01SIDE0.~RAW~
-    file[]: crc = C6AC720D; size =     12514; name = FTRACK00SIDE0.~RAW~
+    file[]: crc = C6AC720D; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = E6754B74; size =     12514; name = FTRACK01SIDE0.~RAW~
     file[]: crc = 1D9F7C7E; size =     12514; name = FTRACK02SIDE0.~RAW~
     file[]: crc = 15B16075; size =     12514; name = FTRACK03SIDE0.~RAW~

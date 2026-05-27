@@ -37,7 +37,7 @@ mount[]: vpath = A:\; srcpath = $(ifsinstallpath); disc = Game Disk
 game[1x160k-booter]:
     name = 1x160K, Booter
     anchorfile = FTRACK00SIDE0.~RAW~
-    file[]: crc = FD8B74C4; size =     12514; name = FTRACK00SIDE0.~RAW~
+    file[]: crc = FD8B74C4; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 000485A8; size =     12514; name = FTRACK01SIDE0.~RAW~
     file[]: crc = 728C9621; size =     12514; name = FTRACK02SIDE0.~RAW~
     file[]: crc = 1A33F25D; size =     12514; name = FTRACK03SIDE0.~RAW~
