@@ -9,10 +9,10 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.COM
-audiohw = speaker
 mips = $(MIPS_286_10)
 ramkb = 640
 filter = sierra, adventure
+MACHINE_OPTIONS = 0
 
 //
 // graphics configuration
@@ -54,11 +54,11 @@ config[machine]:
     condition = $(MACHINE_OPTIONS)
     option[pcjr]:
         name = PCjr
-        machine = pcjr
+        machine = pcjr; videohw = cga
     end
     option[pc]:
         name = Tandy
-        machine = tandy
+        machine = tandy; videohw = cga
     end
 end
 
@@ -75,15 +75,21 @@ dynamicfile[]:
     contents = $(NULL)
 end
 
+fragment[booter-config]:
+    osenv = bios
+    ramkb = 128
+    videohw = cga
+    mips = $(MIPS_8086)
+    anchorfile = FTRACK00SIDE0.~RAW~
+end
+
 //
 // CGA, 1x360K, Booter
 //
 game[booter-cga]:
     name = CGA, 1x360K, Booter
-    osenv = bios
     videohw = ega
-    mips = $(MIPS_8086)
-    anchorfile = FTRACK00SIDE0.~RAW~
+    imports = booter-config
     file[]: crc = 0341628D; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 036A54BE; size =    12514; name = FTRACK00SIDE1.~RAW~
     file[]: crc = ECD7DBD9; size =    12514; name = FTRACK01SIDE0.~RAW~
@@ -171,10 +177,8 @@ end
 //
 game[booter-cga-rgb]:
     name = CGA+RGB, 1x360K, Booter
-    osenv = bios
     videohw = cga
-    mips = $(MIPS_8086)
-    anchorfile = FTRACK00SIDE0.~RAW~
+    imports = booter-config
     file[]: crc = 074F9247; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 0B2F7247; size =     12514; name = FTRACK00SIDE1.~RAW~
     file[]: crc = EF79AA6E; size =     12514; name = FTRACK01SIDE0.~RAW~
@@ -258,14 +262,12 @@ game[booter-cga-rgb]:
 end
 
 //
-// PCjr, 1x360K, Booter
+// 1x360K, PCjr Booter
 //
 game[booter-pcjr]:
-    name = PCjr, 1x360K, Booter
-    osenv = bios
-    machine = pcjr
-    mips = $(MIPS_8086)
-    anchorfile = FTRACK00SIDE0.~RAW~
+    name = 1x360K, PCjr Booter
+    machine = pcjr; videohw = cga
+    imports = booter-config
     file[]: crc = 37DC84DD; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = E24096A5; size =    12514; name = FTRACK00SIDE1.~RAW~
     file[]: crc = F1D522B4; size =    12514; name = FTRACK01SIDE0.~RAW~
@@ -338,25 +340,15 @@ game[booter-pcjr]:
     file[]: crc = 431DB8DC; size =    12514; name = FTRACK34SIDE1.~RAW~
     file[]: crc = 4B37A8BE; size =    12514; name = FTRACK35SIDE0.~RAW~
     file[]: crc = 886D68C0; size =    12514; name = FTRACK35SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE1.~RAW~
 end
 
 //
-// Tandy, 1x360K, Booter
+// v1.01, Tandy, 1x360K, Tandy Booter
 //
-game[booter-tandy]:
-    name = Tandy, 1x360K, Booter
-    osenv = bios
-    machine = tandy
-    mips = $(MIPS_8086)
-    anchorfile = FTRACK00SIDE0.~RAW~
+game[v1.01-booter-tandy]:
+    name = v1.01, 1x360K, Tandy Booter
+    machine = tandy; videohw = cga
+    imports = booter-config
     file[]: crc = 11F31620; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 778B148E; size =     12514; name = FTRACK00SIDE1.~RAW~
     file[]: crc = 72F7D8F7; size =     12514; name = FTRACK01SIDE0.~RAW~
@@ -431,23 +423,16 @@ game[booter-tandy]:
     file[]: crc = 1954CD83; size =     12514; name = FTRACK35SIDE1.~RAW~
     file[]: crc = 6FBC8E31; size =     12514; name = FTRACK36SIDE0.~RAW~
     file[]: crc = 5F67A922; size =     12514; name = FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK37SIDE1.~RAW~
     file[]: crc = E1FB51CC; size =     12514; name = FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK39SIDE1.~RAW~
 end
 
 //
-// Tandy/PCjr, 1x360K, Booter
+// 1x360K, Tandy/PCjr Booter
 //
 game[booter-tandy-pcjr]:
-    name = Tandy/PCjr, 1x360K, Booter
-    osenv = bios
-    mips = $(MIPS_8086)
+    name = 1x360K, Tandy/PCjr Booter
     MACHINE_OPTIONS = 1
-    anchorfile = FTRACK00SIDE0.~RAW~
+    imports = booter-config
     file[]: crc = 988CB7B7; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 3160366D; size =     12514; name = FTRACK00SIDE1.~RAW~
     file[]: crc = BCDB29A2; size =     12514; name = FTRACK01SIDE0.~RAW~
@@ -522,12 +507,7 @@ game[booter-tandy-pcjr]:
     file[]: crc = 1954CD83; size =     12514; name = FTRACK35SIDE1.~RAW~
     file[]: crc = 6FBC8E31; size =     12514; name = FTRACK36SIDE0.~RAW~
     file[]: crc = 5F67A922; size =     12514; name = FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK37SIDE1.~RAW~
     file[]: crc = E1FB51CC; size =     12514; name = FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =     12514; name = FTRACK39SIDE1.~RAW~
 end
 
 //
