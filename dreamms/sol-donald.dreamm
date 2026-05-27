@@ -5,7 +5,6 @@ desc[sol-donald]:
 
 name = Donald Duck’s Playground
 icon = sol-donald.png
-machine = pcjr
 osenv = bios
 ramkb = 640
 mips = $(MIPS_8086)
@@ -13,14 +12,14 @@ audiohw = speaker
 videohw = ega
 filter = sierra, adventure
 
-config[graphics]:
-    title = Graphics Configuration
+config[machine]:
+    title = Machine Configuration
     option[pcjr]:
-        name = $(TVIDEO_NAME)
+        name = PCjr
         machine = pcjr; priority = 1
     end
-    option[ega]:
-        name = $(EGA_NAME)
+    option[pc]:
+        name = PC
         machine = pc
     end
 end

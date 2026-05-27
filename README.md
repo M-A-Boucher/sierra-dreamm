@@ -96,11 +96,12 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 | Torin's Passage                                                                	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
 | Winnie the Pooh in the Hundred Acre Wood                                       	| 🇺🇸         	|<img width="24" height="24" alt="dos-unsupported" src="https://github.com/user-attachments/assets/6186eb77-1e1b-4b08-ab00-0b435c0ee5ad" />     	|
 
-# Credits
+# Contributors
 A huge thank you to the following people that have helped with this .dreammpack:
 - treloret
 - univbee
 - CookieMonster123
+- gschmidl
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
 
