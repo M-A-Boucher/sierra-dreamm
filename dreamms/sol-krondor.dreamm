@@ -178,8 +178,8 @@ end
 // v1.01, Int. 6.28.93, 7x1.44M, Installer
 //
 installer[v1.01-int-6.28.93-7x1.44m-installer]:
-    name = v1.0, Int. 6.28.93, 7x1.44M, Installer
-    installid = v1.0-int-6.28.93-7x1.44m
+    name = v1.01, Int. 6.28.93, 7x1.44M, Installer
+    installid = v1.01-int-6.28.93-7x1.44m
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.01-base
@@ -223,7 +223,7 @@ end
 //
 installer[v1.02-int-9.21.93-7x1.44m-installer]:
     name = v1.02, Int. 9.21.93, 7x1.44M, Installer
-    installid = v1.0-int-9.21.93-7x1.44m
+    installid = v1.02-int-9.21.93-7x1.44m
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.02-base
