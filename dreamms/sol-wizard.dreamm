@@ -1,9 +1,9 @@
 //
-// The Wizard and the Princess
+// Wizard and the Princess
 //
 desc[sol-wizard]:
 
-name = The Wizard and the Princess
+name = Wizard and the Princess
 icon = sol-wizard.png
 machine = pcjr
 osenv = bios
