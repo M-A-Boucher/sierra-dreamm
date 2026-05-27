@@ -5,6 +5,7 @@ desc[sol-donald]:
 
 name = Donald Duck’s Playground
 icon = sol-donald.png
+machine = pcjr
 osenv = bios
 ramkb = 640
 mips = $(MIPS_8086)
@@ -35,7 +36,6 @@ mount[]: vpath = A:\;         srcpath = $(ifsdeltapath); writable = true
 //
 game[v1.0Q-int-2.001-1x360k]:
     name = v1.0Q, Int. 2.001, 1x360K, Booter
-    launch = MAIN
     anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 6F4351E8; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = E9EACD6D; size =    12514; name = FTRACK00SIDE1.~RAW~
