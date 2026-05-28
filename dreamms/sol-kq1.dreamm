@@ -77,8 +77,6 @@ end
 
 fragment[booter-config]:
     osenv = bios
-    ramkb = 128
-    videohw = cga
     mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
 end
@@ -88,7 +86,7 @@ end
 //
 game[booter-cga]:
     name = CGA, 1x360K, Booter
-    videohw = ega
+    videohw = cga
     imports = booter-config
     file[]: crc = 0341628D; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 036A54BE; size =    12514; name = FTRACK00SIDE1.~RAW~
@@ -343,10 +341,10 @@ game[booter-pcjr]:
 end
 
 //
-// v1.01, Tandy, 1x360K, Tandy Booter
+// v1.01.00, Tandy, 1x360K, Tandy Booter
 //
-game[v1.01-booter-tandy]:
-    name = v1.01, 1x360K, Tandy Booter
+game[v1.01.00-booter-tandy]:
+    name = v1.01.00, 1x360K, Tandy Booter
     machine = tandy; videohw = cga
     imports = booter-config
     file[]: crc = 11F31620; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true

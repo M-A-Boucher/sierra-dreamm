@@ -54,15 +54,15 @@ config[machine]:
     condition = file_exists("$$(rootpath)\\DISK1\\FTRACK00SIDE0.~RAW~")
     option[pcjr]:
         name = PCjr
-        machine = pcjr
+        machine = pcjr; videohw = cga
     end
     option[tandy]:
         name = Tandy
-        machine = tandy
+        machine = tandy; videohw = cga
     end
     option[pc]:
-        name = PC
-        machine = pc
+        name = PC (CGA, RGB)
+        machine = pc; videohw = cga
     end
 end
 
@@ -83,8 +83,7 @@ end
 //
 game[v1.00.00-2x360k]:
     name = v1.00.00, 2x360K, Booter
-    osenv = bios
-    mips = $(MIPS_8086)
+    osenv = bios; mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = F38F4DF2; size =     12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 83CE120B; size =     12514; name = DISK1\FTRACK00SIDE1.~RAW~
@@ -228,8 +227,7 @@ end
 //
 game[v1.1h-2x360k]:
     name = v1.1H, 2x360K, Booter
-    osenv = bios
-    mips = $(MIPS_8086)
+    osenv = bios; mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 80739B5B; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 83CE120B; size =    12514; name = DISK1\FTRACK00SIDE1.~RAW~

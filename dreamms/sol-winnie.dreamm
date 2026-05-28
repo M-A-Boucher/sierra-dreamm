@@ -7,44 +7,41 @@ name = Winnie the Pooh in the Hundred Acre Wood
 icon = sol-winnie.png
 machine = pc
 osenv = dos
+rootpath = A:\
+launch = $(rootpath)\WINNIE.COM
+audiohw = speaker
 mips = $(MIPS_8086)
 ramkb = 640
-audiohw = speaker
 filter = sierra, adventure
 
-config[graphics]:
-    title = Graphics Configuration
+//
+// machine configuration
+//
+config[machine]:
+    title = Machine Configuration
+    condition = file_exists("$$(rootpath)\\WINNIE.COM")
+    option[pcjr]:
+        name = PCjr
+        machine = pcjr; videohw = cga
+    end
     option[tandy]:
-        name = $(TVIDEO_NAME)
-        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
+        name = Tandy
+        machine = tandy; videohw = cga
     end
-    option[hercules]:  
-        name = $(HERCULES_NAME)
-        videohw = hercules
-    end
-    option[cga]:       
-        name = $(CGA_NAME)  
-        videohw = cga
-    end
-    option[ega]:
-        name = $(EGA_NAME)
-        videohw = ega
-    end
-    option[vga]:
-        name = $(VGA_NAME)
-        videohw = vga
+    option[pc]:
+        name = PC
+        machine = pc; videohw = ega
     end
 end
 
-mount[]: vpath = A:\; srcpath = $(ifsinstallpath)
-mount[]: vpath = C:\; srcpath = $(ifsinstallpath)
-mount[]: vpath = C:\; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = A:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
-// 1985, 1x360K
+// 1985, 1x360K, Booter
 //
 game[1985-1x360k]:
-    name = 1985, 1x360K
+    name = 1985, 1x360K, Booter
     osenv = bios
     machine = pcjr
     anchorfile = FTRACK00SIDE0.~RAW~
@@ -111,23 +108,6 @@ game[1985-1x360k]:
     file[]: crc = D32986CF; size =    12514; name = FTRACK30SIDE0.~RAW~
     file[]: crc = 902515CB; size =    12514; name = FTRACK30SIDE1.~RAW~
     file[]: crc = C37F828A; size =    12514; name = FTRACK31SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK31SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK32SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK32SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK33SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK33SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK34SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK34SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK35SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK35SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK37SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = FTRACK39SIDE1.~RAW~
 end
 
 //
@@ -135,8 +115,7 @@ end
 //
 game[1987-1x720k]:
     name = 1987, 1x720K
-    launch = C:\MAIN
-    anchorfile = WINNIE.COM
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
     file[]: crc = 4e48e5d0; size =      1599; name = LOGO.PIC
     file[]: crc = 377abb72; size =     19457; name = MAIN
@@ -258,6 +237,7 @@ game[1987-1x720k]:
     file[]: crc = 999ee4c7; size =      1023; name = ROOMS\RM.60
     file[]: crc = 3a937626; size =      3477; name = ROOMS\RM.61
     file[]: crc = 3001e10f; size =      1319; name = ROOMS\RM.62
+    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 end
