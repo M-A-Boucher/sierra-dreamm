@@ -33,30 +33,29 @@ config[graphics]:
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
     end
     option[cgamono]:
-        name = CGA (2 colours)
-        videohw = cga; nothrottle = 3
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320M.DRV
         condition = file_exists("$$(rootpath)\\CGA320M.DRV")
     end
     option[cga]:
         name = $(CGA_NAME)
-        videohw = cga; nothrottle = 3
+        videohw = cga
         VIDEO_DRIVER = CGA320C.DRV
         condition = file_exists("$$(rootpath)\\CGA320C.DRV")
     end
     option[ega]:
         name = $(EGA_NAME)
-        videohw = ega; nothrottle = 4; priority = 1
+        videohw = ega; priority = 1
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end
     option[mcga]:     
         name = $(MCGA_NAME)
-        videohw = mcga; nothrottle = 4
+        videohw = mcga
         VIDEO_DRIVER = MCGA320.DRV
         condition = file_exists("$$(rootpath)\\MCGA320.DRV")
     end
-
     option[vga]:
         name = $(VGA_NAME);
         videohw = vga; priority = 3

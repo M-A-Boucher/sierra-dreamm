@@ -13,6 +13,7 @@ mips = $(MIPS_286_10)
 ramkb = 640
 filter = sierra, adventure
 MACHINE_OPTIONS = 0
+CGA_OPTIONS = 0
 
 //
 // graphics configuration
@@ -31,7 +32,12 @@ config[graphics]:
     end
     option[cga]:
         name = $(CGA_NAME)
-        videohw = cga
+        videohw = cga; composite = no
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[cga-composite]:
+        name = CGA (Composite)
+        videohw = cga; composite = oldcga
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[ega]:
@@ -43,6 +49,22 @@ config[graphics]:
         name = $(VGA_NAME)
         videohw = vga
         condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
+    end
+end
+
+//
+// booter graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    condition = $(CGA_OPTIONS)
+    option[ega]:
+        name = $(CGA_NAME)
+        videohw = cga; composite = no
+    end
+    option[cga]:
+        name = CGA (Composite)
+        videohw = cga; composite = oldcga
     end
 end
 
@@ -62,7 +84,6 @@ config[machine]:
     end
 end
 
-
 //
 // filesystem
 //
@@ -73,6 +94,16 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
 dynamicfile[]:
     path = A:\_KQ1.BAT
     contents = $(NULL)
+end
+
+script[insert]:
+    condition = file_exists("$$(rootpath)\\CPC.COM")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
 end
 
 fragment[booter-config]:
@@ -86,7 +117,7 @@ end
 //
 game[booter-cga]:
     name = CGA, 1x360K, Booter
-    videohw = cga
+    videohw = cga; composite = oldcga
     imports = booter-config
     file[]: crc = 0341628D; size =    12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 036A54BE; size =    12514; name = FTRACK00SIDE1.~RAW~
@@ -175,7 +206,8 @@ end
 //
 game[booter-cga-rgb]:
     name = CGA+RGB, 1x360K, Booter
-    videohw = cga
+    videohw = cga; composite = oldcga
+    CGA_OPTIONS = 1
     imports = booter-config
     file[]: crc = 074F9247; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 0B2F7247; size =     12514; name = FTRACK00SIDE1.~RAW~
@@ -588,6 +620,7 @@ game[v2.0f-int-2.917-kings-quest-collectors-edition]:
     name = King's Quest - Collector's Edition (v2.0F, Int. 2.917)
     imports = v2.0f-int-2.917
     anchorfile = SIERRA.COM
+    file[]: crc = 5e7f9883; size =      8048; remove = CPC.COM
     file[]: crc = 5dce7127; size =      3121; name = SIERRA.COM
     file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
@@ -598,8 +631,9 @@ end
 game[v2.0f-int-2.917-gog]:
     name = GOG (v2.0F, Int. 2.917)
     imports = v2.0f-int-2.917
-    anchorfile = KQ1.COM
-    file[]: crc = 9fd66691; size =      3121; name = SIERRA.COM  ; replace = KQ1.COM
+    anchorfile = SIERRA.COM
+    file[]: crc = 5e7f9883; size =      8048; remove = CPC.COM
+    file[]: crc = 9fd66691; size =      3121; name = SIERRA.COM
     file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 

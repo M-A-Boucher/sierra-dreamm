@@ -10,18 +10,21 @@ osenv = dos
 rootpath = C:\
 mips = $(MIPS_8086)
 ramkb = 640
-audiohw = speaker
 filter = sierra, adventure
 
 config[graphics]:
     title = Graphics Configuration
-    option[cga]:       
-        name = $(CGA_NAME)  
+    option[cga-2]:       
+        name = CGA (2 colors) 
         videohw = cga
     end
-    option[ega]:
-        name = $(EGA_NAME); priority = 1
+    option[cga-4]:
+        name = $(CGA_NAME)
         videohw = ega
+    end
+    option[cga-composite]:       
+        name = CGA (Composite); priority = 1
+        videohw = cga; composite = oldcga
     end
     option[vga]:
         name = $(VGA_NAME)

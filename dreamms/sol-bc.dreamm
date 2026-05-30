@@ -31,7 +31,12 @@ config[graphics]:
     end
     option[cga]:
         name = $(CGA_NAME)
-        videohw = cga
+        videohw = cga; composite = no
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[cga-composite]:
+        name = CGA (Composite)
+        videohw = cga; composite = oldcga
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[ega]:
@@ -51,6 +56,29 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)        ; writable = true;
+
+script[flip]:
+    condition = file_exists("$$(rootpath)\\DISK2\\FTRACK00SIDE0.~RAW~")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        wait("int16", 1);
+        disc_insert("2", true);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
+end
+
+script[key]:
+    condition = file_exists("$$(rootpath)\\FTRACK06SIDE0.~RAW~")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
+end
 
 //
 // v1.1J, Int. 1.12, 2x360K, Booter

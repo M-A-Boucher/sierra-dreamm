@@ -8,7 +8,7 @@ icon = sol-lsl1.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
+launch = $(rootpath)\SIERRA.COM $(OPTION)
 audiohw = speaker
 mips = $(MIPS_286_10)
 ramkb = 640
@@ -29,9 +29,15 @@ config[graphics]:
         videohw = hercules
         condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
     end
-    option[cga]:
+    option[cga]:       
         name = $(CGA_NAME)
-        videohw = cga
+        videohw = cga; composite = no
+        OPTION = -r
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[cga-composite]:       
+        name = CGA (Composite)
+        videohw = cga; composite = oldcga
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[ega]:
@@ -56,6 +62,16 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
 dynamicfile[]:
     path = A:\_LL.BAT
     contents = $(NULL)
+end
+
+script[key]:
+    condition = file_exists("$$(rootpath)\\FTRACK06SIDE0.~RAW~")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
 end
 
 //

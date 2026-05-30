@@ -155,7 +155,7 @@ end
 game[v2.1-int-7.9.91-3x1.44m]:
     name = v2.1, Int. 7.9.91, 3x1.44M
     imports = v2.0-int-6.26.91-3x1.44m
-    anchorfile = INSTALL.HLP
+    anchorfile = RESOURCE.002
     file[]: crc = 242cbaf8; size =      2366; name = INTERP.TXT
     file[]: crc = 58964d3f; size =    922406; name = RESOURCE.000
     file[]: crc = 30c0d655; size =   1111226; name = RESOURCE.001
@@ -219,7 +219,7 @@ addon[gmidi]:
         v2.0-int-7.9.91-4x720k
         v2.1-int-7.9.91-cd
     ]]]
-    anchorfile = LL1_GM.PAT
+    anchorfile = 4.PAT
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = a28008a0; size =      1301; name = 4.PAT
 end

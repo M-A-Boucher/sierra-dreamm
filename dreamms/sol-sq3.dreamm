@@ -26,15 +26,21 @@ config[graphics]:
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
-    option[hercules]: 
+    option[hercules]:
         name = $(HERCULES_NAME)
         videohw = hercules
         VIDEO_DRIVER = HERCMONO.DRV
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
     end
-    option[cgamono]:  
-        name = CGA (2 colours)
-        videohw = cga
+    option[cgamono]:
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
+        VIDEO_DRIVER = CGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
+    end
+    option[cgamono]:
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320M.DRV
         condition = file_exists("$$(rootpath)\\CGA320M.DRV")
     end
@@ -50,7 +56,7 @@ config[graphics]:
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end
-    option[mcga]:     
+    option[mcga]:
         name = $(MCGA_NAME)
         videohw = mcga
         VIDEO_DRIVER = MCGA320.DRV

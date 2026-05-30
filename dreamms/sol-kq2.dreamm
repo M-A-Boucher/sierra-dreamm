@@ -31,7 +31,7 @@ config[graphics]:
     end
     option[cga]:       
         name = $(CGA_NAME)  
-        videohw = cga
+        videohw = cga; composite = oldcga
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[ega]:
@@ -60,12 +60,19 @@ config[machine]:
         name = Tandy
         machine = tandy; videohw = cga
     end
-    option[pc]:
-        name = PC (CGA, RGB)
-        machine = pc; videohw = cga
+    option[pc-composite]:
+        name = PC CGA (Composite)
+        machine = pc; videohw = cga; composite = oldcga
+    end
+    option[pc-rgb]:
+        name = PC CGA (RGB)
+        machine = pc; videohw = cga; composite = no
     end
 end
 
+//
+// filesystem
+//
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true; disc = 1
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
@@ -76,6 +83,29 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true
 dynamicfile[]:
     path = A:\_KQ2.BAT
     contents = $(NULL)
+end
+
+script[flip]:
+    condition = file_exists("$$(rootpath)\\DISK2\\FTRACK00SIDE0.~RAW~")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        wait("int16", 1);
+        disc_insert("2", true);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
+end
+
+script[insert]:
+    condition = file_exists("$$(rootpath)\\CPC.COM")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
 end
 
 //

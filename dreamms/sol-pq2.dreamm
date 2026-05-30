@@ -33,8 +33,14 @@ config[graphics]:
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
     end
     option[cgamono]:  
-        name = CGA (2 colours)
-        videohw = cga
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
+        VIDEO_DRIVER = CGA320BW.DRV
+        condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
+    end
+    option[cgamono]:
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320M.DRV
         condition = file_exists("$$(rootpath)\\CGA320M.DRV")
     end

@@ -378,7 +378,7 @@ addon[gmidi]:
         v1.0-int-12.9.91-7x720k
         v1.1-int-1.13.92-6x1.44m
     ]]]
-    anchorfile = ROBNGM.PAT
+    anchorfile = 4.PAT
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = fe48644b; size =      1301; name = 4.PAT
 end

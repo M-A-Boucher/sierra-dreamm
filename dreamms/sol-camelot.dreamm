@@ -25,9 +25,15 @@ config[graphics]:
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
     end
-    option[cgamono]:
-        name = CGA (2 colours)
-        videohw = cga
+    option[hercules]:
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        VIDEO_DRIVER = HERCMONO.DRV
+        condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
+    end
+    option[cgamono]:  
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320M.DRV
         condition = file_exists("$$(rootpath)\\CGA320M.DRV")
     end
@@ -63,23 +69,17 @@ config[sound]:
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
-    option[adlib]:
-        name = $(ADLIB_NAME)
-        audiohw = adlib
-        SOUND_DRIVER = ADL.DRV
-        condition = file_exists("$$(rootpath)\\ADL.DRV")
-    end
     option[cms]:
         name = $(CMS_NAME)
         audiohw = cms
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
-    option[sb16]:
-        name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
-        SOUND_DRIVER = PROAUDIO.DRV
-        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+        SOUND_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)

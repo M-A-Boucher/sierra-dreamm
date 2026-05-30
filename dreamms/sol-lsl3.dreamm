@@ -33,14 +33,14 @@ config[graphics]:
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
     end
     option[cgamono]:  
-        name = CGA (2 colours)
-        videohw = cga
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320BW.DRV
         condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
     end
-    option[cgamono]:  
-        name = CGA (2 colours)
-        videohw = cga
+    option[cgamono]:
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320M.DRV
         condition = file_exists("$$(rootpath)\\CGA320M.DRV")
     end
@@ -272,7 +272,7 @@ end
 //
 game[v1.021-int-5.15.90-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses (v1.021, Int. 5.15.90)
-    anchorfile = RESOURCE.CFG
+    imports = v1.021-int-5.15.90-4x720k
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
     file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
     file[]: crc = 9e4650ff; size =      2376; remove = CGA320C.DRV

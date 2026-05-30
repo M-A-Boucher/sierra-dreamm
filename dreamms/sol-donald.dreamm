@@ -10,18 +10,29 @@ osenv = bios
 ramkb = 640
 mips = $(MIPS_8086)
 audiohw = speaker
-videohw = ega
+videohw = cga
 filter = sierra, adventure
 
+//
+// machine configuration
+//
 config[machine]:
     title = Machine Configuration
     option[pcjr]:
         name = PCjr
         machine = pcjr; priority = 1
     end
-    option[pc]:
-        name = PC
-        machine = pc
+    option[pc-cga]:
+        name = PC $(CGA_NAME)
+        machine = pc; videohw = cga; composite = no
+    end
+    option[pc-cga-composite]:
+        name = PC CGA (Composite)
+        machine = pc; videohw = cga; composite = oldcga
+    end
+    option[pc-ega]:
+        name = PC $(EGA_NAME)
+        machine = pc; videohw = ega
     end
 end
 

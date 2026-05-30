@@ -28,9 +28,17 @@ config[machine]:
         name = Tandy
         machine = tandy; videohw = cga
     end
-    option[pc]:
-        name = PC
+    option[pc-cga-2]:
+        name = PC CGA (2 colors)
+        machine = pc; videohw = cga; composite = no
+    end
+    option[pc-cga-4]:
+        name = PC $(CGA_NAME)
         machine = pc; videohw = ega
+    end
+    option[pc-cga-composite]:
+        name = PC CGA (Composite)
+        machine = pc; videohw = cga; composite = oldcga
     end
 end
 
