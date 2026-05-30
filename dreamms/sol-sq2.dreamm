@@ -14,14 +14,11 @@ mips = $(MIPS_286_10)
 ramkb = 640
 filter = sierra, adventure
 
-//
-// graphics configuration
-//
 config[graphics]:
     title = Graphics Configuration
     option[tandy]:
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy; priority = 1
+        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
         condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
     end
     option[hercules]:  
@@ -193,7 +190,6 @@ end
 game[v2.0f-int-2.936-2x720k]:
     name = v2.0F, Int. 2.936, 2x720K
     imports = v2.0d-int-2.936-2x720k
-    anchorfile = VOL.0
     file[]: crc = 4af29aa5; size =       426; name = LOGDIR
     file[]: crc = c3509c67; size =       444; name = PICDIR
     file[]: crc = e129a2f5; size =       210; name = SNDDIR
@@ -211,12 +207,23 @@ game[v2.0f-int-2.936-3x360k]:
     name = v2.0F, Int. 2.936, 3x360K
     imports = v2.0f-int-2.936-2x720k
     file[]: crc = aff0879b; size =       426; name = LOGDIR
-    file[]: crc = b67fcb84; size =       331; name = OBJECT
     file[]: crc = b6db0c39; size =       444; name = PICDIR
     file[]: crc = 7700a783; size =       210; name = SNDDIR
     file[]: crc = 2b4c4013; size =       720; name = VIEWDIR
     file[]: crc = 8c203d09; size =    215666; name = VOL.2
     file[]: crc = ff8c15da; size =    196169; name = VOL.3
+end
+
+//
+// Kixx, v2.0F, Int. 2.936, 1x720K
+//
+game[v2.0f-int-2.936-1x720k]:
+    name = Kixx, v2.0F, Int. 2.936, 1x720K
+    imports = v2.0f-int-2.936-2x720k
+    anchorfile = SIERRA.COM
+    file[]: crc = 5e7f9883; size =      8048; remove = CPC.COM
+    file[]: crc = 6c9647ab; size =      3121; name = SIERRA.COM
+    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -226,6 +233,7 @@ game[v2.0f-int-2.936-sq-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.0F, Int. 2.936)
     imports = v2.0f-int-2.936-2x720k
     anchorfile = SIERRA.COM
+    file[]: crc = 5e7f9883; size =      8048; remove = CPC.COM
     file[]: crc = 984b800c; size =      3121; name = SIERRA.COM
     file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
 end
