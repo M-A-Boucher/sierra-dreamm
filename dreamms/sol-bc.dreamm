@@ -51,6 +51,9 @@ config[graphics]:
     end
 end
 
+//
+// filesystem
+//
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true; disc = 1
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
@@ -89,7 +92,7 @@ game[v1.1j-int-1.12-2x360k]:
     osenv = bios
     mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
-    file[]: crc = B333E8C5; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~
+    file[]: crc = B333E8C5; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 68B55522; size =    12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = 7B34FFC6; size =    12514; name = DISK1\FTRACK01SIDE0.~RAW~
     file[]: crc = 70ED1D45; size =    12514; name = DISK1\FTRACK01SIDE1.~RAW~
@@ -264,7 +267,7 @@ game[v1.1m-int-1.12-2x360k]:
     osenv = bios
     mips = $(MIPS_8086)
     anchorfile = FTRACK00SIDE0.~RAW~
-    file[]: crc = 93FC2D16; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~
+    file[]: crc = 93FC2D16; size =    12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 004602E2; size =    12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = 0A42B343; size =    12514; name = DISK1\FTRACK01SIDE0.~RAW~
     file[]: crc = D29AFD08; size =    12514; name = DISK1\FTRACK01SIDE1.~RAW~
@@ -453,7 +456,7 @@ game[v2.00-int-2.439-2x360k]:
     file[]: crc = e6a85e67; size =    204646; name = VOL.1
     file[]: crc = ac9b48f9; size =    145491; name = VOL.2
     file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
-    file[]: crc = 71668C64; size =     12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = 71668C64; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
