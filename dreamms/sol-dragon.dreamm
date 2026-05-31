@@ -31,13 +31,8 @@ config[graphics]:
         AUDIODRV = 0x00
     end
     option[cga]:       
-        name = CGA (2 colors)
-        videohw = cga
-        VIDEODRV = 0x04
-    end
-    option[mcga]:
-        name = MCGA (2 colors)
-        videohw = mcga
+        name = CGA (Composite)
+        videohw = cga; composite = oldcga
         VIDEODRV = 0x04
     end
     option[ega]:

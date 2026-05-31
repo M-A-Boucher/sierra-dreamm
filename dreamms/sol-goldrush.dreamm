@@ -5,10 +5,59 @@ desc[sol-goldrush]:
 
 name = Gold Rush!
 icon = sol-goldrush.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.COM $(OPTION)
+audiohw = speaker
+mips = $(MIPS_286_10)
+ramkb = 640
 filter = sierra, adventure
-nothrottle = 4
 
-$(include agibase.txt)
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
+    end
+    option[hercules]:  
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)
+        videohw = cga; composite = no
+        OPTION = -r
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[cga-composite]:       
+        name = CGA (Composite)
+        videohw = cga; composite = oldcga
+        condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\EGA_GRAF.OVL")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        condition = file_exists("$$(rootpath)\\VG_GRAF.OVL")
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 
 //
 // v2.01, Int. 3.002.149, 2x720K
@@ -56,18 +105,15 @@ end
 //
 game[v3.0-int-3.002.149-2x1.44m]:
     name = v3.0, Int. 3.002.149, 2x1.44M, The Software Farm, Inc (1998)
-    launch = GR.COM
     imports = v2.01-int-3.002.149-2x720k
     anchorfile = GRVOL.0
-    file[]: crc = 829dbdef; size =      3134; name = GR.COM
+    file[]: crc = 829dbdef; size =      3134; name = SIERRA.COM
     file[]: crc = 743170e9; size =      1332; name = GR.INF      ; optional = true
-    file[]: crc = b5ce25a6; size =        68; remove = GR122388.QA
     file[]: crc = bbd5a547; size =      2399; name = GRDIR
     file[]: crc = c7ec040d; size =     78257; name = GRVOL.0
     file[]: crc = 72f9a421; size =    563363; name = GRVOL.1
     file[]: crc = 71c7cf7b; size =    570124; name = GRVOL.2
     file[]: crc = 031a1241; size =      3075; name = HGC_GRAF.OVL
-    file[]: crc = 052116f9; size =      1244; remove = INSTALLH.BAT
     file[]: crc = 8bac66e9; size =     74528; name = MSCOMSTF.DLL; optional = true
     file[]: crc = 89349a87; size =     57760; name = MSCUISTF.DLL; optional = true
     file[]: crc = bf8f1809; size =     22097; name = MSDETECT.INC; optional = true
