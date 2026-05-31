@@ -8,7 +8,7 @@ icon = sol-bc.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.COM
+launch = $(rootpath)\SIERRA.COM $(OPTION)
 audiohw = speaker
 mips = $(MIPS_286_10)
 ramkb = 640
@@ -32,6 +32,7 @@ config[graphics]:
     option[cga]:
         name = $(CGA_NAME)
         videohw = cga; composite = no
+        OPTION = -r
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[cga-composite]:
@@ -59,19 +60,6 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)        ; writable = true;
-
-script[flip]:
-    condition = file_exists("$$(rootpath)\\DISK2\\FTRACK00SIDE0.~RAW~")
-    code = [[[$(CRLF)            
-        input_lockout(true);
-        wait("int16", 1);
-        keyboard_type("\r");
-        wait("int16", 1);
-        disc_insert("2", true);
-        keyboard_type("\r");
-        input_lockout(false);
-    ]]]
-end
 
 script[key]:
     condition = file_exists("$$(rootpath)\\FTRACK06SIDE0.~RAW~")
@@ -105,7 +93,6 @@ game[v1.1j-int-1.12-2x360k]:
     file[]: crc = FEFBE890; size =    12514; name = DISK1\FTRACK05SIDE0.~RAW~
     file[]: crc = B3FE1068; size =    12514; name = DISK1\FTRACK05SIDE1.~RAW~
     file[]: crc = EF908AF4; size =    12514; name = DISK1\FTRACK06SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK06SIDE1.~RAW~
     file[]: crc = 9C14FFEA; size =    12514; name = DISK1\FTRACK07SIDE0.~RAW~
     file[]: crc = 21B1500E; size =    12514; name = DISK1\FTRACK07SIDE1.~RAW~
     file[]: crc = EF61B9B0; size =    12514; name = DISK1\FTRACK08SIDE0.~RAW~
@@ -134,18 +121,6 @@ game[v1.1j-int-1.12-2x360k]:
     file[]: crc = 03EA4E6E; size =    12514; name = DISK1\FTRACK19SIDE1.~RAW~
     file[]: crc = 53473826; size =    12514; name = DISK1\FTRACK20SIDE0.~RAW~
     file[]: crc = 05B04928; size =    12514; name = DISK1\FTRACK20SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK21SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK21SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK22SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK22SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK23SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK23SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK24SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK24SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK25SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK25SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK26SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK26SIDE1.~RAW~
     file[]: crc = 264B5F20; size =    12514; name = DISK1\FTRACK27SIDE0.~RAW~
     file[]: crc = 2BF79CE1; size =    12514; name = DISK1\FTRACK27SIDE1.~RAW~
     file[]: crc = CC318A70; size =    12514; name = DISK1\FTRACK28SIDE0.~RAW~
@@ -159,19 +134,8 @@ game[v1.1j-int-1.12-2x360k]:
     file[]: crc = 62CED199; size =    12514; name = DISK1\FTRACK32SIDE0.~RAW~
     file[]: crc = 365B7686; size =    12514; name = DISK1\FTRACK32SIDE1.~RAW~
     file[]: crc = C5A8908C; size =    12514; name = DISK1\FTRACK33SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK33SIDE1.~RAW~
     file[]: crc = B84D8EB4; size =    12514; name = DISK1\FTRACK34SIDE0.~RAW~
     file[]: crc = 7BA8F31B; size =    12514; name = DISK1\FTRACK34SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK35SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK35SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK36SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK37SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK39SIDE1.~RAW~
     file[]: crc = 7484D8A9; size =    12514; name = DISK2\FTRACK00SIDE0.~RAW~
     file[]: crc = 0A9A232A; size =    12514; name = DISK2\FTRACK00SIDE1.~RAW~
     file[]: crc = 8B47F79E; size =    12514; name = DISK2\FTRACK01SIDE0.~RAW~
@@ -222,10 +186,6 @@ game[v1.1j-int-1.12-2x360k]:
     file[]: crc = 84B29CD1; size =    12514; name = DISK2\FTRACK23SIDE1.~RAW~
     file[]: crc = 959A82D0; size =    12514; name = DISK2\FTRACK24SIDE0.~RAW~
     file[]: crc = 215C9891; size =    12514; name = DISK2\FTRACK24SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK25SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK25SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK26SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK26SIDE1.~RAW~
     file[]: crc = 9FEF4354; size =    12514; name = DISK2\FTRACK27SIDE0.~RAW~
     file[]: crc = B401974F; size =    12514; name = DISK2\FTRACK27SIDE1.~RAW~
     file[]: crc = CC318A70; size =    12514; name = DISK2\FTRACK28SIDE0.~RAW~
@@ -239,19 +199,6 @@ game[v1.1j-int-1.12-2x360k]:
     file[]: crc = 62CED199; size =    12514; name = DISK2\FTRACK32SIDE0.~RAW~
     file[]: crc = 365B7686; size =    12514; name = DISK2\FTRACK32SIDE1.~RAW~
     file[]: crc = C5A8908C; size =    12514; name = DISK2\FTRACK33SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK33SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK34SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK34SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK35SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK35SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK36SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK37SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK39SIDE1.~RAW~
 end
 
 //
@@ -280,7 +227,6 @@ game[v1.1m-int-1.12-2x360k]:
     file[]: crc = 10B5BCDB; size =    12514; name = DISK1\FTRACK05SIDE0.~RAW~
     file[]: crc = CA314F07; size =    12514; name = DISK1\FTRACK05SIDE1.~RAW~
     file[]: crc = EF908AF4; size =    12514; name = DISK1\FTRACK06SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK06SIDE1.~RAW~
     file[]: crc = 9C14FFEA; size =    12514; name = DISK1\FTRACK07SIDE0.~RAW~
     file[]: crc = 21B1500E; size =    12514; name = DISK1\FTRACK07SIDE1.~RAW~
     file[]: crc = 1EAB00FE; size =    12514; name = DISK1\FTRACK08SIDE0.~RAW~
@@ -309,18 +255,6 @@ game[v1.1m-int-1.12-2x360k]:
     file[]: crc = 03EA4E6E; size =    12514; name = DISK1\FTRACK19SIDE1.~RAW~
     file[]: crc = 53473826; size =    12514; name = DISK1\FTRACK20SIDE0.~RAW~
     file[]: crc = 05B04928; size =    12514; name = DISK1\FTRACK20SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK21SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK21SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK22SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK22SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK23SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK23SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK24SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK24SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK25SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK25SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK26SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK26SIDE1.~RAW~
     file[]: crc = 09DBBF7A; size =    12514; name = DISK1\FTRACK27SIDE0.~RAW~
     file[]: crc = 9E694AB0; size =    12514; name = DISK1\FTRACK27SIDE1.~RAW~
     file[]: crc = DEF769C9; size =    12514; name = DISK1\FTRACK28SIDE0.~RAW~
@@ -334,19 +268,8 @@ game[v1.1m-int-1.12-2x360k]:
     file[]: crc = 33DBC6DB; size =    12514; name = DISK1\FTRACK32SIDE0.~RAW~
     file[]: crc = 47529FB4; size =    12514; name = DISK1\FTRACK32SIDE1.~RAW~
     file[]: crc = 33A35DDA; size =    12514; name = DISK1\FTRACK33SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK33SIDE1.~RAW~
     file[]: crc = B84D8EB4; size =    12514; name = DISK1\FTRACK34SIDE0.~RAW~
     file[]: crc = 7BA8F31B; size =    12514; name = DISK1\FTRACK34SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK35SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK35SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK36SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK37SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK1\FTRACK39SIDE1.~RAW~
     file[]: crc = 7484D8A9; size =    12514; name = DISK2\FTRACK00SIDE0.~RAW~
     file[]: crc = 0A9A232A; size =    12514; name = DISK2\FTRACK00SIDE1.~RAW~
     file[]: crc = 8B47F79E; size =    12514; name = DISK2\FTRACK01SIDE0.~RAW~
@@ -397,10 +320,6 @@ game[v1.1m-int-1.12-2x360k]:
     file[]: crc = 96F82F51; size =    12514; name = DISK2\FTRACK23SIDE1.~RAW~
     file[]: crc = 41A3F0E8; size =    12514; name = DISK2\FTRACK24SIDE0.~RAW~
     file[]: crc = 6317A2B7; size =    12514; name = DISK2\FTRACK24SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK25SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK25SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK26SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK26SIDE1.~RAW~
     file[]: crc = 1F5C0393; size =    12514; name = DISK2\FTRACK27SIDE0.~RAW~
     file[]: crc = 849C612B; size =    12514; name = DISK2\FTRACK27SIDE1.~RAW~
     file[]: crc = DEF769C9; size =    12514; name = DISK2\FTRACK28SIDE0.~RAW~
@@ -414,19 +333,6 @@ game[v1.1m-int-1.12-2x360k]:
     file[]: crc = 33DBC6DB; size =    12514; name = DISK2\FTRACK32SIDE0.~RAW~
     file[]: crc = 47529FB4; size =    12514; name = DISK2\FTRACK32SIDE1.~RAW~
     file[]: crc = 33A35DDA; size =    12514; name = DISK2\FTRACK33SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK33SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK34SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK34SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK35SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK35SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK36SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK36SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK37SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK37SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK38SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK38SIDE1.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK39SIDE0.~RAW~
-    file[]: crc = C7003D69; size =    12514; name = DISK2\FTRACK39SIDE1.~RAW~
 end
 
 //
@@ -434,7 +340,6 @@ end
 //
 game[v2.00-int-2.439-2x360k]:
     name = v2.00, Int. 2.439, 2x360K
-    launch = SIERRA.COM
     anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 044da781; size =     38400; name = AGI
     file[]: crc = e8c29f5f; size =      7680; name = AGIDATA.OVL
@@ -464,7 +369,6 @@ end
 //
 game[v2.10-int-3.002.098-1x720k]:
     name = v2.10, Int. 3.002.098, 1x720K
-    launch = SIERRA.EXE
     anchorfile = BCVOL.0
     file[]: crc = 6d990c16; size =      8080; name = AGIDATA.OVL
     file[]: crc = b3af0f26; size =      1217; name = BCDIR
@@ -478,7 +382,7 @@ game[v2.10-int-3.002.098-1x720k]:
     file[]: crc = 2fcbeb6a; size =       341; name = IBM_OBJS.OVL
     file[]: crc = c9b7edf8; size =       465; name = JR_GRAF.OVL
     file[]: crc = 14b3c6ab; size =       312; name = OBJECT
-    file[]: crc = 9ab69f1b; size =     40898; name = SIERRA.EXE
+    file[]: crc = 9ab69f1b; size =     40898; name = SIERRA.COM
     file[]: crc = 372a41f9; size =       362; name = VG_GRAF.OVL
     file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
 end
