@@ -8,7 +8,7 @@ icon = sol-zeliard.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\INSTALL.EXE
+launch = $(rootpath)\ZELIARD.EXE
 audiohw = $(SOUNDHW)+$(MUSICHW)
 mips = $(MIPS_386DX_33)
 ramkb = 4068
@@ -124,7 +124,6 @@ game[v1.208-int-12.20.90]:
     file[]: crc = ece513c8; size =      3723; name = GMHGC.BIN
     file[]: crc = 14547ab3; size =      3273; name = GMMCGA.BIN
     file[]: crc = 1f08987d; size =      3704; name = GMTGA.BIN
-    file[]: crc = d07fd814; size =     19001; name = INSTALL.EXE
     file[]: crc = 3624abd1; size =      3015; name = MSCADLIB.DRV
     file[]: crc = 5a25a1e8; size =      2666; name = MSCJR.DRV
     file[]: crc = fda16330; size =      1746; name = MSCMT.DRV
