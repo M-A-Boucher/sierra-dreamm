@@ -37,6 +37,7 @@ config[graphics]:
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga
+        condition = file_exists("$$(rootpath)\\MAINEG")
     end
 end
 
@@ -179,7 +180,6 @@ end
 //
 game[1987-2x360k]:
     name = 1987, 2x360K
-    anchorfile = FTRACK06SIDE0.~RAW~
     imports = 1987-1x720k
     file[]: crc = 35fb265e; size =      6841; name = MAP08.BIN
     file[]: crc = cecc528c; size =      5856; name = MAP11.BIN
@@ -205,7 +205,6 @@ end
 //
 game[1987-rev-c]:
     name = 1987, Rev. C
-    anchorfile = FTRACK06SIDE0.~RAW~
     imports = 1987-2x360k
     file[]: crc = e40ea9ec; size =     17537; name = MAIN
     file[]: crc = a7aff8f9; size =     17845; name = MAINEG

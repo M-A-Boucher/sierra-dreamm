@@ -1,0 +1,155 @@
+//
+// Zeliard
+//
+desc[sol-zeliard]:
+
+name = Zeliard
+icon = sol-zeliard.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\INSTALL.EXE
+audiohw = $(SOUNDHW)+$(MUSICHW)
+mips = $(MIPS_386DX_33)
+ramkb = 4068
+filter = sierra, action
+TANDY = 0
+SOUNDHW = speaker
+MUSICHW = speaker
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy
+        VIDEO_DRIVER = TGA; TANDY = 1
+        SOUND_DRIVER = SNDJR.DRV; MUSIC_DRIVER = MSCJR.DRV
+        condition = file_exists("$$(rootpath)\\GMTGA.BIN")
+    end
+    option[hercules]:       
+        name = $(HERCULES_NAME)
+        videohw = hercules
+        VIDEO_DRIVER = HGC
+        condition = file_exists("$$(rootpath)\\GMHGC.BIN")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)
+        VIDEO_DRIVER = CGA
+        videohw = cga; composite = no
+        condition = file_exists("$$(rootpath)\\GMCGA.BIN")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        VIDEO_DRIVER = EGA
+        condition = file_exists("$$(rootpath)\\GMEGA.BIN")
+    end
+    option[mcga]:
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA
+        condition = file_exists("$$(rootpath)\\GMMCGA.BIN")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        SOUNDHW = speaker; SOUND_DRIVER = SNDSTD.DRV
+        condition = file_exists("$$(rootpath)\\SNDSTD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); priority = 1
+        SOUNDHW = adlib; SOUND_DRIVER = SNDADLIB.DRV
+        condition = file_exists("$$(rootpath)\\SNDADLIB.DRV")
+    end
+end
+
+//
+// music configuration
+//
+config[music]:
+    title = Music Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        MUSICHW = adlib; MUSIC_DRIVER = MSCSTD.DRV
+        condition = file_exists("$$(rootpath)\\MSCSTD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); priority = 1
+        MUSICHW = adlib; MUSIC_DRIVER = MSCADLIB.DRV
+        condition = file_exists("$$(rootpath)\\MSCADLIB.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        MUSICHW = mt32; MUSIC_DRIVER = MSCMT.DRV
+        condition = file_exists("$$(rootpath)\\MSCMT.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\RESOURCE.CFG
+    contents = [[[$(CRLF)
+        videoDrv:$(VIDEO_DRIVER)
+        musicDrv:$(MUSIC_DRIVER)
+        soundDrv:$(SOUND_DRIVER)
+        JOYSTICK:YES
+   ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+
+//
+// v1.208, Int. 12.20.90 (2x720K and 3x360K are identical)
+//
+game[v1.208-int-12.20.90]:
+    name = v1.208, Int. 12.20.90
+    anchorfile = ZELIARD.EXE
+    file[]: crc = 84c1721c; size =      1142; name = GAME.BIN
+    file[]: crc = e243c181; size =      3565; name = GMCGA.BIN
+    file[]: crc = b557c5f5; size =      3736; name = GMEGA.BIN
+    file[]: crc = ece513c8; size =      3723; name = GMHGC.BIN
+    file[]: crc = 14547ab3; size =      3273; name = GMMCGA.BIN
+    file[]: crc = 1f08987d; size =      3704; name = GMTGA.BIN
+    file[]: crc = d07fd814; size =     19001; name = INSTALL.EXE
+    file[]: crc = 3624abd1; size =      3015; name = MSCADLIB.DRV
+    file[]: crc = 5a25a1e8; size =      2666; name = MSCJR.DRV
+    file[]: crc = fda16330; size =      1746; name = MSCMT.DRV
+    file[]: crc = 525a3d3e; size =      2123; name = MSCSTD.DRV
+    file[]: crc = e8cbb715; size =      3705; name = MTINIT.COM
+    file[]: crc = 63cd38c3; size =      4036; name = SNDADLIB.DRV
+    file[]: crc = 0f100444; size =      4414; name = SNDJR.DRV
+    file[]: crc = d53d1bf1; size =      2576; name = SNDSTD.DRV
+    file[]: crc = c905da24; size =       233; name = STDPLY.BIN
+    file[]: crc = a1718eac; size =      4150; name = STICK.BIN
+    file[]: crc = 2d70cc61; size =      3050; name = ZELIARD.EXE
+    file[]: crc = 27072639; size =    256952; name = ZELRES1.SAR
+    file[]: crc = 260d48e2; size =    345218; name = ZELRES2.SAR
+    file[]: crc = 33cadc11; size =    342434; name = ZELRES3.SAR
+end
+
+//
+// v2.0, Int. 3.13.91 (2x720K and 3x360K are identical)
+//
+game[v2.0-int-3.13.91]:
+    name = v2.0, Int. 3.13.91
+    imports = v1.208-int-12.20.90
+    file[]: crc = 90f2005b; size =      3050; name = ZELIARD.EXE
+    file[]: crc = 25d1a66c; size =    345295; name = ZELRES2.SAR
+    file[]: crc = b6329ef9; size =    342434; name = ZELRES3.SAR
+end
+
+end
