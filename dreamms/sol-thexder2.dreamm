@@ -1,0 +1,167 @@
+//
+// Fire Hawk - Thexder - The Second Contact
+//
+desc[sol-thexder2]:
+
+name = Fire Hawk - Thexder - The Second Contact
+icon = sol-thexder2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SIERRA.EXE
+mips = $(MIPS_286_10)
+ramkb = 4096
+filter = sierra, action
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]: 
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; TANDY = 1
+        condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
+    option[mcga]:     
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        SOUND_DRIVER = STD.DRV
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[cms]:
+        name = $(CMS_NAME)
+        audiohw = cms
+        SOUND_DRIVER = CMS.DRV
+        condition = file_exists("$$(rootpath)\\CMS.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+        SOUND_DRIVER = ADL.DRV
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        SOUND_DRIVER = SNDBLAST.DRV
+        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32
+        SOUND_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\RESOURCE.CFG
+    contents = [[[$(CRLF)
+        $(VIDEO_DRIVER)
+        $(SOUND_DRIVER)
+        NONE
+        IBMKBD.DRV
+        NO$(SP)$(SP) // Joystick
+        BACKGROUND   // Draw background
+        $(NULL)
+   ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v2.0, Int. 9.24.90 (2x720K and 3x360K are identical)
+//
+game[v2.0-int-9.24.90]:
+    name = v2.0, Int. 9.24.90
+    anchorfile = SIERRA.EXE
+    file[]: crc = 38c05063; size =      7692; name = ADL.DRV
+    file[]: crc = 4b526d8e; size =      3486; name = CMS.DRV
+    file[]: crc = 55cb2429; size =     15898; name = DEMO.EXE
+    file[]: crc = 8a0c4be5; size =      1979; name = EFC1
+    file[]: crc = 1390a5eb; size =      1995; name = EFC2
+    file[]: crc = cda553d1; size =     22976; name = EFC3
+    file[]: crc = 6e6fbe8a; size =     28090; name = EFC4
+    file[]: crc = b8e32dd8; size =      9196; name = EGA640.DRV
+    file[]: crc = 86f44796; size =      6591; name = EN23.PK3
+    file[]: crc = 1f879520; size =      1764; name = EN24.PK3
+    file[]: crc = 4c7ce2cb; size =       244; name = EN26.PK3
+    file[]: crc = 8e67b131; size =     37378; name = GAME.EXE
+    file[]: crc = 3ba64b9b; size =      1184; name = GRPH
+    file[]: crc = 357c64b6; size =       808; name = IBMKBD.DRV
+    file[]: crc = 2ffc07a0; size =       367; name = JOYSTICK.DRV
+    file[]: crc = 07af6b18; size =      9153; name = MCGA320.DRV
+    file[]: crc = 505cd713; size =      1857; name = MT32.DRV
+    file[]: crc = a73083ae; size =      9735; name = PATCH.001
+    file[]: crc = cb35b6b5; size =      1212; name = PATCH.003
+    file[]: crc = feb1a4d7; size =        71; name = PATCH.101
+    file[]: crc = dbf164c6; size =      2318; name = REGFONT
+    file[]: crc = 7a010602; size =       828; name = RES1.IX
+    file[]: crc = 0d7a7ebf; size =     49800; name = RES1.SAR
+    file[]: crc = 59d73cef; size =      2142; name = RES2.IX
+    file[]: crc = 1a42df61; size =    114574; name = RES2.SAR
+    file[]: crc = 3fbb54f4; size =      2052; name = RES3.IX
+    file[]: crc = aa86245e; size =    100668; name = RES3.SAR
+    file[]: crc = 412154a6; size =       315; name = SAVEGM.DAT
+    file[]: crc = 412154a6; size =       315; name = SAVEGM.MAS
+    file[]: crc = 68ab1329; size =     14759; name = SIERRA.EXE
+    file[]: crc = f55f128d; size =      9028; name = SNDBLAST.DRV
+    file[]: crc = 312fa111; size =     25855; name = SS020
+    file[]: crc = b3e6287f; size =      5694; name = SS021
+    file[]: crc = 808e54ed; size =     27794; name = SS030
+    file[]: crc = ae966b57; size =     21624; name = SS031
+    file[]: crc = e96d9933; size =     11960; name = SS040
+    file[]: crc = 68860a56; size =      5701; name = SS041
+    file[]: crc = 4f6ed3f2; size =     25310; name = SS050
+    file[]: crc = f38e1f4d; size =     16996; name = SS051
+    file[]: crc = 41ccfa8d; size =      7100; name = SS060
+    file[]: crc = 2c346ba9; size =     14075; name = SS061
+    file[]: crc = 4f80d8f7; size =     13954; name = SS070
+    file[]: crc = 35213c54; size =     25789; name = SS071
+    file[]: crc = 3ad932f6; size =     20025; name = SS080
+    file[]: crc = 4ac58681; size =     19460; name = SS081
+    file[]: crc = 165df040; size =      9022; name = SS090
+    file[]: crc = 1da4ea9e; size =      7957; name = SS091
+    file[]: crc = ac3dbb55; size =     17912; name = SS120
+    file[]: crc = 4b0705e1; size =     20775; name = SS000
+    file[]: crc = c7216979; size =     15991; name = SS010
+    file[]: crc = f3c80850; size =     13898; name = SS011
+    file[]: crc = 5d6dc1b7; size =     43599; name = SS092
+    file[]: crc = 230c7e23; size =      1295; name = STD.DRV
+    file[]: crc = fe1a7b6d; size =      3905; name = TANDY.DRV
+    file[]: crc = a709c940; size =      9765; name = TANDY320.DRV
+    file[]: crc = 2876caf4; size =      3671; name = TANDY3V.DRV
+    file[]: crc = c806539a; size =       798; name = TANDYKBD.DRV
+    file[]: crc = 8a89214d; size =      2049; name = TTLC
+    file[]: crc = 3ed65fd6; size =      3492; name = TTLS
+    file[]: crc = be0a7054; size =        16; name = VERSION
+end
+
+end

@@ -1,0 +1,216 @@
+//
+// Thexder
+//
+desc[sol-thexder1]:
+
+name = Thexder
+icon = sol-thexder1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\THEXDER.COM
+audiohw = speaker
+mips = $(MIPS_286_10)
+ramkb = 640
+filter = sierra, action
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; machine = tandy; priority = 1
+        condition = file_exists("$$(rootpath)\\MAINJR")
+    end
+    option[cga]:       
+        name = $(CGA_NAME)
+        videohw = cga; composite = no
+        condition = file_exists("$$(rootpath)\\MAIN")
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        condition = file_exists("$$(rootpath)\\MAINEG")
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+
+script[key]:
+    condition = file_exists("$$(rootpath)\\CPC.COM")
+    code = [[[$(CRLF)            
+        input_lockout(true);
+        wait("int16", 0); keyboard_type("\r");
+        input_lockout(false);
+    ]]]
+end
+
+//
+// 1987, 1x720K
+//
+game[1987-1x720k]:
+    name = 1987, 1x720K
+    anchorfile = FTRACK06SIDE0.~RAW~
+    file[]: crc = 4977429b; size =      1280; name = BANK.BIN
+    file[]: crc = 5e0d2afa; size =      3404; name = BUGDB01.BIN
+    file[]: crc = fe8bebed; size =      3404; name = BUGDB02.BIN
+    file[]: crc = 7037445e; size =      3404; name = BUGDB03.BIN
+    file[]: crc = 85d96648; size =      3404; name = BUGDB04.BIN
+    file[]: crc = ead3f694; size =      3404; name = BUGDB05.BIN
+    file[]: crc = ccc94a24; size =      3404; name = BUGDB06.BIN
+    file[]: crc = dd5c265d; size =      3404; name = BUGDB07.BIN
+    file[]: crc = 8b53d5b6; size =      3404; name = BUGDB08.BIN
+    file[]: crc = 42a48ef6; size =      3404; name = BUGDB09.BIN
+    file[]: crc = 4fa6bb94; size =      3404; name = BUGDB10.BIN
+    file[]: crc = 42a48ef6; size =      3404; name = BUGDB11.BIN
+    file[]: crc = e7a6797a; size =      3404; name = BUGDB12.BIN
+    file[]: crc = d8d0fc04; size =      3404; name = BUGDB13.BIN
+    file[]: crc = 55b7849b; size =      3404; name = BUGDB14.BIN
+    file[]: crc = 74451ad0; size =      3404; name = BUGDB15.BIN
+    file[]: crc = 5fe4c8ed; size =      3404; name = BUGDB16.BIN
+    file[]: crc = af48072b; size =      2048; name = CHTPTR01.BIN
+    file[]: crc = af48072b; size =      2048; name = CHTPTR02.BIN
+    file[]: crc = 7674f72d; size =      2048; name = CHTPTR03.BIN
+    file[]: crc = e7ad91f6; size =      2048; name = CHTPTR04.BIN
+    file[]: crc = e7ad91f6; size =      2048; name = CHTPTR05.BIN
+    file[]: crc = e7ad91f6; size =      2048; name = CHTPTR06.BIN
+    file[]: crc = e7ad91f6; size =      2048; name = CHTPTR07.BIN
+    file[]: crc = 55dc8c84; size =      2048; name = CHTPTR08.BIN
+    file[]: crc = 12c3efbe; size =      2048; name = CHTPTR09.BIN
+    file[]: crc = 12c3efbe; size =      2048; name = CHTPTR10.BIN
+    file[]: crc = 12c3efbe; size =      2048; name = CHTPTR11.BIN
+    file[]: crc = 12b0c83f; size =      2048; name = CHTPTR12.BIN
+    file[]: crc = 27ec8d9d; size =      2048; name = CHTPTR13.BIN
+    file[]: crc = 27ec8d9d; size =      2048; name = CHTPTR14.BIN
+    file[]: crc = 27ec8d9d; size =      2048; name = CHTPTR15.BIN
+    file[]: crc = 5b139f2a; size =      2048; name = CHTPTR16.BIN
+    file[]: crc = 5e7f9883; size =      8048; name = CPC.COM
+    file[]: crc = c0689979; size =      8192; name = EGABIT01.BIN
+    file[]: crc = fda58694; size =      8192; name = EGABIT02.BIN
+    file[]: crc = f1f97683; size =      7168; name = EGABIT03.BIN
+    file[]: crc = 6cfcf74b; size =      1024; name = EGABIT04.BIN
+    file[]: crc = 2e4a82ed; size =      4096; name = EGABIT05.BIN
+    file[]: crc = e64f2f89; size =      2048; name = EGABIT07.BIN
+    file[]: crc = 9de709fd; size =      2048; name = EGABIT08.BIN
+    file[]: crc = 4d9f9d36; size =      6144; name = EGABIT09.BIN
+    file[]: crc = b25b09bc; size =      2048; name = EGABIT11.BIN
+    file[]: crc = 2a618bf8; size =      2048; name = EGABIT12.BIN
+    file[]: crc = eb70cd9d; size =      4096; name = EGABIT13.BIN
+    file[]: crc = ffbd31ba; size =      2048; name = EGABIT14.BIN
+    file[]: crc = b84d077b; size =      2048; name = EGABIT15.BIN
+    file[]: crc = 0b17ef5b; size =      7680; name = EGABIT16.BIN
+    file[]: crc = 1f2749c0; size =      4096; name = EGACHRS.BIN
+    file[]: crc = 5f4ded2c; size =     10080; name = EGALOGO.BIN
+    file[]: crc = 8c0af4cf; size =      2048; name = EGAPTR01.BIN
+    file[]: crc = 8c0af4cf; size =      2048; name = EGAPTR02.BIN
+    file[]: crc = 641aec4b; size =      2048; name = EGAPTR03.BIN
+    file[]: crc = bc54e006; size =      2048; name = EGAPTR04.BIN
+    file[]: crc = bc54e006; size =      2048; name = EGAPTR05.BIN
+    file[]: crc = bc54e006; size =      2048; name = EGAPTR06.BIN
+    file[]: crc = bc54e006; size =      2048; name = EGAPTR07.BIN
+    file[]: crc = edc98d32; size =      2048; name = EGAPTR08.BIN
+    file[]: crc = 2362b3df; size =      2048; name = EGAPTR09.BIN
+    file[]: crc = 2362b3df; size =      2048; name = EGAPTR10.BIN
+    file[]: crc = 2362b3df; size =      2048; name = EGAPTR11.BIN
+    file[]: crc = 894a34d7; size =      2048; name = EGAPTR12.BIN
+    file[]: crc = eaf53fb8; size =      2048; name = EGAPTR13.BIN
+    file[]: crc = eaf53fb8; size =      2048; name = EGAPTR14.BIN
+    file[]: crc = eaf53fb8; size =      2048; name = EGAPTR15.BIN
+    file[]: crc = 89e16fd6; size =      2048; name = EGAPTR16.BIN
+    file[]: crc = 20e5eb5c; size =     16992; name = EGAROBOT.BIN
+    file[]: crc = 614c5039; size =     31360; name = EGATITLE.BIN
+    file[]: crc = e1d0f8bb; size =     13440; name = LOGO.BIN
+    file[]: crc = cb308517; size =      5756; name = M
+    file[]: crc = 39cf787f; size =     17536; name = MAIN
+    file[]: crc = d24a3dad; size =     17792; name = MAINEG
+    file[]: crc = 42a96537; size =     17152; name = MAINJR
+    file[]: crc = 959318dd; size =     17408; name = MAINPS
+    file[]: crc = e85c8c22; size =      5803; name = MAP01.BIN
+    file[]: crc = ca3b3526; size =      5509; name = MAP02.BIN
+    file[]: crc = c2c942b4; size =      6874; name = MAP03.BIN
+    file[]: crc = bb5a7d6f; size =      5939; name = MAP04.BIN
+    file[]: crc = a2dd2c4a; size =      7054; name = MAP05.BIN
+    file[]: crc = 41451578; size =      7228; name = MAP06.BIN
+    file[]: crc = 63480b32; size =      7176; name = MAP07.BIN
+    file[]: crc = 79c72198; size =      6999; name = MAP08.BIN
+    file[]: crc = 87a338a6; size =      6051; name = MAP09.BIN
+    file[]: crc = fef524b1; size =      5921; name = MAP10.BIN
+    file[]: crc = 87a338a6; size =      6051; name = MAP11.BIN
+    file[]: crc = ec70c8c5; size =      6942; name = MAP12.BIN
+    file[]: crc = c8f7517b; size =      7063; name = MAP13.BIN
+    file[]: crc = ac86e6d6; size =      7135; name = MAP14.BIN
+    file[]: crc = 0d1e85be; size =      7005; name = MAP15.BIN
+    file[]: crc = 0499f848; size =      6829; name = MAP16.BIN
+    file[]: crc = 93f8e8d2; size =     16992; name = ROBOT.BIN
+    file[]: crc = 9a1e8790; size =      3751; name = T
+    file[]: crc = 45c5874e; size =      8192; name = TANBIT01.BIN
+    file[]: crc = 64ae0a5d; size =      8192; name = TANBIT02.BIN
+    file[]: crc = 43508927; size =      7168; name = TANBIT03.BIN
+    file[]: crc = 019f0f6f; size =      1024; name = TANBIT04.BIN
+    file[]: crc = 354dc892; size =      4096; name = TANBIT05.BIN
+    file[]: crc = 109d4366; size =      2048; name = TANBIT07.BIN
+    file[]: crc = 9679792c; size =      2048; name = TANBIT08.BIN
+    file[]: crc = 36475540; size =      6144; name = TANBIT09.BIN
+    file[]: crc = 8c0e9f40; size =      2048; name = TANBIT11.BIN
+    file[]: crc = 90b5761d; size =      2048; name = TANBIT12.BIN
+    file[]: crc = 3cfcb899; size =      4096; name = TANBIT13.BIN
+    file[]: crc = f45a60cc; size =      2048; name = TANBIT14.BIN
+    file[]: crc = df911f7c; size =      2048; name = TANBIT15.BIN
+    file[]: crc = d79e87d2; size =      7680; name = TANBIT16.BIN
+    file[]: crc = fa9e8db7; size =      2892; name = THEXDER.COM
+    file[]: crc = 2f3a9c2c; size =     32768; name = TITLE.BIN
+    file[]: crc = a8d9c12e; size =      4096; name = TNCHRS.BIN
+    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
+end
+
+//
+// 1987, 2x360K
+//
+game[1987-2x360k]:
+    name = 1987, 2x360K
+    anchorfile = FTRACK06SIDE0.~RAW~
+    imports = 1987-1x720k
+    file[]: crc = 35fb265e; size =      6841; name = MAP08.BIN
+    file[]: crc = cecc528c; size =      5856; name = MAP11.BIN
+    file[]: crc = c7424f9d; size =      6772; name = MAP12.BIN
+    file[]: crc = e1af32f6; size =      2113; name = MAP16.BIN
+    file[]: remove = CHTPTR04.BIN
+    file[]: remove = CHTPTR05.BIN
+    file[]: remove = CHTPTR06.BIN
+    file[]: remove = CHTPTR07.BIN
+    file[]: remove = CHTPTR08.BIN
+    file[]: remove = CHTPTR09.BIN
+    file[]: remove = CHTPTR10.BIN
+    file[]: remove = CHTPTR11.BIN
+    file[]: remove = CHTPTR12.BIN
+    file[]: remove = CHTPTR13.BIN
+    file[]: remove = CHTPTR14.BIN
+    file[]: remove = CHTPTR15.BIN
+    file[]: remove = CHTPTR16.BIN
+end
+
+//
+// 1987, Rev. C (1x720K and 2x360K are identical)
+//
+game[1987-rev-c]:
+    name = 1987, Rev. C
+    anchorfile = FTRACK06SIDE0.~RAW~
+    imports = 1987-2x360k
+    file[]: crc = e40ea9ec; size =     17537; name = MAIN
+    file[]: crc = a7aff8f9; size =     17845; name = MAINEG
+    file[]: crc = d0260101; size =     17173; name = MAINJR
+    file[]: crc = bef04c29; size =     17519; name = MAINPS
+end
+
+end
