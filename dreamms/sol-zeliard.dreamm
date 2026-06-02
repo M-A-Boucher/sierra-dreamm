@@ -43,7 +43,7 @@ config[graphics]:
     end
     option[ega]:
         name = $(EGA_NAME)
-        videohw = ega
+        videohw = ega ; priority = 1
         VIDEO_DRIVER = EGA
         condition = file_exists("$$(rootpath)\\GMEGA.BIN")
     end
