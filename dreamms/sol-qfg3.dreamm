@@ -205,12 +205,12 @@ game[v1.1-int-11.9.92]:
     name = v1.1, Int. 11.9.92
     imports = v1.x-base
     anchorfile = RESOURCE.000
-    file[]: crc = c9b2241d; size =      3026; remove = 280.HEP
-    file[]: crc = af7a119a; size =      6468; remove = 280.SCR
-    file[]: crc = ba69a100; size =      3014; remove = 460.HEP
-    file[]: crc = bd0afecb; size =     10172; remove = 460.SCR
-    file[]: crc = aabc381c; size =       200; remove = 51.HEP
-    file[]: crc = 62b5552f; size =       802; remove = 51.SCR
+    file[]: remove = 280.HEP
+    file[]: remove = 280.SCR
+    file[]: remove = 460.HEP
+    file[]: remove = 460.SCR
+    file[]: remove = 51.HEP
+    file[]: remove = 51.SCR
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP
     file[]: crc = bb23746b; size =   5868000; name = RESOURCE.000
@@ -230,12 +230,12 @@ installer[v1.1-int-11.9.92-5x1.44m-installer]:
     launch = DREAMM.BAT
     imports = v1.x-base
     anchorfile = RESOURCE.001
-    file[]: crc = c9b2241d; size =      3026; remove = 280.HEP
-    file[]: crc = af7a119a; size =      6468; remove = 280.SCR
-    file[]: crc = ba69a100; size =      3014; remove = 460.HEP
-    file[]: crc = bd0afecb; size =     10172; remove = 460.SCR
-    file[]: crc = aabc381c; size =       200; remove = 51.HEP
-    file[]: crc = 62b5552f; size =       802; remove = 51.SCR
+    file[]: remove = 280.HEP
+    file[]: remove = 280.SCR
+    file[]: remove = 460.HEP
+    file[]: remove = 460.SCR
+    file[]: remove = 51.HEP
+    file[]: remove = 51.SCR
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 1e3b0d45; size =    677639; name = AUDIO.EXE
     file[]: crc = 0f689fb4; size =       511; name = MESSAGE.MAP

@@ -274,22 +274,22 @@ game[v1.021-int-5.15.90-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses (v1.021, Int. 5.15.90)
     imports = v1.021-int-5.15.90-4x720k
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
-    file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
-    file[]: crc = 9e4650ff; size =      2376; remove = CGA320C.DRV
+    file[]: remove = CGA320BW.DRV
+    file[]: remove = CGA320C.DRV
     file[]: crc = ab9c39e7; size =      5807; name = CMS.DRV
-    file[]: crc = 78248208; size =      2539; remove = CSM1.DRV
+    file[]: remove = CSM1.DRV
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = 85ce1ec4; size =      2459; remove = FB01.DRV
-    file[]: crc = 909742d2; size =      2193; remove = HERCMONO.DRV
+    file[]: remove = FB01.DRV
+    file[]: remove = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
     file[]: crc = 98079388; size =      3099; name = MT32.DRV
-    file[]: crc = c5769c5c; size =      2534; remove = MT540.DRV
-    file[]: crc = a2e978ac; size =      1660; remove = PCJR320.DRV
+    file[]: remove = MT540.DRV
+    file[]: remove = PCJR320.DRV
     file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
-    file[]: crc = afd4ea9a; size =      3438; remove = TANDY.DRV
-    file[]: crc = ebb96398; size =      1667; remove = TANDY320.DRV
-    file[]: crc = 700299a0; size =       473; remove = TANDYKBD.DRV
+    file[]: remove = TANDY.DRV
+    file[]: remove = TANDY320.DRV
+    file[]: remove = TANDYKBD.DRV
 end
 
 end

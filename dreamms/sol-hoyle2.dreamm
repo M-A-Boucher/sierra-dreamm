@@ -218,7 +218,7 @@ game[v1.000.014-int-7.25.90-1x720k]:
     name = v1.000.014, Int. 7.25.90, 1x720K
     imports = v1.000.011-int-6.21.90-1x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
+    file[]: remove = CGA320BW.DRV
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
     file[]: crc = d0bc16a1; size =      5962; name = INSTALL.HLP ; optional = true
     file[]: crc = 6f7a894f; size =    217034; name = RESOURCE.001

@@ -128,11 +128,11 @@ demo[casino]:
     name = Leisure Suit Larry's Casino
     imports = board-game-challenge
     anchorfile = RESOURCE.001
-    file[]: crc = 85ab438c; size =      3068; remove = 98.TEX
-    file[]: crc = 7a658b9d; size =       740; remove = 99.TEX
-    file[]: crc = 0d7c2e25; size =         5; remove = BACKGAM.OPT
-    file[]: crc = b7a37779; size =         4; remove = CHECKERS.OPT
-    file[]: crc = e616d774; size =        21; remove = GAME.OPT
+    file[]: remove = 98.TEX
+    file[]: remove = 99.TEX
+    file[]: remove = BACKGAM.OPT
+    file[]: remove = CHECKERS.OPT
+    file[]: remove = GAME.OPT
     file[]: crc = 44403838; size =     12256; name = PLAY2.EXE
     file[]: crc = d3ab06fd; size =    344830; name = RESOURCE.001
     file[]: crc = f8d841a1; size =       783; name = RESOURCE.MAP

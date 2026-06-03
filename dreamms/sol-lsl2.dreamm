@@ -166,7 +166,6 @@ game[v1.002.000-int-0.000.409-3x720k]:
     file[]: crc = 14dd5d33; size =    592533; name = RESOURCE.003
     file[]: crc = 6d7d7c65; size =      4758; name = RESOURCE.MAP
     file[]: crc = a72ed4bc; size =     73697; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 68bab91d; size =      1325; name = STD.DRV
 end
 
@@ -195,7 +194,7 @@ game[v1.002.000-int-0.000.409-leisure-suit-larry-collectors-series]:
     launch = SCIV.EXE
     imports = v1.002.000-int-0.000.409-6x360k
     anchorfile = RESOURCE.001
-    file[]: crc = a81fee92; size =     71679; remove = SIERRA.EXE
+    file[]: remove = SIERRA.EXE
 end
 
 end

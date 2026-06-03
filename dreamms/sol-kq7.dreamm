@@ -133,27 +133,27 @@ game[v2.00b-gog]:
     name = GOG (v2.00b)
     imports = v2.00b-cd
     anchorfile = SIERRA.EXE
-    file[]: crc = 97b288f9; size =     10445; remove = ADL.DRV
-    file[]: crc = 7173b43c; size =    130909; remove = ALTRES.000
-    file[]: crc = 2291caf3; size =       466; remove = ALTRES.MAP
-    file[]: crc = 655d305a; size =       466; remove = ALTRES.MDT
+    file[]: remove = ADL.DRV
+    file[]: remove = ALTRES.000
+    file[]: remove = ALTRES.MAP
+    file[]: remove = ALTRES.MDT
     file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; remove = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; remove = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; remove = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; remove = DACPRO8.DRV
-    file[]: crc = 3f6fbb99; size =      3388; remove = GENMIDI.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = GENMIDI.DRV
     file[]: crc = beb235a6; size =  10893241; name = Manual.pdf  ; optional = true
     file[]: crc = 09cb013b; size =      3098; name = MT32.DRV
-    file[]: crc = d176473d; size =     11411; remove = PROAUDIO.DRV
+    file[]: remove = PROAUDIO.DRV
     file[]: crc = 44ddca6b; size =     17416; name = Readme.txt  ; optional = true
     file[]: crc = 329ad855; size =       356; name = RESOURCE.CFG; optional = true
     file[]: crc = f03a15e7; size =     18709; name = RESOURCE.MAP
     file[]: crc = b768b0d9; size =     18709; name = RESOURCE.MDT
     file[]: crc = cc7c91da; size =  50930358; name = RESOURCE.SFX
-    file[]: crc = 2231e08d; size =     10429; remove = SADL.DRV
-    file[]: crc = f44021d4; size =     10723; remove = SBPRO.DRV
-    file[]: crc = 40f50f2f; size =    143642; remove = SCIDLL.DLL
+    file[]: remove = SADL.DRV
+    file[]: remove = SBPRO.DRV
+    file[]: remove = SCIDLL.DLL
 end
 
 end

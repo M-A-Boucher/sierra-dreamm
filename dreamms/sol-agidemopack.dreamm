@@ -126,8 +126,8 @@ demo[pack-3]:
     file[]: crc = 39c90c7b; size =       660; name = VIEWDIR
     file[]: crc = 4ea95bb5; size =     33860; name = VOL.0
     file[]: crc = 2baf2f68; size =    246227; name = VOL.1
-    file[]: crc = 87f805da; size =    130311; remove = VOL.2
-    file[]: crc = a71600d4; size =    125277; remove = VOL.3
+    file[]: remove = VOL.2
+    file[]: remove = VOL.3
     file[]: crc = 38e8c845; size =        66; name = WORDS.TOK
 end
 

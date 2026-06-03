@@ -278,8 +278,8 @@ game[v1.102-int-11.20.90-9x720k]:
     file[]: crc = 68c3a337; size =    485301; name = RESOURCE.009
     file[]: crc = 49ecda05; size =      8166; name = RESOURCE.MAP
     file[]: crc = d5420a3b; size =     59150; name = SCIV.EXE
-    file[]: crc = 7f06c06f; size =     13868; remove = SCRIPT.570
-    file[]: crc = 50fdbdf3; size =      9258; remove = SCRIPT.630
+    file[]: remove = SCRIPT.570
+    file[]: remove = SCRIPT.630
     file[]: crc = e3e152cb; size =      9672; name = SNDBLAST.DRV
     file[]: crc = dcccb200; size =      1448; name = STD.DRV
     file[]: crc = 3395edb0; size =      4429; name = TANDY.DRV

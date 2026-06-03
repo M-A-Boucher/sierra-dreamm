@@ -1476,18 +1476,18 @@ game[v1.000.00g-cd]:
     imports = v1.000.00-cd
     anchorfile = SIERRA.EXE
     anchordepth = 1
-    file[]: crc = 15650cbc; size =      2390; remove = 0.HEP
-    file[]: crc = 03138720; size =      7116; remove = 0.SCR
-    file[]: crc = e7d28349; size =         9; remove = 0.TEX
-    file[]: crc = be92590f; size =      1392; remove = 100.HEP
-    file[]: crc = 2ff69bfa; size =      1716; remove = 100.SCR
-    file[]: crc = f4e9e0e7; size =      1222; remove = 130.HEP
-    file[]: crc = 98dfdfce; size =      2438; remove = 130.SCR
-    file[]: crc = 5cc2d5f7; size =     16856; remove = 202.V56
-    file[]: crc = c416e25b; size =      1230; remove = 283.HEP
-    file[]: crc = 864b2e5e; size =      2888; remove = 283.SCR
-    file[]: crc = 71585975; size =      1446; remove = 390.HEP
-    file[]: crc = fc6f0e26; size =      3756; remove = 390.SCR
+    file[]: remove = 0.HEP
+    file[]: remove = 0.SCR
+    file[]: remove = 0.TEX
+    file[]: remove = 100.HEP
+    file[]: remove = 100.SCR
+    file[]: remove = 130.HEP
+    file[]: remove = 130.SCR
+    file[]: remove = 202.V56
+    file[]: remove = 283.HEP
+    file[]: remove = 283.SCR
+    file[]: remove = 390.HEP
+    file[]: remove = 390.SCR
     file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
     file[]: crc = be1217b7; size =      5862; name = 420.SCR
     file[]: crc = 3f8ec141; size =       758; name = 425.HEP
@@ -1496,28 +1496,28 @@ game[v1.000.00g-cd]:
     file[]: crc = 403dadc0; size =      9308; name = 460.SCR
     file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
     file[]: crc = 1749937b; size =     11578; name = 470.SCR
-    file[]: crc = 8972dbef; size =      1006; remove = 481.HEP
-    file[]: crc = 16e3a48a; size =      3574; remove = 481.SCR
-    file[]: crc = dbbeec89; size =       388; remove = 482.HEP
-    file[]: crc = d2e86840; size =      1702; remove = 482.SCR
-    file[]: crc = ca730577; size =      3136; remove = 580.HEP
-    file[]: crc = 37d5c787; size =      7598; remove = 580.SCR
+    file[]: remove = 481.HEP
+    file[]: remove = 481.SCR
+    file[]: remove = 482.HEP
+    file[]: remove = 482.SCR
+    file[]: remove = 580.HEP
+    file[]: remove = 580.SCR
     file[]: crc = f21484f5; size =       622; name = 65535.MAP
-    file[]: crc = 0305036e; size =       132; remove = 744.HEP
-    file[]: crc = 7cd1e484; size =      1450; remove = 744.SCR
-    file[]: crc = 1a1bb72a; size =     12691; remove = 7502.V56
-    file[]: crc = 87b688d1; size =      3670; remove = 781.HEP
-    file[]: crc = ab5ea77e; size =      6002; remove = 781.SCR
-    file[]: crc = f2cfc6ec; size =      1686; remove = 790.HEP
-    file[]: crc = 9baae17c; size =      3272; remove = 790.SCR
-    file[]: crc = fb47e261; size =     13856; remove = 894.V56
-    file[]: crc = 1bed0415; size =       372; remove = 928.HEP
-    file[]: crc = 56302d23; size =      3634; remove = 928.SCR
-    file[]: crc = f25a2147; size =       194; remove = 995.HEP
-    file[]: crc = f4f32d36; size =      3576; remove = 995.SCR
-    file[]: crc = 77d62c1c; size =       322; remove = 999.HEP
-    file[]: crc = 9cb5e751; size =      2350; remove = 999.SCR
-    file[]: crc = a575e624; size =        70; remove = 999.TEX
+    file[]: remove = 744.HEP
+    file[]: remove = 744.SCR
+    file[]: remove = 7502.V56
+    file[]: remove = 781.HEP
+    file[]: remove = 781.SCR
+    file[]: remove = 790.HEP
+    file[]: remove = 790.SCR
+    file[]: remove = 894.V56
+    file[]: remove = 928.HEP
+    file[]: remove = 928.SCR
+    file[]: remove = 995.HEP
+    file[]: remove = 995.SCR
+    file[]: remove = 999.HEP
+    file[]: remove = 999.SCR
+    file[]: remove = 999.TEX
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
     file[]: crc = d8f2ac7f; size =         9; name = KQ6CD
     file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000

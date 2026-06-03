@@ -121,7 +121,7 @@ game[v2.0g-int-2.917-2x720k]:
     file[]: crc = 8a93212e; size =       768; name = VIEWDIR
     file[]: crc = 9c5f96fa; size =    384591; name = VOL.1
     file[]: crc = 76f042f1; size =    250262; name = VOL.2
-    file[]: crc = 00000000; size =         0; remove = VOL.3
+    file[]: remove = VOL.3
     file[]: crc = 666de107; size =      6737; name = WORDS.TOK
 
 end

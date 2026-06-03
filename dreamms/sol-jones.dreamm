@@ -147,11 +147,11 @@ game[v1.000.060-int-10.19.90-1x720k]:
     file[]: crc = 3264b567; size =    511528; name = RESOURCE.001
     file[]: crc = f7c748e7; size =      1602; name = RESOURCE.MAP
     file[]: crc = 3891dc81; size =     59447; name = SCIV.EXE
-    file[]: crc = 9f332d23; size =     60373; remove = SCIV256.EXE
+    file[]: remove = SCIV256.EXE
     file[]: crc = b5eec20c; size =      2796; name = TANDY320.DRV
     file[]: crc = 6c230416; size =      3854; name = TANDY3V.DRV
     file[]: crc = f13c8668; size =       476; name = TANDYKBD.DRV
-    file[]: crc = 5bb181a9; size =      3797; remove = VGA320.DRV
+    file[]: remove = VGA320.DRV
 end
 
 //

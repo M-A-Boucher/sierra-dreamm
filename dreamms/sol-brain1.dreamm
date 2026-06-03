@@ -179,7 +179,7 @@ game[v1.0-int-11.12.91-3xx720k]:
     launch = SCIDUV.EXE
     imports = v1.0-int-9.24.91-2x1.44m
     anchorfile = RESOURCE.000
-    file[]: crc = 0cff14ca; size =     14634; remove = 440.SCR
+    file[]: remove = 440.SCR
     file[]: crc = a99541a4; size =      2331; name = AUDBLAST.DRV
     file[]: crc = 5b0df88e; size =      1869; name = AUDDISNY.DRV
     file[]: crc = 8fb84ae7; size =      2111; name = AUDPRO.DRV
@@ -192,15 +192,15 @@ game[v1.0-int-11.12.91-3xx720k]:
     file[]: crc = 1f58a3ab; size =    633662; name = RESOURCE.002
     file[]: crc = 710dd0fa; size =    430388; name = RESOURCE.003
     file[]: crc = 8e289c5b; size =      2730; name = RESOURCE.MAP
-    file[]: crc = cfee9de6; size =     54895; remove = SCIDHUV.EXE
+    file[]: remove = SCIDHUV.EXE
     file[]: crc = 0c947d26; size =     52562; name = SCIDUV.EXE
     file[]: crc = 9c090003; size =        23; name = SIERRA.BAT
     file[]: crc = 912ac2ca; size =        20; name = SIERRAH.BAT
     file[]: crc = 5a0337d4; size =      3007; name = TANDY320.DRV
     file[]: crc = 2418c236; size =       563; name = TANDYKBD.DRV
     file[]: crc = 8ec4273a; size =         7; name = VERSION
-    file[]: crc = 89f94bd3; size =      4461; remove = VGA320.DRV
-    file[]: crc = 68f8461e; size =      4369; remove = VGA320BW.DRV
+    file[]: remove = VGA320.DRV
+    file[]: remove = VGA320BW.DRV
 end
 
 //

@@ -90,7 +90,7 @@ game[v1.22-int-3.002.102-5x360k]:
     name = v1.22, Int. 3.002.102, 5x360K
     imports = v1.22-int-3.002.102-2x720k
     anchorfile = MHVOL.12
-    file[]: crc = 39599e49; size =      3072; remove = HGC_FONT
+    file[]: remove = HGC_FONT
     file[]: crc = 757d0fa4; size =      2123; name = MHDIR
     file[]: crc = 95858b68; size =    115078; name = MHVOL.0
     file[]: crc = fc6ef230; size =    144059; name = MHVOL.1
@@ -132,7 +132,7 @@ game[v1.22-int-3.002.107-5x360k]:
     name = v1.22, Int. 3.002.107, 5x360K
     imports = v1.22-int-3.002.107-2x720k
     anchorfile = MHVOL.12
-    file[]: crc = 39599e49; size =      3072; remove = HGC_FONT
+    file[]: remove = HGC_FONT
     file[]: crc = 757d0fa4; size =      2123; name = MHDIR
     file[]: crc = 95858b68; size =    115078; name = MHVOL.0
     file[]: crc = fc6ef230; size =    144059; name = MHVOL.1

@@ -227,12 +227,12 @@ game[v2.0-int-8.11.92-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.0, Int. 8.11.92)
     imports = v2.0-int-8.11.92-5x1.44m
     anchorfile = MTBLAST.DRV
-    file[]: crc = bfcb766f; size =      4364; remove = IBMPS1.DRV
+    file[]: remove = IBMPS1.DRV
     file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
     file[]: crc = f6b7c486; size =      9752; name = SNDBLAST.DRV
     file[]: crc = b8d689c1; size =      1301; name = SQ1GMPAT    ; optional = true
-    file[]: crc = cecb955a; size =      3950; remove = TANDY3V.DRV
-    file[]: crc = 6814b17f; size =      4498; remove = TANDY3VD.DRV
+    file[]: remove = TANDY3V.DRV
+    file[]: remove = TANDY3VD.DRV
 end
 
 //

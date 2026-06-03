@@ -109,8 +109,9 @@ end
 game[v1.0-int-2.440-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 2.440)
     imports = v1.0-int-2.440
+    file[]: remove = CPC.COM
     file[]: crc = 066ed68d; size =      2944; name = SIERRA.COM
-    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
+    file[]: remove = FTRACK06SIDE0.~RAW~
 end
 
 //

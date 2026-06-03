@@ -149,7 +149,7 @@ game[v2.0c-int-2.917-2x720k]:
     file[]: crc = 7b88cd4f; size =     70302; name = VOL.0
     file[]: crc = 28acb3d4; size =    161203; name = VOL.1
     file[]: crc = 60c77d16; size =    411093; name = VOL.2
-    file[]: crc = 00000000; size =         0; remove = VOL.3       
+    file[]: remove = VOL.3       
 end
 
 //
@@ -219,7 +219,7 @@ game[v2.0f-int-2.936-2x720k]:
     file[]: crc = fd471c99; size =     70313; name = VOL.0
     file[]: crc = 56ddcb7f; size =    161225; name = VOL.1
     file[]: crc = 0684fac1; size =    411824; name = VOL.2
-    file[]: crc = 7e9b95cc; size =        13; remove = VOL.3
+    file[]: remove = VOL.3
 end
 
 //
@@ -243,9 +243,9 @@ game[v2.0f-int-2.936-1x720k]:
     name = Kixx, v2.0F, Int. 2.936, 1x720K
     imports = v2.0f-int-2.936-2x720k
     anchorfile = SIERRA.COM
-    file[]: crc = 5e7f9883; size =      8048; remove = CPC.COM
+    file[]: remove = CPC.COM
     file[]: crc = 6c9647ab; size =      3121; name = SIERRA.COM
-    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
+    file[]: remove = FTRACK06SIDE0.~RAW~
 end
 
 //
@@ -255,9 +255,9 @@ game[v2.0f-int-2.936-sq-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.0F, Int. 2.936)
     imports = v2.0f-int-2.936-2x720k
     anchorfile = SIERRA.COM
-    file[]: crc = 5e7f9883; size =      8048; remove = CPC.COM
+    file[]: remove = CPC.COM
     file[]: crc = 984b800c; size =      3121; name = SIERRA.COM
-    file[]: crc = 84E5184E; size =     12514; remove = FTRACK06SIDE0.~RAW~
+    file[]: remove = FTRACK06SIDE0.~RAW~
 end
 
 end

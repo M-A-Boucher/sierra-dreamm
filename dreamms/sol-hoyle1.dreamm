@@ -201,7 +201,7 @@ game[v1.000.115-int-7.26.90-1x720k]:
     name = v1.000.115, Int. 7.26.90, 1x720K
     imports = v1.000.113-int-0.000.530-1x720k
     anchorfile = RESOURCE.001
-    file[]: crc = 053f0464; size =      2017; remove = CGA320BW.DRV
+    file[]: remove = CGA320BW.DRV
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
     file[]: crc = c3f3e3da; size =    519525; name = RESOURCE.001
     file[]: crc = e3312cbb; size =      4386; name = RESOURCE.MAP

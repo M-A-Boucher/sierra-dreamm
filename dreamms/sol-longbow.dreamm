@@ -218,11 +218,11 @@ game[v1.0-int-11.20.91-7x1.2m]:
     launch = SCIDHUV.EXE
     imports = v1.0-int-11.20.91-6x1.44m
     anchorfile = RESOURCE.000
-    file[]: crc = b4cd667a; size =     16452; remove = 210.SCR
-    file[]: crc = 802d1b0f; size =     17186; remove = 392.V56
-    file[]: crc = 567e2b45; size =      9088; remove = 540.SCR
-    file[]: crc = fad3a4d5; size =      7438; remove = 561.SCR
-    file[]: crc = d3a6c5c4; size =     11712; remove = 570.SCR
+    file[]: remove = 210.SCR
+    file[]: remove = 392.V56
+    file[]: remove = 540.SCR
+    file[]: remove = 561.SCR
+    file[]: remove = 570.SCR
     file[]: crc = 484460c7; size =   1096767; name = RESOURCE.000
     file[]: crc = feb5fa77; size =   1133226; name = RESOURCE.001
     file[]: crc = 01b88bc7; size =   1128555; name = RESOURCE.002
@@ -343,13 +343,13 @@ game[v1.0-int-3.12.92-de-6x1.44m]:
     launch = SCIDHUV.EXE
     imports = v1.1-int-1.13.92-6x1.44m
     anchorfile = RESOURCE.000
-    file[]: crc = 157ddb8f; size =     14102; remove = 140.SCR
-    file[]: crc = b39e24c8; size =      6816; remove = 185.SCR
-    file[]: crc = f640a2e4; size =      4066; remove = 312.SCR
-    file[]: crc = 33c93d08; size =     10128; remove = 320.SCR
+    file[]: remove = 140.SCR
+    file[]: remove = 185.SCR
+    file[]: remove = 312.SCR
+    file[]: remove = 320.SCR
     file[]: crc = ba401939; size =      6280; name = 621.SCR
     file[]: crc = 1c327ccb; size =         3; name = 621.TEX
-    file[]: crc = f4666133; size =     17268; remove = 750.SCR
+    file[]: remove = 750.SCR
     file[]: crc = b820a60c; size =      2651; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = cab24165; size =    977281; name = RESOURCE.000
@@ -361,8 +361,8 @@ game[v1.0-int-3.12.92-de-6x1.44m]:
     file[]: crc = 36064d17; size =   1123585; name = RESOURCE.006
     file[]: crc = 1efee329; size =      6285; name = RESOURCE.MAP
     file[]: crc = b668cd9e; size =     60755; name = SCIDHUV.EXE
-    file[]: crc = 5a0337d4; size =      3007; remove = TANDY320.DRV
-    file[]: crc = 200cc608; size =       581; remove = TANDYKBD.DRV
+    file[]: remove = TANDY320.DRV
+    file[]: remove = TANDYKBD.DRV
     file[]: crc = d4bbbce3; size =        10; name = VERSION
 end
 

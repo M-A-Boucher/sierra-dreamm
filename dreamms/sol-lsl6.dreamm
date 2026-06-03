@@ -210,7 +210,6 @@ game[v1.0-int-11.6.93-6x1.44m]:
     name = v1.0, Int. 11.6.93, 6x1.44M
     imports = v1.0-base
     anchorfile = SIERRA.EXE
-    file[]: crc = 77f9f4a6; size =     16607; remove = AUDDCOMP.EXE
     file[]: crc = e9d3ad99; size =   5789138; name = RESOURCE.000
     file[]: crc = 4153253d; size =   3635434; name = RESOURCE.SFX
 end
@@ -225,6 +224,7 @@ installer[v1.0-int-11.6.93-6x1.44m-installer]:
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = SIERRA.EXE
+    file[]: crc = 77f9f4a6; size =     16607; name = AUDDCOMP.EXE
     file[]: crc = a46775fe; size =    345000; name = RESOURCE.001
     file[]: crc = 0580706d; size =   1357996; name = RESOURCE.002
     file[]: crc = 1df7ea25; size =   1357996; name = RESOURCE.003
@@ -250,7 +250,7 @@ game[v1.0-int-11.18.93-6x1.44m]:
     file[]: crc = 66f1b03a; size =     26442; name = BRKGLASS.WAV
     file[]: crc = 3bd97ca5; size =      7272; name = BURP.WAV
     file[]: crc = d542c55c; size =     24406; name = CLANG.WAV
-    file[]: crc = da15f7e7; size =    113008; remove = EXPLODE.WAV
+    file[]: remove = EXPLODE.WAV
     file[]: crc = 72d0a866; size =     43586; name = GAG.WAV
     file[]: crc = aa85a0e8; size =     21314; name = GARGLE.WAV
     file[]: crc = 16901669; size =     13682; name = GOOSED.WAV
@@ -286,7 +286,7 @@ installer[v1.0-int-11.18.93-6x1.44m-installer]:
     file[]: crc = 66f1b03a; size =     26442; name = BRKGLASS.WAV
     file[]: crc = 3bd97ca5; size =      7272; name = BURP.WAV
     file[]: crc = d542c55c; size =     24406; name = CLANG.WAV
-    file[]: crc = da15f7e7; size =    113008; remove = EXPLODE.WAV
+    file[]: remove = EXPLODE.WAV
     file[]: crc = 72d0a866; size =     43586; name = GAG.WAV
     file[]: crc = aa85a0e8; size =     21314; name = GARGLE.WAV
     file[]: crc = 16901669; size =     13682; name = GOOSED.WAV
@@ -312,7 +312,6 @@ game[v1.0-int-11.18.93-leisure-suit-larry-collectors-series]:
     anchordepth = 1
     file[]: crc = 3010a99c; size =       524; name = 830.HEP
     file[]: crc = 3f5b33ea; size =       772; name = 830.SCR
-    file[]: crc = 77f9f4a6; size =     16607; remove = AUDDCOMP.EXE
     file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
     file[]: crc = 9a12e87e; size =     76816; name = RAVE.DLL    ; optional = true
     file[]: crc = dd430004; size =     15360; name = SCIDLL.DLL  ; optional = true

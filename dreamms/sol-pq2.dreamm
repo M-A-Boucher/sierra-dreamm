@@ -177,7 +177,7 @@ game[v1.001.006-int-0.000.409-3x720k]:
     file[]: crc = 5c3e01c2; size =    587511; name = RESOURCE.003
     file[]: crc = 40ace628; size =      4518; name = RESOURCE.MAP
     file[]: crc = a72ed4bc; size =     73697; name = SCIV.EXE
-    file[]: crc = f10d5756; size =     73375; remove = SIERRA.EXE
+    file[]: remove = SIERRA.EXE
     file[]: crc = e55a7291; size =      1377; name = STD.DRV
 end
 
