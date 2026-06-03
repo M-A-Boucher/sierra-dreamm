@@ -1,0 +1,212 @@
+//
+// Lode Runner
+//
+desc[sol-loderunner]:
+
+name = Lode Runner
+icon = sol-loderunner.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\LODERUNN.EXE
+mips = $(MIPS_P100)
+ramkb = 16384
+videohw = svga
+audiohw = sb16+gmidi
+filter = sierra, action
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[sadl]:
+        name = $(ADLIB_NAME) + $(SB16_NAME)
+        audiohw = sb16+adlib
+        SOUND_DRIVER = SADL.DRV
+        condition = file_exists("$$(rootpath)\\SADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16; priority = 1
+        SOUND_DRIVER = SBPRO.DRV
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = sb16+mt32; priority = 2
+        SOUND_DRIVER = MT32.DRV
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        audiohw = sb16+gmidi; priority = 3
+        SOUND_DRIVER = GENMIDI.DRV
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        joyDrv    = NO
+        mouseDrv  = STDMOUSE.DRV
+        memoryDrv = ARM.DRV
+        minCPU    = 386
+        minDOS    = 500
+        minEMS    = 2048
+        mode      = real 
+    ]]]
+end
+
+
+dynamicfile[]:
+    path = $(rootpath)/DREAMM.BAT
+    contents = [[[$(CRLF)
+        MD AUDIO
+        UNCHUNK RESOURCE.000 .
+        UNCHUNK RESOURCE.001 .
+        UNCHUNK RESOURCE.002 .
+        UNCHUNK RESOURCE.003 .
+        UNCHUNK RESOURCE.004 .
+        PRSADD LR256.PRS GENMID.PRS
+        PRSADD LR16.PRS GENMID.PRS
+        PRSADD LR256.PRS SOUND.PRS
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, Int. 9.23.94, 5x1.44M
+//
+game[v1.0-int-9.23.94-5x1.44m]:
+    name = v1.0, Int. 9.23.94, 5x1.44M
+    anchorfile = LODERUNN.EXE
+    file[]: crc = 5efcdbac; size =    122896; name = FM.PRS
+    file[]: crc = 43a43f6f; size =    127188; name = GENMID.PRS
+    file[]: crc = aa70cfc9; size =    468352; name = LODERUNN.EXE
+    file[]: crc = 4475d6bc; size =   2150876; name = LR16.PRS
+    file[]: crc = 80d1a08e; size =   8054658; name = LR256.PRS
+    file[]: crc = 9610ba79; size =    261208; name = LRUNNER.PZL
+    file[]: crc = b7343e1c; size =     53593; name = LRUNNER2.PZL
+    file[]: crc = bbdffaba; size =      3622; name = MIDPAK.AD
+    file[]: crc = 8a32bcf4; size =     16263; name = MIDPAK.ADV
+    file[]: crc = 32a61624; size =     13456; name = MIDPAK.COM
+    file[]: crc = e87e5368; size =     53889; name = PRSADD.EXE
+    file[]: crc = c6d03b85; size =     18145; name = SAMPLE.PZL
+    file[]: crc = 3517b3f0; size =    308302; name = SIERRA.DIB
+    file[]: crc = e1f7a6c7; size =    815830; name = SOUND.PRS
+    file[]: crc = 2aff0ac2; size =      4798; name = SOUNDRV.COM
+    file[]: crc = 014b761d; size =        36; name = AUDIO\ADLIB.ADD
+    file[]: crc = 93779685; size =     14693; name = AUDIO\ADLIB.ADV
+    file[]: crc = c7707a40; size =      3168; name = AUDIO\ADLIB.COM
+    file[]: crc = 43f7a2a5; size =        28; name = AUDIO\ADLIBG.ADD
+    file[]: crc = a69ed60d; size =     16175; name = AUDIO\ADLIBG.ADV
+    file[]: crc = 37ee9c5a; size =      5536; name = AUDIO\ADLIBG.COM
+    file[]: crc = bd1e9b0e; size =      4704; name = AUDIO\ARIA.COM
+    file[]: crc = c3c2fb95; size =        44; name = AUDIO\ARIAXMID.ADD
+    file[]: crc = 569aa8c4; size =     44836; name = AUDIO\ARIAXMID.ADV
+    file[]: crc = 7f2af618; size =      2624; name = AUDIO\BIGMOUTH.COM
+    file[]: crc = 8d623b15; size =     13456; name = AUDIO\CMIDPAK.COM
+    file[]: crc = f3cf3624; size =      3328; name = AUDIO\CVXSND.COM
+    file[]: crc = ba7e05af; size =      2912; name = AUDIO\DIGISP.COM
+    file[]: crc = eafe21f4; size =      5792; name = AUDIO\DIGVESA.COM
+    file[]: crc = 849016be; size =      3216; name = AUDIO\ECHOII.COM
+    file[]: crc = bbdffaba; size =      3622; name = AUDIO\FAT.OPL
+    file[]: crc = 5d2a7081; size =        43; name = AUDIO\GENMID.ADD
+    file[]: crc = 98055012; size =     10590; name = AUDIO\GENMID.ADV
+    file[]: crc = c79a748f; size =      5504; name = AUDIO\GF166.COM
+    file[]: crc = 1d0b2a28; size =        47; name = AUDIO\GF1MIDI.ADD
+    file[]: crc = 99039dff; size =     10816; name = AUDIO\GF1MIDI.ADV
+    file[]: crc = cdeec08e; size =      3248; name = AUDIO\IBM1BIT.COM
+    file[]: crc = 317e28f1; size =      3344; name = AUDIO\IBMBAK.COM
+    file[]: crc = 505e27e7; size =      3200; name = AUDIO\IBMSND.COM
+    file[]: crc = 47187ea5; size =      3488; name = AUDIO\LANTSND.COM
+    file[]: crc = e5089ec0; size =      3328; name = AUDIO\LSIZE.COM
+    file[]: crc = bbdffaba; size =      3622; name = AUDIO\MIDPAK.AD
+    file[]: crc = 8a32bcf4; size =     16263; name = AUDIO\MIDPAK.ADV
+    file[]: crc = 32a61624; size =     13456; name = AUDIO\MIDPAK.COM
+    file[]: crc = 04da03a1; size =      4656; name = AUDIO\MPU.COM
+    file[]: crc = 6d60e044; size =        34; name = AUDIO\MT32MPU.ADD
+    file[]: crc = 98055012; size =     10590; name = AUDIO\MT32MPU.ADV
+    file[]: crc = c60cb7c7; size =        49; name = AUDIO\MULTISND.ADD
+    file[]: crc = fdbeb2ba; size =      7178; name = AUDIO\MULTISND.ADV
+    file[]: crc = 3e750a45; size =     13680; name = AUDIO\MULTISND.COM
+    file[]: crc = f92050de; size =      3280; name = AUDIO\NOSOUND.COM
+    file[]: crc = df1d2b8a; size =      6567; name = AUDIO\OPL2.COM
+    file[]: crc = 07132ca9; size =      5440; name = AUDIO\PAS16.COM
+    file[]: crc = 4ca816b1; size =        35; name = AUDIO\PASFM.ADD
+    file[]: crc = c67638b8; size =     15160; name = AUDIO\PASFM.ADV
+    file[]: crc = b2f0ddd1; size =        45; name = AUDIO\PASOPL.ADD
+    file[]: crc = 51af9251; size =     16251; name = AUDIO\PASOPL.ADV
+    file[]: crc = cc35e028; size =      6825; name = AUDIO\PASWAVE.COM
+    file[]: crc = 415c7b0d; size =      5376; name = AUDIO\PAUDIO.COM
+    file[]: crc = c1a901b1; size =        38; name = AUDIO\PCSPKR.ADD
+    file[]: crc = b35b73ee; size =      8306; name = AUDIO\PCSPKR.ADV
+    file[]: crc = 684edb73; size =     13312; name = AUDIO\PMIDPAK.COM
+    file[]: crc = e5232f7f; size =        75; name = AUDIO\REMOVE.BAT
+    file[]: crc = d188a2af; size =      4798; name = AUDIO\SB16.COM
+    file[]: crc = 2af2c0b6; size =        36; name = AUDIO\SBAWE32.ADD
+    file[]: crc = 73f195e8; size =     39843; name = AUDIO\SBAWE32.ADV
+    file[]: crc = 30b2c1d1; size =      4576; name = AUDIO\SBCLONE.COM
+    file[]: crc = 67907e80; size =        44; name = AUDIO\SBFM.ADD
+    file[]: crc = 0b6a2202; size =     14743; name = AUDIO\SBFM.ADV
+    file[]: crc = 386b4caf; size =      4560; name = AUDIO\SBLASTER.COM
+    file[]: crc = fef4344d; size =        43; name = AUDIO\SBP1FM.ADD
+    file[]: crc = 4f100e20; size =     15153; name = AUDIO\SBP1FM.ADV
+    file[]: crc = 9d1137e2; size =        40; name = AUDIO\SBP2FM.ADD
+    file[]: crc = 8a32bcf4; size =     16263; name = AUDIO\SBP2FM.ADV
+    file[]: crc = 0e918c4e; size =      4704; name = AUDIO\SBPRO.COM
+    file[]: crc = 29d5aa56; size =      7091; name = AUDIO\SBWAVE.COM
+    file[]: crc = cad9d260; size =        37; name = AUDIO\SC32MPU.ADD
+    file[]: crc = 98055012; size =     10590; name = AUDIO\SC32MPU.ADV
+    file[]: crc = 37b9cbbb; size =        38; name = AUDIO\SENSAT.ADD
+    file[]: crc = 1c3f3b50; size =     15991; name = AUDIO\SENSAT.ADV
+    file[]: crc = 0a3e813c; size =       170; name = AUDIO\SETD.DES
+    file[]: crc = aeaee7bd; size =     47156; name = AUDIO\SETD.EXE
+    file[]: crc = 8a1c04c5; size =      6726; name = AUDIO\SETD.SND
+    file[]: crc = cf4f294e; size =       221; name = AUDIO\SETM.DES
+    file[]: crc = a0ce3172; size =     42784; name = AUDIO\SETM.EXE
+    file[]: crc = 0c9f5327; size =      7136; name = AUDIO\SETM.XMI
+    file[]: crc = ddc1b611; size =     13456; name = AUDIO\SMIDPAK.COM
+    file[]: crc = 514e5b08; size =      3104; name = AUDIO\SMSND.COM
+    file[]: crc = 106fa498; size =      6115; name = AUDIO\SNDSYS.COM
+    file[]: crc = 2aff0ac2; size =      4798; name = AUDIO\SOUNDRV.COM
+    file[]: crc = cb0c0bc4; size =      3424; name = AUDIO\SOURCE.COM
+    file[]: crc = aa7c9b3b; size =      5201; name = AUDIO\SSWAVE.COM
+    file[]: crc = 384e0eb4; size =      4592; name = AUDIO\STFX.COM
+    file[]: crc = e2d4d7d5; size =      3472; name = AUDIO\TANEXTX.COM
+    file[]: crc = 778fbc09; size =      3200; name = AUDIO\TANSLTL.COM
+    file[]: crc = 0110ae1f; size =     13312; name = AUDIO\TMIDPAK.COM
+    file[]: crc = 0e18b607; size =      6288; name = AUDIO\VESADIG.ADV
+    file[]: crc = d9d22902; size =        34; name = AUDIO\VESAMID.ADD
+    file[]: crc = 1a975e72; size =     12352; name = AUDIO\VESAMID.ADV
+    file[]: crc = 516cca33; size =      3104; name = AUDIO\VMSND.COM
+    file[]: crc = d625f396; size =        48; name = AUDIO\WSS.ADD
+    file[]: crc = 1c3f3b50; size =     15991; name = AUDIO\WSS.ADV
+end
+
+//
+// v1.0, Int. 9.23.94, 5x1.44M, Installer
+//
+installer[v1.0-int-9.23.94-5x1.44m-installer]:
+    name = v1.0, Int. 9.23.94, 5x1.44M, Installer
+    installid = v1.0-int-9.23.94-5x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = RESOURCE.004
+    file[]: crc = b6b183f0; size =   1299583; name = RESOURCE.000
+    file[]: crc = 5542956b; size =   1457440; name = RESOURCE.001
+    file[]: crc = 00d4f098; size =   1457265; name = RESOURCE.002
+    file[]: crc = fecf7247; size =   1457306; name = RESOURCE.003
+    file[]: crc = 790e6e04; size =     93651; name = RESOURCE.004
+    file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+
+end
+
+end
