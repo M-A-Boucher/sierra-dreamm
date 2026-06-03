@@ -22,10 +22,6 @@ config[machine]:
         name = PCjr
         machine = pcjr; priority = 1
     end
-    option[pc-cga]:
-        name = PC $(CGA_NAME)
-        machine = pc; videohw = cga; composite = no
-    end
     option[pc-cga-composite]:
         name = PC CGA (Composite)
         machine = pc; videohw = cga; composite = oldcga
