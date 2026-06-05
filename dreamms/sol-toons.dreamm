@@ -16,29 +16,6 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = dynamix, sierra, puzzle
 
 //
-// language configuration
-//
-config[language]:
-    title = Language Configuration
-    option[speaker]:
-        name = English
-        LANGUAGE = English
-    end
-    option[french]:
-        name = Français
-        LANGUAGE = French
-    end
-    option[german]:
-        name = Deutsh
-        LANGUAGE = German
-    end
-    option[spanish]:
-        name = Español
-        LANGUAGE = Spanish
-    end
-end
-
-//
 // sound configuration
 //
 config[sound]:
@@ -114,7 +91,6 @@ dynamicfile[]:
     contents = [[[$(CRLF)
         UNCHUNK.EXE UNCHUNK.000 .
         UNCHUNK.EXE UNCHUNK.001 .
-pause
     ]]]
 end
 

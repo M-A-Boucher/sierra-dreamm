@@ -29,7 +29,7 @@ config[language]:
         LANGUAGE = French
     end
     option[german]:
-        name = Deutsh
+        name = Deutsch
         LANGUAGE = German
     end
     option[spanish]:
