@@ -1,0 +1,216 @@
+//
+// A-10 Tank Killer
+//
+desc[sol-a10]:
+
+name = A-10 Tank Killer
+icon = sol-a10.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\INSTALL.COM
+mips = $(MIPS_386SX_20)
+ramkb = 8192
+filter = dynamix, sierra, simulation
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; audiohw = speaker; machine = tandy
+        VIDEO_CONFIG = 0x03; SOUND_CONFIG = 0x02; SOUND_CONFIG_15 = 0x00; TANDY = 1
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO_CONFIG = 0x01
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        VIDEO_CONFIG = 0x02
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga; priority = 1
+        VIDEO_CONFIG = 0x08
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        SOUND_CONFIG = 0x01; SOUND_CONFIG_15 = 0x00
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); 
+        audiohw = adlib; priority = 1
+        SOUND_CONFIG = 0x20; SOUND_CONFIG_15 = 0x02
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32
+        SOUND_CONFIG = 0x10; SOUND_CONFIG_15 = 0x03
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\A10.CFG
+    contents = [[[
+        [[BINARY: $(VIDEO_CONFIG) $(SOUND_CONFIG)]]
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\CONTROL.PRF
+    contents = [[[
+        [[BINARY: 0x01 $(VIDEO_CONFIG) $(SOUND_CONFIG_15) 0x01 0x01 0 0x01]]
+    ]]]
+end
+
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)             ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.1, Int. 5.14.90
+//
+game[v1.1-int-5.14.90]:
+    name = v1.1, Int. 5.14.90
+    anchorfile = A10.COM
+    file[]: crc = b067bde6; size =    191395; name = A.EXE
+    file[]: crc = 35213c08; size =       546; name = A10.COM
+    file[]: crc = 97c774b9; size =       825; name = ALERT16.BMP
+    file[]: crc = a247f01d; size =      1958; name = ALERT256.BMP
+    file[]: crc = 0161f6ca; size =      1172; name = DYNAMIX3.SCR
+    file[]: crc = 5bf87925; size =      2313; name = LOGO.BMP
+    file[]: crc = 22af987b; size =       402; name = LOGO.MUS
+    file[]: crc = 45c6defe; size =      1708; name = LOGOP.TBL
+    file[]: crc = 053473dc; size =        74; name = MNAME.DAT
+    file[]: crc = 97c774b9; size =       825; name = PARTS16.BMP
+    file[]: crc = 012527aa; size =      1678; name = PARTS256.BMP
+    file[]: crc = 8d9a0421; size =      3395; name = PDATA.DAT
+    file[]: crc = eb38674d; size =     16683; name = PREVIEW.BMP
+    file[]: crc = 1268e023; size =       574; name = PREVIEW.SEQ
+    file[]: crc = 48ff4cf5; size =       518; name = PREVIEW.WLD
+    file[]: crc = 876149a2; size =      1130; name = PREVIEWP.GI
+    file[]: crc = b2d603dd; size =     34688; name = PREVIEWP.TBL
+    file[]: crc = 7accde30; size =        84; name = PS.DAT
+    file[]: crc = 54eef466; size =    141841; name = PS.EXE
+    file[]: crc = e818273c; size =      6900; name = PS.PAL
+    file[]: crc = 6264c862; size =    267984; name = PS.SCR
+    file[]: crc = 738544db; size =       402; name = PS.SND
+    file[]: crc = e53904b9; size =      2352; name = SIM.FNT
+    file[]: crc = cb7fa540; size =      1718; name = TOP.DAT
+    file[]: crc = cc2cf0b0; size =      1120; name = A10SNDS.SND
+    file[]: crc = 0816e5e0; size =      7251; name = A10THEME.MUS
+    file[]: crc = 3f9ade7b; size =      7171; name = BR16.SCR
+    file[]: crc = 7d7e917d; size =     31737; name = BR256.SCR
+    file[]: crc = d304a256; size =     11670; name = CP16.SCR
+    file[]: crc = 7fdec76b; size =     36923; name = CP256.SCR
+    file[]: crc = c97b771f; size =      9581; name = DEBRF16.SCR
+    file[]: crc = c237044f; size =     34781; name = DEBRF256.SCR
+    file[]: crc = 3cca4f45; size =      1116; name = ESNTL16.BMP
+    file[]: crc = 81f17558; size =      3331; name = ESNTL256.BMP
+    file[]: crc = c2524876; size =      1427; name = EV.BMP
+    file[]: crc = 91651640; size =      6863; name = FIGHTER.MUS
+    file[]: crc = 86fe5a06; size =      4314; name = LOSER.MUS
+    file[]: crc = 71867fb6; size =     16815; name = OPTNL16.BMP
+    file[]: crc = d8999069; size =     34459; name = OPTNL256.BMP
+    file[]: crc = ebdc77a6; size =      7249; name = S0.SSS
+    file[]: crc = 8f0cabe6; size =      5599; name = S1.SSS
+    file[]: crc = cec2010d; size =      7518; name = S2.SSS
+    file[]: crc = fdb15731; size =     10945; name = S3.SSS
+    file[]: crc = e2873bef; size =      8467; name = S4.SSS
+    file[]: crc = 724b39ca; size =      5370; name = S5.SSS
+    file[]: crc = b4f3d772; size =      9580; name = S6.SSS
+    file[]: crc = 00f4b169; size =      9511; name = SCRAM16.SCR
+    file[]: crc = 5bc14941; size =     29759; name = SCRAM256.SCR
+    file[]: crc = 7d07843e; size =         9; name = SHAPEPCK.GI
+    file[]: crc = 5ee8edf6; size =     56527; name = SHAPEPCK.TBL
+    file[]: crc = cd900e4f; size =      5450; name = SIM.PAL
+    file[]: crc = 06929bee; size =      6142; name = TRRPCK0.GI
+    file[]: crc = 7f41a4d6; size =     25944; name = TRRPCK0.TBL
+    file[]: crc = c47f4c2f; size =      4936; name = TRRPCK1.GI
+    file[]: crc = 27da4cfb; size =     22985; name = TRRPCK1.TBL
+    file[]: crc = 181d6519; size =      8637; name = TRRPCK2.GI
+    file[]: crc = fcf18a00; size =     32814; name = TRRPCK2.TBL
+    file[]: crc = ee1919c9; size =      6733; name = TRRPCK3.GI
+    file[]: crc = 21822b6f; size =     23160; name = TRRPCK3.TBL
+    file[]: crc = 9b0e6154; size =      7537; name = TRRPCK4.GI
+    file[]: crc = ba82fc84; size =     34181; name = TRRPCK4.TBL
+    file[]: crc = b7aec87f; size =      6612; name = TRRPCK6.GI
+    file[]: crc = 41d510a9; size =     32291; name = TRRPCK6.TBL
+    file[]: crc = 512ed847; size =      2198; name = W0.WLD
+    file[]: crc = b5588999; size =      1372; name = W1.WLD
+    file[]: crc = 10978c6b; size =      1736; name = W2.WLD
+    file[]: crc = 7254fb40; size =      2016; name = W3.WLD
+    file[]: crc = 6d30e01a; size =      1372; name = W4.WLD
+    file[]: crc = ce7526e6; size =      1988; name = W6.WLD
+    file[]: crc = 8b30747a; size =      4827; name = WINNING.MUS
+    file[]: crc = 27f2f2e0; size =      9352; name = WLOAD16.BMP
+    file[]: crc = f5e8bd21; size =      5710; name = WLOAD16.SCR
+    file[]: crc = c319356d; size =     38349; name = WLOAD256.BMP
+    file[]: crc = 5fc847ff; size =     27665; name = WLOAD256.SCR
+    file[]: crc = 9da53b2c; size =      1683; name = WLPRT256.BMP
+end
+
+//
+// v1.5, Int. 7.1.91, 3x1.2M (v1.5 and v1.51 identical except for unneeded INSTALL.COM)
+//
+game[v1.5-int-7.1.91-3x1.2m]:
+    name = v1.5, Int. 7.1.91, 3x1.2M
+    anchorfile = A10.COM
+    file[]: crc = 201eb7ae; size =    206972; name = A.EXE
+    file[]: crc = 8e231eb9; size =       638; name = A10.COM
+    file[]: crc = 2936616d; size =    211342; name = CMP1.001
+    file[]: crc = 12a4ea8f; size =    178334; name = CMP1.002
+    file[]: crc = 02932d98; size =       196; name = CMP1.RMF
+    file[]: crc = 4aa5d08c; size =    376088; name = CMP2.001
+    file[]: crc = cc5723e0; size =       181; name = CMP2.RMF
+    file[]: crc = 9ad8c517; size =    217353; name = CMP3.001
+    file[]: crc = caccb8d1; size =       157; name = CMP3.RMF
+    file[]: crc = 2e6780d3; size =        92; name = MNAME1.DAT
+    file[]: crc = 43ec7349; size =        95; name = MNAME2.DAT
+    file[]: crc = 2e0d9a3e; size =        92; name = MNAME3.DAT
+    file[]: crc = de53b697; size =    164576; name = PS.EXE
+    file[]: crc = 91850dfe; size =         5; name = VOL1.MAP
+    file[]: crc = 990c29fd; size =         4; name = VOL2.MAP
+    file[]: crc = 990c29fd; size =         4; name = VOL3.MAP
+    file[]: crc = 99db7d53; size =    745768; name = VOLUME.001
+    file[]: crc = 82ae55d8; size =    687976; name = VOLUME.002
+    file[]: crc = 5c4f1987; size =      1188; name = VOLUME.RMF
+end
+
+//
+// v1.5, Int. 7.1.91, 4x720K (v1.5 and v1.51 identical except for unneeded INSTALL.COM)
+//
+game[v1.5-int-7.1.91-4x720k]:
+    name = v1.5, Int. 7.1.91, 4x720K
+    imports = v1.5-int-7.1.91-3x1.2m
+    file[]: crc = 6377b263; size =    266286; name = CMP1.001
+    file[]: crc = 81874739; size =    123390; name = CMP1.002
+    file[]: crc = 014cc207; size =       196; name = CMP1.RMF
+    file[]: crc = 5860f8a8; size =         6; name = VOL1.MAP
+    file[]: crc = 99ba5cbc; size =         5; name = VOL2.MAP
+    file[]: crc = 99ba5cbc; size =         5; name = VOL3.MAP
+    file[]: crc = 85d119a6; size =    296607; name = VOLUME.001
+    file[]: crc = 69046694; size =    724070; name = VOLUME.002
+    file[]: crc = 8a4d60d7; size =    413067; name = VOLUME.003
+    file[]: crc = 075cceac; size =      1203; name = VOLUME.RMF
+end
+
+end

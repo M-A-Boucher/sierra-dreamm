@@ -1,0 +1,218 @@
+//
+// Aces Over Europe
+//
+desc[sol-aoe]:
+
+name = Aces Over Europe
+icon = sol-aoe.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\AOE.COM
+mips = $(MIPS_486DX2_66)
+ramkb = 8192
+filter = dynamix, sierra, simulation
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        SOUND_DRIVER = STD.DRV; SOUND_CONFIG = 0
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); 
+        audiohw = adlib; priority = 1
+        SOUND_DRIVER = ADL.DRV; SOUND_CONFIG = 0x02
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32
+        SOUND_DRIVER = MT32.DRV; SOUND_CONFIG = 0x03
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        soundDrv  = $(SOUND_DRIVER)
+        joyDrv    = NO
+        mouseDrv  = STDMOUSE.DRV
+        memoryDrv = ARM.DRV
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        UNCHUNK.EXE RESOURCE.000 .
+        UNCHUNK.EXE RESOURCE.001 .
+        UNCHUNK.EXE RESOURCE.002 .
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\CONTROL.PRF
+    condition = file_exists("$$(rootpath)\\GCD.COM")
+    contents = [[[
+        [[BINARY: 0x08 0 $(SOUND_CONFIG) 0 0x01 0x01 0 0x01 0x01 0x01 0 0 0 0x81 0xFF 0 0 0x7F 0 0x81 0xFF 0 0 0x7F 0 0 0 0 0 0 0 0 0 0 0 0 0]]
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMMAE.BAT
+    contents = [[[$(CRLF)
+        @ECHO OFF
+        RC2CP.EXE
+        GCD.COM
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)      ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0x Base Files
+//
+fragment[v1.0x-base]:
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 8cb0af37; size =      4988; name = TAPES\DEMOBOMB.VCR
+    file[]: crc = 52ba88b2; size =      4981; name = TAPES\DEMOGRND.VCR
+    file[]: crc = 268b6cc5; size =      5132; name = TAPES\DEMOLAND.VCR
+    file[]: crc = 0f378606; size =      8380; name = TAPES\DEMOSHIP.VCR
+    file[]: crc = 71326899; size =     10923; name = TAPES\DEMOSRM1.VCR
+    file[]: crc = 23219bee; size =      6604; name = TAPES\DEMOSRM2.VCR
+
+end
+
+//
+// v1.0, Int. 11.8.93
+//
+game[v1.0-int-11.8.93]:
+    name = v1.0, Int. 11.8.93
+    imports = v1.0x-base
+    anchorfile = AOE.COM
+    file[]: crc = 600e8be8; size =       240; name = AOE.ADV
+    file[]: crc = d1428058; size =       736; name = AOE.COM
+    file[]: crc = 9ef00036; size =    814984; name = COMMON1.DYN
+    file[]: crc = 438d2412; size =    192008; name = CPVW.BUF
+    file[]: crc = 001a1778; size =    527456; name = E.EXE
+    file[]: crc = 1f859dd5; size =    173616; name = INTRO.EXE
+    file[]: crc = d2a94fa4; size =    528332; name = INTRO1.DYN
+    file[]: crc = cc58a138; size =    397712; name = PS.EXE
+    file[]: crc = c6940e57; size =        33; name = SHAKEMED.BAT; optional = true
+    file[]: crc = 2e464eee; size =        32; name = SHAKEOFF.BAT; optional = true
+    file[]: crc = ef5cbaa5; size =        33; name = SHAKEON.BAT ; optional = true
+    file[]: crc = b2c8bd65; size =   1786776; name = SHELL1.DYN
+    file[]: crc = 6645a7af; size =   1062064; name = SIM1.DYN
+    file[]: crc = e408f7eb; size =    284424; name = SIM2.DYN
+    file[]: crc = 8dc9aa30; size =       592; name = TOPMISS.DAT
+    file[]: crc = 1dcb2e5b; size =      1124; name = TSHOOT.DOC
+end
+
+//
+// v1.0, Int. 11.8.93, 3x1.44M, Installer
+//
+installer[v1.0-int-11.8.93-3x1.44m-installer]:
+    name = v1.0, Int. 11.8.93, 3x1.44M, Installer
+    installid = v1.0-int-11.8.93
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0x-base
+    anchorfile = RESOURCE.002
+    file[]: crc = 17497309; size =   1179913; name = RESOURCE.000
+    file[]: crc = 51484f83; size =   1450236; name = RESOURCE.001
+    file[]: crc = 9f0ec1ac; size =   1396300; name = RESOURCE.002
+    file[]: crc = a2dd4d78; size =     15799; name = UNCHUNK.EXE
+end
+
+//
+// v1.02, Int. 8.2.94
+//
+game[v1.02-int-8.2.94]:
+    name = v1.02, Int. 8.2.94
+    imports = v1.0-int-11.8.93
+    file[]: crc = 8d5781d9; size =    527360; name = E.EXE
+end
+
+//
+// v1.02, Int. 8.2.94, 3x1.44M, Installer
+//
+installer[v1.02-int-8.2.94-3x1.44m-installer]:
+    name = v1.02, Int. 8.2.94, 3x1.44M, Installer
+    installid = v1.02-int-8.2.94
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    imports = v1.0-int-11.8.93-3x1.44m-installer
+    anchorfile = RESOURCE.002
+    file[]: crc = 3b6eacd0; size =   1180025; name = RESOURCE.000
+    file[]: crc = 05613147; size =   1450211; name = RESOURCE.001
+    file[]: crc = 51b0d3f1; size =   1397317; name = RESOURCE.002
+end
+
+//
+// v1.0.001, CD
+//
+game[v1.0.001-cd]:
+    name = v1.0.001, CD
+    launch = DREAMMAE.BAT
+    anchorfile = GCD.COM
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = 600e8be8; size =       240; name = AOE.ADV
+    file[]: crc = 9ef00036; size =    814984; name = COMMON1.DYN
+    file[]: crc = 438d2412; size =    192008; name = CPVW.BUF
+    file[]: crc = 6bd25de3; size =    531072; name = E.EXE
+    file[]: crc = ea253078; size =       480; name = FIXJOY.BAT
+    file[]: crc = a51f12de; size =       545; name = GAME.PIF
+    file[]: crc = d6096590; size =       545; name = GAMEJOY.PIF
+    file[]: crc = e800861e; size =      1031; name = GCD.COM
+    file[]: crc = d3871a1c; size =       963; name = GCDJOY.COM
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = e56c2c60; size =    175056; name = INTRO.EXE
+    file[]: crc = d2a94fa4; size =    528332; name = INTRO1.DYN
+    file[]: crc = e6f80fcc; size =       128; name = MAINMENU.SCD
+    file[]: crc = 5c18e8a5; size =      5059; name = MANAOE.TXT
+    file[]: crc = 414f11f6; size =  16109586; name = MANUAL.MVB
+    file[]: crc = ecbb4b55; size =        16; name = MREAL.PRF
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = 4480ffda; size =    286704; name = MVIEWER2.EXE
+    file[]: crc = 2bec5d8c; size =    399216; name = PS.EXE
+    file[]: crc = dd66d9f9; size =      8546; name = RC2CP.EXE
+    file[]: crc = ecd1aa98; size =       513; name = SCRIPT.DAT
+    file[]: crc = 1b634e46; size =     57170; name = SETUPAPI.INC
+    file[]: crc = c6940e57; size =        33; name = SHAKEMED.BAT
+    file[]: crc = 2e464eee; size =        32; name = SHAKEOFF.BAT
+    file[]: crc = ef5cbaa5; size =        33; name = SHAKEON.BAT
+    file[]: crc = b2c8bd65; size =   1786776; name = SHELL1.DYN
+    file[]: crc = f5331385; size =        13; name = SIM.IN
+    file[]: crc = 21fa16fa; size =        30; name = SIM.OUT
+    file[]: crc = 6645a7af; size =   1062064; name = SIM1.DYN
+    file[]: crc = e408f7eb; size =    284424; name = SIM2.DYN
+    file[]: crc = fb35aad4; size =        72; name = SIMPREFS.PRF
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = 14a40e32; size =      3361; name = TITLE.INF
+    file[]: crc = 86bf371e; size =     22093; name = TITLE.MST
+    file[]: crc = 8dc9aa30; size =       592; name = TOPMISS.DAT
+    file[]: crc = 1dcb2e5b; size =      1124; name = TSHOOT.DOC
+    file[]: crc = 8cb0af37; size =      4988; name = TAPES\DEMOBOMB.VCR
+    file[]: crc = 52ba88b2; size =      4981; name = TAPES\DEMOGRND.VCR
+    file[]: crc = 268b6cc5; size =      5132; name = TAPES\DEMOLAND.VCR
+    file[]: crc = 0f378606; size =      8380; name = TAPES\DEMOSHIP.VCR
+    file[]: crc = 71326899; size =     10923; name = TAPES\DEMOSRM1.VCR
+    file[]: crc = 23219bee; size =      6604; name = TAPES\DEMOSRM2.VCR
+end
+
+end
