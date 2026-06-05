@@ -208,7 +208,7 @@ addon[gmidi]:
         v1.0-int-11.2.91-4x360k
         v1.0-int-11.2.91-2x1.44m
     ]]]
-    anchorfile = 4.PAT
+    anchorfile = GENMIDI.DRV
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = c13a4742; size =      1301; name = 4.PAT
 end

@@ -1,0 +1,166 @@
+//
+// Sid & Al’s Incredible Toons
+//
+desc[sol-toons]:
+
+name = Sid & Al’s Incredible Toons
+icon = sol-toons.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\TOONS.EXE
+mips = $(MIPS_486DX_33)
+ramkb = 8192
+videohw = vga
+audiohw = $(AUDIOHW)+$(SFX)
+filter = dynamix, sierra, puzzle
+
+//
+// language configuration
+//
+config[language]:
+    title = Language Configuration
+    option[speaker]:
+        name = English
+        LANGUAGE = English
+    end
+    option[french]:
+        name = Français
+        LANGUAGE = French
+    end
+    option[german]:
+        name = Deutsh
+        LANGUAGE = German
+    end
+    option[spanish]:
+        name = Español
+        LANGUAGE = Spanish
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
+        condition = file_exists("$$(rootpath)\\STD.DRV")
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
+        condition = file_exists("$$(rootpath)\\ADL.DRV")
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
+        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
+        condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        SOUND_DRIVER = GENMIDI.DRV; AUDIOHW = gmidi
+        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
+    end
+end
+
+//
+// SFX configuration
+//
+config[sfx]:
+    title = SFX Configuration
+    option[on]:
+        name = On
+        AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\AUDBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = AUDNONE.DRV; SFX = $(NULL)
+        condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[$(CRLF)
+        soundDrv  = $(SOUND_DRIVER)
+        audioDrv  = $(AUDIO_DRIVER)
+        joyDrv    = NO
+        mouseDrv  = NONE
+        memoryDrv = NONE
+        language  = $(LANGUAGE)
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+script[mouse]:
+    code = mouse_force_relative_zero(true)
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        UNCHUNK.EXE UNCHUNK.000 .
+        UNCHUNK.EXE UNCHUNK.001 .
+pause
+    ]]]
+end
+
+fragment[v1.0-base]:
+    file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
+    file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
+    file[]: crc = f74f4fe4; size =     76230; name = INSTALL.EXE
+    file[]: crc = c51665f2; size =     17840; name = INSTALL.HLP
+    file[]: crc = 20ffe4ec; size =      2465; name = INSTALL.SCR
+    file[]: crc = 6c307a6c; size =      9558; name = INSTALL.TXT
+    file[]: crc = a885862d; size =      2542; name = MT32.DRV
+    file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
+    file[]: crc = 0c22d8a3; size =      9701; name = SBPRO.DRV
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+end
+
+//
+// v1.0, Int. 11.5.93, 2x1.44M
+//
+game[v1.0-int-11.5.93-2x1.44m]:
+    name = v1.0, Int. 11.5.93, 2x1.44M
+    imports = v1.0-base
+    anchorfile = TOONS.EXE
+    file[]: crc = ea24a12b; size =   2829557; name = RESOURCE.001
+    file[]: crc = 9d38ca56; size =      3733; name = RESOURCE.MAP
+    file[]: crc = 028843b5; size =    471936; name = TOONS.EXE
+end
+
+//
+// v1.0, Int. 11.5.93, 2x1.44M, Installer
+//
+installer[v1.0-int-11.5.93-2x1.44m-installer]:
+    name = v1.0, Int. 11.5.93, 2x1.44M, Installer
+    installid = v1.0-int-11.5.93-2x1.44m
+    mips = $(MIPS_MAX)
+    launch = $(rootpath)\DREAMM.BAT
+    imports = v1.0-base
+    anchorfile = UNCHUNK.EXE 
+    file[]: crc = 733dd76a; size =   1269595; name = UNCHUNK.000
+    file[]: crc = 5b0219f1; size =    888049; name = UNCHUNK.001
+    file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+end
+
+end

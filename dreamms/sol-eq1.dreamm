@@ -210,7 +210,7 @@ end
 addon[gmidi]:
     name = General MIDI Patch
     upgradeids = v1.0-int-12.23.91-3x1.44m-1x720k, v1.0-int-12.23.91-4x1.2m
-    anchorfile = 4.PAT
+    anchorfile = GENMIDI.DRV
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = 4159050c; size =      1301; name = 4.PAT
 end
