@@ -97,7 +97,7 @@ game[v1.01-int-2.272-3x360k]:
     file[]: crc = ba6b9d2b; size =    201817; name = VOL.2
     file[]: crc = b4c75d2e; size =    206381; name = VOL.3
     file[]: crc = 46d861cb; size =      5657; name = WORDS.TOK
-    file[]: crc = EF908AF4; size =     12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = D19E9239; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
@@ -126,7 +126,7 @@ game[v2.00-int-2.4.35-2x720k]:
     file[]: crc = a5ec27ec; size =    366274; name = VOL.1
     file[]: crc = be2bd717; size =    206606; name = VOL.2
     file[]: crc = 46d861cb; size =      5657; name = WORDS.TOK
-    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = F20423B3; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
@@ -142,7 +142,7 @@ game[v2.00-int-2.4.35-3x360k]:
     file[]: crc = 37a54960; size =    164295; name = VOL.1
     file[]: crc = b69550fd; size =    201976; name = VOL.2
     file[]: crc = 920686d3; size =    206606; name = VOL.3
-    file[]: crc = EF908AF4; size =     12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = D19E9239; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
@@ -173,7 +173,7 @@ game[v2.14-int-2.936-2x720k]:
     file[]: crc = 9704a378; size =    206032; name = VOL.2
     file[]: crc = 7e9b95cc; size =        13; name = VOL.3
     file[]: crc = 119108e8; size =      5670; name = WORDS.TOK
-    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = F20423B3; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //

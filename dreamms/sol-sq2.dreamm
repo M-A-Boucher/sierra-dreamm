@@ -102,7 +102,7 @@ game[v2.0a-int-2.912-2x720k]:
     file[]: crc = 6dbdff2f; size =    411126; name = VOL.2
     file[]: crc = 14a285ac; size =         2; name = VOL.3
     file[]: crc = aeb974ec; size =      6828; name = WORDS.TOK
-    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~
+    file[]: crc = F20423B3; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //

@@ -83,7 +83,7 @@ mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true; disc = 1
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = A:\        ; srcpath = $(ifsdeltapath); writable = true; optional = true; disc = Save Game Disk
+mount[]: vpath = A:\        ; srcpath = $(ifsdeltapath); writable = true; condition = file_exists("$$(rootpath)\\DISK1\\FTRACK00SIDE0.~RAW~"); disc = Save Game Disk
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true
 
 dynamicfile[]:
@@ -254,7 +254,7 @@ end
 game[v1.1h-2x360k]:
     name = v1.1H, 2x360K, Booter
     osenv = bios; mips = $(MIPS_8086)
-    anchorfile = FTRACK06SIDE0.~RAW~
+    anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = C58D38F0; size =     12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 10D5B426; size =     12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = 0A15F648; size =     12514; name = DISK1\FTRACK01SIDE0.~RAW~
@@ -447,7 +447,7 @@ game[v2.2-int-2.426-2x360k]:
     file[]: crc = cd9efd72; size =    190509; name = VOL.1
     file[]: crc = bc52a0fd; size =    247952; name = VOL.2
     file[]: crc = 6cf8a510; size =      3516; name = WORDS.TOK
-    file[]: crc = 84E5184E; size =     12514; name = DISK1\FTRACK06SIDE0.~RAW~
+    file[]: crc = F20423B3; size =     12514; name = FTRACK06SIDE0.~RAW~
 end
 
 //

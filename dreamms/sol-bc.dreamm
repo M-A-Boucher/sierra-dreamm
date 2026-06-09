@@ -79,7 +79,7 @@ game[v1.1j-int-1.12-2x360k]:
     machine = pcjr
     osenv = bios
     mips = $(MIPS_8086)
-    anchorfile = FTRACK06SIDE0.~RAW~
+    anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = AEADB306; size =     12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = 90BBD2E9; size =     12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = FE616295; size =     12514; name = DISK1\FTRACK01SIDE0.~RAW~
@@ -213,7 +213,7 @@ game[v1.1m-int-1.12-2x360k]:
     machine = pcjr
     osenv = bios
     mips = $(MIPS_8086)
-    anchorfile = FTRACK06SIDE0.~RAW~
+    anchorfile = FTRACK00SIDE0.~RAW~
     file[]: crc = 0CABFE93; size =     12514; name = DISK1\FTRACK00SIDE0.~RAW~; exactonly = true
     file[]: crc = FEC6A4B9; size =     12514; name = DISK1\FTRACK00SIDE1.~RAW~
     file[]: crc = 986F97CA; size =     12514; name = DISK1\FTRACK01SIDE0.~RAW~
@@ -361,7 +361,7 @@ game[v2.00-int-2.439-2x360k]:
     file[]: crc = e6a85e67; size =    204646; name = VOL.1
     file[]: crc = ac9b48f9; size =    145491; name = VOL.2
     file[]: crc = d2a71a7b; size =       171; name = WORDS.TOK
-    file[]: crc = 71668C64; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
+    file[]: crc = DABE9ED3; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //
