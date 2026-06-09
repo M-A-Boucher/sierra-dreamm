@@ -173,7 +173,7 @@ CPANSWERS = [[[|
     Whichisnotacurrency?=c
     Whichisnotabaseballteam?=c
     Whomadearecordalbumwithacoverthatlookedlikeapairofbluejeans,completewithaworkingzipper?=a
-    "TheAmericantelevisiondebutofBobHope,DinahShore,Elvis,andtheBeatleswason=b
+    TheAmericantelevisiondebutofBobHope,DinahShore,Elvis,andtheBeatleswason=b
     MichaelDoonesburyfounded=b
     Thefirstbaseballplayertochallengethereserveclausewas=c
     ThefirstNegrotoplayMajorLeagueBaseballwas=a
@@ -262,7 +262,7 @@ script[cp]:
                         echo("Answer: " + ans);
                         last_quest = quest;
                     }
-//                    cpscript = script_run_async("cpauto", "18\r");
+                    cpscript = script_run_async("cpauto", ans+"\r");
                 }
             }
         }
@@ -271,6 +271,7 @@ script[cp]:
         {
             input_lockout(true);
             sleep(1000);
+            echo("Typing: " + value);
             keyboard_type(value);
             sleep(500);
             input_lockout(false);

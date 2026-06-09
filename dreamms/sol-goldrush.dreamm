@@ -55,9 +55,144 @@ end
 //
 // filesystem
 //
-mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+
+CPANSWERS = [[[|
+    =
+    LelandStanfordmadeafortuneinaminingventurewhenhesoldhisinterestinthismine.=Lincoln
+    Thefirstwaveofargonautsdidn'tstartdigginginColomauntilwhatmonthof1848.=May
+    WhatwasthenameoftheFrenchchefwhocookedacatsowellthatnoonecouldtellitfromrabbit?=Antoine
+    WhatwasthelastnameofoneoftheMexicanswhofellvictimtodiscriminationinSanAndreas?=Murietta
+    WhatwasthelastnameofthebartenderattheAngelsHotelthattoldataletoMarkTwain?=Coon
+    WhatwasthelastnameofthemanresponsibleforstartingoneofthemostfamousminesinAmerica?=Kennedy
+    WhatisthelastnameofawellknownwriterthatspenttimeinAngelsCampduringthe1860's?=Twain
+    WhatisthelastnameofthemanwhoestablishedalogtradingpostonthesouthforkoftheMercedRiver?=Savage
+    Whatisthelastnameofanearlyfrontiersmanwhoresignedfromthearmyin1847andsettledintheSan=Fremont
+    Whatisthelastnameofthemanwhotookaworkcrewof100Indiansand50Hawaiianservantswithhimwhenhewent=Sutter
+    Bayardwashisfirstname,givethelastnameofthiscorrespondentfortheNewYorkTribunethatwanderedthemining=Taylor
+    StatethelastnameofthemanthatgaveSacramentoitsname.=Brannan
+    AwomanwhoslastnamewasGreenbecameoneoftherichestwomenintheworldasownerofCentralEureka.Whatwasher=Hetty
+    InthecityofSutterCreek,onwhatstreetisthehomeofR.C.Downs,superintendentofLelandStanford'smine,located?=Spanish
+    Inthetownof"PilotHill",AlonzoBayleyheardtherailroadwascomingthroughsohebuiltoneofthese.=hotel
+    ThenicknameofabanditcalledDickwasthis.=Rattlesnake
+    Atthebeginningofthegoldrush,Colomahadnoneofthis.Here'sahintforya!=crime
+    Givethelastnameofaninvestorinhardrockminingthatreportedlymade$50,000amonthfromhismininginterest.=Hayward
+    GivethelastnameofthemanwhoimportedthefirststampmillmachinerytoMariposa.=Fremont
+    GivethelastnameofthepersonforwhomRedCastlewasbuiltin1859.=Williams
+    ThistypeofshopassistedSutterandMarshallinascertainingwhetherthegoldtheyfoundwasreal.=apothecary
+    The"GoldBugMine"islocatedinthisminingcommunity.=Placerville
+    California'sfirstpubliclibrarywasestablishedinthistown.=Volcano
+    ThispresentdayNationalParkwasonceanindianstronghold.=Yosemite
+    Nomatterwhichroutewastakentothelandofgold,thisdiseasewasadeadlythreat.=cholera
+    IfsomeoneexperiencedtheexcitementandlureoftheCaliforniagold,theyclaimedtohaveseenoneof=elephant
+    Placerville,andmanyothertowns,weredestroyedbythis.=fire
+    Placervilleboomedfirstasaresultofthediscoveryofgold,andsecondlyafterthediscoveryofthisprecious=silver
+    TheCountyJailinthistownwasmadeoflogssosmallthatamancouldcuthiswayoutinanhourortwousingonlyhisjack=Jackson
+    JohnSuttercontractedJamesWilsonMarshalltobuildhimoneofthese.=sawmill
+    GivethefirstnameofaprominentjournalistfortheNewYorkTribune.=Horace
+    GivethelastnameofamanthatmadehisfortuneinthegoldcountryworkingonwheelbarrowsandthenreturnedtoIndiana.=Studebaker
+    GivethenicknamegiventothemailmannamedThompson.=Snowshoe
+    BlackBartspentsometimeinoneofthese.=hoosegow
+    Whatwasthereallastnameofthemanwhohidbehindtheguiseof"BlackBart".=Bolton
+    StatethelastnameofthemanwhoreceivedalandgrantfromtheMexicangovernment.=Sutter
+    Statethelastnameofthepresidentinofficeatthetimeofthegoldrush.=Polk
+    Statethelastnameoftheminerwhoextracted$40,000outofagopherhole.=Jenkins
+    StatethefirstnameofthefounderoftheminingcampwhichwouldeventuallybecomethecityofAuburn.=Claude
+    WhatdoesthenameMariposameaninSpanish?=butterfly
+    WhatbuildingremainsfromoldCoarsegoldandbearsthedate1852onitscornerstone?=pumphouse
+    Whattypeofminingrequiresdrilling,blasting,andstamping?=quartz
+    WhattypeofarchitecturewasfoundonNabobHillinNevadaCity?=Victorian
+    WhatwasthemostprominenttheaterinSacramento?=Eagle
+    WhatwasJamesWilsonMarshall'soccupation?=carpenter
+    WhatkindofminingreplacedtheearliersluicinginAngelsCamp?=quartz
+    Whatkindof"mulefuel"soldforadollaraquart?=barley
+    WhatisthelastnameoftheMexicangovernorrulingtheterritoryofCaliforniawhenSutterarrived?=Alvarado
+    Whatwereanestimated12,000Californiansdoingin1852?=farming
+    WhohelpedSutterbuildhisfort.=Indians
+    WherewasthefireenginethatthetownofColumbiapurchasedoriginallydestinedfor?=Tahiti
+    WheredidMadameEleanorDumontdie?=Bodie
+    WheredidLolaMontezgowhensheleftGrassValley?=Australia
+    PhillipwalkedtoCaliforniafromNewYorkandsoldmeattotheminers.Whatwashislastname?=Armour
+    Onselectedafternoons,oneofthese,accompaniedbyabull,providedsomeratherdistastefulentertainment.=bear
+    Onthewaytoricheswasthefirsttimemanytravelerstastedoneofthese.Theywereadvisedtoeatonlythecore.=bananas
+    ThecitizensofDryDigginschangedthecitiesnametothis.Here'sahintforya!=Hangtown
+    OfcourseGeorgetownwasnamedafterGeorge,butwhatwasGeorge'slastname?=Phipps
+    Colomaisnexttothisriver.=American
+    NamethestatethatbothWilliamA.Sampson,andRobertBradshawwerefrom.=Massachusetts
+    NamethemanthatwasrobbedbyaMexicannamedCarlos.Carloswaslaterhungforhiscrime.=Perkins
+    NameoneoftheoldestandrichestgoldminesinCalifornia,whichisalsooneofthedeepestintheworld?=Empire
+    ThisHillwasthecountyseatofCalaverasCountypriortothathonorbeinggiventoSanAndreas.=Mokelumne
+    Atailingwheel68feetindiameterwasbuiltin1912totaketailingsfromthismine,anddumpitintoadambehind=Kennedy
+    ThestatueofJamesWilsonMarshallwhichnowstandsinColomaismadeofwhatkindofmetal?=bronze
+    SomeChineseminersplantedanumberoftreesinthecityofColumbiawhicharecalledthe"TreesofHeaven".Whatkind=ailanthus
+    Thismine,locatedinAmadorCity,wasoneoftherichestinCalifornia.=Keystone
+    Bytheendof1849,thissettlementhadapopulationof12,000people.=Sacramento
+    ThisbuildinginColumbiawassavedbytheeffortsofthetownschildren.=schoolhouse
+    HerbertHoover,whospentsometimeinNevadaCity,earnedhisdegreeatthisuniversity.=Stanford
+    WhatisthefirstwordinthenameoftheoldestbuildinginMurphystoday?=Travers
+    TravelerstakingtherouteacrosstheIsthmusofPanamadisembarkedatthemouthofthisriver.=Chagres
+    The"ShannonKnoxHouse"istheoldestbuildinginGeorgetown.Itwasbuiltfrommaterialstransportedaround=lumber
+    In1851aFrenchmannamedBanquebuiltthefirst________store.(fillintheblank)=brick
+    Asteadydietofsaltyprovisionssometimescausedthisdisease.=scurvy
+    GeorgeLegercametoMokelumneHillin1851.Wheredidhecomefrom?=Germany
+    Thesedigginscomprisedthebiggesthydraulicmineintheworld.=Malakoff
+    Auburn,CaliforniawasnamedbyminersfromacityalsonamedAuburninadifferentstate.Whatstatewerethey=NewYork
+    Bennagerwashisfirstname,butwhatwasthelastnameofthestorekeeperthatmadeaspectaculardiscoveryinAngels=Raspberry
+    GraniteCitylatercametobeknownasthiscity.=Folsom
+    Mr.MillsownedoneofthefourbanksinColumbiaduringitsheyday.Whatwashisfirstname?=Darius
+    Finishthislinefromapopulardittyinthegoldfields:"WasitThompson,orJohnsonor"=Bates
+    SutterCreekisthelocationoftheonlywater-poweredoneoftheseintheUnitedStates.=foundry
+    Manyminersrushedforgoldin1848.Almostalloftheseminerscamefromwhere?=California
+]]]
+
+script[cp]:
+    code = [[[$(CRLF)
+        last_quest = "";
+
+        func update()
+        {
+            if (!script_running(cpscript))
+            {
+                // see if it's looking for an answer
+                match = scraper_match("BAAAAYz@@", "5v7sGRdsmDH63IVxE0Nzpdn1NhYhf55WPHSMNY8GB5HjW7LxX6ux9U", 1);
+                if (match)
+                {
+                    // scrape the question
+                    text = scraper_string("GamKP9aMzamMz9aPXamPX9aR7amR79aUfamUf9aXDamXD9aZm", "8x8", 0);
+                    pre = substr(text, 0, 16);
+                    if (pre != "\"Heycityslicker!")
+                    {
+                        quest = text;
+
+                        ans = strmap(quest, "$$(CPANSWERS)");
+                        if (quest != last_quest)
+                        {
+                            echo("Text: " + text);
+                            echo("Question: " + quest);
+                            echo("Answer: " + ans);
+                            last_quest = quest;
+
+                            if (ans != "") {
+                                cpscript = script_run_async("cpauto", ans+"\r");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        func cpauto(value)
+        {
+            input_lockout(true);
+            sleep(1000);
+            echo("Typing: " + value);
+            keyboard_type(value);
+            sleep(500);
+            input_lockout(false);
+        }
+    ]]]
+end
 
 //
 // v2.01, Int. 3.002.149, 2x720K
