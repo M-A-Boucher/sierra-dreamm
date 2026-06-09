@@ -518,7 +518,7 @@ end
 //
 // v1.0, Int. 9.25.94, 5x1.44M, Installer
 //
-game[v1.0-int-9.25.94-5x1.44m-installer]:
+installer[v1.0-int-9.25.94-5x1.44m-installer]:
     name = v1.0, Int. 9.25.94, 5x1.44M, Installer
     installid = v1.0-int-9.25.94
     mips = $(MIPS_MAX)
