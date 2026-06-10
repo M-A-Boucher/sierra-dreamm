@@ -101,6 +101,11 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
+// copy protection script
+//
+$(include cp-lb1.inc)
+
+//
 // v1.000.046, Int. 0.000.631, 4x720K
 //
 game[v1.000.046-int-0.000.631-4x720k]:
