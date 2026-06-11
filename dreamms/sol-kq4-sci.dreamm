@@ -110,6 +110,11 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
+// copy protection script
+//
+$(include cp-kq4-sci.inc)
+
+//
 // v1.000.106, Int. 0.000.247, 4x720K, Detailed Background Graphics
 //
 game[v1.000.106-int-0.000.247-4x720k]:
