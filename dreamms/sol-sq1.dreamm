@@ -175,6 +175,7 @@ end
 game[v2.2-int-2.917-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v2.2, Int. 2.917)
     imports = v2.2-int-2.917
+    anchorfile = SIERRA.COM
     file[]: remove = CPC.COM
     file[]: crc = 72fca229; size =      3121; name = SIERRA.COM
     file[]: remove = FTRACK06SIDE0.~RAW~
