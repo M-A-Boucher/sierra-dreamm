@@ -27,31 +27,31 @@ config[graphics]:
     end
     option[hercules]: 
         name = $(HERCULES_NAME)
-        videohw = hercules; nothrottle = 3
+        videohw = hercules
         VIDEO_DRIVER = HERCMONO.DRV
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
     end
     option[cgamono]:  
-        name = CGA (2 colours)
-        videohw = cga; nothrottle = 2
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320BW.DRV
         condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
     end
     option[cga]:
         name = $(CGA_NAME)
-        videohw = cga; nothrottle = 2
+        videohw = cga
         VIDEO_DRIVER = CGA320C.DRV
         condition = file_exists("$$(rootpath)\\CGA320C.DRV")
     end
     option[ega]:
         name = $(EGA_NAME)
-        videohw = ega; nothrottle = 2; priority = 1
+        videohw = ega; priority = 1
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end
     option[mcga]:     
         name = $(MCGA_NAME)
-        videohw = mcga; nothrottle = 2
+        videohw = mcga
         VIDEO_DRIVER = MCGA320.DRV
         condition = file_exists("$$(rootpath)\\MCGA320.DRV")
     end
@@ -101,6 +101,11 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
+// copy protection script
+//
+$(include cp-lsl2.inc)
+
+//
 // v1.000.011, Int. 0.000.343, 3x720K
 //
 game[v1.000.011-int-0.000.343-3x720k]:
@@ -122,7 +127,6 @@ game[v1.000.011-int-0.000.343-3x720k]:
     file[]: crc = 6aad3a34; size =    592834; name = RESOURCE.003
     file[]: crc = 255a2a47; size =      4740; name = RESOURCE.MAP
     file[]: crc = a81fee92; size =     71679; name = SIERRA.EXE
-    file[]: crc = c9d29874; size =       500; name = SPACE.COM   ; optional = true
     file[]: crc = 683d10f8; size =      1310; name = STD.DRV
     file[]: crc = 1276b6ae; size =      1648; name = TANDY320.DRV; optional = true
     file[]: crc = 3820b6b6; size =       477; name = TANDYKBD.DRV; optional = true
