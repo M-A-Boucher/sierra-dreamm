@@ -1,4 +1,4 @@
-charset[sq4cp]:
+charset[symbols]:
     height = 16
     char[a]: bits = 0220`02a0`03e0`0`0ff0`0800`09c0`0a20`0aa0`0ae0`0800`0800                    // cuberoot(G) - XW
     char[b]: bits = 0080`0040`0020`0ff0`0800`0900`0a00`0be0`0a00`0a00`0900`09e0`0900`0a00`0800  // sqr(pi) - AO
@@ -7,19 +7,49 @@ charset[sq4cp]:
     char[e]: bits = 793c`0550`0950`053c`7900`0138`3d44`5144`5138`3d00                           // WA/AO - AW
 end
 
+FINGERPRINTS = [[[|
+    =
+    TANDY320.DRV=G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT
+      EGA320.DRV=G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT
+     MCGA320.DRV=G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT
+    VGA320BW.DRV=7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW
+      VGA320.DRV=7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW
+]]]
+
+REGIONS = [[[|
+    =
+    TANDY320.DRV=BsNSk3AXX
+      EGA320.DRV=BsNSk3AXX
+     MCGA320.DRV=BsNSk3AXX
+    VGA320BW.DRV=BsNS42zXD
+      VGA320.DRV=BsNS42zXD
+]]]
+
+COLORS = [[[|
+    =
+    TANDY320.DRV=0x6
+      EGA320.DRV=0x6
+     MCGA320.DRV=0x6
+    VGA320BW.DRV=0x1C
+      VGA320.DRV=0x1C
+]]]
+
 script[cp]:
     code = [[[$(CRLF)
         answer = "";
+        color       = strmap("$$(VIDEO_DRIVER)", "$$(COLORS)");
+        region      = strmap("$$(VIDEO_DRIVER)", "$$(REGIONS)");
+        fingerprint = strmap("$$(VIDEO_DRIVER)", "$$(FINGERPRINTS)");
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            cpactive = scraper_match("BsNS42zXD", "7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW", 1);
+            cpactive = scraper_match(region, fingerprint, 1);
 
             if (cpactive)
             {
-              text = scraper_string("BtmY91meF", "sq4cp", 0x1C);
+              text = scraper_string("BtmY91meF", "symbols", color);
               echo("Text: " + text);
               answer = strmap(substr(text,0,1), "=;a=XW;b=AO;c=ER;d=SR;e=AW") + strmap(substr(text,1,1), "=;a=XW;b=AO;c=ER;d=SR;e=AW");
               echo("Answer: " + answer);

@@ -25,31 +25,31 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; audiohw = speaker; machine = tandy; nothrottle = 2.8
+        videohw = cga; audiohw = speaker; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
     option[ega]:
         name = $(EGA_NAME)
-        videohw = ega; nothrottle = 4; priority = 1
+        videohw = ega; priority = 1
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end
     option[mcga]:     
         name = $(MCGA_NAME)
-        videohw = mcga; nothrottle = 4
+        videohw = mcga
         VIDEO_DRIVER = MCGA320.DRV
         condition = file_exists("$$(rootpath)\\MCGA320.DRV")
     end
     option[vgamono]:
         name = Monochrome $(VGA_NAME);
-        videohw = vga; nothrottle = 4.5
+        videohw = vga
         VIDEO_DRIVER = VGA320BW.DRV
         condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
     end
     option[vga]:
         name = $(VGA_NAME);
-        videohw = vga; nothrottle = 4.5; priority = 2
+        videohw = vga; priority = 2
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
