@@ -115,6 +115,11 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
+// copy protection script
+//
+$(include cp-pq2.inc)
+
+//
 // v1.001.000, Int. 0.000.397, 3x720K
 //
 game[v1.001.000-int-0.000.397-3x720k]:
