@@ -125,6 +125,11 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 mount[]: vpath = D:\;         srcpath = $(ifsinstallpath)\CD; optional = true
 
 //
+// copy protection script
+//
+$(include cp-kq6.inc)
+
+//
 // v1.0 Base Files
 //
 fragment[v1.0-base]:
