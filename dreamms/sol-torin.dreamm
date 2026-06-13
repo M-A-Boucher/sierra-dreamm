@@ -52,10 +52,10 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
-// v1.0, CD
+// v1.0
 //
-game[v1.0-cd]:
-    name = v1.0, CD
+game[v1.0]:
+    name = v1.0
     anchorfile = SIERRAH.EXE
     anchordepth = 2
     file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
@@ -68,27 +68,15 @@ game[v1.0-cd]:
     file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
     file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
     file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
-    file[]: crc = cf5ac77e; size =       262; name = RESOURCE.CFG
     file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
-    file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN
+    file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN; optional = true
     file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
     file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
-    file[]: crc = 855d50e0; size =     20390; name = SIERRA.INF
+    file[]: crc = 855d50e0; size =     20390; name = SIERRA.INF  ; optional = true
     file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
-    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE
-    file[]: crc = cea7602b; size =       355; name = TORIN1
+    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE ; optional = true
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = 32741db9; size =      9301; name = ENGLISH\CONTACT.TXT
-    file[]: crc = d26a89c0; size =      1633; name = ENGLISH\LANGUAGE.INF
-    file[]: crc = 439a4cd5; size =     17222; name = ENGLISH\README.TXT
-    file[]: crc = 3b44f042; size =     38144; name = ENGLISH\README.WRI
-    file[]: crc = dc3d4ad1; size =    100196; name = ENGLISH\SNDTEST.WAV
-    file[]: crc = 776be479; size =     81326; name = ENGLISH\THEGUIDE.TXT
-    file[]: crc = 3491db3d; size =      3497; name = FRENCH\INSTALL.SCR
-    file[]: crc = 6ebf92e1; size =      9977; name = FRENCH\INSTALL.TXT
-    file[]: crc = e49b8003; size =      3904; name = FRENCH\LANGUAGE.INF
-    file[]: crc = dc3d4ad1; size =    100196; name = FRENCH\SNDTEST.WAV
     file[]: crc = ec3d4038; size =      5857; name = FRENCH\MSG\0.MSG
     file[]: crc = 30e25f58; size =      1510; name = FRENCH\MSG\1.MSG
     file[]: crc = 5d097dba; size =      4902; name = FRENCH\MSG\100.MSG
@@ -252,6 +240,32 @@ game[v1.0-cd]:
 end
 
 //
+// v1.0 OEM
+//
+game[v1.0-oem]:
+    name = v1.0 OEM
+    imports = v1.0
+    file[]: crc = 4e0d6961; size =       768; name = LANGUAGE.INF; optional = true
+    file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN; optional = true
+    file[]: crc = de876a90; size =     31168; name = SETUP.EXE   ; optional = true
+    file[]: crc = 55df4d2d; size =    457707; name = SETUP.SOL   ; optional = true
+    file[]: crc = 4c34daa3; size =      1374; name = PATCHES\12000.HEP
+    file[]: crc = 19b4d0c1; size =      2932; name = PATCHES\12000.SCR
+    file[]: crc = 3862ddec; size =      1764; name = PATCHES\51200.HEP
+    file[]: crc = 17ebf9b3; size =      4414; name = PATCHES\51200.SCR
+    file[]: crc = 1884aa12; size =      3468; name = PATCHES\64000.HEP
+    file[]: crc = 4c01d110; size =      2484; name = PATCHES\64000.SCR
+    file[]: crc = 152320de; size =       504; name = PATCHES\64865.HEP
+    file[]: crc = 0afda7fc; size =      3786; name = PATCHES\64865.SCR
+    file[]: crc = 068e71cc; size =       496; name = PATCHES\64892.HEP
+    file[]: crc = 5f1bf5ea; size =      3570; name = PATCHES\64892.SCR
+    file[]: crc = 46564d71; size =       278; name = PATCHES\64893.HEP
+    file[]: crc = d58d06ff; size =      5682; name = PATCHES\64893.SCR
+    file[]: crc = 8aaf2013; size =      1934; name = PATCHES\64897.HEP
+    file[]: crc = 35e6c12f; size =      4364; name = PATCHES\64897.SCR
+end
+
+//
 // GOG (v1.0)
 //
 game[v1.0-gog]:
@@ -263,7 +277,6 @@ game[v1.0-gog]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = 426aa7ad; size =       361; name = GAMEDAT.SHP
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
     file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
@@ -272,7 +285,6 @@ game[v1.0-gog]:
     file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
     file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
     file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
-    file[]: crc = 2fce5f75; size =     24064; name = TORIN.EXE
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 8425f555; size =  21034036; name = MOVIE\10000.VMD
