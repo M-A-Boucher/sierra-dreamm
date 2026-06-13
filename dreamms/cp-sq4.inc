@@ -7,51 +7,27 @@ charset[symbols]:
     char[e]: bits = 793c`0550`0950`053c`7900`0138`3d44`5144`5138`3d00                           // WA/AO - AW
 end
 
-FINGERPRINTS = [[[|
-    =
-    TANDY320.DRV=G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT
-      EGA320.DRV=G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT
-     MCGA320.DRV=G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT
-    VGA320BW.DRV=7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW
-      VGA320.DRV=7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW
-]]]
-
-REGIONS = [[[|
-    =
-    TANDY320.DRV=BsNSk3AXX
-      EGA320.DRV=BsNSk3AXX
-     MCGA320.DRV=BsNSk3AXX
-    VGA320BW.DRV=BsNS42zXD
-      VGA320.DRV=BsNS42zXD
-]]]
-
-COLORS = [[[|
-    =
-    TANDY320.DRV=0x6
-      EGA320.DRV=0x6
-     MCGA320.DRV=0x6
-    VGA320BW.DRV=0x1C
-      VGA320.DRV=0x1C
+FINGERPRINTS = [[[,
+    G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT=EGA
+    7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW=VGA
 ]]]
 
 script[cp]:
     code = [[[$(CRLF)
+        VALUE_MAP = "=;a=XW;b=AO;c=ER;d=SR;e=AW";
         answer = "";
-        color       = strmap("$$(VIDEO_DRIVER)", "$$(COLORS)");
-        region      = strmap("$$(VIDEO_DRIVER)", "$$(REGIONS)");
-        fingerprint = strmap("$$(VIDEO_DRIVER)", "$$(FINGERPRINTS)");
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            cpactive = scraper_match(region, fingerprint, 1);
+            cpactive = scraper_match("BsNSk3AXX", "$$(FINGERPRINTS)", MF_MOUSE) || scraper_match("BsNS42zXD", fingerprint, MF_MOUSE);
 
             if (cpactive)
             {
-              text = scraper_string("BtmY91meF", "symbols", color);
-              echo("Text: " + text);
-              answer = strmap(substr(text,0,1), "=;a=XW;b=AO;c=ER;d=SR;e=AW") + strmap(substr(text,1,1), "=;a=XW;b=AO;c=ER;d=SR;e=AW");
+              text = scraper_string("BtmY91meF", "symbols", [0x6,0x1C]);
+
+              answer = strmap(substr(text,0,1), VALUE_MAP) + strmap(substr(text,1,1), VALUE_MAP);
               echo("Answer: " + answer);
 
               if (answer != "")
