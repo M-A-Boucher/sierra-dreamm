@@ -116,6 +116,7 @@ Copy-protection is, so far, solved automatically for the following games:
 - Manhunter: New York
 - Police Quest II: The Vengeance
 - Space Quest IV: Roger Wilco and The Time Rippers
+
 ... more to come.
 
 # Contributors
