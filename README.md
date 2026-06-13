@@ -86,6 +86,8 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 | Quest for Glory II: Trial by Fire                                              	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Quest for Glory III: Wages of War                                              	| 🇺🇸🇫🇷🇩🇪🇮🇹🇪🇸 |<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Quest for Glory: Shadows of Darkness                                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
+| Rama                                                                          	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
+| Red Baron                                                                     	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Rise of the Dragon                                                             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Slater & Charlie Go Camping                                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
 | Sorcerian                                                                       | 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
@@ -106,11 +108,12 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 > [!NOTE]
 > Manual-based copy protections aren't solved automatically like they are with the Lucas Arts games in DREAMM. But this will come eventually.
 # Contributors
-A huge thank you to the following people that have helped with this .dreammpack:
+A huge thank you to the following people for their continuous help with this .dreammpack:
 - treloret
 - univbee
 - CookieMonster123
 - gschmidl
+- eientei
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
 

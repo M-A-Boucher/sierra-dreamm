@@ -1,0 +1,193 @@
+//
+// Red Baron
+//
+desc[sol-redbaron]:
+
+name = Red Baron
+icon = sol-redbaron.png
+machine = pc
+osenv = dos
+rootpath = C:\BARON\
+launch = $(rootpath)\BARON.COM
+mips = $(MIPS_486DX_33)
+ramkb = 8192
+filter = dynamix, action
+videohw = vga
+VIDEO = 8 // VGA 256 colors
+IS_EGA = false
+
+config[sound]:
+    title = Sound Configuration
+    option[speaker]: name = $(SPEAKER_NAME); audiohw = speaker; AUDIO = 0
+    option[adlib]:   name = $(ADLIB_NAME);   audiohw = adlib; AUDIO = 2
+    option[mt32]:    name = $(MT32_NAME);    audiohw = mt32; AUDIO = 3
+    option[sb16]:    name = $(SB16_NAME);    audiohw = sb16; AUDIO = 4; priority = 1
+end
+
+config[video]:
+    title = Video Configuration
+    condition = $(IS_EGA)
+    // Installer mentions "MCGA" but is the same as regular CGA
+    // Also mentions VGA (16 color) but is the same as EGA
+    option[cga]:  name = $(CGA_NAME);  videohw = cga; VIDEO = 1
+    option[ega]:  name = $(EGA_NAME);  videohw = ega; VIDEO = 2; priority = 1
+end
+
+dynamicfile[]:
+    path = C:\BARON\CONTROL.PRF
+    contents = [[[
+        [[BINARY:$(VIDEO) $(AUDIO)]]
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\BARON\; srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+game[en-v1.0]:
+    // Red Baron (1990)(Sierra On-Line, Inc.) [Simulation][!]
+    // Aces of Simulation (Installer) (Fr) (1994)(Coktel Vision) [Simulation, Compilation]
+    name = English v1.0
+    anchorfile = VOLUME.RMF
+    file[]: crc = 131f9a36; size =      1262; name = BAR_ROLL.VCR
+    file[]: crc = fc54467e; size =       730; name = BARON.COM
+    file[]: crc = 42ce8981; size =      3842; name = DEMOBLN1.VCR
+    file[]: crc = 82176034; size =      2046; name = DEMOSQD1.VCR
+    file[]: crc = ce5295d1; size =      3198; name = DEMOZEPP.VCR
+    file[]: crc = f91a4150; size =      1152; name = DIVE.VCR
+    file[]: crc = c0a8b5ff; size =      1438; name = HALFLOOP.VCR
+    file[]: crc = ebb94cca; size =      1237; name = IMMEL.VCR
+    file[]: crc = 3ca3e34d; size =      1264; name = LOOP.VCR
+    file[]: crc = d45883f6; size =    259304; name = PS.EXE
+    file[]: crc = 907dae14; size =         8; name = PSVOLS.MAP
+    file[]: crc = 1e87bf3a; size =    298014; name = RB.EXE
+    file[]: crc = af28e33b; size =      1306; name = RETOURN.VCR
+    file[]: crc = a136e0d6; size =       846; name = ROSTER.DAT
+    file[]: crc = 29341d97; size =       398; name = SCRIPT.DAT
+    file[]: crc = da0adc18; size =        12; name = SIM.IN
+    file[]: crc = 9afdbd95; size =        56; name = SIM.OUT
+    file[]: crc = 7c1fbd6f; size =      1444; name = SIDESLIP.VCR
+    file[]: crc = 22a53711; size =         8; name = SIMVOLS.MAP
+    file[]: crc = ea83b4ec; size =      1068; name = SLIPTURN.VCR
+    file[]: crc = 56ce3522; size =      1298; name = SPLIT_S.VCR
+    file[]: crc = 3bfdf2c2; size =     75397; name = VOLUME.001
+    file[]: crc = f447c613; size =     16253; name = VOLUME.002
+    file[]: crc = 5700582d; size =    122013; name = VOLUME.003
+    file[]: crc = b61fee7a; size =    362276; name = VOLUME.004
+    file[]: crc = 8d9073f9; size =    511611; name = VOLUME.005
+    file[]: crc = e2467ccc; size =    562539; name = VOLUME.006
+    file[]: crc = ea045912; size =    139298; name = VOLUME.007
+    file[]: crc = 7988aab6; size =      2678; name = VOLUME.RMF
+    file[]: crc = 12be12bb; size =      1447; name = ZOOM.VCR
+end
+
+game[en-v1.00-alt]:
+    // Red Baron [a1] (1990)(Sierra On-Line, Inc.) [Simulation]
+    name = English v1.0 [Alt]
+    imports = en-v1.0
+    anchorfile = VOLUME.RMF
+    file[]: remove = SCRIPT.DAT
+    file[]: remove = SIM.IN
+    file[]: remove = SIM.OUT
+    file[]: crc = d1971dc4; size =    259304; name = PS.EXE
+    file[]: crc = f231bd90; size =         9; name = PSVOLS.MAP
+    file[]: crc = c8f3ed9c; size =    297982; name = RB.EXE
+    file[]: crc = 85f0d67b; size =         9; name = SIMVOLS.MAP
+    file[]: crc = a3b412f7; size =     75397; name = VOLUME.001
+    file[]: crc = 21435327; size =     16253; name = VOLUME.002
+    file[]: crc = 9deada63; size =    122013; name = VOLUME.003
+    file[]: crc = 4915b062; size =    362276; name = VOLUME.004
+    file[]: crc = 700595ef; size =    423260; name = VOLUME.005
+    file[]: crc = c5830932; size =     88351; name = VOLUME.008
+    file[]: crc = cfc0035c; size =      2678; name = VOLUME.RMF
+end
+
+game[de-v1.00]:
+    // Red Baron (De) (1991)(Sierra On-Line, Inc.) [Simulation]
+    name = German v1.0
+    imports = en-v1.0
+    anchorfile = VOLUME.RMF
+    file[]: remove = SCRIPT.DAT
+    file[]: remove = SIM.IN
+    file[]: remove = SIM.OUT
+    file[]: crc = 2d5b70c6; size =    276512; name = PS.EXE
+    file[]: crc = fc2424f6; size =    300158; name = RB.EXE
+    file[]: crc = 3e779d55; size =       846; name = ROSTER.DAT
+    file[]: crc = 07f62a31; size =     77874; name = VOLUME.001
+    file[]: crc = cce1b6fc; size =     16253; name = VOLUME.002
+    file[]: crc = 7a5abedb; size =    123598; name = VOLUME.003
+    file[]: crc = 5bf9b34e; size =    361562; name = VOLUME.004
+    file[]: crc = d202d9dd; size =    566777; name = VOLUME.006
+    file[]: crc = 07a178d8; size =      2678; name = VOLUME.RMF
+end
+
+game[en-vga16-v1.00]:
+    // Red Baron (VGA16) (1990)(Sierra On-Line, Inc.) [Action, Simulation]
+    name = English VGA16 v1.0
+    imports = en-v1.0
+    anchorfile = VOLUME.RMF
+    IS_EGA = true
+    file[]: crc = c4a3a464; size =    258614; name = PS.EXE
+    file[]: crc = 74a5cf3e; size =         9; name = PSVOLS.MAP
+    file[]: crc = 11c70989; size =    297786; name = RB.EXE
+    file[]: crc = 896f7b7a; size =       372; name = SCRIPT.DAT
+    file[]: crc = 3787f1b5; size =        12; name = SIM.IN
+    file[]: crc = e2c53064; size =        56; name = SIM.OUT
+    file[]: crc = 4ec57eff; size =      4124; name = SIMSNDS.SNG
+    file[]: crc = 35544297; size =         9; name = SIMVOLS.MAP
+    file[]: crc = 1dd9edea; size =     54379; name = VOLUME.001
+    file[]: crc = 3dc839dc; size =     12972; name = VOLUME.002
+    file[]: crc = fdb15bd4; size =     64939; name = VOLUME.003
+    file[]: crc = 17612d2f; size =    138202; name = VOLUME.004
+    file[]: crc = 9b8f6efb; size =    296528; name = VOLUME.005
+    file[]: crc = b03b0f82; size =    176040; name = VOLUME.006
+    file[]: crc = 4b5ae494; size =    139272; name = VOLUME.007
+    file[]: crc = 8d58ae9e; size =     82071; name = VOLUME.008
+    file[]: crc = 64c02290; size =      2710; name = VOLUME.RMF
+end
+
+game[en-vga16-v1.00-alt]:
+    // Red Baron (VGA16) [a1] (1990)(Sierra On-Line, Inc.) [Action, Simulation]
+    name = English VGA16 v1.0 [Alt]
+    imports = en-v1.0
+    anchorfile = VOLUME.RMF
+    IS_EGA = true
+    file[]: crc = 681067f7; size =       735; name = BARON.COM
+    file[]: crc = bc1b1882; size =      1152; name = DIVE.VCR
+    file[]: crc = 979886fc; size =    125724; name = PS.EXE
+    file[]: crc = 74a5cf3e; size =         9; name = PSVOLS.MAP
+    file[]: crc = 201cf050; size =    160634; name = RB.EXE
+    file[]: crc = b686e707; size =      1244; name = RETOURN2.VCR
+    file[]: crc = 39e20682; size =      1592; name = ROSTER.DAT
+    file[]: crc = 07ae404a; size =       334; name = SCRIPT.DAT
+    file[]: crc = 29740290; size =        12; name = SIM.IN
+    file[]: crc = 7b936b75; size =        56; name = SIM.OUT
+    file[]: crc = 4ec57eff; size =      4124; name = SIMSNDS.SNG
+    file[]: crc = 35544297; size =         9; name = SIMVOLS.MAP
+    file[]: crc = 1dd9edea; size =     54379; name = VOLUME.001
+    file[]: crc = 3dc839dc; size =     12972; name = VOLUME.002
+    file[]: crc = fdb15bd4; size =     64939; name = VOLUME.003
+    file[]: crc = 17612d2f; size =    138202; name = VOLUME.004
+    file[]: crc = 9b8f6efb; size =    296528; name = VOLUME.005
+    file[]: crc = b03b0f82; size =    176040; name = VOLUME.006
+    file[]: crc = 4b5ae494; size =    139272; name = VOLUME.007
+    file[]: crc = 8d58ae9e; size =     82071; name = VOLUME.008
+    file[]: crc = 64c02290; size =      2710; name = VOLUME.RMF
+    file[]: crc = 131f9a36; size =      1262; name = TAPES\BAR_ROLL.VCR
+    file[]: crc = 42ce8981; size =      3842; name = TAPES\DEMOBLN1.VCR
+    file[]: crc = 82176034; size =      2046; name = TAPES\DEMOSQD1.VCR
+    file[]: crc = ce5295d1; size =      3198; name = TAPES\DEMOZEPP.VCR
+    file[]: crc = bc1b1882; size =      1152; name = TAPES\DIVE.VCR
+    file[]: crc = c0a8b5ff; size =      1438; name = TAPES\HALFLOOP.VCR
+    file[]: crc = ebb94cca; size =      1237; name = TAPES\IMMEL.VCR
+    file[]: crc = 3ca3e34d; size =      1264; name = TAPES\LOOP.VCR
+    file[]: crc = af28e33b; size =      1306; name = TAPES\RETOURN.VCR
+    file[]: crc = 7c1fbd6f; size =      1444; name = TAPES\SIDESLIP.VCR
+    file[]: crc = ea83b4ec; size =      1068; name = TAPES\SLIPTURN.VCR
+    file[]: crc = 56ce3522; size =      1298; name = TAPES\SPLIT_S.VCR
+    file[]: crc = 12be12bb; size =      1447; name = TAPES\ZOOM.VCR
+end
+
+end
