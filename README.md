@@ -105,8 +105,19 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 | The Wizard and the Princess                                                     | 🇺🇸         	|<img width="24" height="24" alt="bios" src="https://github.com/user-attachments/assets/a4042cbe-b279-4388-93c1-afc85a50e01a" />    	|
 | Zeliard                                                                       	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />     	|
 
-> [!NOTE]
-> Manual-based copy protections aren't solved automatically like they are with the Lucas Arts games in DREAMM. But this will come eventually.
+Copy-protection is, so far, solved automatically for the following games:
+- Colonel's Bequest (aka Laura Bow 1)
+- Gold Rush!
+- King's Quest IV: Perils of Rosella (AGI and SCI versions)
+- King's Quest VI: Heir Today, Gone Tomorrow
+- Laura Bow 2: The Dagger of Amon Ra
+- Leisure Suit Larry in the Land of the Lounge Lizards (not technically copy protection)
+- Leisure Suit Larry Goes Looking for Love (In Several Wrong Places) (aka Leisure Suit Larry 2)
+- Manhunter: New York
+- Police Quest II: The Vengeance
+- Space Quest IV: Roger Wilco and The Time Rippers
+... more to come.
+
 # Contributors
 A huge thank you to the following people for their continuous help with this .dreammpack:
 - treloret
