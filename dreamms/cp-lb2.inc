@@ -61,18 +61,18 @@ GODS = [[[|
 
 HINTS = [[[|
     =
-     Amon Ra=!!amonra.png@400!!
-      Anubis=!!anubis.png@400!!
-      Hathor=!!hathor.png@400!!
-       Horus=!!horus@400!!
-        Isis=!!isis.png@400!!
-         Min=!!min.png@400!!
-    Nephthys=!!nephthys.png@400!!
-      Osiris=!!osiris.png@400!!
-        Ptah=!!ptah.png@400!!
-        Seth=!!seth.png@400!!
-       Sobek=!!sobek.png@400!!
-       Thoth=!!thoth.png@400!!
+     Amon Ra=Amon Ra !!amonra.png@400!!
+      Anubis=Anubis !!anubis.png@400!!
+      Hathor=Hathor !!hathor.png@400!!
+       Horus=Horus !!horus@400!!
+        Isis=Isis !!isis.png@400!!
+         Min=Min !!min.png@400!!
+    Nephthys=Nephthys !!nephthys.png@400!!
+      Osiris=Osiris !!osiris.png@400!!
+        Ptah=Ptah !!ptah.png@400!!
+        Seth=Seth !!seth.png@400!!
+       Sobek=Sobek !!sobek.png@400!!
+       Thoth=Thoth !!thoth.png@400!!
 ]]]
 
 charset[vga]:
@@ -177,38 +177,33 @@ script[cp]:
 
             if (answer != "")
             {
-              echo(god);
-
               for (region = 0; region < 12; region++)
               {
-                echo(regions[region]);
-
                 match = scraper_match(regions[region], god, MF_MOUSE);
+
                 if (match)
                 {
-                  regionmatch = region;
+                  coords = strmap(region, "$$(MOUSECOORDS)");
                   break;
                 }
               }
 
-              echo("Question: " + question);
-              echo("Answer: " + answer);
-              echo("Region match: " + regionmatch);
-
-              coords = strmap(regionmatch, "$$(MOUSECOORDS)");
-
-              if (coords != "" && answer != "")
+              if (answer != cpactive)
               {
+                cpactive = answer;
+                echo("Question: " + question);
+                echo("Answer: " + answer);
+
                 if (!prop("noautocp"))
                   cpscript = script_run_async("cpauto", coords);
 
                 if (!prop("notextcp"))
                   overlay_show("cpoverlay", -1, strmap(answer, "$$(HINTS)"));
               }
-              
             }
             else
             {
+              cpactive = "";
               overlay_hide("cpoverlay");
             }
           }
