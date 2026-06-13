@@ -82,7 +82,7 @@ charset[vga]:
     char[B]: bits = 420`7e0`4a0`4a0`5a0`240
     char[C]: bits = 3c0`420`420`420`440`280
     char[D]: bits = 420`7e0`420`420`440`480`300
-    char[E]: bits = 520`7e0`520`520`/Users/monochromatic/Library/Application Support/Aaron Giles/DREAMM/dreammpacks/sierra-dreamm-main/dreamms/cp-lb2.inc420`420`240
+    char[E]: bits = 520`7e0`520`520`420`420`240
     char[G]: bits = 3c0`420`420`420`4a0`2c0`080
     char[L]: bits = 420`7e0`420`020`020`040
     char[Q]: bits = 3c0`420`420`420`440`4a0`320
