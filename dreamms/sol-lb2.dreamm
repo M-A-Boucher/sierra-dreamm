@@ -121,6 +121,11 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
+//
+// copy protection script
+//
+$(include cp-lb2.inc)
+
 fragment[v1.0-base]:
     file[]: crc = c14bbf55; size =      2508; name = 0.HEP
     file[]: crc = 87ef1238; size =       562; name = 0.MAP
