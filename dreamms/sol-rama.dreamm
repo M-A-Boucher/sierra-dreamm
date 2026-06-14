@@ -14,9 +14,8 @@ audiohw = sb16
 ramkb = 16384
 videohw = svga
 
-
 //
-// File System
+// file system
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
@@ -24,7 +23,6 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC1; disc = 1
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC2; disc = 2
 mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC3; disc = 3
-
 
 dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
@@ -34,30 +32,62 @@ dynamicfile[]:
         audioDrv  = DACBLAST.DRV
         joyDrv    = NO
         directory = \sierra\ramados
-        cmd        =RAMADOS
-        mouseDrv   =NONE
-        memoryDrv  =NONE
-        minMemory  =1600k
-        brightness =0
-        minCPU     =486
-        cd         =YES
-        smartdrv   =YES
-        maxSubmits =48
-        dacSize	  =4k
+        cmd       = RAMADOS
+        mouseDrv  = NONE
+        memoryDrv = NONE
+        minMemory = 1600k
+        brightness= 0
+        minCPU    = 486
+        cd        = YES
+        smartdrv  = YES
+        maxSubmits= 48
+        dacSize	  = 4k
                                     
-        cdSpeed  =4                 
-        audio    =CD:\audio;CD:\PATCHES 
-        resAud   =CD:\        		
-        resSfx   =C:\sierra\ramados;CD:\        
-        resMap   =CD:\              
-        rescdisc =CD:\              
-        movieDir =CD:\VMD           
-        robot    =CD:\ROBOT         
-        patchDir =C:\sierra\ramados;CD:\PATCHES 
-        CD:      =D:;        
+        cdSpeed   = 4                 
+        audio     = CD:\audio;CD:\PATCHES 
+        resAud    = CD:\        		
+        resSfx    = C:\sierra\ramados;CD:\        
+        resMap    = CD:\              
+        rescdisc  = CD:\              
+        movieDir  = CD:\VMD           
+        robot     = CD:\ROBOT         
+        patchDir  = C:\sierra\ramados;CD:\PATCHES 
+        CD:       = D:;        
     ]]]
 end
-          
+
+charset[ramafont]:
+    height = 12
+    char[#]: bits = 19f`1ff`ff8`f9f`1ff`ff8`f98
+    char[1]: bits = 180`300`600`fff`fff
+    char[3]: bits = 20c`60e`c07`cc3`cc3`ce7`ffe`73c
+    char[C]: bits = 1f8`7fe`606`c03`c03`c03`c03`e07`70e`204
+    char[D]: bits = fff`fff`c03`c03`c03`c03`c03`606`7fe`1f8
+end
+
+//
+// auto disc swapping script
+//
+script[discswap]:
+    code = [[[$(CRLF)
+        func update()
+        {
+          if (!script_running(swapscript))
+          {    
+            disc = scraper_string("BAAYA@@Zm", "ramafont", 0xCA);
+            if (disc != "") swapscript = script_run_async("swapauto", substr(disc, -1));
+          }
+        }
+
+        func swapauto(disc)
+        {
+          input_lockout(true);
+          echo("Inserting disc " + disc);
+          disc_insert(disc); keyboard_type('\r');
+          input_lockout(false);
+        }
+    ]]]
+end
 
 //
 // English DOS version 1.000.000
