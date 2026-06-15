@@ -29,18 +29,18 @@ CPANSWERS = [[[|
 
 MOUSECOORDS = [[[|
     =
-    0=80 90
-    1=180 90
-    2=280 90
-    3=380 90
-    4=480 90
-    5=580 90
-    6=80 150
-    7=180 150
-    8=280 150
-    9=380 150
-    10=480 150
-    11=580 150
+    0=40 90
+    1=90 90
+    2=140 90
+    3=190 90
+    4=240 90
+    5=290 90
+    6=40 150
+    7=90 150
+    8=140 150
+    9=190 150
+    10=240 150
+    11=290 150
 ]]]
 
 GODS = [[[|
@@ -64,7 +64,7 @@ HINTS = [[[|
      Amon Ra=Amon Ra !!amonra.png@400!!
       Anubis=Anubis !!anubis.png@400!!
       Hathor=Hathor !!hathor.png@400!!
-       Horus=Horus !!horus@400!!
+       Horus=Horus !!horus.png@400!!
         Isis=Isis !!isis.png@400!!
          Min=Min !!min.png@400!!
     Nephthys=Nephthys !!nephthys.png@400!!
@@ -78,6 +78,7 @@ HINTS = [[[|
 charset[vga]:
     height = 9
     char["]: bits = 600`000`600
+    char[,]: bits = 010`060
     char[?]: bits = 200`400`4a0`500`200
     char[B]: bits = 420`7e0`4a0`4a0`5a0`240
     char[C]: bits = 3c0`420`420`420`440`280
@@ -154,11 +155,6 @@ charset[ega]:
     char[z]: bits = 64`00`4c`00`54`00`64`00`4c
 end
 
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
-
 script[cp]:
     code = [[[$(CRLF)
         cpactive = "";
@@ -211,14 +207,18 @@ script[cp]:
 
         func cpauto(coords)
         {
+          mouse_force_relative_zero(true);
           input_lockout(true);
           sleep(2000);
-          echo("Moving mouse to X: " + strword(0, coords) + "   Y: " + strword(1, coords));
-          mouse_move_abs(strword(0, coords), strword(1, coords));
+          x = strword(0, coords);
+          y = strword(1, coords);
+          echo("Moving mouse to X: " + 2*x + "   Y: " + y);
+          mouse_move_abs(2*x, y);
           sleep(1000);
           mouse_click(0);
           sleep(500);
           input_lockout(false);
+          mouse_force_relative_zero(false);
         }
     ]]]
 end
