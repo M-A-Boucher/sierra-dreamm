@@ -82,9 +82,10 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
 
-script[mouse]:
-    code = mouse_force_relative_zero(true)
-end
+//
+// copy protection script
+//
+$(include cp-tim1+.inc)
 
 //
 // v1.11, CD
