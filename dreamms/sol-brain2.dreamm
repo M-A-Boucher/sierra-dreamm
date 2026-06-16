@@ -112,10 +112,10 @@ end
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
+//
+// copy protection script
+//
+$(include cp-brain2.inc)
 
 fragment[v1.0-base]:
     file[]: crc = 04f44ebd; size =       536; name = 185.HEP
