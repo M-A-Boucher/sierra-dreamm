@@ -44,9 +44,10 @@ end
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
-script[mouse]:
-    code = mouse_force_relative_zero(true)
-end
+//
+// copy protection script
+//
+$(include cp-tim1.inc)
 
 //
 // v1.0, 1x1.44M
