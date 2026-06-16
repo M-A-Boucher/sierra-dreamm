@@ -36,21 +36,26 @@ end
 
 script[cp]:
     code = [[[$(CRLF)
+        cpactive = "";
+
         func update()
         {
           if (!script_running(cpscript))
           {
-            cpactive = scraper_match("BTAEzsArN", "$$(FINGERPRINTS)", MF_MOUSE);
+            match = scraper_match("BTAEzsArN", "$$(FINGERPRINTS)", MF_MOUSE);
 
-            if (cpactive)
+            if (match != cpactive)
             {
-                if (!prop("noautocp"))
-                  cpscript = script_run_async("cpauto", strmap(cpactive, "$$(MOUSEMOVE_COORDS)"));
+              cpactive = match;
 
-                if (!prop("notextcp"))
-                  overlay_show("cpoverlay", 1, strmap(cpactive, "$$(HINTS)"));
+              if (!prop("noautocp"))
+                cpscript = script_run_async("cpauto", strmap(match, "$$(MOUSEMOVE_COORDS)"));
+
+              if (!prop("notextcp"))
+                overlay_show("cpoverlay", 1, strmap(match, "$$(HINTS)"));
             }
-            else
+
+            if (match == "")
             {
               cpactive = "";
               overlay_hide("cpoverlay");
@@ -61,24 +66,25 @@ script[cp]:
         func cpauto(coords)
         {
           pos = 0;
-          echo(coords);
-
+          mouse_force_relative_zero(true);
           input_lockout(true);
           sleep(2000);
-          mouse_move_abs(65, 5);  // Move to actionbar
+          mouse_move_abs(2*65, 5);  // Move to actionbar
           sleep(250);
-          mouse_move_abs(65, 20); mouse_click(0); // Pick Hand icon
+          mouse_move_abs(2*65, 20); mouse_click(0); // Pick Hand icon
 
           for (i = 0; i<6; i++) 
           {
              coord = strmap(pos++, "=;"+coords);
              if (coord == "") break;
              sleep(750);
-             mouse_move_abs(strword(0, coord), strword(1, coord)); mouse_click(0);
+             mouse_move_abs(2*strword(0, coord), strword(1, coord)); mouse_click(0);
           }
-
+         
+          cpactive = "";
           sleep(500);
           input_lockout(false);
+          mouse_force_relative_zero(false);
         }
     ]]]
 end
