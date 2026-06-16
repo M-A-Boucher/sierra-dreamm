@@ -162,7 +162,7 @@ CPANSWERS = [[[|
     Whowasbannedfrom"SaturdayNightLive"becausehelostatelephonepoll?=d
     Thephrase"Cuttingthecheese"refersto=d
 ]]]
- nothrottle = 10
+
 script[cp]:
     code = [[[$(CRLF)
         last_question = "";
