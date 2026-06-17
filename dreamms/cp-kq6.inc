@@ -29,11 +29,6 @@ HINTS = [[[|
     5="Only those of the highest order may ASCEND the cliffs of logic."
 ]]]
 
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
-
 script[cp]:
     code = [[[$(CRLF)
         cpactive = "";
