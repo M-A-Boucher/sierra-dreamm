@@ -104,8 +104,7 @@ script[cp]:
 
             if (match_ega || match_cga || match_com)
             {
-              text = scraper_string("PaNHs9zKPaNKP9zMzaNMz9zPXaNPX9zR7aNR79zUfaNUf9zXDaNXD9zZmaNZm9zcKaNcK9zeua
-   eu9zhSaNhS9zj2aNj29zmaaNma9zo9aNo99zrhaNrh9zuF", "8x8", 0, $$(COMPOSITE));
+              text = scraper_string("PaNHs9zKPaNKP9zMzaNMz9zPXaNPX9zR7aNR79zUfaNUf9zXDaNXD9zZmaNZm9zcKaNcK9zeuaeu9zhSaNhS9zj2aNj29zmaaNma9zo9aNo99zrhaNrh9zuF", "8x8", 0, $$(COMPOSITE));
               pre = substr(text, 1, 15);
 
               if (pre != "Heycityslicker!")
