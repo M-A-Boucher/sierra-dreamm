@@ -88,7 +88,7 @@ dynamicfile[]:
     path = $(rootpath)/RESOURCE.CFG
     contents = [[[$(CRLF)
         videoDrv  = $(VIDEO_DRIVER)
-        soundDrv  = (SOUND_DRIVER)
+        soundDrv  = $(SOUND_DRIVER)
         audioDrv  = $(AUDIO_DRIVER)
         joyDrv    = JOYSTICK.DRV
         kbdDrv    = IBMKBD.DRV
