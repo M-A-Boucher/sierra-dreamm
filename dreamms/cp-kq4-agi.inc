@@ -5,7 +5,6 @@ $(include cp-kq4-answers.inc)
 script[cp]:
     code = [[[$(CRLF)
         mode = prop("composite") ? prop("composite") : prop("videohw");
-        mode = prop("machine") == "tandy" ? prop("machine") : mode;
 
         cpactive = "";
 
@@ -15,16 +14,14 @@ script[cp]:
           {
             if (mode == "hercules")
               str = scraper_string("BAAPR@@R2", "herc", 0);
-            else if (mode == "oldcga")
-              str = scraper_string("BIAPX2AR7", "8x8", 0, SF_HALFWIDTH);
             else
-              str = scraper_string("BIAPX2AR7", "8x8", 0);
+              str = scraper_string("BIAPX2AR7", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
 
             if (str == "Inordertoverifyyourlegal")
             {
               if (mode == "hercules")
                 question = scraper_string("FAAeu@@hSAAhS@@j3AAj3@@mcAAmc@@pBAApB@@rm", "herc", 0);
-              else // Every other mode with a check on composite
+              else
                 question = scraper_string("IAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wpAAwp@@zN", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
 
               answer = strmap(question, "$$(CPANSWERS)");

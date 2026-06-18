@@ -5,7 +5,6 @@ $(include font-hercules.inc)
 script[cp]:
     code = [[[$(CRLF)
         mode = prop("composite") ? prop("composite") : prop("videohw");
-        mode = prop("machine") == "tandy" ? prop("machine") : mode;
 
         last_question = "";
 
@@ -17,7 +16,6 @@ script[cp]:
               str = scraper_string("BAA7C@@9n", "herc", 0x1);
             else
               str = scraper_string("BAA64@@9c", "8x8", [0x3,0xF], mode == "oldcga" ? SF_HALFWIDTH : 0);
-
 
             if (str == "Pleaseanswera,b,c,ord:")
             {
