@@ -1,4 +1,5 @@
-COMPOSITE = 0
+$(include font-hercules.inc)
+
 CPANSWERS = [[[|
     =
     Onpage2,whatisthefourthwordofthefirstsentence?=legend
@@ -83,21 +84,32 @@ CPANSWERS = [[[|
 
 script[cp]:
     code = [[[$(CRLF)
-        last_question = "";
+        mode = prop("composite") ? prop("composite") : prop("videohw");
+        mode = prop("machine") == "tandy" ? prop("machine") : mode;
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            // see if it's looking for an answer
-            str = scraper_string("BIAPX2AR7", "8x8", 0, $(COMPOSITE));
+            if (mode == "hercules")
+              str = scraper_string("BAAPR@@R2", "herc", 0);
+            else if (mode == "oldcga")
+              str = scraper_string("BIAPX2AR7", "8x8", 0, SF_HALFWIDTH);
+            else
+              str = scraper_string("BIAPX2AR7", "8x8", 0);
+
             if (str == "Inordertoverifyyourlegal")
             {
-              // scrape the question
-              question = scraper_string("EHNeu3NhSHNhS3Nj2HNj23NmaHNma3No9", "8x8", 0, $(COMPOSITE));
+              if (mode == "hercules")
+                question = scraper_string("EAAeu@@hSAAhS@@j3AAj3@@mcAAmc@@pB", "herc", 0);
+              else if (mode == "oldcga")
+                question = scraper_string("EHNeu3NhSHNhS3Nj2HNj23NmaHNma3No9", "8x8", 0, SF_HALFWIDTH);
+              else
+                question = scraper_string("EHNeu3NhSHNhS3Nj2HNj23NmaHNma3No9", "8x8", 0);
+echo(question);
               answer = strmap(question, "$$(CPANSWERS)");
 
-              if (question != last_question && answer != "")
+              if (answer != "")
               {
                 echo("Question: " + question);
                 echo("Answer: " + answer);
