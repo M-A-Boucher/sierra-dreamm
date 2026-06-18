@@ -1,21 +1,39 @@
 $(include cp-lsl1-answers.inc)
-
-COMPOSITE = 0
+$(include font-hercules.inc)
 
 script[cp]:
     code = [[[$(CRLF)
+        mode = prop("composite") ? prop("composite") : prop("videohw");
+        mode = prop("machine") == "tandy" ? prop("machine") : mode;
+
+        echo(mode);
+
         last_question = "";
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            str = scraper_string("BAA64@@9c", "8x8", [0x3,0xF], "$$(COMPOSITE)");
+            if (mode == "hercules")
+              str = scraper_string("BAA7C@@9n", "herc", 0x1);
+            else if (mode == "cga")
+              str = scraper_string("BAA64@@9c", "8x8", 0x3);
+            else if (mode == "oldcga")
+              str = scraper_string("BAA64@@9c", "8x8", 0x3, SF_HALFWIDTH);
+            else
+              str = scraper_string("BAA64@@9c", "8x8", 0xF);
+
+
             if (str == "Pleaseanswera,b,c,ord:")
             {
-              cpactive = true;
-
-              text = scraper_string("QAAHs@@KPAAKP@@MzAAMz@@PXAAPX@@R7AAR7@@UfAAUf@@XDAAXD@@ZmAAZm@@cKAAcK@@euAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wp", "8x8", 0, "$$(COMPOSITE)");
+              if (mode == "hercules")
+                text = scraper_string("IAAPR@@R2AAR2@@UaAAUa@@W@AAW@@@ZkAAZk@@cJAAcJ@@euAAeu@@hSAAhS@@j3", "herc", 0x0);
+              else if (mode == "oldcga")
+                text = scraper_string("QAAHs@@KPAAKP@@MzAAMz@@PXAAPX@@R7AAR7@@UfAAUf@@XDAAXD@@ZmAAZm@@cKAAcK@@euAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wp
+", "8x8", 0x0, SF_HALFWIDTH);
+              else
+                text = scraper_string("QAAHs@@KPAAKP@@MzAAMz@@PXAAPX@@R7AAR7@@UfAAUf@@XDAAXD@@ZmAAZm@@cKAAcK@@euAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wp
+", "8x8", 0x0);
 
               question = substr(text, 0, strstr(text, "a."));
               answer = strmap(question, "$$(CPANSWERS)");
@@ -32,8 +50,12 @@ script[cp]:
 
                 if (!prop("notextcp"))
                   overlay_show("cpoverlay", 1, "The correct answer is: " + answer);
-              }      
+              }
             }
+            else
+            {
+              overlay_hide("cpoverlay");
+            }  
           }
         }
 
