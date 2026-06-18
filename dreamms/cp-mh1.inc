@@ -1,4 +1,5 @@
-COMPOSITE = 0
+$(include font-8x8.inc)
+
 CPANSWERS = [[[|
     =
     Onpage2,whatisthethirdwordinthefirstparagraph?=selected
@@ -16,6 +17,7 @@ CPANSWERS = [[[|
     Onpage4,whatistheeighthwordinthefirstparagraph?=record
     Onpage4,whatisthetenthwordinthefirstparagraph?=pertinent
     Onpage4,whatisthesecondwordinthesecondparagraph?=human
+    Onpage4,whatisthesecondwordinthethirdparagraph?=function
     Onpage4,whatisthethirdwordinthesecondparagraph?=movement
     Onpage4,whatisthefifthwordinthesecondparagraph?=recorded
     Onpage4,whatistheeighthwordinthesecondparagraph?=Human
@@ -61,24 +63,30 @@ CPANSWERS = [[[|
 
 script[cp]:
     code = [[[$(CRLF)
-        last_question = "";
+        mode = prop("composite") ? prop("composite") : prop("videohw");
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            // see if it's looking for an answer
-            str = scraper_string("BONPXuNR7", "8x8", 0, $$(COMPOSITE));
+            if (mode == "hercules")
+              str = scraper_string("???", "herc", 0);
+            else // Every other mode with a check on composite
+              str = scraper_string("BONPXuNR7", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+
             if (str == "AttentionManhunter!")
             {
-              question = scraper_string("FAAma@@o9AAo9@@rhAArh@@uFAAuF@@wpAAwp@@zN", "8x8", 0, $$(COMPOSITE));
+              if (mode == "hercules")
+                question = scraper_string("???", "herc", 0);
+              else // Every other mode with a check on composite
+                question = scraper_string("DAAma@@o9AAo9@@rhAArh@@uF", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+
               answer = strmap(question, "$$(CPANSWERS)");
 
-              if (question != last_question && answer != "")
+              if (answer != "")
               {
                 echo("Question: " + question);
                 echo("Answer: " + answer);
-                last_question = question;
 
                 if (!prop("noautocp"))
                   cpscript = script_run_async("cpauto", answer+"\r");

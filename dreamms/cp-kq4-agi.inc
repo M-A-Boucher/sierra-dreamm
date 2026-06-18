@@ -1,3 +1,4 @@
+$(include font-8x8.inc)
 $(include font-hercules.inc)
 
 CPANSWERS = [[[|
@@ -45,7 +46,7 @@ CPANSWERS = [[[|
     Onpage7,whatistheninthwordofthethirdparagraph?=fear
     Onpage8,whatisthefirstwordofthefirstparagraph?=Time
     Onpage8,whatisthefifthwordinthefirstparagraph?=changes
-    Onpage8,whatisthelastwordofthefirstsentenceinthefirstparagraph?=sorrow
+    Onpage8,whatisthelastwordofthefirstsentenceinthefirstparagraph?=sorrow // sadly never matches
     Onpage8,whatisthesecondwordinthethirdparagraph?=entire
     Onpage8,whatisthesixthwordinthethirdparagraph?=rescue
     Onpage8,whatistheninthwordinthethirdparagraph?=downfall
@@ -53,12 +54,13 @@ CPANSWERS = [[[|
     Onpage9,whatisthefourthwordinthefirstparagraph?=shortly
     Onpage9,whatistheseventhwordinthefirstparagraph?=rescue
     Onpage9,whatistheseventhwordinthesecondparagraph?=noblest
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefirstwordoftip#1(HOWTOMOVEAROUND)?=Basic
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthesixthwordoftip#1(HOWTOMOVEAROUND)?=interact
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthelastwordoftip#1(HOWTOMOVEAROUND)?=manual
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefifthwordinthefirstparagraphoftip#2(STAYOUT=nature
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatistheeighthwordinthefirstparagraphoftip#2(STAYOUT=adventure
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefourthwordinthesecondparagraphoftip#2(STAYOUT=encounter
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatistheeighthwordinthesecondparagraphoftip#2(STAYOUT=character
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefifthwordinthefirstparagraphoftip#2(STAYOUTOFDANGER)?=nature
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatistheeighthwordinthefirstparagraphoftip#2(STAYOUTOFDANGER)?=adventure
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefourthwordinthesecondparagraphoftip#2(STAYOUTOFDANGER)?=encounter
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatistheeighthwordinthesecondparagraphoftip#2(STAYOUTOFDANGER)?=character
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefirstwordoftip#3(BEOBSERVANT)?=Look
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefourthwordoftip#3(BEOBSERVANT)?=examine
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthelastwordoftip#3(BEOBSERVANT)?=clues
@@ -71,10 +73,10 @@ CPANSWERS = [[[|
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatistheninthwordoftip#5(BRINGALONGSOMEHELP)?=night
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthelastwordoftip#5(BRINGALONGSOMEHELP)?=teams
     InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthelastwordoftip#7(LEAVENOSTONEUNTURNED)?=function
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefourthwordinthefirstparagraphoftip#8(ATTHE=every
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthesixthwordinthefirstparagraphoftip#8(ATTHE=trick
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthethirdwordinthesecondparagraphoftip#8(ATTHE=reason
-    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthelastwordinthefirstparagraphoftip#8(ATTHE=spell
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthefourthwordinthefirstparagraphoftip#8(ATTHEENDOFYOURROPE)?=every
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthesixthwordinthefirstparagraphoftip#8(ATTHEENDOFYOURROPE)?=trick
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthethirdwordinthesecondparagraphoftip#8(ATTHEENDOFYOURROPE)?=reason
+    InthesectionTIPSFORNEWADVENTUREPLAYERS,whatisthelastwordinthefirstparagraphoftip#8(ATTHEENDOFYOURROPE)?=spell
     WhatisthesecondwordofthefirstparagraphintheOVERVIEW?=Sierra
     WhatisthesixthwordofthefirstparagraphintheOVERVIEW?=simply
     WhatisthefirstwordofthesecondparagraphintheOVERVIEW?=Each
@@ -86,6 +88,8 @@ script[cp]:
     code = [[[$(CRLF)
         mode = prop("composite") ? prop("composite") : prop("videohw");
         mode = prop("machine") == "tandy" ? prop("machine") : mode;
+
+        cpactive = "";
 
         func update()
         {
@@ -101,19 +105,19 @@ script[cp]:
             if (str == "Inordertoverifyyourlegal")
             {
               if (mode == "hercules")
-                question = scraper_string("EAAeu@@hSAAhS@@j3AAj3@@mcAAmc@@pB", "herc", 0);
-              else if (mode == "oldcga")
-                question = scraper_string("EHNeu3NhSHNhS3Nj2HNj23NmaHNma3No9", "8x8", 0, SF_HALFWIDTH);
-              else
-                question = scraper_string("EHNeu3NhSHNhS3Nj2HNj23NmaHNma3No9", "8x8", 0);
+                question = scraper_string("FAAeu@@hSAAhS@@j3AAj3@@mcAAmc@@pBAApB@@rm", "herc", 0);
+              else // Every other mode with a check on composite
+                question = scraper_string("IAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wpAAwp@@zN", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
 echo(question);
+
               answer = strmap(question, "$$(CPANSWERS)");
 
-              if (answer != "")
+              if (answer != "" && cpactive == "")
               {
+                cpactive = answer;
+
                 echo("Question: " + question);
                 echo("Answer: " + answer);
-                last_question = question;
 
                 if (!prop("noautocp"))
                   cpscript = script_run_async("cpauto", answer+"\r");
@@ -124,6 +128,7 @@ echo(question);
             }
             else
             {
+              cpactive = "";
               overlay_hide("cpoverlay");
             }
           }

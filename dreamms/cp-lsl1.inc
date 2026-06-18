@@ -6,8 +6,6 @@ script[cp]:
         mode = prop("composite") ? prop("composite") : prop("videohw");
         mode = prop("machine") == "tandy" ? prop("machine") : mode;
 
-        echo(mode);
-
         last_question = "";
 
         func update()

@@ -32,14 +32,13 @@ config[graphics]:
     end
     option[cga]:       
         name = $(CGA_NAME)
-        videohw = cga; composite = no
+        videohw = cga
         OPTION = -r
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[cga-composite]:       
         name = CGA (Composite)
         videohw = cga; composite = oldcga
-        COMPOSITE = 1
         condition = file_exists("$$(rootpath)\\CGA_GRAF.OVL")
     end
     option[ega]:

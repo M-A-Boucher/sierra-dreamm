@@ -1,4 +1,6 @@
-COMPOSITE = 0
+$(include font-8x8.inc)
+$(include font-gr-hercules.inc)
+
 CPANSWERS = [[[|
     =
     LelandStanfordmadeafortuneinaminingventurewhenhesoldhisinterestinthismine.=Lincoln
@@ -74,7 +76,7 @@ CPANSWERS = [[[|
     HerbertHoover,whospentsometimeinNevadaCity,earnedhisdegreeatthisuniversity.=Stanford
     WhatisthefirstwordinthenameoftheoldestbuildinginMurphystoday?=Travers
     TravelerstakingtherouteacrosstheIsthmusofPanamadisembarkedatthemouthofthisriver.=Chagres
-    The"ShannonKnoxHouse"istheoldestbuildinginGeorgetown.Itwasbuiltfrommaterialstransportedaround=lumber
+    The"ShannonKnoxHouse"istheoldestbuildinginGeorgetown.ItwasbuiltfrommaterialstransportedaroundCapeHorn.=lumber
     In1851aFrenchmannamedBanquebuiltthefirststore.(fillintheblank)=brick
     Asteadydietofsaltyprovisionssometimescausedthisdisease.=scurvy
     GeorgeLegercametoMokelumneHillin1851.Wheredidhecomefrom?=Germany
@@ -89,22 +91,31 @@ CPANSWERS = [[[|
     Atypicalminerjustmightbakesomeoftheseforbreakfast.=pancakes
 ]]]
 
+FINGERPRINTS = [[[,
+    TYFoqe0n8Lf1BWFH483H#5z1G0qRn5JgfciMbq0GJ#M6V1z5YTslNQ // CGA
+    WCwx#ef24Vn1hem208UGbjz1rncjP5creZ6Mp1YY1#6FwHb5fKytld // EGA, VGA, Tandy
+    w@tSaeT4LTz1B6LPE8KaPyb1oTbGP5FNBeGMCsud9#RcPd@56GtFBS // OLDCGA
+]]]
+
 script[cp]:
     code = [[[$(CRLF)
-        last_question = "";
+        mode = prop("composite") ? prop("composite") : prop("videohw");
 
         func update()
         {
           if (!script_running(cpscript))
           {
             // Match on 'Trivia'
-            match_cga = scraper_match("BFNXDUAZ7", "TYFoqe0n8Lf1BWFH483H#5z1G0qRn5JgfciMbq0GJ#M6V1z5YTslNQ", 1);
-            match_ega = scraper_match("BFNXDUAZ7", "WCwx#ef24Vn1hem208UGbjz1rncjP5creZ6Mp1YY1#6FwHb5fKytld", 1);
-            match_com = scraper_match("BFAXDT6Z7", "x3uOmeitAGH1helsU8DOvKX1wzwtz52JpVKMfqm#t#Bimpv59jGPZT", 1);
+            match = scraper_match("BFNXDUAZ7", "$$(FINGERPRINTS)", 1);
+            match_hgc = scraper_match("BILYSVVar", "FfTF#eaoEej1EjBx48Pi0t@13KAWv5tQQ5mM28v3h#aEEHv5G5G81S", 1);
 
-            if (match_ega || match_cga || match_com)
+            if (match || match_hgc)
             {
-              text = scraper_string("PaNHs9zKPaNKP9zMzaNMz9zPXaNPX9zR7aNR79zUfaNUf9zXDaNXD9zZmaNZm9zcKaNcK9zeuaeu9zhSaNhS9zj2aNj29zmaaNma9zo9aNo99zrhaNrh9zuF", "8x8", 0, "$$(COMPOSITE)");
+              if (mode == "hercules")
+                text = scraper_string("RAAI1@@LCAALC@@NPAANP@@PdAAPd@@RqAARq@@T3AAT3@@WEAAWE@@YSAAYS@@afAAaf@@csAAcs@@e5AAe5@@hHAAhH@@jUAAjU@@lhAAlh@@nuAAnu@@p8AAp8@@sJAAsJ@@uW", "hercules", 0);
+              else // Every other mode with a check on composite
+                text = scraper_string("QAAHs@@KPAAKP@@MzAAMz@@PXAAPX@@R7AAR7@@UfAAUf@@XDAAXD@@ZmAAZm@@cKAAcK@@euAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wp", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+
               pre = substr(text, 1, 15);
 
               if (pre != "Heycityslicker!")
@@ -112,11 +123,10 @@ script[cp]:
                 question = substr(text, 0, strstr(text, "Here'sahintforya!"));
                 answer = strmap(question, "$$(CPANSWERS)");
 
-                if (question != last_question && answer != "")
+                if (answer != "")
                 {
                   echo("Question: " + question);
                   echo("Answer: " + answer);
-                  last_question = question;
 
                   if (!prop("noautocp"))
                     cpscript = script_run_async("cpauto", answer+"\r");
