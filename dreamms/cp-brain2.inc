@@ -75,8 +75,7 @@ script[cp]:
         {
           if (!script_running(cpscript))
           {
-            if ("$$(VIDEO_DRIVER)" == "EGA640.DRV") glyph = scraper_string("BAAEK@@Hs", "ega", 0x4);
-            else glyph = scraper_string("BAAEK@@Hs", "vga", 0x10);
+            glyph = scraper_string("BAAEK@@Hs", prop("videohw"), [0x4,0x10]);
 
             if (glyph != "")
             {
@@ -111,7 +110,6 @@ script[cp]:
           x = strword(0, coords);
           y = strword(1, coords);
           echo("Moving horizontal slide rule to: " + x);
-          
           mouse_move_abs(mouse_pos_abs()[0], y-10); mouse_click(0); // -10 to take into account the slide rule thickness
           sleep(1000);
           echo("Moving vertical slide rule to: " + y);
