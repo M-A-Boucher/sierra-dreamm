@@ -1,4 +1,4 @@
-$(include font-8x8.inc)
+$(include font-hercules.inc)
 
 CPANSWERS = [[[|
     =
@@ -63,23 +63,21 @@ CPANSWERS = [[[|
 
 script[cp]:
     code = [[[$(CRLF)
-        mode = prop("composite") ? prop("composite") : prop("videohw");
-
         func update()
         {
           if (!script_running(cpscript))
           {
-            if (mode == "hercules")
-              str = scraper_string("???", "herc", 0);
-            else // Every other mode with a check on composite
-              str = scraper_string("BONPXuNR7", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+            if (is_hercules())
+              str = scraper_string("BONPXuNR7", "herc", 0);
+            else
+              str = scraper_string("BONPXuNR7", "8x8[21-7A]", 0, is_composite() ? SF_HALFWIDTH : 0);
 
             if (str == "AttentionManhunter!")
             {
-              if (mode == "hercules")
-                question = scraper_string("???", "herc", 0);
-              else // Every other mode with a check on composite
-                question = scraper_string("DAAma@@o9AAo9@@rhAArh@@uF", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+              if (is_hercules())
+                question = scraper_string("DAAma@@o9AAo9@@rhAArh@@uF", "herc", 0);
+              else
+                question = scraper_string("DAAma@@o9AAo9@@rhAArh@@uF", "8x8[21-7A]", 0, is_composite() ? SF_HALFWIDTH : 0);
 
               answer = strmap(question, "$$(CPANSWERS)");
 

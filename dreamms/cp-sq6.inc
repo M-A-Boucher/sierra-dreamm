@@ -3,7 +3,6 @@ nothrottle=25
 script[cp]:
     code = [[[$(CRLF)
         DO_IT = "0=233 45 TT(pick);1=540 45 TT(drop);2=233 100 PS(pick);3=540 100 PS(drop);4=233 155 SE(pick);5=540 155 SE(drop);6=233 210 RF(pick);7=540 210 RF(drop);8=233, 265 FC(pick);9=540, 265 FC(drop);10=520, 45 TT(pick);11=255, 45 TT(drop);12=540, 100 REP(pick);13=600, 100 REP(drop);14=540, 155 FER(pick);15=600, 155 FER(drop);16=540, 155 DIM(pick);17=520, 155;18=255, 155;19=540, 210;20=410, 45;21=385, 100;22=315, 155;23=365, 210;24=340, 265;25=465, 295 CLOSE;26=460, 25 POWER";
-                  mouse_force_relative_zero(true);
 
         func update()
         {
@@ -36,10 +35,6 @@ script[cp]:
             }
           }
         }
-
-
-
-
 
         func cpauto(coords)
         {

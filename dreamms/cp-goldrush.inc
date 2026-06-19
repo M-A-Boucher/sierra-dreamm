@@ -1,4 +1,3 @@
-$(include font-8x8.inc)
 $(include font-gr-hercules.inc)
 
 CPANSWERS = [[[|
@@ -92,15 +91,13 @@ CPANSWERS = [[[|
 ]]]
 
 FINGERPRINTS = [[[,
+    w@tSaeT4LTz1B6LPE8KaPyb1oTbGP5FNBeGMCsud9#RcPd@56GtFBS // Composite CGA
     TYFoqe0n8Lf1BWFH483H#5z1G0qRn5JgfciMbq0GJ#M6V1z5YTslNQ // CGA
     WCwx#ef24Vn1hem208UGbjz1rncjP5creZ6Mp1YY1#6FwHb5fKytld // EGA, VGA, Tandy
-    w@tSaeT4LTz1B6LPE8KaPyb1oTbGP5FNBeGMCsud9#RcPd@56GtFBS // OLDCGA
 ]]]
 
 script[cp]:
     code = [[[$(CRLF)
-        mode = prop("composite") ? prop("composite") : prop("videohw");
-
         func update()
         {
           if (!script_running(cpscript))
@@ -111,10 +108,10 @@ script[cp]:
 
             if (match || match_hgc)
             {
-              if (mode == "hercules")
+              if (is_hercules())
                 text = scraper_string("RAAI1@@LCAALC@@NPAANP@@PdAAPd@@RqAARq@@T3AAT3@@WEAAWE@@YSAAYS@@afAAaf@@csAAcs@@e5AAe5@@hHAAhH@@jUAAjU@@lhAAlh@@nuAAnu@@p8AAp8@@sJAAsJ@@uW", "hercules", 0);
-              else // Every other mode with a check on composite
-                text = scraper_string("QAAHs@@KPAAKP@@MzAAMz@@PXAAPX@@R7AAR7@@UfAAUf@@XDAAXD@@ZmAAZm@@cKAAcK@@euAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wp", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+              else
+                text = scraper_string("QAAHs@@KPAAKP@@MzAAMz@@PXAAPX@@R7AAR7@@UfAAUf@@XDAAXD@@ZmAAZm@@cKAAcK@@euAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wp", "8x8[21-7A]", 0, is_composite() ? SF_HALFWIDTH : 0);
 
               pre = substr(text, 1, 15);
 

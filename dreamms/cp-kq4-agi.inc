@@ -1,28 +1,25 @@
-$(include font-8x8.inc)
 $(include font-hercules.inc)
 $(include cp-kq4-answers.inc)
 
 script[cp]:
     code = [[[$(CRLF)
-        mode = prop("composite") ? prop("composite") : prop("videohw");
-
         cpactive = "";
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            if (mode == "hercules")
+            if (is_hercules())
               str = scraper_string("BAAPR@@R2", "herc", 0);
             else
-              str = scraper_string("BIAPX2AR7", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+              str = scraper_string("BIAPX2AR7", "8x8[21-7A]", 0, is_composite() ? SF_HALFWIDTH : 0);
 
             if (str == "Inordertoverifyyourlegal")
             {
-              if (mode == "hercules")
+              if (is_hercules())
                 question = scraper_string("FAAeu@@hSAAhS@@j3AAj3@@mcAAmc@@pBAApB@@rm", "herc", 0);
               else
-                question = scraper_string("IAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wpAAwp@@zN", "8x8", 0, mode == "oldcga" ? SF_HALFWIDTH : 0);
+                question = scraper_string("IAAeu@@hSAAhS@@j2AAj2@@maAAma@@o9AAo9@@rhAArh@@uFAAuF@@wpAAwp@@zN", "8x8[21-7A]", 0, is_composite() ? SF_HALFWIDTH : 0);
 
               answer = strmap(question, "$$(CPANSWERS)");
 
