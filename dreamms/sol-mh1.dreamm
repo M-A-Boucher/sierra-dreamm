@@ -25,11 +25,6 @@ config[graphics]:
         videohw = cga; machine = tandy; priority = 1
         condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
     end
-    option[hercules]:  
-        name = $(HERCULES_NAME)
-        videohw = hercules
-        condition = file_exists("$$(rootpath)\\HGC_GRAF.OVL")
-    end
     option[cga]:       
         name = $(CGA_NAME)
         videohw = cga
@@ -74,9 +69,6 @@ game[v1.22-int-3.002.102-2x720k]:
     file[]: crc = 31b45b19; size =      8080; name = AGIDATA.OVL
     file[]: crc = 3e704f41; size =       684; name = CGA_GRAF.OVL
     file[]: crc = dcbcf113; size =       591; name = EGA_GRAF.OVL
-    file[]: crc = 39599e49; size =      3072; name = HGC_FONT
-    file[]: crc = f84e2cd6; size =      1445; name = HGC_GRAF.OVL
-    file[]: crc = 17ff101e; size =       599; name = HGC_OBJS.OVL
     file[]: crc = a43d0869; size =       341; name = IBM_OBJS.OVL
     file[]: crc = c24a735d; size =       465; name = JR_GRAF.OVL
     file[]: crc = 6a97bebf; size =      2141; name = MHDIR
@@ -96,7 +88,6 @@ game[v1.22-int-3.002.102-5x360k]:
     name = v1.22, Int. 3.002.102, 5x360K
     imports = v1.22-int-3.002.102-2x720k
     anchorfile = MHVOL.12
-    file[]: remove = HGC_FONT
     file[]: crc = 757d0fa4; size =      2123; name = MHDIR
     file[]: crc = 95858b68; size =    115078; name = MHVOL.0
     file[]: crc = fc6ef230; size =    144059; name = MHVOL.1
@@ -121,8 +112,6 @@ game[v1.22-int-3.002.107-2x720k]:
     file[]: crc = a6f8388c; size =      8080; name = AGIDATA.OVL
     file[]: crc = a3a2db04; size =       684; name = CGA_GRAF.OVL
     file[]: crc = e7f12eb7; size =       591; name = EGA_GRAF.OVL
-    file[]: crc = 71ef2aa7; size =      1445; name = HGC_GRAF.OVL
-    file[]: crc = 246c130f; size =       599; name = HGC_OBJS.OVL
     file[]: crc = 0d24e11c; size =       341; name = IBM_OBJS.OVL
     file[]: crc = 25f29f67; size =       465; name = JR_GRAF.OVL
     file[]: crc = 88c0354c; size =      2141; name = MHDIR
@@ -138,7 +127,6 @@ game[v1.22-int-3.002.107-5x360k]:
     name = v1.22, Int. 3.002.107, 5x360K
     imports = v1.22-int-3.002.107-2x720k
     anchorfile = MHVOL.12
-    file[]: remove = HGC_FONT
     file[]: crc = 757d0fa4; size =      2123; name = MHDIR
     file[]: crc = 95858b68; size =    115078; name = MHVOL.0
     file[]: crc = fc6ef230; size =    144059; name = MHVOL.1
