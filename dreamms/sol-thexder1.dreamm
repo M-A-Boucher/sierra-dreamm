@@ -172,7 +172,7 @@ game[1987-1x720k]:
     file[]: crc = fa9e8db7; size =      2892; name = THEXDER.COM
     file[]: crc = 2f3a9c2c; size =     32768; name = TITLE.BIN
     file[]: crc = a8d9c12e; size =      4096; name = TNCHRS.BIN
-    file[]: crc = 84E5184E; size =     12514; name = FTRACK06SIDE0.~RAW~; exactonly = true
+    file[]: crc = 84E5184E;                   name = FTRACK06SIDE0.~RAW~; exactonly = true
 end
 
 //

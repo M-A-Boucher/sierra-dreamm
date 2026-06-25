@@ -44,46 +44,46 @@ mount[]: vpath = A:\;         srcpath = $(ifsdeltapath); writable = true
 game[1x160k]:
     name = 1x160K, Booter
     anchorfile = FTRACK06SIDE0.~RAW~
-    file[]: crc = E2C9FEED; size =     12514; name = FTRACK00SIDE0.~RAW~; exactonly = true
-    file[]: crc = FDEFB7B6; size =     12514; name = FTRACK01SIDE0.~RAW~
-    file[]: crc = 44097033; size =     12514; name = FTRACK02SIDE0.~RAW~
-    file[]: crc = 0C71E291; size =     12514; name = FTRACK03SIDE0.~RAW~
-    file[]: crc = 168664F5; size =     12514; name = FTRACK04SIDE0.~RAW~
-    file[]: crc = A7B159C4; size =     12514; name = FTRACK05SIDE0.~RAW~
-    file[]: crc = 330B5369; size =     12514; name = FTRACK06SIDE0.~RAW~
-    file[]: crc = 31DDAA60; size =     12514; name = FTRACK07SIDE0.~RAW~
-    file[]: crc = 7D4A779C; size =     12514; name = FTRACK08SIDE0.~RAW~
-    file[]: crc = B2434E9D; size =     12514; name = FTRACK09SIDE0.~RAW~
-    file[]: crc = 8374BB16; size =     12514; name = FTRACK10SIDE0.~RAW~
-    file[]: crc = AC5D58CC; size =     12514; name = FTRACK11SIDE0.~RAW~
-    file[]: crc = 514C2F47; size =     12514; name = FTRACK12SIDE0.~RAW~
-    file[]: crc = 0FA03445; size =     12514; name = FTRACK13SIDE0.~RAW~
-    file[]: crc = 01A5A1C4; size =     12514; name = FTRACK14SIDE0.~RAW~
-    file[]: crc = 0C7DAD99; size =     12514; name = FTRACK15SIDE0.~RAW~
-    file[]: crc = 3CC6A1EE; size =     12514; name = FTRACK16SIDE0.~RAW~
-    file[]: crc = 2B71FDAE; size =     12514; name = FTRACK17SIDE0.~RAW~
-    file[]: crc = 0F61B084; size =     12514; name = FTRACK18SIDE0.~RAW~
-    file[]: crc = A87841B4; size =     12514; name = FTRACK19SIDE0.~RAW~
-    file[]: crc = 6A3D0B0F; size =     12514; name = FTRACK20SIDE0.~RAW~
-    file[]: crc = 1A6CAD02; size =     12514; name = FTRACK21SIDE0.~RAW~
-    file[]: crc = 1179C58E; size =     12514; name = FTRACK22SIDE0.~RAW~
-    file[]: crc = 479CCA88; size =     12514; name = FTRACK23SIDE0.~RAW~
-    file[]: crc = 6F3A62FD; size =     12514; name = FTRACK24SIDE0.~RAW~
-    file[]: crc = 931907C4; size =     12514; name = FTRACK25SIDE0.~RAW~
-    file[]: crc = B19FA108; size =     12514; name = FTRACK26SIDE0.~RAW~
-    file[]: crc = 6FF33253; size =     12514; name = FTRACK27SIDE0.~RAW~
-    file[]: crc = F92BA43E; size =     12514; name = FTRACK28SIDE0.~RAW~
-    file[]: crc = 03099470; size =     12514; name = FTRACK29SIDE0.~RAW~
-    file[]: crc = 3F1D9E8E; size =     12514; name = FTRACK30SIDE0.~RAW~
-    file[]: crc = D031F690; size =     12514; name = FTRACK31SIDE0.~RAW~
-    file[]: crc = 8144622A; size =     12514; name = FTRACK32SIDE0.~RAW~
-    file[]: crc = B892F85B; size =     12514; name = FTRACK33SIDE0.~RAW~
-    file[]: crc = 01B062A5; size =     12514; name = FTRACK34SIDE0.~RAW~
-    file[]: crc = EF4E9E97; size =     12514; name = FTRACK35SIDE0.~RAW~
-    file[]: crc = F9115CE1; size =     12514; name = FTRACK36SIDE0.~RAW~
-    file[]: crc = 4BB8F44B; size =     12514; name = FTRACK37SIDE0.~RAW~
-    file[]: crc = 83AA1BEB; size =     12514; name = FTRACK38SIDE0.~RAW~
-    file[]: crc = F7195C86; size =     12514; name = FTRACK39SIDE0.~RAW~
+    file[]: crc = E2C9FEED;                   name = FTRACK00SIDE0.~RAW~; exactonly = true
+    file[]: crc = FDEFB7B6;                   name = FTRACK01SIDE0.~RAW~
+    file[]: crc = 44097033;                   name = FTRACK02SIDE0.~RAW~
+    file[]: crc = 0C71E291;                   name = FTRACK03SIDE0.~RAW~
+    file[]: crc = 168664F5;                   name = FTRACK04SIDE0.~RAW~
+    file[]: crc = A7B159C4;                   name = FTRACK05SIDE0.~RAW~
+    file[]: crc = 330B5369;                   name = FTRACK06SIDE0.~RAW~
+    file[]: crc = 31DDAA60;                   name = FTRACK07SIDE0.~RAW~
+    file[]: crc = 7D4A779C;                   name = FTRACK08SIDE0.~RAW~
+    file[]: crc = B2434E9D;                   name = FTRACK09SIDE0.~RAW~
+    file[]: crc = 8374BB16;                   name = FTRACK10SIDE0.~RAW~
+    file[]: crc = AC5D58CC;                   name = FTRACK11SIDE0.~RAW~
+    file[]: crc = 514C2F47;                   name = FTRACK12SIDE0.~RAW~
+    file[]: crc = 0FA03445;                   name = FTRACK13SIDE0.~RAW~
+    file[]: crc = 01A5A1C4;                   name = FTRACK14SIDE0.~RAW~
+    file[]: crc = 0C7DAD99;                   name = FTRACK15SIDE0.~RAW~
+    file[]: crc = 3CC6A1EE;                   name = FTRACK16SIDE0.~RAW~
+    file[]: crc = 2B71FDAE;                   name = FTRACK17SIDE0.~RAW~
+    file[]: crc = 0F61B084;                   name = FTRACK18SIDE0.~RAW~
+    file[]: crc = A87841B4;                   name = FTRACK19SIDE0.~RAW~
+    file[]: crc = 6A3D0B0F;                   name = FTRACK20SIDE0.~RAW~
+    file[]: crc = 1A6CAD02;                   name = FTRACK21SIDE0.~RAW~
+    file[]: crc = 1179C58E;                   name = FTRACK22SIDE0.~RAW~
+    file[]: crc = 479CCA88;                   name = FTRACK23SIDE0.~RAW~
+    file[]: crc = 6F3A62FD;                   name = FTRACK24SIDE0.~RAW~
+    file[]: crc = 931907C4;                   name = FTRACK25SIDE0.~RAW~
+    file[]: crc = B19FA108;                   name = FTRACK26SIDE0.~RAW~
+    file[]: crc = 6FF33253;                   name = FTRACK27SIDE0.~RAW~
+    file[]: crc = F92BA43E;                   name = FTRACK28SIDE0.~RAW~
+    file[]: crc = 03099470;                   name = FTRACK29SIDE0.~RAW~
+    file[]: crc = 3F1D9E8E;                   name = FTRACK30SIDE0.~RAW~
+    file[]: crc = D031F690;                   name = FTRACK31SIDE0.~RAW~
+    file[]: crc = 8144622A;                   name = FTRACK32SIDE0.~RAW~
+    file[]: crc = B892F85B;                   name = FTRACK33SIDE0.~RAW~
+    file[]: crc = 01B062A5;                   name = FTRACK34SIDE0.~RAW~
+    file[]: crc = EF4E9E97;                   name = FTRACK35SIDE0.~RAW~
+    file[]: crc = F9115CE1;                   name = FTRACK36SIDE0.~RAW~
+    file[]: crc = 4BB8F44B;                   name = FTRACK37SIDE0.~RAW~
+    file[]: crc = 83AA1BEB;                   name = FTRACK38SIDE0.~RAW~
+    file[]: crc = F7195C86;                   name = FTRACK39SIDE0.~RAW~
 end
 
 end
