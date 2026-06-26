@@ -9,10 +9,12 @@ rootpath = C:\SIERRA\RAMADOS
 launch = $(rootpath)\sier.exe $(rootpath)\resource.cfg   
 osenv = dos
 fixdivover = true
-mips = $(MIPS_MAX)
+mips = 60
 audiohw = sb16
 ramkb = 16384
 videohw = svga
+REGION = ""
+CHARSET = ""
 
 //
 // file system
@@ -56,26 +58,26 @@ dynamicfile[]:
     ]]]
 end
 
-charset[ramafont]:
+charset[us]:
     height = 12
-    char[#]: bits = 19f`1ff`ff8`f9f`1ff`ff8`f98
     char[1]: bits = 180`300`600`fff`fff
     char[3]: bits = 20c`60e`c07`cc3`cc3`ce7`ffe`73c
-    char[C]: bits = 1f8`7fe`606`c03`c03`c03`c03`e07`70e`204
-    char[D]: bits = fff`fff`c03`c03`c03`c03`c03`606`7fe`1f8
 end
 
-//
-// auto disc swapping script
-//
+charset[it]:
+    height = 16
+    char[1]: bits = 0c00`1800`1800`3000`ffff`ffff
+    char[3]: bits = 3000`7006`e007`c003`c003`c183`c183`6183`3ffe`1c7c
+end
+
 script[discswap]:
     code = [[[$(CRLF)
         func update()
         {
           if (!script_running(swapscript))
           {    
-            disc = scraper_string("BAAYA@@Zm", "ramafont", 0xCA);
-            if (disc != "") swapscript = script_run_async("swapauto", substr(disc, -1));
+            disc = scraper_string("$$(REGION)", "$$(CHARSET)", 0xCA);
+            if (disc != "") swapscript = script_run_async("swapauto", disc);
           }
         }
 
@@ -90,61 +92,53 @@ script[discswap]:
 end
 
 //
-// English DOS version 1.000.000
+// Base files
 //
-game[sol-rama-english-dos]:
-    name = English, DOS
-    anchorfile = A02J0140.011
-    anchordepth = 2
-    file[]: crc = 3ce1ff14; size =     10730; name = BDWIN95.TXT
-    file[]: crc = a1a9a0e6; size =      4400; name = DACBLAST.DRV
+fragment[v1.000.000-base]:
     file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
     file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = 2d421d20; size =      1457; name = PROLOGUE.DAT
-    file[]: crc = e958b561; size =  41276376; name = RESOURCE.SFX
     file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL
     file[]: crc = bc5f8ce8; size =    900765; name = SIER.EXE
+    file[]: crc = 3c02c686; size =    572928; name = SIERW5.EXE
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
-    file[]: crc = 016abc05; size =        16; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
+end
+
+//
+// English DOS version 1.000.000
+//
+game[sol-rama-english-dos]:
+    name = English, DOS
+    REGION = BAAYA@@Zm
+    CHARSET = us
+    imports = v1.000.000-base
+    anchorfile = A02J0140.011
+    anchordepth = 2
+    file[]: crc = a1a9a0e6; size =      4400; name = DACBLAST.DRV
+    file[]: crc = 2d421d20; size =      1457; name = PROLOGUE.DAT
+    file[]: crc = e958b561; size =  41276376; name = RESOURCE.SFX
+    file[]: crc = 016abc05; size =        16; name = VERSION
     file[]: crc = 3ce1ff14; size =     10730; name = DISC1\BDWIN95.TXT
     file[]: crc = 067c1cbe; size =     26112; name = DISC1\CDCHECK.EXE
     file[]: crc = a1a9a0e6; size =      4400; name = DISC1\DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DISC1\DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DISC1\DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DISC1\DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DISC1\DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DISC1\DACTHUND.DRV
     file[]: crc = 8fd849a5; size =     17920; name = DISC1\DSSETUP.EXE
     file[]: crc = 70ee2184; size =      1981; name = DISC1\LANGUAGE.INF
-    file[]: crc = a21ad12c; size =     10427; name = DISC1\MIDNONE.DRV
     file[]: crc = 2d421d20; size =      1457; name = DISC1\PROLOGUE.DAT
-    file[]: crc = 7e40a9aa; size =       766; name = DISC1\RAMA.ICO
     file[]: crc = b0a34ce0; size =      8338; name = DISC1\RESMAP.001
     file[]: crc = e8a8d1c7; size =      8338; name = DISC1\RESMDT.001
-    file[]: crc = 56330ba1; size =       293; name = DISC1\RESOURCE.CFG
     file[]: crc = e958b561; size =  41276376; name = DISC1\RESOURCE.SFX
     file[]: crc = e79959f3; size =       528; name = DISC1\RESOURCE.WIN
     file[]: crc = b5ecc2d4; size =  70599164; name = DISC1\RESSCI.001
-    file[]: crc = 40f50f2f; size =    143642; name = DISC1\SCIDLL.DLL
-    file[]: crc = 64fac2ee; size =    141226; name = DISC1\SCIMIDI.DLL
     file[]: crc = d832d2a6; size =     32336; name = DISC1\SETUP.EXE
     file[]: crc = 3f8d4b43; size =    568257; name = DISC1\SETUP.SOL
-    file[]: crc = bc5f8ce8; size =    900765; name = DISC1\SIER.EXE
-    file[]: crc = 3517b3f0; size =    308302; name = DISC1\SIERRA.DIB
-    file[]: crc = 7969cc00; size =      8475; name = DISC1\SIERRA.ERR
     file[]: crc = 9b2b25d1; size =      5646; name = DISC1\SIERRA.INF
-    file[]: crc = 3c02c686; size =    572928; name = DISC1\SIERW5.EXE
     file[]: crc = 016abc05; size =        16; name = DISC1\VERSION
-    file[]: crc = d3c60945; size =        35; name = DISC1\VESA.DRV
     file[]: crc = efe4c9a2; size =        25; name = DISC1\VESADRV.BAT
-    file[]: crc = 56ba7168; size =     34173; name = DISC1\VESAINST.EXE
-    file[]: crc = fc9dee1d; size =      1079; name = DISC1\VGABIOS.ID
     file[]: crc = f5a4d226; size =     78478; name = DISC1\audio\A02J0140.011; exactonly = true
     file[]: crc = 11c7d978; size =     51790; name = DISC1\audio\A02J0240.021
     file[]: crc = 4dc824c8; size =     72654; name = DISC1\audio\A02J0340.001
@@ -434,14 +428,6 @@ game[sol-rama-english-dos]:
     file[]: crc = e06d373a; size =     57486; name = DISC1\audio\A05X1L40.001
     file[]: crc = 3451c98d; size =     54862; name = DISC1\audio\A05X1N40.001
     file[]: crc = 32547682; size =    110798; name = DISC1\audio\A05X1P40.001
-    file[]: crc = 6483375c; size =    308278; name = DISC1\billbrd\INSTALL1.BMP
-    file[]: crc = 2c27e504; size =    308278; name = DISC1\billbrd\INSTALL2.BMP
-    file[]: crc = fb105c93; size =    308278; name = DISC1\billbrd\INSTALL3.BMP
-    file[]: crc = dd73f0d1; size =    308278; name = DISC1\billbrd\INSTALL4.BMP
-    file[]: crc = fc17f8dd; size =    308278; name = DISC1\billbrd\INSTALL5.BMP
-    file[]: crc = 22453cc2; size =    308278; name = DISC1\billbrd\INSTALL6.BMP
-    file[]: crc = fa44eb60; size =    308026; name = DISC1\billbrd\INSTALL7.BMP
-    file[]: crc = 2457c09a; size =    308278; name = DISC1\billbrd\INSTALL8.BMP
     file[]: crc = e20e1adc; size =     38212; name = DISC1\patches\34060.V56
     file[]: crc = 37b22cb6; size =     12734; name = DISC1\patches\44.CSC
     file[]: crc = 46a57932; size =    483894; name = DISC1\robot\1000.RBT
@@ -1267,29 +1253,21 @@ game[sol-rama-english-dos]:
     file[]: crc = 41dc665a; size =   1499940; name = DISC3\vmd\7200.VMD
 end
 
-
 //
 // Italian DOS version 1.000.000
 //
 game[sol-rama-italian-dos]:
     name = Italian, DOS
+    REGION = BAAWr@@Yz
+    CHARSET = it
+    imports = v1.000.000-base
     anchorfile = A02J0140.011
     anchordepth = 2
     file[]: crc = 55d4d361; size =      4366; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = e14135a0; size =      1318; name = PROLOGUE.DAT
     file[]: crc = 168429fb; size =  45042960; name = RESOURCE.SFX
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL
-    file[]: crc = bc5f8ce8; size =    900765; name = SIER.EXE
-    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = cdd4760c; size =        11; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 5e85026a; size =     27136; name = DISC1\CDCHECK.EXE
     file[]: crc = 55d4d361; size =      4366; name = DISC1\DACBLAST.DRV
     file[]: crc = 88001895; size =      2447; name = DISC1\DACMSSYS.DRV
@@ -1598,14 +1576,6 @@ game[sol-rama-italian-dos]:
     file[]: crc = 2d17aecc; size =     61646; name = DISC1\audio\A05X1N40.001
     file[]: crc = 2f8d6f3f; size =     53867; name = DISC1\audio\A05X1O40.001
     file[]: crc = bc7078a1; size =    108917; name = DISC1\audio\A05X1P40.001
-    file[]: crc = 6483375c; size =    308278; name = DISC1\billbrd\INSTALL1.BMP
-    file[]: crc = 2c27e504; size =    308278; name = DISC1\billbrd\INSTALL2.BMP
-    file[]: crc = fb105c93; size =    308278; name = DISC1\billbrd\INSTALL3.BMP
-    file[]: crc = dd73f0d1; size =    308278; name = DISC1\billbrd\INSTALL4.BMP
-    file[]: crc = fc17f8dd; size =    308278; name = DISC1\billbrd\INSTALL5.BMP
-    file[]: crc = 22453cc2; size =    308278; name = DISC1\billbrd\INSTALL6.BMP
-    file[]: crc = fa44eb60; size =    308026; name = DISC1\billbrd\INSTALL7.BMP
-    file[]: crc = 2457c09a; size =    308278; name = DISC1\billbrd\INSTALL8.BMP
     file[]: crc = 46a57932; size =    483894; name = DISC1\robot\1000.RBT
     file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.rbt
     file[]: crc = 3c72d47f; size =    620509; name = DISC1\robot\1002.RBT
@@ -2416,23 +2386,13 @@ end
 //
 game[sol-rama-german-dos]:
     name = German, DOS
+    imports = v1.000.000-base
     anchorfile = A02J0140.011
     anchordepth = 2
     file[]: crc = 55d4d361; size =      4366; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 8ef3aaba; size =      1389; name = PROLOGUE.DAT
     file[]: crc = b871c1fb; size =  44760780; name = RESOURCE.SFX
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL
-    file[]: crc = bc5f8ce8; size =    900765; name = SIER.EXE
-    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 0171d37d; size =        13; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 5e85026a; size =     27136; name = DISC1\CDCHECK.EXE
     file[]: crc = 55d4d361; size =      4366; name = DISC1\DACBLAST.DRV
     file[]: crc = 88001895; size =      2447; name = DISC1\DACMSSYS.DRV
@@ -2736,14 +2696,6 @@ game[sol-rama-german-dos]:
     file[]: crc = fb11a696; size =     64200; name = DISC1\audio\A05X1N40.001
     file[]: crc = a17547cb; size =     55240; name = DISC1\audio\A05X1O40.001
     file[]: crc = 927254d4; size =    156480; name = DISC1\audio\A05X1P40.001
-    file[]: crc = 6483375c; size =    308278; name = DISC1\billbrd\INSTALL1.BMP
-    file[]: crc = 2c27e504; size =    308278; name = DISC1\billbrd\INSTALL2.BMP
-    file[]: crc = fb105c93; size =    308278; name = DISC1\billbrd\INSTALL3.BMP
-    file[]: crc = dd73f0d1; size =    308278; name = DISC1\billbrd\INSTALL4.BMP
-    file[]: crc = fc17f8dd; size =    308278; name = DISC1\billbrd\INSTALL5.BMP
-    file[]: crc = 22453cc2; size =    308278; name = DISC1\billbrd\INSTALL6.BMP
-    file[]: crc = fa44eb60; size =    308026; name = DISC1\billbrd\INSTALL7.BMP
-    file[]: crc = 2457c09a; size =    308278; name = DISC1\billbrd\INSTALL8.BMP
     file[]: crc = 46a57932; size =    483894; name = DISC1\robot\1000.RBT
     file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.rbt
     file[]: crc = 3c72d47f; size =    620509; name = DISC1\robot\1002.RBT
@@ -3550,24 +3502,15 @@ end
 //
 game[sol-rama-japanese-dos]:
     name = Japanese, DOS
+    imports = v1.000.000-base
     anchorfile = A02J0140.011
     anchordepth = 2
     file[]: crc = 8fd849a5; size =     17920; name = DSSETUP.EXE
     file[]: crc = a042f05c; size =      1844; name = LANGUAGE.INF
     file[]: crc = 99ce98a3; size =      1244; name = PROLOGUE.DAT
     file[]: crc = 710cb2a6; size =  41700165; name = RESOURCE.SFX
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 28f606d5; size =    558080; name = SIERW5.EXE
-    file[]: crc = bc5f8ce8; size =    900765; name = SIER.EXE
     file[]: crc = a1a9a0e6; size =      4400; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 067c1cbe; size =     26112; name = DISC1\CDCHECK.EXE
     file[]: crc = beec92d1; size =      9428; name = DISC1\CONTACT.TXT
     file[]: crc = a1a9a0e6; size =      4400; name = DISC1\DACBLAST.DRV
@@ -3893,14 +3836,6 @@ game[sol-rama-japanese-dos]:
     file[]: crc = 13e2678e; size =     66062; name = DISC1\AUDIO\A05X1L40.001
     file[]: crc = 53856504; size =     55310; name = DISC1\AUDIO\A05X1N40.001
     file[]: crc = 99326bd2; size =       312; name = DISC1\AUDIO\A05X1P40.001
-    file[]: crc = 6483375c; size =    308278; name = DISC1\BILLBRD\INSTALL1.BMP
-    file[]: crc = 2c27e504; size =    308278; name = DISC1\BILLBRD\INSTALL2.BMP
-    file[]: crc = fb105c93; size =    308278; name = DISC1\BILLBRD\INSTALL3.BMP
-    file[]: crc = dd73f0d1; size =    308278; name = DISC1\BILLBRD\INSTALL4.BMP
-    file[]: crc = fc17f8dd; size =    308278; name = DISC1\BILLBRD\INSTALL5.BMP
-    file[]: crc = 22453cc2; size =    308278; name = DISC1\BILLBRD\INSTALL6.BMP
-    file[]: crc = fa44eb60; size =    308026; name = DISC1\BILLBRD\INSTALL7.BMP
-    file[]: crc = 2457c09a; size =    308278; name = DISC1\BILLBRD\INSTALL8.BMP
     file[]: crc = 9eec9576; size =       261; name = DISC1\PATCHES\0.MSG
     file[]: crc = 11dd4f0e; size =    150257; name = DISC1\PATCHES\1015.V56
     file[]: crc = 6fc2103e; size =    216300; name = DISC1\PATCHES\102.V56

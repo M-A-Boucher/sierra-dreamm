@@ -1,6 +1,9 @@
 FINGERPRINTS = [[[,
     coffKf#Rfozw5gxYQ8H9iLH05BAT@wMQE1iM8ggMl6dOn6H95v8FtT=EGA
-    // VGA fingerprints take into account screen shakes from ship instability
+    V1SoWdbDCCr9q6vII8cgHDr9cYkADwzPJeaMPp2Yp6XvnVTxzQWW9a=EGA
+    yi83WWn6rbH8jnurs80ahG@8@HIln40NDseEaxQi96w@A1@1ZXgJNS=EGA
+    0UQxSfoesq39CXKY881nqwf1A7JTfxUQ7S6JBMXZx6ETapz1x34mVa=EGA
+    yFO7SfRPmvTwKK11U8rap170HYsRbwd7u22MWIvWV64VqeP9WdhC5T=MCGA
     pXtGXCd6kZB9oeay19dEQGGLmkJV9YridSLNZcXEv61i5zCK1PZwIR=VGA
     QDGscwT8qHq0qqBct9ET956YI#7dtxlGEIaNTxRkc1rcLBVpxLnLAt=VGA
     ITV@wtnkFht9A@Yul9v3kzyvaip4O6cO4yfNz9l5MuwVF5Riiuan0t=VGA

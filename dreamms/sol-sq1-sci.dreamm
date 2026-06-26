@@ -23,7 +23,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; nothrottle = 4; machine = tandy
+        videohw = cga; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
     end
@@ -47,7 +47,7 @@ config[graphics]:
     end
     option[vga]:
         name = $(VGA_NAME)
-        videohw = vga
+        videohw = vga; priority = 2
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
