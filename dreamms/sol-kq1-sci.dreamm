@@ -169,7 +169,7 @@ end
 //
 // v1.000.051, Int. 4.8.91, 3x720K
 //
-game[v1.000.051, Int. 4.8.91-3x720k]:
+game[v1.000.051-int-4.8.91-3x720k]:
     name = v1.000.051, Int. 4.8.91, 3x720K
     imports = v1.000.051-int-9.19.90-3x720k
     anchorfile = RESOURCE.001

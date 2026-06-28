@@ -1,10 +1,10 @@
 //
 // Even More! Incredible Machine
 //
-desc[sol-tim1+]:
+desc[sol-tim1more]:
 
 name = Even More! Incredible Machine
-icon = sol-tim1+.png
+icon = sol-tim1more.png
 machine = pc
 osenv = dos
 rootpath = C:\
@@ -85,7 +85,7 @@ mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
 //
 // copy protection script
 //
-$(include cp-tim1+.inc)
+$(include cp-tim1more.inc)
 
 //
 // v1.11, CD

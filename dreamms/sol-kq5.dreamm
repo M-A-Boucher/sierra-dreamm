@@ -316,7 +316,7 @@ end
 //
 // v0.000.051, Int. 11.9.90, 11x1.2M+1x720K
 //
-game[v0.000.051, Int. 11.9.90-11x1.2m+1x720k]:
+game[v0.000.051-int-11.9.90-11x1.2m-1x720k]:
     name = v0.000.051, Int. 11.9.90, 11x1.2M+1x720K
     imports = v0.000.051-int-11.9.90-x1.44m-1x1.2m-1x720k
     anchorfile = RESOURCE.000
@@ -374,7 +374,7 @@ end
 //
 // v0.000.062, Int. 2.1.91, 9x1.2M
 //
-game[v0.000.062, Int. 2.1.91-9x1.2m]:
+game[v0.000.062-int-2.1.91-9x1.2m]:
     name = v0.000.062, Int. 2.1.91, 9x1.2M
     imports = v0.000.062-int-2.1.91-8x1.44m
     anchorfile = RESOURCE.001
