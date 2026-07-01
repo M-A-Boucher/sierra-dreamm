@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_P75)
-nothrottle = 3
 ramkb = 16384
 videohw = svga
 filter = sierra, adventure
@@ -35,19 +34,19 @@ config[sound]:
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
+        audiohw = sb16
         SOUND_DRIVER = SBPRO.DRV
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
+        audiohw = sb16+mt32
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 3
+        audiohw = sb16+gmidi; priority = 1
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
@@ -79,7 +78,7 @@ dynamicfile[]:
 end
 
 //
-// Sets movies to full size and detail
+// Sets movies to full size and detail (but also prevents other options from being saved)
 //
 dynamicfile[]:
     path = $(rootpath)\PREF.DAT
@@ -95,17 +94,11 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
-// v1.1, CD
+// v1.0
 //
-game[v1.1-cd]:
-    name = v1.1, CD
+game[v1.0]:
+    name = v1.0
     anchorfile = SIERRA.EXE
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE
-    file[]: crc = 3edac26a; size =     21172; name = INSTALL.HLP
-    file[]: crc = 81351904; size =      9621; name = INSTALL.INN
-    file[]: crc = 522eb2e8; size =      3287; name = INSTALL.SCR
-    file[]: crc = eba20f31; size =      9590; name = INSTALL.TXT
-
     file[]: crc = 3e9dca20; size =      1000; name = 37.MAP
     file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
     file[]: crc = f67b275e; size =      4361; name = DACBLAST.DRV
@@ -131,7 +124,7 @@ game[v1.1-cd]:
     file[]: crc = 40ad8376; size =     12604; name = RESMDT.005
     file[]: crc = 405dfa84; size =     12532; name = RESMDT.006
     file[]: crc = 7741c3a9; size =      7972; name = RESMDT.007
-    file[]: crc = 987cb0c7; size =       353; name = RESOURCE.CFG
+    file[]: crc = b047db3c; size =   9521749; name = RESOURCE.AUD
     file[]: crc = 542fc950; size =       305; name = RESOURCE.WIN
     file[]: crc = d958294b; size =  65844612; name = RESSCI.001
     file[]: crc = b2cbcb9a; size =  71588691; name = RESSCI.002
@@ -151,21 +144,20 @@ game[v1.1-cd]:
     file[]: crc = a1a89d92; size =    808820; name = SIERRAW.EXE
     file[]: crc = cdd4760c; size =        11; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = b047db3c; size =   9521749; name = RESOURCE.AUD
-    file[]: crc = 0df004be; size =  19158350; name = DISC1\RESOURCE.SFX
     file[]: crc = 47d66d4c; size =       387; name = DISC1\65535.MAP
-    file[]: crc = a5de710e; size =  20439411; name = DISC2\RESOURCE.SFX
+    file[]: crc = 0df004be; size =  19158350; name = DISC1\RESOURCE.SFX
     file[]: crc = ee0847a1; size =       412; name = DISC2\65535.MAP
-    file[]: crc = d135d2cc; size =  22793156; name = DISC3\RESOURCE.SFX
+    file[]: crc = a5de710e; size =  20439411; name = DISC2\RESOURCE.SFX
     file[]: crc = 2bd62294; size =       512; name = DISC3\65535.MAP
-    file[]: crc = 62a8b865; size =  23245260; name = DISC4\RESOURCE.SFX
+    file[]: crc = d135d2cc; size =  22793156; name = DISC3\RESOURCE.SFX
     file[]: crc = c0cadb42; size =       502; name = DISC4\65535.MAP
-    file[]: crc = 628513ac; size =  23542662; name = DISC5\RESOURCE.SFX
+    file[]: crc = 62a8b865; size =  23245260; name = DISC4\RESOURCE.SFX
     file[]: crc = 744314a3; size =       392; name = DISC5\65535.MAP
-    file[]: crc = 91c053d8; size =  23875580; name = DISC6\RESOURCE.SFX
+    file[]: crc = 628513ac; size =  23542662; name = DISC5\RESOURCE.SFX
     file[]: crc = c65cc010; size =       452; name = DISC6\65535.MAP
-    file[]: crc = 848fb13f; size =  19742860; name = DISC7\RESOURCE.SFX
+    file[]: crc = 91c053d8; size =  23875580; name = DISC6\RESOURCE.SFX
     file[]: crc = d7f8caea; size =        62; name = DISC7\65535.MAP
+    file[]: crc = 848fb13f; size =  19742860; name = DISC7\RESOURCE.SFX
     file[]: crc = 775bf0d6; size =      4560; name = PATCHES\0.HEP
     file[]: crc = 86b7671f; size =     18342; name = PATCHES\0.SCR
     file[]: crc = 9f962ca5; size =    179179; name = PATCHES\3541.P56
@@ -1232,6 +1224,25 @@ game[v1.1-cd]:
 end
 
 //
+// v1.1
+//
+game[v1.1]:
+    name = v1.1
+    imports = v1.0
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 7680e8a3; size =     11518; name = RESMAP.001
+    file[]: crc = b6a9bbac; size =     12058; name = RESMAP.002
+    file[]: crc = b03b7693; size =     12556; name = RESMAP.004
+    file[]: crc = 28f06bd8; size =     12604; name = RESMAP.005
+    file[]: crc = 8ee72cdf; size =     12532; name = RESMAP.006
+    file[]: crc = ce3eb5f2; size =    934189; name = SIERRA.EXE
+    file[]: crc = 587b73e5; size =      7998; name = SIERRA.INF
+    file[]: crc = cd8fd737; size =    803365; name = SIERRAW.EXE
+    file[]: crc = ed8dd8a8; size =        11; name = VERSION
+    file[]: crc = c57d5c16; size =     13416; name = PATCHES\0.SCR
+end
+
+//
 // GOG (v1.000.001UK)
 //
 game[v1.000.001uk-gog]:
@@ -1263,12 +1274,7 @@ game[v1.000.001uk-gog]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = cb214447; size =    265420; name = DOS4GW.EXE
     file[]: crc = 3f6fbb99; size =      3388; name = GENMIDI.DRV
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE
-    file[]: crc = 3edac26a; size =     21172; name = INSTALL.HLP
-    file[]: crc = 522eb2e8; size =      3287; name = INSTALL.SCR
-    file[]: crc = eba20f31; size =      9590; name = INSTALL.TXT
     file[]: crc = 0da742fc; size =      6274; name = INTERP.ERR
-    file[]: crc = 7c22d5fa; size =   8776490; name = Manual.pdf
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
     file[]: crc = 656ef0b3; size =      3352; name = MT32.DRV
     file[]: crc = b4b9661c; size =     30745; name = PDOCO.TXT
