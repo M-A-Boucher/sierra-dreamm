@@ -620,7 +620,7 @@ end
 game[v2.0f-int-2.917-kings-quest-collectors-edition]:
     name = King's Quest - Collector's Edition (v2.0F, Int. 2.917)
     imports = v2.0f-int-2.917
-    anchorfile = SIERRA.COM
+    anchorfile = VOL.2
     file[]: remove = CPC.COM
     file[]: crc = 5dce7127; size =      3121; name = SIERRA.COM
     file[]: remove = FTRACK06SIDE0.~RAW~
@@ -631,11 +631,8 @@ end
 //
 game[v2.0f-int-2.917-gog]:
     name = GOG (v2.0F, Int. 2.917)
-    imports = v2.0f-int-2.917
-    anchorfile = VOL.2
-    file[]: remove = CPC.COM
+    imports = v2.0f-int-2.917-kings-quest-collectors-edition
     file[]: crc = 9fd66691; size =      3121; name = SIERRA.COM
-    file[]: remove = FTRACK06SIDE0.~RAW~
 end
 
 end

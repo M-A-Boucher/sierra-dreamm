@@ -84,7 +84,7 @@ end
 //
 game[v1.0-int-2.440]:
     name = v1.0, Int. 2.440
-    anchorfile = VOL.0
+    anchorfile = FTRACK06SIDE0.~RAW~
     file[]: crc = 06f3692b; size =     38400; name = AGI
     file[]: crc = 6bfc498a; size =      7680; name = AGIDATA.OVL
     file[]: crc = a2930a66; size =      1024; name = CGA_GRAF.OVL
@@ -114,6 +114,7 @@ end
 game[v1.0-int-2.440-leisure-suit-larry-collectors-series]:
     name = Leisure Suit Larry's Greatest Hits and Misses (v1.0, Int. 2.440)
     imports = v1.0-int-2.440
+    anchorfile = VOL.0
     file[]: remove = CPC.COM
     file[]: crc = 066ed68d; size =      2944; name = SIERRA.COM
     file[]: remove = FTRACK06SIDE0.~RAW~
