@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 2
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
@@ -106,7 +105,7 @@ end
 
 dynamicfile[]:
     path = $(rootpath)/DREAMM.BAT
-    contents = RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
+    contents = COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
 end
 
 //
@@ -114,6 +113,11 @@ end
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// copy protection script
+//
+$(include cp-pq1-sci.inc)
 
 fragment[v2.0-base]:
     file[]: crc = 24cc5b74; size =      2404; name = 30.HEP      ; optional = true
