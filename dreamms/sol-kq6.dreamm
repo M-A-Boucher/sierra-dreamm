@@ -1413,7 +1413,7 @@ game[v1.000.00-cd]:
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL  ; optional = true
     file[]: crc = 4a2bbdea; size =    190464; name = SCIWV.EXE   ; optional = true
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE
+    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
     file[]: crc = c426e44b; size =    174155; name = SIERRA.EXE
     file[]: crc = a7d55c29; size =       157; name = SIERRA.INI  ; optional = true
     file[]: crc = 97044033; size =       766; name = SIERRAW.ICO ; optional = true
