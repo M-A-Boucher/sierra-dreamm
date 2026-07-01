@@ -78,12 +78,16 @@ dynamicfile[]:
 end
 
 //
-// Sets movies to full size and detail (but also prevents other options from being saved)
+// Creates the PREF.DAT file and sets movies to full size and detailed
 //
-dynamicfile[]:
-    path = $(rootpath)\PREF.DAT
-    contents = [[[
-        [[BINARY:0x01 0x00 0x00 0x00 0x00 0x00 0x7F 0x00 0x0F 0x00]]
+script[prefs]:
+    condition = is_game()
+    code = [[[$(CRLF)
+        if (!file_exists("$$(rootpath)\\PREF.DAT"))
+        {
+          file = blob_create("HEX:01 00 00 00 00 00 7F 00 0F 00");
+          file_save("PREF.DAT", file);
+        }
     ]]]
 end
 
