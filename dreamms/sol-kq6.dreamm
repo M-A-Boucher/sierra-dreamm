@@ -1390,7 +1390,7 @@ game[v1.000.00-cd]:
     file[]: crc = faf6148f; size =      6494; name = AUDPS1.DRV
     file[]: crc = 3b2b33a8; size =      8050; name = AUDTHUND.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = 61cec9ff; size =   1204352; name = HDLOGO.AVI  ; optional = true
+    file[]:                                   name = HDLOGO.AVI  ; optional = true
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
     file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
@@ -1418,7 +1418,7 @@ game[v1.000.00-cd]:
     file[]: crc = a7d55c29; size =       157; name = SIERRA.INI  ; optional = true
     file[]: crc = 97044033; size =       766; name = SIERRAW.ICO ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = 41f55cc9; size =  31022220; name = TOON.AVI    ; optional = true
+    file[]:                                   name = TOON.AVI    ; optional = true
     file[]: crc = dc7b9e4d; size =        17; name = VERSION
     file[]: crc = ba0faac1; size =      7305; name = VGA320.DRV
     file[]: crc = a389e296; size =      8258; name = VGA320BW.DRV
@@ -1784,6 +1784,32 @@ installer[v1.000-de-kings-quest-collectors-edition-installer]:
     anchorfile = RESOURCE.AUD
     file[]: crc = 0743aa85; size =     22589; name = DCOMPAUD.EXE
     file[]: crc = f30b1b92; size =   1361244; name = RESOURCE.AUD
+end
+
+//
+// King's Quest - Collection Series (v1.00)
+//
+game[1.000.00-kings-quest-collection-series]:
+    name = King's Quest - Collection Series (v1.00)
+    imports = v1.000.00g-cd
+    anchorfile = 46030.SCR
+    file[]: crc = 775bf0d6; size =      4560; name = 0.HEP
+    file[]: crc = c57d5c16; size =     13416; name = 0.SCR
+    file[]: crc = f9121725; size =       958; name = 13450.V56
+    file[]: crc = f0302d17; size =      3972; name = 28.HEP
+    file[]: crc = 90191e3e; size =      1904; name = 28.SCR
+    file[]: crc = c991886b; size =      1696; name = 30100.HEP
+    file[]: crc = 93a9cb6b; size =      7938; name = 30100.SCR
+    file[]: crc = 3f98109f; size =       386; name = 43.HEP
+    file[]: crc = 331ff57a; size =      2974; name = 43.SCR
+    file[]: crc = a4f33551; size =       416; name = 44.MSG
+    file[]: crc = f88a0579; size =      1060; name = 46030.HEP
+    file[]: crc = 9c8a827b; size =      4244; name = 46030.SCR
+    file[]: crc = 4713386a; size =      2186; name = 6500.HEP
+    file[]: crc = fdc71fa0; size =      7196; name = 6500.SCR
+    file[]: crc = b740961f; size =      3818; name = 902.HEP
+    file[]: crc = d9018c80; size =      4028; name = 902.SCR
+    file[]: remove = VERSION
 end
 
 //
