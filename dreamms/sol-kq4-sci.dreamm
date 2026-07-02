@@ -34,7 +34,7 @@ config[graphics]:
     end
     option[cgamono]:  
         name = CGA (2 colours)
-        videohw = cga
+        videohw = cga; composite = oldcga
         VIDEO_DRIVER = CGA320BW.DRV
         condition = file_exists("$$(rootpath)\\CGA320BW.DRV")
     end
