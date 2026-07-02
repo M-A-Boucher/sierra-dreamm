@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 2
 ramkb = 4096
 filter = sierra, tabletop, card
 TANDY = 0
@@ -22,7 +21,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy; nothrottle = 2
+        videohw = cga; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
     end

@@ -21,7 +21,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]:
         name = $(TVIDEO_NAME)
-        videohw = cga; nothrottle = 1.5; machine = tandy; priority = 1
+        videohw = cga; machine = tandy; priority = 1
         condition = file_exists("$$(rootpath)\\JR_GRAF.OVL")
     end
     option[hercules]:  

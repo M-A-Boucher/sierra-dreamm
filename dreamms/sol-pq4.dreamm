@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_P75)
-nothrottle = 3
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 videohw = vga;

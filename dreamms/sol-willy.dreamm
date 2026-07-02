@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\WILLY.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 3.5
 ramkb = 4096
 filter = dynamix, sierra, adventure
 videohw = vga
@@ -34,7 +33,7 @@ config[sound]:
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32; nothrottle = 6
+        audiohw = mt32
         AUDIODRV = 0x03
     end
 end

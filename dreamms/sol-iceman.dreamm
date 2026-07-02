@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
-nothrottle = 6
 ramkb = 1024
 filter = sierra, adventure
 TANDY = 0
@@ -22,7 +21,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy; nothrottle = 3
+        videohw = cga; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
@@ -32,9 +31,9 @@ config[graphics]:
         VIDEO_DRIVER = HERCMONO.DRV
         condition = file_exists("$$(rootpath)\\HERCMONO.DRV")
     end
-    option[cgamono]:  
-        name = CGA (2 colours)
-        videohw = cga
+    option[cga-mono]:
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = newcga
         VIDEO_DRIVER = CGA320M.DRV
         condition = file_exists("$$(rootpath)\\CGA320M.DRV")
     end
@@ -66,19 +65,19 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker; nothrottle = 4
+        audiohw = speaker
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = cms; nothrottle = 4
+        audiohw = cms
         SOUND_DRIVER = CMS.DRV
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = adlib; nothrottle = 4; priority = 1
+        audiohw = adlib; priority = 1
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end

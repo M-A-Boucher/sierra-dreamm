@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_386DX_33)
-nothrottle = 8
 videohw = vga;
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)

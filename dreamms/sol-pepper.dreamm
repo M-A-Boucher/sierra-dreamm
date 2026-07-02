@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_386DX_33)
-nothrottle = 2
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure

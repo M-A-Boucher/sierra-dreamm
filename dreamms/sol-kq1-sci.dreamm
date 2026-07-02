@@ -21,7 +21,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy; nothrottle = 3.7
+        videohw = cga; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
@@ -71,13 +71,13 @@ config[sound]:
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = adlib
+        audiohw = adlib; priority = 1
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
+        audiohw = sb16
         SOUND_DRIVER = SNDBLAST.DRV
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end

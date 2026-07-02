@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
 mips = $(MIPS_P100)
-nothrottle = 5
 ramkb = 16384
 videohw = svga
 filter = sierra, adventure

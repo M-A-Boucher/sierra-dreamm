@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIER.EXE
 mips = $(MIPS_P100)
-nothrottle = 3
 ramkb = 16384
 videohw = svga
 audiohw = adlib+sb16+mt32+gmidi

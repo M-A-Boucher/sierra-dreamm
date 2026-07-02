@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIV256.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 4
 ramkb = 4096
 filter = sierra, adventure
 TANDY = 0

@@ -28,7 +28,7 @@ config[graphics]:
     end
     option[ega]:
         name = $(EGA_NAME);
-        videohw = ega; nothrottle = 4; priority = 1
+        videohw = ega; priority = 1
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end

@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SCIDHUV.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 3
 ramkb = 8096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
