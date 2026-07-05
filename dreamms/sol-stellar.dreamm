@@ -1,0 +1,145 @@
+//
+// Stellar 7
+//
+desc[sol-stellar]:
+
+name = Stellar 7
+icon = sol-stellar.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\STELLAR7.EXE
+mips = $(MIPS_386SX_20)
+ramkb = 8192
+filter = dynamix, action
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; audiohw = speaker; machine = tandy
+        VIDEODRV = 0x03; AUDIODRV = 0x02; TANDY = 1
+    end
+    option[cga-mono]:       
+        name = Monochrome $(CGA_NAME)
+        videohw = cga; composite = oldcga
+        VIDEODRV = 0x04
+    end
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEODRV = 0x01
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        VIDEODRV = 0x02
+    end
+    option[mcga]:
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEODRV = 0x05
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga; priority = 1
+        VIDEODRV = 0x08
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIODRV = 0x01
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+        AUDIODRV = 0x20
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIODRV = 0x20
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32
+        AUDIODRV = 0x10
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[
+        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[mouse]:
+    condition = is_game() || is_demo()
+    code = mouse_force_relative_zero(true)
+end
+
+//
+// v1.0, Int. 9.20.90, 2x720K
+//
+game[v1.0-int-9.20.90-2x720k]:
+    name = v1.0, Int. 9.20.90, 2x720K
+    anchorfile = STELLAR7.EXE
+    file[]: crc = 3f0f86b7; size =    115411; name = COCKPIT.RES
+    file[]: crc = a6270fc6; size =     23130; name = LEVEL1.RES
+    file[]: crc = 14027329; size =     32146; name = LEVEL2.RES
+    file[]: crc = 1223067d; size =     28912; name = LEVEL3.RES
+    file[]: crc = 159fc28c; size =     30895; name = LEVEL4.RES
+    file[]: crc = fe03228f; size =     13514; name = LEVEL5.RES
+    file[]: crc = 8be7c226; size =     18499; name = LEVEL6.RES
+    file[]: crc = 03d54c76; size =     11104; name = LEVEL7.RES
+    file[]: crc = 57658acc; size =     39107; name = SCENED.RES
+    file[]: crc = c7f1e036; size =     17273; name = SCENEDE.RES
+    file[]: crc = f5480a2f; size =     93605; name = STELART.RES
+    file[]: crc = ac7ea5c6; size =     35541; name = STELARTE.RES
+    file[]: crc = 271a2cf5; size =     69783; name = STELLAR.RES
+    file[]: crc = 409d0352; size =     79181; name = STELLAR7.EXE
+    file[]: crc = 70be5de8; size =       443; name = DRAXON.RES
+    file[]: crc = c4a8f2af; size =     47423; name = SCENEA.RES
+    file[]: crc = 12a41a57; size =     19552; name = SCENEAE.RES
+    file[]: crc = 28d3fafc; size =     82250; name = SCENEB1.RES
+    file[]: crc = 72dd700e; size =     27906; name = SCENEB1E.RES
+    file[]: crc = 1ad7aafa; size =      1679; name = SCENEB2.RES
+    file[]: crc = 90bf6d92; size =      1662; name = SCENEB2E.RES
+    file[]: crc = e4566370; size =      1857; name = SCENEB3.RES
+    file[]: crc = 071dea06; size =      1872; name = SCENEB3E.RES
+    file[]: crc = 6b78d4ad; size =      2882; name = SCENEB5.RES
+    file[]: crc = 5ce9a379; size =      2870; name = SCENEB5E.RES
+    file[]: crc = dec2066b; size =     35438; name = SCENEC.RES
+    file[]: crc = d7f38a2d; size =     11140; name = SCENECE.RES
+    file[]: crc = 25124654; size =     45860; name = SCENEE.RES
+    file[]: crc = 082f3563; size =     16601; name = SCENEEE.RES
+    file[]: crc = 41ac61f0; size =    332264; name = VOICE.RES
+end
+
+//
+// v1.0, Int. 9.20.90, 4x360K
+//
+game[v1.0-int-9.20.90-4x360k]:
+    name = v1.0, Int. 9.20.90, 4x360K
+    imports = v1.0-int-9.20.90-2x720k
+    file[]: crc = 2f02ae62; size =     79165; name = STELLAR7.EXE
+end

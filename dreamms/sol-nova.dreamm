@@ -1,0 +1,107 @@
+//
+// Nova 9: The Return of Gir Draxon
+//
+desc[sol-nova]:
+
+name = Nova 9: The Return of Gir Draxon
+icon = sol-nova.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\NOVA.EXE
+mips = $(MIPS_486DX_33)
+ramkb = 8192
+filter = dynamix, action
+TANDY = 0
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[tandy]:
+        name = $(TVIDEO_NAME)
+        videohw = cga; audiohw = speaker; machine = tandy
+        VIDEODRV = 0x03; AUDIODRV = 0x01; TANDY = 1
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        VIDEODRV = 0x02
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga; priority = 1
+        VIDEODRV = 0x08
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        AUDIODRV = 0x00
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+        AUDIODRV = 0x02
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIODRV = 0x04
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32
+        AUDIODRV = 0x03
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)/RESOURCE.CFG
+    contents = [[[
+        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0, Int. 11.14.91, 4x1.2M
+//
+game[v1.0-int-11.14.91-4x1.2m]:
+    name = v1.0, Int. 11.14.91, 4x1.2M
+    anchorfile = NOVA.EXE
+    file[]: crc = 5f140c0a; size =    284812; name = NOVA.EXE
+    file[]: crc = bb189cc6; size =   1131611; name = VOLUME.001
+    file[]: crc = 56ca8457; size =   1210072; name = VOLUME.002
+    file[]: crc = a02b500a; size =   1122894; name = VOLUME.003
+    file[]: crc = c3b24224; size =      4619; name = VOLUME.RMF
+end
+
+//
+// v1.0, Int. 11.14.91, 7x720K
+//
+game[v1.0-int-11.14.91-7x720k]:
+    name = v1.0, Int. 11.14.91, 7x720K
+    imports = v1.0-int-11.14.91-4x1.2m
+    file[]: crc = b48a2ed6; size =    685281; name = VOLUME.001
+    file[]: crc = 925083f3; size =    728800; name = VOLUME.002
+    file[]: crc = e25a34b2; size =    728763; name = VOLUME.003
+    file[]: crc = ad588dae; size =    726136; name = VOLUME.004
+    file[]: crc = 42c0627a; size =    595597; name = VOLUME.005
+    file[]: crc = b47b7119; size =      4649; name = VOLUME.RMF
+end
+
+end
