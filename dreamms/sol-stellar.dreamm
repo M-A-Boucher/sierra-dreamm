@@ -11,6 +11,7 @@ rootpath = C:\
 launch = $(rootpath)\STELLAR7.EXE
 mips = $(MIPS_386SX_20)
 ramkb = 8192
+audiohw = $(SOUNDHW)+$(MUSICHW)
 filter = dynamix, action
 TANDY = 0
 
@@ -22,32 +23,61 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEODRV = 0x03; AUDIODRV = 0x02; TANDY = 1
+        VIDEODRV = 0x03; AUDIODRV = 0x02; TANDY = 1; G_OPT = 4; A_OPT = 1; S_OPT = 1
     end
     option[cga-mono]:       
         name = Monochrome $(CGA_NAME)
         videohw = cga; composite = oldcga
-        VIDEODRV = 0x04
+        VIDEODRV = 0x04; G_OPT = 6
     end
     option[cga]:
         name = $(CGA_NAME)
         videohw = cga
-        VIDEODRV = 0x01
+        VIDEODRV = 0x01; G_OPT = 5
     end
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega
-        VIDEODRV = 0x02
+        VIDEODRV = 0x02; G_OPT = 3
     end
     option[mcga]:
         name = $(MCGA_NAME)
         videohw = mcga
-        VIDEODRV = 0x05
+        VIDEODRV = 0x05; G_OPT = 2
     end
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga; priority = 1
-        VIDEODRV = 0x08
+        VIDEODRV = 0x08; G_OPT = 1
+    end
+end
+
+//
+// music configuration
+//
+config[music]:
+    title = Music Configuration
+    condition = !$(TANDY)
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        MUSICHW = speaker; AUDIODRV = 0x01; A_OPT = 0
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); priority = 1
+        MUSICHW = adlib; AUDIODRV = 0x20; A_OPT = 3
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        MUSICHW = sb16; AUDIODRV = 0x20; A_OPT = 5
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        MUSICHW = mt32; AUDIODRV = 0x10; A_OPT = 4
+    end
+    option[cdda]:
+        name = CD Audio; priority = 2
+        A_OPT = 8
+        condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
     end
 end
 
@@ -56,26 +86,26 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !$(TANDY) && file_exists("$$(rootpath)\\STL7_11K.002")
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
-        AUDIODRV = 0x01
+        SOUNDHW = speaker
+        S_OPT = 0
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = adlib; priority = 1
-        AUDIODRV = 0x20
+        SOUNDHW = adlib; priority = 1
+        S_OPT = 3
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16
-        AUDIODRV = 0x20
+        SOUNDHW = sb16
+        S_OPT = 5
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32
-        AUDIODRV = 0x10
+        SOUNDHW = mt32
+        S_OPT = 4
     end
 end
 
@@ -89,8 +119,9 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
 
 script[mouse]:
     condition = is_game() || is_demo()
@@ -142,4 +173,113 @@ game[v1.0-int-9.20.90-4x360k]:
     name = v1.0, Int. 9.20.90, 4x360K
     imports = v1.0-int-9.20.90-2x720k
     file[]: crc = 2f02ae62; size =     79165; name = STELLAR7.EXE
+end
+
+//
+// v1.0, Int. 9.20.90, CD
+//
+game[v1.0-int-9.20.90-cd]:
+    name = v1.0, Int. 9.20.90, CD
+    launch = $(rootpath)\STELLAR7.EXE /G:$(G_OPT) /A:$(A_OPT) /S:$(S_OPT) /P:C:
+    anchorfile = STELLAR7.EXE
+    file[]: crc = 93fd1192; size =       711; name = 6X6.FNT
+    file[]: crc = cbf30b38; size =      3275; name = AUDIO.OVL
+    file[]: crc = a9480960; size =      2390; name = BRDGAM_E.TTM
+    file[]: crc = 1d5e2dc0; size =      1872; name = BRDGAMBN.BMP
+    file[]: crc = 0580c7e6; size =      1611; name = BRDGAMBN.TTM
+    file[]: crc = 3b0e8d0d; size =      1706; name = BRIDGE.ADS
+    file[]: crc = 012ba6c1; size =       784; name = BRIDGE.PAL
+    file[]: crc = 50141596; size =     58235; name = BRIDGE.SCR
+    file[]: crc = 75119673; size =       748; name = BRIDGE_E.ADS
+    file[]: crc = 83e13e5d; size =       814; name = BRIDGE_E.BMP
+    file[]: crc = 1a78c9fb; size =       299; name = BRIDGE_E.PAL
+    file[]: crc = 528bcb4e; size =     12191; name = BRIDGE_E.SCR
+    file[]: crc = 679a40de; size =       984; name = BUTTONS.DAT
+    file[]: crc = 1026a467; size =    109919; name = COCKPIT.RES
+    file[]: crc = f0575b35; size =      2874; name = DIALOG_E.TTM
+    file[]: crc = 0b8132ac; size =      2207; name = DIALOGUE.TTM
+    file[]: crc = ab2f2db4; size =       197; name = DRAX_I_E.BMP
+    file[]: crc = 0a85cee9; size =       541; name = DRAXEYE.BMP
+    file[]: crc = 1d0ddab8; size =       108; name = DRAXON.SNG
+    file[]: crc = 01a7aaf1; size =     12970; name = DRAXTALK.BMP
+    file[]: crc = 64b0da45; size =      4109; name = DRXTLK_E.BMP
+    file[]: crc = f65eb72c; size =     11588; name = GIR.BMP
+    file[]: crc = 301c764e; size =      3767; name = GIR_E.BMP
+    file[]: crc = 4dadd27f; size =     10359; name = IDRAX_E.SCR
+    file[]: crc = 2cd7f01c; size =       564; name = IDRAX_E.TTM
+    file[]: crc = 74650ea4; size =       449; name = IDRAXFX.TTM
+    file[]: crc = 815fb3c2; size =       192; name = IDRAXN_E.ADS
+    file[]: crc = acce2247; size =       192; name = IDRAXON.ADS
+    file[]: crc = 12616437; size =       784; name = IDRAXON.PAL
+    file[]: crc = 6c99217c; size =     54405; name = IDRAXON.SCR
+    file[]: crc = e33e735b; size =       542; name = IDRAXON.TTM
+    file[]: crc = b07c07ec; size =       449; name = IDRFX_E.TTM
+    file[]: crc = ecefb7da; size =      1628; name = IDRXTEMP.TTM
+    file[]: crc = 897b3734; size =     24836; name = INSTALL.COM
+    file[]: crc = 98ba67f1; size =     63308; name = INSTALL.EXE
+    file[]: crc = 54c31820; size =      4500; name = JOYSTICK.DAT
+    file[]: crc = 9c2e04b0; size =      9238; name = LAUNCH00.BMP
+    file[]: crc = be601d54; size =     22773; name = LEVEL1.RES
+    file[]: crc = 091ae75e; size =     32231; name = LEVEL2.RES
+    file[]: crc = 7278904a; size =     28939; name = LEVEL3.RES
+    file[]: crc = dd9d9bc0; size =     30881; name = LEVEL4.RES
+    file[]: crc = 3a6ddae4; size =     13743; name = LEVEL5.RES
+    file[]: crc = b545b250; size =     18143; name = LEVEL6.RES
+    file[]: crc = fd6b9ec8; size =     11256; name = LEVEL7.RES
+    file[]: crc = 2280efdd; size =       271; name = LOSE.ADS
+    file[]: crc = 53d078f7; size =      3052; name = LOSE.BMP
+    file[]: crc = 6a639d04; size =       784; name = LOSE.PAL
+    file[]: crc = 207987f7; size =     50236; name = LOSE.SCR
+    file[]: crc = 46460109; size =       480; name = LOSE.TTM
+    file[]: crc = ee5b9e40; size =       259; name = LOSE_E.ADS
+    file[]: crc = 6244fb6b; size =      1879; name = LOSE_E.BMP
+    file[]: crc = e2716799; size =     12682; name = LOSE_E.SCR
+    file[]: crc = 7c8ce797; size =      1112; name = LOSEFX.TTM
+    file[]: crc = 15c1b6d9; size =      6252; name = LOSETALK.BMP
+    file[]: crc = 264be81b; size =      2547; name = LOSETK_E.BMP
+    file[]: crc = 25e2d353; size =       488; name = LS_E.TTM
+    file[]: crc = 51060fbd; size =      1153; name = LSFX_E.TTM
+    file[]: crc = cf2986a2; size =      1477; name = LSHIP.TTM
+    file[]: crc = 261bd78c; size =       119; name = MOTHER.ADS
+    file[]: crc = bcf1c18a; size =      1397; name = MOTHER.TTM
+    file[]: crc = 1f3f452a; size =       784; name = MOTHER00.PAL
+    file[]: crc = edf006cf; size =     55817; name = MOTHER00.SCR
+    file[]: crc = 0c7ad25a; size =       119; name = MOTHER_E.ADS
+    file[]: crc = 4f6f88db; size =      2280; name = MOTHER_E.BMP
+    file[]: crc = ac8bf334; size =     15532; name = MOTHER_E.SCR
+    file[]: crc = f77dd355; size =      1396; name = MTHR_E.TTM
+    file[]: crc = 73606793; size =     38266; name = P_02.BMP
+    file[]: crc = 27b2cc00; size =     11934; name = P_02_E.BMP
+    file[]: crc = 5b8c32a1; size =     10901; name = RAFTALK.BMP
+    file[]: crc = 83a3f15c; size =      1992; name = RAFTLK_E.BMP
+    file[]: crc = 8b5dd563; size =       531; name = SCENE1.TTM
+    file[]: crc = 7cfd9c93; size =       528; name = SCENE2.TTM
+    file[]: crc = e043e8f9; size =       572; name = SCENE3.TTM
+    file[]: crc = 14cd19c9; size =      1779; name = SCENE4.TTM
+    file[]: crc = 403027e1; size =      1539; name = SCN1_E.TTM
+    file[]: crc = a228437d; size =      1566; name = SCN2_E.TTM
+    file[]: crc = 1554518b; size =      1826; name = SCN3_E.TTM
+    file[]: crc = 22ced956; size =      1839; name = SCN4_E.TTM
+    file[]: crc = a9f5d62a; size =    105573; name = STELART.RES
+    file[]: crc = 539f0bae; size =     35511; name = STELARTE.RES
+    file[]: crc = 0967b47c; size =     68701; name = STELLAR.RES
+    file[]: crc = c427647e; size =     91544; name = STELLAR7.EXE
+    file[]: crc = 86996054; size =  14704640; name = STL7_11K.002
+    file[]: crc = f5c63659; size =      1541; name = TEMP.TTM
+    file[]: crc = 8bde7ec6; size =       417; name = W_E.TTM
+    file[]: crc = 92b9c0a1; size =      1029; name = WFX_E.TTM
+    file[]: crc = f101624a; size =       253; name = WIN.ADS
+    file[]: crc = 0c3b736f; size =      2341; name = WIN.BMP
+    file[]: crc = f1f6d803; size =       784; name = WIN.PAL
+    file[]: crc = 90362be8; size =     47152; name = WIN.SCR
+    file[]: crc = 813880e4; size =       408; name = WIN.TTM
+    file[]: crc = 9e0958b3; size =       253; name = WIN_E.ADS
+    file[]: crc = 15a374c7; size =       981; name = WIN_E.BMP
+    file[]: crc = 1472567d; size =     14269; name = WIN_E.SCR
+    file[]: crc = cff9d821; size =      1018; name = WINFX.TTM
+    file[]: crc = f7885eee; size =      5654; name = WINTALK.BMP
+    file[]: crc = 6807bf32; size =      2091; name = WINTLK_E.BMP
+    file[]:                                   name = CD\CDDA.SOU; cdda = 1342; optional = true
+end
+
 end
