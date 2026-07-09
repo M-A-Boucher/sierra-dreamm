@@ -145,8 +145,13 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// copy protection script
+//
+$(include cp-kq5.inc)
 
 //
 // v0.000.054, Int. 11.15.90, 4x1.2M+1x720K, 16 Color version
