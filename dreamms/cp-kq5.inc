@@ -1,3 +1,4 @@
+// Charset is doubled because it covers both the vertically-centered and offcentered glyphs (when the X glyph is present)
 charset[glyphs]:
     height = 29
     char[B]: bits = 40000000`40000000`20000000`24000000`18000000`12000000`2c000000`48000000`14000000`24000000`02000000`02000000`01000000`01000000`00800000`00800000`00400000`00400000`00200000`00200000`00100000`00140000`000c0000`003c0000`001c0000`000c0000
@@ -10,7 +11,6 @@ charset[glyphs]:
     char[E]: bits = 00800800`007ff000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`00401000`007ff000`00800800
     char[F]: bits = 7ffc0000`60040000`60040000`500c0000`50040000`48140000`48140000`48240000`44240000`44440000`42440000`42840000`41840000`41040000`41840000`42840000`42440000`44440000`44240000`40240000`48240000`48140000`50140000`500c0000`600c0000`60040000`7ffc0000
     char[F]: bits = 7ffc0000`7ffc0000`700c0000`701c0000`781c0000`783c0000`6c3c0000`6c6c0000`6c6c0000`666c0000`66cc0000`63cc0000`63cc0000`618c0000`630c0000`638c0000`678c0000`66cc0000`6ccc0000`6c6c0000`786c0000`786c0000`703c0000`703c0000`601c0000`7ffc0000`7ffc0000
-    char[0x46]: bits = 00fff800`00c00800`00c00800`00a01800`00a00800`00902800`00902800`00904800`00884800`00888800`00848800`00850800`00830800`00820800`00830800`00850800`00848800`00888800`00884800`00804800`00904800`00902800`00a02800`00a01800`00c01800`00c00800`00fff800
     char[G]: bits = 60000000`10000000`08000000`08000000`04000000`04000000`02080000`7ffc0000`02080000`04000000`04000000`08000000`08000000`10000000`60000000
     char[G]: bits = 00c00000`00200000`00100000`00100000`00080000`00080000`00041000`00fff800`00041000`00080000`00080000`00100000`00100000`00200000`00c00000
     char[H]: bits = 61800000`16600000`0c300000`08100000`10080000`10080000`20040000`10080000`10080000`08100000`0c300000`16600000`61800000
@@ -48,50 +48,10 @@ charset[glyphs]:
     char[W]: bits = 00fff800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00fff800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00820800`00fff800
     char[X]: bits = 7ffffff0`480000d0`43000310`40c01c10`40306010`400d8010`40070010`4018c010`40603010`43800610`4c000190`70000070`7ffffff0
     char[Y]: bits = 00fff800`00fff800`00e01800`00e03800`00f03800`00f07800`00d87800`00d8d800`00d8d800`00ccd800`00cd9800`00c79800`00c79800`00c31800`00c61800`00c71800`00cf1800`00cd9800`00d99800`00d8d800`00f0d800`00f0d800`00e07800`00e07800`00c03800`00fff800`00fff800
+    char[Y]: bits = 00fff800`00c00800`00c00800`00a01800`00a00800`00902800`00902800`00904800`00884800`00888800`00848800`00850800`00830800`00820800`00830800`00850800`00848800`00888800`00884800`00804800`00904800`00902800`00a02800`00a01800`00c01800`00c00800`00fff800
     char[Z]: bits = 7ffc0000`7ffc0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`7ffc0000`7ffc0000`7ffc0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`638c0000`7ffc0000`7ffc0000
     char[Z]: bits = 00fff800`00fff800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00fff800`00fff800`00fff800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00c71800`00fff800`00fff800
 end
-
-
-charset[kq5]:
-    height = 9
-    char[0x21]: bits = 7d0
-    char[0x27]: bits = 100`600
-    char[0x2e]: bits = 010
-    char[0x43]: bits = 3e0`410`410`220
-    char[0x47]: bits = 3e0`410`410`490`2e0
-    char[0x54]: bits = 400`400`7f0`400`400
-    char[0x55]: bits = 7e0`010`010`7e0
-    char[0x61]: bits = 020`150`150`0e0`010
-    char[0x62]: bits = 7e0`110`110`0e0
-    char[0x63]: bits = 0e0`110`110`0a0
-    char[0x64]: bits = 0e0`110`110`7e0
-    char[0x65]: bits = 0e0`150`150`0d0
-    char[0x67]: bits = 0c0`128`128`0f0
-    char[0x68]: bits = 7f0`100`100`0f0
-    char[0x69]: bits = 5f0
-    char[0x6b]: bits = 7f0`040`0a0`110
-    char[0x6c]: bits = 7f0
-    char[0x6d]: bits = 1f0`100`100`0f0`100`100`0f0
-    char[0x6e]: bits = 1f0`080`100`0f0
-    char[0x6f]: bits = 0e0`110`110`0e0
-    char[0x70]: bits = 1f8`120`120`0c0
-    char[0x72]: bits = 1f0`080`100`100
-    char[0x73]: bits = 090`150`150`120
-    char[0x74]: bits = 100`7e0`110
-    char[0x75]: bits = 1e0`010`010`1e0`010
-    char[0x76]: bits = 1c0`020`010`020`1c0
-    char[0x77]: bits = 1e0`010`1e0`010`1e0
-    char[0x79]: bits = 1c0`028`028`1f0
-end
-
-CPQUESTIONS = [[[|
-    =
-    Thereisabanditinsidethesmallertent!GrahammustuseCrispin'swandtocastasleepspellonhim.=Camp
-    Thedoortothewitch'shousehasanenchantmentonitandcan'tbeopened.UseCrispin'swandtobreakthespell.=Woods
-    Graham'senergyhassuddenlyrunout.UseCrispin'swandtocastaspellgivingGrahammorestrength.=Beach
-    Graham'saimisnotverygood.UseCrispin'swandtohelphimthrowtheropeaccurately.=Mountain
-]]]
 
 COORDS = [[[|
     =
@@ -126,59 +86,75 @@ COORDS = [[[|
 script[cp]:
     code = [[[$(CRLF)
         cpactive = "";
-         system_throttle(false);
+        offset = 0;
+
         func update()
         {
           if (!script_running(cpscript))
           {
+            position1 = scraper_string("BAAbh@@kz", "glyphs", [0x4,0x10,0x7B]);
+            position2 = scraper_string("BAAeF@@nX", "glyphs", [0x4,0x10,0x7B]);
+            position3 = scraper_string("BAAfX@@op", "glyphs", [0x4,0x10,0x7B]);
 
-            lower = scraper_string("DAATh@@WaAAWa@@ZSAAZS@@cK", "kq5", 0x8);
-            upper = scraper_string("DAARS@@UKAAUK@@XDAAXD@@Z7", "kq5", 0x8);
+            if (position1) offset = 0;
+            if (position2) offset = 5;
+            if (position3) offset = 10;
 
-            if (upper) offset = 6;
-            if (lower) offset = 0;
+            answer = position1 + position2 + position3;
 
-            cpmatch = strmap(lower, "$$(CPQUESTIONS)") || strmap(upper, "$$(CPQUESTIONS)");
-
-            if (cpmatch && cpactive == "")
+            if (strlen(answer) == 4)
             {
-              answer = scraper_string("BAAbh@@kz", "glyphs", 0x10);
-
-              if (strlen(answer) == 4)
+              if (cpactive == "")
               {
                 cpactive = answer;
 
                 if (!prop("noautocp"))
-                  cpscript = script_run_async("cpauto", answer, offset);
+                {
+                  cpscript = script_run_async("cpauto", answer);
+                }
 
                 if (!prop("notextcp"))
-                  overlay_show("cpoverlay", 1, "Engraved on Crispin’s wand are the letters: " + answer);
+                  overlay_show("cpoverlay", 1, "You notice these letters engraved on Crispin’s wand: " + answer);
               }
             }
             else
             {
               cpactive = "";
+              offset = 0;
               overlay_hide("cpoverlay");
             }
           }
         }
 
-        func cpauto(value, offset)
+        func cpauto(value)
         {
           input_lockout(true);
           mouse_force_relative_zero(true);
+          offset = offset + int(strstr(value, "X") >= 0 ? 7 : 0); // The X glyph pushes everything down even more
           sleep(1000);
-          for (i = 0; i <= 3; i++)
+
+          // If VGA320BW.DRV exists, the interpreter used accepts keyboard input for the CP
+          // Applies to the international versions of KQ5
+          if (file_exists("$$(rootpath)\\VGA320BW.DRV"))
           {
-            coords = strmap(substr(value, i, 1), "$$(COORDS)");
-            x = int(strword(0, coords)) * 2;
-            y = int(strword(1, coords)) + int(offset);
-            sleep(500);
-            mouse_move_abs(x, y);
-            sleep(500);
-            mouse_click(0);
+            keyboard_type(value);
+            mouse_move_abs(238*2, 145+int(offset)); // Move to "OK"
           }
-          mouse_move_abs(238*2, 145+int(offset)); // OK
+          else
+          {
+            for (i = 0; i <= 3; i++)
+            {
+              coords = strmap(substr(value, i, 1), "$$(COORDS)");
+              x = int(strword(0, coords)) * 2;
+              y = int(strword(1, coords)) + int(offset);
+              sleep(500);
+              mouse_move_abs(x, y);
+              sleep(500);
+              mouse_click(0);
+            }
+            mouse_move_abs(238 * 2, 145 + int(offset)); // Move to "OK"
+          }
+
           sleep(500);
           mouse_click(0);
           sleep(500);
