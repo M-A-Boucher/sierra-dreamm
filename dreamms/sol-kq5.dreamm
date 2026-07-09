@@ -46,7 +46,7 @@ config[graphics]:
     condition = !$(WIN)
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy
+        videohw = cga; audiohw = speaker; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
