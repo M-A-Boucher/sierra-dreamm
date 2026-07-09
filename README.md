@@ -108,14 +108,22 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 Copy-protection is, so far, solved automatically for the following games:
 - Colonel's Bequest (aka Laura Bow 1)
 - Gold Rush!
+- Island of Doctor Brain
 - King's Quest IV: Perils of Rosella (AGI and SCI versions)
+- King's Quest V: Absence Makes the Heart Go Yonder
 - King's Quest VI: Heir Today, Gone Tomorrow
 - Laura Bow 2: The Dagger of Amon Ra
 - Leisure Suit Larry in the Land of the Lounge Lizards (not technically copy protection)
 - Leisure Suit Larry Goes Looking for Love (In Several Wrong Places) (aka Leisure Suit Larry 2)
 - Manhunter: New York
+- Police Quest I: In Pursuit of the Death Angel (SCI version)
 - Police Quest II: The Vengeance
+- Space Quest I: Roger Wilco in The Sarien Encounter
 - Space Quest IV: Roger Wilco and The Time Rippers
+- Space Quest VI: Roger Wilco in The Spinal Frontier
+- The Incredible Machine
+- The Even More! Incredible Machine
+
 
 ... more to come.
 
