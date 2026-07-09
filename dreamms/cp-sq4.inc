@@ -7,40 +7,39 @@ charset[symbols]:
     char[e]: bits = 793c`0550`0950`053c`7900`0138`3d44`5144`5138`3d00                           // WA/AO - AW
 end
 
-FINGERPRINTS = [[[,
-    G0v5mZlEbxb151bSs816YxDyUKYBb#Ny4pOLwA4ax#NHUO35MmYRFT=EGA
-    7j6iKeQ49UTwmYkks5RVgSrw#U#HL89LiVWJZ2MxJ7QjAKj8nsDaNW=VGA
-]]]
-
 script[cp]:
     code = [[[$(CRLF)
         VALUE_MAP = "=;a=XW;b=AO;c=ER;d=SR;e=AW";
-        answer = "";
+        cpactive = "";
 
         func update()
         {
           if (!script_running(cpscript))
           {
-            cpactive = scraper_match("BsNSk3AXX", "$$(FINGERPRINTS)", MF_MOUSE) || scraper_match("BsNS42zXD", fingerprint, MF_MOUSE);
+            symbols = scraper_string("BtmY91meF", "symbols", [0x6,0x1C]);
 
-            if (cpactive)
+            if (strlen(symbols) == 2)
             {
-              text = scraper_string("BtmY91meF", "symbols", [0x6,0x1C]);
-
-              answer = strmap(substr(text,0,1), VALUE_MAP) + strmap(substr(text,1,1), VALUE_MAP);
-              echo("Answer: " + answer);
-
-              if (answer != "")
+              if (cpactive == "")
               {
-                if (!prop("noautocp"))
-                  cpscript = script_run_async("cpauto", answer+"\r");
+                answer = strmap(substr(symbols, 0, 1), VALUE_MAP) + strmap(substr(symbols, 1, 1), VALUE_MAP);
+                echo("Answer: " + answer);
 
-                if (!prop("notextcp"))
-                  overlay_show("cpoverlay", 1, "Your janitorial intuition compels you to punch in this code: " + answer);
+                if (answer != "")
+                {
+                  cpactive = answer;
+
+                  if (!prop("noautocp"))
+                    cpscript = script_run_async("cpauto", answer+"\r");
+
+                  if (!prop("notextcp"))
+                    overlay_show("cpoverlay", 1, "Your janitorial intuition compels you to punch in this code: " + answer);
+                }
               }
             }
             else
             {
+              cpactive = "";
               overlay_hide("cpoverlay");
             }
           }
