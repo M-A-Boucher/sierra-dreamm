@@ -116,6 +116,15 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
+// copy protection script
+//
+$(include cp-pq-locker.inc)
+CP_REGION = BMzYUTzZ7
+CP_LOCKER_COMBINATION = 776
+CP_COORDS = 59 83
+CP_OVERLAY = !!policemanual.png@300!!
+
+//
 // v1.0, Int. 9.24.91, 5x1.44M (identical to 5x1.2M)
 //
 game[v1.0-int-9.24.91-5x1.44m]:

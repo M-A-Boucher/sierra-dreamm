@@ -117,8 +117,15 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 //
 // copy protection script
 //
-$(include cp-pq1-sci.inc)
+$(include cp-pq-locker.inc)
+CP_REGION = BnANxuAPX
+CP_LOCKER_COMBINATION = 269
+CP_COORDS = 189 50
+CP_OVERLAY = !!gazette.png@400!!
 
+//
+// Base files for v2.0
+//
 fragment[v2.0-base]:
     file[]: crc = 24cc5b74; size =      2404; name = 30.HEP      ; optional = true
     file[]: crc = 89f00eab; size =      3436; name = 30.SCR      ; optional = true
