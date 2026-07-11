@@ -12,16 +12,16 @@ charset[locker]:
     char[8]: bits = fe`82`aa`82`fe
     char[9]: bits = fe`8e`ae`82`fe
     // EGA
-    char[0]: bits = 82`7c`fe`44`c6`7c`fe`00`82
-    char[1]: bits = 82`00`82`7c`fe`00`82`00`82
-    char[2]: bits = 82`5c`de`54`d6`74`f6`00`82
-    char[3]: bits = 82`54`d6`54`d6`7c`fe`00`82
-    char[4]: bits = 82`70`f2`10`92`7c`fe`00`82
-    char[5]: bits = 82`74`f6`54`d6`5c`de`00`82
-    char[6]: bits = 82`7c`fe`54`d6`5c`de`00`82
-    char[7]: bits = 82`40`c2`40`c2`7c`fe`00`82
-    char[8]: bits = 82`7c`fe`54`d6`7c`fe`00`82
-    char[9]: bits = 82`70`f2`50`d2`7c`fe`00`82
+    char[0]: bits = fe`fe`82`82`ba`ba`82`82`fe`fe
+    char[1]: bits = fe`fe`fe`fe`82`82`fe`fe`fe`fe
+    char[2]: bits = fe`fe`a2`a2`aa`aa`8a`8a`fe`fe
+    char[3]: bits = fe`fe`aa`aa`aa`aa`82`82`fe`fe
+    char[4]: bits = fe`fe`8e`8e`ee`ee`82`82`fe`fe
+    char[5]: bits = fe`fe`8a`8a`aa`aa`a2`a2`fe`fe
+    char[6]: bits = fe`fe`82`82`aa`aa`a2`a2`fe`fe
+    char[7]: bits = fe`fe`be`be`be`be`82`82`fe`fe
+    char[8]: bits = fe`fe`82`82`aa`aa`82`82`fe`fe
+    char[9]: bits = fe`fe`8e`8e`ae`ae`82`82`fe`fe
 end
 
 script[cp]:
@@ -62,16 +62,15 @@ script[cp]:
    
         func updatecombination()
         {
-          digit = [scraper_string(REGION[0], "locker", [0x0,0x70F], SF_BGCOLOR),scraper_string(REGION[1], "locker", [0x0,0x70F], SF_BGCOLOR),scraper_string(REGION[2], "locker", [0x0,0x70F], SF_BGCOLOR)];
-          current_combination = digit[0] + digit[1] + digit[2];
-          echo(current_combination);
+          digit = [scraper_string(REGION[0], "locker", 0, SF_BGCOLOR),scraper_string(REGION[1], "locker", 0, SF_BGCOLOR),scraper_string(REGION[2], "locker", 0, SF_BGCOLOR)];
+          current_combination = digit[0]+digit[1]+digit[2];
         }
 
         func cpauto()
         {
           input_lockout(true);
           mouse_force_relative_zero(true);
-          sleep(2000);
+          sleep(1000);
           for (i = 0; i <= 2; i++)
           {
             mouse_move_abs(COORDS[0]*2+(i*30), COORDS[1]); sleep(250);
@@ -79,13 +78,15 @@ script[cp]:
             {
               mouse_click(0);
               updatecombination();
-              sleep(250);
+              sleep(150);
             }
           }
           if (current_combination == "269") // Old PQ1 locker model that you need to open manually
           {
             mouse_move_abs(COORDS[0]*2, 95); sleep(250);
-            mouse_click(0); sleep(1000);
+            mouse_click(0);
+            updatecombination();
+            sleep(2000);
           }
           input_lockout(false);
           mouse_force_relative_zero(false);
