@@ -118,10 +118,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 // copy protection script
 //
 $(include cp-pq-locker.inc)
-CP_REGION = BnANxuAPX
-CP_LOCKER_COMBINATION = 269
-CP_COORDS = 189 50
-CP_OVERLAY = !!gazette.png@400!!
 
 //
 // Base files for v2.0
