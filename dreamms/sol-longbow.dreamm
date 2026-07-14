@@ -73,11 +73,6 @@ config[sound]:
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
-    option[sb16]:
-        name = $(SB16_NAME)
-        SOUND_DRIVER = PROAUDIO.DRV; AUDIOHW = sb16
-        condition = file_exists("$$(rootpath)\\PROAUDIO.DRV")
-    end
     option[mt32]:
         name = $(MT32_NAME)
         SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
@@ -128,6 +123,11 @@ end
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// copy protection script
+//
+$(include cp-longbow.inc)
 
 //
 // v1.0, Int. 11.20.91, 6x1.44M

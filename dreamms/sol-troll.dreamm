@@ -1,0 +1,76 @@
+//
+// Troll’s Tale
+//
+desc[sol-troll]:
+
+name = Troll’s Tale
+icon = sol-troll.png
+machine = pcjr
+osenv = bios
+ramkb = 640
+mips = $(MIPS_8086)
+audiohw = speaker
+videohw = cga
+filter = sierra, adventure
+
+//
+// machine configuration
+//
+config[machine]:
+    title = Machine Configuration
+    option[pcjr]:
+        name = PCjr
+        machine = pcjr; priority = 1
+    end
+    option[pc-cga-composite]:
+        name = PC CGA (Composite)
+        machine = pc; composite = oldcga
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\; srcpath = $(ifsinstallpath)
+mount[]: vpath = A:\; srcpath = $(ifsdeltapath)  ; writable = true
+
+//
+// 1x160K, Booter
+//
+game[1x160k]:
+    name = 1x160K, Booter
+    anchorfile = FTRACK06SIDE0.~RAW~
+    file[]: crc = 0735efac; name = FTRACK00SIDE0.~RAW~
+    file[]: crc = 914c61c9; name = FTRACK01SIDE0.~RAW~
+    file[]: crc = ffd52cf9; name = FTRACK02SIDE0.~RAW~
+    file[]: crc = bd7d0139; name = FTRACK03SIDE0.~RAW~
+    file[]: crc = 35998268; name = FTRACK04SIDE0.~RAW~
+    file[]: crc = 905f1561; name = FTRACK05SIDE0.~RAW~
+    file[]: crc = 5a4ab0df; name = FTRACK06SIDE0.~RAW~; exactonly = true
+    file[]: crc = 3b0b137d; name = FTRACK07SIDE0.~RAW~
+    file[]: crc = 503ccc45; name = FTRACK08SIDE0.~RAW~
+    file[]: crc = c8671dd4; name = FTRACK09SIDE0.~RAW~
+    file[]: crc = efa04e97; name = FTRACK10SIDE0.~RAW~
+    file[]: crc = 780a90b4; name = FTRACK11SIDE0.~RAW~
+    file[]: crc = 66a080bd; name = FTRACK12SIDE0.~RAW~
+    file[]: crc = c242231c; name = FTRACK13SIDE0.~RAW~
+    file[]: crc = 6621654b; name = FTRACK14SIDE0.~RAW~
+    file[]: crc = da23e064; name = FTRACK15SIDE0.~RAW~
+    file[]: crc = 9e9373ee; name = FTRACK16SIDE0.~RAW~
+    file[]: crc = de708315; name = FTRACK17SIDE0.~RAW~
+    file[]: crc = 320f7ed1; name = FTRACK18SIDE0.~RAW~
+    file[]: crc = 579b5406; name = FTRACK19SIDE0.~RAW~
+    file[]: crc = d31c5174; name = FTRACK20SIDE0.~RAW~
+    file[]: crc = 10f9f890; name = FTRACK21SIDE0.~RAW~
+    file[]: crc = c7764ce3; name = FTRACK22SIDE0.~RAW~
+    file[]: crc = ce40e933; name = FTRACK23SIDE0.~RAW~
+    file[]: crc = 7193eda0; name = FTRACK24SIDE0.~RAW~
+    file[]: crc = 298af8bd; name = FTRACK25SIDE0.~RAW~
+    file[]: crc = c4647930; name = FTRACK26SIDE0.~RAW~
+    file[]: crc = ec0392d1; name = FTRACK27SIDE0.~RAW~
+    file[]: crc = 0fe8c951; name = FTRACK28SIDE0.~RAW~
+    file[]: crc = 412d5b49; name = FTRACK29SIDE0.~RAW~
+    file[]: crc = 64dc5d83; name = FTRACK30SIDE0.~RAW~
+end
+
+end
