@@ -1,0 +1,117 @@
+//
+// Battle Bugs
+//
+desc[sol-battlebugs]:
+
+name = Battle Bugs
+icon = sol-battlebugs.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\BUGS.EXE
+mips = $(MIPS_486DX2_66)
+ramkb = 8192
+filter = sierra, action, strategy
+videohw = svga
+
+//
+// video configuration
+//
+config[video]:
+    title = Video Configuration
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+        VIDEO_CONFIG = 6
+    end
+    option[svga]:
+        name = $(SVGA_NAME); 
+        videohw = svga; priority = 1
+        VIDEO_CONFIG = 8
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+        SOUND_CONFIG = P
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME); 
+        audiohw = adlib; priority = 1
+        SOUND_CONFIG = A
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        SOUND_CONFIG = B
+    end
+end
+
+dynamicfile[]: path = $(rootpath)\BBCONFIG.DAT; contents = $(SOUND_CONFIG)k$(VIDEO_CONFIG)!7220
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        UNCHUNK.EXE RESOURCE.000 .
+        UNCHUNK.EXE RESOURCE.001 .
+        UNCHUNK.EXE RESOURCE.002 .
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0, Int. 7.27.94
+//
+game[v1.0-int-7.27.94]:
+    name = v1.0, Int. 7.27.94
+    anchorfile = BUGS.EXE
+    file[]: crc = 94c036ca; size =         3; name = BBCONFIG.DAT
+    file[]: crc = 6dba5bd4; size =     26752; name = BBCONFIG.EXE
+    file[]: crc = 8c4e87de; size =     10254; name = BRFSCR
+    file[]: crc = 95c71c4e; size =    712675; name = BUGS
+    file[]: crc = cf613d9d; size =    207139; name = BUGS.EXE
+    file[]: crc = bc320ad8; size =   1649892; name = CARDS
+    file[]: crc = cb43fc26; size =      4831; name = DLOGBTNS
+    file[]: crc = dc4bef07; size =    255704; name = DRIVERS
+    file[]: crc = 5adef3f3; size =   2464133; name = GFX
+    file[]: crc = 33816072; size =    114835; name = LEVELS
+    file[]: crc = e27e0e24; size =      5630; name = MDLSCR
+    file[]: crc = 8a57399e; size =      3862; name = OB.BIN
+    file[]: crc = f28465a5; size =     15561; name = OPCARD
+    file[]: crc = 778a2e91; size =       418; name = PALETTES.BIN
+    file[]: crc = 391f4576; size =       511; name = PERMSTR
+    file[]: crc = b9079634; size =       802; name = RECORDS.BIN
+    file[]: crc = 82c21b20; size =     63456; name = SONGS
+    file[]: crc = 71d6778d; size =    147402; name = SOUNDFX
+    file[]: crc = 00339c27; size =    580050; name = SPEECH
+    file[]: crc = 28e4d18f; size =      3978; name = TEMPSTR
+    file[]: crc = 563cffe7; size =   1572666; name = TILES.BIN
+end
+
+//
+// v1.0, Int. 7.27.94, Installer
+//
+installer[v1.0-int-7.27.94-installer]:
+    name = v1.0, Int. 7.27.94, Installer
+    installid = v1.0-int-7.27.94
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = RESOURCE.002
+    file[]: crc = b6f10bf0; size =   1224483; name = RESOURCE.000
+    file[]: crc = f0e78e68; size =   1457343; name = RESOURCE.001
+    file[]: crc = ccae9011; size =    874027; name = RESOURCE.002
+    file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+end
+
+end
