@@ -95,24 +95,27 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv = $(VIDEO_DRIVER)
-        soundDrv = $(SOUND_DRIVER)
-        joyDrv   = JOYSTICK.DRV
-        kbdDrv   = IBMKBD.DRV
-        mouseDrv = STDMOUSE.DRV
-        minHunk  = 396k
-        patchDir = .
+CFG = [[[$(CRLF)
+    videoDrv = $(VIDEO_DRIVER)
+    soundDrv = $(SOUND_DRIVER)
+    joyDrv   = JOYSTICK.DRV
+    kbdDrv   = IBMKBD.DRV
+    mouseDrv = STDMOUSE.DRV
+    minHunk  = 396k
+    patchDir = .
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.000, Int. 10.31.90, 4x1.2M+1x360K

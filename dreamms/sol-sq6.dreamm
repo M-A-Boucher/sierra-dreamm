@@ -46,29 +46,34 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        CD        = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        minMemory = 3200k
-        audiosize = 112k
-        brightness= 0
-        language  = 1
-        resMap    = .\
-        resAUD    = .\
-        resSFX    = .\
-        patchDir  = .\;.\MOVIES
-        movieDir  = .\MOVIES
-        robot     = .\ROBOTS
-        dacsize   = 30720
+CFG = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    CD        = NO
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    minMemory = 3200k
+    audiosize = 112k
+    brightness= 0
+    language  = 1
+    resMap    = .\
+    resAUD    = .\
+    resSFX    = .\
+    patchDir  = .\;.\MOVIES
+    movieDir  = .\MOVIES
+    robot     = .\ROBOTS
+    dacsize   = 30720
+]]]
+
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
+
 
 //
 // filesystem

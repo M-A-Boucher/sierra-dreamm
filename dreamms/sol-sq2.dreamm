@@ -52,27 +52,23 @@ config[graphics]:
     end
 end
 
-//
-// filesystem
-//
-mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
-
-dynamicfile[]:
-    path = A:\_SQ2.BAT
-    contents = $(NULL)
-end
-
-script[key]:
+script[init]:
     condition = file_exists("$$(rootpath)\\FTRACK06SIDE0.~RAW~")
-    code = [[[$(CRLF)            
+    code = [[[$(CRLF)
+        file_save("A:\\_SQ2.BAT", ""); // Copy protection checks for this file
         input_lockout(true);
         wait("int16", 1);
         keyboard_type("\r");
         input_lockout(false);
     ]]]
 end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 
 //
 // v2.0A, Int. 2.912, 2x720K

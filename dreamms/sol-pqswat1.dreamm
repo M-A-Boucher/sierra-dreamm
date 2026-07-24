@@ -15,37 +15,40 @@ videohw = svga
 audiohw = sb16+mt32+gmidi
 filter = sierra, adventure
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = MIDNONE.DRV
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        CD        = NO
-        minCPU    = 486
-        minDOS    = 500
-        mode      = protected
-        CPU       = 486
-        CPUSpeed  = 63
-        VideoSpeed= 400
-        CDROM     = 2
-        language  = 1
-        maxmemory = 12m
-        staticmemory = 300k
-        audioSize = 32k
-        cmd       = SWAT.BAT
-        smartdrv  = YES
-        directory = .
-        resMap    = .
-        resAUD    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
-        resSFX    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
-        resCDisc  = .
-        patchDir  = .\PATCHES
-        robot     = .\ROBOTS
-        movieDir  = .\VMD
+CFG = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = MIDNONE.DRV
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    CD        = NO
+    minCPU    = 486
+    minDOS    = 500
+    mode      = protected
+    CPU       = 486
+    CPUSpeed  = 63
+    VideoSpeed= 400
+    CDROM     = 2
+    language  = 1
+    maxmemory = 12m
+    staticmemory = 300k
+    audioSize = 32k
+    cmd       = SWAT.BAT
+    smartdrv  = YES
+    directory = .
+    resMap    = .
+    resAUD    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
+    resSFX    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
+    resCDisc  = .
+    patchDir  = .\PATCHES
+    robot     = .\ROBOTS
+    movieDir  = .\VMD
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 

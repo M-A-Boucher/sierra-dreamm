@@ -50,13 +50,13 @@ config[sound]:
     title = Sound Configuration
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
+        audiohw = speaker+sb16
         SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME)
-        audiohw = adlib
+        audiohw = adlib+sb16
         SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
@@ -68,44 +68,48 @@ config[sound]:
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 3
+        audiohw = mt32+sb16; priority = 3
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = gmidi; priority = 2
+        audiohw = gmidi+sb16; priority = 2
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv=$(VIDEO_DRIVER)
-        soundDrv=$(SOUND_DRIVER)
-        audioDrv=DACBLAST.DRV
-        kbdDrv=IBMKBD.DRV
-        mouseDrv=STDMOUSE.DRV
-        minMemory=1500k
-        audiosize=26k
-    ]]]
-end
+CFG = [[[$(CRLF)
+    videoDrv  = $(VIDEO_DRIVER)
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = DACBLAST.DRV
+    kbdDrv    = IBMKBD.DRV
+    mouseDrv  = STDMOUSE.DRV
+    minMemory = 1500k
+    audiosize = 26k
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009 RESOURCE.000
-        AUDDCOMP.EXE .\
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009 RESOURCE.000
+    AUDDCOMP.EXE .\
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 fragment[v1.0-base]:
     file[]: crc = 2ba3a5d8; size =      4088; name = 250.HEP
@@ -278,7 +282,6 @@ installer[v1.1-int-12.14.93-9x1.44m-installer]:
     file[]: crc = e8aa087d; size =   1454600; name = RESOURCE.008
     file[]: crc = e95a1e7d; size =    742793; name = RESOURCE.009
     file[]: crc = 29f4de8b; size =    676450; name = RESOURCE.SFX
-
 end
 
 //

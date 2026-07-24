@@ -77,17 +77,20 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\RESOURCE.CFG
-    contents = [[[$(CRLF)
-        $(VIDEO_DRIVER)
-        $(SOUND_DRIVER)
-        NONE
-        IBMKBD.DRV
-        NO$(SP)$(SP) // Joystick
-        BACKGROUND   // Draw background
-        $(NULL)
-   ]]]
+CFG = [[[$(CRLF)
+    $(VIDEO_DRIVER)
+    $(SOUND_DRIVER)
+    NONE
+    IBMKBD.DRV
+    NO$(SP)$(SP) // Joystick
+    BACKGROUND   // Draw background
+    $(NULL)
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+    ]]]
 end
 
 //

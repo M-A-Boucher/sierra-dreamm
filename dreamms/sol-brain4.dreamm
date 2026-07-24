@@ -26,7 +26,6 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.0]:
     name = v1.0
     anchorfile = DRBRAIN4.EXE
-    anchorfile = DRBRAIN4.EXE
     file[]: crc = a4fdc226; size =     18432; name = AUTORUN.EXE
     file[]: crc = 578e0f34; size =        48; name = AUTORUN.INF
     file[]: crc = 093b1e3d; size =      5208; name = BDWIN95.TXT

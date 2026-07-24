@@ -76,20 +76,26 @@ config[machine]:
     end
 end
 
+script[init]:
+    condition = file_exists("$$(rootpath)\\CPC.COM")
+    code = [[[$(CRLF)
+        file_save("A:\\_KQ2.BAT", ""); // Copy protection checks for this file          
+        input_lockout(true);
+        wait("int16", 1);
+        keyboard_type("\r");
+        input_lockout(false);
+    ]]]
+end
+
 //
 // filesystem
 //
-mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath); writable = true
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK1; optional = true; disc = 1
 mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)\DISK2; optional = true; disc = 2
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = A:\        ; srcpath = $(ifsdeltapath); writable = true; condition = file_exists("$$(rootpath)\\DISK1\\FTRACK00SIDE0.~RAW~"); disc = Save Game Disk
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true
-
-dynamicfile[]:
-    path = A:\_KQ2.BAT
-    contents = $(NULL)
-end
+mount[]: vpath = A:\        ; srcpath = $(ifsdeltapath)  ; writable = true; condition = file_exists("$$(rootpath)\\DISK1\\FTRACK00SIDE0.~RAW~"); disc = Save Game Disk
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 
 script[flip]:
     condition = file_exists("$$(rootpath)\\DISK2\\FTRACK00SIDE0.~RAW~")
@@ -99,16 +105,6 @@ script[flip]:
         keyboard_type("\r");
         wait("int16", 1);
         disc_insert("2", true);
-        keyboard_type("\r");
-        input_lockout(false);
-    ]]]
-end
-
-script[key]:
-    condition = file_exists("$$(rootpath)\\CPC.COM")
-    code = [[[$(CRLF)            
-        input_lockout(true);
-        wait("int16", 1);
         keyboard_type("\r");
         input_lockout(false);
     ]]]

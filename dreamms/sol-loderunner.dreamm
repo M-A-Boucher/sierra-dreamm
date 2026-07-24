@@ -15,63 +15,35 @@ videohw = svga
 audiohw = sb16+gmidi
 filter = sierra, action
 
-//
-// sound configuration
-//
-config[sound]:
-    title = Sound Configuration
-    option[sadl]:
-        name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = sb16+adlib
-        SOUND_DRIVER = SADL.DRV
-        condition = file_exists("$$(rootpath)\\SADL.DRV")
-    end
-    option[sb16]:
-        name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
-        SOUND_DRIVER = SBPRO.DRV
-        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
-    end
-    option[mt32]:
-        name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
-        SOUND_DRIVER = MT32.DRV
-        condition = file_exists("$$(rootpath)\\MT32.DRV")
-    end
-    option[gmidi]:
-        name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 3
-        SOUND_DRIVER = GENMIDI.DRV
-        condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
-    end
-end
+CFG = [[[$(CRLF)
+    joyDrv    = NO
+    mouseDrv  = STDMOUSE.DRV
+    memoryDrv = ARM.DRV
+    minCPU    = 386
+    minDOS    = 500
+    minEMS    = 2048
+    mode      = real 
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        joyDrv    = NO
-        mouseDrv  = STDMOUSE.DRV
-        memoryDrv = ARM.DRV
-        minCPU    = 386
-        minDOS    = 500
-        minEMS    = 2048
-        mode      = real 
-    ]]]
-end
+INSTALL = [[[$(CRLF)
+    MD AUDIO
+    UNCHUNK RESOURCE.000 .
+    UNCHUNK RESOURCE.001 .
+    UNCHUNK RESOURCE.002 .
+    UNCHUNK RESOURCE.003 .
+    UNCHUNK RESOURCE.004 .
+    PRSADD LR256.PRS GENMID.PRS
+    PRSADD LR16.PRS GENMID.PRS
+    PRSADD LR256.PRS SOUND.PRS
+]]]
 
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        MD AUDIO
-        UNCHUNK RESOURCE.000 .
-        UNCHUNK RESOURCE.001 .
-        UNCHUNK RESOURCE.002 .
-        UNCHUNK RESOURCE.003 .
-        UNCHUNK RESOURCE.004 .
-        PRSADD LR256.PRS GENMID.PRS
-        PRSADD LR16.PRS GENMID.PRS
-        PRSADD LR256.PRS SOUND.PRS
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 

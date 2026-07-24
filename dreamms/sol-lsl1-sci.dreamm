@@ -21,7 +21,7 @@ config[graphics]:
     title = Graphics Configuration
     option[tandy]: 
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy
+        videohw = cga; audiohw = speaker; machine = tandy
         VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; TANDY = 1
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
     end
@@ -101,24 +101,26 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv = $(VIDEO_DRIVER)
-        soundDrv = $(SOUND_DRIVER)
-        joyDrv   = JOYSTICK.DRV
-        kbdDrv   = IBMKBD.DRV
-        mouseDrv = STDMOUSE.DRV
-        minHunk  = 120k
+CFG = [[[$(CRLF)
+    videoDrv = $(VIDEO_DRIVER)
+    soundDrv = $(SOUND_DRIVER)
+    joyDrv   = JOYSTICK.DRV
+    kbdDrv   = IBMKBD.DRV
+    mouseDrv = STDMOUSE.DRV
+    minHunk  = 120k
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = C:\; 	      srcpath = ram;             writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v2.0, Int. 6.26.91, 3x1.44M

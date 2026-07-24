@@ -16,47 +16,49 @@ videohw = svga
 REGION = ""
 CHARSET = ""
 
+CFG = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = MIDNONE.DRV
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    directory = \sierra\ramados
+    cmd       = RAMADOS
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    minMemory = 1600k
+    brightness= 0
+    minCPU    = 486
+    cd        = YES
+    smartdrv  = YES
+    maxSubmits= 48
+    dacSize	  = 4k                           
+    cdSpeed   = 4                 
+    audio     = CD:\audio;CD:\PATCHES 
+    resAud    = CD:\        		
+    resSfx    = C:\sierra\ramados;CD:\        
+    resMap    = CD:\              
+    rescdisc  = CD:\              
+    movieDir  = CD:\VMD           
+    robot     = CD:\ROBOT         
+    patchDir  = C:\sierra\ramados;CD:\PATCHES 
+    CD:       = D:;        
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+    ]]]
+end
+
 //
 // file system
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)        ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC1; disc = 1
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC2; disc = 2
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC3; disc = 3
-
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = MIDNONE.DRV
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        directory = \sierra\ramados
-        cmd       = RAMADOS
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        minMemory = 1600k
-        brightness= 0
-        minCPU    = 486
-        cd        = YES
-        smartdrv  = YES
-        maxSubmits= 48
-        dacSize	  = 4k
-                                    
-        cdSpeed   = 4                 
-        audio     = CD:\audio;CD:\PATCHES 
-        resAud    = CD:\        		
-        resSfx    = C:\sierra\ramados;CD:\        
-        resMap    = CD:\              
-        rescdisc  = CD:\              
-        movieDir  = CD:\VMD           
-        robot     = CD:\ROBOT         
-        patchDir  = C:\sierra\ramados;CD:\PATCHES 
-        CD:       = D:;        
-    ]]]
-end
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)/DISC1; disc = 1
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)/DISC2; disc = 2
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)/DISC3; disc = 3
 
 charset[us]:
     height = 12

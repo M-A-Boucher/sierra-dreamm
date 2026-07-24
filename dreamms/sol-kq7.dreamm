@@ -21,50 +21,53 @@ config[sound]:
     title = Sound Configuration
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = sb16+adlib
+        audiohw = adlib+sb16
         SOUND_DRIVER = SADL.DRV
         condition = file_exists("$$(rootpath)\\SADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
+        audiohw = sb16
         SOUND_DRIVER = SBPRO.DRV
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
+        audiohw = mt32+sb16
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 3
+        audiohw = gmidi+sb16; priority = 1
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        CD        = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        minMemory = 3200k
-        audiosize = 64k
-        brightness= 0
-        language  = 1
-        resMap    = .\
-        resAUD    = .\
-        resSFX    = .\
-        patchDir  = .\;.\AVI
-        robot     = .\AVI
-        dacsize   = 30720
+CFG = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    CD        = NO
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    minMemory = 3200k
+    audiosize = 64k
+    brightness= 0
+    language  = 1
+    resMap    = .\
+    resAUD    = .\
+    resSFX    = .\
+    patchDir  = .\;.\AVI
+    robot     = .\AVI
+    dacsize   = 30720
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 

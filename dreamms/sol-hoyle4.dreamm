@@ -67,7 +67,7 @@ config[sound]:
 end
 
 //
-// SFX configuration
+// sfx configuration
 //
 config[sfx]:
     title = SFX Configuration
@@ -83,26 +83,30 @@ config[sfx]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = $(VIDEO_DRIVER)
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = $(AUDIO_DRIVER)
-        kbdDrv    = IBMKBD.DRV
-        mouseDrv  = STDMOUSE.DRV
-        memoryDrv = ARM.DRV
-        minHunk   = 257k
-        audioSize = 8k
-    ]]]
-end
+CFG = [[[$(CRLF)
+    videoDrv  = $(VIDEO_DRIVER)
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = $(AUDIO_DRIVER)
+    kbdDrv    = IBMKBD.DRV
+    mouseDrv  = STDMOUSE.DRV
+    memoryDrv = ARM.DRV
+    minHunk   = 257k
+    audioSize = 8k
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 RESOURCE.000
-        COPY RESOURCE.A01+RESOURCE.A02 RESOURCE.AUD
-        PKDECOMP.EXE RESOURCE.AUD
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 RESOURCE.000
+    COPY RESOURCE.A01+RESOURCE.A02 RESOURCE.AUD
+    PKDECOMP.EXE RESOURCE.AUD
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 

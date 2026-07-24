@@ -67,7 +67,7 @@ config[sound]:
 end
 
 //
-// SFX configuration
+// sfx configuration
 //
 config[sfx]:
     title = SFX Configuration
@@ -85,7 +85,7 @@ config[sfx]:
 end
 
 //
-// SFX configuration
+// sfx configuration
 //
 config[sfx-demo]:
     title = SFX Configuration
@@ -102,45 +102,47 @@ config[sfx-demo]:
     end
 end
 
-dynamicfile[]:
-    condition = is_game()
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = $(VIDEO_DRIVER)
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = $(AUDIO_DRIVER)
-        mouseDrv  = STDMOUSE.DRV
-        memoryDrv = ARM.DRV
-        minMemory = 2M
-        audioSize = 32k 
-        sync      = .\AUD
-        audio     = .;.\SFX;.\PATCHES;.\AUD 
-        movieDir  = .\SEQ 
-        patchDir  = .;.\PATCHES
-    ]]]
-end
+CFG = [[[$(CRLF)
+    videoDrv  = $(VIDEO_DRIVER)
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = $(AUDIO_DRIVER)
+    mouseDrv  = STDMOUSE.DRV
+    memoryDrv = ARM.DRV
+    minMemory = 2M
+    audioSize = 32k 
+    sync      = .\AUD
+    audio     = .;.\SFX;.\PATCHES;.\AUD 
+    movieDir  = .\SEQ 
+    patchDir  = .;.\PATCHES
+]]]
 
-dynamicfile[]:
-    condition = is_demo()
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VGA320.DRV
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = AUDBLAST.DRV
-        joyDrv    = NO
-        kbdDrv    = IBMKBD.DRV
-        mouseDrv  = STDMOUSE.DRV
-        memoryDrv = ARM.DRV
-        minHunk   = 246k
-        audioSize = 24k
-    ]]]
-end
+CFG_DEMO = [[[$(CRLF)
+    videoDrv  = VGA320.DRV
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = AUDBLAST.DRV
+    joyDrv    = NO
+    kbdDrv    = IBMKBD.DRV
+    mouseDrv  = STDMOUSE.DRV
+    memoryDrv = ARM.DRV
+    minHunk   = 246k
+    audioSize = 24k
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009+RESOURCE.010 RESOURCE.000
-        AUDDCOMP.EXE .\
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009+RESOURCE.010 RESOURCE.000
+    AUDDCOMP.EXE .\
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_demo())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG_DEMO)");
     ]]]
 end
 

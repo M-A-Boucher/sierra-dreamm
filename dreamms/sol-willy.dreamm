@@ -13,7 +13,7 @@ mips = $(MIPS_486DX_33)
 ramkb = 4096
 filter = dynamix, sierra, adventure
 videohw = vga
-VIDEODRV = 0x08
+VIDEODRV = 8
 
 //
 // sound configuration
@@ -24,36 +24,35 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        AUDIODRV = 0x00
+        AUDIODRV = 0
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16; priority = 1
-        AUDIODRV = 0x04
+        AUDIODRV = 4
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = mt32
-        AUDIODRV = 0x03
+        AUDIODRV = 3
     end
 end
 
-dynamicfile[]:
-    condition = !file_exists("$$(rootpath)\\SNDBLAST.DRV")
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[
-        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
-    ]]]
-end
+CFG = [[[$(CRLF)
+    soundDrv  = SNDBLAST.DRV 220
+    joyDrv    = NO
+    mouseDrv  = STDMOUSE.DRV
+    memoryDrv = ARM.DRV
+]]]
 
-dynamicfile[]:
-    condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        soundDrv  = SNDBLAST.DRV 220
-        joyDrv    = NO
-        mouseDrv  = STDMOUSE.DRV
-        memoryDrv = ARM.DRV
+script[init]:
+    code = [[[$(CRLF)
+        if (file_exists("$$(rootpath)\\SNDBLAST.DRV"))
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        else
+          file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
+
+        mouse_force_relative_zero(true)
     ]]]
 end
 
@@ -62,11 +61,6 @@ end
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
-
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
 
 //
 // v1.0, Int. 9.25.91, 6x1.44M
@@ -107,7 +101,7 @@ end
 game[v1.0-int-10.29.91-9x720k]:
     name = v1.0, Int. 10.29.91, 9x720K, 16 Color
     videohw = ega
-    VIDEODRV = 0x02
+    VIDEODRV = 2
     anchorfile = WILLY.EXE
     file[]: crc = e2013065; size =    684659; name = VOLUME.001
     file[]: crc = b5fa5458; size =    729648; name = VOLUME.002

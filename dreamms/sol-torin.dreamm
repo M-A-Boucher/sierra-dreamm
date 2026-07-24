@@ -9,47 +9,51 @@ machine = pc
 osenv = dos
 rootpath = C:\
 launch = $(rootpath)\SIERRAH.EXE
-mips = $(MIPS_486DX_33)
+mips = $(MIPS_P75)
 ramkb = 16384
 videohw = svga
 filter = sierra, adventure
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = MIDNONE.DRV
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        CD        = NO
-        minCPU    = 486
-        minDOS    = 500
-        mode      = protected
-        CPU       = 486
-        CPUSpeed  = 63
-        VideoSpeed= 400
-        CDROM     = 2
-        language  = 1
-        maxmemory = 12m
-        staticmemory = 300k
-        audioSize = 32k
-        brightness= 0
-        language  = 1
-        resMap    = .\
-        resAUD    = .\
-        resSFX    = .\
-        patchDir  = .\PATCHES;.\MOVIE
-        movieDir  = .\MOVIE
+CFG = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = MIDNONE.DRV
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    CD        = NO
+    minCPU    = 486
+    minDOS    = 500
+    mode      = protected
+    CPU       = 486
+    CPUSpeed  = 63
+    VideoSpeed= 400
+    CDROM     = 2
+    language  = 1
+    maxmemory = 12m
+    staticmemory = 300k
+    audioSize = 32k
+    brightness= 0
+    language  = 1
+    resMap    = .\
+    resAUD    = .\
+    resSFX    = .\
+    patchDir  = .\PATCHES;.\MOVIE
+    movieDir  = .\MOVIE
+]]]
+
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.0

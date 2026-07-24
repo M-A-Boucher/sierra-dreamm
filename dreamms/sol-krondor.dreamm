@@ -47,41 +47,44 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        soundDrv  = $(SOUND_DRIVER)
-        joyDrv    = NO
-        mouseDrv  = NO
-        memoryDrv = ARM.DRV
-        minEMS    = 1024
-        minCPU    = 386
-        minDOS    = 500
-        size      = 15000
-        S         = 500
-	cd        = NO
-    ]]]
-end
+CFG = [[[$(CRLF)
+    soundDrv  = $(SOUND_DRIVER)
+    joyDrv    = NO
+    mouseDrv  = NO
+    memoryDrv = ARM.DRV
+    minEMS    = 1024
+    minCPU    = 386
+    minDOS    = 500
+    size      = 15000
+    S         = 500
+    cd        = NO
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/DRIVE.CFG
-    condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
-    contents = [[[$(CRLF)
-        C 
-        D 
-    ]]]
-end
+DRIVE = [[[$(CRLF)
+    C 
+    D 
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        UNCHUNK RESOURCE.000 .
-        UNCHUNK RESOURCE.001 .
-        UNCHUNK RESOURCE.002 .
-        UNCHUNK RESOURCE.003 .
-        UNCHUNK RESOURCE.004 .
-        UNCHUNK RESOURCE.005 .
-        UNCHUNK RESOURCE.006 .
+INSTALL = [[[$(CRLF)
+    UNCHUNK RESOURCE.000 .
+    UNCHUNK RESOURCE.001 .
+    UNCHUNK RESOURCE.002 .
+    UNCHUNK RESOURCE.003 .
+    UNCHUNK RESOURCE.004 .
+    UNCHUNK RESOURCE.005 .
+    UNCHUNK RESOURCE.006 .
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (file_exists("$$(rootpath)\\CD\\CDDA.SOU"))
+          file_save("$$(rootpath)\\DRIVE.CFG", "$$(DRIVE)");
     ]]]
 end
 

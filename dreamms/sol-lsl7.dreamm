@@ -15,27 +15,30 @@ videohw = svga
 audiohw = adlib+sb16+mt32+gmidi
 filter = sierra, adventure
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = MIDNONE.DRV
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        CD        = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        minMemory = 3200k
-        audioSize = 32k
-        brightness= 0
-        language  = 1
-        resMap    = .\
-        resAUD    = .\
-        resSFX    = .\
-        patchDir  = .\PATCHES
-        movieDir  = .\MOVIE
-        audio     = .\MUSIC\22S16
-        dacsize   = 30720
+CFG = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = MIDNONE.DRV
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    CD        = NO
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    minMemory = 3200k
+    audioSize = 32k
+    brightness= 0
+    language  = 1
+    resMap    = .\
+    resAUD    = .\
+    resSFX    = .\
+    patchDir  = .\PATCHES
+    movieDir  = .\MOVIE
+    audio     = .\MUSIC\22S16
+    dacsize   = 30720
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 

@@ -52,16 +52,18 @@ config[graphics]:
     end
 end
 
+script[init]:
+    code = [[[$(CRLF)
+        file_save("A:\\_MH2.BAT", ""); // Copy protection checks for this file
+    ]]]
+end
+
 //
 // filesystem
 //
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-
-dynamicfile[]:
-    path = A:\_MH2.BAT
-    contents = $(NULL)
-end
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 
 //
 // v3.02B, Int. 3.002.149, 3x720K

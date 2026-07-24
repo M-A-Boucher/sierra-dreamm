@@ -52,27 +52,23 @@ config[graphics]:
     end
 end
 
-//
-// filesystem
-//
-mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
-
-dynamicfile[]:
-    path = A:\_KQ3.BAT
-    contents = $(NULL)
-end
-
 script[key]:
     condition = file_exists("$$(rootpath)\\CPC.COM")
-    code = [[[$(CRLF)            
+    code = [[[$(CRLF)
+        file_save("A:\\_KQ3.BAT", ""); // Copy protection checks for this file                   
         input_lockout(true);
         wait("int16", 0);
         keyboard_type("\r");
         input_lockout(false);
     ]]]
 end
+
+//
+// filesystem
+//
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 
 //
 // v1.01, Int. 2.272, 3x360K

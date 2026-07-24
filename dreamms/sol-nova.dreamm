@@ -22,17 +22,17 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEODRV = 0x03; AUDIODRV = 0x01; TANDY = 1
+        VIDEODRV = 3; AUDIODRV = 1; TANDY = 1
     end
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega
-        VIDEODRV = 0x02
+        VIDEODRV = 2
     end
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga; priority = 1
-        VIDEODRV = 0x08
+        VIDEODRV = 8
     end
 end
 
@@ -45,29 +45,28 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        AUDIODRV = 0x00
+        AUDIODRV = 0
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = adlib; priority = 1
-        AUDIODRV = 0x02
+        AUDIODRV = 2
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16
-        AUDIODRV = 0x04
+        AUDIODRV = 4
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = mt32
-        AUDIODRV = 0x03
+        AUDIODRV = 3
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[
-        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
     ]]]
 end
 

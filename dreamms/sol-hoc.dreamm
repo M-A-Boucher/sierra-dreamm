@@ -70,14 +70,14 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[
-        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+dynamicfile[]: path = A:\HOC 1; attributes = 8; contents = $(NULL)
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
+        code = mouse_force_relative_zero(true)
     ]]]
 end
-
-dynamicfile[]: path = A:\HOC 1; attributes = 8; contents = $(NULL)
 
 //
 // filesystem
@@ -92,11 +92,6 @@ script[autoinstall]:
         keyboard_type("\r");
         keyboard_type("\033");
     ]]]
-end
-
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
 end
 
 //

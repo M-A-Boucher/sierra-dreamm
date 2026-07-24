@@ -96,14 +96,17 @@ config[music]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv:$(VIDEO_DRIVER)
-        musicDrv:$(MUSIC_DRIVER)
-        soundDrv:$(SOUND_DRIVER)
-        JOYSTICK:YES
-   ]]]
+CFG = [[[$(CRLF)
+    videoDrv:$(VIDEO_DRIVER)
+    musicDrv:$(MUSIC_DRIVER)
+    soundDrv:$(SOUND_DRIVER)
+    JOYSTICK:YES
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+    ]]]
 end
 
 //

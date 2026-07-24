@@ -31,7 +31,6 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
@@ -58,15 +57,18 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\RESOURCE.CFG
-    contents = [[[$(CRLF)
-        $(VIDEO_DRIVER)
-        $(MUSIC_DRIVER)
-        NO$(SP)$(SP)
-        HARD DISK
-        $(NULL)
-   ]]]
+CFG = [[[$(CRLF)
+    $(VIDEO_DRIVER)
+    $(SOUND_DRIVER)
+    NO$(SP)$(SP)
+    HARD DISK
+    $(NULL)
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+    ]]]
 end
 
 //

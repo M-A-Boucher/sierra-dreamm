@@ -52,41 +52,36 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv  = VESA.DRV
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = DACBLAST.DRV
-        joyDrv    = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        videoSpeed=200
-        language  = 1
-        audioSize = 64k
-        smartdrv  = YES
-        vmdSkip   = NO
-        hires     = 630,450
-        midiBuffSize5=30000
-        midiBuffSize6=65000
-        directory = .\
-        movieDir  = .\VMD
-        patchDir  = .\;.\PATCHES
-        robot     = .\;.\PATCHES;.\ROBOT
-        $(RESCONFIG)
-    ]]]
-end
+CFG = [[[$(CRLF)
+    videoDrv      = VESA.DRV
+    soundDrv      = $(SOUND_DRIVER)
+    audioDrv      = DACBLAST.DRV
+    joyDrv.       = NO
+    mouseDrv      = NONE
+    memoryDrv     = NONE
+    videoSpeed.   =200
+    language      = 1
+    audioSize     = 64k
+    smartdrv      = YES
+    vmdSkip       = NO
+    hires         = 630,450
+    midiBuffSize5 =30000
+    midiBuffSize6 =65000
+    directory     = .\
+    movieDir      = .\VMD
+    patchDir      = .\;.\PATCHES
+    robot         = .\;.\PATCHES;.\ROBOT
+    $(RESCONFIG)
+]]]
 
-//
-// Creates the PREF.DAT file and sets movies to full size and detailed
-//
-script[prefs]:
+script[init]:
     condition = is_game()
     code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
         if (!file_exists("$$(rootpath)\\PREF.DAT"))
         {
-          file = blob_create("HEX:01 00 00 00 00 00 7F 00 0F 00");
-          file_save("PREF.DAT", file);
+          file_save("PREF.DAT", "`h:01 00 00 00 00 00 7F 00 0F 00");
         }
     ]]]
 end

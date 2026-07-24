@@ -53,17 +53,18 @@ config[graphics]:
     end
 end
 
+script[init]:
+    code = [[[$(CRLF)
+        file_save("A:\\_LL.BAT", ""); // Copy protection checks for this file
+    ]]]
+end
+
 //
 // filesystem
 //
-mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = A:\        ; srcpath = $(ifsinstallpath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ;    writable = true;
-
-dynamicfile[]:
-    path = A:\_LL.BAT
-    contents = $(NULL)
-end
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 
 //
 // copy protection script

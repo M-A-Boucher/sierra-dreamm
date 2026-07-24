@@ -18,10 +18,26 @@ IS_EGA = false
 
 config[sound]:
     title = Sound Configuration
-    option[speaker]: name = $(SPEAKER_NAME); audiohw = speaker; AUDIO = 0
-    option[adlib]:   name = $(ADLIB_NAME);   audiohw = adlib; AUDIO = 2
-    option[mt32]:    name = $(MT32_NAME);    audiohw = mt32; AUDIO = 3
-    option[sb16]:    name = $(SB16_NAME);    audiohw = sb16; AUDIO = 4; priority = 1
+    option[speaker]:
+        name = $(SPEAKER_NAME) 
+        audiohw = speaker
+        AUDIO = 0
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+        AUDIO = 2
+    end
+    option[mt32]:
+        name = $(MT32_NAME)
+        audiohw = mt32
+        AUDIO = 3
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        AUDIO = 4
+    end
 end
 
 config[video]:
@@ -29,14 +45,21 @@ config[video]:
     condition = $(IS_EGA)
     // Installer mentions "MCGA" but is the same as regular CGA
     // Also mentions VGA (16 color) but is the same as EGA
-    option[cga]:  name = $(CGA_NAME);  videohw = cga; VIDEO = 1
-    option[ega]:  name = $(EGA_NAME);  videohw = ega; VIDEO = 2; priority = 1
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO = 1
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+        VIDEO = 2; priority = 1
+    end
 end
 
-dynamicfile[]:
-    path = C:\BARON\CONTROL.PRF
-    contents = [[[
-        [[BINARY:$(VIDEO) $(AUDIO)]]
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEO) $(AUDIO)`");
     ]]]
 end
 

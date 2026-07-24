@@ -22,19 +22,19 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        AUDIO = 0x00
+        AUDIO = 00
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = adlib; priority = 1
-        AUDIO = 0x02
+        AUDIO = 02
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[
-        [[BINARY:0x02 $(AUDIO) 0xFE]]
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:02 $(AUDIO) FE");
+        mouse_force_relative_zero(true);
     ]]]
 end
 

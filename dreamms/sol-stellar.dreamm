@@ -23,32 +23,32 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEODRV = 0x03; AUDIODRV = 0x02; TANDY = 1; G_OPT = 4; A_OPT = 1; S_OPT = 1
+        VIDEODRV = 3; AUDIODRV = 2; TANDY = 1; G_OPT = 4; A_OPT = 1; S_OPT = 1
     end
     option[cga-mono]:       
         name = Monochrome $(CGA_NAME)
         videohw = cga; composite = oldcga
-        VIDEODRV = 0x04; G_OPT = 6
+        VIDEODRV = 4; G_OPT = 6
     end
     option[cga]:
         name = $(CGA_NAME)
         videohw = cga
-        VIDEODRV = 0x01; G_OPT = 5
+        VIDEODRV = 1; G_OPT = 5
     end
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega
-        VIDEODRV = 0x02; G_OPT = 3
+        VIDEODRV = 2; G_OPT = 3
     end
     option[mcga]:
         name = $(MCGA_NAME)
         videohw = mcga
-        VIDEODRV = 0x05; G_OPT = 2
+        VIDEODRV = 5; G_OPT = 2
     end
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga; priority = 1
-        VIDEODRV = 0x08; G_OPT = 1
+        VIDEODRV = 8; G_OPT = 1
     end
 end
 
@@ -60,19 +60,19 @@ config[music]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        MUSICHW = speaker; AUDIODRV = 0x01; A_OPT = 0
+        MUSICHW = speaker; AUDIODRV = 1; A_OPT = 0
     end
     option[adlib]:
         name = $(ADLIB_NAME); priority = 1
-        MUSICHW = adlib; AUDIODRV = 0x20; A_OPT = 3
+        MUSICHW = adlib; AUDIODRV = 20; A_OPT = 3
     end
     option[sb16]:
         name = $(SB16_NAME)
-        MUSICHW = sb16; AUDIODRV = 0x20; A_OPT = 5
+        MUSICHW = sb16; AUDIODRV = 20; A_OPT = 5
     end
     option[mt32]:
         name = $(MT32_NAME)
-        MUSICHW = mt32; AUDIODRV = 0x10; A_OPT = 4
+        MUSICHW = mt32; AUDIODRV = 10; A_OPT = 4
     end
     option[cdda]:
         name = CD Audio; priority = 2
@@ -109,10 +109,9 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[
-        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
     ]]]
 end
 

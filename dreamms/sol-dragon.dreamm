@@ -13,7 +13,7 @@ mips = $(MIPS_486DX_33)
 ramkb = 2048
 filter = dynamix, sierra, adventure
 videohw = vga
-VIDEODRV = 0x08
+VIDEODRV = 8
 TANDY = 0
 
 //
@@ -24,25 +24,23 @@ config[graphics]:
     condition = file_exists("$$(rootpath)\\VOLUME.EGA")
     option[tandy]:
         name = $(TVIDEO_NAME)
-        videohw = cga; machine = tandy
-        TANDY = 1
-        VIDEODRV = 0x03
-        AUDIODRV = 0x00
+        videohw = cga; audiohw = speaker; machine = tandy
+        VIDEODRV = 3; AUDIODRV = 0; TANDY = 1
     end
     option[cga]:       
         name = CGA (Composite)
         videohw = cga; composite = oldcga
-        VIDEODRV = 0x04
+        VIDEODRV = 4
     end
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega; priority = 1
-        VIDEODRV = 0x02
+        VIDEODRV = 2
     end
     option[vga]:
         name = VGA (16 colors)
         videohw = vga
-        VIDEODRV = 0x02
+        VIDEODRV = 2
     end
 end
 
@@ -55,42 +53,37 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        AUDIODRV = 0x00
+        AUDIODRV = 0
     end
     option[adlib]:
         name = $(ADLIB_NAME)
         audiohw = adlib
-        AUDIODRV = 0x20
+        AUDIODRV = 20
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16; priority = 1
-        AUDIODRV = 0x40
+        AUDIODRV = 40
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = mt32
-        AUDIODRV = 0x10
+        AUDIODRV = 10
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[
-        [[BINARY:$(VIDEODRV) $(AUDIODRV)]] 
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
+        code = mouse_force_relative_zero(true)
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
-
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.113.90, Int. 1.116.90, 6x1.44M

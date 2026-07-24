@@ -71,7 +71,7 @@ config[sound]:
 end
 
 //
-// SFX configuration
+// sfx configuration
 //
 config[sfx]:
     title = SFX Configuration
@@ -87,15 +87,29 @@ config[sfx]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = $(AUDIO_DRIVER)
-        joyDrv    = NO
-        mouseDrv  = NONE
-        memoryDrv = NONE
-        language  = $(LANGUAGE)
+CFG = [[[$(CRLF)
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = $(AUDIO_DRIVER)
+    joyDrv    = NO
+    mouseDrv  = NONE
+    memoryDrv = NONE
+    language  = $(LANGUAGE)
+]]]
+
+INSTALL = [[[$(CRLF)
+    UNCHUNK.EXE COMPRESS.000 .\
+    UNCHUNK.EXE COMPRESS.001 .\
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        mouse_force_relative_zero(true);
     ]]]
 end
 
@@ -105,18 +119,6 @@ end
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
-
-script[mouse]:
-    code = mouse_force_relative_zero(true)
-end
-
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        UNCHUNK.EXE COMPRESS.000 .\
-        UNCHUNK.EXE COMPRESS.001 .\
-    ]]]
-end
 
 fragment[v1.0-base]:
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV

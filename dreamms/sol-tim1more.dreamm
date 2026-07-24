@@ -48,7 +48,7 @@ config[sound]:
 end
 
 //
-// SFX configuration
+// sfx configuration
 //
 config[sfx]:
     title = SFX Configuration
@@ -64,14 +64,18 @@ config[sfx]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        soundDrv  = $(SOUND_DRIVER)
-        audioDrv  = $(AUDIO_DRIVER)
-        joyDrv    = NO
-        memoryDrv = ARM.DRV
-        mouseDrv  = none
+CFG = [[[$(CRLF)
+    soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = $(AUDIO_DRIVER)
+    joyDrv    = NO
+    memoryDrv = ARM.DRV
+    mouseDrv  = none
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        mouse_force_relative_zero(true);
     ]]]
 end
 

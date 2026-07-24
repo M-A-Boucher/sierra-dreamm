@@ -53,14 +53,21 @@ config[sound]:
     end
 end
 
-dynamicfile[]: path = $(rootpath)\BBCONFIG.DAT; contents = $(SOUND_CONFIG)k$(VIDEO_CONFIG)!7220
+CFG = $(SOUND_CONFIG)k$(VIDEO_CONFIG)!7220
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        UNCHUNK.EXE RESOURCE.000 .
-        UNCHUNK.EXE RESOURCE.001 .
-        UNCHUNK.EXE RESOURCE.002 .
+INSTALL = [[[$(CRLF)
+    UNCHUNK.EXE RESOURCE.000 .
+    UNCHUNK.EXE RESOURCE.001 .
+    UNCHUNK.EXE RESOURCE.002 .
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\BBCONFIG.DAT", "$$(CFG)");
     ]]]
 end
 

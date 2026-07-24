@@ -6,7 +6,6 @@ machine = pc
 rootpath = C:\sierra\gk2dos
 launch = $(rootpath)\sierra.exe
 osenv = dos
-fixdivover = true
 mips = $(MIPS_P100)
 ramkb = 16384
 audiohw = sb16
@@ -14,7 +13,7 @@ videohw = svga
 filter = gabrielknight, sierra, adventure
 
 //
-// File system
+// file system
 // The user must switch between discs when prompted either via DREAMM's in-game menu or by pressing the appropriate key combination (e.. Alt/Cmd + 2 for Disc 2).
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true
@@ -33,72 +32,74 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC6; disc = 6
 // The LANGUAGE variable is determined by each game, and its value is usually 1 (The Italian version uses 39)
 // The Brazilian release features English voices and Portuguese text. Its LANGUAGE value is 351.
 //
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-	videoDrv  = VESA.DRV
-	soundDrv  = MIDNONE.DRV
-	audioDrv  = DACBLAST.DRV
-	joyDrv    = NO
-	directory = \sierra\gk2dos
-	cmd        = GK2DOS
-	mouseDrv   = NONE
-	memoryDrv  = NONE
-	minMemory  = 1600k
-	brightness = 0
-	language   = $(LANGUAGE)
-	minCPU     = 486
-	cd         = YES
-	smartdrv   = YES
-                            		
-	cdSpeed=4                     		
-	resAUD=CD:\                   		
-	resSFX=CD:\                   		
-	resMAP=CD:\;C:\sierra\gk2dos             		
-	rescdisc=CD:\                 		
-	patchDir=C:\sierra\gk2dos;CD:\  
-	audio=C:\sierra\gk2dos;CD:\	
-	movieDir=CD:\movies           		
-	robot=CD:\robot               		
-	discID=GK2R1
-	CD:=D:;		
+CFG = [[[$(CRLF)
+    videoDrv   = VESA.DRV
+    soundDrv   = MIDNONE.DRV
+    audioDrv   = DACBLAST.DRV
+    joyDrv     = NO
+    directory  = \sierra\gk2dos
+    cmd        = GK2DOS
+    mouseDrv   = NONE
+    memoryDrv  = NONE
+    minMemory  = 1600k
+    brightness = 0
+    language   = $(LANGUAGE)
+    minCPU     = 486
+    cd         = YES
+    smartdrv   = YES                          		
+    cdSpeed    = 4                     		
+    resAUD     = CD:\                   		
+    resSFX     = CD:\                   		
+    resMAP     = CD:\;C:\sierra\gk2dos             		
+    rescdisc   = CD:\                 		
+    patchDir   = C:\sierra\gk2dos;CD:\  
+    audio      = C:\sierra\gk2dos;CD:\	
+    movieDir   = CD:\movies           		
+    robot      = CD:\robot               		
+    discID     = GK2R1
+    CD:        = D:;		
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
+
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
 //
 // The Windows version has not yet been added so this is for reference purposes.
 //                  
-dynamicfile[]:
-path = $(rootpath)/RESOURCE.WIN
-	contents = [[[$(CRLF)
-	[Windows]
-	title=Gabriel Knight: The Beast Within
-	titleBar=TRUE
-	allowresize=FALSE
-	wwidth=640
-	wheight=480
-	sciMinK=2100
-	sciMaxK=7000
-	borderpixels=10
-	reservek4=700
-	reservek8=700	
-	reservek16=2000
-	wingMinK=2700
-	confirmdac=TRUE
-	leadSubmits=4
-	maxCursorSize=4
-	resAud=CD:\	
-	resSfx=CD:\
-	resMap=CD:\;C:\SIERRA\GK2DOS
-	rescdisc=CD:\
-	patchDir=CD:\PATCHES;D:\SIERRA\GK2DOS;CD:\
-	movieDir=CD:\MOVIES
-	robot=CD:\ROBOT
-	discID=GK2R1
-	CD:=D:
+WIN = [[[$(CRLF)
+    [Windows]
+    title=Gabriel Knight: The Beast Within
+    titleBar=TRUE
+    allowresize=FALSE
+    wwidth=640
+    wheight=480
+    sciMinK=2100
+    sciMaxK=7000
+    borderpixels=10
+    reservek4=700
+    reservek8=700	
+    reservek16=2000
+    wingMinK=2700
+    confirmdac=TRUE
+    leadSubmits=4
+    maxCursorSize=4
+    resAud=CD:\	
+    resSfx=CD:\
+    resMap=CD:\;C:\SIERRA\GK2DOS
+    rescdisc=CD:\
+    patchDir=CD:\PATCHES;D:\SIERRA\GK2DOS;CD:\
+    movieDir=CD:\MOVIES
+    robot=CD:\ROBOT
+    discID=GK2R1
+    CD:=D:
 ]]]
-end
-
 
 //
 // Files common to version 1.0 (English, French, German)

@@ -55,7 +55,7 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME); priority = 2
+        name = $(SB16_NAME)
         SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
@@ -72,7 +72,7 @@ config[sound]:
 end
 
 //
-// SFX configuration
+// sfx configuration
 //
 config[sfx]:
     title = SFX Configuration
@@ -88,33 +88,37 @@ config[sfx]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        videoDrv = $(VIDEO_DRIVER)
-        soundDrv = $(SOUND_DRIVER)
-        audioDrv = $(AUDIO_DRIVER)
-        joyDrv   = JOYSTICK.DRV
-        kbdDrv   = IBMKBD.DRV
-        mouseDrv = STDMOUSE.DRV
-        minHunk  = 223k
-        patchDir = .
-    ]]]
-end
+CFG = [[[$(CRLF)
+    videoDrv = $(VIDEO_DRIVER)
+    soundDrv = $(SOUND_DRIVER)
+    audioDrv = $(AUDIO_DRIVER)
+    joyDrv   = JOYSTICK.DRV
+    kbdDrv   = IBMKBD.DRV
+    mouseDrv = STDMOUSE.DRV
+    minHunk  = 223k
+    patchDir = .
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006 RESOURCE.000
-        AUDIO.EXE
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006 RESOURCE.000
+    AUDIO.EXE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 fragment[v1.x-base]:
     file[]: crc = c9b2241d; size =      3026; name = 280.HEP
