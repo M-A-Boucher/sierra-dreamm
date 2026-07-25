@@ -8,8 +8,8 @@ icon = sol-aotd.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\AOD.EXE
-mips = $(MIPS_P75)
+launch = $(rootpath)\SOUNDSET.EXE
+mips = $(MIPS_486DX_33)
 ramkb = 8192
 filter = dynamix, sierra, simulation
 videohw = vga
@@ -21,66 +21,82 @@ config[sound]:
     title = Sound Configuration
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
+        audiohw = speaker+sb16
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME); 
-        audiohw = adlib; priority = 1
+        audiohw = adlib+sb16; priority = 1
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32
+        audiohw = mt32+sb16
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
+CFG = [[[$(CRLF)
  videoDrv  = VESA.DRV
  soundDrv  = ADL.DRV
  audioDrv  = DACBLAST.DRV
  joyDrv    = NO
-space = 10000
+ mouseDrv  = STDMOUSE.DRV
+ memoryDrv = ARM.DRV
+ directory = \DYNAMIX\AODCD
+ audio = .
+SCTDIRECTORY = .
+doclanguage = ENGLISH
+language = 1
 cmd = aod
 minCPU = 386
-mouseDrv=none
-memoryDrv=none
+minhunk = 1k
+audiosize=64k
+cd=no
 [SoundFX]
-Driver#=E000
-DMA=1
-IRQ=7
-PortAddress=220
+Driver#=0
+DMA=
+IRQ=
+PortAddress=
 [Music]
-Driver#=A002
-PortAddress=388
+Driver#=0
+PortAddress=
 [SoundSet]
 pathSoundPlay=.\sound\
 pathDrivers=.\sound\
 digiFile=.\sound\sonarret.raw
 digiName=sonar ping
-midiFile=.\sound\departrl.hmp
+midiFile=.\sound\departra.hmp
 midiName=music
-    ]]]
-end
+[language] 
+uselanguage=English
 
-dynamicfile[]:
-    path = $(rootpath)/DREAMM.BAT
-    contents = [[[$(CRLF)
-        MD INTRO
-        MD SHELL
-        MD SHELL\PROTYPER
-        MD SHELL\SW
-        MD SIM
-        MD SIM\SAVE
-        MD SOUND
-        UNCHUNK.EXE RESOURCE.000 .\
-        UNCHUNK.EXE RESOURCE.001 .\
-        UNCHUNK.EXE RESOURCE.002 .\
-        UNCHUNK.EXE RESOURCE.003 .\
-        UNCHUNK.EXE RESOURCE.004 .\
+[FlicPlayer]
+pathFlic=D:\intro\
+]]]
+
+INSTALL = [[[$(CRLF)
+    MD INTRO
+    MD SHELL
+    MD SHELL\PROTYPER
+    MD SHELL\SW
+    MD SIM
+    MD SIM\SAVE
+    MD SOUND
+    UNCHUNK.EXE RESOURCE.000 .\
+    UNCHUNK.EXE RESOURCE.001 .\
+    UNCHUNK.EXE RESOURCE.002 .\
+    UNCHUNK.EXE RESOURCE.003 .\
+    UNCHUNK.EXE RESOURCE.004 .\
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
 
@@ -88,6 +104,7 @@ end
 // filesystem
 //
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)             ; writable = true;
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)\SAVE        ; writable = true;
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)\SHELL\SCORES; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
@@ -537,7 +554,7 @@ end
 //
 game[v1.0-cd]:
     name = v1.0, CD
-    launch = AODCD.EXE -Pc:\
+    launch = AOD.BAT
     anchorfile = AODCD.EXE
     anchordepth = 2
     file[]: crc = d23e17d9; size =      3411; name = INSTALL.BAT

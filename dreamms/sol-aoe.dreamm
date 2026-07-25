@@ -22,63 +22,59 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        SOUND_DRIVER = STD.DRV; SOUND_CONFIG = 0
+        SOUND_DRIVER = STD.DRV
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
         name = $(ADLIB_NAME); 
         audiohw = adlib; priority = 1
-        SOUND_DRIVER = ADL.DRV; SOUND_CONFIG = 0x02
+        SOUND_DRIVER = ADL.DRV
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = mt32
-        SOUND_DRIVER = MT32.DRV; SOUND_CONFIG = 0x03
+        SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)/RESOURCE.CFG
-    contents = [[[$(CRLF)
-        soundDrv  = $(SOUND_DRIVER)
-        joyDrv    = NO
-        mouseDrv  = STDMOUSE.DRV
-        memoryDrv = ARM.DRV
-    ]]]
-end
+CFG = [[[$(CRLF)
+    soundDrv  = $(SOUND_DRIVER)
+    joyDrv    = NO
+    mouseDrv  = STDMOUSE.DRV
+    memoryDrv = ARM.DRV
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        UNCHUNK.EXE RESOURCE.000 .
-        UNCHUNK.EXE RESOURCE.001 .
-        UNCHUNK.EXE RESOURCE.002 .
-    ]]]
-end
+INSTALL = [[[$(CRLF)
+    UNCHUNK.EXE RESOURCE.000 .
+    UNCHUNK.EXE RESOURCE.001 .
+    UNCHUNK.EXE RESOURCE.002 .
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)\CONTROL.PRF
-    condition = file_exists("$$(rootpath)\\GCD.COM")
-    contents = [[[
-        [[BINARY: 0x08 0 $(SOUND_CONFIG) 0 0x01 0x01 0 0x01 0x01 0x01 0 0 0 0x81 0xFF 0 0 0x7F 0 0x81 0xFF 0 0 0x7F 0 0 0 0 0 0 0 0 0 0 0 0 0]]
-    ]]]
-end
+LAUNCH = [[[$(CRLF)
+    @ECHO OFF
+    RC2CP.EXE
+    GCD.COM
+]]]
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMMAE.BAT
-    contents = [[[$(CRLF)
-        @ECHO OFF
-        RC2CP.EXE
-        GCD.COM
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && file_exists("$$(rootpath)\\GCD.COM"))
+          file_save("$$(rootpath)\\DREAMMAE.BAT", "$$(LAUNCH)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)      ; writable = true;
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //

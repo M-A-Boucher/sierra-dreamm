@@ -8,7 +8,7 @@ icon = sol-a10.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\INSTALL.COM
+launch = $(rootpath)\A10.COM
 mips = $(MIPS_386SX_20)
 ramkb = 8192
 filter = dynamix, sierra, simulation
@@ -22,22 +22,22 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEO_CONFIG = 0x03; SOUND_CONFIG = 0x02; SOUND_CONFIG_15 = 0x00; TANDY = 1
+        VIDEO_CONFIG = 3; SOUND_CONFIG = 2; SOUND_CONFIG_15 = 0; TANDY = 1
     end
     option[cga]:
         name = $(CGA_NAME)
         videohw = cga
-        VIDEO_CONFIG = 0x01
+        VIDEO_CONFIG = 1
     end
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega
-        VIDEO_CONFIG = 0x02
+        VIDEO_CONFIG = 2
     end
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga; priority = 1
-        VIDEO_CONFIG = 0x08
+        VIDEO_CONFIG = 8
     end
 end
 
@@ -50,39 +50,33 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        SOUND_CONFIG = 0x01; SOUND_CONFIG_15 = 0x00
+        SOUND_CONFIG = 1; SOUND_CONFIG_15 = 0
     end
     option[adlib]:
         name = $(ADLIB_NAME); 
         audiohw = adlib; priority = 1
-        SOUND_CONFIG = 0x20; SOUND_CONFIG_15 = 0x02
+        SOUND_CONFIG = 20; SOUND_CONFIG_15 = 2
     end
     option[mt32]:
         name = $(MT32_NAME)
         audiohw = mt32
-        SOUND_CONFIG = 0x10; SOUND_CONFIG_15 = 0x03
+        SOUND_CONFIG = 10; SOUND_CONFIG_15 = 3
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\A10.CFG
-    contents = [[[
-        [[BINARY: $(VIDEO_CONFIG) $(SOUND_CONFIG)]]
+script[init]:
+    code = [[[$(CRLF)
+        if (!file_exists("$$(rootpath)\\VOLUME.RMF"))
+          file_save("$$(rootpath)\\A10.CFG", "`h:$$(VIDEO_CONFIG) $$(SOUND_CONFIG)");
+        else
+          file_save("$$(rootpath)\\CONTROL.PRF", "`h:1 $$(VIDEO_CONFIG) $(SOUND_CONFIG_15) 1 1 0 1");
     ]]]
 end
-
-dynamicfile[]:
-    path = $(rootpath)\CONTROL.PRF
-    contents = [[[
-        [[BINARY: 0x01 $(VIDEO_CONFIG) $(SOUND_CONFIG_15) 0x01 0x01 0 0x01]]
-    ]]]
-end
-
 
 //
 // filesystem
 //
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)             ; writable = true;
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
