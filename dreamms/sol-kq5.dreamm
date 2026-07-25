@@ -16,7 +16,6 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 TANDY = 0
 AUDIO_DRIVER = 
-WIN = 0
 
 //
 // os configuration
@@ -33,7 +32,6 @@ config[os]:
         mips = $(MIPS_MAX)
         winres = 640x480x8
         launch = $(rootpath)\SCIKQ5.EXE
-        WIN = 1
         condition = file_exists("$$(rootpath)\\SCIKQ5.EXE")
     end
 end
@@ -43,7 +41,7 @@ end
 //
 config[graphics]:
     title = Graphics Configuration
-    condition = !$(WIN)
+    condition = !is_windows()
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
@@ -81,7 +79,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY) && !$(WIN)
+    condition = !$(TANDY) && !is_windows()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
