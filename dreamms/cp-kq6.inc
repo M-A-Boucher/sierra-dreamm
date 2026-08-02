@@ -22,11 +22,11 @@ MOUSEMOVE_COORDS = [[[|
 
 HINTS = [[[|
     =
-    1="Only those pure of heart will be able to RISE the cliffs of logic."
+    1=“Only those pure of heart will be able to RISE the cliffs of logic.”
     2=!!cliffs2.png!!
-    3=Four men standing in a row,$(CRLF)Third from the left, and down you go,$(CRLF)The rest, in order, move you on,$(CRLF)The Youngest, the Oldest, and the Second Son.
+    3=“Four men standing in a row,$(CRLF)Third from the left, and down you go,$(CRLF)The rest, in order, move you on,$(CRLF)The Youngest, the Oldest, and the Second Son.”
     4=!!cliffs4.png!!
-    5="Only those of the highest order may ASCEND the cliffs of logic."
+    5=“Only those of the highest order may ASCEND the cliffs of logic.”
 ]]]
 
 script[cp]:
