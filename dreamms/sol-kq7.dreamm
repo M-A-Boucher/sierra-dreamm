@@ -21,7 +21,7 @@ config[sound]:
     title = Sound Configuration
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = adlib+sb16
+        audiohw = adlib+sb16; priority = 1
         SOUND_DRIVER = SADL.DRV
         condition = file_exists("$$(rootpath)\\SADL.DRV")
     end
@@ -39,7 +39,7 @@ config[sound]:
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = gmidi+sb16; priority = 1
+        audiohw = gmidi+sb16
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end

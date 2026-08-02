@@ -55,12 +55,12 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME)
+        name = $(ADLIB_NAME); priority = 1
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME); priority = 1
+        name = $(SB16_NAME)
         SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
