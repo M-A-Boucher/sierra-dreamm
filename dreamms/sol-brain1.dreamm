@@ -106,7 +106,6 @@ CFG = [[[$(CRLF)
 script[init]:
     code = [[[$(CRLF)
         file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
-        mouse_force_relative_zero(true);
     ]]]
 end
 

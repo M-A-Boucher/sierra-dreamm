@@ -85,6 +85,8 @@ script[init]:
 
         if (file_exists("$$(rootpath)\\CD\\CDDA.SOU"))
           file_save("$$(rootpath)\\DRIVE.CFG", "$$(DRIVE)");
+        
+        mouse_force_relative_zero(true);
     ]]]
 end
 
@@ -94,11 +96,6 @@ end
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath).    ; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
-
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
 
 //
 // Base files for v1.0

@@ -65,11 +65,6 @@ MOUSECOORDS = [[[|
     Rudy Dijon=25 80
 ]]]
 
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
-
 script[cp]:
     code = [[[$(CRLF)
         cpactive = "";
@@ -107,14 +102,16 @@ script[cp]:
 
         func cpauto(coords)
         {
+          mouse_force_relative_zero(true);
           input_lockout(true);
           sleep(2000);
           x = substr(coords, 0, strstr(coords, " "));
           y = substr(coords, strstr(coords, " ")+1, 10);
           echo("Moving mouse to: " + x + "," + y);
-          mouse_move_abs(x, y); mouse_click(0);          
+          mouse_move_abs(2*x, y); mouse_click(0);          
           sleep(500);
           input_lockout(false);
+          mouse_force_relative_zero(false);
         }
     ]]]
 end

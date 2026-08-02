@@ -52,7 +52,7 @@ script[init]:
         else
           file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
 
-        mouse_force_relative_zero(true)
+        mouse_force_relative_zero(true);
     ]]]
 end
 

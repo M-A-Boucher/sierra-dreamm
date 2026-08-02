@@ -112,6 +112,7 @@ end
 script[init]:
     code = [[[$(CRLF)
         file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
+        mouse_force_relative_zero(true);
     ]]]
 end
 
@@ -121,11 +122,6 @@ end
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
-
-script[mouse]:
-    condition = is_game() || is_demo()
-    code = mouse_force_relative_zero(true)
-end
 
 //
 // v1.0, Int. 9.20.90, 2x720K

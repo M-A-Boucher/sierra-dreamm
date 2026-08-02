@@ -45,7 +45,6 @@ script[cp]:
           }
           sleep(500);
           mouse_force_relative_zero(false);
-
           input_lockout(false);
         }
     ]]]

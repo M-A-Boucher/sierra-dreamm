@@ -69,7 +69,6 @@ end
 script[cp]:
     code = [[[$(CRLF)
         cpactive = "";
-        mouse_force_relative_zero(true);
 
         func update()
         {
@@ -105,6 +104,7 @@ script[cp]:
 
         func cpauto(coords)
         {
+          mouse_force_relative_zero(true);
           input_lockout(true);
           sleep(2000);
           x = strword(0, coords);
@@ -118,6 +118,7 @@ script[cp]:
           mouse_click(0); // Click on middle of coordinate
           sleep(500);
           input_lockout(false);
+          mouse_force_relative_zero(false);
         }
     ]]]
 end
