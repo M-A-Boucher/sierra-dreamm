@@ -140,7 +140,7 @@ And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aaro
 >
 >– Fronzel Neekburm
 
->What are these YouTubers saying "games that are emulated don't look like they used to on LCD screens" even talking about? King's Quest V looks exactly like it did when I played it back in 1990.
+>What are these YouTubers saying "games that are emulated don't look like they used to on LCD and LED screens" even talking about? King's Quest V looks exactly like it did when I played it back in 1990.
 >
 >– Guy That Accidently Turned On Simulated CRT Filter in DREAMM
 
