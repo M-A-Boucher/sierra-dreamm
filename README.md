@@ -135,6 +135,23 @@ A huge thank you to the following people for their continuous help with this .dr
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
 
+# See what reviewers have to say about the Sierra Games Pack
+>Easiest way to play Space Quest III... EVER! And I can effortlessly switch between Hercules, CGA, EGA video modes, and between Sound Blaster and the Roland MT32 I could never afford.
+>
+>– Fronzel Neekburm
+
+>What are these YouTubers saying "games that are emulated don't look like they used to on LCD screens" even talking about? King's Quest V looks exactly like it did when I played it back in 1990.
+>
+>– Guy That Accidently Turned On Simulated CRT Filter in DREAMM
+
+>I'm so proud of you.
+>
+>– Mom
+
+>This game is cracked!? I don't remember that.
+>
+>– Dude With Legit Game That Unknowingly Uses the Default "Complete Automatically" Copy Protection Setting
+
 # Other .dreammpacks
 - 3DRealms/Apogee: https://github.com/M-A-Boucher/3drealms-dreamm
 - Coktel Vision: https://github.com/einstein95/coktelvision-dreamm
