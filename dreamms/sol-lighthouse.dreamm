@@ -45,7 +45,6 @@ CFG = [[[$(CRLF)
     patchDir   = C:\;D:\patches      
 ]]]
           
-
 WIN = [[[$(CRLF)
     [Windows]
     title=Lighthouse
@@ -141,9 +140,9 @@ fragment[win32-base]:
 end
 
 //
-// Version 1.0C Base
+// v1.0C Base
 //
-fragment[1.0c-base]:
+fragment[v1.0c-base]:
     file[]: crc = e2b81412; size =      3902; name = 11.CSC
     file[]: crc = cd6896d6; size =     32374; name = 16.CSC
     file[]: crc = 3fffa0dc; size =     47070; name = 700.CSC
@@ -649,22 +648,22 @@ fragment[1.0c-base]:
 end
 
 //
-// English DOS version 1.0C
+// v1.0C, English, DOS
 //
-game[sol-lighthouse-english-dos-10c]:
-    name = English, DOS, 1.0C
-    imports = 1.0c-base
+game[v1.0c-en-dos]:
+    name = v1.0C, English, DOS
+    imports = v1.0c-base
     anchorfile = SIER.EXE
     file[]: crc = cb214447; size =    265420; name = DOS4GW.EXE
     file[]: crc = 7f7ea397; size =    824557; name = SIER.EXE
 end
 
 //
-// English Windows version 1.0C
+// v1.0C, English, Windows
 //
-game[sol-lighthouse-english-win-10c]:
-    name = English, Windows, 1.0C
-    imports = 1.0c-base, win32-base
+game[v1.0c-en-win]:
+    name = v1.0C, English, Windows
+    imports = v1.0c-base, win32-base
     anchorfile = SIERW5.EXE
     file[]: crc = e0e12012; size =      4244; name = SIERRA.INF
     file[]: crc = 42039864; size =    723054; name = SIERW.EXE
@@ -672,10 +671,10 @@ game[sol-lighthouse-english-win-10c]:
 end
 
 //
-// Version 1.1 Base
+// v1.1 Base
 //
-fragment[1.1-base]:
-    imports = 1.0c-base
+fragment[v1.1-base]:
+    imports = v1.0c-base
     file[]: crc = 8fb67e6c; size =      3876; name = 11.CSC
     file[]: crc = 82af0ad4; size =     11870; name = 24.CSC
     file[]: crc = d4ef0401; size =    101882; name = 270.CSC
@@ -686,22 +685,22 @@ fragment[1.1-base]:
 end
 
 //
-// English DOS version 1.1
+// v1.1, English, DOS
 //
-game[sol-lighthouse-english-dos-11]:
-    name = English, DOS, 1.1
-    imports = 1.1-base
+game[v1.1-en-dos]:
+    name = v1.1, English, DOS
+    imports = v1.1-base
     anchorfile = SIER.EXE
     file[]: crc = cb214447; size =    265420; name = DOS4GW.EXE
     file[]: crc = 7f7ea397; size =    824557; name = SIER.EXE
 end
 
 //
-// English Windows version 1.1
+// v1.1, English, Windows
 //
-game[sol-lighthouse-english-win-11]:
-    name = English, Windows, 1.1
-    imports = 1.1-base, win32-base
+game[v1.1-en-win]:
+    name = v1.1, English, Windows
+    imports = v1.1-base, win32-base
     anchorfile = SIERW5.EXE
     file[]: crc = ab10bd4a; size =      2035; name = LANGUAGE.INF
     file[]: crc = 19fddcfd; size =      4244; name = SIERRA.INF
@@ -710,10 +709,10 @@ game[sol-lighthouse-english-win-11]:
 end
 
 //
-// Version 2.0 Base
+// v2.0 Base
 //
-fragment[2.0-base]:
-    imports = 1.1-base
+fragment[v2.0-base]:
+    imports = v1.1-base
     file[]: crc = 9bc827bc; size =      2805; name = 8000.MSG     
     file[]: crc = d222febc; size =     11069; name = 8002.MSG
     file[]: crc = cae7d04c; size =     19847; name = 8003.MSG
@@ -754,21 +753,21 @@ fragment[2.0-base]:
 end
 
 //
-// English DOS version 2.0
+// v2.0, English, DOS
 //
-game[sol-lighthouse-english-dos-20]:
-    name = English, DOS, 2.0
-    imports = 2.0-base
+game[v2.0-en-dos]:
+    name = v2.0, English, DOS
+    imports = v2.0-base
     anchorfile = SIER.EXE
     file[]: crc = 7f7ea397; size =    824557; name = SIER.EXE
 end
 
 //
-// English Windows version 2.0
+// v2.0, English, Windows
 //
-game[sol-lighthouse-english-win-20]:
-    name = English, Windows, 2.0
-    imports = 2.0-base, win32-base
+game[v2.0-en-win]:
+    name = v2.0, English, Windows
+    imports = v2.0-base, win32-base
     anchorfile = SIERW5.EXE
     file[]: crc = f4c9dc49; size =      2037; name = LANGUAGE.INF
     file[]: crc = 16eb7bfc; size =      4241; name = SIERRA.INF
@@ -777,10 +776,65 @@ game[sol-lighthouse-english-win-20]:
 end
 
 //
-// Version 1.0, Italian Base
+// v1.0C German Base
 //
-fragment[1.0-it-base]:
-    imports = 1.0c-base
+fragment[v1.0c-de-base]:
+    file[]: crc = 601aa68f; size =    640912; name = A0030100.001
+    file[]: crc = 41460ded; size =    449897; name = A0030200.001
+    file[]: crc = e16790ac; size =    714897; name = A0960Z00.001
+    file[]: crc = b1c33246; size =   8326065; name = MOVIES\15.VMD
+    file[]: crc = d8c643e2; size =   5973189; name = MOVIES\16.VMD
+    file[]: crc = 4e70240d; size =   9122049; name = MOVIES\70.VMD
+    file[]: crc = b15cb7ad; size =      7852; name = RESMAP.001
+    file[]: crc = 9065c5ba; size =      7618; name = RESMAP.002
+    file[]: crc = 816461bb; size =      3064; name = RESMAP.PAT
+    file[]: crc = faea026e; size =      7852; name = RESMDT.001
+    file[]: crc = f2f32c60; size =      7618; name = RESMDT.002
+    file[]: crc = 5578e2f8; size =      3064; name = RESMDT.PAT
+    file[]: crc = 1611dc2b; size =  55857162; name = RESOURCE.AUD
+    file[]: crc = 73322376; size = 122330257; name = RESSCI.001
+    file[]: crc = cc601ef2; size = 115026179; name = RESSCI.002
+    file[]: crc = da38985a; size =  14241416; name = RESSCI.PAT
+    file[]: crc = bc3b9d4a; size =   6772513; name = ROBOTS\4042.RBT
+    file[]: remove = 11.CSC
+    file[]: remove = 16.CSC
+    file[]: remove = 700.CSC
+    file[]: remove = 765.CSC
+    file[]: remove = 800.CSC
+    file[]: remove = 820.CSC
+    file[]: remove = 870.CSC
+    file[]: remove = PATCHES\A0K0082O.001
+    file[]: remove = PATCHES\S0K0082O.001
+end
+
+//
+// v1.0C, German, DOS
+//
+game[v1.0c-de-dos]:
+    name = v1.0C, German, DOS
+    imports = v1.0c-de-base
+    anchorfile = SIER.EXE
+    file[]: crc = 1b50e64b; size =    824557; name = SIER.EXE
+end
+
+//
+// v1.0C, German, Windows
+//
+game[v1.0c-de-win]:
+    name = v1.0C, German, Windows
+    anchorfile = SIERW5.EXE
+	imports = v1.0c-de-base, win32-base
+    file[]: crc = 79f874e9; size =      2311; name = LANGUAGE.INF
+    file[]: crc = 10022ca3; size =      4247; name = SIERRA.INF
+    file[]: crc = 27ed22a4; size =    723054; name = SIERW.EXE
+    file[]: crc = 6e58ed63; size =    546816; name = SIERW5.EXE
+end
+
+//
+// v1.0 Italian Base
+//
+fragment[v1.0-it-base]:
+    imports = v1.0c-base
     file[]: crc = 8fb67e6c; size =      3876; name = 11.CSC
     file[]: crc = 82af0ad4; size =     11870; name = 24.CSC
     file[]: crc = d4ef0401; size =    101882; name = 270.CSC
@@ -816,22 +870,22 @@ fragment[1.0-it-base]:
 end
 
 //
-// Italian DOS version 1.0
+// v1.0, Italian, DOS
 //
-game[sol-lighthouse-italian-dos-10]:
-    name = Italian, DOS, 1.0
-    imports = 1.0-it-base
+game[v1.0-it-dos]:
+    name = v1.0, Italian, DOS
+    imports = v1.0-it-base
     anchorfile = SIER.EXE
     file[]: crc = b1933f9e; size =    824557; name = SIER.EXE
 end
 
 //
-// Italian Windows version 1.0
+// v1.0, Italian, Windows
 //
-game[sol-lighthouse-italian-win-10]:
-    name = Italian, Windows, 1.0
-    imports = 1.0-it-base, win32-base
-    anchorfile = A0K0082O.001
+game[v1.0-it-win]:
+    name = v1.0, Italian, Windows
+    imports = v1.0-it-base, win32-base
+    anchorfile = SIERW5.EXE
     file[]: crc = 6a91f46a; size =      2313; name = LANGUAGE.INF
     file[]: crc = 043c78a6; size =      4405; name = SIERRA.INF
     file[]: crc = 5f76ccd2; size =    723054; name = SIERW.EXE
@@ -839,10 +893,10 @@ game[sol-lighthouse-italian-win-10]:
 end
 
 //
-// Version 1.1, Spanish Base
+// v1.1 Spanish Base
 //
-fragment[1.1-es-base]:
-    imports = 1.1-base
+fragment[v1.1-es-base]:
+    imports = v1.1-base
     file[]: crc = f9547862; size =     29818; name = 0.CSC 
     file[]: crc = 076e136d; size =     98478; name = 360.CSC
     file[]: crc = 14a23de0; size =    721626; name = A0030100.001
@@ -868,24 +922,23 @@ fragment[1.1-es-base]:
 end
 
 //
-// Spanish DOS version 1.1
+// v1.1, Spanish, DOS
 //
-game[sol-lighthouse-spanish-dos-11]:
-    name = Spanish, DOS, 1.1
-    imports = 1.1-es-base
+game[v1.1-es-dos]:
+    name = v1.1, Spanish, DOS
+    imports = v1.1-es-base
     anchorfile = SIER.EXE
     file[]: crc = cb214447; size =    265420; name = DOS4GW.EXE
     file[]: crc = 7f7ea397; size =    824557; name = SIER.EXE
 end
 
 //
-// Spanish Windows version 1.1
+// v1.1, Spanish, Windows
 //
-game[sol-lighthouse-spanish-win-11]:
-    name = Spanish, Windows, 1.1
+game[v1.1-es-win]:
+    name = v1.1, Spanish, Windows
+	imports = v1.1-es-base, win32-base
     anchorfile = SIERW5.EXE
-    anchordepth = 1
-	imports = 1.1-es-base, win32-base
     file[]: crc = ab2df5b0; size =      2164; name = LANGUAGE.INF
     file[]: crc = bbd02349; size =      4340; name = SIERRA.INF
     file[]: crc = 42039864; size =    723054; name = SIERW.EXE
@@ -895,12 +948,12 @@ end
 //
 // Upgrade to 1.1
 //
-addon[sol-lighthouse-english-dos-11patch]:
+addon[v1.1-upgrade-en]:
     name = Upgrade to 1.1
     anchorfile = 270.CSC
     upgradeids = [[[,
-        sol-lighthouse-english-dos-10c
-        sol-lighthouse-english-win-10c
+        v1.0c-en-dos
+        v1.0c-en-win
     ]]]
     file[]: crc = 8fb67e6c; size =      3876; name = 11.CSC
     file[]: crc = 82af0ad4; size =     11870; name = 24.CSC
@@ -913,14 +966,14 @@ end
 //
 // Upgrade to 2.0
 //
-addon[sol-lighthouse-english-dos-20patch]:
+addon[v2.0-upgrade-en]:
     name = Upgrade to 2.0
     anchorfile = 0.CSC
     upgradeids = [[[,
-        sol-lighthouse-english-dos-10c
-        sol-lighthouse-english-win-10c
-        sol-lighthouse-english-dos-11
-        sol-lighthouse-english-win-11
+        v1.0c-en-dos
+        v1.0c-en-win
+        v1.1-en-dos
+        v1.1-en-win
     ]]]
     file[]: crc = dabba8d8; size =     26958; name = 0.CSC
     file[]: crc = 46c32a9d; size =      7492; name = 1.CSC
@@ -1142,26 +1195,25 @@ end
 //
 // Upgrade to 2.0a
 //
-addon[sol-lighthouse-english-dos-20apatch]:
+addon[v2.0a-upgrade-en]:
     name = Upgrade to 2.0a
-    anchorfile = 9.CSC
-	imports = sol-lighthouse-english-dos-20patch
+	imports = v2.0-upgrade-en
     upgradeids = [[[,
-        sol-lighthouse-english-dos-10c
-        sol-lighthouse-english-win-10c
-        sol-lighthouse-english-dos-11
-        sol-lighthouse-english-win-11
-        sol-lighthouse-english-dos-20
-        sol-lighthouse-english-win-20
+        v1.0c-en-dos
+        v1.0c-en-win
+        v1.1-en-dos
+        v1.1-en-win
+        v2.0-en-dos
+        v2.0-en-win
     ]]]
     file[]: crc = 66381ab5; size =    150234; name = 9.CSC; exactonly = true
 end
 
 //
-// English Windows Demo
+// Demo, English, Windows
 //
-demo[sol-lighthouse-english-demo]:
-    name = English Windows Demo
+demo[demo]:
+    name = Demo, English, Windows
     anchorfile = SIERW5.EXE
     anchordepth = 1
 

@@ -1,6 +1,6 @@
 pack[sierra]:
     name = Sierra adventure and puzzle games
-    minversion = 4.0x31
+    minversion = 4.0x43
     author = MAB
     link = https://github.com/M-A-Boucher/sierra-dreamm
 end
