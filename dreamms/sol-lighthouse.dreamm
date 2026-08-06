@@ -21,6 +21,7 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath); condition = is_game()
 
+
 CFG = [[[$(CRLF)
     videoDrv   = VESA.DRV
     soundDrv   = MIDNONE.DRV
@@ -45,6 +46,7 @@ CFG = [[[$(CRLF)
     patchDir   = C:\;D:\patches      
 ]]]
           
+
 WIN = [[[$(CRLF)
     [Windows]
     title=Lighthouse
@@ -779,6 +781,7 @@ end
 // v1.0C German Base
 //
 fragment[v1.0c-de-base]:
+    imports = v1.0c-base
     file[]: crc = 601aa68f; size =    640912; name = A0030100.001
     file[]: crc = 41460ded; size =    449897; name = A0030200.001
     file[]: crc = e16790ac; size =    714897; name = A0960Z00.001
