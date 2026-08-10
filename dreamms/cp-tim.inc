@@ -52,27 +52,21 @@ script[cp]:
             if (match == "Pleaseselect,inorder,thethreepartslistedonpage")
             {
               pageno = scraper_string("BAAje@@kz", "num", 0x5);
-              echo("Page: " + pageno);
 
               answer = strmap(pageno, "$$(CPANSWERS)");
-              answer1 = strword(0, answer);
-              answer2 = strword(1, answer);
-              answer3 = strword(2, answer);
+              answer = [strword(0, answer),strword(1, answer),strword(2, answer)];
 
-              coords1 = strmap(answer1, "$$(COORDS)");
-              coords2 = strmap(answer2, "$$(COORDS)");
-              coords3 = strmap(answer3, "$$(COORDS)");
+              coords = [strmap(answer[0], "$$(COORDS)"),strmap(answer[1], "$$(COORDS)"),strmap(answer[2], "$$(COORDS)")];
 
               if (answer != "" && !cpactive)
               {
-                echo("Answer: " + answer1 + " " + answer2 + " " + answer3);
                 cpactive = answer;
 
                 if (!prop("noautocp"))
-                  cpscript = script_run_async("cpauto", coords1, coords2, coords3);
+                  cpscript = script_run_async("cpauto", coords);
 
                 if (!prop("notextcp"))
-                  overlay_show("cpoverlay", 1, "!!" + answer1 + ".png@200!! !!" + answer2 + ".png@200!! !!" + answer3 + ".png@200!!");
+                  overlay_show("cpoverlay", 1, "!!" + answer[0] + ".png@200!! !!" + answer[1] + ".png@200!! !!" + answer[2] + ".png@200!!");
               }
             }
             else
@@ -83,22 +77,16 @@ script[cp]:
           }
         }
 
-        func cpauto(coords1, coords2, coords3)
+        func cpauto(coords)
         {
           input_lockout(true);
           sleep(2000);
-          x = 4*strword(0, coords1);
-          y = 4*strword(1, coords1);
-          echo("Moving mouse to X: " + x + "   Y: " + y);
-          mouse_move_abs(x, y); mouse_click(0);
-          x = 4*strword(0, coords2);
-          y = 4*strword(1, coords2);
-          echo("Moving mouse to X: " + x + "   Y: " + y);
-          mouse_move_abs(x, y); mouse_click(0);
-          x = 4*strword(0, coords3);
-          y = 4*strword(1, coords3);
-          echo("Moving mouse to X: " + x + "   Y: " + y);
-          mouse_move_abs(x, y); mouse_click(0);
+          for (i = 0; i <= 2; i++)
+          {
+            x = 4*strword(0, coords[i]);
+            y = 4*strword(1, coords[i]);
+            mouse_move_abs(x, y); mouse_click(0);
+          }
           sleep(500);
           input_lockout(false);
         }
