@@ -21,14 +21,16 @@ config[os]:
     title = OS Configuration
     option[dos]: 
         name = DOS
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
     end
     option[win]:
-        name = Windows 3.1
+        name = Windows
         osenv = windows 3.1
         audiohw = gmidi
         mips = $(MIPS_MAX)
         winres = 640x480x8
-        launch = $(rootpath)\SCIWV.EXE
+        wincrop = true
+        launch = $(rootpath)\SCIWV.EXE \SIERRA.INI
         condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end
 end
@@ -1361,12 +1363,9 @@ installer[v1.0-int-11.18.92-de-10x1.44m-installer]:
 end
 
 //
-// v1.000.00, CD
+// v1.000.00 Base Files
 //
-game[v1.000.00-cd]:
-    name = v1.000.00, CD
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
+fragment[v1.000.00-base]:
     file[]: crc = 15650cbc; size =      2390; name = 0.HEP
     file[]: crc = 03138720; size =      7116; name = 0.SCR
     file[]: crc = e7d28349; size =         9; name = 0.TEX
@@ -1414,38 +1413,74 @@ game[v1.000.00-cd]:
     file[]: crc = faf6148f; size =      6494; name = AUDPS1.DRV
     file[]: crc = 3b2b33a8; size =      8050; name = AUDTHUND.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]:                                   name = HDLOGO.AVI  ; optional = true
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
     file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = 566201ff; size =        44; name = KQ6CD
-    file[]: crc = 5d0deb99; size =  34118072; name = MAKINGKQ.AVI; optional = true
     file[]: crc = 12c92c34; size =       440; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
-    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 2f04e1a1; size =     60112; name = PROGLIB.DLL
-    file[]: crc = 80fb46cb; size =     77840; name = RAVE.DLL    ; optional = true
     file[]: crc = 16751a21; size =   8376008; name = RESOURCE.000
     file[]: crc = d3d48cb0; size = 350787931; name = RESOURCE.AUD
     file[]: crc = 10695431; size =      9215; name = RESOURCE.MAP
     file[]: crc = c0bf3202; size =    259510; name = RESOURCE.MSG
     file[]: crc = fcc89b21; size =   6574524; name = RESOURCE.SFX
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
-    file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = 4a2bbdea; size =    190464; name = SCIWV.EXE   ; optional = true
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
-    file[]: crc = c426e44b; size =    174155; name = SIERRA.EXE
-    file[]: crc = a7d55c29; size =       157; name = SIERRA.INI  ; optional = true
-    file[]: crc = 97044033; size =       766; name = SIERRAW.ICO ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]:                                   name = TOON.AVI    ; optional = true
-    file[]: crc = dc7b9e4d; size =        17; name = VERSION
     file[]: crc = ba0faac1; size =      7305; name = VGA320.DRV
     file[]: crc = a389e296; size =      8258; name = VGA320BW.DRV
+    file[]: crc = aa1f268a; size =   7511866; name = BIRDS.SEQ
+    file[]: crc = 608a650d; size =   3217234; name = BOAT.SEQ
+    file[]: crc = 632af368; size =   3344865; name = CD1.SEQ
+    file[]: crc = 6f166c05; size =   3512028; name = CD6.SEQ
+    file[]: crc = 903616f3; size =    832262; name = CLOSE.SEQ
+    file[]: crc = 83276883; size =   2030233; name = CLOUD.SEQ
+    file[]: crc = 33089d04; size =   1079442; name = FPAN.SEQ
+    file[]: crc = 0477337a; size =    625866; name = FS1.SEQ
+    file[]: crc = 6853420c; size =    124440; name = FS2Y.SEQ
+    file[]: crc = dac49a69; size =    333563; name = FS2Z.SEQ
+    file[]: crc = fa4f55bc; size =    580742; name = LAND.SEQ
+    file[]: crc = b2935d8d; size =   3139935; name = NSHP.SEQ
+    file[]: crc = 315897dc; size =   2500543; name = OPEN.SEQ
+    file[]: crc = edca4a86; size =   2114190; name = OPEN2.SEQ
+    file[]: crc = b1f106d3; size =   1207440; name = SCAN.SEQ
+    file[]: crc = ee72d75f; size =   1023651; name = SCOP.SEQ
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
+end
+
+//
+// v1.000.00, CD, DOS
+//
+game[v1.000.00-cd-dos]:
+    name = v1.000.00, CD, DOS
+    imports = v1.000.00-base
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
+    file[]: crc = c426e44b; size =    174155; name = SIERRA.EXE
+    file[]: crc = dc7b9e4d; size =        17; name = VERSION
+end
+
+//
+// v1.000.00, CD, Windows
+//
+game[v1.000.00-cd-win]:
+    name = v1.000.00, CD, Windows
+    imports = v1.000.00-base
+    anchorfile = SCIWV.EXE
+    anchordepth = 1
+    file[]:                                   name = HDLOGO.AVI
+    file[]: crc = 5d0deb99; size =  34118072; name = MAKINGKQ.AVI
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
+    file[]: crc = 2f04e1a1; size =     60112; name = PROGLIB.DLL
+    file[]: crc = 80fb46cb; size =     77840; name = RAVE.DLL
+    file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL
+    file[]: crc = 4a2bbdea; size =    190464; name = SCIWV.EXE
+    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
+    file[]: crc = a7d55c29; size =       157; name = SIERRA.INI
+    file[]:                                   name = TOON.AVI
     file[]: crc = e4e00f29; size =    134005; name = ACTORS\ALEX.BIN
     file[]: crc = 827d4ea1; size =     29889; name = ACTORS\ALLARIA.BIN
     file[]: crc = fffa1b46; size =     65241; name = ACTORS\ALLARIAD.BIN
@@ -1478,33 +1513,31 @@ game[v1.000.00-cd]:
     file[]: crc = 8b96774a; size =     34097; name = ACTORS\VALANICE.BIN
     file[]: crc = b3a87020; size =     50335; name = ACTORS\VIZIER.BIN
     file[]: crc = d9bbda57; size =     61083; name = ACTORS\WINGG.BIN
-    file[]: crc = aa1f268a; size =   7511866; name = BIRDS.SEQ
-    file[]: crc = 608a650d; size =   3217234; name = BOAT.SEQ
-    file[]: crc = 632af368; size =   3344865; name = CD1.SEQ
-    file[]: crc = 6f166c05; size =   3512028; name = CD6.SEQ
-    file[]: crc = 903616f3; size =    832262; name = CLOSE.SEQ
-    file[]: crc = 83276883; size =   2030233; name = CLOUD.SEQ
-    file[]: crc = 33089d04; size =   1079442; name = FPAN.SEQ
-    file[]: crc = 0477337a; size =    625866; name = FS1.SEQ
-    file[]: crc = 6853420c; size =    124440; name = FS2Y.SEQ
-    file[]: crc = dac49a69; size =    333563; name = FS2Z.SEQ
-    file[]: crc = fa4f55bc; size =    580742; name = LAND.SEQ
-    file[]: crc = b2935d8d; size =   3139935; name = NSHP.SEQ
-    file[]: crc = 315897dc; size =   2500543; name = OPEN.SEQ
-    file[]: crc = edca4a86; size =   2114190; name = OPEN2.SEQ
-    file[]: crc = b1f106d3; size =   1207440; name = SCAN.SEQ
-    file[]: crc = ee72d75f; size =   1023651; name = SCOP.SEQ
-    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
-// v1.000.00G, CD
+// v1.000.00G, CD, DOS
 //
-game[v1.000.00g-cd]:
-    name = v1.000.00G, CD
-    imports = v1.000.00-cd
+game[v1.000.00g-cd-dos]:
+    name = v1.000.00G, CD, DOS
+    imports = v1.000.00-cd-dos
     anchorfile = SIERRA.EXE
     anchordepth = 1
+    file[]: crc = ce0cc83a; size =      1472; name = 420.HEP    
+    file[]: crc = be1217b7; size =      5862; name = 420.SCR
+    file[]: crc = 9fe474ab; size =      2320; name = 425.SCR
+    file[]: crc = 6c1e89a3; size =      3250; name = 460.HEP
+    file[]: crc = 403dadc0; size =      9308; name = 460.SCR
+    file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
+    file[]: crc = 1749937b; size =     11578; name = 470.SCR
+    file[]: crc = f21484f5; size =       622; name = 65535.MAP
+    file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
+    file[]: crc = d8f2ac7f; size =         9; name = KQ6CD
+    file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000
+    file[]: crc = 79a58691; size = 350789703; name = RESOURCE.AUD
+    file[]: crc = 0423bf92; size =      9215; name = RESOURCE.MAP
+    file[]: crc = b566f302; size =   6574524; name = RESOURCE.SFX
+    file[]: crc = 48b93051; size =        17; name = VERSION
     file[]: remove = 0.HEP
     file[]: remove = 0.SCR
     file[]: remove = 0.TEX
@@ -1517,21 +1550,12 @@ game[v1.000.00g-cd]:
     file[]: remove = 283.SCR
     file[]: remove = 390.HEP
     file[]: remove = 390.SCR
-    file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
-    file[]: crc = be1217b7; size =      5862; name = 420.SCR
-    file[]: crc = 3f8ec141; size =       758; name = 425.HEP
-    file[]: crc = 9fe474ab; size =      2320; name = 425.SCR
-    file[]: crc = 6c1e89a3; size =      3250; name = 460.HEP
-    file[]: crc = 403dadc0; size =      9308; name = 460.SCR
-    file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
-    file[]: crc = 1749937b; size =     11578; name = 470.SCR
     file[]: remove = 481.HEP
     file[]: remove = 481.SCR
     file[]: remove = 482.HEP
     file[]: remove = 482.SCR
     file[]: remove = 580.HEP
     file[]: remove = 580.SCR
-    file[]: crc = f21484f5; size =       622; name = 65535.MAP
     file[]: remove = 744.HEP
     file[]: remove = 744.SCR
     file[]: remove = 7502.V56
@@ -1547,25 +1571,75 @@ game[v1.000.00g-cd]:
     file[]: remove = 999.HEP
     file[]: remove = 999.SCR
     file[]: remove = 999.TEX
+end
+
+//
+// v1.000.00G, CD, Windows
+//
+game[v1.000.00g-cd-win]:
+    name = v1.000.00G, CD, Windows
+    imports = v1.000.00-cd-win
+    anchorfile = SCIWV.EXE
+    anchordepth = 1
+    file[]: crc = ce0cc83a; size =      1472; name = 420.HEP
+    file[]: crc = be1217b7; size =      5862; name = 420.SCR
+    file[]: crc = 9fe474ab; size =      2320; name = 425.SCR
+    file[]: crc = 6c1e89a3; size =      3250; name = 460.HEP
+    file[]: crc = 403dadc0; size =      9308; name = 460.SCR
+    file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
+    file[]: crc = 1749937b; size =     11578; name = 470.SCR
+    file[]: crc = f21484f5; size =       622; name = 65535.MAP
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
     file[]: crc = d8f2ac7f; size =         9; name = KQ6CD
     file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000
     file[]: crc = 79a58691; size = 350789703; name = RESOURCE.AUD
     file[]: crc = 0423bf92; size =      9215; name = RESOURCE.MAP
     file[]: crc = b566f302; size =   6574524; name = RESOURCE.SFX
-    file[]: crc = 7916d720; size =    190464; name = SCIWV.EXE   ; optional = true
-    file[]: crc = 0814154b; size =       142; name = SIERRA.INI  ; optional = true
-    file[]: crc = 48b93051; size =        17; name = VERSION
-    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
+    file[]: crc = 7916d720; size =    190464; name = SCIWV.EXE
+    file[]: crc = 0814154b; size =       142; name = SIERRA.INI
+    file[]: remove = 0.HEP
+    file[]: remove = 0.SCR
+    file[]: remove = 0.TEX
+    file[]: remove = 100.HEP
+    file[]: remove = 100.SCR
+    file[]: remove = 130.HEP
+    file[]: remove = 130.SCR
+    file[]: remove = 202.V56
+    file[]: remove = 283.HEP
+    file[]: remove = 283.SCR
+    file[]: remove = 390.HEP
+    file[]: remove = 390.SCR
+    file[]: remove = 481.HEP
+    file[]: remove = 481.SCR
+    file[]: remove = 482.HEP
+    file[]: remove = 482.SCR
+    file[]: remove = 580.HEP
+    file[]: remove = 580.SCR
+    file[]: remove = 744.HEP
+    file[]: remove = 744.SCR
+    file[]: remove = 7502.V56
+    file[]: remove = 781.HEP
+    file[]: remove = 781.SCR
+    file[]: remove = 790.HEP
+    file[]: remove = 790.SCR
+    file[]: remove = 894.V56
+    file[]: remove = 928.HEP
+    file[]: remove = 928.SCR
+    file[]: remove = 995.HEP
+    file[]: remove = 995.SCR
+    file[]: remove = 999.HEP
+    file[]: remove = 999.SCR
+    file[]: remove = 999.TEX
 end
 
 //
-// King's Quest - Collector's Edition (v1.00)
+// King's Quest - Collector's Edition (v1.00, DOS)
 //
-game[1.000.00-kings-quest-collectors-edition]:
-    name = King's Quest - Collector's Edition (v1.00)
-    imports = v1.000.00g-cd
-    anchorfile = RESOURCE.000
+game[1.000.00-kings-quest-collectors-edition-dos]:
+    name = King's Quest - Collector's Edition (v1.00, DOS)
+    imports = v1.000.00g-cd-dos
+    anchorfile = 65535.MAP
+    file[]: crc = f21484f5; size =       622; name = 65535.MAP
     file[]: crc = f2472c07; size =        45; name = VERSION
 end
 
@@ -1811,11 +1885,37 @@ installer[v1.000-de-kings-quest-collectors-edition-installer]:
 end
 
 //
-// King's Quest - Collection Series (v1.00)
+// King's Quest - Collection Series (v1.00, DOS)
 //
-game[1.000.00-kings-quest-collection-series]:
-    name = King's Quest - Collection Series (v1.00)
-    imports = v1.000.00g-cd
+game[1.000.00-kings-quest-collection-series-dos]:
+    name = King's Quest - Collection Series (v1.00, DOS)
+    imports = v1.000.00g-cd-dos
+    anchorfile = 46030.SCR
+    file[]: crc = 775bf0d6; size =      4560; name = 0.HEP
+    file[]: crc = c57d5c16; size =     13416; name = 0.SCR
+    file[]: crc = f9121725; size =       958; name = 13450.V56
+    file[]: crc = f0302d17; size =      3972; name = 28.HEP
+    file[]: crc = 90191e3e; size =      1904; name = 28.SCR
+    file[]: crc = c991886b; size =      1696; name = 30100.HEP
+    file[]: crc = 93a9cb6b; size =      7938; name = 30100.SCR
+    file[]: crc = 3f98109f; size =       386; name = 43.HEP
+    file[]: crc = 331ff57a; size =      2974; name = 43.SCR
+    file[]: crc = a4f33551; size =       416; name = 44.MSG
+    file[]: crc = f88a0579; size =      1060; name = 46030.HEP
+    file[]: crc = 9c8a827b; size =      4244; name = 46030.SCR
+    file[]: crc = 4713386a; size =      2186; name = 6500.HEP
+    file[]: crc = fdc71fa0; size =      7196; name = 6500.SCR
+    file[]: crc = b740961f; size =      3818; name = 902.HEP
+    file[]: crc = d9018c80; size =      4028; name = 902.SCR
+    file[]: remove = VERSION
+end
+
+//
+// King's Quest - Collection Series (v1.00, Windows)
+//
+game[1.000.00-kings-quest-collection-series-win]:
+    name = King's Quest - Collection Series (v1.00, Windows)
+    imports = v1.000.00g-cd-win
     anchorfile = 46030.SCR
     file[]: crc = 775bf0d6; size =      4560; name = 0.HEP
     file[]: crc = c57d5c16; size =     13416; name = 0.SCR
