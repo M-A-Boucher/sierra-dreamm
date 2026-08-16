@@ -117,6 +117,7 @@ Copy-protection is, so far, solved automatically for the following games:
 - Manhunter: New York
 - Police Quest I: In Pursuit of the Death Angel (SCI version)
 - Police Quest II: The Vengeance
+- Police Quest III: The Kindred
 - Space Quest I: Roger Wilco in The Sarien Encounter
 - Space Quest IV: Roger Wilco and The Time Rippers
 - Space Quest VI: Roger Wilco in The Spinal Frontier
@@ -158,4 +159,3 @@ And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aaro
 - Coktel Vision: https://github.com/einstein95/coktelvision-dreamm
 - Humongous Entertainment: https://github.com/Phredreeke/humongous-dreamm
 - id Software: https://github.com/M-A-Boucher/idsoftware-dreamm
-
