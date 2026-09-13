@@ -1,0 +1,272 @@
+//
+// Front Page Sports: Baseball ’94
+//
+desc[sol-fpsbaseball94]:
+
+name = Front Page Sports: Baseball ’94
+icon = sol-fpsbaseball94.png
+machine = pc
+osenv = dos
+rootpath = C:\SIERRA\BASEBALL
+launch = PLAYBALL.COM
+mips = $(MIPS_486DX4_100)
+videohw = svga
+ramkb = 8192
+filter = sierra
+
+//
+// File System
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+INSTALL = [[[$(CRLF)
+    UNCHUNK RESOURCE.000 .
+    UNCHUNK RESOURCE.001 .
+    UNCHUNK RESOURCE.002 .
+    UNCHUNK RESOURCE.003 .
+]]]
+
+UPGRADE = [[[$(CRLF)
+    UNCHUNK XPANSTAD.RES .
+    UNCHUNK XPANTEAM.RES .
+    PATCH PATCHA.RTP
+    PATCH PATCHB.RTP
+    PATCH PATCHC.RTP
+    PATCH PATCHD.RTP ASSN
+    PATCH PATCHE.RTP STADIA
+    PATCH PATCHG.RTP
+    PATCH PATCHH.RTP
+    PATCH PATCHI.RTP ASSN
+]]]
+
+CFG = [[[$(CRLF)
+    space       = 18432
+    directory   = \SIERRA\BASEBALL
+    cmd         = playball
+    joyDrv      = none
+    mouseDrv    = none
+    memoryDrv   = none
+    minCPU      = 386
+    minDOS      = 500
+    minEMS      = 2560
+    mode        = real
+
+    [SoundFX]
+    Driver#     = e015
+    DMA         = 1
+    IRQ         = 7
+    PortAddress =220
+    [Music]
+    Driver#     = a002
+    PortAddress = 388
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_upgrader())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(UPGRADE)");
+
+        if (is_game())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+    ]]]
+end
+
+//
+// v1.0, Int. 9.10.94, 4x1.44M
+//
+game[v1.0-int-9.10.94-4x1.44m]:
+    name = v1.0, Int. 9.10.94, 4x1.44M
+    anchorfile = PLAYBALL.COM
+    file[]: crc = d7eb2f7b; size =    538367; name = ANIM.DAT
+    file[]: crc = 612a205a; size =         8; name = BB94.VER
+    file[]: crc = 93b688eb; size =      1408; name = BBCHECK.DAT
+    file[]: crc = ef63978b; size =     13264; name = BBCHECK.EXE
+    file[]: crc = 6fcf340e; size =    510432; name = CHAMPION.ANM
+    file[]: crc = b6c8ebbc; size =        36; name = DATAIN.CFG
+    file[]: crc = d32a5653; size =    386816; name = DATAIN.EXE
+    file[]: crc = 86fa12c9; size =      5404; name = DRUM.BNK
+    file[]: crc = ff63b2f5; size =     45448; name = DRUM.DIG
+    file[]: crc = 10c83de4; size =   1058480; name = HBM.DAT
+    file[]: crc = 947c9f49; size =     27394; name = HHA.DAT
+    file[]: crc = 0e3ad930; size =     30004; name = HMIDET.DRV
+    file[]: crc = bb4f04fe; size =    149171; name = HMIDRV.DRV
+    file[]: crc = 39167e99; size =      7908; name = HMIMDRV.DRV
+    file[]: crc = 3917791e; size =    212036; name = INTRO.DAT
+    file[]: crc = deda303d; size =     42280; name = INTRO.EXE
+    file[]: crc = 1d6952a9; size =    570674; name = LINEUP.EXE
+    file[]: crc = 8611f9e4; size =      5404; name = MELODIC.BNK
+    file[]: crc = df1ad6b0; size =    656518; name = NUMBERS.DAT
+    file[]: crc = c27ae16a; size =      1793; name = PLAYBALL.COM
+    file[]: crc = c9e326a2; size =    720896; name = SCHEDTMP.DAT
+    file[]: crc = 7267708a; size =    743490; name = SHELL.EXE
+    file[]: crc = e55062a6; size =    736599; name = SHELL.VOL
+    file[]: crc = b005c6db; size =     31234; name = SIERRA.ANM
+    file[]: crc = ec35a20b; size =   1131091; name = SIM.DAT
+    file[]: crc = 005fc798; size =    208737; name = SIM.EXE
+    file[]: crc = 23b55e56; size =    911845; name = SOUND.DAT
+    file[]: crc = 292f5ef4; size =     89311; name = SOUNDPLY.EXE
+    file[]: crc = 6e0180b9; size =    165165; name = SOUNDSET.EXE
+    file[]: crc = 8531315d; size =      1982; name = SOUNDSET.HMI
+    file[]: crc = dd494f45; size =     10208; name = SOUNDSET.RAW
+    file[]: crc = bc9ec137; size =       674; name = UNZIPASN.BAT
+    file[]: crc = 1f5431fd; size =       664; name = UNZIPLEG.BAT
+    file[]: crc = 36738c30; size =    457618; name = UPSTATS.EXE
+    file[]: crc = 5493cd19; size =      1854; name = ZIPASN.BAT
+    file[]: crc = e1fd626e; size =      1736; name = ZIPLEG.BAT
+    file[]: crc = d5649ddf; size =    196608; name = ASSN\_DEFAULT.ASN
+    file[]: crc = 4c107b63; size =    295872; name = ASSN\_DEFAULT.PYR
+    file[]: crc = 051f4a9e; size =    196608; name = ASSN\MLBPA94.ASN
+    file[]: crc = 4c107b63; size =    295872; name = ASSN\MLBPA94.PYR
+    file[]: crc = 961dd281; size =    166672; name = STADIA\ARLINGTN.DAT
+    file[]: crc = 9c664809; size =    168391; name = STADIA\ASTRO.DAT
+    file[]: crc = f3bd3465; size =    164437; name = STADIA\ATLANTA.DAT
+    file[]: crc = 64f5d82e; size =    167580; name = STADIA\CAMDEN.DAT
+    file[]: crc = 2b1f00ea; size =    164355; name = STADIA\CANDLE.DAT
+    file[]: crc = dfa1f945; size =    162133; name = STADIA\COMISKEY.DAT
+    file[]: crc = 11ecbb15; size =    158303; name = STADIA\DODGER.DAT
+    file[]: crc = 7372121a; size =    166688; name = STADIA\FENWAY.DAT
+    file[]: crc = ae97dc84; size =    164716; name = STADIA\JACOBS.DAT
+    file[]: crc = f8eaa547; size =    164806; name = STADIA\ROYALS.DAT
+    file[]: crc = b04b1d6d; size =    157083; name = STADIA\WRIGLEY.DAT
+    file[]: crc = a800cfc3; size =    163704; name = STADIA\YANKEE.DAT
+    file[]: crc = f902177c; size =    950272; name = STATS\_DEFAULT.DAT
+    file[]: crc = f902177c; size =    950272; name = STATS\MLBPA94.DAT
+end
+
+//
+// v1.0, Int. 9.10.94, 4x1.44M, Installer
+//
+installer[v1.0-int-9.10.94-4x144m-installer]:
+    name = v1.0, Int. 9.10.94, 4x1.44M, Installer
+    installid = v1.0-int-9.10.94-4x1.44m
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = UNCHUNK.EXE
+    file[]: crc = 612a205a; size =         8; name = BB94.VER
+    file[]: crc = ef730010; size =   1199649; name = RESOURCE.000
+    file[]: crc = 770d9506; size =   1449630; name = RESOURCE.001
+    file[]: crc = 70708fc7; size =   1449693; name = RESOURCE.002
+    file[]: crc = 58ca8122; size =   1164401; name = RESOURCE.003
+    file[]: crc = fb7cf65c; size =     15955; name = UNCHUNK.EXE    
+end
+    
+//
+// v1.02, Legends and Stadiums
+//
+game[v1.02]:
+    name = v1.02, Legends and Stadiums
+    imports = v1.0-int-9.10.94-4x1.44m
+    file[]: crc = c3871d76; size =    724206; name = 48TEAMS.RES
+    file[]: crc = dced3c0d; size =     62228; name = 48TEAMS.TXT
+    file[]: crc = 74b1fb53; size =         7; name = BB94.VER
+    file[]: crc = 5d48aa40; size =      1440; name = BBCHECK.DAT
+    file[]: crc = dad32dfc; size =        82; name = BBCHECK.LOG
+    file[]: crc = a8056cfb; size =     12932; name = CHK4GAME.EXE
+    file[]: crc = e02d13be; size =    387264; name = DATAIN.EXE
+    file[]: crc = 9da2b1b2; size =       565; name = FADRAFT.BAT
+    file[]: crc = d268dba3; size =      1746; name = FADRAFT.NEW
+    file[]: crc = 25d933ab; size =   1058784; name = HBM.DAT
+    file[]: crc = c607e8d8; size =     27394; name = HHA.DAT
+    file[]: crc = cfc784e3; size =    212188; name = INTRO.DAT
+    file[]: crc = e922bb03; size =     42380; name = INTRO.EXE
+    file[]: crc = f9316ad2; size =    571666; name = LINEUP.EXE
+    file[]: crc = fa4a993f; size =      1809; name = PLAYBALL.COM
+    file[]: crc = 6cd68b03; size =       508; name = REGDRAFT.BAT
+    file[]: crc = d824af58; size =    746402; name = SHELL.EXE
+    file[]: crc = b3fc9209; size =    736966; name = SHELL.VOL
+    file[]: crc = 27a6acf0; size =   1312331; name = SIM.DAT
+    file[]: crc = cfafb2ea; size =    214514; name = SIM.EXE
+    file[]: crc = 624cf14c; size =      7563; name = UPDATE.BAT
+    file[]: crc = ed19daea; size =    459538; name = UPSTATS.EXE
+    file[]: crc = ef6752ef; size =    196608; name = ASSN\_DEFAULT.ASN
+    file[]: crc = 3f2bf3ad; size =    295872; name = ASSN\_DEFAULT.PYR
+    file[]: crc = 28a66035; size =     32768; name = ASSN\CENT-FA1.ASN
+    file[]: crc = 9864787d; size =      7872; name = ASSN\CENT-FA1.PYR
+    file[]: crc = 4fedc1f6; size =     32768; name = ASSN\CENT-FA2.ASN
+    file[]: crc = aff31b79; size =      1152; name = ASSN\CENT-FA2.PYR
+    file[]: crc = 763246b5; size =    131072; name = ASSN\CENTRAL.ASN
+    file[]: crc = bd917de6; size =    169152; name = ASSN\CENTRAL.PYR
+    file[]: crc = 9fd0683f; size =     32768; name = ASSN\CONT-FA1.ASN
+    file[]: crc = 7b8d87f9; size =      7872; name = ASSN\CONT-FA1.PYR
+    file[]: crc = 0fd0352d; size =     32768; name = ASSN\CONT-FA2.ASN
+    file[]: crc = 742ce7db; size =      4992; name = ASSN\CONT-FA2.PYR
+    file[]: crc = eafc917a; size =    131072; name = ASSN\CONTNTAL.ASN
+    file[]: crc = ee1b6fad; size =    169152; name = ASSN\CONTNTAL.PYR
+    file[]: crc = 7b2c6ddb; size =     32768; name = ASSN\EARLY-FA.ASN
+    file[]: crc = e9c7d9bb; size =      7488; name = ASSN\EARLY-FA.PYR
+    file[]: crc = fef60666; size =    163840; name = ASSN\EARLY.ASN
+    file[]: crc = aa3da8ff; size =    169152; name = ASSN\EARLY.PYR
+    file[]: crc = 49ce3627; size =    196608; name = ASSN\MLBPA94.ASN
+    file[]: crc = 40727fbe; size =    172167; name = STADIA\ANAHEIM.DAT
+    file[]: crc = de221ae3; size =    166672; name = STADIA\ARLINGTO.DAT
+    file[]: crc = 0251d73a; size =    164431; name = STADIA\ATLANTA.DAT
+    file[]: crc = a1c57d5c; size =    167574; name = STADIA\BALTIMOR.DAT
+    file[]: crc = 55a3a90e; size =    166700; name = STADIA\BOSTON.DAT
+    file[]: crc = 1e13b899; size =    162181; name = STADIA\CHICAGOA.DAT
+    file[]: crc = 28086392; size =    172926; name = STADIA\CHICAGON.DAT
+    file[]: crc = 16c0c910; size =    178804; name = STADIA\CINCINNA.DAT
+    file[]: crc = 2b408bab; size =    164728; name = STADIA\CLEVELAN.DAT
+    file[]: crc = a50a3ae1; size =    157374; name = STADIA\DENVER.DAT
+    file[]: crc = 73f32950; size =    158771; name = STADIA\DETROIT.DAT
+    file[]: crc = fe2039a4; size =    168415; name = STADIA\HOUSTON.DAT
+    file[]: crc = fedc6f67; size =    164854; name = STADIA\KANSASCI.DAT
+    file[]: crc = b6deaa1d; size =    158327; name = STADIA\LOSANGEL.DAT
+    file[]: crc = d1f8f335; size =    175882; name = STADIA\MIAMI.DAT
+    file[]: crc = f0c3efe3; size =    171539; name = STADIA\MILWAUKE.DAT
+    file[]: crc = f3ff7744; size =    163066; name = STADIA\MINNESOT.DAT
+    file[]: crc = a53c4e8f; size =    160208; name = STADIA\MONTREAL.DAT
+    file[]: crc = 98c90eb0; size =    163716; name = STADIA\NEWYORKA.DAT
+    file[]: crc = df68c2c0; size =    163262; name = STADIA\NEWYORKN.DAT
+    file[]: crc = 4e2047b2; size =    174963; name = STADIA\OAKLAND.DAT
+    file[]: crc = 1337f82e; size =    159564; name = STADIA\PHILADEL.DAT
+    file[]: crc = 3c5fcce3; size =    165486; name = STADIA\PITTSBUR.DAT
+    file[]: crc = 5521517c; size =    162649; name = STADIA\SANDIEGO.DAT
+    file[]: crc = 8d24c9fa; size =    164397; name = STADIA\SANFRANC.DAT
+    file[]: crc = 9a10422a; size =    160065; name = STADIA\SEATTLE.DAT
+    file[]: crc = 5aaed4aa; size =    172920; name = STADIA\STLOUIS.DAT
+    file[]: crc = a34331c6; size =    189959; name = STADIA\TORONTO.DAT
+    file[]: crc = 76fb7f25; size =    131072; name = STATS\CENT-FA1.DAT
+    file[]: crc = 44aedf3c; size =     98304; name = STATS\CENT-FA2.DAT
+    file[]: crc = 2d23f278; size =    196608; name = STATS\CENTRAL.DAT
+    file[]: crc = 3f67942d; size =    131072; name = STATS\CONT-FA1.DAT
+    file[]: crc = 1142f8cd; size =     98304; name = STATS\CONT-FA2.DAT
+    file[]: crc = 64501800; size =    196608; name = STATS\CONTNTAL.DAT
+    file[]: crc = 024ea36e; size =    131072; name = STATS\EARLY-FA.DAT
+    file[]: crc = 6f94d86a; size =     49000; name = STATS\EARLY.DAT
+    file[]: crc = f902177c; size =    950272; name = STATS\MLBPA94.DAT
+end
+
+
+upgrader[v1.02-updater]:
+    name = v1.02, Legends and Stadiums, Updater
+    upgradeids = v1.0-int-9.10.94-4x1.44m
+    launch = DREAMM.BAT
+    anchorfile = 48TEAMS.RES
+    file[]: crc = a8056cfb; size =     12932; name = CHK4GAME.EXE
+    file[]: crc = 9da2b1b2; size =       565; name = FADRAFT.BAT
+    file[]: crc = d268dba3; size =      1746; name = FADRAFT.NEW
+    file[]: crc = b6cc2f2a; size =     76981; name = PATCH.EXE
+    file[]: crc = dc0f1849; size =    665330; name = PATCHA.RTP
+    file[]: crc = 83450274; size =     90086; name = PATCHB.RTP
+    file[]: crc = c78ddbda; size =     90973; name = PATCHC.RTP
+    file[]: crc = 6e6f0768; size =      9034; name = PATCHD.RTP
+    file[]: crc = d74c9532; size =     21317; name = PATCHE.RTP
+    file[]: crc = f6969013; size =       895; name = PATCHG.RTP
+    file[]: crc = 6657bf37; size =       892; name = PATCHH.RTP
+    file[]: crc = c618eb27; size =      2843; name = PATCHI.RTP
+    file[]: crc = d64368ed; size =        54; name = READ102.BAT
+    file[]: crc = 2ed1a2a0; size =     37672; name = README.102
+    file[]: crc = 6cd68b03; size =       508; name = REGDRAFT.BAT
+    file[]: crc = fb7cf65c; size =     15955; name = UNCHUNK.EXE
+    file[]: crc = 624cf14c; size =      7563; name = UPDATE.BAT
+    file[]: crc = 1572e09b; size =    404118; name = XPANTEAM.RES    
+    file[]: crc = c3871d76; size =    724206; name = 48TEAMS.RES
+    file[]: crc = dced3c0d; size =     62228; name = 48TEAMS.TXT
+    file[]: crc = 0fcf6ff3; size =    543317; name = XPANSTAD.RES
+end
+
+end
