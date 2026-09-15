@@ -1595,7 +1595,6 @@ game[v1.000.00g-cd-dos]:
     file[]: remove = 999.HEP
     file[]: remove = 999.SCR
     file[]: remove = 999.TEX
-    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
