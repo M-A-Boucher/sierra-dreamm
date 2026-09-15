@@ -15,10 +15,32 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 
 //
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SIERRAW.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
+//
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = is_dos()
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega; priority = 1
@@ -44,6 +66,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -55,12 +78,12 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME); priority = 1
+        name = $(ADLIB_NAME)
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME)
+        name = $(SB16_NAME); priority = 1
         SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
@@ -81,6 +104,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
+    condition = is_dos()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
@@ -92,6 +116,11 @@ config[sfx]:
         condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
     end
 end
+
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
+    AUDDCOMP.EXE .\
+]]]
 
 CFG = [[[$(CRLF)
     videoDrv=$(VIDEO_DRIVER)
@@ -105,9 +134,16 @@ CFG = [[[$(CRLF)
     patchDir=.
 ]]]
 
-INSTALL = [[[$(CRLF)
-    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
-    AUDDCOMP.EXE .\
+INI = [[[$(CRLF)
+    [Info]
+    title       = Freddy Pharkas, Frontier Pharmacist
+    confirmdac  = TRUE
+    confirmmidi = TRUE
+    genmidi     = TRUE
+    synthtype   = highsynth
+    minHunk     = 223k
+    audiobuffs  = 4
+
 ]]]
 
 script[init]:
@@ -115,8 +151,15 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+        {
+          path_create("10.SCR");
+          path_create("29.SCR");
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
+        }
     ]]]
 end
 
@@ -292,11 +335,7 @@ installer[v1.0-int-8.11.93-de-8x1.44m-installer]:
     file[]: crc = cae48442; size =        49; name = VERSION
 end
 
-//
-// v1.0, CD
-//
-game[v1.0-cd]:
-    name = v1.0, CD
+fragment[v1.0-cd-base]:
     anchorfile = RESOURCE.000
     anchordepth = 1
     file[]: crc = 87fec9a4; size =        73; name = 0.MAP
@@ -348,6 +387,20 @@ game[v1.0-cd]:
     file[]: crc = 729bd1a6; size =       437; name = 791.MAP
     file[]: crc = 41d3a752; size =      1046; name = 90.MAP
     file[]: crc = f6686c93; size =       171; name = 99.MAP
+    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
+    file[]: crc = aa7a41ad; size =   5490246; name = RESOURCE.000
+    file[]: crc = b0eb9e36; size = 599841365; name = RESOURCE.AUD
+    file[]: crc = c76ff860; size =      6058; name = RESOURCE.MAP
+    file[]: crc = 84be194a; size =  16743534; name = RESOURCE.SFX
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+end
+
+//
+// v1.0, CD, DOS
+//
+game[v1.0-cd-dos]:
+    name = v1.0, CD, DOS
+    imports = v1.0-cd-base
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 9833b303; size =      9451; name = AUDBLAST.DRV
     file[]: crc = 71be3286; size =       726; name = AUDCDROM.DRV
@@ -357,24 +410,24 @@ game[v1.0-cd]:
     file[]: crc = 29d12de2; size =      8141; name = AUDTHUND.DRV
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
-    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
-    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV; optional = true
-    file[]: crc = a596f36e; size =      7089; name = MMAWARE.DLL ; optional = true
+    file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = aa7a41ad; size =   5490246; name = RESOURCE.000
-    file[]: crc = b0eb9e36; size = 599841365; name = RESOURCE.AUD
-    file[]: crc = c76ff860; size =      6058; name = RESOURCE.MAP
-    file[]: crc = 84be194a; size =  16743534; name = RESOURCE.SFX
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
-    file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL  ; optional = true
     file[]: crc = 37d23dfd; size =    159403; name = SIERRA.EXE
-    file[]: crc = 5279fc0e; size =      3044; name = SIERRA.INF  ; optional = true
-    file[]: crc = 5e2e5db4; size =       136; name = SIERRA.INI  ; optional = true
-    file[]: crc = 38bfe902; size =    187392; name = SIERRAW.EXE ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = 8ec4273a; size =         7; name = VERSION
     file[]: crc = 9f7e188a; size =      8252; name = VGA320.DRV
+end
+
+//
+// v1.0, CD, Windows
+//
+game[v1.0-cd-win]:
+    name = v1.0, CD, Windows
+    imports = v1.0-cd-base
+    file[]: crc = a596f36e; size =      7089; name = MMAWARE.DLL
+    file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL
+    file[]: crc = 38bfe902; size =    187392; name = SIERRAW.EXE
 end
 
 //
