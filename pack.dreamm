@@ -1,6 +1,6 @@
 pack[sierra]:
     name = Sierra adventure and puzzle games
     minversion = 4.0x61
-    author = MAB, CookieMonster123, eientei, gschmidl, treloret
+    author = MAB, CookieMonster123, eientei, gschmidl, treloret, Losetech
     link = https://github.com/M-A-Boucher/sierra-dreamm
 end
