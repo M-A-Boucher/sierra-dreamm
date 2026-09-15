@@ -1,0 +1,234 @@
+//
+// Quest for Glory V: Dragon Fire
+//
+desc[sol-qfg5]:
+
+name = Quest for Glory V: Dragon Fire
+icon = sol-qfg5.png
+machine = pc
+rootpath = C:\SIERRA\QFG5
+launch = "$(rootpath)\QFG5.exe"
+osenv = windows 98
+audiohw = gmidi
+winres = 1024x768x16
+filter = sierra, adventure, action
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = is_game()
+
+//
+// initialization script
+//
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\Qfg5.cfg", "`h:44 0D 0A 1A");
+    ]]]
+end
+
+//
+// English Windows
+//
+fragment[pc-base-en]:
+    file[]: crc = d3bfa149; size = 314162493; name = Data\CDA.SPK
+    file[]: crc = 3d502f92; size = 199475069; name = Data\CDN.SPK
+    file[]: crc = ed01e5e4; size = 274882708; name = Data\HDN.SPK
+    file[]: crc = 6c4f82d1; size =  88954108; name = Data\HDNW.SPK
+    file[]: crc = edd68498; size =  73908109; name = Data\Mov\01.MOV
+    file[]: crc = 87d8531d; size =   4196897; name = Data\Mov\02.MOV
+    file[]: crc = b9321122; size =   5063241; name = Data\Mov\03.MOV
+    file[]: crc = 7080b696; size =  14081121; name = Data\Mov\04.MOV
+    file[]: crc = b772757c; size =   4848033; name = Data\Mov\05.MOV
+    file[]: crc = d5fe7311; size =  19291789; name = Data\Mov\06.MOV
+    file[]: crc = 1041573f; size =       230; name = Imports\Paladin.sav
+    file[]: crc = d3bfa149; size = 314162493; name = CD\DATA\CDA.SPK
+    file[]: crc = 3d502f92; size = 199475069; name = CD\DATA\CDN.SPK
+end
+
+game[pc-1.0-en]:
+    name = v1.0 - English (US)
+    anchorfile = DATA1.CAB
+    anchordepth = 1
+    imports = pc-base-en
+    file[]: crc = d69951a6; size =   6994217; name = DATA1.CAB
+    file[]: crc = 954a838d; size =   1462272; name = QFG5.exe
+    file[]: crc = 6aa7fba6; size =    100352; name = WData\Rooms\Room200.dll
+    file[]: crc = 1859a70c; size =     93184; name = WData\Rooms\Room210.dll
+    file[]: crc = ab4d06e4; size =     95744; name = WData\Rooms\Room220.dll
+    file[]: crc = f5da94a1; size =     95232; name = WData\Rooms\Room230.dll
+    file[]: crc = b1b98733; size =     90112; name = WData\Rooms\Room240.dll
+    file[]: crc = 7ef43936; size =    101888; name = WData\Rooms\Room250.dll
+    file[]: crc = 03e564ff; size =     66560; name = WData\Rooms\Room260.dll
+    file[]: crc = 819fff68; size =     61952; name = WData\Rooms\Room270.dll
+    file[]: crc = 0f4696e4; size =     76800; name = WData\Rooms\Room280.dll
+    file[]: crc = 5b9b82f2; size =     76800; name = WData\Rooms\Room290.dll
+    file[]: crc = dc892ecb; size =     78848; name = WData\Rooms\Room300.dll
+    file[]: crc = 8269e49d; size =     70656; name = WData\Rooms\Room310.dll
+    file[]: crc = be5bfa8c; size =     76800; name = WData\Rooms\Room320.dll
+    file[]: crc = 68909c14; size =     70144; name = WData\Rooms\Room340.dll
+    file[]: crc = 013453fc; size =     75264; name = WData\Rooms\Room350.dll
+    file[]: crc = 61470598; size =     68608; name = WData\Rooms\Room355.dll
+    file[]: crc = 0cb05aa8; size =     68608; name = WData\Rooms\Room360.dll
+    file[]: crc = fe8b6449; size =     87040; name = WData\Rooms\Room370.dll
+    file[]: crc = d8ccb6d8; size =     75264; name = WData\Rooms\Room380.dll
+    file[]: crc = dda05a27; size =     95744; name = WData\Rooms\Room390.dll
+    file[]: crc = 4efc166e; size =     73728; name = WData\Rooms\Room400.dll
+    file[]: crc = 6eb60da1; size =     66048; name = WData\Rooms\Room410.dll
+    file[]: crc = 9ebed21c; size =     65536; name = WData\Rooms\Room415.dll
+    file[]: crc = 756d97db; size =    105984; name = WData\Rooms\Room420.dll
+    file[]: crc = 9b1a11ef; size =     76800; name = WData\Rooms\Room440.dll
+    file[]: crc = 926dea5d; size =     74240; name = WData\Rooms\Room450.dll
+    file[]: crc = 29738fe5; size =     77312; name = WData\Rooms\Room460.dll
+    file[]: crc = a3a53bc8; size =     95744; name = WData\Rooms\Room470.dll
+    file[]: crc = c777ca75; size =     73216; name = WData\Rooms\Room480.dll
+    file[]: crc = 2968f546; size =     88576; name = WData\Rooms\Room500.dll
+    file[]: crc = dd8024dd; size =     77312; name = WData\Rooms\Room510.dll
+    file[]: crc = 8c936f4f; size =    100352; name = WData\Rooms\Room520.dll
+    file[]: crc = 20040a79; size =     97792; name = WData\Rooms\Room530.dll
+    file[]: crc = f173a5d1; size =     71680; name = WData\Rooms\Room540.dll
+    file[]: crc = df6486d5; size =     71168; name = WData\Rooms\Room550.dll
+    file[]: crc = 911f9780; size =     68096; name = WData\Rooms\Room551.dll
+    file[]: crc = e9d95951; size =     68608; name = WData\Rooms\Room560.dll
+    file[]: crc = 536fa99f; size =     80896; name = WData\Rooms\Room565.dll
+    file[]: crc = 7965e452; size =     81920; name = WData\Rooms\Room570.dll
+    file[]: crc = ee80f1ff; size =     67072; name = WData\Rooms\Room580.dll
+    file[]: crc = 9664a686; size =     66048; name = WData\Rooms\Room581.dll
+    file[]: crc = 61674dc4; size =     66048; name = WData\Rooms\Room590.dll
+    file[]: crc = a4b5cce1; size =     69120; name = WData\Rooms\Room591.dll
+    file[]: crc = f78853cd; size =     69120; name = WData\Rooms\Room600.dll
+    file[]: crc = 0fe175f9; size =     66560; name = WData\Rooms\Room601.dll
+    file[]: crc = 70da163b; size =     67584; name = WData\Rooms\Room610.dll
+    file[]: crc = 44a94111; size =     66048; name = WData\Rooms\Room611.dll
+    file[]: crc = db9b298a; size =     67584; name = WData\Rooms\Room620.dll
+    file[]: crc = bb22aecc; size =     65536; name = WData\Rooms\Room621.dll
+    file[]: crc = 853f905e; size =     72192; name = WData\Rooms\Room680.dll
+    file[]: crc = 7ea645d4; size =     75776; name = WData\Rooms\Room690.dll
+    file[]: crc = 9e6e038b; size =     69632; name = WData\Rooms\Room700.dll
+    file[]: crc = 6a01d457; size =     96256; name = WData\Rooms\Room720.dll
+    file[]: crc = 95abaeff; size =     67584; name = WData\Rooms\Room730.dll
+    file[]: crc = ed1dd3ba; size =    108544; name = WData\Rooms\Room735.dll
+    file[]: crc = c9fc193e; size =     89088; name = WData\Rooms\Room740.dll
+    file[]: crc = fde519f4; size =     61440; name = WData\Rooms\Room750.dll
+    file[]: crc = da7448f8; size =     69120; name = WData\Rooms\Room760.dll
+    file[]: crc = 50bddab4; size =     70144; name = WData\Rooms\Room761.dll
+    file[]: crc = fd63bcc4; size =     69632; name = WData\Rooms\Room762.dll
+    file[]: crc = 7fc1892b; size =     67072; name = WData\Rooms\Room770.dll
+    file[]: crc = 0b219fdc; size =     70144; name = WData\Rooms\Room780.dll
+    file[]: crc = a1a1806b; size =     66560; name = WData\Rooms\Room790.dll
+    file[]: crc = b4ec4ece; size =     65024; name = WData\Rooms\Room791.dll
+    file[]: crc = 97f508fc; size =     69632; name = WData\Rooms\Room795.dll
+end
+
+game[pc-1.1-en]:
+    name = v1.1 - English (US)
+    anchorfile = QFG5.exe
+    anchordepth = 1
+    imports = pc-base-en
+    file[]: crc = 5c242838; size =   1463808; name = QFG5.exe
+    file[]: crc = 77103086; size =     15680; name = Data\Qgm\160.QGM
+    file[]: crc = 4c281312; size =     11287; name = Data\Qgm\161.QGM
+    file[]: crc = 692554a2; size =      7021; name = Data\Qgm\163.QGM
+    file[]: crc = bcc2d1d9; size =     28155; name = Data\Qgm\225.QGM
+    file[]: crc = 5ffb036d; size =     83190; name = Data\Qgm\250.QGM
+    file[]: crc = a237e37a; size =     20029; name = Data\Qgm\525.QGM
+    file[]: crc = 5f20dff3; size =     30927; name = Data\Qgm\997.QGM
+    file[]: crc = e76f2bb7; size =     65824; name = Data\Rgd\415.RGD
+    file[]: crc = 8facb8f2; size =    270328; name = Data\Rgd\690.RGD
+    file[]: crc = 2053b472; size =    445064; name = Data\Rgd\720.RGD
+    file[]: crc = 7918dfcf; size =    100352; name = WData\Rooms\Room200.dll
+    file[]: crc = 9c5a8536; size =     93184; name = WData\Rooms\Room210.dll
+    file[]: crc = 9f5851fa; size =     96256; name = WData\Rooms\Room220.dll
+    file[]: crc = 122f5284; size =     95232; name = WData\Rooms\Room230.dll
+    file[]: crc = 3f316b86; size =     90112; name = WData\Rooms\Room240.dll
+    file[]: crc = e64f9937; size =    101888; name = WData\Rooms\Room250.dll
+    file[]: crc = 66972901; size =     66560; name = WData\Rooms\Room260.dll
+    file[]: crc = 8308ff9d; size =     61952; name = WData\Rooms\Room270.dll
+    file[]: crc = 66cb77dd; size =     76800; name = WData\Rooms\Room280.dll
+    file[]: crc = b452704c; size =     76800; name = WData\Rooms\Room290.dll
+    file[]: crc = dc5e8e6d; size =     78848; name = WData\Rooms\Room300.dll
+    file[]: crc = 9e5aa760; size =     70656; name = WData\Rooms\Room310.dll
+    file[]: crc = 7d339b4d; size =     76800; name = WData\Rooms\Room320.dll
+    file[]: crc = 52a7f020; size =     70144; name = WData\Rooms\Room340.dll
+    file[]: crc = 02395b5f; size =     75264; name = WData\Rooms\Room350.dll
+    file[]: crc = ec96de4b; size =     68608; name = WData\Rooms\Room355.dll
+    file[]: crc = e267d175; size =     68608; name = WData\Rooms\Room360.dll
+    file[]: crc = 0e064c82; size =     87552; name = WData\Rooms\Room370.dll
+    file[]: crc = b2f787d5; size =     75264; name = WData\Rooms\Room380.dll
+    file[]: crc = 6710115b; size =     95744; name = WData\Rooms\Room390.dll
+    file[]: crc = 61a19fe3; size =     73728; name = WData\Rooms\Room400.dll
+    file[]: crc = a5910eac; size =     66048; name = WData\Rooms\Room410.dll
+    file[]: crc = 5c32ee95; size =     65536; name = WData\Rooms\Room415.dll
+    file[]: crc = f3fa95fc; size =    105984; name = WData\Rooms\Room420.dll
+    file[]: crc = 58b3c39e; size =     76800; name = WData\Rooms\Room440.dll
+    file[]: crc = 7df03b43; size =     74240; name = WData\Rooms\Room450.dll
+    file[]: crc = fcd1c11e; size =     77312; name = WData\Rooms\Room460.dll
+    file[]: crc = a8835163; size =     95744; name = WData\Rooms\Room470.dll
+    file[]: crc = ffbd8f34; size =     73216; name = WData\Rooms\Room480.dll
+    file[]: crc = 298acd1f; size =     88576; name = WData\Rooms\Room500.dll
+    file[]: crc = e1cd1387; size =     77312; name = WData\Rooms\Room510.dll
+    file[]: crc = 40d06224; size =    100352; name = WData\Rooms\Room520.dll
+    file[]: crc = 45fc09e6; size =     97792; name = WData\Rooms\Room530.dll
+    file[]: crc = dd02439b; size =     71680; name = WData\Rooms\Room540.dll
+    file[]: crc = 50b39ac9; size =     71168; name = WData\Rooms\Room550.dll
+    file[]: crc = 3d34e55a; size =     68096; name = WData\Rooms\Room551.dll
+    file[]: crc = 82804251; size =     68608; name = WData\Rooms\Room560.dll
+    file[]: crc = 3400c4a2; size =     78336; name = WData\Rooms\Room565.dll
+    file[]: crc = 9db258ce; size =     81920; name = WData\Rooms\Room570.dll
+    file[]: crc = d7654995; size =     67072; name = WData\Rooms\Room580.dll
+    file[]: crc = ce2099fa; size =     66048; name = WData\Rooms\Room581.dll
+    file[]: crc = b07e0e18; size =     66048; name = WData\Rooms\Room590.dll
+    file[]: crc = 76b8576f; size =     69120; name = WData\Rooms\Room591.dll
+    file[]: crc = 3b474338; size =     69120; name = WData\Rooms\Room600.dll
+    file[]: crc = 626a26f4; size =     66560; name = WData\Rooms\Room601.dll
+    file[]: crc = 0e4daee7; size =     67584; name = WData\Rooms\Room610.dll
+    file[]: crc = 5400128f; size =     66048; name = WData\Rooms\Room611.dll
+    file[]: crc = 0a541065; size =     67584; name = WData\Rooms\Room620.dll
+    file[]: crc = 4f36f6c1; size =     65536; name = WData\Rooms\Room621.dll
+    file[]: crc = 7c897589; size =     72192; name = WData\Rooms\Room680.dll
+    file[]: crc = 6afc5c5a; size =     75776; name = WData\Rooms\Room690.dll
+    file[]: crc = b2a420b2; size =     69632; name = WData\Rooms\Room700.dll
+    file[]: crc = 3f4d9f58; size =     96768; name = WData\Rooms\Room720.dll
+    file[]: crc = 885d4658; size =     67584; name = WData\Rooms\Room730.dll
+    file[]: crc = e9946629; size =    108032; name = WData\Rooms\Room735.dll
+    file[]: crc = 6b83fb70; size =     89600; name = WData\Rooms\Room740.dll
+    file[]: crc = cca6b36f; size =     61440; name = WData\Rooms\Room750.dll
+    file[]: crc = 3c6e2ea5; size =     69120; name = WData\Rooms\Room760.dll
+    file[]: crc = f918d2ff; size =     70144; name = WData\Rooms\Room761.dll
+    file[]: crc = 0e2e9c05; size =     70144; name = WData\Rooms\Room762.dll
+    file[]: crc = fc029d17; size =     67072; name = WData\Rooms\Room770.dll
+    file[]: crc = ba317d5b; size =     70144; name = WData\Rooms\Room780.dll
+    file[]: crc = dd91887a; size =     66560; name = WData\Rooms\Room790.dll
+    file[]: crc = 326b3f79; size =     65024; name = WData\Rooms\Room791.dll
+    file[]: crc = 139e1f0a; size =     69632; name = WData\Rooms\Room795.dll
+end
+
+game[pc-1.2-en]:
+    name = v1.2 - English (US)
+    imports = pc-base-en,pc-1.1-en
+    file[]: crc = 2845d702; size =     68608; name = WData\Rooms\Room355.dll
+
+end
+
+//
+// Upgrader
+//
+upgrader[pc-1.1-upgrade]:
+    name = Version 1.1 Upgrader
+    anchorfile = qfg5up11.exe
+    launch = "$(rootpath)\qfg5up11.exe"
+    upgradeids = pc-1.0-en
+    file[]: crc = 211b0792; size =    642582; name = qfg5up11.exe; exactonly = true
+end
+
+upgrader[pc-1.2-upgrade]:
+    name = Version 1.2 Upgrader
+    anchorfile = qfg5up12.exe
+    launch = "$(rootpath)\qfg5up12.exe"
+    upgradeids = pc-1.0-en
+    file[]: crc = 258bda9f; size =    641109; name = qfg5up12.exe; exactonly = true
+end
+
+end
