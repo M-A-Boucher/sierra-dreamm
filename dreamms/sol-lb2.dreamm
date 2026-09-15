@@ -17,6 +17,32 @@ LANGUAGE = 1
 IS_CD = 0
 
 //
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos-sierra]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[dos-scidhuv]: 
+        name = DOS
+        launch = $(rootpath)\SCIDHUV.EXE
+        condition = file_exists("$$(rootpath)\\SCIDHUV.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI
+        condition = file_exists("$$(rootpath)\\SCIWV.EXE")
+    end
+end
+
+//
 // graphics configuration
 //
 config[graphics]:
@@ -90,6 +116,11 @@ config[sfx]:
     end
 end
 
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04+RESOURCE.P05 RESOURCE.000
+    DCOMPAUD.EXE .\
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv  = $(VIDEO_DRIVER)
     soundDrv  = $(SOUND_DRIVER)
@@ -103,19 +134,31 @@ CFG = [[[$(CRLF)
     patchDir  = .
 ]]]
 
-INSTALL = [[[$(CRLF)
-    COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04+RESOURCE.P05 RESOURCE.000
-    DCOMPAUD.EXE .\
+INI = [[[$(CRLF)
+    [info]
+    title      = Laura Bow 2
+    sound1000  = FALSE
+    cursorview = TRUE
+    genmidi    = TRUE
+    synthtype  = highsynth
+    audiobuffs = 4
+    audpath    = C:\
+    #patchpath =
 ]]]
-
 
 script[init]:
     code = [[[$(CRLF)
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+        {
+          path_create("10.SCR"); // Prevents Debugger Mode
+          file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
+        }
     ]]]
 end
 
@@ -540,12 +583,7 @@ installer[v1.1-int-7.15.92-de-5x1.44m-1x720k-installer]:
     file[]: crc = b1c22e5e; size =   1328766; name = RESOURCE.P04
 end
 
-//
-// v1.1, CD
-//
-game[v1.1-cd]:
-    name = v1.1, CD
-    launch = SIERRA.EXE
+fragment[v1.1-cd-base]:
     IS_CD = 1
     anchorfile = RESOURCE.000
     file[]: crc = 4b11d3d4; size =      1408; name = 100.HEP
@@ -623,6 +661,19 @@ game[v1.1-cd]:
     file[]: crc = 96b9e543; size =      8788; name = 84.AUD
     file[]: crc = 03b062e2; size =      5005; name = 85.AUD
     file[]: crc = 71aa0743; size =     21818; name = 96.AUD
+    file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
+    file[]: crc = 5a24259f; size =   5598672; name = RESOURCE.000
+    file[]: crc = 53416101; size = 355217113; name = RESOURCE.AUD
+    file[]: crc = 27ba1778; size =      7274; name = RESOURCE.MAP
+    file[]: crc = 6a5ca6d2; size =         5; name = VERSION
+end
+
+//
+// v1.1, CD, DOS
+//
+game[v1.1-cd-dos]:
+    name = v1.1, CD, DOS
+    imports = v1.1-cd-base
     file[]: crc = a95e72fe; size =      8653; name = ADL.DRV
     file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
     file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
@@ -634,23 +685,26 @@ game[v1.1-cd]:
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
     file[]: crc = a95e72fe; size =      8653; name = PROAUDIO.DRV
-    file[]: crc = 5a24259f; size =   5598672; name = RESOURCE.000
-    file[]: crc = 53416101; size = 355217113; name = RESOURCE.AUD
-    file[]: crc = 27ba1778; size =      7274; name = RESOURCE.MAP
-    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
-    file[]: crc = de121aa6; size =    179712; name = SCIWV.EXE
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
     file[]: crc = da4d51f7; size =     69357; name = SIERRA.EXE
-    file[]: crc = b31b2668; size =       101; name = SIERRA.INI  ; optional = true
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = 6a5ca6d2; size =         5; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// v1.1, CD, Windows
+//
+game[v1.1-cd-win]:
+    name = v1.1, CD, Windows
+    imports = v1.1-cd-base
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
+    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
+    file[]: crc = de121aa6; size =    179712; name = SCIWV.EXE
+    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE
+    file[]: crc = b31b2668; size =       101; name = SIERRA.INI  ; optional = true
 end
 
 end

@@ -29,7 +29,7 @@ config[os]:
         audiohw = gmidi
         winres = 640x480x8
         wincrop = true
-        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI 
+        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI
         condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end
 end
@@ -126,20 +126,20 @@ CFG = [[[$(CRLF)
 
 INI = [[[$(CRLF)
     [info]
-    title=King's Quest VI
-    confirmdac=TRUE
-    confirmmidi=TRUE
-    cursorview=TRUE
-    minhunk=204K
-    minhires=375K
-    audioBuffs=2
-    borderwidth=5
-    genmidi=true
-    audpath=C:\
-    audio=C:\
-    sync=C:\
-    movieplayer=1
-    synthtype=highsynth
+    title       = King's Quest VI
+    confirmdac  = TRUE
+    confirmmidi = TRUE
+    cursorview  = TRUE
+    genmidi     = TRUE
+    synthtype   = highsynth
+    minhunk     = 204K
+    minhires    = 375K
+    audioBuffs  = 2
+    borderwidth = 5
+    audpath     = C:\
+    audio       = C:\
+    sync        = C:\
+    movieplayer = 0
 ]]]
 
 INSTALL = [[[$(CRLF)
@@ -161,10 +161,9 @@ script[init]:
 
         if (is_game() && is_windows())
         {
-          path_create("911.SCR"); // Prevents creation of 911.SCR file
+          path_create("911.SCR");
           file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
         }
-
     ]]]
 end
 

@@ -156,14 +156,13 @@ CFG = [[[$(CRLF)
 
 INI = [[[$(CRLF)
     [info]
-    title = Space Quest IV
-    sound1000 = true
-    bwcursor = false
-    genmidi = true
-    borderwidth=5
-    audpath=C:\
-    audio=C:\
-    synthtype=highsynth
+    title      = Space Quest IV
+    sound1000  = TRUE
+    bwcursor   = FALSE
+    genmidi    = TRUE
+    synthtype  = highsynth
+    audpath    = C:\
+    audio      = C:\
     #patchpath =
 ]]]
 
