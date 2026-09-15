@@ -56,7 +56,7 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 | King's Quest V: Absence Makes the Heart Go Yonder                              	| 🇺🇸🇫🇷🇩🇪🇮🇹  	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" />      	|
 | King's Quest VI: Heir Today, Gone Tomorrow                                     	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" />   	|
 | King's Quest 7: The Princeless Bride                                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />      	|
-| Laura Bow 2: The Dagger of Amon Ra                                             	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Laura Bow 2: The Dagger of Amon Ra                                             	| 🇺🇸🇫🇷🇩🇪    	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" />      	|
 | Leisure Suit Larry in the Land of the Lounge Lizards                           	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Leisure Suit Larry 1 in the Land of the Lounge Lizards (SCI)                   	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Leisure Suit Larry Goes Looking for Love (In Several Wrong Places)             	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
@@ -134,6 +134,7 @@ A huge thank you to the following people for their continuous help with this .dr
 - CookieMonster123
 - gschmidl
 - eientei
+- Losetech
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
 
