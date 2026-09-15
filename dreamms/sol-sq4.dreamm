@@ -18,10 +18,37 @@ TANDY = 0
 LANGUAGE = 1
 
 //
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos-sierra]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[dos-scidhuv]: 
+        name = DOS
+        launch = $(rootpath)\SCIDHUV.EXE
+        condition = file_exists("$$(rootpath)\\SCIDHUV.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI
+        condition = file_exists("$$(rootpath)\\SCIWV.EXE")
+    end
+end
+
+//
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = is_dos()
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
@@ -59,7 +86,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = is_dos() && !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -102,6 +129,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
+    condition = is_dos()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
@@ -126,9 +154,26 @@ CFG = [[[$(CRLF)
     minHunk   = 206k
 ]]]
 
+INI = [[[$(CRLF)
+    [info]
+    title = Space Quest IV
+    sound1000 = true
+    bwcursor = false
+    genmidi = true
+    borderwidth=5
+    audpath=C:\
+    audio=C:\
+    synthtype=highsynth
+    #patchpath =
+]]]
+
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_game() && is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
     ]]]
 end
 
@@ -417,11 +462,10 @@ game[v1.3-it-6x1.44m]:
 end
 
 //
-// v1.0, CD
+// v1.0, CD, DOS
 //
-game[v1.0-cd]:
-    name = v1.0, CD
-    launch = SIERRA.EXE
+game[v1.0-cd-dos]:
+    name = v1.0, CD, DOS
     anchorfile = RESOURCE.000
     file[]: crc = bc2487b9; size =      2846; name = 335.HEP
     file[]: crc = b42ec293; size =      3160; name = 335.SCR
@@ -447,18 +491,13 @@ game[v1.0-cd]:
     file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL ; optional = true
     file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
     file[]: crc = 21423825; size =      3688; name = MTBLAST.DRV ; optional = true
     file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
     file[]: crc = ce475558; size =   5157378; name = RESOURCE.000
     file[]: crc = 624eb224; size = 168882321; name = RESOURCE.AUD
     file[]: crc = 1677d9f4; size =      7054; name = RESOURCE.MAP
-    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = 2bc45432; size =    175104; name = SCIWV.EXE   ; optional = true
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
     file[]: crc = 4ec77630; size =     67960; name = SIERRA.EXE
-    file[]: crc = 29cdab17; size =        97; name = SIERRA.INI  ; optional = true
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
@@ -466,11 +505,41 @@ game[v1.0-cd]:
 end
 
 //
+// v1.0, CD, Windows
+//
+game[v1.0-cd-win]:
+    name = v1.0, CD, Windows
+    anchorfile = RESOURCE.000
+    file[]: crc = bc2487b9; size =      2846; name = 335.HEP
+    file[]: crc = b42ec293; size =      3160; name = 335.SCR
+    file[]: crc = 8dc0435b; size =      2314; name = 390.HEP
+    file[]: crc = 3fce2611; size =      4858; name = 390.SCR
+    file[]: crc = d62db64c; size =      2176; name = 410.HEP
+    file[]: crc = 6d7d08aa; size =      6992; name = 410.SCR
+    file[]: crc = 9a63cb7e; size =       746; name = 555.HEP
+    file[]: crc = 8e540406; size =       544; name = 555.SCR
+    file[]: crc = fa92632d; size =      1936; name = 610.HEP
+    file[]: crc = f0ddeb11; size =      5954; name = 610.SCR
+    file[]: crc = 847bcb7b; size =      1704; name = 701.HEP
+    file[]: crc = 5ddf41fe; size =      3884; name = 701.SCR
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
+    file[]: crc = ce475558; size =   5157378; name = RESOURCE.000
+    file[]: crc = 624eb224; size = 168882321; name = RESOURCE.AUD
+    file[]: crc = 1677d9f4; size =      7054; name = RESOURCE.MAP
+    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
+    file[]: crc = 2bc45432; size =    175104; name = SCIWV.EXE
+    file[]: crc = 29cdab17; size =        97; name = SIERRA.INI
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+end
+
+//
 // Space Quest - Collector's Edition
 //
 game[v1.0-cd-space-quest-collectors-edition]:
     name = Space Quest - Collector's Edition (v1.0 CD)
-    imports = v1.0-cd
+    imports = v1.0-cd-dos
     launch = SIERRA.EXE
     anchorfile = AUDBLAST.DRV
     file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
