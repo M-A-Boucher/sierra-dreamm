@@ -8,7 +8,6 @@ icon = sol-kq6.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
@@ -21,16 +20,16 @@ config[os]:
     title = OS Configuration
     option[dos]: 
         name = DOS
+        launch = $(rootpath)\SIERRA.EXE
         condition = file_exists("$$(rootpath)\\SIERRA.EXE")
     end
     option[win]:
         name = Windows
         osenv = windows 3.1
         audiohw = gmidi
-        mips = $(MIPS_MAX)
         winres = 640x480x8
         wincrop = true
-        launch = $(rootpath)\SCIWV.EXE \SIERRA.INI
+        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI 
         condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end
 end
@@ -40,7 +39,7 @@ end
 //
 config[graphics]:
     title = Graphics Configuration
-    condition = !is_windows()
+    condition = is_dos()
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega; priority = 1
@@ -55,7 +54,7 @@ config[graphics]:
     end
     option[vga]:
         name = $(VGA_NAME)
-        videohw = vga;  priority = 2
+        videohw = vga; priority = 2
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
@@ -66,7 +65,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !is_windows()
+    condition = is_dos()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -78,7 +77,7 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME); priority = 2
+        name = $(SB16_NAME)
         SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
@@ -99,6 +98,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
+    condition = is_dos()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
@@ -124,6 +124,24 @@ CFG = [[[$(CRLF)
     audioSize = 8K
 ]]]
 
+INI = [[[$(CRLF)
+    [info]
+    title=King's Quest VI
+    confirmdac=TRUE
+    confirmmidi=TRUE
+    cursorview=TRUE
+    minhunk=204K
+    minhires=375K
+    audioBuffs=2
+    borderwidth=5
+    genmidi=true
+    audpath=C:\
+    audio=C:\
+    sync=C:\
+    movieplayer=1
+    synthtype=highsynth
+]]]
+
 INSTALL = [[[$(CRLF)
     COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04+RESOURCE.P05+RESOURCE.P06+RESOURCE.P07 RESOURCE.000
     COPY INTRO.P01+INTRO.P02+INTRO.P03 SEQ.EXE
@@ -138,8 +156,15 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+        {
+          path_create("911.SCR"); // Prevents creation of 911.SCR file
+          file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
+        }
+
     ]]]
 end
 
@@ -1402,6 +1427,27 @@ fragment[v1.000.00-base]:
     file[]: crc = 77d62c1c; size =       322; name = 999.HEP
     file[]: crc = 9cb5e751; size =      2350; name = 999.SCR
     file[]: crc = a575e624; size =        70; name = 999.TEX
+    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = 566201ff; size =        44; name = KQ6CD
+    file[]: crc = 12c92c34; size =       440; name = MESSAGE.MAP
+    file[]: crc = 16751a21; size =   8376008; name = RESOURCE.000
+    file[]: crc = d3d48cb0; size = 350787931; name = RESOURCE.AUD
+    file[]: crc = 10695431; size =      9215; name = RESOURCE.MAP
+    file[]: crc = c0bf3202; size =    259510; name = RESOURCE.MSG
+    file[]: crc = fcc89b21; size =   6574524; name = RESOURCE.SFX
+    file[]: crc = dc7b9e4d; size =        17; name = VERSION
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
+end
+
+//
+// v1.000.00, CD, DOS
+//
+game[v1.000.00-cd-dos]:
+    name = v1.000.00, CD, DOS
+    imports = v1.000.00-base
+    anchorfile = SIERRA.EXE
+    anchordepth = 1
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = ff18d4b3; size =      7670; name = AUDBLAST.DRV
     file[]: crc = 71be3286; size =       726; name = AUDCDROM.DRV
@@ -1415,19 +1461,10 @@ fragment[v1.000.00-base]:
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
-    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 566201ff; size =        44; name = KQ6CD
-    file[]: crc = 12c92c34; size =       440; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 16751a21; size =   8376008; name = RESOURCE.000
-    file[]: crc = d3d48cb0; size = 350787931; name = RESOURCE.AUD
-    file[]: crc = 10695431; size =      9215; name = RESOURCE.MAP
-    file[]: crc = c0bf3202; size =    259510; name = RESOURCE.MSG
-    file[]: crc = fcc89b21; size =   6574524; name = RESOURCE.SFX
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = ba0faac1; size =      7305; name = VGA320.DRV
@@ -1448,19 +1485,8 @@ fragment[v1.000.00-base]:
     file[]: crc = edca4a86; size =   2114190; name = OPEN2.SEQ
     file[]: crc = b1f106d3; size =   1207440; name = SCAN.SEQ
     file[]: crc = ee72d75f; size =   1023651; name = SCOP.SEQ
-    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
-end
-
-//
-// v1.000.00, CD, DOS
-//
-game[v1.000.00-cd-dos]:
-    name = v1.000.00, CD, DOS
-    imports = v1.000.00-base
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
     file[]: crc = c426e44b; size =    174155; name = SIERRA.EXE
-    file[]: crc = dc7b9e4d; size =        17; name = VERSION
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
@@ -1472,14 +1498,11 @@ game[v1.000.00-cd-win]:
     anchorfile = SCIWV.EXE
     anchordepth = 1
     file[]:                                   name = HDLOGO.AVI
-    file[]: crc = 5d0deb99; size =  34118072; name = MAKINGKQ.AVI
     file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
     file[]: crc = 2f04e1a1; size =     60112; name = PROGLIB.DLL
     file[]: crc = 80fb46cb; size =     77840; name = RAVE.DLL
     file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL
     file[]: crc = 4a2bbdea; size =    190464; name = SCIWV.EXE
-    file[]: crc = 5f1a0a49; size =     47616; name = SETUP.EXE   ; optional = true
-    file[]: crc = a7d55c29; size =       157; name = SIERRA.INI
     file[]:                                   name = TOON.AVI
     file[]: crc = e4e00f29; size =    134005; name = ACTORS\ALEX.BIN
     file[]: crc = 827d4ea1; size =     29889; name = ACTORS\ALLARIA.BIN
@@ -1513,6 +1536,7 @@ game[v1.000.00-cd-win]:
     file[]: crc = 8b96774a; size =     34097; name = ACTORS\VALANICE.BIN
     file[]: crc = b3a87020; size =     50335; name = ACTORS\VIZIER.BIN
     file[]: crc = d9bbda57; size =     61083; name = ACTORS\WINGG.BIN
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
@@ -1538,6 +1562,7 @@ game[v1.000.00g-cd-dos]:
     file[]: crc = 0423bf92; size =      9215; name = RESOURCE.MAP
     file[]: crc = b566f302; size =   6574524; name = RESOURCE.SFX
     file[]: crc = 48b93051; size =        17; name = VERSION
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
     file[]: remove = 0.HEP
     file[]: remove = 0.SCR
     file[]: remove = 0.TEX
@@ -1571,6 +1596,7 @@ game[v1.000.00g-cd-dos]:
     file[]: remove = 999.HEP
     file[]: remove = 999.SCR
     file[]: remove = 999.TEX
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
 end
 
 //
@@ -1589,7 +1615,6 @@ game[v1.000.00g-cd-win]:
     file[]: crc = d6a8a0bb; size =      3352; name = 470.HEP
     file[]: crc = 1749937b; size =     11578; name = 470.SCR
     file[]: crc = f21484f5; size =       622; name = 65535.MAP
-    file[]: crc = f891c127; size =      8749; name = AUDBLAST.DRV
     file[]: crc = d8f2ac7f; size =         9; name = KQ6CD
     file[]: crc = 5e792831; size =   8376352; name = RESOURCE.000
     file[]: crc = 79a58691; size = 350789703; name = RESOURCE.AUD
@@ -1597,6 +1622,8 @@ game[v1.000.00g-cd-win]:
     file[]: crc = b566f302; size =   6574524; name = RESOURCE.SFX
     file[]: crc = 7916d720; size =    190464; name = SCIWV.EXE
     file[]: crc = 0814154b; size =       142; name = SIERRA.INI
+    file[]: crc = 48b93051; size =        17; name = VERSION
+    file[]:                                   name = CD\CDDA.SOU; cdda = 235; optional = true;
     file[]: remove = 0.HEP
     file[]: remove = 0.SCR
     file[]: remove = 0.TEX
