@@ -182,7 +182,6 @@ game[v1.0-int-10.27.92-3x1.44m]:
     anchorfile = RESOURCE.000
     file[]: crc = aeae0356; size =   2103560; name = RESOURCE.000
     file[]: crc = ac5d18ec; size =   1880696; name = RESOURCE.AUD
-
 end
 
 //
@@ -198,6 +197,77 @@ installer[v1.0-int-10.27.92-3x1.44m-installer]:
     file[]: crc = 7d2b0f5f; size =   1451696; name = RESOURCE.A02
     file[]: crc = d3565b13; size =   1085000; name = RESOURCE.P01
     file[]: crc = 559beda3; size =   1018560; name = RESOURCE.P02
+end
+
+//
+// v1.0, Int. 10.27.92, CD
+//
+game[v1.0-int-10.27.92-cd]:
+    name = v1.0, Int. 10.27.92, CD
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 60382630; size =      1888; name = 130.HEP
+    file[]: crc = 477cbcf4; size =      1860; name = 130.MSG
+    file[]: crc = ea96d291; size =      4336; name = 130.SCR
+    file[]: crc = 2aeb29f9; size =      3992; name = 140.HEP
+    file[]: crc = ba1a5a42; size =     10360; name = 140.SCR
+    file[]: crc = b9452b2b; size =      9224; name = 180.MSG
+    file[]: crc = 7aeb60a6; size =       898; name = 265.HEP
+    file[]: crc = 35f3c49c; size =      3446; name = 265.SCR
+    file[]: crc = 9dfc403d; size =      4388; name = 268.SCR
+    file[]: crc = e45c52fe; size =      9990; name = 269.V56
+    file[]: crc = 31064788; size =      2006; name = 293.HEP
+    file[]: crc = 28f57935; size =     12682; name = 293.SCR
+    file[]: crc = ee672200; size =      5654; name = 300.HEP
+    file[]: crc = 7d246e72; size =     22307; name = 300.MSG
+    file[]: crc = 61f432b0; size =      6124; name = 300.SCR
+    file[]: crc = 924ceb89; size =      2702; name = 320.HEP
+    file[]: crc = bfd5c12d; size =     11804; name = 320.SCR
+    file[]: crc = c14bafcf; size =      1552; name = 340.HEP
+    file[]: crc = fc1914d8; size =      3570; name = 340.MSG
+    file[]: crc = c5dc14e0; size =      1970; name = 340.SCR
+    file[]: crc = a2c964ba; size =      1266; name = 349.HEP
+    file[]: crc = 45e41198; size =      3462; name = 349.SCR
+    file[]: crc = 276face3; size =      8802; name = 350.SCR
+    file[]: crc = 737cf82d; size =      5724; name = 420.SCR
+    file[]: crc = 64dfb3b3; size =     11975; name = 947.V56
+    file[]: crc = aeae0356; size =   2103560; name = RESOURCE.000
+    file[]: crc = ac5d18ec; size =   1880696; name = RESOURCE.AUD
+end
+
+//
+// v1.0, Int. 10.27.92, CD, Installer
+//
+installer[v1.0-cd-installer]:
+    name = v1.0, Int. 10.27.92, CD, Installer
+    installid = v1.0-cd
+    launch = DREAMM.BAT
+    imports = v1.0-int-10.27.92-3x1.44m-installer
+    file[]: crc = 60382630; size =      1888; name = 130.HEP
+    file[]: crc = 477cbcf4; size =      1860; name = 130.MSG
+    file[]: crc = ea96d291; size =      4336; name = 130.SCR
+    file[]: crc = 2aeb29f9; size =      3992; name = 140.HEP
+    file[]: crc = ba1a5a42; size =     10360; name = 140.SCR
+    file[]: crc = b9452b2b; size =      9224; name = 180.MSG
+    file[]: crc = 7aeb60a6; size =       898; name = 265.HEP
+    file[]: crc = 35f3c49c; size =      3446; name = 265.SCR
+    file[]: crc = 9dfc403d; size =      4388; name = 268.SCR
+    file[]: crc = e45c52fe; size =      9990; name = 269.V56
+    file[]: crc = 31064788; size =      2006; name = 293.HEP
+    file[]: crc = 28f57935; size =     12682; name = 293.SCR
+    file[]: crc = ee672200; size =      5654; name = 300.HEP
+    file[]: crc = 7d246e72; size =     22307; name = 300.MSG
+    file[]: crc = 61f432b0; size =      6124; name = 300.SCR
+    file[]: crc = 924ceb89; size =      2702; name = 320.HEP
+    file[]: crc = bfd5c12d; size =     11804; name = 320.SCR
+    file[]: crc = c14bafcf; size =      1552; name = 340.HEP
+    file[]: crc = fc1914d8; size =      3570; name = 340.MSG
+    file[]: crc = c5dc14e0; size =      1970; name = 340.SCR
+    file[]: crc = a2c964ba; size =      1266; name = 349.HEP
+    file[]: crc = 45e41198; size =      3462; name = 349.SCR
+    file[]: crc = 276face3; size =      8802; name = 350.SCR
+    file[]: crc = 737cf82d; size =      5724; name = 420.SCR
+    file[]: crc = 64dfb3b3; size =     11975; name = 947.V56
 end
 
 fragment[v1.1-base]:
