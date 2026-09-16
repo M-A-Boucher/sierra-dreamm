@@ -8,12 +8,49 @@ icon = sol-lsl7.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIER.EXE
 mips = $(MIPS_P100)
 ramkb = 16384
 videohw = svga
-audiohw = adlib+sb16+mt32+gmidi
+audiohw = sb16
 filter = sierra, adventure
+
+//
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIER.EXE
+        condition = file_exists("$$(rootpath)\\SIER.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 95
+        audiohw = gmidi
+        winres = 640x480x16
+        wincrop = true
+        launch = $(rootpath)\SIERW5.EXE
+        condition = file_exists("$$(rootpath)\\SIERW5.EXE")
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[8bit]:
+        name = Mono
+        AUDIOPATH = MUSIC\22M8
+        condition = file_exists("$$(rootpath)\\MUSIC\\22M8\\10000.AUD")
+    end
+    option[16bit]:
+        name = Stereo; priority = 1
+        AUDIOPATH = MUSIC\22S16
+        condition = file_exists("$$(rootpath)\\MUSIC\\22S16\\10000.AUD")
+    end
+end
 
 CFG = [[[$(CRLF)
     videoDrv  = VESA.DRV
@@ -36,9 +73,42 @@ CFG = [[[$(CRLF)
     dacsize   = 30720
 ]]]
 
+WIN = [[[$(CRLF)
+    [Windows]
+    title          = Leisure Suit Larry in 'Love For Sail!'
+    wwidth         = 640
+    wheight        = 480
+    allowresize    = FALSE
+    borderpixels   = 0
+    sciMinK	   = 3200
+    sciMaxK        = 5400
+    winG           = FALSE
+    confirmdac     = TRUE
+    usemidi	   = TRUE
+    useaudio       = TRUE
+    leadSubmits    = 4
+    minSubmits     = 8
+    maxSubmits     = 32
+    useDirectSound = TRUE
+    useDirectDraw  = TRUE
+    VideoSpeed     = 300
+    cacheSize2     = 750
+    cacheSize3     = 350
+    resMap         = C:\
+    resAud         = C:\
+    resSfx         = C:\
+    audio          = C:\$(AUDIOPATH)
+    patchDir       = C:\PATCHES
+    movieDir       = C:\MOVIE
+]]]
+
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -49,35 +119,9 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
-// v1.01, CD
+// v1.01 Base Files
 //
-game[v1.01-cd]:
-    name = v1.01, CD
-    anchorfile = SIER.EXE
-    anchordepth = 2
-    file[]: crc = 55d4d361; size =      4366; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = 9136f82e; size =      8188; name = RESMAP.000
-    file[]: crc = 26c82b3b; size =      8188; name = RESMDT.000
-    file[]: crc = f77ec06a; size = 397103899; name = RESOURCE.AUD
-    file[]: crc = b00b52b1; size =       336; name = RESOURCE.CFG; optional = true
-    file[]: crc = 6979e5be; size =  36104701; name = RESOURCE.SFX
-    file[]: crc = d20b474a; size =       471; name = RESOURCE.WIN; optional = true
-    file[]: crc = abf9a5d8; size =  66965678; name = RESSCI.000
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL ; optional = true
-    file[]: crc = e283a72b; size =    905005; name = SIER.EXE
-    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
-    file[]: crc = 5146006b; size =     14138; name = SIERRA.INF  ; optional = true
-    file[]: crc = ccbb4016; size =    787632; name = SIERW.EXE   ; optional = true
-    file[]: crc = 0d5d1c3c; size =    569344; name = SIERW5.EXE  ; optional = true
-    file[]: crc = 80ec049b; size =         6; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+fragment[v1.01-base]:
     file[]: crc = 28b34084; size =   9077704; name = MOVIE\10.VMD
     file[]: crc = 04b895bc; size =   1250232; name = MOVIE\11.VMD
     file[]: crc = e27713bf; size =    700396; name = MOVIE\12.VMD
@@ -177,6 +221,46 @@ game[v1.01-cd]:
     file[]: crc = 07a465dc; size =     38620; name = PATCHES\360.CSC
     file[]: crc = 45f77127; size =     41226; name = PATCHES\370.CSC
     file[]: crc = 38a5ae6d; size =     47826; name = PATCHES\410.CSC
+    file[]: crc = 9136f82e; size =      8188; name = RESMAP.000
+    file[]: crc = 26c82b3b; size =      8188; name = RESMDT.000
+    file[]: crc = f77ec06a; size = 397103899; name = RESOURCE.AUD
+    file[]: crc = 6979e5be; size =  36104701; name = RESOURCE.SFX
+    file[]: crc = abf9a5d8; size =  66965678; name = RESSCI.000
+    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
+    file[]: crc = 80ec049b; size =         6; name = VERSION
+end
+
+//
+// v1.01, CD, DOS
+//
+game[v1.01-cd-dos]:
+    name = v1.01, CD, DOS
+    imports = v1.01-base
+    anchorfile = SIER.EXE
+    anchordepth = 2
+    file[]: crc = 55d4d361; size =      4366; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = e283a72b; size =    905005; name = SIER.EXE
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+end
+
+//
+// v1.01, CD, Windows
+//
+game[v1.01-cd-win]:
+    name = v1.01, CD, Windows
+    imports = v1.01-base
+    anchorfile = SIERW5.EXE
+    anchordepth = 2
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL
+    file[]: crc = ccbb4016; size =    787632; name = SIERW.EXE 
+    file[]: crc = 0d5d1c3c; size =    569344; name = SIERW5.EXE
 end
 
 end

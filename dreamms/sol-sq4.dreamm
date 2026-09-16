@@ -38,7 +38,7 @@ config[os]:
         audiohw = gmidi
         winres = 640x480x8
         wincrop = true
-        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI
+        launch = $(rootpath)\SCIWV.EXE
         condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end
 end
@@ -125,6 +125,22 @@ config[sound]:
 end
 
 //
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+//
 // sfx configuration
 //
 config[sfx]:
@@ -149,21 +165,22 @@ CFG = [[[$(CRLF)
     joyDrv    = JOYSTICK.DRV
     kbdDrv    = IBMKBD.DRV
     mouseDrv  = STDMOUSE.DRV
-    language  = $(LANGUAGE)
     audioSize = 12k
     minHunk   = 206k
+    language  = $(LANGUAGE)
+    patchDir   = .
 ]]]
 
 INI = [[[$(CRLF)
     [info]
-    title      = Space Quest IV
-    sound1000  = TRUE
-    bwcursor   = FALSE
-    genmidi    = TRUE
-    synthtype  = highsynth
-    audpath    = C:\
-    audio      = C:\
-    #patchpath =
+    title       = Space Quest IV
+    sound1000   = TRUE
+    bwcursor    = FALSE
+    genmidi     = TRUE
+    synthtype   = $(SOUND_DRIVER)
+    audpath     = C:\
+    audio       = C:\
+    #patchpath  =
 ]]]
 
 script[init]:
@@ -172,7 +189,7 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
-          file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
     ]]]
 end
 

@@ -240,7 +240,7 @@ end
 //
 installer[v1.0-cd-installer]:
     name = v1.0, Int. 10.27.92, CD, Installer
-    installid = v1.0-cd
+    installid = v1.0-int-10.27.92-cd
     launch = DREAMM.BAT
     imports = v1.0-int-10.27.92-3x1.44m-installer
     file[]: crc = 60382630; size =      1888; name = 130.HEP

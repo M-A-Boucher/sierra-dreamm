@@ -29,7 +29,7 @@ config[os]:
         audiohw = gmidi
         winres = 640x480x8
         wincrop = true
-        launch = $(rootpath)\SCIWV.EXE \WINDOWS\SIERRA.INI
+        launch = $(rootpath)\SCIWV.EXE
         condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end
 end
@@ -94,6 +94,22 @@ config[sound]:
 end
 
 //
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+//
 // sfx configuration
 //
 config[sfx]:
@@ -111,6 +127,15 @@ config[sfx]:
     end
 end
 
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04+RESOURCE.P05+RESOURCE.P06+RESOURCE.P07 RESOURCE.000
+    COPY INTRO.P01+INTRO.P02+INTRO.P03 SEQ.EXE
+    COPY AUDIO.P01+AUDIO.P02+AUDIO.P03 RESOURCE.AUD
+    DCOMPAUD.EXE .\
+    SEQ.EXE
+    SYNC.EXE
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv  = $(VIDEO_DRIVER)
     soundDrv  = $(SOUND_DRIVER)
@@ -125,13 +150,13 @@ CFG = [[[$(CRLF)
 ]]]
 
 INI = [[[$(CRLF)
-    [info]
+    [Info]
     title       = King's Quest VI
     confirmdac  = TRUE
     confirmmidi = TRUE
     cursorview  = TRUE
     genmidi     = TRUE
-    synthtype   = highsynth
+    synthtype   = $(SOUND_DRIVER)
     minhunk     = 204K
     minhires    = 375K
     audioBuffs  = 2
@@ -140,15 +165,6 @@ INI = [[[$(CRLF)
     audio       = C:\
     sync        = C:\
     movieplayer = 0
-]]]
-
-INSTALL = [[[$(CRLF)
-    COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03+RESOURCE.P04+RESOURCE.P05+RESOURCE.P06+RESOURCE.P07 RESOURCE.000
-    COPY INTRO.P01+INTRO.P02+INTRO.P03 SEQ.EXE
-    COPY AUDIO.P01+AUDIO.P02+AUDIO.P03 RESOURCE.AUD
-    DCOMPAUD.EXE .\
-    SEQ.EXE
-    SYNC.EXE
 ]]]
 
 script[init]:
@@ -162,7 +178,7 @@ script[init]:
         if (is_game() && is_windows())
         {
           path_create("911.SCR");
-          file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
         }
     ]]]
 end
