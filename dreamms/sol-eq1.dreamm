@@ -14,19 +14,56 @@ videohw = vga;
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
+TANDY = 0
+LANGUAGE = 1
+
+//
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    condition = !is_installer()
+    option[dos-sierra]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[dos-scidhuv]: 
+        name = DOS
+        launch = $(rootpath)\SCIDHUV.EXE
+        condition = file_exists("$$(rootpath)\\SCIDHUV.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SCIWV.EXE
+        condition = file_exists("$$(rootpath)\\SCIWV.EXE")
+    end
+end
 
 //
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
+    end
     option[vgamono]:
         name = Monochrome $(VGA_NAME)
+        videohw = vga
         VIDEO_DRIVER = VGA320BW.DRV
         condition = file_exists("$$(rootpath)\\VGA320BW.DRV")
     end
     option[vga]:
-        name = $(VGA_NAME); priority = 1
+        name = $(VGA_NAME)
+        videohw = vga;  priority = 2
         VIDEO_DRIVER = VGA320.DRV
         condition = file_exists("$$(rootpath)\\VGA320.DRV")
     end
@@ -37,6 +74,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -65,6 +103,22 @@ config[sound]:
 end
 
 //
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+//
 // sfx configuration
 //
 config[sfx]:
@@ -81,28 +135,52 @@ config[sfx]:
     end
 end
 
+INSTALL = COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 RESOURCE.000
+
 CFG = [[[$(CRLF)
-    videoDrv = $(VIDEO_DRIVER)
-    soundDrv = $(SOUND_DRIVER)
-    audioDrv = $(AUDIO_DRIVER)
-    joyDrv   = JOYSTICK.DRV
-    kbdDrv   = IBMKBD.DRV
-    mouseDrv = STDMOUSE.DRV
-    language = $(LANGUAGE)
-    minHunk  = 200k
+    videoDrv   = $(VIDEO_DRIVER)
+    soundDrv   = $(SOUND_DRIVER)
+    audioDrv   = $(AUDIO_DRIVER)
+    joyDrv     = JOYSTICK.DRV
+    kbdDrv     = IBMKBD.DRV
+    mouseDrv   = STDMOUSE.DRV
+    language   = $(LANGUAGE)
+    minHunk    = 200k
+    directory  = C:\
+    audioSize  = 32k
+    minHunk    = 209K
+    patchDir   = C:\ 
+    audio      = C:\ 
+]]]
+
+WIN = [[[$(CRLF)
+    [info]
+    title      = EcoQuest
+    sound1000  = true
+    synthtype  = $(SOUND_DRIVER)
+    genmidi    = true
+    audio      = C:\
+    #patchpath = C:\
 ]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
+
+        if (is_game() && is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(WIN)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.0, Int. 12.23.91, 3x1.44M-1x720K
@@ -169,6 +247,240 @@ game[v1.0-int-12.23.91-4x1.2m]:
 end
 
 //
+// v1.10 Base Files
+//
+fragment[v1.10-base]:
+    file[]: crc = a35880d0; size =      5368; name = 140.HEP
+    file[]: crc = 7026d42b; size =     11500; name = 140.SCR
+    file[]: crc = 09ee8102; size =       174; name = 141.HEP
+    file[]: crc = 1ebd8971; size =       896; name = 141.SCR
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = ffae4027; size =      3307; name = AUDBLAST.DRV
+    file[]: crc = 09eafdef; size =      2439; name = AUDDISNY.DRV
+    file[]: crc = 1b46fd88; size =       715; name = AUDNONE.DRV
+    file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
+    file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
+    file[]: crc = 08a3bd51; size =      2072; name = AUDTANDY.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 8fa98d69; size =      2609; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 56e0712e; size =       330; name = MESSAGE.MAP
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = 42a32a1d; size =      4890; name = RESOURCE.MAP
+    file[]: crc = 51b87eca; size =    130319; name = RESOURCE.MSG
+    file[]: crc = 631494e5; size =    122413; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 399209c9; size =         6; name = VERSION
+    file[]: crc = 7a6fc517; size =      5846; name = VGA320.DRV
+    file[]: crc = 109667d7; size =      5909; name = VGA320BW.DRV
+end
+
+//
+// v1.10, Int. 2.000.286, 3x1.44M
+//
+game[v1.10-int-2.000.286-3x1.44m]:
+    name = v1.10, Int. 2.000.286, 3x1.44M
+    imports = v1.10-base
+    anchorfile = RESOURCE.000
+    file[]: crc = e34a610a; size =   3428654; name = RESOURCE.000
+end
+
+//
+// v1.10, Int. 2.000.286, 3x1.44M, Installer
+//
+installer[v1.10-int-2.000.286-3x1.44m-installer]:
+    name = v1.10, Int. 2.000.286, 3x1.44M, Installer
+    installid = v1.10-int-2.000.286-3x1.44m
+    launch = DREAMM.BAT
+    imports = v1.10-base
+    anchorfile = RESOURCE.P03
+    file[]: crc = 971949f0; size =   1037000; name = RESOURCE.P01
+    file[]: crc = 964bc9d7; size =   1440000; name = RESOURCE.P02
+    file[]: crc = 57a38105; size =    951654; name = RESOURCE.P03
+end
+
+//
+// v1.1 CD Base Files
+//
+fragment[v1.1-cd-base]:
+    anchorfile = RESOURCE.000
+    file[]: crc = 5a3fc6db; size =      5594; name = 140.HEP
+    file[]: crc = 021a8682; size =     12450; name = 140.SCR
+    file[]: crc = e31dcf47; size =       170; name = 142.HEP
+    file[]: crc = 83e9f3e2; size =      1818; name = 142.SCR
+    file[]: crc = 308ead0b; size =      4234; name = 380.HEP
+    file[]: crc = 41352ccb; size =     16482; name = 380.SCR
+    file[]: crc = 03d72e29; size =      3026; name = 381.HEP
+    file[]: crc = 513e78b1; size =      7716; name = 381.SCR
+    file[]: crc = bddad2f8; size =       706; name = 61.HEP
+    file[]: crc = 7858e8ea; size =      4608; name = 61.SCR
+    file[]: crc = 4837cba0; size =        85; name = 811.MSG
+    file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = 1593e181; size =   3536046; name = RESOURCE.000
+    file[]: crc = c3b3fa64; size = 305187924; name = RESOURCE.AUD
+    file[]: crc = 2fe7b676; size =      4804; name = RESOURCE.MAP
+    file[]: crc = 6a5ca6d2; size =         5; name = VERSION
+    file[]: crc = b0953f01; size =     11081; name = AUDIO\122.AUD
+    file[]: crc = 5e6b0668; size =     26597; name = AUDIO\124.AUD
+    file[]: crc = 8b16a1b9; size =      3824; name = AUDIO\127.AUD
+    file[]: crc = aeed2204; size =      4833; name = AUDIO\143.AUD
+    file[]: crc = c50c97df; size =      3214; name = AUDIO\144.AUD
+    file[]: crc = d10e0412; size =     10551; name = AUDIO\145.AUD
+    file[]: crc = 276e4160; size =     41525; name = AUDIO\146.AUD
+    file[]: crc = acca3549; size =     29255; name = AUDIO\164.AUD
+    file[]: crc = 8554a8c5; size =     67597; name = AUDIO\165.AUD
+    file[]: crc = 73ba0382; size =     17075; name = AUDIO\167.AUD
+    file[]: crc = a52b0eb7; size =      1191; name = AUDIO\168.AUD
+    file[]: crc = f0ebcd48; size =      5659; name = AUDIO\169.AUD
+    file[]: crc = de633f0d; size =      1579; name = AUDIO\183.AUD
+    file[]: crc = 2fd47a06; size =     13200; name = AUDIO\185.AUD
+    file[]: crc = a786c1d3; size =      9539; name = AUDIO\208.AUD
+    file[]: crc = 9dcc1c8e; size =      8909; name = AUDIO\209.AUD
+    file[]: crc = 666b9f3f; size =      9987; name = AUDIO\210.AUD
+    file[]: crc = e7cf2656; size =     17485; name = AUDIO\211.AUD
+    file[]: crc = bcd28a8f; size =     19459; name = AUDIO\212.AUD
+    file[]: crc = 0532fa19; size =     12897; name = AUDIO\213.AUD
+    file[]: crc = 9ba219ec; size =     11081; name = AUDIO\215.AUD
+    file[]: crc = dc3bd42e; size =     11099; name = AUDIO\216.AUD
+    file[]: crc = b19da899; size =     15323; name = AUDIO\218.AUD
+    file[]: crc = a841f43f; size =    274445; name = AUDIO\321.AUD
+    file[]: crc = 13a847e7; size =     18431; name = AUDIO\331.AUD
+    file[]: crc = 85df5dfb; size =     18431; name = AUDIO\333.AUD
+    file[]: crc = 8e3c3772; size =     24871; name = AUDIO\334.AUD
+    file[]: crc = fe35a9b7; size =     16539; name = AUDIO\362.AUD
+    file[]: crc = 85dd194b; size =     26537; name = AUDIO\370.AUD
+    file[]: crc = c8efc0da; size =     14413; name = AUDIO\382.AUD
+    file[]: crc = e1524fb6; size =     29069; name = AUDIO\385.AUD
+    file[]: crc = a4c85026; size =      6841; name = AUDIO\387.AUD
+    file[]: crc = da9535f3; size =      2627; name = AUDIO\388.AUD
+    file[]: crc = 21870dbb; size =      5603; name = AUDIO\389.AUD
+    file[]: crc = 5a0c1cc2; size =      6063; name = AUDIO\390.AUD
+    file[]: crc = c9d26f0f; size =    138613; name = AUDIO\391.AUD
+    file[]: crc = 57a06124; size =     47971; name = AUDIO\392.AUD
+    file[]: crc = e0755919; size =      9841; name = AUDIO\393.AUD
+    file[]: crc = 523b1671; size =      8642; name = AUDIO\394.AUD
+    file[]: crc = 8ff31230; size =     28462; name = AUDIO\395.AUD
+    file[]: crc = 0b7a7183; size =     10285; name = AUDIO\396.AUD
+    file[]: crc = 169aa837; size =      3207; name = AUDIO\397.AUD
+    file[]: crc = 26b07e63; size =     22127; name = AUDIO\398.AUD
+    file[]: crc = b04f9449; size =     22153; name = AUDIO\399.AUD
+    file[]: crc = b0bf550c; size =      6028; name = AUDIO\402.AUD
+    file[]: crc = ab574860; size =     10831; name = AUDIO\403.AUD
+    file[]: crc = 29942bde; size =      7094; name = AUDIO\404.AUD
+    file[]: crc = 9b63c74c; size =     16270; name = AUDIO\405.AUD
+    file[]: crc = 37c64949; size =      4915; name = AUDIO\406.AUD
+    file[]: crc = 5d4fd817; size =      4901; name = AUDIO\407.AUD
+    file[]: crc = 00798067; size =     13885; name = AUDIO\408.AUD
+    file[]: crc = 4e88c58e; size =       662; name = AUDIO\409.AUD
+    file[]: crc = a5908370; size =      7281; name = AUDIO\421.AUD
+    file[]: crc = cb093e29; size =      4639; name = AUDIO\441.AUD
+    file[]: crc = 169aa837; size =      3207; name = AUDIO\442.AUD
+    file[]: crc = 22de38b8; size =     10733; name = AUDIO\461.AUD
+    file[]: crc = c16d63cf; size =     10976; name = AUDIO\462.AUD
+    file[]: crc = b2c2c827; size =     13517; name = AUDIO\463.AUD
+    file[]: crc = 9bef3201; size =      7504; name = AUDIO\464.AUD
+    file[]: crc = 26b07e63; size =     22127; name = AUDIO\465.AUD
+    file[]: crc = 001d9881; size =      8015; name = AUDIO\466.AUD
+    file[]: crc = c212a937; size =      7823; name = AUDIO\467.AUD
+    file[]: crc = 2ea8b57b; size =     11102; name = AUDIO\469.AUD
+    file[]: crc = 45e5cb7c; size =      3269; name = AUDIO\481.AUD
+    file[]: crc = 98617905; size =     25033; name = AUDIO\483.AUD
+    file[]: crc = 17f67c2b; size =     22442; name = AUDIO\484.AUD
+    file[]: crc = 622452ef; size =      9934; name = AUDIO\485.AUD
+    file[]: crc = bd2b99b4; size =     26597; name = AUDIO\500.AUD
+    file[]: crc = 60b076aa; size =     33034; name = AUDIO\501.AUD
+    file[]: crc = 0b8cee51; size =      7826; name = AUDIO\502.AUD
+    file[]: crc = f299f466; size =      5682; name = AUDIO\503.AUD
+    file[]: crc = 147e69e1; size =     10003; name = AUDIO\504.AUD
+    file[]: crc = 585904a3; size =      1736; name = AUDIO\505.AUD
+    file[]: crc = b0953f01; size =     11081; name = AUDIO\526.AUD
+    file[]: crc = dd01aff4; size =      2099; name = AUDIO\540.AUD
+    file[]: crc = c2831cf9; size =      4034; name = AUDIO\541.AUD
+    file[]: crc = 6cf54851; size =     83937; name = AUDIO\542.AUD
+    file[]: crc = bf1229b3; size =      2812; name = AUDIO\561.AUD
+    file[]: crc = 366bab52; size =      7045; name = AUDIO\562.AUD
+    file[]: crc = cfd20b15; size =     12396; name = AUDIO\581.AUD
+    file[]: crc = 5a134d19; size =     10850; name = AUDIO\582.AUD
+    file[]: crc = 6e5a2f96; size =      6123; name = AUDIO\583.AUD
+    file[]: crc = d44c429d; size =     12927; name = AUDIO\584.AUD
+    file[]: crc = 9084e489; size =      2996; name = AUDIO\602.AUD
+    file[]: crc = 42051628; size =     24479; name = AUDIO\603.AUD
+    file[]: crc = dcd01b4e; size =     81061; name = AUDIO\641.AUD
+    file[]: crc = 0f120745; size =     49748; name = AUDIO\644.AUD
+    file[]: crc = 737055bd; size =     30367; name = AUDIO\645.AUD
+    file[]: crc = 90fa3cdf; size =     41289; name = AUDIO\646.AUD
+    file[]: crc = 0f120745; size =     49748; name = AUDIO\647.AUD
+    file[]: crc = eb0c8d05; size =      9004; name = AUDIO\661.AUD
+    file[]: crc = 7b4d093c; size =      2636; name = AUDIO\662.AUD
+    file[]: crc = 4881be36; size =     20161; name = AUDIO\663.AUD
+    file[]: crc = ab7b08d0; size =     10534; name = AUDIO\901.AUD
+    file[]: crc = 6804ef03; size =      7889; name = AUDIO\902.AUD
+    file[]: crc = a9df2ae7; size =      9845; name = AUDIO\903.AUD
+    file[]: crc = 83a43b33; size =      4273; name = AUDIO\904.AUD
+    file[]: crc = 831277a4; size =     10937; name = AUDIO\905.AUD
+    file[]: crc = 19cde09f; size =     10937; name = AUDIO\906.AUD
+    file[]: crc = ff3fbfaf; size =     11847; name = AUDIO\907.AUD
+    file[]: crc = 02088f15; size =      6549; name = AUDIO\908.AUD
+    file[]: crc = 287ac953; size =      8757; name = AUDIO\909.AUD
+    file[]: crc = f20830b4; size =      7591; name = AUDIO\910.AUD
+    file[]: crc = 6cf7e185; size =      8063; name = AUDIO\911.AUD
+    file[]: crc = 16a9eccd; size =     11043; name = AUDIO\912.AUD
+    file[]: crc = d611ded3; size =      9625; name = AUDIO\913.AUD
+    file[]: crc = a80e153a; size =      8981; name = AUDIO\914.AUD
+    file[]: crc = 42f26e83; size =      5355; name = AUDIO\915.AUD
+    file[]: crc = afc3db37; size =     17912; name = AUDIO\916.AUD
+    file[]: crc = caad153d; size =     27613; name = AUDIO\917.AUD
+    file[]: crc = d1d902de; size =     22996; name = AUDIO\918.AUD
+    file[]: crc = 08e58b33; size =     29239; name = AUDIO\919.AUD
+    file[]: crc = 9fff7934; size =     22379; name = AUDIO\920.AUD
+    file[]: crc = 64921870; size =     13592; name = AUDIO\921.AUD
+    file[]: crc = 6cf54851; size =     83937; name = AUDIO\924.AUD
+    file[]: crc = 6cf54851; size =     83937; name = AUDIO\926.AUD
+end
+
+//
+// v1.1, CD, DOS
+//
+game[v1.1-cd-dos]:
+    name = v1.1, CD, DOS
+    imports = v1.1-cd-base
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = a417fae3; size =      6210; name = AUDBLAST.DRV
+    file[]: crc = bdbf3d5c; size =      4947; name = AUDDISNY.DRV
+    file[]: crc = f13c1f73; size =      6113; name = AUDPRO.DRV
+    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
+    file[]: crc = 6a378d82; size =      4520; name = AUDPS1.DRV
+    file[]: crc = 507df03a; size =      6300; name = AUDTHUND.DRV
+    file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
+    file[]: crc = 4ec77630; size =     67960; name = SIERRA.EXE
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// v1.1, CD, Windows
+//
+game[v1.1-cd-win]:
+    name = v1.1, CD, Windows
+    imports = v1.1-cd-base
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
+    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
+    file[]: crc = 2bc45432; size =    175104; name = SCIWV.EXE
+end
+
+//
 // v1.0, Int. 5.3.94, French, 4x1.2M *** Unverified ***
 //
 game[v1.0-int-5.3.94-fr-4x1.2m]:
@@ -207,11 +519,42 @@ game[v1.0-int-5.3.94-fr-4x1.2m]:
 end
 
 //
+// v1.000 Demo, int. x.yyy.zzz (Sierra Sneak Peeks 1993)
+//
+demo[v1.000-demo]:
+    name = Rolling Demo
+    nothrottle = 4
+    LANGUAGE = 1
+    anchorfile = RESOURCE.001
+    AUDIO_DRIVER = $(NULL)
+    SFX = sb16
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 81cce134; size =      2433; name = INTERP.ERR
+    file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = 8f4b7c5d; size =      3688; name = MTBLAST.DRV
+    file[]: crc = 9b5ef36d; size =     11942; name = PROAUDIO.DRV
+    file[]: crc = db77ae16; size =       868; name = README
+    file[]: crc = f20c4377; size =    657518; name = RESOURCE.001
+    file[]: crc = 6505fcfe; size =       873; name = RESOURCE.MAP
+    file[]: crc = a1b5e115; size =    140277; name = SCIDHUV.EXE
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6814b17f; size =      4498; name = TANDY3VD.DRV
+    file[]: crc = 8ec4273a; size =         7; name = VERSION
+    file[]: crc = 2172aaf7; size =      5846; name = VGA320.DRV
+end
+
+//
 // General MIDI Patch
 //
 addon[gmidi]:
     name = General MIDI Patch
-    upgradeids = v1.0-int-12.23.91-3x1.44m-1x720k, v1.0-int-12.23.91-4x1.2m
+    upgradeids = v1.0-int-12.23.91-3x1.44m-1x720k, v1.0-int-12.23.91-4x1.2m, v1.10-int-2.000.286-3x1.44m
     anchorfile = GENMIDI.DRV
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = 4159050c; size =      1301; name = 4.PAT
