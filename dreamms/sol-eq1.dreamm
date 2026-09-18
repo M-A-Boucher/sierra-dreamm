@@ -153,12 +153,14 @@ CFG = [[[$(CRLF)
     audio      = C:\ 
 ]]]
 
-WIN = [[[$(CRLF)
+INI = [[[$(CRLF)
     [info]
     title      = EcoQuest
-    sound1000  = true
+    sound1000  = TRUE
+    bwcursor   = FALSE
+    genmidi    = TRUE
     synthtype  = $(SOUND_DRIVER)
-    genmidi    = true
+    audpath    = C:\
     audio      = C:\
     #patchpath = C:\
 ]]]
@@ -172,7 +174,7 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
-          file_save("$$(rootpath)\\SIERRA.INI", "$$(WIN)");
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
     ]]]
 end
 
