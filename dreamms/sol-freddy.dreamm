@@ -19,6 +19,7 @@ filter = sierra, adventure
 //
 config[os]:
     title = OS Configuration
+    condition = !is_installer()
     option[dos]: 
         name = DOS
         launch = $(rootpath)\SIERRA.EXE

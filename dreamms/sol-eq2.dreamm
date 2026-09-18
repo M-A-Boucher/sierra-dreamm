@@ -83,6 +83,8 @@ config[sfx]:
     end
 end
 
+INSTALL = COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004 RESOURCE.000
+
 CFG = [[[$(CRLF)
     videoDrv  = $(VIDEO_DRIVER)
     soundDrv  = $(SOUND_DRIVER)
@@ -93,8 +95,6 @@ CFG = [[[$(CRLF)
     memoryDrv = ARM.DRV
     minhunk   = 200k
 ]]]
-
-INSTALL = COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004 RESOURCE.000
 
 script[init]:
     code = [[[$(CRLF)

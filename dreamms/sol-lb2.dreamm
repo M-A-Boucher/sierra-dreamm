@@ -21,6 +21,7 @@ IS_CD = 0
 //
 config[os]:
     title = OS Configuration
+    condition = !is_installer()
     option[dos-sierra]: 
         name = DOS
         launch = $(rootpath)\SIERRA.EXE
