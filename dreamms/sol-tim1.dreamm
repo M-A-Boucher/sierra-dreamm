@@ -19,6 +19,7 @@ videohw = vga
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
@@ -64,6 +65,29 @@ game[v1.0-1x1.44m]:
     file[]: crc = dbda03c4; size =      1338; name = RESOURCE.MAP
     file[]: crc = f7a50b12; size =    111951; name = TIM.EXE
     file[]: crc = 3afeb2e5; size =      1046; name = TONSOFUN.TIM
+end
+
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    osenv = windows 3.1
+    audiohw = gmidi
+    winres = 640x480
+    launch = $(rootpath)\TIMDEMO.EXE
+    anchorfile = TIMDEMO.EXE 
+    file[]: crc = c6253742; size =      5653; name = TIM.MID
+    file[]: crc = bcceb31c; size =    566392; name = TIM16.PRS
+    file[]: crc = 74bf9cf1; size =     15606; name = TIM_CRBN.MID
+    file[]: crc = 879f4554; size =     33253; name = TIM_EURO.MID
+    file[]: crc = e4626227; size =     23864; name = TIM_FUNK.MID
+    file[]: crc = 4bb8d2df; size =     25487; name = TIM_FUSN.MID
+    file[]: crc = 3ae29e4c; size =     17873; name = TIM_JNGL.MID
+    file[]: crc = a14a7fe3; size =     16666; name = TIM_REGG.MID
+    file[]: crc = d619e948; size =      6123; name = TIM_WEST.MID
+    file[]: crc = e040bfa2; size =    303104; name = TIMDEMO.EXE
+    file[]: crc = 417d4727; size =    251079; name = TIMWIN.PRS
 end
 
 end

@@ -15,6 +15,28 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 
 //
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    condition = !is_installer()
+    option[dos-sierra]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SCIWV.EXE
+        condition = file_exists("$$(rootpath)\\SCIWV.EXE")
+    end
+end
+
+//
 // graphics configuration
 //
 config[graphics]:
@@ -67,6 +89,22 @@ config[sound]:
 end
 
 //
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+//
 // SFX configuration
 //
 config[sfx]:
@@ -83,6 +121,11 @@ config[sfx]:
     end
 end
 
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
+    DCOMPAUD.EXE .\
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv = $(VIDEO_DRIVER)
     soundDrv = $(SOUND_DRIVER)
@@ -94,9 +137,16 @@ CFG = [[[$(CRLF)
     patchDir = .
 ]]]
 
-INSTALL = [[[$(CRLF)
-    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 RESOURCE.000
-    DCOMPAUD.EXE .\
+INI = [[[$(CRLF)
+    [info]
+    title       = Pepper's Adventure in Time
+    sound1000   = TRUE
+    bwcursor    = FALSE
+    genmidi     = TRUE
+    synthtype   = $(SOUND_DRIVER)
+    audpath     = C:\
+    audio       = C:\
+    #patchpath  =
 ]]]
 
 script[init]:
@@ -106,6 +156,12 @@ script[init]:
 
         if (is_game())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+        {
+          path_create("880.SCR"); // Prevent Debugger menu
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
+        }
     ]]]
 end
 
@@ -188,5 +244,36 @@ end
 //
 // v1.0, Int. 2.5.93, 6x1.2M, Installer *** MISSING ***
 //
+
+//
+// v1.0, Int. 2.5.93, Windows
+//
+game[v1.0-int-2.5.93-win]:
+    name = v1.0, Int. 2.5.93, Windows
+    osenv = windows
+    audiohw = gmidi
+    launch = $(rootpath)\SCIWV.EXE
+    anchorfile = RESOURCE.000
+    file[]: crc = 84fcf10d; size =      3474; name = 120.HEP
+    file[]: crc = e542d821; size =     12770; name = 120.SCR
+    file[]: crc = 42ef8a6d; size =      4510; name = 230.HEP
+    file[]: crc = 00342368; size =     12350; name = 230.SCR
+    file[]: crc = 5b383b83; size =      3918; name = 310.HEP
+    file[]: crc = 6e082fe4; size =      8046; name = 310.SCR
+    file[]: crc = b4a164cb; size =     26899; name = 354.V56
+    file[]: crc = 142e559e; size =      2402; name = 371.HEP
+    file[]: crc = 1de5390a; size =      3896; name = 371.SCR
+    file[]: crc = 9827592b; size =      6296; name = 410.HEP
+    file[]: crc = 9dcc8032; size =     17998; name = 410.SCR
+    file[]: crc = d42ebf48; size =      6079; name = INTERP.ERR
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
+    file[]: crc = 953c6b8f; size =     55712; name = PROGLIB.DLL
+    file[]: crc = 9107cc59; size =   5459574; name = RESOURCE.000
+    file[]: crc = 53aaffe2; size =   3404966; name = RESOURCE.AUD
+    file[]: crc = 595e3a60; size =      5179; name = RESOURCE.MAP
+    file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL
+    file[]: crc = 8307077d; size =    179712; name = SCIWV.EXE
+    file[]: crc = a89bc926; size =        55; name = VERSION
+end
 
 end
