@@ -122,7 +122,7 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
@@ -163,7 +163,6 @@ fragment[v1.0-base]:
     file[]: crc = 31a56eec; size =      4888; name = AUDGUS.DRV
     file[]: crc = 03ff90f2; size =      5262; name = AUDMSSYS.DRV
     file[]: crc = 940c3211; size =      1109; name = AUDNONE.DRV
-    file[]: crc = 77f9f4a6; size =     16607; name = AUDDCOMP.EXE
     file[]: crc = c296ca99; size =      7436; name = AUDPRO.DRV
     file[]: crc = bb669840; size =      5432; name = AUDPRO16.DRV
     file[]: crc = 7abda9a7; size =      6231; name = AUDPS1.DRV
@@ -186,24 +185,24 @@ fragment[v1.0-base]:
     file[]: crc = 6570b93b; size =      8267; name = VGA320.DRV
     file[]: crc = 3dd0d005; size =      8323; name = VGA320BW.DRV
     // The following files from LSL6_SFX.EXE
-    file[]: crc = 6a1f5a41; size =     17432; name = BEAN_DIP.WAV
-    file[]: crc = c255283c; size =     52796; name = BRKGLASS.WAV
-    file[]: crc = 931487d7; size =     14552; name = BURP.WAV
-    file[]: crc = c913de47; size =     48726; name = CLANG.WAV
-    file[]: crc = da15f7e7; size =    113008; name = EXPLODE.WAV
-    file[]: crc = 11cf9ddc; size =     87084; name = GAG.WAV
-    file[]: crc = c2c05117; size =     42540; name = GARGLE.WAV
-    file[]: crc = 91e86eea; size =     27278; name = GOOSED.WAV
-    file[]: crc = 06c2b72b; size =      8854; name = GULP.WAV
-    file[]: crc = 6e5e0492; size =     44972; name = ICEDUMP.WAV
-    file[]: crc = a6d8181d; size =     23030; name = KISS.WAV
-    file[]: crc = 404d166e; size =     50476; name = OOOH.WAV
-    file[]: crc = ae1764d3; size =     37548; name = SCREAM.WAV
-    file[]: crc = aa042175; size =     28716; name = SPIT.WAV
-    file[]: crc = 1bf3a8d2; size =     20076; name = TESTING.WAV
-    file[]: crc = b697133c; size =     18476; name = WHIP.WAV
-    file[]: crc = 7aa13764; size =     42124; name = YEOW.WAV
-    file[]: crc = f109430c; size =     20780; name = ZIPPER.WAV
+    file[]: crc = 6a1f5a41; size =     17432; name = BEAN_DIP.WAV; optional = true
+    file[]: crc = c255283c; size =     52796; name = BRKGLASS.WAV; optional = true
+    file[]: crc = 931487d7; size =     14552; name = BURP.WAV    ; optional = true
+    file[]: crc = c913de47; size =     48726; name = CLANG.WAV   ; optional = true
+    file[]: crc = da15f7e7; size =    113008; name = EXPLODE.WAV ; optional = true
+    file[]: crc = 11cf9ddc; size =     87084; name = GAG.WAV     ; optional = true
+    file[]: crc = c2c05117; size =     42540; name = GARGLE.WAV  ; optional = true
+    file[]: crc = 91e86eea; size =     27278; name = GOOSED.WAV  ; optional = true
+    file[]: crc = 06c2b72b; size =      8854; name = GULP.WAV    ; optional = true
+    file[]: crc = 6e5e0492; size =     44972; name = ICEDUMP.WAV ; optional = true
+    file[]: crc = a6d8181d; size =     23030; name = KISS.WAV    ; optional = true
+    file[]: crc = 404d166e; size =     50476; name = OOOH.WAV    ; optional = true
+    file[]: crc = ae1764d3; size =     37548; name = SCREAM.WAV  ; optional = true
+    file[]: crc = aa042175; size =     28716; name = SPIT.WAV    ; optional = true
+    file[]: crc = 1bf3a8d2; size =     20076; name = TESTING.WAV ; optional = true
+    file[]: crc = b697133c; size =     18476; name = WHIP.WAV    ; optional = true
+    file[]: crc = 7aa13764; size =     42124; name = YEOW.WAV    ; optional = true
+    file[]: crc = f109430c; size =     20780; name = ZIPPER.WAV  ; optional = true
 end
 
 //
@@ -448,6 +447,59 @@ game[v1.0-cd-svga]:
     file[]: crc = b0886c8e; size =      8289; name = SIERRA.ERR
     file[]: crc = 69e57f17; size =    750800; name = SIERRA.EXE
     file[]: crc = e2df89fc; size =      1682; name = STD.DRV
+    file[]: crc = cdd4760c; size =        11; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+end
+
+//
+// v1.0, CD, Windows
+//
+game[v1.0-cd-win]:
+    name = v1.0, CD, Windows
+    imports = map-base
+    osenv = windows 95
+        winres = 640x480x16
+
+    launch = $(rootpath)\SIERRAW.EXE
+    audiohw = gmidi
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    file[]: crc = 294ec80d; size =      4786; name = 0.HEP
+    file[]: crc = 565d5d3c; size =      8460; name = 0.SCR
+    file[]: crc = d44f5c0b; size =      2102; name = 140.HEP
+    file[]: crc = 4774b0c0; size =      6552; name = 140.SCR
+    file[]: crc = e04dfc57; size =      1352; name = 260.HEP
+    file[]: crc = 7e439683; size =      1040; name = 260.SCR
+    file[]: crc = 871b9fee; size =      2976; name = 280.HEP
+    file[]: crc = 00c376e7; size =      4428; name = 280.SCR
+    file[]: crc = a95c4c4e; size =       348; name = 3250.SND
+    file[]: crc = adc7ef94; size =      6110; name = 330.HEP
+    file[]: crc = bfe6f5b0; size =     14898; name = 330.SCR
+    file[]: crc = 5f00d850; size =       314; name = 331.HEP
+    file[]: crc = 59d35b23; size =      1336; name = 331.SCR
+    file[]: crc = 1740e5c7; size =      4392; name = 380.HEP
+    file[]: crc = 5e9437c3; size =      8758; name = 380.SCR
+    file[]: crc = e524f9a5; size =      4786; name = 510.HEP
+    file[]: crc = fcd352f1; size =     14888; name = 510.SCR
+    file[]: crc = c99ab2a7; size =      2754; name = 600.HEP
+    file[]: crc = 7b4ba450; size =      7458; name = 600.SCR
+    file[]: crc = a3544ae6; size =      4038; name = 620.HEP
+    file[]: crc = 539e6cea; size =     13412; name = 620.SCR
+    file[]: crc = 316bd88e; size =      1256; name = 650.HEP
+    file[]: crc = 5fa9993b; size =      3370; name = 650.SCR
+    file[]: crc = d84e66fb; size =      1526; name = 840.HEP
+    file[]: crc = ecfc3a66; size =      3282; name = 840.SCR
+    file[]: crc = c8bb9348; size =      2862; name = 860.HEP
+    file[]: crc = 2a93e91f; size =      9512; name = 860.SCR
+    file[]: crc = c3e89b13; size =     75418; name = PROGLIB.DLL
+    file[]: crc = f47952d7; size =  18520872; name = RESOURCE.000
+    file[]: crc = 14b33701; size = 507859930; name = RESOURCE.AUD
+    file[]: crc = ea77dfed; size =      8872; name = RESOURCE.MAP
+    file[]: crc = 59011975; size =   7482184; name = RESOURCE.SFX
+    file[]: crc = 005a20ab; size =       265; name = RESOURCE.WIN
+    file[]: crc = c1d0f8c1; size =    141826; name = SCIDLL.DLL
+    file[]: crc = b0886c8e; size =      8289; name = SIERRA.ERR
+    file[]: crc = edf099ab; size =    639922; name = SIERRAW.EXE
     file[]: crc = cdd4760c; size =        11; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
 end
