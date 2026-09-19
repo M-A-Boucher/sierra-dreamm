@@ -144,7 +144,6 @@ game[v1.003-int-0.000.572-4x720k]:
     file[]: crc = aa0659eb; size =    513337; name = RESOURCE.004
     file[]: crc = b7ab134b; size =      5916; name = RESOURCE.MAP
     file[]: crc = ce7efb20; size =     75203; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 9a83e18b; size =      2471; name = STD.DRV
     file[]: crc = afd4ea9a; size =      3438; name = TANDY.DRV
     file[]: crc = ebb96398; size =      1667; name = TANDY320.DRV
@@ -284,6 +283,8 @@ game[v1.021-int-5.15.90-leisure-suit-larry-collectors-series]:
     file[]: remove = FB01.DRV
     file[]: remove = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
+    file[]: remove = IMF.DRV
+    file[]: remove = JR.DRV
     file[]: crc = 10acc300; size =      1626; name = MCGA320.DRV
     file[]: crc = 98079388; size =      3099; name = MT32.DRV
     file[]: remove = MT540.DRV
