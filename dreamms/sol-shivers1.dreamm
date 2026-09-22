@@ -1,0 +1,89 @@
+//
+// Shivers
+//
+desc[sol-shivers1]:
+
+name = Shivers
+icon = sol-shivers1.png
+machine = pc
+osenv = windows 95
+rootpath = C:\
+launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+audiohw = gmidi
+filter = sierra
+
+WIN = [[[$(CRLF)
+    [Windows]
+    title          = Shivers
+    showTitle      = FALSE
+    titleBar       = FALSE
+    wwidth         = 640
+    wheight        = 480
+    sciMinK        = 2200
+    sciMaxK        = 5000
+    pagelock       = FALSE
+    borderpixels   = 5
+    synthtype      = highsynth
+    colorCursor    = TRUE
+    maxCursorSize  = 1024
+    asyncCheckFreq = 60
+    confirmmidi    = TRUE
+    confirmdac     = TRUE
+    audioSize      = 64K
+    dacSize        = 4096
+    minSubmits     = 4
+    maxSubmits     = 48
+    leadSubmits    = 5
+    brightness     = 2
+    enableMidi     = FALSE
+    requireDAC     = TRUE
+    useMIDI        = FALSE
+    resMap         = C:\
+    resSfx         = C:\
+    patchDir       = C:\
+    movieDir       = C:\MOVIES
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.02, CD
+//
+game[v1.02-cd]:
+    name = v1.02, CD
+    anchorfile = SIERRAW.EXE
+    file[]: crc = 7b33f31f; size =      3672; name = 65535.MAP
+    file[]: crc = 27e50c99; size =     46525; name = RESMAP.000
+    file[]: crc = b6d751fd; size =     46525; name = RESMDT.000
+    file[]: crc = 9f6a6ac5; size = 100766798; name = RESOURCE.SFX
+    file[]: crc = a7fce3a4; size = 262654836; name = RESSCI.000
+    file[]: crc = 33143a0f; size =    146430; name = SCIDLL.DLL
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = ee4992b7; size =    793472; name = SIERRAW.EXE
+    file[]: crc = 5d66409c; size =        23; name = VERSION
+    file[]: crc = 493dd282; size =  11764182; name = MOVIES\1002.VMD
+    file[]: crc = 5d1de9cb; size =  11604438; name = MOVIES\16000.VMD
+    file[]: crc = 0ace8536; size =    899689; name = MOVIES\24380.VMD
+    file[]: crc = b9e450c5; size =   2400345; name = MOVIES\28040.VMD
+    file[]: crc = 4de21ec1; size =   4919038; name = MOVIES\3361.VMD
+    file[]: crc = c2a55eee; size =    319631; name = MOVIES\35170.VMD
+    file[]: crc = 772abbce; size =    471250; name = MOVIES\35171.VMD
+    file[]: crc = d1b444f8; size =    188189; name = MOVIES\35172.VMD
+    file[]: crc = 65eb7662; size =    439811; name = MOVIES\35173.VMD
+    file[]: crc = 8fd3abfc; size =   3279296; name = MOVIES\35180.VMD
+    file[]: crc = 0809fb26; size =  18208003; name = MOVIES\39260.VMD
+    file[]: crc = 9a0d79b5; size =   2018299; name = MOVIES\39310.VMD
+    file[]: crc = f8f50383; size =   2651121; name = MOVIES\900.VMD
+end
+
+end

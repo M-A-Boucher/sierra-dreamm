@@ -250,9 +250,6 @@ end
 //
 game[v1.0-int-2.5.93-win]:
     name = v1.0, Int. 2.5.93, Windows
-    osenv = windows
-    audiohw = gmidi
-    launch = $(rootpath)\SCIWV.EXE
     anchorfile = RESOURCE.000
     file[]: crc = 84fcf10d; size =      3474; name = 120.HEP
     file[]: crc = e542d821; size =     12770; name = 120.SCR
