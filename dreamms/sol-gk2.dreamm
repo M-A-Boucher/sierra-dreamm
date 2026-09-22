@@ -1,3 +1,6 @@
+//
+// The Beast Within: A Gabriel Knight Mystery
+//
 desc[sol-gk2]:
 
 name = The Beast Within: A Gabriel Knight Mystery
@@ -6,6 +9,7 @@ machine = pc
 rootpath = C:\sierra\gk2dos
 launch = $(rootpath)\sierra.exe
 osenv = dos
+fixdivover = true
 mips = $(MIPS_P100)
 ramkb = 16384
 audiohw = sb16
@@ -13,8 +17,8 @@ videohw = svga
 filter = gabrielknight, sierra, adventure
 
 //
-// file system
-// The user must switch between discs when prompted either via DREAMM's in-game menu or by pressing the appropriate key combination (e.. Alt/Cmd + 2 for Disc 2).
+// File System
+// The user must switch between discs when prompted either via DREAMM's in-game menu or by pressing the appropriate key combination (e.g., Alt/Cmd + 2 for Disc 2).
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
@@ -28,16 +32,17 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC6; disc = 6
 
 //
 // The game creates a RESOURCE.CFG file to locate the files it needs.
-// DREAMM uses this dynamic file to create this configuration file each time the game is run.
+// DREAMM uses this file to create this configuration file each time the game is run.
 // The LANGUAGE variable is determined by each game, and its value is usually 1 (The Italian version uses 39)
 // The Brazilian release features English voices and Portuguese text. Its LANGUAGE value is 351.
 //
-CFG = [[[$(CRLF)
-    videoDrv   = VESA.DRV
-    soundDrv   = MIDNONE.DRV
-    audioDrv   = DACBLAST.DRV
-    joyDrv     = NO
-    directory  = \sierra\gk2dos
+
+DOSCONFIGFILE = [[[$(CRLF)
+    videoDrv  = VESA.DRV
+    soundDrv  = MIDNONE.DRV
+    audioDrv  = DACBLAST.DRV
+    joyDrv    = NO
+    directory = \sierra\gk2dos
     cmd        = GK2DOS
     mouseDrv   = NONE
     memoryDrv  = NONE
@@ -46,35 +51,42 @@ CFG = [[[$(CRLF)
     language   = $(LANGUAGE)
     minCPU     = 486
     cd         = YES
-    smartdrv   = YES                          		
-    cdSpeed    = 4                     		
-    resAUD     = CD:\                   		
-    resSFX     = CD:\                   		
-    resMAP     = CD:\;C:\sierra\gk2dos             		
-    rescdisc   = CD:\                 		
-    patchDir   = C:\sierra\gk2dos;CD:\  
-    audio      = C:\sierra\gk2dos;CD:\	
-    movieDir   = CD:\movies           		
-    robot      = CD:\robot               		
-    discID     = GK2R1
-    CD:        = D:;		
+    smartdrv   = YES
+
+    cdSpeed=4
+    resAUD=CD:\
+    resSFX=CD:\
+    resMAP=CD:\;C:\sierra\gk2dos
+    rescdisc=CD:\
+    patchDir=C:\sierra\gk2dos;CD:\
+    audio=C:\sierra\gk2dos;CD:\
+    movieDir=CD:\movies
+    robot=CD:\robot
+    discID=GK2R1
+    CD:=D:;
 ]]]
 
-script[init]:
-    code = [[[$(CRLF)
-        if (is_windows())
-          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
-
-        if (is_dos())
-          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
-    ]]]
-end
 
 //
 // The Windows version has not yet been added so this is for reference purposes.
-//                  
-WIN = [[[$(CRLF)
+//
+
+//
+// Fragment for Windows
+//
+fragment[win32-base]:
+    osenv = windows 95
+    rootpath = C:\SIERRA\GK2DOS
+    launch = "$(rootpath)\SIERRAW.EXE"
+    audiohw = gmidi
+    winres = 640x480x8
+    mips = $(MIPS_MAX)
+end
+
+
+WINCONFIGFILE = [[[$(CRLF)
     [Windows]
+    language= $(LANGUAGE)
     title=Gabriel Knight: The Beast Within
     titleBar=TRUE
     allowresize=FALSE
@@ -84,13 +96,13 @@ WIN = [[[$(CRLF)
     sciMaxK=7000
     borderpixels=10
     reservek4=700
-    reservek8=700	
+    reservek8=700    
     reservek16=2000
     wingMinK=2700
     confirmdac=TRUE
     leadSubmits=4
     maxCursorSize=4
-    resAud=CD:\	
+    resAud=CD:\    
     resSfx=CD:\
     resMap=CD:\;C:\SIERRA\GK2DOS
     rescdisc=CD:\
@@ -100,6 +112,17 @@ WIN = [[[$(CRLF)
     discID=GK2R1
     CD:=D:
 ]]]
+
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(DOSCONFIGFILE)");
+        
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WINCONFIGFILE)");		
+    ]]]
+end
 
 //
 // Files common to version 1.0 (English, French, German)
@@ -358,11 +381,11 @@ end
 // English version 1.0
 //
 game[sol-gk2-eng-10]:
-    name = English 1.0
-	imports = common10
+    name = English 1.0 (DOS)
+    imports = common10
     anchorfile = 11.SCR
-	anchordepth = 1
-	LANGUAGE = 1
+    anchordepth = 1
+    LANGUAGE = 1
     file[]: crc = ab0ed917; size =       290; name = 11.HEP
     file[]: crc = f1ae1e54; size =      4506; name = 11.SCR
     file[]: crc = 61b8331f; size =      1164; name = 1120.HEP
@@ -1080,10 +1103,31 @@ game[sol-gk2-eng-10]:
     file[]: crc = 19af0410; size =   4420670; name = DISC6\MOVIES\9180.VMD
     file[]: crc = 7b50694b; size =   2935143; name = DISC6\MOVIES\9200.VMD
     file[]: crc = 5fdcc829; size =   5920541; name = DISC6\MOVIES\9240.VMD
+end
 
 
-
-
+//
+// English version 1.0 (Windows)
+//
+game[sol-gk2-eng-10-win]:
+    name = English 1.0 (Windows)
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-eng-10, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
 end
 
 
@@ -1091,12 +1135,11 @@ end
 // English version 1.1
 //
 game[sol-gk2-eng-11]:
-    name = English 1.1
+    name = English 1.1 (DOS)
     anchorfile = 1020.HEP
-	anchordepth = 2
-	LANGUAGE = 1
-	imports = sol-gk2-eng-10
-
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-eng-10
     file[]: crc = 62cb383d; size =       562; name = 1020.HEP
     file[]: crc = 0fe39ebe; size =      1294; name = 1020.SCR
     file[]: crc = ee801cf5; size =      3210; name = 11.SCR
@@ -1131,6 +1174,7 @@ game[sol-gk2-eng-11]:
     file[]: crc = 0308d3cc; size =       618; name = 840.HEP
     file[]: crc = 9771c34d; size =      1698; name = 840.SCR
     file[]: crc = 6e225826; size =     22064; name = 991.AUD
+    file[]: crc = 47d7f9a9; size =         6; name = VERSION
     file[]: crc = 47d7f9a9; size =         6; name = DISC1\VERSION
     file[]: crc = 40cb16ee; size =    206824; name = DISC1\AUTOPLAY.BMP
     file[]: crc = e03f5c68; size =     39424; name = DISC1\AUTOPLAY.EXE
@@ -1140,7 +1184,6 @@ game[sol-gk2-eng-11]:
     file[]: crc = dc2204a7; size =       337; name = DISC1\RESOURCE.BAK
     file[]: crc = dcf02665; size =      4816; name = DISC1\SIERRA.BAK
     file[]: crc = 2141008b; size =      4849; name = DISC1\SIERRA.INF
-    file[]: crc = 47d7f9a9; size =         6; name = VERSION
     file[]: crc = 6b9ecce5; size =         5; name = DISC1\VERSION.BAK
     file[]: crc = fcb3abe1; size =      4882; name = DISC1\MOVIES\CH1.BAK
     file[]: crc = 99dfc133; size =      4991; name = DISC1\MOVIES\CH1.BAT
@@ -1160,19 +1203,43 @@ game[sol-gk2-eng-11]:
     file[]: crc = a3280a35; size =  54075816; name = DISC6\MOVIES\7180.VMD
     file[]: crc = 8bb9ed8a; size =      2810; name = DISC6\MOVIES\CH6.BAK
     file[]: crc = b3d19c30; size =      5155; name = DISC6\MOVIES\CH6.BAT
-
 end
+
+
+//
+// English version 1.1 (Windows)
+//
+game[sol-gk2-eng-11-win]:
+    name = English 1.1 (Windows)
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-eng-11, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
+end
+
 
 //
 // English version 1.11
 // This version is also available as part of the Gabriel Knight Mysteries compilation.
 //
 game[sol-gk2-eng-111]:
-    name = English 1.11
+    name = English 1.11 (DOS)
     anchorfile = 4002.SCR
-	anchordepth = 2
-	LANGUAGE = 1
-	
+    anchordepth = 2
+    LANGUAGE = 1    
     file[]: crc = 62cb383d; size =       562; name = 1020.HEP
     file[]: crc = 0fe39ebe; size =      1294; name = 1020.SCR
     file[]: crc = ab0ed917; size =       290; name = 11.HEP
@@ -2187,18 +2254,43 @@ game[sol-gk2-eng-111]:
     file[]: crc = 356efc2e; size =    407910; name = DISC6\ROBOT\30960.RBT
     file[]: crc = 6bb61ca0; size =    191739; name = DISC6\ROBOT\32930.RBT
     file[]: crc = 1d6f4fce; size =    331595; name = DISC6\ROBOT\32960.RBT
+end    
 
-end	
-	
+
+//
+// English version 1.11 (Windows)
+//
+game[sol-gk2-eng-111-win]:
+    name = English 1.11 (Windows)
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-eng-111, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
+end
+
+
 //
 // French version 1.0
 //
 game[sol-gk2-fra-10]:
-    name = French 1.0
+    name = French 1.0 (DOS)
     anchorfile = 100.VMD
-	anchordepth = 2
-	imports = common10	
-	LANGUAGE = 1
+    anchordepth = 2
+    imports = common10    
+    LANGUAGE = 1
     file[]: crc = 6e225826; size =     22064; name = 991.AUD
     file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
     file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
@@ -2962,19 +3054,43 @@ game[sol-gk2-fra-10]:
     file[]: crc = 6a17abf5; size =   4443244; name = DISC6\MOVIES\9180.VMD
     file[]: crc = 7e3c2552; size =   3004040; name = DISC6\MOVIES\9200.VMD
     file[]: crc = 243125e5; size =   5879295; name = DISC6\MOVIES\9240.VMD
-
 end
+
+
+//
+// French version 1.0 (Windows)
+//
+game[sol-gk2-fra-10-win]:
+    name = French 1.0 (Windows)
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-fra-10, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = fab13879; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
+end
+
 
 //
 // German version 1.0
 //
 game[sol-gk2-deu-10]:
-    name = German 1.0
+    name = German 1.0 (DOS)
     anchorfile = A00M3X1Q.001
-	anchordepth = 2
-	imports = common10	
-	LANGUAGE = 1
-	
+    anchordepth = 2
+    imports = common10    
+    LANGUAGE = 1    
     file[]: crc = 471a65bf; size =       716; name = 11853.HEP
     file[]: crc = 2d80b5fb; size =       906; name = 11853.SCR
     file[]: crc = ce337e00; size =    307969; name = 13036.P56
@@ -3704,15 +3820,40 @@ game[sol-gk2-deu-10]:
     file[]: crc = 6e2b0203; size =   5936755; name = DISC6\MOVIES\9240.VMD
 end
 
+
+//
+// German version 1.0 (Windows)
+//
+game[sol-gk2-deu-10-win]:
+    name = German 1.0 (Windows)
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-deu-10, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = 2b9385ec; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
+end
+
+
 //
 // Italian version 1.0
 //
 game[sol-gk2-ita-10]:
-    name = Italian 1.0
+    name = Italian 1.0 (DOS)
     anchorfile = 100.P56
-	LANGUAGE = 39
-	
-	file[]: crc = 50fdbe8a; size =    206369; name = 100.P56
+    LANGUAGE = 39    
+    file[]: crc = 50fdbe8a; size =    206369; name = 100.P56
     file[]: crc = 87c01c6b; size =    140707; name = 13087.V56
     file[]: crc = 8077c706; size =    307969; name = 14180.P56
     file[]: crc = 011bcd4f; size =    307963; name = 14403.P56
@@ -3933,7 +4074,7 @@ game[sol-gk2-ita-10]:
     file[]: crc = 652b45e1; size =  13230805; name = DISC1\MOVIES\991.VMD
     file[]: crc = f8de57c2; size =   1124083; name = DISC1\ROBOT\11027.RBT
     file[]: crc = 5ee62a64; size =    619932; name = DISC1\ROBOT\12027.RBT
-	file[]: crc = 1af8e7b9; size =        10; name = DISC2\GK2R1.002
+    file[]: crc = 1af8e7b9; size =        10; name = DISC2\GK2R1.002
     file[]: crc = 4c540794; size =      1999; name = DISC2\RESMAP.002
     file[]: crc = 4229315a; size =      1999; name = DISC2\RESMDT.002
     file[]: crc = 5235cbaf; size =  30334028; name = DISC2\RESOURCE.AUD
@@ -4674,20 +4815,43 @@ game[sol-gk2-ita-10]:
     file[]: crc = 6bb61ca0; size =    191739; name = DISC6\ROBOT\32930.RBT
     file[]: crc = 1d6f4fce; size =    331595; name = DISC6\ROBOT\32960.RBT
 end
-	
-	
-	
+
+
+//
+// Italian version 1.0 (Windows)
+//
+game[sol-gk2-ita-10-win]:
+    name = Italian 1.0 (Windows)
+    anchorfile = SIERRAW.EXE
+    anchordepth = 2
+    LANGUAGE = 1
+    imports = sol-gk2-ita-10, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = 08f7ecf9; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
+end
+
+
 //
 // Portuguese version 1.0
 // This version is based on the English 1.11 version.
 //
 game[sol-gk2-por-10]:
-    name = English with Portuguese text 1.0
+    name = English with Portuguese text 1.0 (DOS)
     anchorfile = A0C81L00.002
-	anchordepth = 2
-	LANGUAGE = 351
-	imports = sol-gk2-eng-111
-	
+    anchordepth = 2
+    LANGUAGE = 351
+    imports = sol-gk2-eng-111
     file[]: remove = DISC1\MOVIES\CH1.BAT
     file[]: remove = DISC2\MOVIES\CH2.BAK
     file[]: remove = DISC2\MOVIES\CH2.BAT
@@ -4761,7 +4925,7 @@ game[sol-gk2-por-10]:
     file[]: remove = DISC1\8520.HEP
     file[]: remove = DISC1\INSTALL.BAK
     file[]: remove = DISC1\RESOURCE.BAK
-    file[]: remove = DISC1\SIERRA.BAK	
+    file[]: remove = DISC1\SIERRA.BAK    
     file[]: crc = 7808456d; size =      4412; name = A0C81L00.002
     file[]: crc = 51be2d7b; size =      7262; name = A0C81M00.001
     file[]: crc = bef85585; size =     38141; name = A0C81M00.002
@@ -4773,7 +4937,7 @@ game[sol-gk2-por-10]:
     file[]: crc = d229aac6; size =     11587; name = RESMDT.PAT
     file[]: crc = eb29965b; size =  17158853; name = RESSCI.PAT
     file[]: crc = ff6b9ecc; size =         6; name = VERSION
-    file[]: crc = e4872472; size =       653; name = DISC1\AUTORUN.INF	
+    file[]: crc = e4872472; size =       653; name = DISC1\AUTORUN.INF    
     file[]: crc = 4e1e03d5; size =       995; name = DISC1\COPYMEGS.PIF
     file[]: crc = a1e1bebf; size =      5307; name = DISC1\INSTALL.SCR
     file[]: crc = 23f5ebde; size =      9728; name = DISC1\INSTALL.WRI
@@ -4833,17 +4997,43 @@ game[sol-gk2-por-10]:
     file[]: crc = ec446213; size =   1767474; name = DISC6\MOVIES\8610.VMD
     file[]: crc = e0946102; size =   2192117; name = DISC6\MOVIES\9050.VMD
     file[]: crc = a86c008f; size =    889016; name = DISC6\MOVIES\9160.VMD
-		
 end
+
+
+//
+// Portuguese version 1.0 (Windows)
+// This version is based on the English 1.11 version.
+//
+game[sol-gk2-por-10-win]:
+    name = English with Portuguese text 1.0 (Windows)
+    anchorfile = A0C81L00.002
+    anchordepth = 2
+    LANGUAGE = 351
+    imports = sol-gk2-por-10, win32-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
+    file[]: remove = DACBLAST.DRV
+    file[]: remove = DACMSSYS.DRV
+    file[]: remove = DACPRO.DRV
+    file[]: remove = DACPRO16.DRV
+    file[]: remove = DACPRO8.DRV
+    file[]: remove = DACRRA.DRV
+    file[]: remove = HAVEVESA.EXE
+    file[]: remove = MIDNONE.DRV
+    file[]: remove = SIERRA.EXE
+    file[]: remove = UVCONFIG.EXE
+    file[]: remove = VESA.DRV
+end
+
 
 //
 // Upgrade to 1.11
 //
 addon[111patch]:
     name = Upgrade to 1.11
-	anchorfile = 33.SCR
-	upgradeids = [[[,
-	    sol-gk2-eng-10
+    anchorfile = 33.SCR
+    upgradeids = [[[,
+        sol-gk2-eng-10
         sol-gk2-eng-11
     ]]]
     file[]: crc = 62cb383d; size =       562; name = 1020.HEP
@@ -4886,8 +5076,7 @@ addon[111patch]:
     file[]: crc = 9771c34d; size =      1698; name = 840.SCR
     file[]: crc = 6e225826; size =     22064; name = 991.AUD
     file[]: crc = 98194eb0; size =         7; name = VERSION
-
 end
 
-end
 
+end
