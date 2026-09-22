@@ -8,44 +8,85 @@ icon = sol-torin.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRAH.EXE
 mips = $(MIPS_P75)
 ramkb = 16384
-videohw = svga
 filter = sierra, adventure
 
+//
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRAH.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAH.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows
+        audiohw = gmidi
+        wincrop = true
+        launch = $(rootpath)\SIERRAW.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
 CFG = [[[$(CRLF)
-    videoDrv  = VESA.DRV
-    soundDrv  = MIDNONE.DRV
-    audioDrv  = DACBLAST.DRV
-    joyDrv    = NO
-    mouseDrv  = NONE
-    memoryDrv = NONE
-    CD        = NO
-    minCPU    = 486
-    minDOS    = 500
-    mode      = protected
-    CPU       = 486
-    CPUSpeed  = 63
-    VideoSpeed= 400
-    CDROM     = 2
-    language  = 1
-    maxmemory = 12m
-    staticmemory = 300k
-    audioSize = 32k
-    brightness= 0
-    language  = 1
-    resMap    = .\
-    resAUD    = .\
-    resSFX    = .\
-    patchDir  = .\PATCHES;.\MOVIE
-    movieDir  = .\MOVIE
+    videoDrv       = VESA.DRV
+    soundDrv       = MIDNONE.DRV
+    audioDrv       = DACBLAST.DRV
+    joyDrv         = NO
+    mouseDrv       = NONE
+    memoryDrv      = NONE
+    CD             = NO
+    minCPU         = 486
+    minDOS         = 500
+    mode           = protected
+    CPU            = 486
+    CPUSpeed       = 63
+    VideoSpeed     = 400
+    CDROM          = 2
+    language       = 1
+    maxmemory      = 12m
+    staticmemory   = 300k
+    audioSize      = 32k
+    brightness     = 0
+    language       = 1
+    resMap         = .\
+    resAUD         = .\
+    resSFX         = .\
+    patchDir       = .\PATCHES;.\MOVIE
+    movieDir       = .\MOVIE
 ]]]
 
+WIN = [[[$(CRLF)
+    [Windows]
+    title          = Torin's Passage
+    wwidth         = 640
+    wheight        = 480
+    cacheSize2     = 750
+    cacheSize3     = 120
+    useMIDI        = FALSE
+    requireDAC     = TRUE
+    leadSubmits    = 4
+    SCIMinK        = 3500
+    allowTrueColor = TRUE
+    borderPixels   = 0
+    resMap         = .\
+    resAUD         = .\
+    resSFX         = .\
+    patchDir       = .\PATCHES;.\MOVIE
+    movieDir       = .\MOVIE
+]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -56,31 +97,18 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
-// v1.0
+// v1.0 Base Files
 //
-game[v1.0]:
-    name = v1.0
-    anchorfile = SIERRAH.EXE
+fragment[v1.0-base]:
+    anchorfile = RESSCI.000
     anchordepth = 2
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
     file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
     file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
     file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
-    file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN; optional = true
     file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
     file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
-    file[]: crc = 855d50e0; size =     20390; name = SIERRA.INF  ; optional = true
-    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
-    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE ; optional = true
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = ec3d4038; size =      5857; name = FRENCH\MSG\0.MSG
     file[]: crc = 30e25f58; size =      1510; name = FRENCH\MSG\1.MSG
     file[]: crc = 5d097dba; size =      4902; name = FRENCH\MSG\100.MSG
@@ -244,15 +272,35 @@ game[v1.0]:
 end
 
 //
-// v1.0 OEM
+// v1.0, DOS
 //
-game[v1.0-oem]:
-    name = v1.0 OEM
-    imports = v1.0
-    file[]: crc = 4e0d6961; size =       768; name = LANGUAGE.INF; optional = true
-    file[]: crc = 0530eec4; size =       387; name = RESOURCE.WIN; optional = true
-    file[]: crc = de876a90; size =     31168; name = SETUP.EXE   ; optional = true
-    file[]: crc = 55df4d2d; size =    457707; name = SETUP.SOL   ; optional = true
+game[v1.0-dos]:
+    name = v1.0, DOS
+    imports = v1.0-base
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+end
+
+//
+// v1.0, Windows
+//
+game[v1.0-win]:
+    name = v1.0, Windows
+    imports = v1.0-base
+    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE
+end
+
+//
+// v1.0 OEM Base Files
+//
+fragment[v1.0-oem-base]:
     file[]: crc = 4c34daa3; size =      1374; name = PATCHES\12000.HEP
     file[]: crc = 19b4d0c1; size =      2932; name = PATCHES\12000.SCR
     file[]: crc = 3862ddec; size =      1764; name = PATCHES\51200.HEP
@@ -270,53 +318,19 @@ game[v1.0-oem]:
 end
 
 //
-// GOG (v1.0)
+// v1.0 OEM, DOS
 //
-game[v1.0-gog]:
-    name = GOG (v1.0)
-    anchorfile = SIERRAH.EXE
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
-    file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
-    file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
-    file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
-    file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
-    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
-    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
-    file[]: crc = 6b9ecce5; size =         5; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = 8425f555; size =  21034036; name = MOVIE\10000.VMD
-    file[]: crc = eeaba050; size =   7031530; name = MOVIE\10001.VMD
-    file[]: crc = 4c34daa3; size =      1374; name = PATCHES\12000.HEP
-    file[]: crc = 19b4d0c1; size =      2932; name = PATCHES\12000.SCR
-    file[]: crc = 8102a9f0; size =      1866; name = PATCHES\20400.HEP
-    file[]: crc = 16695f28; size =      6374; name = PATCHES\20400.SCR
-    file[]: crc = 123480be; size =      1946; name = PATCHES\20700.HEP
-    file[]: crc = 711882ce; size =      6068; name = PATCHES\20700.SCR
-    file[]: crc = 3862ddec; size =      1764; name = PATCHES\51200.HEP
-    file[]: crc = 17ebf9b3; size =      4414; name = PATCHES\51200.SCR
-    file[]: crc = 99a1dc84; size =       454; name = PATCHES\51500.HEP
-    file[]: crc = bfc8cd33; size =       966; name = PATCHES\51500.SCR
-    file[]: crc = 1884aa12; size =      3468; name = PATCHES\64000.HEP
-    file[]: crc = 4c01d110; size =      2484; name = PATCHES\64000.SCR
-    file[]: crc = 152320de; size =       504; name = PATCHES\64865.HEP
-    file[]: crc = 0afda7fc; size =      3786; name = PATCHES\64865.SCR
-    file[]: crc = cb356a92; size =      1224; name = PATCHES\64866.HEP
-    file[]: crc = 82882f10; size =      4856; name = PATCHES\64866.SCR
-    file[]: crc = 068e71cc; size =       496; name = PATCHES\64892.HEP
-    file[]: crc = 5f1bf5ea; size =      3570; name = PATCHES\64892.SCR
-    file[]: crc = 46564d71; size =       278; name = PATCHES\64893.HEP
-    file[]: crc = d58d06ff; size =      5682; name = PATCHES\64893.SCR
-    file[]: crc = 8aaf2013; size =      1934; name = PATCHES\64897.HEP
-    file[]: crc = 35e6c12f; size =      4364; name = PATCHES\64897.SCR
-    file[]: crc = 5612bb30; size =       274; name = PATCHES\8000.HEP
-    file[]: crc = 2be2ef0a; size =       532; name = PATCHES\8000.SCR
+game[v1.0-oem-dos]:
+    name = v1.0 OEM, DOS
+    imports = v1.0-dos, v1.0-oem-base
+end
+
+//
+// v1.0 OEM, Windows
+//
+game[v1.0-oem-win]:
+    name = v1.0 OEM, Windows
+    imports = v1.0-win, v1.0-oem-base
 end
 
 end
