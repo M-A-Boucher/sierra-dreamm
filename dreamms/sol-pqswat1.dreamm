@@ -8,47 +8,107 @@ icon = sol-pqswat1.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRAH.EXE
 mips = $(MIPS_P100)
 ramkb = 16384
 videohw = svga
-audiohw = sb16+mt32+gmidi
+audiohw = sb16+gmidi
 filter = sierra, adventure
 
+//
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRAH.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAH.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows
+        audiohw = gmidi
+        wincrop = true
+        launch = $(rootpath)\SIERRAWH.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAWH.EXE")
+    end
+end
+
 CFG = [[[$(CRLF)
-    videoDrv  = VESA.DRV
-    soundDrv  = MIDNONE.DRV
-    audioDrv  = DACBLAST.DRV
-    joyDrv    = NO
-    mouseDrv  = NONE
-    memoryDrv = NONE
-    CD        = NO
-    minCPU    = 486
-    minDOS    = 500
-    mode      = protected
-    CPU       = 486
-    CPUSpeed  = 63
-    VideoSpeed= 400
-    CDROM     = 2
-    language  = 1
-    maxmemory = 12m
-    staticmemory = 300k
-    audioSize = 32k
-    cmd       = SWAT.BAT
-    smartdrv  = YES
-    directory = .
-    resMap    = .
-    resAUD    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
-    resSFX    = .\DISC1;.\DISC2;.\DISC3;.\DISC4
-    resCDisc  = .
-    patchDir  = .\PATCHES
-    robot     = .\ROBOTS
-    movieDir  = .\VMD
+    videoDrv       = VESA.DRV
+    soundDrv       = MIDNONE.DRV
+    audioDrv       = DACBLAST.DRV
+    joyDrv         = NO
+    mouseDrv       = NONE
+    memoryDrv      = NONE
+    CD             = NO
+    minCPU         = 486
+    minDOS         = 500
+    mode           = protected
+    CPU            = 486
+    CPUSpeed       = 63
+    VideoSpeed     = 400
+    CDROM          = 2
+    language       = 1
+    maxmemory      = 12m
+    staticmemory   = 300k
+    audioSize      = 32k
+    cmd            = SWAT.BAT
+    smartdrv       = YES
+    directory      = .
+    resMap         = .
+    resAUD         = .\DISC1;.\DISC2;.\DISC3;.\DISC4
+    resSFX         = .\DISC1;.\DISC2;.\DISC3;.\DISC4
+    resCDisc       = .
+    patchDir       = .\PATCHES
+    robot          = .\ROBOTS
+    movieDir       = .\VMD
+]]]
+
+WIN = [[[$(CRLF)
+    [Windows]
+    language       = 1
+    title          = Police Quest SWAT
+    titleBar       = TRUE
+    titleBarFixed  = TRUE
+    allowresize    = FALSE
+    wwidth         = 640
+    wheight        = 480
+    pagelock       = FALSE
+    scimink        = 2400
+    maxmemory      = 12m
+    staticmemory   = 300k
+    borderpixels   = 10
+    reservek       = 600
+    confirmdac     = TRUE
+    colorcursor    = TRUE
+    maxCursorSize  = 2320
+    asyncCheckFreq = 120
+    cacheSize2     = 600
+    cacheSize3     = 100
+    dacsize        = 4K
+    leadSubmits    = 4
+    minSubmits     = 4
+    maxSubmits     = 24
+    audioSize      = 64K
+    daccritical    = TRUE
+    directory      = .
+    resMap         = .
+    resAUD         = .\DISC1;.\DISC2;.\DISC3;.\DISC4
+    resSFX         = .\DISC1;.\DISC2;.\DISC3;.\DISC4
+    resCDisc       = .
+    patchDir       = .\PATCHES
+    robot          = .\ROBOTS
+    movieDir       = .\VMD
 ]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -59,18 +119,10 @@ mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
-// v1.1, CD
+// v1.1 Base Files
 //
-game[v1.1-cd]:
-    name = v1.1, CD
-    anchorfile = SIERRAH.EXE
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+fragment[v1.1-base]:
+    anchorfile = RESSCI.001
     file[]: crc = cf868633; size =      6955; name = RESMAP.001
     file[]: crc = f0716c14; size =      6439; name = RESMAP.002
     file[]: crc = dc5cdc48; size =      6841; name = RESMAP.003
@@ -79,19 +131,12 @@ game[v1.1-cd]:
     file[]: crc = abdfe5c5; size =      6439; name = RESMDT.002
     file[]: crc = 0b57a5d0; size =      6841; name = RESMDT.003
     file[]: crc = 8fbb4648; size =      7069; name = RESMDT.004
-    file[]: crc = 398c8732; size =       295; name = RESOURCE.CFG
-    file[]: crc = f2daf05c; size =       424; name = RESOURCE.WIN
     file[]: crc = 9ece1854; size =  29312320; name = RESSCI.001
     file[]: crc = 9a4fa659; size =  31599543; name = RESSCI.002
     file[]: crc = 67c924bb; size =  46510796; name = RESSCI.003
     file[]: crc = bacf4093; size =  50759885; name = RESSCI.004
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
-    file[]: crc = 080f3afa; size =      3148; name = SIERRA.INF
-    file[]: crc = 2eeb6975; size =    836040; name = SIERRAH.EXE
-    file[]: crc = 10f8de39; size =    730305; name = SIERRAWH.EXE
     file[]: crc = 32766bce; size =         9; name = VERSION.TXT
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 00d5ead1; size = 100826901; name = DISC1/RESOURCE.AUD
     file[]: crc = 7ccbbb67; size =  11286867; name = DISC1/RESOURCE.SFX
     file[]: crc = 7e1f7b14; size =  38554381; name = DISC2/RESOURCE.AUD
@@ -902,6 +947,33 @@ game[v1.1-cd]:
     file[]: crc = b1ce4a7f; size =    524167; name = VMD\9021.VMD
     file[]: crc = 7abe376a; size =    549678; name = VMD\9025.VMD
     file[]: crc = e40d15d1; size =    796866; name = VMD\9028.VMD
+end
+
+//
+// v1.1, DOS
+//
+game[v1.1-dos]:
+    name = v1.1, DOS
+    imports = v1.1-base
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 2eeb6975; size =    836040; name = SIERRAH.EXE
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+end
+
+//
+// v1.1, Windows
+//
+game[v1.1-win]:
+    name = v1.1, Windows
+    imports = v1.1-base
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = 10f8de39; size =    730305; name = SIERRAWH.EXE
 end
 
 end
