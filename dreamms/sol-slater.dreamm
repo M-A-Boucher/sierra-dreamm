@@ -8,12 +8,32 @@ icon = sol-slater.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_486DX_33)
-nothrottle = 2
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
+
+//
+// os configuration
+//
+config[os]:
+    title = OS Configuration
+    condition = !is_installer()
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SIERRAW.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
 
 //
 // graphics configuration
@@ -73,6 +93,22 @@ config[sound]:
 end
 
 //
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+//
 // sfx configuration
 //
 config[sfx]:
@@ -89,6 +125,11 @@ config[sfx]:
     end
 end
 
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003 RESOURCE.000
+    AUDDCOMP.EXE .\
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv  = $(VIDEO_DRIVER)
     soundDrv  = $(SOUND_DRIVER)
@@ -104,9 +145,20 @@ CFG = [[[$(CRLF)
     audioSize = 12k
 ]]]
 
-INSTALL = [[[$(CRLF)
-    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003 RESOURCE.000
-    AUDDCOMP.EXE .\
+INI = [[[$(CRLF)
+    [Info]
+    title       = Slater Charlie Go Camping
+    confirmdac  = TRUE
+    confirmmidi = TRUE
+    genmidi     = TRUE
+    synthtype   = $(SOUND_DRIVER)
+    minhunk     = 204K
+    minhires    = 375K
+    audioBuffs  = 2
+    borderwidth = 5
+    audpath     = C:\
+    audio       = C:\
+    sync        = C:\
 ]]]
 
 script[init]:
@@ -114,8 +166,14 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+        {
+          path_create("880.SCR");
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
+        }
     ]]]
 end
 
@@ -129,6 +187,14 @@ fragment[v1.0-base]:
     file[]: crc = f1f4eed2; size =       155; name = 943.TEX
     file[]: crc = 8ae6bb35; size =       119; name = 952.TEX
     file[]: crc = a575e624; size =        70; name = 999.TEX
+    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
+    file[]: crc = 07e72d4e; size =        36; name = MESSAGE.MAP
+    file[]: crc = fb892275; size =      4044; name = RESOURCE.MAP
+    file[]: crc = 20bf28d2; size =      1132; name = RESOURCE.MSG
+    file[]: crc = 3ab56df6; size =        54; name = VERSION
+end
+
+fragment[v1.0-dos-base]:
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = 6e285dc6; size =      6552; name = AUDBLAST.DRV
     file[]: crc = d1dcfbb4; size =      5280; name = AUDDISNY.DRV
@@ -142,50 +208,78 @@ fragment[v1.0-base]:
     file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
     file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
-    file[]: crc = e053eef6; size =      6205; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = 07e72d4e; size =        36; name = MESSAGE.MAP
     file[]: crc = 0d41aba3; size =      9725; name = MICROSOF.DRV
     file[]: crc = 5450710b; size =      2570; name = MT32.DRV
     file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = fb892275; size =      4044; name = RESOURCE.MAP
-    file[]: crc = 20bf28d2; size =      1132; name = RESOURCE.MSG
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
-    file[]: crc = bb05a352; size =    154794; name = SIERRA.EXE
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
-    file[]: crc = 3ab56df6; size =        54; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
 //
-// v1.0, Int. 5.19.93
+// v1.0, Int. 5.19.93, DOS
 //
-game[v1.0-int-5.19.93]:
-    name = v1.0, Int. 5.19.93
-    imports = v1.0-base
+game[v1.0-int-5.19.93-dos]:
+    name = v1.0, Int. 5.19.93, DOS
+    imports = v1.0-base, v1.0-dos-base
     anchorfile = RESOURCE.000
     file[]: crc = abc326e1; size =   2256126; name = RESOURCE.000
     file[]: crc = c6127be8; size =   4439298; name = RESOURCE.AUD
+    file[]: crc = bb05a352; size =    154794; name = SIERRA.EXE
 end
 
 //
-// v1.0, Int. 5.19.93, 3x1.44M, Installer
+// v1.0, Int. 5.19.93, 3x1.44M, DOS, Installer
 //
-installer[v1.0-int-5.19.93-3x1.44m-installer]:
-    name = v1.0, Int. 5.19.93, 3x1.44M, Installer
-    installid = v1.0-int-5.19.93
+installer[v1.0-int-5.19.93-3x1.44m-dos-installer]:
+    name = v1.0, Int. 5.19.93, 3x1.44M, DOS, Installer
+    installid = v1.0-int-5.19.93-dos
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT
-    imports = v1.0-base
-    anchorfile = SIERRA.EXE
-    anchordepth = 1
+    imports = v1.0-base, v1.0-dos-base
+    anchorfile = AUDDCOMP.EXE
     file[]: crc = 66b548c3; size =     15613; name = AUDDCOMP.EXE
     file[]: crc = f09b99da; size =    545624; name = RESOURCE.001
     file[]: crc = 950cb0e9; size =   1450640; name = RESOURCE.002
     file[]: crc = 51fa0855; size =    259862; name = RESOURCE.003
     file[]: crc = 372144bc; size =   1152115; name = RESOURCE.AUD
+    file[]: crc = bb05a352; size =    154794; name = SIERRA.EXE
+end
+
+//
+// v1.0, Int. 5.19.93, Windows
+//
+game[v1.0-int-5.19.93-win]:
+    name = v1.0, Int. 5.19.93, Windows
+    imports = v1.0-base
+    anchorfile = RESOURCE.000
+    file[]: crc = abc326e1; size =   2256126; name = RESOURCE.000
+    file[]: crc = c6127be8; size =   4439298; name = RESOURCE.AUD
+    file[]: crc = 9cff4aad; size =     15872; name = SCIDLL.DLL
+    file[]: crc = 13bb4423; size =    183296; name = SIERRAW.EXE
+end
+
+//
+// v1.0, Int. 5.19.93, 3x1.44M, Windows, Installer
+//
+installer[v1.0-int-5.19.93-3x1.44m-win-installer]:
+    name = v1.0, Int. 5.19.93, 3x1.44M, Windows, Installer
+    installid = v1.0-int-5.19.93-win
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    audiohw= gmidi
+    imports = v1.0-base
+    anchorfile = AUDDCOMP.EXE
+    file[]: crc = 66b548c3; size =     15613; name = AUDDCOMP.EXE
+    file[]: crc = f09b99da; size =    545624; name = RESOURCE.001
+    file[]: crc = 950cb0e9; size =   1450640; name = RESOURCE.002
+    file[]: crc = 51fa0855; size =    259862; name = RESOURCE.003
+    file[]: crc = 372144bc; size =   1152115; name = RESOURCE.AUD
+    file[]: crc = 9cff4aad; size =     15872; name = SCIDLL.DLL
+    file[]: crc = 13bb4423; size =    183296; name = SIERRAW.EXE
 end
 
 //
