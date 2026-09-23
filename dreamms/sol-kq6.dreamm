@@ -14,10 +14,10 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 
 //
-// os configuration
+// environment configuration
 //
-config[os]:
-    title = OS Configuration
+config[environement]:
+    title = Environment Configuration
     condition = !is_installer()
     option[dos]: 
         name = DOS
@@ -138,20 +138,20 @@ INSTALL = [[[$(CRLF)
 ]]]
 
 CFG = [[[$(CRLF)
-    videoDrv  = $(VIDEO_DRIVER)
-    soundDrv  = $(SOUND_DRIVER)
-    audioDrv  = $(AUDIO_DRIVER)
-    joyDrv    = JOYSTICK.DRV
-    kbdDrv    = IBMKBD.DRV
-    mouseDrv  = STDMOUSE.DRV
-    minHunk   = 207k
-    sync      = .\
-    audio     = .\
-    audioSize = 8K
+    videoDrv    = $(VIDEO_DRIVER)
+    soundDrv    = $(SOUND_DRIVER)
+    audioDrv    = $(AUDIO_DRIVER)
+    joyDrv      = JOYSTICK.DRV
+    kbdDrv      = IBMKBD.DRV
+    mouseDrv    = STDMOUSE.DRV
+    minHunk     = 207k
+    sync        = $(rootpath)
+    audio       = $(rootpath)
+    audioSize   = 8K
 ]]]
 
 INI = [[[$(CRLF)
-    [Info]
+    [info]
     title       = King's Quest VI
     confirmdac  = TRUE
     confirmmidi = TRUE
@@ -160,12 +160,12 @@ INI = [[[$(CRLF)
     synthtype   = $(SOUND_DRIVER)
     minhunk     = 204K
     minhires    = 375K
-    audioBuffs  = 2
+    audioBuffs  = 4
     borderwidth = 5
-    audpath     = C:\
-    audio       = C:\
-    sync        = C:\
-    movieplayer = 0
+    audpath     = $(rootpath)
+    audio       = $(rootpath)
+    sync        = $(rootpath)
+    movieplayer = 1
 ]]]
 
 script[init]:
