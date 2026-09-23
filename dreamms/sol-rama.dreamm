@@ -6,47 +6,109 @@ name = Rama
 icon = sol-rama.png
 machine = pc
 rootpath = C:\SIERRA\RAMADOS
-launch = $(rootpath)\sier.exe $(rootpath)\resource.cfg   
 osenv = dos
-fixdivover = true
-mips = 60
-audiohw = sb16
+mips = $(MIPS_P75)
+audiohw = sb16+gmidi
 ramkb = 16384
 videohw = svga
 REGION = ""
 CHARSET = ""
 
+//
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIER.EXE
+        condition = file_exists("$$(rootpath)\\SIER.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows
+        winres = 640x480x8
+        launch = $(rootpath)\SIERW5.EXE
+        condition = file_exists("$$(rootpath)\\SIERW5.EXE")
+    end
+end
+
 CFG = [[[$(CRLF)
-    videoDrv  = VESA.DRV
-    soundDrv  = MIDNONE.DRV
-    audioDrv  = DACBLAST.DRV
-    joyDrv    = NO
-    directory = \sierra\ramados
-    cmd       = RAMADOS
-    mouseDrv  = NONE
-    memoryDrv = NONE
-    minMemory = 1600k
-    brightness= 0
-    minCPU    = 486
-    cd        = YES
-    smartdrv  = YES
-    maxSubmits= 48
-    dacSize	  = 4k                           
-    cdSpeed   = 4                 
-    audio     = CD:\audio;CD:\PATCHES 
-    resAud    = CD:\        		
-    resSfx    = C:\sierra\ramados;CD:\        
-    resMap    = CD:\              
-    rescdisc  = CD:\              
-    movieDir  = CD:\VMD           
-    robot     = CD:\ROBOT         
-    patchDir  = C:\sierra\ramados;CD:\PATCHES 
-    CD:       = D:;        
+    videoDrv       = VESA.DRV
+    soundDrv       = MIDNONE.DRV
+    audioDrv       = DACBLAST.DRV
+    joyDrv         = NO
+    directory      = \sierra\ramados
+    cmd            = RAMADOS
+    mouseDrv       = NONE
+    memoryDrv      = NONE
+    minMemory      = 1600k
+    brightness     = 0
+    minCPU         = 486
+    cd             = YES
+    smartdrv       = YES
+    maxSubmits     = 48
+    dacSize        = 4k
+    cdSpeed        = 4
+    audio          = CD:\AUDIO;CD:\PATCHES
+    resAud         = CD:\
+    resSfx         = CD:\;$(rootpath)
+    resMap         = CD:\
+    rescdisc       = CD:\
+    movieDir       = CD:\VMD
+    robot          = CD:\ROBOT
+    patchDir       = CD:\PATCHES;$(rootpath)
+    CD:            = D:\
+]]]
+
+WIN = [[[$(CRLF)
+    [Windows]
+    title          = RAMA
+    titleBar       = TRUE
+    allowresize    = FALSE
+    wwidth         = 640
+    wheight        = 480
+    pagelock       = FALSE
+    scimink        = 1100
+    scimaxk        = 7000
+    synthtype      = highsynth
+    enableMidi     = FALSE
+    reservek       = 300
+    borderpixels   = 0
+    maxcursorsize  = 2904
+    colorCursor    = true
+    asyncCheckFreq = 60
+    midiBuffSize5  = 30000
+    midiBuffSize6  = 65000
+    heapCheck      = FALSE
+    audioSize      = 100K
+    DACSize        = 6K
+    reservek       = 300
+    cacheSize1     = 500
+    cacheSize3     = 500
+    asyncCheckFreq = 60
+    minSubmits     = 8
+    maxsubmits     = 60
+    maximized      = TRUE
+    volDirectSound = 2
+    audio          = CD:\AUDIO;CD:\PATCHES
+    resAud         = CD:\
+    resSfx         = CD:\;$(rootpath)
+    resMap         = CD:\
+    discid         = CD:\;
+    movieDir       = CD:\VMD
+    robot          = CD:\ROBOT
+    patchDir       = CD:\PATCHES;$(rootpath)
+    CD:            = D:
 ]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -125,22 +187,13 @@ game[sol-rama-english-dos]:
     file[]: crc = 2d421d20; size =      1457; name = PROLOGUE.DAT
     file[]: crc = e958b561; size =  41276376; name = RESOURCE.SFX
     file[]: crc = 016abc05; size =        16; name = VERSION
-    file[]: crc = 3ce1ff14; size =     10730; name = DISC1\BDWIN95.TXT
-    file[]: crc = 067c1cbe; size =     26112; name = DISC1\CDCHECK.EXE
     file[]: crc = a1a9a0e6; size =      4400; name = DISC1\DACBLAST.DRV
-    file[]: crc = 8fd849a5; size =     17920; name = DISC1\DSSETUP.EXE
-    file[]: crc = 70ee2184; size =      1981; name = DISC1\LANGUAGE.INF
     file[]: crc = 2d421d20; size =      1457; name = DISC1\PROLOGUE.DAT
     file[]: crc = b0a34ce0; size =      8338; name = DISC1\RESMAP.001
     file[]: crc = e8a8d1c7; size =      8338; name = DISC1\RESMDT.001
     file[]: crc = e958b561; size =  41276376; name = DISC1\RESOURCE.SFX
-    file[]: crc = e79959f3; size =       528; name = DISC1\RESOURCE.WIN
     file[]: crc = b5ecc2d4; size =  70599164; name = DISC1\RESSCI.001
-    file[]: crc = d832d2a6; size =     32336; name = DISC1\SETUP.EXE
-    file[]: crc = 3f8d4b43; size =    568257; name = DISC1\SETUP.SOL
-    file[]: crc = 9b2b25d1; size =      5646; name = DISC1\SIERRA.INF
     file[]: crc = 016abc05; size =        16; name = DISC1\VERSION
-    file[]: crc = efe4c9a2; size =        25; name = DISC1\VESADRV.BAT
     file[]: crc = f5a4d226; size =     78478; name = DISC1\audio\A02J0140.011; exactonly = true
     file[]: crc = 11c7d978; size =     51790; name = DISC1\audio\A02J0240.021
     file[]: crc = 4dc824c8; size =     72654; name = DISC1\audio\A02J0340.001
@@ -433,36 +486,36 @@ game[sol-rama-english-dos]:
     file[]: crc = e20e1adc; size =     38212; name = DISC1\patches\34060.V56
     file[]: crc = 37b22cb6; size =     12734; name = DISC1\patches\44.CSC
     file[]: crc = 46a57932; size =    483894; name = DISC1\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC1\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC1\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC1\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC1\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC1\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC1\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC1\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC1\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC1\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC1\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC1\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC1\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC1\robot\1010.RBT
     file[]: crc = 636a019b; size =    875278; name = DISC1\robot\2100.RBT
     file[]: crc = 457b2555; size =    876929; name = DISC1\robot\2101.RBT
     file[]: crc = d953c910; size =    870501; name = DISC1\robot\2102.RBT
     file[]: crc = 37d5af97; size =    900432; name = DISC1\robot\2103.RBT
     file[]: crc = 82288afa; size =    851380; name = DISC1\robot\2104.RBT
     file[]: crc = 9adb7330; size =    589382; name = DISC1\robot\2127.RBT
-    file[]: crc = d8175414; size =    692186; name = DISC1\robot\2148.rbt
+    file[]: crc = d8175414; size =    692186; name = DISC1\robot\2148.RBT
     file[]: crc = 7bfb59f6; size =    808716; name = DISC1\robot\2172.RBT
     file[]: crc = e41ecfa1; size =   1585891; name = DISC1\robot\2176.RBT
     file[]: crc = 4439dbeb; size =    674580; name = DISC1\robot\2179.RBT
-    file[]: crc = 047f31a5; size =    736831; name = DISC1\robot\2180.rbt
+    file[]: crc = 047f31a5; size =    736831; name = DISC1\robot\2180.RBT
     file[]: crc = 4b6df2ec; size =    704215; name = DISC1\robot\2200.RBT
     file[]: crc = 4517a048; size =    708267; name = DISC1\robot\2201.RBT
     file[]: crc = 8f0d7552; size =    689659; name = DISC1\robot\2202.RBT
     file[]: crc = 4352a6cd; size =    722334; name = DISC1\robot\2203.RBT
     file[]: crc = 0dc399ab; size =    699210; name = DISC1\robot\2204.RBT
-    file[]: crc = 777cf180; size =    273382; name = DISC1\robot\22171.rbt
-    file[]: crc = c72612c5; size =    572238; name = DISC1\robot\22172.rbt
-    file[]: crc = 3f2a9452; size =    423694; name = DISC1\robot\22173.rbt
-    file[]: crc = b7478c2e; size =    444450; name = DISC1\robot\22174.rbt
+    file[]: crc = 777cf180; size =    273382; name = DISC1\robot\22171.RBT
+    file[]: crc = c72612c5; size =    572238; name = DISC1\robot\22172.RBT
+    file[]: crc = 3f2a9452; size =    423694; name = DISC1\robot\22173.RBT
+    file[]: crc = b7478c2e; size =    444450; name = DISC1\robot\22174.RBT
     file[]: crc = 8c289b65; size =    294960; name = DISC1\robot\22281.RBT
     file[]: crc = 4c026326; size =   6418998; name = DISC1\robot\2283.RBT
     file[]: crc = a31da868; size =    666310; name = DISC1\robot\2300.RBT
@@ -480,7 +533,7 @@ game[sol-rama-english-dos]:
     file[]: crc = b9dd247f; size =   1967212; name = DISC1\robot\3103.RBT
     file[]: crc = 16ceec9c; size =    180434; name = DISC1\robot\3104.RBT
     file[]: crc = 941e0b65; size =   2466085; name = DISC1\robot\3105.RBT
-    file[]: crc = 3bf794df; size =   3110680; name = DISC1\robot\3106.rbt
+    file[]: crc = 3bf794df; size =   3110680; name = DISC1\robot\3106.RBT
     file[]: crc = f1e35cf7; size =    104279; name = DISC1\robot\3200.RBT
     file[]: crc = dbc6058d; size =    129767; name = DISC1\robot\3201.RBT
     file[]: crc = e0778968; size =    199889; name = DISC1\robot\3202.RBT
@@ -534,14 +587,14 @@ game[sol-rama-english-dos]:
     file[]: crc = 18e630ff; size =    819814; name = DISC1\vmd\21101.VMD
     file[]: crc = 2e976a75; size =   1015343; name = DISC1\vmd\22122.VMD
     file[]: crc = cd78f9c3; size =    279659; name = DISC1\vmd\2222.VMD
-    file[]: crc = cf574fd8; size =    980874; name = DISC1\vmd\2227.vmd
+    file[]: crc = cf574fd8; size =    980874; name = DISC1\vmd\2227.VMD
     file[]: crc = dc82f0df; size =   1722937; name = DISC1\vmd\22281.VMD
     file[]: crc = 1c79d754; size =    600867; name = DISC1\vmd\22282.VMD
-    file[]: crc = fab31b79; size =    650499; name = DISC1\vmd\2257.vmd
+    file[]: crc = fab31b79; size =    650499; name = DISC1\vmd\2257.VMD
     file[]: crc = d30ddeb3; size =    564377; name = DISC1\vmd\3202.VMD
     file[]: crc = a6c300ae; size =    233254; name = DISC1\vmd\3203.VMD
     file[]: crc = 98403348; size =    231485; name = DISC1\vmd\3204.VMD
-    file[]: crc = f4b0b8f0; size =    212874; name = DISC1\vmd\3206.vmd
+    file[]: crc = f4b0b8f0; size =    212874; name = DISC1\vmd\3206.VMD
     file[]: crc = b6b252a6; size =   1404783; name = DISC1\vmd\3211.VMD
     file[]: crc = e5e24ea6; size =    105893; name = DISC1\vmd\3223.VMD
     file[]: crc = 355aca67; size =    440681; name = DISC1\vmd\3224.VMD
@@ -555,7 +608,7 @@ game[sol-rama-english-dos]:
     file[]: crc = f95e3540; size =  10012297; name = DISC1\vmd\34041.VMD
     file[]: crc = 00f2fb25; size =   7352031; name = DISC1\vmd\34051.VMD
     file[]: crc = 86f2f402; size =  21661343; name = DISC1\vmd\34061.VMD
-    file[]: crc = e6cfaadb; size =  10681109; name = DISC1\vmd\34071.vmd
+    file[]: crc = e6cfaadb; size =  10681109; name = DISC1\vmd\34071.VMD
     file[]: crc = e2f9f879; size =  17139431; name = DISC1\vmd\34081.VMD
     file[]: crc = d72909dc; size =  10045244; name = DISC1\vmd\34091.VMD
     file[]: crc = 340c8643; size =  21834297; name = DISC1\vmd\35011.VMD
@@ -565,7 +618,7 @@ game[sol-rama-english-dos]:
     file[]: crc = 2301b194; size =   5576251; name = DISC1\vmd\38031.VMD
     file[]: crc = 0af8ea13; size =   3388875; name = DISC1\vmd\38041.VMD
     file[]: crc = 878e0d00; size =   9255294; name = DISC1\vmd\38051.VMD
-    file[]: crc = d7051a24; size =  14554927; name = DISC1\vmd\38111.vmd
+    file[]: crc = d7051a24; size =  14554927; name = DISC1\vmd\38111.VMD
     file[]: crc = 25a811c9; size =   6366945; name = DISC1\vmd\38121.VMD
     file[]: crc = 969d812f; size =   6881549; name = DISC1\vmd\38131.VMD
     file[]: crc = 2a359411; size =   2886227; name = DISC1\vmd\38151.VMD
@@ -599,7 +652,7 @@ game[sol-rama-english-dos]:
     file[]: crc = 5c20db09; size =   2800743; name = DISC1\vmd\39211.VMD
     file[]: crc = 243b6952; size =  10732661; name = DISC1\vmd\39511.VMD
     file[]: crc = 68a1133d; size =  14322103; name = DISC1\vmd\39999.VMD
-    file[]: crc = 6783f718; size =     95712; name = DISC1\vmd\4150.vmd
+    file[]: crc = 6783f718; size =     95712; name = DISC1\vmd\4150.VMD
     file[]: crc = 1028a911; size =     88587; name = DISC1\vmd\4151.VMD
     file[]: crc = ad8e283c; size =     87931; name = DISC1\vmd\4152.VMD
     file[]: crc = f2419ab3; size =   1673878; name = DISC1\vmd\5000.VMD
@@ -947,16 +1000,16 @@ game[sol-rama-english-dos]:
     file[]: crc = da338052; size =     62606; name = DISC2\audio\A0601040.001
     file[]: crc = 37b22cb6; size =     12734; name = DISC2\patches\44.CSC
     file[]: crc = 46a57932; size =    483894; name = DISC2\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC2\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC2\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC2\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC2\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC2\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC2\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC2\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC2\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC2\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC2\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC2\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC2\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC2\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC2\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC2\robot\1010.RBT
     file[]: crc = a0cb2531; size =    140876; name = DISC2\robot\5000.RBT
     file[]: crc = 113693ca; size =    141802; name = DISC2\robot\5001.RBT
     file[]: crc = ca4d70a0; size =    137846; name = DISC2\robot\5002.RBT
@@ -997,8 +1050,8 @@ game[sol-rama-english-dos]:
     file[]: crc = 0ad07d72; size =    966134; name = DISC2\robot\6201.RBT
     file[]: crc = e070a22e; size =    940540; name = DISC2\robot\6209.RBT
     file[]: crc = 3702452d; size =     96692; name = DISC2\robot\6218.RBT
-    file[]: crc = e369418a; size =    888260; name = DISC2\robot\6220.rbt
-    file[]: crc = 467c998a; size =    165084; name = DISC2\robot\6222.rbt
+    file[]: crc = e369418a; size =    888260; name = DISC2\robot\6220.RBT
+    file[]: crc = 467c998a; size =    165084; name = DISC2\robot\6222.RBT
     file[]: crc = fb81d1be; size =    482815; name = DISC2\robot\6300.RBT
     file[]: crc = 196a86e5; size =    407376; name = DISC2\robot\6301.RBT
     file[]: crc = a1a01a29; size =    289602; name = DISC2\robot\7502.RBT
@@ -1044,7 +1097,7 @@ game[sol-rama-english-dos]:
     file[]: crc = f95e3540; size =  10012297; name = DISC2\vmd\34041.VMD
     file[]: crc = 00f2fb25; size =   7352031; name = DISC2\vmd\34051.VMD
     file[]: crc = 86f2f402; size =  21661343; name = DISC2\vmd\34061.VMD
-    file[]: crc = e6cfaadb; size =  10681109; name = DISC2\vmd\34071.vmd
+    file[]: crc = e6cfaadb; size =  10681109; name = DISC2\vmd\34071.VMD
     file[]: crc = e2f9f879; size =  17139431; name = DISC2\vmd\34081.VMD
     file[]: crc = d72909dc; size =  10045244; name = DISC2\vmd\34091.VMD
     file[]: crc = 340c8643; size =  21834297; name = DISC2\vmd\35011.VMD
@@ -1082,7 +1135,7 @@ game[sol-rama-english-dos]:
     file[]: crc = caa29793; size =  17368940; name = DISC2\vmd\39711.VMD
     file[]: crc = f2419ab3; size =   1673878; name = DISC2\vmd\5000.VMD
     file[]: crc = 301d2337; size =    544119; name = DISC2\vmd\5001.VMD
-    file[]: crc = 714b1ce4; size =    336592; name = DISC2\vmd\5028.vmd
+    file[]: crc = 714b1ce4; size =    336592; name = DISC2\vmd\5028.VMD
     file[]: crc = aef3bbaa; size =     85457; name = DISC2\vmd\5033.VMD
     file[]: crc = 38657bc8; size =    358895; name = DISC2\vmd\5052.VMD
     file[]: crc = 40c3a6a1; size =    324862; name = DISC2\vmd\5053.VMD
@@ -1113,16 +1166,16 @@ game[sol-rama-english-dos]:
     file[]: crc = 80f1238f; size =   1575883; name = DISC2\vmd\5410.VMD
     file[]: crc = f1fdd3bc; size =   1127480; name = DISC2\vmd\6003.VMD
     file[]: crc = ec0604d5; size =    858208; name = DISC2\vmd\6005.VMD
-    file[]: crc = a2224eca; size =    157850; name = DISC2\vmd\6010.vmd
-    file[]: crc = 950bda1e; size =    149124; name = DISC2\vmd\6020.vmd
-    file[]: crc = 686d1cac; size =    144675; name = DISC2\vmd\6030.vmd
-    file[]: crc = 50aec92a; size =    140319; name = DISC2\vmd\6031.vmd
+    file[]: crc = a2224eca; size =    157850; name = DISC2\vmd\6010.VMD
+    file[]: crc = 950bda1e; size =    149124; name = DISC2\vmd\6020.VMD
+    file[]: crc = 686d1cac; size =    144675; name = DISC2\vmd\6030.VMD
+    file[]: crc = 50aec92a; size =    140319; name = DISC2\vmd\6031.VMD
     file[]: crc = 1661307a; size =    293958; name = DISC2\vmd\6032.VMD
-    file[]: crc = 60a6d8d7; size =   1069956; name = DISC2\vmd\6033.vmd
+    file[]: crc = 60a6d8d7; size =   1069956; name = DISC2\vmd\6033.VMD
     file[]: crc = b5d4a7fd; size =    740868; name = DISC2\vmd\6034.VMD
-    file[]: crc = e3b7fd07; size =    139265; name = DISC2\vmd\6040.vmd
-    file[]: crc = 01f0950a; size =    822526; name = DISC2\vmd\6103.vmd
-    file[]: crc = ca6bb8b5; size =    835431; name = DISC2\vmd\6104.vmd
+    file[]: crc = e3b7fd07; size =    139265; name = DISC2\vmd\6040.VMD
+    file[]: crc = 01f0950a; size =    822526; name = DISC2\vmd\6103.VMD
+    file[]: crc = ca6bb8b5; size =    835431; name = DISC2\vmd\6104.VMD
     file[]: crc = 42577bb6; size =   1196766; name = DISC2\vmd\6200.VMD
     file[]: crc = 6b2939d4; size =   1200409; name = DISC2\vmd\6201.VMD
     file[]: crc = 44e00a06; size =   1068196; name = DISC2\vmd\6202.VMD
@@ -1134,30 +1187,30 @@ game[sol-rama-english-dos]:
     file[]: crc = 87582e27; size =    624653; name = DISC2\vmd\6211.VMD
     file[]: crc = c165b6ee; size =    219511; name = DISC2\vmd\6223.VMD
     file[]: crc = 29feb7fb; size =    331381; name = DISC2\vmd\6224.VMD
-    file[]: crc = 508c12fd; size =    617566; name = DISC2\vmd\6400.vmd
-    file[]: crc = d448017c; size =    617194; name = DISC2\vmd\6401.vmd
+    file[]: crc = 508c12fd; size =    617566; name = DISC2\vmd\6400.VMD
+    file[]: crc = d448017c; size =    617194; name = DISC2\vmd\6401.VMD
     file[]: crc = 9132e90b; size =    504220; name = DISC2\vmd\6402.VMD
-    file[]: crc = a65feafd; size =    500598; name = DISC2\vmd\6403.vmd
+    file[]: crc = a65feafd; size =    500598; name = DISC2\vmd\6403.VMD
     file[]: crc = a35af2a4; size =    132394; name = DISC2\vmd\6423.VMD
     file[]: crc = f22f9497; size =   1915072; name = DISC2\vmd\6425.VMD
     file[]: crc = f8fa2e7c; size =   2717933; name = DISC2\vmd\6500.VMD
-    file[]: crc = f3a1f8a4; size =   1581219; name = DISC2\vmd\6801.vmd
-    file[]: crc = 897deecd; size =   1039982; name = DISC2\vmd\6802.vmd
+    file[]: crc = f3a1f8a4; size =   1581219; name = DISC2\vmd\6801.VMD
+    file[]: crc = 897deecd; size =   1039982; name = DISC2\vmd\6802.VMD
     file[]: crc = 2ef92564; size =    184682; name = DISC2\vmd\6826.VMD
     file[]: crc = 950c6490; size =     98945; name = DISC2\vmd\6827.VMD
     file[]: crc = c1dd95da; size =    194192; name = DISC2\vmd\6829.VMD
     file[]: crc = cf67684c; size =    244756; name = DISC2\vmd\6900.VMD
-    file[]: crc = 30180247; size =    244527; name = DISC2\vmd\6901.vmd
-    file[]: crc = b874cbcc; size =    124752; name = DISC2\vmd\6902.vmd
-    file[]: crc = e66d964a; size =    121217; name = DISC2\vmd\6903.vmd
+    file[]: crc = 30180247; size =    244527; name = DISC2\vmd\6901.VMD
+    file[]: crc = b874cbcc; size =    124752; name = DISC2\vmd\6902.VMD
+    file[]: crc = e66d964a; size =    121217; name = DISC2\vmd\6903.VMD
     file[]: crc = 1b4de054; size =   2909064; name = DISC2\vmd\7501.VMD
     file[]: crc = 6b72503b; size =   4880409; name = DISC2\vmd\7850.VMD
-    file[]: crc = 89a436ff; size =   3076987; name = DISC2\vmd\7851.vmd
-    file[]: crc = a8f059b6; size =   2647047; name = DISC2\vmd\7852.vmd
-    file[]: crc = 7a7f7e25; size =    174768; name = DISC2\vmd\7853.vmd
-    file[]: crc = 4b7447e1; size =    174819; name = DISC2\vmd\7854.vmd
-    file[]: crc = df75b952; size =   1212699; name = DISC2\vmd\7855.vmd
-    file[]: crc = 77416fd0; size =   1110817; name = DISC2\vmd\7856.vmd
+    file[]: crc = 89a436ff; size =   3076987; name = DISC2\vmd\7851.VMD
+    file[]: crc = a8f059b6; size =   2647047; name = DISC2\vmd\7852.VMD
+    file[]: crc = 7a7f7e25; size =    174768; name = DISC2\vmd\7853.VMD
+    file[]: crc = 4b7447e1; size =    174819; name = DISC2\vmd\7854.VMD
+    file[]: crc = df75b952; size =   1212699; name = DISC2\vmd\7855.VMD
+    file[]: crc = 77416fd0; size =   1110817; name = DISC2\vmd\7856.VMD
     file[]: crc = d025c4ea; size =    154742; name = DISC2\vmd\7857.VMD
     file[]: crc = 206d5f70; size =    141974; name = DISC2\vmd\7858.VMD
     file[]: crc = 40cc1af3; size =   1333302; name = DISC2\vmd\7859.VMD
@@ -1188,16 +1241,16 @@ game[sol-rama-english-dos]:
     file[]: crc = 5ee31075; size =   6870356; name = DISC3\RESSCI.003
     file[]: crc = 016abc05; size =        16; name = DISC3\VERSION
     file[]: crc = 46a57932; size =    483894; name = DISC3\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC3\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC3\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC3\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC3\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC3\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC3\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC3\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC3\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC3\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC3\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC3\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC3\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC3\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC3\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC3\robot\1010.RBT
     file[]: crc = ce13cc17; size =    334319; name = DISC3\vmd\100.VMD
     file[]: crc = 0b5abe57; size =   1017481; name = DISC3\vmd\1000.VMD
     file[]: crc = b60dbd2a; size =   2247524; name = DISC3\vmd\1001.VMD
@@ -1218,11 +1271,11 @@ game[sol-rama-english-dos]:
     file[]: crc = 6bc06a54; size =   2262374; name = DISC3\vmd\63021.VMD
     file[]: crc = d2a978e9; size =   7344415; name = DISC3\vmd\63022.VMD
     file[]: crc = 0ce43ced; size =  10452386; name = DISC3\vmd\63023.VMD
-    file[]: crc = 801654d7; size =   1941150; name = DISC3\vmd\63031.vmd
+    file[]: crc = 801654d7; size =   1941150; name = DISC3\vmd\63031.VMD
     file[]: crc = 3343db22; size =  13947486; name = DISC3\vmd\63041.VMD
     file[]: crc = 878ea89f; size =   9788772; name = DISC3\vmd\63042.VMD
     file[]: crc = 76a37a6d; size =   5517750; name = DISC3\vmd\63043.VMD
-    file[]: crc = 3e093d02; size =   1644138; name = DISC3\vmd\63051.vmd
+    file[]: crc = 3e093d02; size =   1644138; name = DISC3\vmd\63051.VMD
     file[]: crc = b1b82897; size =   4346748; name = DISC3\vmd\63052.VMD
     file[]: crc = 59fd99b6; size =   6968774; name = DISC3\vmd\63053.VMD
     file[]: crc = c5e46c5c; size =  14115602; name = DISC3\vmd\63061.VMD
@@ -1232,7 +1285,7 @@ game[sol-rama-english-dos]:
     file[]: crc = f632aa5f; size =   3786636; name = DISC3\vmd\63072.VMD
     file[]: crc = ea4add12; size =   2756859; name = DISC3\vmd\63073.VMD
     file[]: crc = 77e92763; size =   1717822; name = DISC3\vmd\63081.VMD
-    file[]: crc = 15221156; size =   2980829; name = DISC3\vmd\63082.vmd
+    file[]: crc = 15221156; size =   2980829; name = DISC3\vmd\63082.VMD
     file[]: crc = a173f2fb; size =   3311680; name = DISC3\vmd\63083.VMD
     file[]: crc = 4b61702f; size =   8801512; name = DISC3\vmd\63111.VMD
     file[]: crc = 499636ca; size =   5519113; name = DISC3\vmd\63112.VMD
@@ -1579,36 +1632,36 @@ game[sol-rama-italian-dos]:
     file[]: crc = 2f8d6f3f; size =     53867; name = DISC1\audio\A05X1O40.001
     file[]: crc = bc7078a1; size =    108917; name = DISC1\audio\A05X1P40.001
     file[]: crc = 46a57932; size =    483894; name = DISC1\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC1\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC1\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC1\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC1\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC1\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC1\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC1\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC1\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC1\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC1\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC1\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC1\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC1\robot\1010.RBT
     file[]: crc = 636a019b; size =    875278; name = DISC1\robot\2100.RBT
     file[]: crc = 457b2555; size =    876929; name = DISC1\robot\2101.RBT
     file[]: crc = d953c910; size =    870501; name = DISC1\robot\2102.RBT
     file[]: crc = 37d5af97; size =    900432; name = DISC1\robot\2103.RBT
     file[]: crc = 82288afa; size =    851380; name = DISC1\robot\2104.RBT
     file[]: crc = 9adb7330; size =    589382; name = DISC1\robot\2127.RBT
-    file[]: crc = d8175414; size =    692186; name = DISC1\robot\2148.rbt
+    file[]: crc = d8175414; size =    692186; name = DISC1\robot\2148.RBT
     file[]: crc = 7bfb59f6; size =    808716; name = DISC1\robot\2172.RBT
     file[]: crc = e41ecfa1; size =   1585891; name = DISC1\robot\2176.RBT
     file[]: crc = 4439dbeb; size =    674580; name = DISC1\robot\2179.RBT
-    file[]: crc = 047f31a5; size =    736831; name = DISC1\robot\2180.rbt
+    file[]: crc = 047f31a5; size =    736831; name = DISC1\robot\2180.RBT
     file[]: crc = 4b6df2ec; size =    704215; name = DISC1\robot\2200.RBT
     file[]: crc = 4517a048; size =    708267; name = DISC1\robot\2201.RBT
     file[]: crc = 8f0d7552; size =    689659; name = DISC1\robot\2202.RBT
     file[]: crc = 4352a6cd; size =    722334; name = DISC1\robot\2203.RBT
     file[]: crc = 0dc399ab; size =    699210; name = DISC1\robot\2204.RBT
-    file[]: crc = 777cf180; size =    273382; name = DISC1\robot\22171.rbt
-    file[]: crc = c72612c5; size =    572238; name = DISC1\robot\22172.rbt
-    file[]: crc = 3f2a9452; size =    423694; name = DISC1\robot\22173.rbt
-    file[]: crc = b7478c2e; size =    444450; name = DISC1\robot\22174.rbt
+    file[]: crc = 777cf180; size =    273382; name = DISC1\robot\22171.RBT
+    file[]: crc = c72612c5; size =    572238; name = DISC1\robot\22172.RBT
+    file[]: crc = 3f2a9452; size =    423694; name = DISC1\robot\22173.RBT
+    file[]: crc = b7478c2e; size =    444450; name = DISC1\robot\22174.RBT
     file[]: crc = 8c289b65; size =    294960; name = DISC1\robot\22281.RBT
     file[]: crc = 4c026326; size =   6418998; name = DISC1\robot\2283.RBT
     file[]: crc = a31da868; size =    666310; name = DISC1\robot\2300.RBT
@@ -1626,7 +1679,7 @@ game[sol-rama-italian-dos]:
     file[]: crc = b9dd247f; size =   1967212; name = DISC1\robot\3103.RBT
     file[]: crc = 16ceec9c; size =    180434; name = DISC1\robot\3104.RBT
     file[]: crc = 941e0b65; size =   2466085; name = DISC1\robot\3105.RBT
-    file[]: crc = 3c25128a; size =   3110680; name = DISC1\robot\3106.rbt
+    file[]: crc = 3c25128a; size =   3110680; name = DISC1\robot\3106.RBT
     file[]: crc = f1e35cf7; size =    104279; name = DISC1\robot\3200.RBT
     file[]: crc = dbc6058d; size =    129767; name = DISC1\robot\3201.RBT
     file[]: crc = e0778968; size =    199889; name = DISC1\robot\3202.RBT
@@ -1680,14 +1733,14 @@ game[sol-rama-italian-dos]:
     file[]: crc = 18e630ff; size =    819814; name = DISC1\vmd\21101.VMD
     file[]: crc = 7b4aae1c; size =   1015343; name = DISC1\vmd\22122.VMD
     file[]: crc = cd78f9c3; size =    279659; name = DISC1\vmd\2222.VMD
-    file[]: crc = cf574fd8; size =    980874; name = DISC1\vmd\2227.vmd
+    file[]: crc = cf574fd8; size =    980874; name = DISC1\vmd\2227.VMD
     file[]: crc = dc82f0df; size =   1722937; name = DISC1\vmd\22281.VMD
     file[]: crc = 1c79d754; size =    600867; name = DISC1\vmd\22282.VMD
-    file[]: crc = fab31b79; size =    650499; name = DISC1\vmd\2257.vmd
+    file[]: crc = fab31b79; size =    650499; name = DISC1\vmd\2257.VMD
     file[]: crc = d30ddeb3; size =    564377; name = DISC1\vmd\3202.VMD
     file[]: crc = a6c300ae; size =    233254; name = DISC1\vmd\3203.VMD
     file[]: crc = 98403348; size =    231485; name = DISC1\vmd\3204.VMD
-    file[]: crc = f4b0b8f0; size =    212874; name = DISC1\vmd\3206.vmd
+    file[]: crc = f4b0b8f0; size =    212874; name = DISC1\vmd\3206.VMD
     file[]: crc = b6b252a6; size =   1404783; name = DISC1\vmd\3211.VMD
     file[]: crc = e5e24ea6; size =    105893; name = DISC1\vmd\3223.VMD
     file[]: crc = 355aca67; size =    440681; name = DISC1\vmd\3224.VMD
@@ -1700,22 +1753,22 @@ game[sol-rama-italian-dos]:
     file[]: crc = 99aaeff3; size =  10277820; name = DISC1\vmd\34031.VMD
     file[]: crc = 9526e9b6; size =   7060506; name = DISC1\vmd\34041.VMD
     file[]: crc = b068407d; size =   7243177; name = DISC1\vmd\34051.VMD
-    file[]: crc = 00d2f285; size =  13735224; name = DISC1\vmd\34061.vmd
+    file[]: crc = 00d2f285; size =  13735224; name = DISC1\vmd\34061.VMD
     file[]: crc = 4588dc51; size =   6790122; name = DISC1\vmd\34071.VMD
-    file[]: crc = c05a3aaa; size =  14424699; name = DISC1\vmd\34081.vmd
+    file[]: crc = c05a3aaa; size =  14424699; name = DISC1\vmd\34081.VMD
     file[]: crc = 262635f8; size =   9959926; name = DISC1\vmd\34091.VMD
-    file[]: crc = 48358947; size =  18692214; name = DISC1\vmd\35011.vmd
+    file[]: crc = 48358947; size =  18692214; name = DISC1\vmd\35011.VMD
     file[]: crc = fd58f010; size =   9376512; name = DISC1\vmd\37011.VMD
     file[]: crc = 70c59f21; size =   1638084; name = DISC1\vmd\37031.VMD
-    file[]: crc = 145841a2; size =   3130196; name = DISC1\vmd\38011.vmd
+    file[]: crc = 145841a2; size =   3130196; name = DISC1\vmd\38011.VMD
     file[]: crc = 5a947e4f; size =   3363109; name = DISC1\vmd\38031.VMD
     file[]: crc = 8779eaaf; size =   3071534; name = DISC1\vmd\38041.VMD
     file[]: crc = 962a5884; size =   7235933; name = DISC1\vmd\38051.VMD
     file[]: crc = 0c1fb7a9; size =  10369500; name = DISC1\vmd\38111.VMD
-    file[]: crc = 7da4cdf7; size =   4346443; name = DISC1\vmd\38121.vmd
+    file[]: crc = 7da4cdf7; size =   4346443; name = DISC1\vmd\38121.VMD
     file[]: crc = 950c6ed8; size =   4883324; name = DISC1\vmd\38131.VMD
     file[]: crc = d0d53168; size =   1709133; name = DISC1\vmd\38151.VMD
-    file[]: crc = 1d1e218a; size =   4643212; name = DISC1\vmd\38161.vmd
+    file[]: crc = 1d1e218a; size =   4643212; name = DISC1\vmd\38161.VMD
     file[]: crc = 9d195b59; size =   7079127; name = DISC1\vmd\38171.VMD
     file[]: crc = 82badcdd; size =    505570; name = DISC1\vmd\38181.VMD
     file[]: crc = fe08f99b; size =   2467952; name = DISC1\vmd\38221.VMD
@@ -1728,7 +1781,7 @@ game[sol-rama-italian-dos]:
     file[]: crc = cc7f51c3; size =   3939639; name = DISC1\vmd\38431.VMD
     file[]: crc = cf7c592c; size =   9143437; name = DISC1\vmd\38441.VMD
     file[]: crc = 99e837b4; size =   2086081; name = DISC1\vmd\38451.VMD
-    file[]: crc = eee224a5; size =   6039643; name = DISC1\vmd\38461.vmd
+    file[]: crc = eee224a5; size =   6039643; name = DISC1\vmd\38461.VMD
     file[]: crc = ec3c82fb; size =   3201870; name = DISC1\vmd\38511.VMD
     file[]: crc = ea070229; size =   1110502; name = DISC1\vmd\38521.VMD
     file[]: crc = 65ff41aa; size =   1033784; name = DISC1\vmd\38541.VMD
@@ -1736,15 +1789,15 @@ game[sol-rama-italian-dos]:
     file[]: crc = 463ff216; size =   7613004; name = DISC1\vmd\38711.VMD
     file[]: crc = e1b8e28e; size =   2009167; name = DISC1\vmd\38811.VMD
     file[]: crc = e7a0b635; size =   5590543; name = DISC1\vmd\38821.VMD
-    file[]: crc = 7a17ffd7; size =   6337834; name = DISC1\vmd\38831.vmd
+    file[]: crc = 7a17ffd7; size =   6337834; name = DISC1\vmd\38831.VMD
     file[]: crc = 3623cb38; size =   2491349; name = DISC1\vmd\38851.VMD
-    file[]: crc = cc7e31bd; size =   6746917; name = DISC1\vmd\38911.vmd
+    file[]: crc = cc7e31bd; size =   6746917; name = DISC1\vmd\38911.VMD
     file[]: crc = f9b80901; size =   3085070; name = DISC1\vmd\38941.VMD
     file[]: crc = ce125232; size =    333482; name = DISC1\vmd\38999.VMD
     file[]: crc = 7f000f4f; size =   3326153; name = DISC1\vmd\39211.VMD
     file[]: crc = d22cbc5a; size =   7317805; name = DISC1\vmd\39511.VMD
     file[]: crc = 330f07f2; size =  14323464; name = DISC1\vmd\39999.VMD
-    file[]: crc = 6783f718; size =     95712; name = DISC1\vmd\4150.vmd
+    file[]: crc = 6783f718; size =     95712; name = DISC1\vmd\4150.VMD
     file[]: crc = 1028a911; size =     88587; name = DISC1\vmd\4151.VMD
     file[]: crc = ad8e283c; size =     87931; name = DISC1\vmd\4152.VMD
     file[]: crc = f2419ab3; size =   1673878; name = DISC1\vmd\5000.VMD
@@ -2075,16 +2128,16 @@ game[sol-rama-italian-dos]:
     file[]: crc = 9d8acb40; size =     95753; name = DISC2\audio\A0600Z40.0G1
     file[]: crc = ff40307c; size =     62245; name = DISC2\audio\A0601040.001
     file[]: crc = 46a57932; size =    483894; name = DISC2\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC2\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC2\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC2\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC2\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC2\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC2\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC2\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC2\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC2\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC2\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC2\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC2\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC2\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC2\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC2\robot\1010.RBT
     file[]: crc = a0cb2531; size =    140876; name = DISC2\robot\5000.RBT
     file[]: crc = 113693ca; size =    141802; name = DISC2\robot\5001.RBT
     file[]: crc = ca4d70a0; size =    137846; name = DISC2\robot\5002.RBT
@@ -2125,8 +2178,8 @@ game[sol-rama-italian-dos]:
     file[]: crc = 0ad07d72; size =    966134; name = DISC2\robot\6201.RBT
     file[]: crc = e070a22e; size =    940540; name = DISC2\robot\6209.RBT
     file[]: crc = 3702452d; size =     96692; name = DISC2\robot\6218.RBT
-    file[]: crc = e369418a; size =    888260; name = DISC2\robot\6220.rbt
-    file[]: crc = 467c998a; size =    165084; name = DISC2\robot\6222.rbt
+    file[]: crc = e369418a; size =    888260; name = DISC2\robot\6220.RBT
+    file[]: crc = 467c998a; size =    165084; name = DISC2\robot\6222.RBT
     file[]: crc = fb81d1be; size =    482815; name = DISC2\robot\6300.RBT
     file[]: crc = 196a86e5; size =    407376; name = DISC2\robot\6301.RBT
     file[]: crc = a1a01a29; size =    289602; name = DISC2\robot\7502.RBT
@@ -2171,17 +2224,17 @@ game[sol-rama-italian-dos]:
     file[]: crc = 99aaeff3; size =  10277820; name = DISC2\vmd\34031.VMD
     file[]: crc = 9526e9b6; size =   7060506; name = DISC2\vmd\34041.VMD
     file[]: crc = b068407d; size =   7243177; name = DISC2\vmd\34051.VMD
-    file[]: crc = 00d2f285; size =  13735224; name = DISC2\vmd\34061.vmd
+    file[]: crc = 00d2f285; size =  13735224; name = DISC2\vmd\34061.VMD
     file[]: crc = 4588dc51; size =   6790122; name = DISC2\vmd\34071.VMD
-    file[]: crc = c05a3aaa; size =  14424699; name = DISC2\vmd\34081.vmd
+    file[]: crc = c05a3aaa; size =  14424699; name = DISC2\vmd\34081.VMD
     file[]: crc = 262635f8; size =   9959926; name = DISC2\vmd\34091.VMD
-    file[]: crc = 48358947; size =  18692214; name = DISC2\vmd\35011.vmd
-    file[]: crc = 145841a2; size =   3130196; name = DISC2\vmd\38011.vmd
+    file[]: crc = 48358947; size =  18692214; name = DISC2\vmd\35011.VMD
+    file[]: crc = 145841a2; size =   3130196; name = DISC2\vmd\38011.VMD
     file[]: crc = 5a947e4f; size =   3363109; name = DISC2\vmd\38031.VMD
     file[]: crc = 962a5884; size =   7235933; name = DISC2\vmd\38051.VMD
-    file[]: crc = 7da4cdf7; size =   4346443; name = DISC2\vmd\38121.vmd
+    file[]: crc = 7da4cdf7; size =   4346443; name = DISC2\vmd\38121.VMD
     file[]: crc = d0d53168; size =   1709133; name = DISC2\vmd\38151.VMD
-    file[]: crc = ed78ecb3; size =  14170491; name = DISC2\vmd\38191.vmd
+    file[]: crc = ed78ecb3; size =  14170491; name = DISC2\vmd\38191.VMD
     file[]: crc = fe08f99b; size =   2467952; name = DISC2\vmd\38221.VMD
     file[]: crc = a4010f2a; size =   4501526; name = DISC2\vmd\38311.VMD
     file[]: crc = ee024174; size =   8215764; name = DISC2\vmd\38341.VMD
@@ -2192,24 +2245,24 @@ game[sol-rama-italian-dos]:
     file[]: crc = f4818fa0; size =   3217973; name = DISC2\vmd\38421.VMD
     file[]: crc = cc7f51c3; size =   3939639; name = DISC2\vmd\38431.VMD
     file[]: crc = cf7c592c; size =   9143437; name = DISC2\vmd\38441.VMD
-    file[]: crc = eee224a5; size =   6039643; name = DISC2\vmd\38461.vmd
+    file[]: crc = eee224a5; size =   6039643; name = DISC2\vmd\38461.VMD
     file[]: crc = ea070229; size =   1110502; name = DISC2\vmd\38521.VMD
     file[]: crc = 65ff41aa; size =   1033784; name = DISC2\vmd\38541.VMD
     file[]: crc = e589dd5b; size =   7803917; name = DISC2\vmd\38621.VMD
     file[]: crc = 463ff216; size =   7613004; name = DISC2\vmd\38711.VMD
-    file[]: crc = 7a17ffd7; size =   6337834; name = DISC2\vmd\38831.vmd
+    file[]: crc = 7a17ffd7; size =   6337834; name = DISC2\vmd\38831.VMD
     file[]: crc = a4aa0e11; size =   1325979; name = DISC2\vmd\38971.VMD
     file[]: crc = 0e193e51; size =    356483; name = DISC2\vmd\38981.VMD
     file[]: crc = 84e75a63; size =    255171; name = DISC2\vmd\38991.VMD
     file[]: crc = ce125232; size =    333482; name = DISC2\vmd\38999.VMD
     file[]: crc = c7052b4f; size =   3071134; name = DISC2\vmd\39021.VMD
     file[]: crc = 7f000f4f; size =   3326153; name = DISC2\vmd\39211.VMD
-    file[]: crc = 0734a331; size =   8242710; name = DISC2\vmd\39311.vmd
+    file[]: crc = 0734a331; size =   8242710; name = DISC2\vmd\39311.VMD
     file[]: crc = d22cbc5a; size =   7317805; name = DISC2\vmd\39511.VMD
-    file[]: crc = f32590e9; size =  14538909; name = DISC2\vmd\39711.vmd
+    file[]: crc = f32590e9; size =  14538909; name = DISC2\vmd\39711.VMD
     file[]: crc = f2419ab3; size =   1673878; name = DISC2\vmd\5000.VMD
     file[]: crc = 301d2337; size =    544119; name = DISC2\vmd\5001.VMD
-    file[]: crc = 714b1ce4; size =    336592; name = DISC2\vmd\5028.vmd
+    file[]: crc = 714b1ce4; size =    336592; name = DISC2\vmd\5028.VMD
     file[]: crc = aef3bbaa; size =     85457; name = DISC2\vmd\5033.VMD
     file[]: crc = 38657bc8; size =    358895; name = DISC2\vmd\5052.VMD
     file[]: crc = 40c3a6a1; size =    324862; name = DISC2\vmd\5053.VMD
@@ -2240,16 +2293,16 @@ game[sol-rama-italian-dos]:
     file[]: crc = 80f1238f; size =   1575883; name = DISC2\vmd\5410.VMD
     file[]: crc = f1fdd3bc; size =   1127480; name = DISC2\vmd\6003.VMD
     file[]: crc = ec0604d5; size =    858208; name = DISC2\vmd\6005.VMD
-    file[]: crc = a2224eca; size =    157850; name = DISC2\vmd\6010.vmd
-    file[]: crc = 950bda1e; size =    149124; name = DISC2\vmd\6020.vmd
-    file[]: crc = 686d1cac; size =    144675; name = DISC2\vmd\6030.vmd
-    file[]: crc = 50aec92a; size =    140319; name = DISC2\vmd\6031.vmd
+    file[]: crc = a2224eca; size =    157850; name = DISC2\vmd\6010.VMD
+    file[]: crc = 950bda1e; size =    149124; name = DISC2\vmd\6020.VMD
+    file[]: crc = 686d1cac; size =    144675; name = DISC2\vmd\6030.VMD
+    file[]: crc = 50aec92a; size =    140319; name = DISC2\vmd\6031.VMD
     file[]: crc = 1661307a; size =    293958; name = DISC2\vmd\6032.VMD
-    file[]: crc = 60a6d8d7; size =   1069956; name = DISC2\vmd\6033.vmd
+    file[]: crc = 60a6d8d7; size =   1069956; name = DISC2\vmd\6033.VMD
     file[]: crc = b5d4a7fd; size =    740868; name = DISC2\vmd\6034.VMD
-    file[]: crc = e3b7fd07; size =    139265; name = DISC2\vmd\6040.vmd
-    file[]: crc = 01f0950a; size =    822526; name = DISC2\vmd\6103.vmd
-    file[]: crc = ca6bb8b5; size =    835431; name = DISC2\vmd\6104.vmd
+    file[]: crc = e3b7fd07; size =    139265; name = DISC2\vmd\6040.VMD
+    file[]: crc = 01f0950a; size =    822526; name = DISC2\vmd\6103.VMD
+    file[]: crc = ca6bb8b5; size =    835431; name = DISC2\vmd\6104.VMD
     file[]: crc = 42577bb6; size =   1196766; name = DISC2\vmd\6200.VMD
     file[]: crc = 6b2939d4; size =   1200409; name = DISC2\vmd\6201.VMD
     file[]: crc = 44e00a06; size =   1068196; name = DISC2\vmd\6202.VMD
@@ -2261,30 +2314,30 @@ game[sol-rama-italian-dos]:
     file[]: crc = 87582e27; size =    624653; name = DISC2\vmd\6211.VMD
     file[]: crc = c165b6ee; size =    219511; name = DISC2\vmd\6223.VMD
     file[]: crc = 29feb7fb; size =    331381; name = DISC2\vmd\6224.VMD
-    file[]: crc = 508c12fd; size =    617566; name = DISC2\vmd\6400.vmd
-    file[]: crc = d448017c; size =    617194; name = DISC2\vmd\6401.vmd
+    file[]: crc = 508c12fd; size =    617566; name = DISC2\vmd\6400.VMD
+    file[]: crc = d448017c; size =    617194; name = DISC2\vmd\6401.VMD
     file[]: crc = 9132e90b; size =    504220; name = DISC2\vmd\6402.VMD
-    file[]: crc = a65feafd; size =    500598; name = DISC2\vmd\6403.vmd
+    file[]: crc = a65feafd; size =    500598; name = DISC2\vmd\6403.VMD
     file[]: crc = a35af2a4; size =    132394; name = DISC2\vmd\6423.VMD
     file[]: crc = f22f9497; size =   1915072; name = DISC2\vmd\6425.VMD
     file[]: crc = f8fa2e7c; size =   2717933; name = DISC2\vmd\6500.VMD
-    file[]: crc = f3a1f8a4; size =   1581219; name = DISC2\vmd\6801.vmd
-    file[]: crc = 897deecd; size =   1039982; name = DISC2\vmd\6802.vmd
+    file[]: crc = f3a1f8a4; size =   1581219; name = DISC2\vmd\6801.VMD
+    file[]: crc = 897deecd; size =   1039982; name = DISC2\vmd\6802.VMD
     file[]: crc = 2ef92564; size =    184682; name = DISC2\vmd\6826.VMD
     file[]: crc = 950c6490; size =     98945; name = DISC2\vmd\6827.VMD
     file[]: crc = c1dd95da; size =    194192; name = DISC2\vmd\6829.VMD
     file[]: crc = cf67684c; size =    244756; name = DISC2\vmd\6900.VMD
-    file[]: crc = 30180247; size =    244527; name = DISC2\vmd\6901.vmd
-    file[]: crc = b874cbcc; size =    124752; name = DISC2\vmd\6902.vmd
-    file[]: crc = e66d964a; size =    121217; name = DISC2\vmd\6903.vmd
+    file[]: crc = 30180247; size =    244527; name = DISC2\vmd\6901.VMD
+    file[]: crc = b874cbcc; size =    124752; name = DISC2\vmd\6902.VMD
+    file[]: crc = e66d964a; size =    121217; name = DISC2\vmd\6903.VMD
     file[]: crc = 1b4de054; size =   2909064; name = DISC2\vmd\7501.VMD
     file[]: crc = c20f4fd7; size =   4411326; name = DISC2\vmd\7850.VMD
-    file[]: crc = 89a436ff; size =   3076987; name = DISC2\vmd\7851.vmd
-    file[]: crc = a8f059b6; size =   2647047; name = DISC2\vmd\7852.vmd
-    file[]: crc = 7a7f7e25; size =    174768; name = DISC2\vmd\7853.vmd
-    file[]: crc = 4b7447e1; size =    174819; name = DISC2\vmd\7854.vmd
-    file[]: crc = df75b952; size =   1212699; name = DISC2\vmd\7855.vmd
-    file[]: crc = 77416fd0; size =   1110817; name = DISC2\vmd\7856.vmd
+    file[]: crc = 89a436ff; size =   3076987; name = DISC2\vmd\7851.VMD
+    file[]: crc = a8f059b6; size =   2647047; name = DISC2\vmd\7852.VMD
+    file[]: crc = 7a7f7e25; size =    174768; name = DISC2\vmd\7853.VMD
+    file[]: crc = 4b7447e1; size =    174819; name = DISC2\vmd\7854.VMD
+    file[]: crc = df75b952; size =   1212699; name = DISC2\vmd\7855.VMD
+    file[]: crc = 77416fd0; size =   1110817; name = DISC2\vmd\7856.VMD
     file[]: crc = d025c4ea; size =    154742; name = DISC2\vmd\7857.VMD
     file[]: crc = 206d5f70; size =    141974; name = DISC2\vmd\7858.VMD
     file[]: crc = 497c6e6f; size =   1487155; name = DISC2\vmd\7859.VMD
@@ -2699,36 +2752,36 @@ game[sol-rama-german-dos]:
     file[]: crc = a17547cb; size =     55240; name = DISC1\audio\A05X1O40.001
     file[]: crc = 927254d4; size =    156480; name = DISC1\audio\A05X1P40.001
     file[]: crc = 46a57932; size =    483894; name = DISC1\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC1\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC1\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC1\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC1\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC1\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC1\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC1\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC1\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC1\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC1\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC1\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC1\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC1\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC1\robot\1010.RBT
     file[]: crc = 636a019b; size =    875278; name = DISC1\robot\2100.RBT
     file[]: crc = 457b2555; size =    876929; name = DISC1\robot\2101.RBT
     file[]: crc = d953c910; size =    870501; name = DISC1\robot\2102.RBT
     file[]: crc = 37d5af97; size =    900432; name = DISC1\robot\2103.RBT
     file[]: crc = 82288afa; size =    851380; name = DISC1\robot\2104.RBT
     file[]: crc = 9adb7330; size =    589382; name = DISC1\robot\2127.RBT
-    file[]: crc = d8175414; size =    692186; name = DISC1\robot\2148.rbt
+    file[]: crc = d8175414; size =    692186; name = DISC1\robot\2148.RBT
     file[]: crc = 7bfb59f6; size =    808716; name = DISC1\robot\2172.RBT
     file[]: crc = e41ecfa1; size =   1585891; name = DISC1\robot\2176.RBT
     file[]: crc = 4439dbeb; size =    674580; name = DISC1\robot\2179.RBT
-    file[]: crc = 047f31a5; size =    736831; name = DISC1\robot\2180.rbt
+    file[]: crc = 047f31a5; size =    736831; name = DISC1\robot\2180.RBT
     file[]: crc = 4b6df2ec; size =    704215; name = DISC1\robot\2200.RBT
     file[]: crc = 4517a048; size =    708267; name = DISC1\robot\2201.RBT
     file[]: crc = 8f0d7552; size =    689659; name = DISC1\robot\2202.RBT
     file[]: crc = 4352a6cd; size =    722334; name = DISC1\robot\2203.RBT
     file[]: crc = 0dc399ab; size =    699210; name = DISC1\robot\2204.RBT
-    file[]: crc = 777cf180; size =    273382; name = DISC1\robot\22171.rbt
-    file[]: crc = c72612c5; size =    572238; name = DISC1\robot\22172.rbt
-    file[]: crc = 3f2a9452; size =    423694; name = DISC1\robot\22173.rbt
-    file[]: crc = b7478c2e; size =    444450; name = DISC1\robot\22174.rbt
+    file[]: crc = 777cf180; size =    273382; name = DISC1\robot\22171.RBT
+    file[]: crc = c72612c5; size =    572238; name = DISC1\robot\22172.RBT
+    file[]: crc = 3f2a9452; size =    423694; name = DISC1\robot\22173.RBT
+    file[]: crc = b7478c2e; size =    444450; name = DISC1\robot\22174.RBT
     file[]: crc = 8c289b65; size =    294960; name = DISC1\robot\22281.RBT
     file[]: crc = 4c026326; size =   6418998; name = DISC1\robot\2283.RBT
     file[]: crc = a31da868; size =    666310; name = DISC1\robot\2300.RBT
@@ -2746,7 +2799,7 @@ game[sol-rama-german-dos]:
     file[]: crc = b9dd247f; size =   1967212; name = DISC1\robot\3103.RBT
     file[]: crc = 16ceec9c; size =    180434; name = DISC1\robot\3104.RBT
     file[]: crc = 941e0b65; size =   2466085; name = DISC1\robot\3105.RBT
-    file[]: crc = fa527656; size =   3110680; name = DISC1\robot\3106.rbt
+    file[]: crc = fa527656; size =   3110680; name = DISC1\robot\3106.RBT
     file[]: crc = f1e35cf7; size =    104279; name = DISC1\robot\3200.RBT
     file[]: crc = dbc6058d; size =    129767; name = DISC1\robot\3201.RBT
     file[]: crc = e0778968; size =    199889; name = DISC1\robot\3202.RBT
@@ -2789,7 +2842,7 @@ game[sol-rama-german-dos]:
     file[]: crc = c1be58ac; size =    162804; name = DISC1\robot\4266.RBT
     file[]: crc = ce13cc17; size =    334319; name = DISC1\vmd\100.VMD
     file[]: crc = ce8a9473; size =    286184; name = DISC1\vmd\1051.VMD
-    file[]: crc = a3ef6774; size =    416353; name = DISC1\vmd\1052.vmd
+    file[]: crc = a3ef6774; size =    416353; name = DISC1\vmd\1052.VMD
     file[]: crc = ee05427a; size =   5043350; name = DISC1\vmd\1100.VMD
     file[]: crc = b0e6e34b; size =    502105; name = DISC1\vmd\1200.VMD
     file[]: crc = 491b2858; size =   3343309; name = DISC1\vmd\2000.VMD
@@ -2800,14 +2853,14 @@ game[sol-rama-german-dos]:
     file[]: crc = 18e630ff; size =    819814; name = DISC1\vmd\21101.VMD
     file[]: crc = 7b4aae1c; size =   1015343; name = DISC1\vmd\22122.VMD
     file[]: crc = cd78f9c3; size =    279659; name = DISC1\vmd\2222.VMD
-    file[]: crc = cf574fd8; size =    980874; name = DISC1\vmd\2227.vmd
+    file[]: crc = cf574fd8; size =    980874; name = DISC1\vmd\2227.VMD
     file[]: crc = dc82f0df; size =   1722937; name = DISC1\vmd\22281.VMD
     file[]: crc = 1c79d754; size =    600867; name = DISC1\vmd\22282.VMD
-    file[]: crc = fab31b79; size =    650499; name = DISC1\vmd\2257.vmd
+    file[]: crc = fab31b79; size =    650499; name = DISC1\vmd\2257.VMD
     file[]: crc = d30ddeb3; size =    564377; name = DISC1\vmd\3202.VMD
     file[]: crc = a6c300ae; size =    233254; name = DISC1\vmd\3203.VMD
     file[]: crc = 98403348; size =    231485; name = DISC1\vmd\3204.VMD
-    file[]: crc = f4b0b8f0; size =    212874; name = DISC1\vmd\3206.vmd
+    file[]: crc = f4b0b8f0; size =    212874; name = DISC1\vmd\3206.VMD
     file[]: crc = b6b252a6; size =   1404783; name = DISC1\vmd\3211.VMD
     file[]: crc = e5e24ea6; size =    105893; name = DISC1\vmd\3223.VMD
     file[]: crc = 355aca67; size =    440681; name = DISC1\vmd\3224.VMD
@@ -2820,22 +2873,22 @@ game[sol-rama-german-dos]:
     file[]: crc = cee7d21c; size =  10286646; name = DISC1\vmd\34031.VMD
     file[]: crc = f909c9f4; size =   7076533; name = DISC1\vmd\34041.VMD
     file[]: crc = 56222a30; size =   7235822; name = DISC1\vmd\34051.VMD
-    file[]: crc = 6d09439c; size =  13852744; name = DISC1\vmd\34061.vmd
+    file[]: crc = 6d09439c; size =  13852744; name = DISC1\vmd\34061.VMD
     file[]: crc = 8a889419; size =   6801890; name = DISC1\vmd\34071.VMD
-    file[]: crc = cdada1d5; size =  14443796; name = DISC1\vmd\34081.vmd
+    file[]: crc = cdada1d5; size =  14443796; name = DISC1\vmd\34081.VMD
     file[]: crc = ece85f69; size =   9926093; name = DISC1\vmd\34091.VMD
-    file[]: crc = 516e7e81; size =  18851082; name = DISC1\vmd\35011.vmd
+    file[]: crc = 516e7e81; size =  18851082; name = DISC1\vmd\35011.VMD
     file[]: crc = a70a3ce4; size =   9372099; name = DISC1\vmd\37011.VMD
     file[]: crc = 96c8b2da; size =   1635142; name = DISC1\vmd\37031.VMD
-    file[]: crc = 408fc32f; size =   3109602; name = DISC1\vmd\38011.vmd
+    file[]: crc = 408fc32f; size =   3109602; name = DISC1\vmd\38011.VMD
     file[]: crc = 3452672f; size =   3327925; name = DISC1\vmd\38031.VMD
     file[]: crc = 8fc52907; size =   3074492; name = DISC1\vmd\38041.VMD
     file[]: crc = b75b2988; size =   7302128; name = DISC1\vmd\38051.VMD
-    file[]: crc = c055e974; size =  10288595; name = DISC1\vmd\38111.vmd
-    file[]: crc = 27467da4; size =   4346443; name = DISC1\vmd\38121.vmd
+    file[]: crc = c055e974; size =  10288595; name = DISC1\vmd\38111.VMD
+    file[]: crc = 27467da4; size =   4346443; name = DISC1\vmd\38121.VMD
     file[]: crc = cf5e2823; size =   4867143; name = DISC1\vmd\38131.VMD
     file[]: crc = 6c85fb58; size =   1715017; name = DISC1\vmd\38151.VMD
-    file[]: crc = 560ca9bf; size =   4609494; name = DISC1\vmd\38161.vmd
+    file[]: crc = 560ca9bf; size =   4609494; name = DISC1\vmd\38161.VMD
     file[]: crc = 74c31589; size =   7049707; name = DISC1\vmd\38171.VMD
     file[]: crc = 25bd04b2; size =    501175; name = DISC1\vmd\38181.VMD
     file[]: crc = cc4f646e; size =   2466481; name = DISC1\vmd\38221.VMD
@@ -2848,7 +2901,7 @@ game[sol-rama-german-dos]:
     file[]: crc = 00ffa28c; size =   3938171; name = DISC1\vmd\38431.VMD
     file[]: crc = 4fd03806; size =   9172857; name = DISC1\vmd\38441.VMD
     file[]: crc = aefb654b; size =   2103553; name = DISC1\vmd\38451.VMD
-    file[]: crc = a7eff6f5; size =   6038174; name = DISC1\vmd\38461.vmd
+    file[]: crc = a7eff6f5; size =   6038174; name = DISC1\vmd\38461.VMD
     file[]: crc = 7245419a; size =   3233946; name = DISC1\vmd\38511.VMD
     file[]: crc = ea070229; size =   1110502; name = DISC1\vmd\38521.VMD
     file[]: crc = 65ff41aa; size =   1033784; name = DISC1\vmd\38541.VMD
@@ -2856,15 +2909,15 @@ game[sol-rama-german-dos]:
     file[]: crc = b487e7b5; size =   7702735; name = DISC1\vmd\38711.VMD
     file[]: crc = 240c0518; size =   2028251; name = DISC1\vmd\38811.VMD
     file[]: crc = 3b760d7a; size =   5611123; name = DISC1\vmd\38821.VMD
-    file[]: crc = 6437eead; size =   6359899; name = DISC1\vmd\38831.vmd
+    file[]: crc = 6437eead; size =   6359899; name = DISC1\vmd\38831.VMD
     file[]: crc = 92024dad; size =   2506059; name = DISC1\vmd\38851.VMD
-    file[]: crc = 9e4d216a; size =   6773395; name = DISC1\vmd\38911.vmd
+    file[]: crc = 9e4d216a; size =   6773395; name = DISC1\vmd\38911.VMD
     file[]: crc = dd41275b; size =   3099770; name = DISC1\vmd\38941.VMD
     file[]: crc = ce125232; size =    333482; name = DISC1\vmd\38999.VMD
     file[]: crc = 3e87a8f5; size =   3326153; name = DISC1\vmd\39211.VMD
     file[]: crc = bc0710e6; size =   7319267; name = DISC1\vmd\39511.VMD
     file[]: crc = 9c5a69ac; size =  14317583; name = DISC1\vmd\39999.VMD
-    file[]: crc = 6783f718; size =     95712; name = DISC1\vmd\4150.vmd
+    file[]: crc = 6783f718; size =     95712; name = DISC1\vmd\4150.VMD
     file[]: crc = 1028a911; size =     88587; name = DISC1\vmd\4151.VMD
     file[]: crc = ad8e283c; size =     87931; name = DISC1\vmd\4152.VMD
     file[]: crc = f2419ab3; size =   1673878; name = DISC1\vmd\5000.VMD
@@ -3191,16 +3244,16 @@ game[sol-rama-german-dos]:
     file[]: crc = e9c6b645; size =     92488; name = DISC2\audio\A0600Z40.0G1
     file[]: crc = 9d3fa00f; size =     68808; name = DISC2\audio\A0601040.001
     file[]: crc = 46a57932; size =    483894; name = DISC2\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC2\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC2\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC2\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC2\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC2\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC2\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC2\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC2\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC2\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC2\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC2\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC2\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC2\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC2\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC2\robot\1010.RBT
     file[]: crc = a0cb2531; size =    140876; name = DISC2\robot\5000.RBT
     file[]: crc = 113693ca; size =    141802; name = DISC2\robot\5001.RBT
     file[]: crc = ca4d70a0; size =    137846; name = DISC2\robot\5002.RBT
@@ -3241,8 +3294,8 @@ game[sol-rama-german-dos]:
     file[]: crc = 0ad07d72; size =    966134; name = DISC2\robot\6201.RBT
     file[]: crc = e070a22e; size =    940540; name = DISC2\robot\6209.RBT
     file[]: crc = 3702452d; size =     96692; name = DISC2\robot\6218.RBT
-    file[]: crc = e369418a; size =    888260; name = DISC2\robot\6220.rbt
-    file[]: crc = 467c998a; size =    165084; name = DISC2\robot\6222.rbt
+    file[]: crc = e369418a; size =    888260; name = DISC2\robot\6220.RBT
+    file[]: crc = 467c998a; size =    165084; name = DISC2\robot\6222.RBT
     file[]: crc = fb81d1be; size =    482815; name = DISC2\robot\6300.RBT
     file[]: crc = 196a86e5; size =    407376; name = DISC2\robot\6301.RBT
     file[]: crc = a1a01a29; size =    289602; name = DISC2\robot\7502.RBT
@@ -3281,23 +3334,23 @@ game[sol-rama-german-dos]:
     file[]: crc = 579b6816; size =     97813; name = DISC2\robot\7915.RBT
     file[]: crc = ce13cc17; size =    334319; name = DISC2\vmd\100.VMD
     file[]: crc = ce8a9473; size =    286184; name = DISC2\vmd\1051.VMD
-    file[]: crc = a3ef6774; size =    416353; name = DISC2\vmd\1052.vmd
+    file[]: crc = a3ef6774; size =    416353; name = DISC2\vmd\1052.VMD
     file[]: crc = f9c613f5; size =   4106234; name = DISC2\vmd\34011.VMD
     file[]: crc = c142b218; size =   7927726; name = DISC2\vmd\34021.VMD
     file[]: crc = cee7d21c; size =  10286646; name = DISC2\vmd\34031.VMD
     file[]: crc = f909c9f4; size =   7076533; name = DISC2\vmd\34041.VMD
     file[]: crc = 56222a30; size =   7235822; name = DISC2\vmd\34051.VMD
-    file[]: crc = 6d09439c; size =  13852744; name = DISC2\vmd\34061.vmd
+    file[]: crc = 6d09439c; size =  13852744; name = DISC2\vmd\34061.VMD
     file[]: crc = 8a889419; size =   6801890; name = DISC2\vmd\34071.VMD
-    file[]: crc = cdada1d5; size =  14443796; name = DISC2\vmd\34081.vmd
+    file[]: crc = cdada1d5; size =  14443796; name = DISC2\vmd\34081.VMD
     file[]: crc = ece85f69; size =   9926093; name = DISC2\vmd\34091.VMD
-    file[]: crc = 516e7e81; size =  18851082; name = DISC2\vmd\35011.vmd
-    file[]: crc = 408fc32f; size =   3109602; name = DISC2\vmd\38011.vmd
+    file[]: crc = 516e7e81; size =  18851082; name = DISC2\vmd\35011.VMD
+    file[]: crc = 408fc32f; size =   3109602; name = DISC2\vmd\38011.VMD
     file[]: crc = 3452672f; size =   3327925; name = DISC2\vmd\38031.VMD
     file[]: crc = b75b2988; size =   7302128; name = DISC2\vmd\38051.VMD
-    file[]: crc = 27467da4; size =   4346443; name = DISC2\vmd\38121.vmd
+    file[]: crc = 27467da4; size =   4346443; name = DISC2\vmd\38121.VMD
     file[]: crc = 6c85fb58; size =   1715017; name = DISC2\vmd\38151.VMD
-    file[]: crc = b1564218; size =  14174904; name = DISC2\vmd\38191.vmd
+    file[]: crc = b1564218; size =  14174904; name = DISC2\vmd\38191.VMD
     file[]: crc = cc4f646e; size =   2466481; name = DISC2\vmd\38221.VMD
     file[]: crc = 1338f310; size =   4494171; name = DISC2\vmd\38311.VMD
     file[]: crc = c13a1977; size =   8142214; name = DISC2\vmd\38341.VMD
@@ -3308,24 +3361,24 @@ game[sol-rama-german-dos]:
     file[]: crc = 54bc67fd; size =   3198915; name = DISC2\vmd\38421.VMD
     file[]: crc = 00ffa28c; size =   3938171; name = DISC2\vmd\38431.VMD
     file[]: crc = 4fd03806; size =   9172857; name = DISC2\vmd\38441.VMD
-    file[]: crc = a7eff6f5; size =   6038174; name = DISC2\vmd\38461.vmd
+    file[]: crc = a7eff6f5; size =   6038174; name = DISC2\vmd\38461.VMD
     file[]: crc = ea070229; size =   1110502; name = DISC2\vmd\38521.VMD
     file[]: crc = 65ff41aa; size =   1033784; name = DISC2\vmd\38541.VMD
     file[]: crc = 2665546d; size =   7812719; name = DISC2\vmd\38621.VMD
     file[]: crc = b487e7b5; size =   7702735; name = DISC2\vmd\38711.VMD
-    file[]: crc = 6437eead; size =   6359899; name = DISC2\vmd\38831.vmd
+    file[]: crc = 6437eead; size =   6359899; name = DISC2\vmd\38831.VMD
     file[]: crc = e37c36d4; size =   1320103; name = DISC2\vmd\38971.VMD
     file[]: crc = 0e193e51; size =    356483; name = DISC2\vmd\38981.VMD
     file[]: crc = 84e75a63; size =    255171; name = DISC2\vmd\38991.VMD
     file[]: crc = ce125232; size =    333482; name = DISC2\vmd\38999.VMD
     file[]: crc = b7b85822; size =   3069678; name = DISC2\vmd\39021.VMD
     file[]: crc = 3e87a8f5; size =   3326153; name = DISC2\vmd\39211.VMD
-    file[]: crc = 1d028a02; size =   8242710; name = DISC2\vmd\39311.vmd
+    file[]: crc = 1d028a02; size =   8242710; name = DISC2\vmd\39311.VMD
     file[]: crc = bc0710e6; size =   7319267; name = DISC2\vmd\39511.VMD
-    file[]: crc = a9c979f6; size =  14538248; name = DISC2\vmd\39711.vmd
+    file[]: crc = a9c979f6; size =  14538248; name = DISC2\vmd\39711.VMD
     file[]: crc = f2419ab3; size =   1673878; name = DISC2\vmd\5000.VMD
     file[]: crc = 301d2337; size =    544119; name = DISC2\vmd\5001.VMD
-    file[]: crc = 714b1ce4; size =    336592; name = DISC2\vmd\5028.vmd
+    file[]: crc = 714b1ce4; size =    336592; name = DISC2\vmd\5028.VMD
     file[]: crc = aef3bbaa; size =     85457; name = DISC2\vmd\5033.VMD
     file[]: crc = 38657bc8; size =    358895; name = DISC2\vmd\5052.VMD
     file[]: crc = 40c3a6a1; size =    324862; name = DISC2\vmd\5053.VMD
@@ -3356,16 +3409,16 @@ game[sol-rama-german-dos]:
     file[]: crc = 80f1238f; size =   1575883; name = DISC2\vmd\5410.VMD
     file[]: crc = f1fdd3bc; size =   1127480; name = DISC2\vmd\6003.VMD
     file[]: crc = ec0604d5; size =    858208; name = DISC2\vmd\6005.VMD
-    file[]: crc = a2224eca; size =    157850; name = DISC2\vmd\6010.vmd
-    file[]: crc = 950bda1e; size =    149124; name = DISC2\vmd\6020.vmd
-    file[]: crc = 686d1cac; size =    144675; name = DISC2\vmd\6030.vmd
-    file[]: crc = 50aec92a; size =    140319; name = DISC2\vmd\6031.vmd
+    file[]: crc = a2224eca; size =    157850; name = DISC2\vmd\6010.VMD
+    file[]: crc = 950bda1e; size =    149124; name = DISC2\vmd\6020.VMD
+    file[]: crc = 686d1cac; size =    144675; name = DISC2\vmd\6030.VMD
+    file[]: crc = 50aec92a; size =    140319; name = DISC2\vmd\6031.VMD
     file[]: crc = 1661307a; size =    293958; name = DISC2\vmd\6032.VMD
-    file[]: crc = 60a6d8d7; size =   1069956; name = DISC2\vmd\6033.vmd
+    file[]: crc = 60a6d8d7; size =   1069956; name = DISC2\vmd\6033.VMD
     file[]: crc = b5d4a7fd; size =    740868; name = DISC2\vmd\6034.VMD
-    file[]: crc = e3b7fd07; size =    139265; name = DISC2\vmd\6040.vmd
-    file[]: crc = 01f0950a; size =    822526; name = DISC2\vmd\6103.vmd
-    file[]: crc = ca6bb8b5; size =    835431; name = DISC2\vmd\6104.vmd
+    file[]: crc = e3b7fd07; size =    139265; name = DISC2\vmd\6040.VMD
+    file[]: crc = 01f0950a; size =    822526; name = DISC2\vmd\6103.VMD
+    file[]: crc = ca6bb8b5; size =    835431; name = DISC2\vmd\6104.VMD
     file[]: crc = 42577bb6; size =   1196766; name = DISC2\vmd\6200.VMD
     file[]: crc = 6b2939d4; size =   1200409; name = DISC2\vmd\6201.VMD
     file[]: crc = 44e00a06; size =   1068196; name = DISC2\vmd\6202.VMD
@@ -3377,30 +3430,30 @@ game[sol-rama-german-dos]:
     file[]: crc = 87582e27; size =    624653; name = DISC2\vmd\6211.VMD
     file[]: crc = c165b6ee; size =    219511; name = DISC2\vmd\6223.VMD
     file[]: crc = 29feb7fb; size =    331381; name = DISC2\vmd\6224.VMD
-    file[]: crc = 508c12fd; size =    617566; name = DISC2\vmd\6400.vmd
-    file[]: crc = d448017c; size =    617194; name = DISC2\vmd\6401.vmd
+    file[]: crc = 508c12fd; size =    617566; name = DISC2\vmd\6400.VMD
+    file[]: crc = d448017c; size =    617194; name = DISC2\vmd\6401.VMD
     file[]: crc = 9132e90b; size =    504220; name = DISC2\vmd\6402.VMD
-    file[]: crc = a65feafd; size =    500598; name = DISC2\vmd\6403.vmd
+    file[]: crc = a65feafd; size =    500598; name = DISC2\vmd\6403.VMD
     file[]: crc = a35af2a4; size =    132394; name = DISC2\vmd\6423.VMD
     file[]: crc = f22f9497; size =   1915072; name = DISC2\vmd\6425.VMD
     file[]: crc = f8fa2e7c; size =   2717933; name = DISC2\vmd\6500.VMD
-    file[]: crc = f3a1f8a4; size =   1581219; name = DISC2\vmd\6801.vmd
-    file[]: crc = 897deecd; size =   1039982; name = DISC2\vmd\6802.vmd
+    file[]: crc = f3a1f8a4; size =   1581219; name = DISC2\vmd\6801.VMD
+    file[]: crc = 897deecd; size =   1039982; name = DISC2\vmd\6802.VMD
     file[]: crc = 2ef92564; size =    184682; name = DISC2\vmd\6826.VMD
     file[]: crc = 950c6490; size =     98945; name = DISC2\vmd\6827.VMD
     file[]: crc = c1dd95da; size =    194192; name = DISC2\vmd\6829.VMD
     file[]: crc = cf67684c; size =    244756; name = DISC2\vmd\6900.VMD
-    file[]: crc = 30180247; size =    244527; name = DISC2\vmd\6901.vmd
-    file[]: crc = b874cbcc; size =    124752; name = DISC2\vmd\6902.vmd
-    file[]: crc = e66d964a; size =    121217; name = DISC2\vmd\6903.vmd
+    file[]: crc = 30180247; size =    244527; name = DISC2\vmd\6901.VMD
+    file[]: crc = b874cbcc; size =    124752; name = DISC2\vmd\6902.VMD
+    file[]: crc = e66d964a; size =    121217; name = DISC2\vmd\6903.VMD
     file[]: crc = 1b4de054; size =   2909064; name = DISC2\vmd\7501.VMD
     file[]: crc = c20f4fd7; size =   4411326; name = DISC2\vmd\7850.VMD
-    file[]: crc = 89a436ff; size =   3076987; name = DISC2\vmd\7851.vmd
-    file[]: crc = a8f059b6; size =   2647047; name = DISC2\vmd\7852.vmd
-    file[]: crc = 7a7f7e25; size =    174768; name = DISC2\vmd\7853.vmd
-    file[]: crc = 4b7447e1; size =    174819; name = DISC2\vmd\7854.vmd
-    file[]: crc = df75b952; size =   1212699; name = DISC2\vmd\7855.vmd
-    file[]: crc = 77416fd0; size =   1110817; name = DISC2\vmd\7856.vmd
+    file[]: crc = 89a436ff; size =   3076987; name = DISC2\vmd\7851.VMD
+    file[]: crc = a8f059b6; size =   2647047; name = DISC2\vmd\7852.VMD
+    file[]: crc = 7a7f7e25; size =    174768; name = DISC2\vmd\7853.VMD
+    file[]: crc = 4b7447e1; size =    174819; name = DISC2\vmd\7854.VMD
+    file[]: crc = df75b952; size =   1212699; name = DISC2\vmd\7855.VMD
+    file[]: crc = 77416fd0; size =   1110817; name = DISC2\vmd\7856.VMD
     file[]: crc = d025c4ea; size =    154742; name = DISC2\vmd\7857.VMD
     file[]: crc = 206d5f70; size =    141974; name = DISC2\vmd\7858.VMD
     file[]: crc = 497c6e6f; size =   1487155; name = DISC2\vmd\7859.VMD
@@ -3431,22 +3484,22 @@ game[sol-rama-german-dos]:
     file[]: crc = 0a760320; size =   6954219; name = DISC3\RESSCI.003
     file[]: crc = 0171d37d; size =        13; name = DISC3\VERSION
     file[]: crc = 46a57932; size =    483894; name = DISC3\robot\1000.RBT
-    file[]: crc = 1b924411; size =    520856; name = DISC3\robot\1001.rbt
+    file[]: crc = 1b924411; size =    520856; name = DISC3\robot\1001.RBT
     file[]: crc = 3c72d47f; size =    620509; name = DISC3\robot\1002.RBT
     file[]: crc = 10642b47; size =    202727; name = DISC3\robot\1003.RBT
     file[]: crc = 0c369fe7; size =    472838; name = DISC3\robot\1004.RBT
     file[]: crc = 16142554; size =    544981; name = DISC3\robot\1005.RBT
     file[]: crc = 2b937af4; size =    493102; name = DISC3\robot\1006.RBT
-    file[]: crc = 8f783263; size =    140513; name = DISC3\robot\1007.rbt
-    file[]: crc = 15d8fb6d; size =    197431; name = DISC3\robot\1008.rbt
-    file[]: crc = b55fa9f8; size =    203332; name = DISC3\robot\1009.rbt
-    file[]: crc = e097ea35; size =    201048; name = DISC3\robot\1010.rbt
+    file[]: crc = 8f783263; size =    140513; name = DISC3\robot\1007.RBT
+    file[]: crc = 15d8fb6d; size =    197431; name = DISC3\robot\1008.RBT
+    file[]: crc = b55fa9f8; size =    203332; name = DISC3\robot\1009.RBT
+    file[]: crc = e097ea35; size =    201048; name = DISC3\robot\1010.RBT
     file[]: crc = ce13cc17; size =    334319; name = DISC3\vmd\100.VMD
     file[]: crc = 8ef413d2; size =   1239353; name = DISC3\vmd\1000.VMD
-    file[]: crc = c59b3d1d; size =   1138262; name = DISC3\vmd\1001.vmd
+    file[]: crc = c59b3d1d; size =   1138262; name = DISC3\vmd\1001.VMD
     file[]: crc = 14b59d56; size =  23858859; name = DISC3\vmd\31011.VMD
-    file[]: crc = 673eb125; size =  46650039; name = DISC3\vmd\32011.vmd
-    file[]: crc = 72a45143; size =  26002253; name = DISC3\vmd\33011.vmd
+    file[]: crc = 673eb125; size =  46650039; name = DISC3\vmd\32011.VMD
+    file[]: crc = 72a45143; size =  26002253; name = DISC3\vmd\33011.VMD
     file[]: crc = cf67684c; size =    244756; name = DISC3\vmd\40002.VMD
     file[]: crc = 59784a82; size =    853827; name = DISC3\vmd\40003.VMD
     file[]: crc = 16fc675e; size =   2655124; name = DISC3\vmd\40004.VMD
@@ -3461,11 +3514,11 @@ game[sol-rama-german-dos]:
     file[]: crc = afcaa5db; size =   2262374; name = DISC3\vmd\63021.VMD
     file[]: crc = d2a978e9; size =   7344415; name = DISC3\vmd\63022.VMD
     file[]: crc = 4dfc5064; size =  10412669; name = DISC3\vmd\63023.VMD
-    file[]: crc = 4df4f264; size =   1941960; name = DISC3\vmd\63031.vmd
+    file[]: crc = 4df4f264; size =   1941960; name = DISC3\vmd\63031.VMD
     file[]: crc = addf6f39; size =  13947486; name = DISC3\vmd\63041.VMD
     file[]: crc = a636cf49; size =   9778475; name = DISC3\vmd\63042.VMD
     file[]: crc = 9d79fafa; size =   5516279; name = DISC3\vmd\63043.VMD
-    file[]: crc = a962dd7e; size =   1641882; name = DISC3\vmd\63051.vmd
+    file[]: crc = a962dd7e; size =   1641882; name = DISC3\vmd\63051.VMD
     file[]: crc = 0e5bbfc1; size =   4339393; name = DISC3\vmd\63052.VMD
     file[]: crc = 401be88a; size =   6975033; name = DISC3\vmd\63053.VMD
     file[]: crc = 0116a98b; size =  14128841; name = DISC3\vmd\63061.VMD
@@ -3475,7 +3528,7 @@ game[sol-rama-german-dos]:
     file[]: crc = a1b1a754; size =   3787026; name = DISC3\vmd\63072.VMD
     file[]: crc = 33b43746; size =   2756859; name = DISC3\vmd\63073.VMD
     file[]: crc = e818f913; size =   1719543; name = DISC3\vmd\63081.VMD
-    file[]: crc = 7bb60baa; size =   2982300; name = DISC3\vmd\63082.vmd
+    file[]: crc = 7bb60baa; size =   2982300; name = DISC3\vmd\63082.VMD
     file[]: crc = 76d988a9; size =   3309741; name = DISC3\vmd\63083.VMD
     file[]: crc = 69322aee; size =   8778698; name = DISC3\vmd\63111.VMD
     file[]: crc = dd6ed874; size =   5508816; name = DISC3\vmd\63112.VMD
