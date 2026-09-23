@@ -15,10 +15,10 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 
 //
-// os configuration
+// environment configuration
 //
-config[os]:
-    title = OS Configuration
+config[environment]:
+    title = Environment Configuration
     condition = !is_installer()
     option[dos]: 
         name = DOS
@@ -160,10 +160,10 @@ INI = [[[$(CRLF)
     synthtype   = $(SOUND_DRIVER)
     minHunk     = 223k
     audiobuffs  = 4
-    resAUD      = C:\
-    resSFX      = C:\
-    patchDir    = C:\
-    sync        = C:\
+    resAUD      = $(rootpath)
+    resSFX      = $(rootpath)
+    patchDir    = $(rootpath)
+    sync        = $(rootpath)
 ]]]
 
 script[init]:
