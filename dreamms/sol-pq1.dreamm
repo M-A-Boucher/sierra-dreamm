@@ -96,8 +96,19 @@ game[v2.0e-int-2.915-2x720k]:
 end
 
 //
-// v2.0E, Int. 2.915, 3x360K *** MISSING ***
+// v2.0E, Int. 2.915, 3x360K
 //
+game[v2.0e-int-2.915-3x360k]:
+    name = v2.0E, Int. 2.915, 3x360K
+    imports = v2.0e-int-2.915-2x720k
+    file[]: crc = eac6f3a7; size =       360; name = LOGDIR
+    file[]: crc = 528c1cbf; size =       351; name = PICDIR
+    file[]: crc = f5f96543; size =       126; name = SNDDIR
+    file[]: crc = c810874d; size =       768; name = VIEWDIR
+    file[]: crc = 2189249b; size =    195147; name = VOL.1
+    file[]: crc = eb20533c; size =    189428; name = VOL.2
+    file[]: crc = 58021757; size =    250269; name = VOL.3
+end
 
 //
 // v2.0G, Int. 2.917, 2x720K
