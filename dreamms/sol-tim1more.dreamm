@@ -173,8 +173,7 @@ demo[demo-sh]:
     name = Demo (School House)
     osenv = windows
     audiohw = gmidi
-    winres = 1024x768
-    wincrop = true
+    winres = 1024x768x8
     launch = $(rootpath)\TIMDEMO.EXE
     anchorfile = TIMDEMO.EXE 
     file[]: crc = 0816ce7e; size =      5404; name = DRUM.BNK

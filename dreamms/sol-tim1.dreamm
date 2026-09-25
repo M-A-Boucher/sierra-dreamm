@@ -74,7 +74,7 @@ demo[demo]:
     name = Demo
     osenv = windows 3.1
     audiohw = gmidi
-    winres = 640x480
+    winres = 640x480x8
     launch = $(rootpath)\TIMDEMO.EXE
     anchorfile = TIMDEMO.EXE 
     file[]: crc = c6253742; size =      5653; name = TIM.MID

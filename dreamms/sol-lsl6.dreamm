@@ -458,8 +458,7 @@ game[v1.0-cd-win]:
     name = v1.0, CD, Windows
     imports = map-base
     osenv = windows 95
-        winres = 640x480x16
-
+    winres = 640x480x16
     launch = $(rootpath)\SIERRAW.EXE
     audiohw = gmidi
     anchorfile = SIERRAW.EXE

@@ -29,7 +29,6 @@ config[os]:
         osenv = windows 95
         audiohw = gmidi
         winres = 640x480x16
-        wincrop = true
         launch = $(rootpath)\SIERW5.EXE
         condition = file_exists("$$(rootpath)\\SIERW5.EXE")
     end

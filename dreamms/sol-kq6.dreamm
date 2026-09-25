@@ -29,7 +29,6 @@ config[environement]:
         osenv = windows 3.1
         audiohw = gmidi
         winres = 640x480x8
-        wincrop = true
         launch = $(rootpath)\SCIWV.EXE
         condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end

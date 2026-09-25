@@ -32,7 +32,6 @@ config[os]:
         audiohw = gmidi
         mips = $(MIPS_MAX)
         winres = 640x480x8
-        wincrop = true
         launch = $(rootpath)\SCIKQ5.EXE
         condition = file_exists("$$(rootpath)\\SCIKQ5.EXE")
     end

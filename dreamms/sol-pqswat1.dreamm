@@ -28,7 +28,7 @@ config[os]:
         name = Windows
         osenv = windows
         audiohw = gmidi
-        wincrop = true
+        
         launch = $(rootpath)\SIERRAWH.EXE
         condition = file_exists("$$(rootpath)\\SIERRAWH.EXE")
     end
