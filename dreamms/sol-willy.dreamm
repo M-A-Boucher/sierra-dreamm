@@ -51,16 +51,14 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
         else
           file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
-
-        mouse_force_relative_zero(true);
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.0, Int. 9.25.91, 6x1.44M
@@ -163,6 +161,22 @@ game[v1.0-int-9.25.91-fr-6x1.44m]:
     file[]: crc = f295531d; size =   1196242; name = VOLUME.006
     file[]: crc = 08f4fc40; size =      9896; name = VOLUME.RMF
     file[]: crc = d05e90de; size =    225920; name = WILLY.EXE
+end
+
+//
+// v1.02, Int. 11.20.91, German, 6x1.44M
+//
+game[v1.02-int-11.20.91-de-6x1.44m]:
+    name = v1.02, Int. 11.20.91, German, 6x1.44M
+    anchorfile = WILLY.EXE
+    file[]: crc = 6a08ec5e; size =   1317322; name = VOLUME.001
+    file[]: crc = 590c17db; size =   1445002; name = VOLUME.002
+    file[]: crc = 4c90489b; size =   1452223; name = VOLUME.003
+    file[]: crc = 16474496; size =   1439640; name = VOLUME.004
+    file[]: crc = d81e8c84; size =   1446980; name = VOLUME.005
+    file[]: crc = fee398a5; size =   1210795; name = VOLUME.006
+    file[]: crc = 14debf94; size =      9896; name = VOLUME.RMF
+    file[]: crc = 66c907d9; size =    225568; name = WILLY.EXE
 end
 
 //
