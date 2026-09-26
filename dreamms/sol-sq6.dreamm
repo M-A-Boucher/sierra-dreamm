@@ -16,6 +16,27 @@ filter = sierra, adventure
 OPTIONS = -o RESOURCE.CFG
 
 //
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 95
+        audiohw = gmidi
+        winres = 640x480x16
+        wincrop = true
+        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
+//
 // sound configuration
 //
 config[sound]:
@@ -28,52 +49,80 @@ config[sound]:
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16; priority = 1
+        audiohw = sb16
         SOUND_DRIVER = SBPRO.DRV
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = sb16+mt32; priority = 2
+        audiohw = sb16+mt32
         SOUND_DRIVER = MT32.DRV
         condition = file_exists("$$(rootpath)\\MT32.DRV")
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi; priority = 3
+        audiohw = sb16+gmidi; priority = 1
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
 CFG = [[[$(CRLF)
-    videoDrv  = VESA.DRV
-    soundDrv  = $(SOUND_DRIVER)
-    audioDrv  = DACBLAST.DRV
-    joyDrv    = NO
-    CD        = NO
-    mouseDrv  = NONE
-    memoryDrv = NONE
-    minMemory = 3200k
-    audiosize = 112k
-    brightness= 0
-    language  = 1
-    resMap    = .\
-    resAUD    = .\
-    resSFX    = .\
-    patchDir  = .\;.\MOVIES
-    movieDir  = .\MOVIES
-    robot     = .\ROBOTS
-    dacsize   = 30720
+    videoDrv    = VESA.DRV
+    soundDrv    = $(SOUND_DRIVER)
+    audioDrv    = DACBLAST.DRV
+    joyDrv      = NO
+    mouseDrv    = NONE
+    memoryDrv   = NONE
+    CD          = NO
+    minMemory   = 3200k
+    audiosize   = 112k
+    brightness  = 0
+    language    = 1
+    resMap      = $(rootpath)
+    resAUD      = $(rootpath)
+    resSFX      = $(rootpath)
+    patchDir    = $(rootpath)\MOVIES;$(rootpath)
+    movieDir    = $(rootpath)\MOVIES
+    robot       = $(rootpath)\ROBOTS
+    dacsize     = 30720
 ]]]
 
+WIN = [[[$(CRLF)
+    [Windows]
+    title       = Space Quest 6: Roger Wilco in The Spinal Frontier
+    wwidth      = 640
+    wheight     = 480
+    allowresize = FALSE
+    sciMinK     = 2100
+    sciMaxK     = 5000
+    winG        = FALSE
+    confirmmidi = FALSE
+    confirmdac  = FALSE
+    audioSize   = 60k
+    dacSize     = 16384
+    VideoSpeed  = 300
+    cacheSize1  = 500
+    cacheSize2  = 600
+    synthtype   = highsynth
+    language    = 1
+    resMap      = $(rootpath)
+    resSfx      = $(rootpath)
+    patchDir    = $(rootpath)\MOVIES;$(rootpath);
+    movieDir    = $(rootpath)\MOVIES
+    robot       = $(rootpath)\ROBOTS
+
+]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_game() && is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
-
 
 //
 // filesystem
@@ -124,8 +173,7 @@ game[v1.0-cd]:
     file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
     file[]: crc = 7b42d20c; size =      8504; name = SIERRA.ERR
     file[]: crc = 7a93dc56; size =    926521; name = SIERRA.EXE
-    file[]: crc = 740def2f; size =      4584; name = SIERRA.INF  ; optional = true
-    file[]: crc = 3bb23f6b; size =    803516; name = SIERRAW.EXE ; optional = true
+    file[]: crc = 3bb23f6b; size =    803516; name = SIERRAW.EXE
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 96f8dd46; size =   2196926; name = MOVIES\1075.VMD
@@ -203,8 +251,7 @@ game[v1.0-fr-cd]:
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
     file[]: crc = e5ba8892; size =    917801; name = SIERRA.EXE
-    file[]: crc = ec9699ec; size =      4647; name = SIERRA.INF  ; optional = true
-    file[]: crc = 05ffad49; size =    803516; name = SIERRAW.EXE ; optional = true
+    file[]: crc = 05ffad49; size =    803516; name = SIERRAW.EXE
     file[]: crc = b79f001e; size =   6464859; name = MOVIES\1090.VMD
     file[]: crc = bfa182a4; size =   9578677; name = MOVIES\90.VMD
 end
@@ -245,8 +292,7 @@ game[v1.0-de-cd]:
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
     file[]: crc = 7ea2b924; size =    917801; name = SIERRA.EXE
-    file[]: crc = ec9699ec; size =      4647; name = SIERRA.INF  ; optional = true
-    file[]: crc = 4c187605; size =    803516; name = SIERRAW.EXE ; optional = true
+    file[]: crc = 4c187605; size =    803516; name = SIERRAW.EXE
     file[]: crc = a6ee2b3a; size =   6638249; name = MOVIES\1090.VMD
     file[]: crc = 31d8f691; size =   9880572; name = MOVIES\90.VMD
 end
@@ -276,8 +322,7 @@ game[v1.11-cd]:
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 022a3d8d; size =    942697; name = SIERRA.EXE
-    file[]: crc = de6bb7ed; size =      4596; name = SIERRA.INF  ; optional = true
-    file[]: crc = 6209dcac; size =    803516; name = SIERRAW.EXE ; optional = true
+    file[]: crc = 6209dcac; size =    803516; name = SIERRAW.EXE
     file[]: crc = 385063fe; size =         6; name = VERSION
 end
 
@@ -304,10 +349,10 @@ game[interactive-demo]:
     file[]: crc = 132d30aa; size =   7495186; name = RESOURCE.SFX
     file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
     file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
-    file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL  ; optional = true
+    file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 9cd11d20; size =    925001; name = SIERRA.EXE
-    file[]: crc = 9531d85a; size =    796604; name = SQ6W.EXE    ; optional = true
+    file[]: crc = 9531d85a; size =    796604; name = SQ6W.EXE
     file[]: crc = e2df89fc; size =      1682; name = STD.DRV
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
