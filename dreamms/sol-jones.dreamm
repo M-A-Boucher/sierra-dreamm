@@ -8,11 +8,41 @@ icon = sol-jones.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SCIV256.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
-filter = sierra, adventure
+audiohw = $(AUDIOHW)+$(SFX)
+filter = sierra, strategy
 TANDY = 0
+AUDIO_DRIVER = $(NULL)
+
+//
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    option[dos-vga]: 
+        name = DOS
+        launch = $(rootpath)\SCIV256.EXE
+        condition = file_exists("$$(rootpath)\\SCIV256.EXE")
+    end
+    option[dos-ega]: 
+        name = DOS
+        launch = $(rootpath)\SCIV.EXE
+        condition = file_exists("$$(rootpath)\\SCIV.EXE")
+    end
+    option[dos-cd]: 
+        name = DOS
+        launch = $(rootpath)\SCIDHUV.EXE
+        condition = file_exists("$$(rootpath)\\SCIDHUV.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        mips = $(MIPS_MAX)
+        launch = $(rootpath)\SCIJONES.EXE
+        condition = file_exists("$$(rootpath)\\SCIJONES.EXE")
+    end
+end
 
 //
 // graphics configuration
@@ -31,6 +61,12 @@ config[graphics]:
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
     end
+    option[mcga]:
+        name = $(MCGA_NAME)
+        videohw = mcga
+        VIDEO_DRIVER = MCGA320.DRV
+        condition = file_exists("$$(rootpath)\\MCGA320.DRV")
+    end
     option[vga]:
         name = $(VGA_NAME);
         videohw = vga; priority = 2
@@ -47,44 +83,58 @@ config[sound]:
     condition = !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
-        audiohw = speaker
-        SOUND_DRIVER = STD.DRV
+        SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[cms]:
         name = $(CMS_NAME)
-        audiohw = cms
-        SOUND_DRIVER = CMS.DRV
+        SOUND_DRIVER = CMS.DRV; AUDIOHW = cms
         condition = file_exists("$$(rootpath)\\CMS.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME)
-        audiohw = adlib; priority = 1
-        SOUND_DRIVER = ADL.DRV
+        name = $(ADLIB_NAME); priority = 1
+        SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib;
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
         name = $(SB16_NAME)
-        audiohw = sb16
-        SOUND_DRIVER = SNDBLAST.DRV
+        SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
-        audiohw = mt32
-        SOUND_DRIVER = MT32.DRV
+        SOUND_DRIVER = MT32.DRV; AUDIOHW = mt32
         condition = file_exists("$$(rootpath)\\MT32.DRV")
+    end
+end
+
+//
+// sfx configuration
+//
+config[sfx]:
+    title = SFX Configuration
+    condition = is_dos()
+    option[on]:
+        name = On
+        AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
+        condition = file_exists("$$(rootpath)\\AUDBLAST.DRV")
+    end
+    option[off]:
+        name = Off
+        AUDIO_DRIVER = $(NULL); SFX = $(NULL)
+        condition = !file_exists("$$(rootpath)\\AUDCDROM.DRV")
     end
 end
 
 CFG = [[[$(CRLF)
     videoDrv  = $(VIDEO_DRIVER)
     soundDrv  = $(SOUND_DRIVER)
+    audioDrv  = $(AUDIO_DRIVER)
     joyDrv    = JOYSTICK.DRV
     kbdDrv    = IBMKBD.DRV
     mouseDrv  = STDMOUSE.DRV
     memoryDrv = ARM.DRV
-    minHunk   = 260k
+    minHunk   = 250k
     patchDir  = .
 ]]]
 
@@ -97,8 +147,9 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\AUDCDROM.DRV")
 
 //
 // v1.000.060, Int. 10.19.90, 1x1.2M
@@ -167,6 +218,91 @@ game[v1.000.060-int-10.19.90-2x360k]:
     file[]: crc = c0cf7df6; size =    202105; name = RESOURCE.001
     file[]: crc = 2ddcfe52; size =    341771; name = RESOURCE.002
     file[]: crc = 759a5d84; size =      1800; name = RESOURCE.MAP
+end
+
+//
+// v1.0, CD
+//
+game[v1.0-cd]:
+    name = v1.0, CD
+    anchorfile = RESOURCE.001
+    file[]: crc = d44245eb; size =      8070; name = ADL.DRV
+    file[]: crc = aacaac0e; size =     34539; name = AUDBLAST.DRV
+    file[]: crc = b3b31e19; size =       896; name = AUDCDROM.DRV
+    file[]: crc = 6374598a; size =     34066; name = AUDDISNY.DRV
+    file[]: crc = 420ab4b1; size =  23126016; name = AUDIO001.002
+    file[]: crc = 9888dcd3; size =      5340; name = AUDIO001.MAP
+    file[]: crc = 4e2cbe42; size =     33891; name = AUDPS1.DRV
+    file[]: crc = 074c2eea; size =     34068; name = AUDTANDY.DRV
+    file[]: crc = a81c38bd; size =      5340; name = CDAUDIO.MAP
+    file[]: crc = 534b8408; size =      3741; name = CMS.DRV
+    file[]: crc = 63ed6bcc; size =       537; name = IBMKBD.DRV
+    file[]: crc = bfcb766f; size =      4364; name = IBMPS1.DRV
+    file[]: crc = 242cbaf8; size =      2366; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 903dd811; size =      1976; name = MT32.DRV
+    file[]: crc = a6ec6c52; size =     11178; name = PROAUDIO.DRV
+    file[]: crc = 5d089db8; size =   1652062; name = RESOURCE.001
+    file[]: crc = 51fdd6c8; size =      4878; name = RESOURCE.MAP
+    file[]: crc = da0a67c6; size =    123359; name = SCIDHUV.EXE
+    file[]: crc = 0d358fdb; size =      9768; name = SNDBLAST.DRV
+    file[]: crc = 11b619e7; size =      1461; name = STD.DRV
+    file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
+    file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+    file[]:                                   name = CD\CDDA.SOU; cdda = 2211
+end
+
+//
+// v1.0 Rerelease, CD
+//
+game[v1.0-rerelease-cd]:
+    name = v1.0 Rerelease, CD
+    imports = v1.0-cd
+    file[]: crc = 2df7633f; size =       370; name = 1001.SND
+    file[]: crc = 999fc94a; size =      4508; name = 1005.SND
+    file[]: crc = 3c72c0bc; size =     56334; name = 1006.SND
+    file[]: crc = 24525d5c; size =      5410; name = 1007.SND
+    file[]: crc = 511bb837; size =      1802; name = 1008.SND
+    file[]: crc = 9985cd77; size =      3694; name = 1009.SND
+    file[]: crc = 573fe50f; size =      4638; name = 1010.SND
+    file[]: crc = 0127c599; size =       272; name = 1020.SND
+    file[]: crc = 011f0ac1; size =      1224; name = 1021.SND
+    file[]: crc = 114004d2; size =        94; name = 1023.SND
+    file[]: crc = b51d79a5; size =      1950; name = 1025.SND
+    file[]: crc = 895cf7ca; size =       154; name = 1027.SND
+    file[]: crc = 9e4dae71; size =       266; name = 1028.SND
+    file[]: crc = 32d79b6c; size =       366; name = 1029.SND
+    file[]: crc = 9def781d; size =       284; name = 1030.SND
+    file[]: crc = 84913c52; size =       150; name = 1031.SND
+    file[]: crc = f9afa3c4; size =       634; name = 1032.SND
+    file[]: crc = 9ccc4640; size =      4182; name = 1034.SND
+    file[]: crc = 3a7b169c; size =      5600; name = 1035.SND
+    file[]: crc = 1b88f493; size =      2498; name = 1036.SND
+    file[]: crc = 41c64bc3; size =      3726; name = 1037.SND
+    file[]: crc = 573fe50f; size =      4638; name = 1038.SND
+    file[]: crc = 656a0647; size =      6636; name = 1039.SND
+    file[]: crc = 66d7fed6; size =      4124; name = 1040.SND
+    file[]: crc = f709709d; size =      4418; name = 1041.SND
+    file[]: crc = 431e0b18; size =       310; name = 1042.SND
+    file[]: crc = cab40ad2; size =      2582; name = 1043.SND
+    file[]: crc = 55653ed6; size =       198; name = 1044.SND
+    file[]: crc = 3a6630b3; size =       306; name = 1045.SND
+    file[]: crc = 268a6275; size =      2914; name = 1046.SND
+    file[]: crc = fd38169a; size =      1518; name = 1047.SND
+    file[]: crc = 40a483fb; size =      1850; name = 1048.SND
+    file[]: crc = c4f8204a; size =      3436; name = 1049.SND
+    file[]: crc = c7afea07; size =      2178; name = 1050.SND
+    file[]: crc = f381e6e4; size =       813; name = AUDCDROM.DRV
+    file[]: crc = fbe3a725; size =     15537; name = METER.DLL
+    file[]: crc = 550ea6e1; size =   1652150; name = RESOURCE.001
+    file[]: crc = 7de6f3a6; size =      4878; name = RESOURCE.MAP
+    file[]: crc = 05a89996; size =    135085; name = SCIDHV.EXE
+    file[]: crc = 741351aa; size =     13312; name = SCIDLL.DLL
+    file[]: crc = c9c2bbfd; size =    136192; name = SCIJONES.EXE
+    file[]: crc = 229d7fcb; size =        21; name = WINRES.CFG
+    file[]:                                   name = CD\CDDA.SOU; cdda = 2270
 end
 
 end
