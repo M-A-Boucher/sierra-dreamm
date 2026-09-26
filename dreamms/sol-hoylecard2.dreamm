@@ -1,0 +1,83 @@
+//
+// Hoyle Card Games ’99
+//
+desc[sol-hoylecard2]:
+
+name = Hoyle Card Games ’99
+icon = sol-hoylecard2.png
+machine = pc
+osenv = windows
+rootpath = C:\
+launch = $(rootpath)\HCCG2.EXE
+audiohw = gmidi
+filter = sierra, tabletop, card
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = HCCG2.EXE
+    anchordepth = 1
+    file[]: crc = 0bee20a4; size =      4586; name = BLINKS.PRF
+    file[]: crc = f337e482; size =   7722300; name = CARD.AVI
+    file[]: crc = 66ffc870; size =  16998976; name = CARD.PRF
+    file[]: crc = 0566b7a2; size =      4182; name = CHARS.PRF
+    file[]: crc = 01900a67; size =   8573659; name = COMMON.PRF
+    file[]: crc = 7e571b15; size = 120161708; name = COMMON2O.PRF
+    file[]: crc = 6f69b231; size =  35238117; name = CRD1.PRF
+    file[]: crc = 62c84c66; size =  38597292; name = CRD2.PRF
+    file[]: crc = cbb16e7a; size =  13238840; name = CRD3.PRF
+    file[]: crc = 68d68d2a; size =    275093; name = CRDSYNCS.PRF
+    file[]: crc = afb61c88; size =     50047; name = CUSTOM.PRF
+    file[]: crc = 3fac5fda; size =  53455703; name = GEN1.PRF
+    file[]: crc = 85e145e9; size =  62434878; name = GEN2.PRF
+    file[]: crc = a7aa9933; size =    366717; name = GENSYNCS.PRF
+    file[]: crc = 99280e25; size =     22839; name = HABITS.PRF
+    file[]: crc = 0332ac94; size =   2261504; name = HCCG2.EXE
+    file[]: crc = 84ee6324; size =    332272; name = HCCG2.HLP
+    file[]: crc = ba7ee667; size =      4557; name = LANG.DAT
+    file[]: crc = 085e686b; size =       494; name = LAYOUT.BIN
+    file[]: crc = 9ee4ff70; size =    940304; name = MFC42.DLL
+    file[]: crc = daceec63; size =    277776; name = MSVCRT.DLL
+    file[]: crc = 4f23113e; size =     46177; name = NCSYNCS.PRF
+    file[]: crc = e7ded10a; size =    490256; name = OLEAUT32.DLL
+    file[]: crc = f9edc7a9; size =       417; name = OS.DAT
+    file[]: crc = ba62613e; size =     30240; name = SETUP.EXE
+    file[]: crc = 1bd5a2ed; size =     24064; name = sos32s03.dll
+    file[]: crc = a0cf3315; size =    105472; name = sos9503.dll
+    file[]: crc = b182eb95; size =     76941; name = soslibs3.dll
+    file[]: crc = 184e4b47; size =        54; name = VERSION.TXT
+    file[]: crc = 31e8d915; size =  65348711; name = CD\CARD.PRF
+end
+
+//
+// Demo
+//
+game[demo]:
+    name = Demo
+    launch = $(rootpath)\HCCG2D.EXE
+    anchorfile = HCCG2D.EXE
+    anchordepth = 1
+    file[]: crc = 0bee20a4; size =      4586; name = BLINKS.PRF
+    file[]: crc = 3380f3c2; size =        68; name = CARD.INI    ; optional = true
+    file[]: crc = 77e9834d; size =  20202036; name = CARD.PRF
+    file[]: crc = 0566b7a2; size =      4182; name = CHARS.PRF
+    file[]: crc = afb61c88; size =     50047; name = CUSTOM.PRF
+    file[]: crc = 99280e25; size =     22839; name = HABITS.PRF
+    file[]: crc = 99083962; size =    332272; name = HCCG2.HLP
+    file[]: crc = 63c2ea45; size =   2254848; name = HCCG2D.EXE
+    file[]: crc = 1bd5a2ed; size =     24064; name = sos32s03.dll
+    file[]: crc = a0cf3315; size =    105472; name = sos9503.dll
+    file[]: crc = b182eb95; size =     76941; name = soslibs3.dll
+    file[]: crc = 51efbc09; size =      4864; name = USER0.LOG   ; optional = true
+end
+
+end

@@ -30,7 +30,6 @@ config[environment]:
         osenv = windows 95
         audiohw = gmidi
         winres = 640x480x16
-        wincrop = true
         launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
     end
