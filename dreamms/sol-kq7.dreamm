@@ -8,11 +8,30 @@ icon = sol-kq7.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
 mips = $(MIPS_P100)
 ramkb = 16384
-videohw = svga
 filter = sierra, adventure
+
+//
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 95
+        audiohw = gmidi
+        winres = 640x480x8
+        wincrop = true
+        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
 
 //
 // sound configuration
@@ -21,7 +40,7 @@ config[sound]:
     title = Sound Configuration
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = adlib+sb16; priority = 1
+        audiohw = adlib+sb16
         SOUND_DRIVER = SADL.DRV
         condition = file_exists("$$(rootpath)\\SADL.DRV")
     end
@@ -39,35 +58,66 @@ config[sound]:
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = gmidi+sb16
+        audiohw = gmidi+sb16; priority = 1
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
 CFG = [[[$(CRLF)
-    videoDrv  = VESA.DRV
-    soundDrv  = $(SOUND_DRIVER)
-    audioDrv  = DACBLAST.DRV
-    joyDrv    = NO
-    CD        = NO
-    mouseDrv  = NONE
-    memoryDrv = NONE
-    minMemory = 3200k
-    audiosize = 64k
-    brightness= 0
-    language  = 1
-    resMap    = .\
-    resAUD    = .\
-    resSFX    = .\
-    patchDir  = .\;.\AVI
-    robot     = .\AVI
-    dacsize   = 30720
+    videoDrv      = VESA.DRV
+    soundDrv      = $(SOUND_DRIVER)
+    audioDrv      = DACBLAST.DRV
+    joyDrv        = NO
+    CD            = NO
+    mouseDrv      = NONE
+    memoryDrv     = NONE
+    minMemory     = 3200k
+    audiosize     = 64k
+    dacsize       = 30720
+    brightness    = 0
+    language      = 1
+    resMap        = $(rootpath)
+    resAud        = $(rootpath)
+    resSfx        = $(rootpath)
+    robot         = $(rootpath)\AVI
+    patchDir      = $(rootpath)\AVI;$(rootpath)
+]]]
+
+WIN = [[[$(CRLF)
+    [Windows]
+    title         = King's Quest VII
+    titleBar      = TRUE
+    allowresize   = FALSE
+    wwidth        = 640
+    wheight       = 480
+    sciMinK       = 2100
+    sciMaxK       = 5000
+    borderpixels  = 10
+    reservek4     = 700
+    reservek8     = 1500
+    reservek16    = 2000
+    wingMinK      = 2700
+    confirmdac    = TRUE
+    audioSize     = 62k
+    dacSize       = 30720
+    maxCursorSize = 4
+    resMap        = $(rootpath)
+    resAud        = $(rootpath)
+    resSfx        = $(rootpath)
+    audio         = $(rootpath)
+    robot         = $(rootpath)\AVI
+    movieDir      = $(rootpath)\AVI
+    patchDir      = $(rootpath)\AVI;$(rootpath)
 ]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_game() && is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -76,6 +126,54 @@ end
 //
 mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.4, CD 
+//
+game[v1.4-cd]:
+    name = v1.4, CD  
+    anchorfile = SIERRAW.EXE
+    anchordepth = 1
+    file[]: crc = 73bd7d20; size =    142338; name = 0.CHK
+    file[]: crc = 63e2b233; size =    233462; name = ALTRES.000
+    file[]: crc = ace8a443; size =       466; name = ALTRES.MAP
+    file[]: crc = 0e312855; size =       466; name = ALTRES.MDT
+    file[]: crc = 01f45522; size =     44464; name = D2HTOOLS.DLL
+    file[]: crc = 2dbfa79a; size =     61440; name = KQ7GAME.HLP
+    file[]: crc = c8d3ea5e; size =     11520; name = KQ7READ.WRI
+    file[]: crc = 64492198; size =      3714; name = MIDITEST.MID
+    file[]: crc = 68651a0b; size = 203882535; name = RESOURCE.000
+    file[]: crc = 6854cf65; size = 217716879; name = RESOURCE.AUD
+    file[]: crc = 46b1a190; size =     18697; name = RESOURCE.MAP
+    file[]: crc = 555815c6; size =     18697; name = RESOURCE.MDT
+    file[]: crc = cc7c91da; size =  50930358; name = RESOURCE.SFX
+    file[]: crc = 01fb6a0c; size =    142598; name = SCIDLL.DLL
+    file[]: crc = 5c818b70; size =     16384; name = SCIDLLWS.DLL
+    file[]: crc = ac16c675; size =    670444; name = SIERRAW.EXE
+    file[]: crc = 7fb546f4; size =    544057; name = SIERRAWS.EXE
+    file[]: crc = 4b13f18f; size =         9; name = VERSION
+    file[]: crc = d82b7490; size =   1103992; name = VFW.SOL
+    file[]: crc = dd6ff62f; size =    420866; name = WIN32S.SOL
+    file[]: crc = 8e9e8efc; size =    128575; name = WING.SOL
+    file[]: crc = 519dd0d6; size =   9559116; name = AVI\E108X11.AVI
+    file[]: crc = 78b034f2; size =   2014412; name = AVI\E208X11.AVI
+    file[]: crc = d9f3894c; size =  21948444; name = AVI\INT08X11.AVI
+end
+
+//
+// v1.51, CD 
+//
+game[v1.51-cd]:
+    name = v1.51, CD  
+    imports = v1.4-cd
+    file[]: crc = 485ac6b4; size =    142304; name = 0.CHK
+    file[]: crc = 324f1915; size = 206626576; name = RESOURCE.000
+    file[]: crc = 2a56277c; size =     18697; name = RESOURCE.MAP
+    file[]: crc = a5f9f9ab; size =     18697; name = RESOURCE.MDT
+    file[]: crc = 16c00dae; size =    670444; name = SIERRAW.EXE
+    file[]: crc = cc7027c1; size =    544057; name = SIERRAWS.EXE
+    file[]: crc = 37cfb50a; size =        10; name = VERSION
+end
 
 //
 // v2.00b, CD 
@@ -107,20 +205,15 @@ game[v2.00b-cd]:
     file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
     file[]: crc = 78e28641; size = 200764100; name = RESOURCE.000
     file[]: crc = 6854cf65; size = 217716879; name = RESOURCE.AUD
-    file[]: crc = 1b3c8fbd; size =       265; name = RESOURCE.CFG; optional = true
-    file[]: crc = 931a253b; size =       448; name = RESOURCE.LST; optional = true
     file[]: crc = f03a15e7; size =     18709; name = RESOURCE.MAP
     file[]: crc = b768b0d9; size =     18709; name = RESOURCE.MDT
     file[]: crc = cc7c91da; size =  50930358; name = RESOURCE.SFX
-    file[]: crc = 2dc0cf4f; size =       272; name = RESOURCE.WIN; optional = true
     file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
     file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 2c0c0ace; size =    942697; name = SIERRA.EXE
-    file[]: crc = 029c92a5; size =      4463; name = SIERRA.INF  ; optional = true
-    file[]: crc = 4bb06185; size =    806004; name = SIERRAW.EXE ; optional = true
-    file[]: crc = 776be479; size =     81326; name = THEGUIDE.TXT; optional = true
+    file[]: crc = 4bb06185; size =    806004; name = SIERRAW.EXE
     file[]: crc = be67b898; size =        11; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 65ffd0f6; size =  24701699; name = AVI\91.RBT
@@ -145,11 +238,8 @@ game[v2.00b-gog]:
     file[]: remove = DACPRO16.DRV
     file[]: remove = DACPRO8.DRV
     file[]: remove = GENMIDI.DRV
-    file[]: crc = beb235a6; size =  10893241; name = Manual.pdf  ; optional = true
     file[]: crc = 09cb013b; size =      3098; name = MT32.DRV
     file[]: remove = PROAUDIO.DRV
-    file[]: crc = 44ddca6b; size =     17416; name = Readme.txt  ; optional = true
-    file[]: crc = 329ad855; size =       356; name = RESOURCE.CFG; optional = true
     file[]: crc = f03a15e7; size =     18709; name = RESOURCE.MAP
     file[]: crc = b768b0d9; size =     18709; name = RESOURCE.MDT
     file[]: crc = cc7c91da; size =  50930358; name = RESOURCE.SFX
