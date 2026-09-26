@@ -147,7 +147,7 @@ CFG = [[[$(CRLF)
     mouseDrv    = STDMOUSE.DRV
     minHunk     = 204k
     audioSize   = 16k
-    patchDir    = .
+    patchDir    = $(rootpath)
 ]]]
 
 INI = [[[$(CRLF)
