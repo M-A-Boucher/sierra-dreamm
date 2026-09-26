@@ -18,10 +18,10 @@ TANDY = 0
 LANGUAGE = 1
 
 //
-// os configuration
+// environment configuration
 //
-config[os]:
-    title = OS Configuration
+config[environment]:
+    title = Environment Configuration
     condition = !is_installer()
     option[dos-sierra]: 
         name = DOS
@@ -48,6 +48,7 @@ end
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = is_dos()
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega; priority = 1
@@ -73,7 +74,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = is_dos() && !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -122,6 +123,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
+    condition = is_dos()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
@@ -145,11 +147,11 @@ CFG = [[[$(CRLF)
     mouseDrv   = STDMOUSE.DRV
     language   = $(LANGUAGE)
     minHunk    = 200k
-    directory  = C:\
+    directory  = $(rootpath)
     audioSize  = 32k
     minHunk    = 209K
-    patchDir   = C:\ 
-    audio      = C:\ 
+    audio      = $(rootpath)
+    patchDir   = $(rootpath)
 ]]]
 
 INI = [[[$(CRLF)
@@ -159,9 +161,9 @@ INI = [[[$(CRLF)
     bwcursor   = FALSE
     genmidi    = TRUE
     synthtype  = $(SOUND_DRIVER)
-    audpath    = C:\
-    audio      = C:\
-    #patchpath = C:\
+    audpath    = $(rootpath)
+    audio      = $(rootpath)
+    #patchpath = $(rootpath)
 ]]]
 
 script[init]:
@@ -306,9 +308,10 @@ installer[v1.10-int-2.000.286-3x1.44m-installer]:
 end
 
 //
-// v1.1 CD Base Files
+// v1.1, CD
 //
-fragment[v1.1-cd-base]:
+game[v1.1-cd]:
+    name = v1.1, CD
     anchorfile = RESOURCE.000
     file[]: crc = 5a3fc6db; size =      5594; name = 140.HEP
     file[]: crc = 021a8682; size =     12450; name = 140.SCR
@@ -321,12 +324,32 @@ fragment[v1.1-cd-base]:
     file[]: crc = bddad2f8; size =       706; name = 61.HEP
     file[]: crc = 7858e8ea; size =      4608; name = 61.SCR
     file[]: crc = 4837cba0; size =        85; name = 811.MSG
+    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
+    file[]: crc = a417fae3; size =      6210; name = AUDBLAST.DRV
+    file[]: crc = bdbf3d5c; size =      4947; name = AUDDISNY.DRV
+    file[]: crc = f13c1f73; size =      6113; name = AUDPRO.DRV
+    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
+    file[]: crc = 6a378d82; size =      4520; name = AUDPS1.DRV
+    file[]: crc = 507df03a; size =      6300; name = AUDTHUND.DRV
+    file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
+    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
+    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
     file[]: crc = 788ce613; size =      5909; name = INTERP.ERR
     file[]: crc = 06b8e4cb; size =      2372; name = INTERP.TXT
+    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
+    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
+    file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
     file[]: crc = 1593e181; size =   3536046; name = RESOURCE.000
     file[]: crc = c3b3fa64; size = 305187924; name = RESOURCE.AUD; optional = true
     file[]: crc = 2fe7b676; size =      4804; name = RESOURCE.MAP
+    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
+    file[]: crc = 2bc45432; size =    175104; name = SCIWV.EXE
+    file[]: crc = 4ec77630; size =     67960; name = SIERRA.EXE
+    file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 6a5ca6d2; size =         5; name = VERSION
+    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
+    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
     file[]: crc = b0953f01; size =     11081; name = AUDIO\122.AUD; optional = true
     file[]: crc = 5e6b0668; size =     26597; name = AUDIO\124.AUD; optional = true
     file[]: crc = 8b16a1b9; size =      3824; name = AUDIO\127.AUD; optional = true
@@ -443,42 +466,6 @@ fragment[v1.1-cd-base]:
     file[]: crc = 64921870; size =     13592; name = AUDIO\921.AUD; optional = true
     file[]: crc = 6cf54851; size =     83937; name = AUDIO\924.AUD; optional = true
     file[]: crc = 6cf54851; size =     83937; name = AUDIO\926.AUD; optional = true
-end
-
-//
-// v1.1, CD, DOS
-//
-game[v1.1-cd-dos]:
-    name = v1.1, CD, DOS
-    imports = v1.1-cd-base
-    file[]: crc = 571c77b2; size =      8017; name = ADL.DRV
-    file[]: crc = a417fae3; size =      6210; name = AUDBLAST.DRV
-    file[]: crc = bdbf3d5c; size =      4947; name = AUDDISNY.DRV
-    file[]: crc = f13c1f73; size =      6113; name = AUDPRO.DRV
-    file[]: crc = 1a938d51; size =      4109; name = AUDPRO16.DRV
-    file[]: crc = 6a378d82; size =      4520; name = AUDPS1.DRV
-    file[]: crc = 507df03a; size =      6300; name = AUDTHUND.DRV
-    file[]: crc = 84e600f6; size =      2577; name = GENMIDI.DRV
-    file[]: crc = a3355ab9; size =       564; name = IBMKBD.DRV
-    file[]: crc = e68d2b5a; size =      4364; name = IBMPS1.DRV
-    file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
-    file[]: crc = de47f2f4; size =      1977; name = MT32.DRV
-    file[]: crc = 10226ead; size =      9909; name = PROAUDIO.DRV
-    file[]: crc = 4ec77630; size =     67960; name = SIERRA.EXE
-    file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
-    file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
-end
-
-//
-// v1.1, CD, Windows
-//
-game[v1.1-cd-win]:
-    name = v1.1, CD, Windows
-    imports = v1.1-cd-base
-    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
-    file[]: crc = 97a161f1; size =     15360; name = SCIDLL.DLL
-    file[]: crc = 2bc45432; size =    175104; name = SCIWV.EXE
 end
 
 //
