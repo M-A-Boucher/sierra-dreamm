@@ -8,10 +8,8 @@ icon = sol-phantas.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_P75)
 ramkb = 16384
-videohw = svga
 filter = sierra, adventure
 RESCONFIG = [[[$(CRLF)
     sync     = .\;.\DISC1;.\DISC2;.\DISC3;.\DISC4;.\DISC5;.\DISC6;.\DISC7
@@ -22,13 +20,34 @@ RESCONFIG = [[[$(CRLF)
 ]]]
 
 //
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
+//
 // sound configuration
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
-        audiohw = sb16+adlib; priority = 1
+        audiohw = sb16+adlib
         SOUND_DRIVER = SADL.DRV
         condition = file_exists("$$(rootpath)\\SADL.DRV")
     end
@@ -46,38 +65,74 @@ config[sound]:
     end
     option[gmidi]:
         name = $(GMIDI_NAME)
-        audiohw = sb16+gmidi
+        audiohw = sb16+gmidi; priority = 1
         SOUND_DRIVER = GENMIDI.DRV
         condition = file_exists("$$(rootpath)\\GENMIDI.DRV")
     end
 end
 
 CFG = [[[$(CRLF)
-    videoDrv      = VESA.DRV
-    soundDrv      = $(SOUND_DRIVER)
-    audioDrv      = DACBLAST.DRV
-    joyDrv.       = NO
-    mouseDrv      = NONE
-    memoryDrv     = NONE
-    videoSpeed.   =200
-    language      = 1
-    audioSize     = 64k
-    smartdrv      = YES
-    vmdSkip       = NO
-    hires         = 630,450
-    midiBuffSize5 =30000
-    midiBuffSize6 =65000
-    directory     = .\
-    movieDir      = .\VMD
-    patchDir      = .\;.\PATCHES
-    robot         = .\;.\PATCHES;.\ROBOT
+    videoDrv       = VESA.DRV
+    soundDrv       = $(SOUND_DRIVER)
+    audioDrv       = DACBLAST.DRV
+    joyDrv         = NO
+    mouseDrv       = NONE
+    memoryDrv      = NONE
+    videoSpeed     = 200
+    language       = 1
+    audioSize      = 64k
+    smartdrv       = YES
+    vmdSkip        = NO
+    hires          = 630,450
+    midiBuffSize5  = 30000
+    midiBuffSize6  = 65000
+    directory      = .\
+    movieDir       = .\VMD
+    patchDir       = .\;.\PATCHES
+    robot          = .\;.\PATCHES;.\ROBOT
     $(RESCONFIG)
+]]]
+
+WIN = [[[$(CRLF)
+    [Windows]
+    title          = Phantasmagoria
+    titleBar       = FALSE
+    maximized      = TRUE
+    allowresize    = FALSE
+    wwidth         = 630
+    wheight        = 450
+    scimink        = 2300
+    reservek       = 600
+    borderpixels   = 10
+    confirmdac     = TRUE
+    maxcursorsize  = 1024
+    colorCursor    = TRUE
+    cursorViewAdd  = 2000
+    asyncCheckFreq = 60
+    hires          = 630,450
+    midiBuffSize5  = 65000
+    midiBuffSize6  = 65000
+    synthtype      = highsynth
+    directory      = .\
+    movieDir       = .\VMD
+    patchDir       = .\;.\PATCHES
+    robot          = .\;.\PATCHES;.\ROBOT
+    sync           = .\;.\DISC1;.\DISC2;.\DISC3;.\DISC4;.\DISC5;.\DISC6;.\DISC7
+    resMap         = .\;.\DISC1;.\DISC2;.\DISC3;.\DISC4;.\DISC5;.\DISC6;.\DISC7
+    resAud         = .\
+    resSfx         = .\DISC1;.\DISC2;.\DISC3;.\DISC4;.\DISC5;.\DISC6;.\DISC7
+    resCDisc       = .\;.\DISC1;.\DISC2;.\DISC3;.\DISC4;.\DISC5;.\DISC6;.\DISC7
+    CD:            = D:;     
 ]]]
 
 script[init]:
     condition = is_game()
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
 
         if (!file_exists("$$(rootpath)\\PREF.DAT"))
         {
@@ -89,8 +144,8 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.0
@@ -124,7 +179,6 @@ game[v1.0]:
     file[]: crc = 405dfa84; size =     12532; name = RESMDT.006
     file[]: crc = 7741c3a9; size =      7972; name = RESMDT.007
     file[]: crc = b047db3c; size =   9521749; name = RESOURCE.AUD
-    file[]: crc = 542fc950; size =       305; name = RESOURCE.WIN
     file[]: crc = d958294b; size =  65844612; name = RESSCI.001
     file[]: crc = b2cbcb9a; size =  71588691; name = RESSCI.002
     file[]: crc = 16fb017b; size =  73651084; name = RESSCI.003
@@ -139,7 +193,6 @@ game[v1.0]:
     file[]: crc = 2014eaca; size =     16896; name = SCIDLLWS.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = ed687bee; size =    942697; name = SIERRA.EXE
-    file[]: crc = 42b4e21e; size =      8022; name = SIERRA.INF
     file[]: crc = a1a89d92; size =    808820; name = SIERRAW.EXE
     file[]: crc = cdd4760c; size =        11; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
