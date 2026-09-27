@@ -6513,4 +6513,20 @@ game[v1.0]:
     file[]: crc = bcefeb32; size =       875; name = CD\temple4\KQ\Terrain\terrain2.kq
 end
 
+//
+// v1.0.0.3
+//
+game[v1.0.0.3]:
+    name = v1.0.0.3
+    imports = v1.0
+    file[]: crc = 0818a8e6; size =   2485760; name = Mask.exe
+    file[]: crc = a83f4c8f; size =        47; name = Version.txt
+    file[]: crc = 2aa7852e; size =    138928; name = CD\Barren\kq.vol
+    file[]: crc = 29ac73ce; size =    240350; name = CD\DeadCity\kq.vol
+    file[]: crc = c3699c4b; size =     50695; name = CD\Game\Kq\Bounds.kq
+    file[]: crc = 4562f72e; size =        20; name = CD\Game\Resource\edit.sae
+    file[]: crc = f28cd5a4; size =    109232; name = CD\IceWorld\kq.vol
+    file[]: crc = 4167c441; size =     28579; name = CD\temple4\kq.vol
+end
+
 end
