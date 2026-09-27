@@ -1,9 +1,9 @@
 //
-// King’s Quest 8: Mask of Eternity
+// King’s Quest: Mask of Eternity
 //
 desc[sol-kq8]:
 
-name = King’s Quest 8: Mask of Eternity
+name = King’s Quest: Mask of Eternity
 icon = sol-kq8.png
 machine = pc
 osenv = windows 95
