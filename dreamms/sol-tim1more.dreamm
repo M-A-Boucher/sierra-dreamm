@@ -69,7 +69,7 @@ CFG = [[[$(CRLF)
     audioDrv  = $(AUDIO_DRIVER)
     joyDrv    = NO
     memoryDrv = ARM.DRV
-    mouseDrv  = none
+    mouseDrv  = NONE
 ]]]
 
 script[init]:
@@ -136,31 +136,19 @@ game[v1.11-cd]:
     file[]: crc = fd535e8c; size =       727; name = AUDNONE.DRV
     file[]: crc = 73d17443; size =      2835; name = AUDPRO.DRV
     file[]: crc = 14f13450; size =      2003; name = AUDPS1.DRV
-    file[]: crc = 2b59a3b8; size =       214; name = BLASTER
     file[]: crc = 92f60a37; size =       740; name = CATOMATC.TIM
     file[]: crc = 31ecc158; size =      1895; name = COOL_OFF.TIM
     file[]: crc = f4542ca0; size =      2577; name = GENMIDI.DRV
-    file[]: crc = 8c93858f; size =       215; name = IBMPS1
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
     file[]: crc = 74161209; size =      1920; name = MEL_HOME.TIM
     file[]: crc = c318e1e1; size =      3376; name = MOUSE.TIM
-    file[]: crc = cbfd0c9c; size =       214; name = MT32
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
-    file[]: crc = 14abae54; size =       217; name = PA
-    file[]: crc = 14abae54; size =       217; name = PRO
-    file[]: crc = 14abae54; size =       217; name = PROAUDIO
     file[]: crc = e9a585f1; size =      9880; name = PROAUDIO.DRV
-    file[]: crc = 8c93858f; size =       215; name = PS1
     file[]: crc = 0b3cb08c; size =   9316909; name = PUZZLES.VOC
     file[]: crc = e036633b; size =    843374; name = RESOURCE.001
     file[]: crc = 83cca2cd; size =      2109; name = RESOURCE.MAP
-    file[]: crc = cbfd0c9c; size =       214; name = ROLAND
-    file[]: crc = 2b59a3b8; size =       214; name = SBLAST
     file[]: crc = 0c22d8a3; size =      9701; name = SBPRO.DRV
-    file[]: crc = 2b59a3b8; size =       214; name = SNDBLAST
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
-    file[]: crc = 2b59a3b8; size =       214; name = TBOARD
-    file[]: crc = 2b59a3b8; size =       214; name = THUNDER
     file[]: crc = 702837af; size =    123121; name = TIM.EXE
     file[]: crc = 3afeb2e5; size =      1046; name = TONSOFUN.TIM
     file[]:                                   name = CD\CDDA.SOU; cdda = 61/153/164/183/134/170/189/156/140/181/195/153/196/168/182/140/154/165/186/171
@@ -173,7 +161,8 @@ demo[demo-sh]:
     name = Demo (School House)
     osenv = windows
     audiohw = gmidi
-    winres = 1024x768x8
+    winres = 1024x768
+    wincrop = true
     launch = $(rootpath)\TIMDEMO.EXE
     anchorfile = TIMDEMO.EXE 
     file[]: crc = 0816ce7e; size =      5404; name = DRUM.BNK
