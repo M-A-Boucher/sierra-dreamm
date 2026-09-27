@@ -16,10 +16,10 @@ AUDIOHW = sb16
 SFX = $(NULL)
 
 //
-// os configuration
+// environment configuration
 //
-config[os]:
-    title = OS Configuration
+config[environment]:
+    title = Environment Configuration
     condition = !is_installer()
     option[dos]: 
         name = DOS
