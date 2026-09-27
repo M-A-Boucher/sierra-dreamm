@@ -40,7 +40,7 @@ config[environment]:
         osenv = windows 95
         audiohw = gmidi
         winres = 640x480x8
-        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        launch = $(rootpath)\SIERRAW.EXE -o \RESOURCE.WIN
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE") && is_game()
     end
 end
@@ -146,10 +146,10 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 $(include cp-sq6.inc)
 
 //
-// v1.0, CD
+// v1.0
 //
-game[v1.0-cd]:
-    name = v1.0, CD
+game[v1.0]:
+    name = v1.0
     anchorfile = SIERRA.EXE
     anchordepth = 2
     file[]: crc = 2b4f7ece; size =     42972; name = 102.SND
@@ -223,11 +223,11 @@ game[v1.0-cd]:
 end
 
 //
-// v1.0, French, CD
+// v1.0, French
 //
-game[v1.0-fr-cd]:
-    name = v1.0, French, CD
-    imports = v1.0-cd
+game[v1.0-fr]:
+    name = v1.0, French
+    imports = v1.0
     anchorfile = SIERRA.EXE
     anchordepth = 2
     file[]: remove = 102.SND
@@ -265,11 +265,11 @@ game[v1.0-fr-cd]:
 end
 
 //
-// v1.0, German, CD
+// v1.0, German
 //
-game[v1.0-de-cd]:
-    name = v1.0, German, CD
-    imports = v1.0-cd
+game[v1.0-de]:
+    name = v1.0, German
+    imports = v1.0
     anchorfile = SIERRA.EXE
     anchordepth = 2
     file[]: remove = 102.SND
@@ -305,11 +305,11 @@ game[v1.0-de-cd]:
 end
 
 //
-// v1.11, CD
+// v1.11
 //
-game[v1.11-cd]:
-    name = v1.11, CD
-    imports = v1.0-cd
+game[v1.11]:
+    name = v1.11
+    imports = v1.0
     anchorfile = SIERRA.EXE
     anchordepth = 2
     file[]: crc = bb435210; size =      4736; name = 280.HEP
