@@ -1,9 +1,9 @@
 //
-// Lode Runner
+// Lode Runner: The Legend Returns
 //
 desc[sol-loderunner]:
 
-name = Lode Runner
+name = Lode Runner: The Legend Returns
 icon = sol-loderunner.png
 machine = pc
 osenv = dos
@@ -42,7 +42,7 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
     ]]]
 end
@@ -50,8 +50,9 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
 
 //
 // v1.0, Int. 9.23.94, 5x1.44M
@@ -178,7 +179,53 @@ installer[v1.0-int-9.23.94-5x1.44m-installer]:
     file[]: crc = fecf7247; size =   1457306; name = RESOURCE.003
     file[]: crc = 790e6e04; size =     93651; name = RESOURCE.004
     file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+end
 
+//
+// v1.0, CD, Windows
+//
+game[v1.0-win]:
+    name = v1.0, CD, Windows
+    osenv = windows 3.1
+    launch = $(rootpath)\LODERUNN.EXE
+    audiohw = gmidi
+    anchorfile = LODERUNN.EXE
+    anchordepth = 2
+    file[]: crc = ba00d4ee; size =     24540; name = BALLOONH.DLL
+    file[]: crc = 9d711245; size =     97936; name = COMMDLG.DLL
+    file[]: crc = 68053e64; size =     30544; name = DIB.DRV
+    file[]: crc = d455523a; size =    463360; name = LODERUNN.EXE
+    file[]: crc = 108feb60; size =      5302; name = DATA\LR_DAT01.PRD
+    file[]: crc = 88078ae9; size =   6868498; name = DATA\LR_DAT01.PRS
+    file[]: crc = de6deb99; size =      1462; name = DATA\LR_DAT02.PRD
+    file[]: crc = 24869cf1; size =   1181702; name = DATA\LR_DAT02.PRS
+    file[]: crc = 0b59d10c; size =      2102; name = DATA\LR_DAT03.PRD
+    file[]: crc = fc7ea843; size =    159480; name = DATA\LR_DAT03.PRS
+    file[]: crc = 9498095f; size =     11062; name = DATA\LR_DAT04.PRD
+    file[]: crc = 851e7fc0; size =    340036; name = DATA\LR_DAT04.PRS
+    file[]: crc = 0a3c2c08; size =      3382; name = DATA\LR_DAT05.PRD
+    file[]: crc = 94cbaad4; size =   1708557; name = DATA\LR_DAT05.PRS
+    file[]: crc = 9062481e; size =      2102; name = DATA\LR_DAT06.PRD
+    file[]: crc = 0eccc3fa; size =   1199147; name = DATA\LR_DAT06.PRS
+    file[]: crc = e5a7d37d; size =      1462; name = DATA\LR_DAT07.PRD
+    file[]: crc = 3bbf5693; size =    918824; name = DATA\LR_DAT07.PRS
+    file[]: crc = 67adf041; size =      3382; name = DATA\LR_DAT08.PRD
+    file[]: crc = 5fd8aa1a; size =   2428288; name = DATA\LR_DAT08.PRS
+    file[]: crc = a8268173; size =      2102; name = DATA\LR_DAT09.PRD
+    file[]: crc = afb7389e; size =    261472; name = DATA\LR_DAT09.PRS
+    file[]: crc = bad38172; size =       822; name = DATA\LR_DAT10.PRD
+    file[]: crc = 9df4ff30; size =     53663; name = DATA\LR_DAT10.PRS
+    file[]: crc = 328b1d70; size =      5600; name = JOYSTICK\IBMJOY.DRV
+    file[]: crc = 09097a8c; size =     15984; name = JOYSTICK\JOYSTICK.CPL
+    file[]: crc = 3b532a64; size =       226; name = JOYSTICK\OEMSETUP.INF
+    file[]: crc = c6d03b85; size =     18145; name = PUZZLES\SAMPLE1.PZL
+    file[]: crc = 345cd097; size =      1966; name = WING\DVA.386
+    file[]: crc = 420c7155; size =     92208; name = WING\WING.DLL
+    file[]: crc = c259f8ca; size =     12800; name = WING\WING32.DLL
+    file[]: crc = 3b514083; size =    188960; name = WING\WINGDE.DLL
+    file[]: crc = 1be07fa4; size =      6736; name = WING\WINGDIB.DRV
+    file[]: crc = a2b26dc7; size =      5024; name = WING\WINGPAL.WND
+    file[]:                                   name = CD\CDDA.SOU; cdda = 93/244/166/64/155/102/157/74/119/85/137/89/159/73/134/58/133/79/150/95/123/83/14/26/24/16/28/26/27/23/19/274
 end
 
 end
