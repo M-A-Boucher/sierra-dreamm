@@ -10,7 +10,6 @@ osenv = dos
 rootpath = C:\
 mips = $(MIPS_P100)
 ramkb = 16384
-videohw = svga
 filter = sierra, adventure
 
 //
@@ -94,9 +93,9 @@ CFG = [[[$(CRLF)
     resMap      = $(rootpath)
     resAud      = $(rootpath)
     resSfx      = $(rootpath)
-    movieDir    = $(rootpath);$(rootpath)\MOVIES
-    robot       = $(rootpath);$(rootpath)\ROBOTS
-    patchDir    = $(rootpath);$(rootpath)\MOVIES
+    movieDir    = $(rootpath)\MOVIES
+    robot       = $(rootpath)\ROBOTS
+    patchDir    = $(rootpath)
 ]]]
 
 WIN = [[[$(CRLF)
@@ -120,9 +119,9 @@ WIN = [[[$(CRLF)
     resMap      = $(rootpath)
     resAud      = $(rootpath)
     resSfx      = $(rootpath)
-    movieDir    = $(rootpath);$(rootpath)\MOVIES
-    robot       = $(rootpath);$(rootpath)\ROBOTS
-    patchDir    = $(rootpath);$(rootpath)\MOVIES
+    movieDir    = $(rootpath)\MOVIES
+    robot       = $(rootpath)\ROBOTS
+    patchDir    = $(rootpath)
 ]]]
 
 script[init]:
@@ -138,8 +137,8 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // copy protection script
@@ -254,13 +253,11 @@ game[v1.0-fr-cd]:
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
     file[]: crc = e3e5e4e1; size =  40932397; name = RESOURCE.000
     file[]: crc = 63d7e84e; size = 390456408; name = RESOURCE.AUD
-    file[]: crc = 7ec92038; size =       370; name = RESOURCE.LST
     file[]: crc = ea9e4323; size =     10534; name = RESOURCE.MAP
     file[]: crc = cbf016a8; size =     10534; name = RESOURCE.MDT
     file[]: crc = 6d40f0b7; size =  35717637; name = RESOURCE.SFX
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
-    file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
     file[]: crc = e5ba8892; size =    917801; name = SIERRA.EXE
     file[]: crc = 05ffad49; size =    803516; name = SIERRAW.EXE
     file[]: crc = b79f001e; size =   6464859; name = MOVIES\1090.VMD
@@ -301,7 +298,6 @@ game[v1.0-de-cd]:
     file[]: crc = aa5728f4; size =  35730127; name = RESOURCE.SFX
     file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
     file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
-    file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
     file[]: crc = 7ea2b924; size =    917801; name = SIERRA.EXE
     file[]: crc = 4c187605; size =    803516; name = SIERRAW.EXE
     file[]: crc = a6ee2b3a; size =   6638249; name = MOVIES\1090.VMD
