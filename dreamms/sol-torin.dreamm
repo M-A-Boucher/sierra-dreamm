@@ -13,10 +13,10 @@ ramkb = 16384
 filter = sierra, adventure
 
 //
-// os configuration
+// environment configuration
 //
-config[os]:
-    title = OS Configuration
+config[environment]:
+    title = Environment Configuration
     option[dos]: 
         name = DOS
         launch = $(rootpath)\SIERRAH.EXE
@@ -26,7 +26,6 @@ config[os]:
         name = Windows
         osenv = windows
         audiohw = gmidi
-        
         launch = $(rootpath)\SIERRAW.EXE
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
     end
@@ -53,11 +52,11 @@ CFG = [[[$(CRLF)
     audioSize      = 32k
     brightness     = 0
     language       = 1
-    resMap         = .\
-    resAUD         = .\
-    resSFX         = .\
-    patchDir       = .\PATCHES;.\MOVIE
-    movieDir       = .\MOVIE
+    resMap         = $(rootpath)
+    resAud         = $(rootpath)
+    resSfx         = $(rootpath)
+    movieDir       = $(rootpath)\MOVIE
+    patchDir       = $(rootpath)\PATCHES;$(rootpath)\MOVIE
 ]]]
 
 WIN = [[[$(CRLF)
@@ -73,11 +72,11 @@ WIN = [[[$(CRLF)
     SCIMinK        = 3500
     allowTrueColor = TRUE
     borderPixels   = 0
-    resMap         = .\
-    resAUD         = .\
-    resSFX         = .\
-    patchDir       = .\PATCHES;.\MOVIE
-    movieDir       = .\MOVIE
+    resMap         = $(rootpath)
+    resAud         = $(rootpath)
+    resSfx         = $(rootpath)
+    movieDir       = $(rootpath)\MOVIE
+    patchDir       = $(rootpath)\PATCHES;$(rootpath)\MOVIE
 ]]]
 
 script[init]:
@@ -93,22 +92,33 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
-// v1.0 Base Files
+// v1.0
 //
-fragment[v1.0-base]:
+game[v1.0]:
+    name = v1.0
     anchorfile = RESSCI.000
     anchordepth = 2
+    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 5787d1c5; size =      9799; name = RESMAP.000
     file[]: crc = cb3493ea; size =      9799; name = RESMDT.000
     file[]: crc = cb6f4b71; size = 181100846; name = RESOURCE.AUD
     file[]: crc = 6327146f; size =  68626121; name = RESOURCE.SFX
     file[]: crc = 5cf5cb20; size =  55973887; name = RESSCI.000
     file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
+    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
+    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = ec3d4038; size =      5857; name = FRENCH\MSG\0.MSG
     file[]: crc = 30e25f58; size =      1510; name = FRENCH\MSG\1.MSG
     file[]: crc = 5d097dba; size =      4902; name = FRENCH\MSG\100.MSG
@@ -272,35 +282,11 @@ fragment[v1.0-base]:
 end
 
 //
-// v1.0, DOS
+// v1.0 OEM
 //
-game[v1.0-dos]:
-    name = v1.0, DOS
-    imports = v1.0-base
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = f179349d; size =    828099; name = SIERRAH.EXE
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
-end
-
-//
-// v1.0, Windows
-//
-game[v1.0-win]:
-    name = v1.0, Windows
-    imports = v1.0-base
-    file[]: crc = aa9a0dd2; size =    719020; name = SIERRAW.EXE
-end
-
-//
-// v1.0 OEM Base Files
-//
-fragment[v1.0-oem-base]:
+game[v1.0-oem-dos]:
+    name = v1.0 OEM
+    imports = v1.0
     file[]: crc = 4c34daa3; size =      1374; name = PATCHES\12000.HEP
     file[]: crc = 19b4d0c1; size =      2932; name = PATCHES\12000.SCR
     file[]: crc = 3862ddec; size =      1764; name = PATCHES\51200.HEP
@@ -315,22 +301,6 @@ fragment[v1.0-oem-base]:
     file[]: crc = d58d06ff; size =      5682; name = PATCHES\64893.SCR
     file[]: crc = 8aaf2013; size =      1934; name = PATCHES\64897.HEP
     file[]: crc = 35e6c12f; size =      4364; name = PATCHES\64897.SCR
-end
-
-//
-// v1.0 OEM, DOS
-//
-game[v1.0-oem-dos]:
-    name = v1.0 OEM, DOS
-    imports = v1.0-dos, v1.0-oem-base
-end
-
-//
-// v1.0 OEM, Windows
-//
-game[v1.0-oem-win]:
-    name = v1.0 OEM, Windows
-    imports = v1.0-win, v1.0-oem-base
 end
 
 end
