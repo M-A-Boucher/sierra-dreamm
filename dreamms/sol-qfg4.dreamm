@@ -8,15 +8,36 @@ icon = sol-qfg4.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE
 ramkb = 4096
 filter = sierra, adventure
+
+//
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    condition = !is_installer()
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
 
 //
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = is_dos()
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega; priority = 1
@@ -48,6 +69,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker+sb16
@@ -80,6 +102,27 @@ config[sound]:
     end
 end
 
+//
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+INSTALL = [[[$(CRLF)
+    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009 RESOURCE.000
+    AUDDCOMP.EXE .\
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv  = $(VIDEO_DRIVER)
     soundDrv  = $(SOUND_DRIVER)
@@ -90,9 +133,19 @@ CFG = [[[$(CRLF)
     audiosize = 26k
 ]]]
 
-INSTALL = [[[$(CRLF)
-    COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009 RESOURCE.000
-    AUDDCOMP.EXE .\
+WIN = [[[$(CRLF)
+    [Windows]
+    title        = Shadows of Darkness
+    winPatchdir  = $(rootpath)
+    pagelock     = FALSE
+    wWidth       = 640
+    winAudioSize = 8
+    borderpixels = 15
+    synthtype    = $(SOUND_DRIVER)
+    resAud       = $(rootpath)
+    resSfx       = $(rootpath)
+    movieDir     = $(rootpath)
+    patchDir     = $(rootpath)
 ]]]
 
 script[init]:
@@ -100,8 +153,11 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -285,10 +341,10 @@ installer[v1.1-int-12.14.93-9x1.44m-installer]:
 end
 
 //
-// CD (v1.0)
+// v1.0, CD
 //
 game[v1.0-cd]:
-    name = CD (v1.0)
+    name = v1.0, CD
     anchorfile = RESOURCE.000
     file[]: crc = 6b7f71ed; size =       908; name = 100.HEP
     file[]: crc = 959b3e4f; size =      1600; name = 100.SCR
@@ -312,7 +368,6 @@ game[v1.0-cd]:
     file[]: crc = cb8c1fb3; size =   3370704; name = FLYTHRU.SEQ
     file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
-    file[]: crc = 64492198; size =      3714; name = MIDITEST.MID; optional = true
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 656ef0b3; size =      3352; name = MT32.DRV
     file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
@@ -321,13 +376,11 @@ game[v1.0-cd]:
     file[]: crc = c1211211; size = 515422434; name = RESOURCE.AUD
     file[]: crc = 0b19d8a0; size =     10246; name = RESOURCE.MAP
     file[]: crc = dfcfc57b; size =   2626716; name = RESOURCE.SFX
+    file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL  ; optional = true
     file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
     file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL
-    file[]: crc = 3c327c24; size =     22048; name = SETUP.EXE   ; optional = true
-    file[]: crc = c3ef09ab; size =    228991; name = SETUP.SOL   ; optional = true
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = d30cbd07; size =    776483; name = SIERRA.EXE
-    file[]: crc = 16bcc463; size =      2687; name = SIERRA.INF  ; optional = true
     file[]: crc = ed9b9ea4; size =    655476; name = SIERRAW.EXE ; optional = true
     file[]: crc = e2df89fc; size =      1682; name = STD.DRV
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
