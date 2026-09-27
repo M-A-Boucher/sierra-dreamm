@@ -1,9 +1,9 @@
 //
-// Freddy Pharkas Frontier Pharmacist
+// Freddy Pharkas, Frontier Pharmacist
 //
 desc[sol-freddy]:
 
-name = Freddy Pharkas Frontier Pharmacist
+name = Freddy Pharkas, Frontier Pharmacist
 icon = sol-freddy.png
 machine = pc
 osenv = dos
