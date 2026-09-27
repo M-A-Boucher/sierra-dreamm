@@ -16,10 +16,32 @@ videohw = vga;
 filter = sierra, adventure
 
 //
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    condition = !is_installer()
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        launch = $(rootpath)\SIERRAW.EXE \SIERRA.INI
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
+//
 // graphics configuration
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = is_dos()
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga
@@ -39,6 +61,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -76,6 +99,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
+    condition = is_dos()
     option[on]:
         name = On
         AUDIO_DRIVER = DACBLAST.DRV; SFX = sb16
@@ -88,24 +112,57 @@ config[sfx]:
     end
 end
 
-CFG = [[[$(CRLF)
-    videoDrv  = $(VIDEO_DRIVER)
-    soundDrv  = $(SOUND_DRIVER)
-    audioDrv  = $(AUDIO_DRIVER)
-    joyDrv    = NO
-    mouseDrv  = NONE
-    memoryDrv = NONE
-    cd        = NO
-    minmemory = 2M
-    resAUD    = .\AUD
-    resSFX    = .\
-    patchDir  = .\
-]]]
-
+//
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
 
 INSTALL = [[[$(CRLF)
     COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005+RESOURCE.006+RESOURCE.007+RESOURCE.008+RESOURCE.009+RESOURCE.010+RESOURCE.011+RESOURCE.012 RESOURCE.000
     AUDDCOMP.EXE .\
+]]]
+
+CFG = [[[$(CRLF)
+    videoDrv        = $(VIDEO_DRIVER)
+    soundDrv        = $(SOUND_DRIVER)
+    audioDrv        = $(AUDIO_DRIVER)
+    joyDrv          = NO
+    mouseDrv        = NONE
+    memoryDrv       = NONE
+    cd              = NO
+    minmemory       = 2M
+    resAud          = $(rootpath)\AUD
+    resSfx          = $(rootpath)
+    patchDir        = $(rootpath)
+]]]
+
+INI = [[[$(CRLF)
+    [Windows]
+    title           = Open Season
+    titleBar        = FALSE
+    wwidth          = 640
+    pagelock        = FALSE
+    winAudioSize    = 63k
+    scimink         = 1900
+    scimaxk         = 4000
+    borderpixels    = 10
+    cursorViewAdd   = 2000
+    reservek        = 400
+    synthtype       = $(SOUND_DRIVER)
+    resAud          = $(rootpath)\AUD
+    resSfx          = $(rootpath)
+    patchDir        = $(rootpath)
 ]]]
 
 script[init]:
@@ -113,8 +170,11 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
     ]]]
 end
 
@@ -276,7 +336,6 @@ game[v1.1-cd]:
     file[]: crc = 37cd3686; size =      6404; name = 779.SCR
     file[]: crc = e48c473b; size =      4196; name = 8.MSG
     file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
-    file[]: crc = 343ee996; size =     35198; name = BOOTDISK.EXE; optional = true
     file[]: crc = eb7b0a6e; size =      4314; name = DACBLAST.DRV
     file[]: crc = 463cdf04; size =      2363; name = DACMSSYS.DRV
     file[]: crc = 54136c93; size =      2788; name = DACPRO.DRV
@@ -296,9 +355,7 @@ game[v1.1-cd]:
     file[]: crc = 31ba4004; size =    142214; name = SCIDLL.DLL
     file[]: crc = b0886c8e; size =      8289; name = SIERRA.ERR
     file[]: crc = 9ff6e6d1; size =    756960; name = SIERRA.EXE
-    file[]: crc = 9e7df2e0; size =      2450; name = SIERRA.INF  ; optional = true
-    file[]: crc = 11586d2b; size =       255; name = SIERRA.INI  ; optional = true
-    file[]: crc = 46ad0dd1; size =    637040; name = SIERRAW.EXE ; optional = true
+    file[]: crc = 46ad0dd1; size =    637040; name = SIERRAW.EXE
     file[]: crc = e2df89fc; size =      1682; name = STD.DRV
     file[]: crc = c0ff0cbd; size =        13; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
@@ -390,7 +447,6 @@ game[v1.1-cd]:
     file[]: crc = 52953634; size =        52; name = AUD\905.MAP
     file[]: crc = 301bf3fe; size =      4525; name = AUD\910.MAP
     file[]: crc = 59fce188; size = 435170276; name = AUD\RESOURCE.AUD
-    file[]: crc = ece375ea; size =       923; name = LANGUAGE\LANGUAGE.INF
 end
 
 end
