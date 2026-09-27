@@ -115,19 +115,47 @@ config[sfx]:
     end
 end
 
-CFG = [[[$(CRLF)
-    videoDrv = $(VIDEO_DRIVER)
-    soundDrv = $(SOUND_DRIVER)
-    audioDrv = $(AUDIO_DRIVER)
-    joyDrv   = JOYSTICK.DRV
-    kbdDrv   = IBMKBD.DRV
-    mouseDrv = STDMOUSE.DRV
-    minHunk  = 200k
-]]]
-
 INSTALL = [[[$(CRLF)
     COPY RESOURCE.A01+RESOURCE.A02+RESOURCE.A03 RESOURCE.AUD
     COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 RESOURCE.000
+]]]
+
+CFG = [[[$(CRLF)
+    videoDrv     = $(VIDEO_DRIVER)
+    soundDrv     = $(SOUND_DRIVER)
+    audioDrv     = $(AUDIO_DRIVER)
+    joyDrv       = JOYSTICK.DRV
+    kbdDrv       = IBMKBD.DRV
+    mouseDrv     = STDMOUSE.DRV
+    minHunk      = 200k
+    directory    = $(rootpath)
+]]]
+
+WIN_CFG = [[[$(CRLF)
+    videoDrv     = VESA.DRV
+    joyDrv       = NO
+    directory    = $(rootpath)
+    cmd          = mgdxcd
+    mouseDrv     = NONE
+    memoryDrv    = NONE
+    minMemory    = 2048k
+    brightness   = 0
+    language     = 1
+    minCPU       = 486
+    CD           = no
+
+    [Windows]
+    title        = Mother Goose Deluxe
+    titleBar     = FALSE
+    allowresize  = FALSE
+    wwidth       = 640
+    wheight      = 480
+    pagelock     = FALSE
+    borderpixels = 5
+    winAudioSize = 62k
+    scimink      = 1700
+    showmem      = FALSE
+    synthtype    = highsynth
 ]]]
 
 script[init]:
@@ -135,16 +163,19 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game())
+        if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(WIN_CFG)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.011, Int. 9.20.90, 2x720K
@@ -313,11 +344,11 @@ end
 //
 game[1995-cd]:
     name = Deluxe, 1995, CD
-    launch = $(rootpath)\SIERRAW.EXE
+    launch = $(rootpath)\SIERRAW.EXE \RESOURCE.CFG
     anchorfile = RESOURCE.000
-    osenv = windows 3.1
+    osenv = windows 95
     mips = $(MIPS_MAX)
-    winres = 640x480x16
+    winres = 640x480x8
     file[]: crc = 7c86ab70; size =       990; name = 0.MAP
     file[]: crc = 98b8aa17; size =   9769216; name = 0GLOBAL.DLL
     file[]: crc = 5154c7d2; size =    348672; name = 0SONG01.DLL
@@ -354,21 +385,16 @@ game[1995-cd]:
     file[]: crc = c50d0b2c; size =  16697088; name = 9MUSIC.DLL
     file[]: crc = 78f7ff55; size =   9908480; name = 9PROGRAM.DLL
     file[]: crc = 957403ba; size =   5619415; name = DEMARCHG.VMD
-    file[]: crc = 6faa4a5c; size =    506400; name = DRBRAIN.EXE
     file[]: crc = 41b5ab4f; size =    472592; name = E.EXE
     file[]: crc = 2aa530cd; size =       100; name = E.SCN
     file[]: crc = 45719e58; size =      1293; name = LANGUAGE.INF
     file[]: crc = 9e669b35; size =  15150768; name = RESOURCE.000
     file[]: crc = b887ca52; size = 101492194; name = RESOURCE.AUD
-    file[]: crc = e8a4ec49; size =       431; name = RESOURCE.CFG; optional = true
     file[]: crc = 9a77f06e; size =      4741; name = RESOURCE.MAP
     file[]: crc = 414c4a90; size =      4741; name = RESOURCE.MDT
     file[]: crc = dd8f266a; size =  11880122; name = RESOURCE.SFX
     file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL
-    file[]: crc = c93d7f96; size =     25888; name = SETUP.EXE   ; optional = true
-    file[]: crc = c6c38014; size =    270261; name = SETUP.SOL   ; optional = true
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
-    file[]: crc = bdf226ee; size =      1480; name = SIERRA.INF
     file[]: crc = 8c8643c2; size =    729796; name = SIERRAW.EXE
     file[]: crc = c9517d3d; size =      1095; name = SPANISH\0.MAP
     file[]: crc = 880d9f56; size =       241; name = SPANISH\1.MAP
