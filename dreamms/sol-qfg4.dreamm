@@ -368,6 +368,7 @@ game[v1.0-cd]:
     file[]: crc = cb8c1fb3; size =   3370704; name = FLYTHRU.SEQ
     file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
     file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = 64492198; size =      3714; name = MIDITEST.MID; optional = true
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 656ef0b3; size =      3352; name = MT32.DRV
     file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
@@ -376,7 +377,6 @@ game[v1.0-cd]:
     file[]: crc = c1211211; size = 515422434; name = RESOURCE.AUD
     file[]: crc = 0b19d8a0; size =     10246; name = RESOURCE.MAP
     file[]: crc = dfcfc57b; size =   2626716; name = RESOURCE.SFX
-    file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL  ; optional = true
     file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
     file[]: crc = d6a432df; size =    142214; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
