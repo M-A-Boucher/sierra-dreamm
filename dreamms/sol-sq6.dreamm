@@ -8,30 +8,41 @@ icon = sol-sq6.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\SIERRA.EXE $(OPTIONS)
 mips = $(MIPS_P100)
 ramkb = 16384
 videohw = svga
 filter = sierra, adventure
-OPTIONS = -o RESOURCE.CFG
 
 //
 // environment configuration
 //
 config[environment]:
     title = Environment Configuration
+    option[dos-demo]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE") && is_demo()
+    end
+    option[win-demo]: 
+        name = Windows
+        osenv = windows 95
+        audiohw = gmidi
+        winres = 640x480x8
+        launch = $(rootpath)\SQ6W.EXE
+        condition = file_exists("$$(rootpath)\\SQ6W.EXE") && is_demo()
+    end
     option[dos]: 
         name = DOS
         launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
-        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE") && is_game()
     end
     option[win]:
         name = Windows
         osenv = windows 95
         audiohw = gmidi
-        winres = 640x480x16
+        winres = 640x480x8
         launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
-        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE") && is_game()
     end
 end
 
@@ -40,6 +51,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
         audiohw = sb16+adlib
@@ -76,15 +88,15 @@ CFG = [[[$(CRLF)
     CD          = NO
     minMemory   = 3200k
     audiosize   = 112k
+    dacsize     = 30720
     brightness  = 0
     language    = 1
     resMap      = $(rootpath)
-    resAUD      = $(rootpath)
-    resSFX      = $(rootpath)
-    patchDir    = $(rootpath)\MOVIES;$(rootpath)
-    movieDir    = $(rootpath)\MOVIES
-    robot       = $(rootpath)\ROBOTS
-    dacsize     = 30720
+    resAud      = $(rootpath)
+    resSfx      = $(rootpath)
+    movieDir    = $(rootpath);$(rootpath)\MOVIES
+    robot       = $(rootpath);$(rootpath)\ROBOTS
+    patchDir    = $(rootpath);$(rootpath)\MOVIES
 ]]]
 
 WIN = [[[$(CRLF)
@@ -96,8 +108,8 @@ WIN = [[[$(CRLF)
     sciMinK     = 2100
     sciMaxK     = 5000
     winG        = FALSE
-    confirmmidi = FALSE
-    confirmdac  = FALSE
+    confirmmidi = TRUE
+    confirmdac  = TRUE
     audioSize   = 60k
     dacSize     = 16384
     VideoSpeed  = 300
@@ -106,11 +118,11 @@ WIN = [[[$(CRLF)
     synthtype   = highsynth
     language    = 1
     resMap      = $(rootpath)
+    resAud      = $(rootpath)
     resSfx      = $(rootpath)
-    patchDir    = $(rootpath)\MOVIES;$(rootpath);
-    movieDir    = $(rootpath)\MOVIES
-    robot       = $(rootpath)\ROBOTS
-
+    movieDir    = $(rootpath);$(rootpath)\MOVIES
+    robot       = $(rootpath);$(rootpath)\ROBOTS
+    patchDir    = $(rootpath);$(rootpath)\MOVIES
 ]]]
 
 script[init]:
@@ -328,9 +340,8 @@ end
 //
 // Interactive Demo
 //
-game[interactive-demo]:
+demo[interactive-demo]:
     name = Interactive Demo
-    OPTIONS = $(NULL)
     anchorfile = SIERRA.EXE
     file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
     file[]: crc = cff3fc52; size =      4305; name = DACBLAST.DRV
