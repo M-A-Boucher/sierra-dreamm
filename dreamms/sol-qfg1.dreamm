@@ -165,9 +165,9 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 // v1.000, Int. 0.000.566, 4x720K
 //
 game[v1.000-int-0.000.566-4x720k]:
-    name = v1.000, Int. 0.000.566, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
+    name = v1.000, Int. 0.000.566, 4x720K, aka Hero's Quest - So You Want To Be A Hero
     launch = SCIV.EXE
-    anchorfile = RESOURCE.000
+    anchorfile = RESOURCE.MAP
     file[]: crc = a8cb6068; size =      8896; name = ADL.DRV
     file[]: crc = 053f0464; size =      2017; name = CGA320BW.DRV
     file[]: crc = 9e4650ff; size =      2376; name = CGA320C.DRV
@@ -197,13 +197,30 @@ game[v1.000-int-0.000.566-4x720k]:
 end
 
 //
+// v1.000, Int. 0.000.566, 10x360K
+//
+game[v1.000-int-0.000.566-10x360k]:
+    name = v1.000, Int. 0.000.566, 10x360K, aka Hero's Quest - So You Want To Be A Hero
+    imports = v1.000-int-0.000.566-4x720k
+    file[]: crc = ee2433f4; size =     95498; name = RESOURCE.001
+    file[]: crc = 67736a07; size =    271587; name = RESOURCE.002
+    file[]: crc = 689c03bb; size =    255998; name = RESOURCE.003
+    file[]: crc = a353432f; size =    266415; name = RESOURCE.004
+    file[]: crc = 4683a291; size =    271185; name = RESOURCE.005
+    file[]: crc = efdd7a3e; size =    267852; name = RESOURCE.006
+    file[]: crc = bdc46933; size =    272747; name = RESOURCE.007
+    file[]: crc = dedd4948; size =    263728; name = RESOURCE.008
+    file[]: crc = ed35c5a0; size =    273698; name = RESOURCE.009
+    file[]: crc = b110d315; size =    267913; name = RESOURCE.010
+    file[]: crc = fe6bcb94; size =      6936; name = RESOURCE.MAP
+end
+
+//
 // v1.001, Int. 0.000.566, 4x720K
 //
 game[v1.001-int-0.000.566-4x720k]:
-    name = v1.001, Int. 0.000.566, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
-    launch = SCIV.EXE
+    name = v1.001, Int. 0.000.566, 4x720K, aka Hero's Quest - So You Want To Be A Hero
     imports = v1.000-int-0.000.566-4x720k
-    anchorfile = RESOURCE.001
     file[]: crc = 7e59ae17; size =    462729; name = RESOURCE.001
     file[]: crc = c73af827; size =    647244; name = RESOURCE.002
     file[]: crc = 20222c75; size =      6486; name = RESOURCE.MAP
@@ -213,10 +230,8 @@ end
 // v1.001, Int. 0.000.566, 10x360K
 //
 game[v1.001-int-0.000.566-10x360k]:
-    name = v1.001, Int. 0.000.566, 10x360K, aka Hero's Quest I - So You Want To Be A Hero
-    launch = SCIV.EXE
+    name = v1.001, Int. 0.000.566, 10x360K, aka Hero's Quest - So You Want To Be A Hero
     imports = v1.001-int-0.000.566-4x720k
-    anchorfile = RESOURCE.001
     file[]: crc = e2016e97; size =     95500; name = RESOURCE.001
     file[]: crc = 67736a07; size =    271587; name = RESOURCE.002
     file[]: crc = 6cdf672a; size =    256373; name = RESOURCE.003
@@ -234,10 +249,8 @@ end
 // v1.002, Int. 0.000.629, 4x720K
 //
 game[v1.002-int-0.000.629-4x720k]:
-    name = v1.001, Int. 0.000.629, 4x720K, aka Hero's Quest I - So You Want To Be A Hero
-    launch = SCIV.EXE
+    name = v1.001, Int. 0.000.629, 4x720K, aka Hero's Quest - So You Want To Be A Hero
     imports = v1.000-int-0.000.566-4x720k
-    anchorfile = RESOURCE.000
     file[]: crc = bc3f487e; size =      8997; name = ADL.DRV
     file[]: crc = caf039f1; size =      2549; name = CSM1.DRV
     file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
@@ -257,10 +270,8 @@ end
 // v1.002, Int. 0.000.629, 10x360K
 //
 game[v1.002-int-0.000.629-10x360k]:
-    name = v1.002, Int. 0.000.629, 10x360K, aka Hero's Quest I - So You Want To Be A Hero
-    launch = SCIV.EXE
+    name = v1.002, Int. 0.000.629, 10x360K, aka Hero's Quest - So You Want To Be A Hero
     imports = v1.002-int-0.000.629-4x720k
-    anchorfile = RESOURCE.001
     file[]: crc = 37a3f0b3; size =     75090; name = RESOURCE.001
     file[]: crc = 376d0f42; size =    271354; name = RESOURCE.002
     file[]: crc = 42e62997; size =    258084; name = RESOURCE.003
@@ -279,9 +290,7 @@ end
 //
 game[v1.200-int-9.10.90-4x720k]:
     name = v1.200, Int. 9.10.90, 4x720K
-    launch = SCIV.EXE
     imports = v1.002-int-0.000.629-4x720k
-    anchorfile = RESOURCE.000
     file[]: crc = bc3f487e; size =      8997; name = ADL.DRV
     file[]: crc = caf039f1; size =      2549; name = CSM1.DRV
     file[]: crc = df8a1b9f; size =     79181; name = RESOURCE.000
