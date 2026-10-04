@@ -26,12 +26,12 @@ config[sound]:
         condition = file_exists("$$(rootpath)\\STD.DRV")
     end
     option[adlib]:
-        name = $(ADLIB_NAME); priority = 1
+        name = $(ADLIB_NAME)
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
     option[sb16]:
-        name = $(SB16_NAME)
+        name = $(SB16_NAME); priority = 1
         SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
     end
@@ -95,6 +95,7 @@ end
 //
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
 
 fragment[v1.0-base]:
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
@@ -139,6 +140,27 @@ installer[v1.0-int-11.5.93-2x1.44m-installer]:
     file[]: crc = 733dd76a; size =   1269595; name = UNCHUNK.000
     file[]: crc = 5b0219f1; size =    888049; name = UNCHUNK.001
     file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+end
+
+//
+// v1.0, CD
+//
+game[v1.0-cd]:
+    name = v1.0, CD
+    launch = $(rootpath)\MPC_TOON.EXE
+    osenv = windows 3.1
+    winres = 640x480x8
+    audiohw = gmidi
+    anchorfile = INTROS.DLL
+    file[]: crc = ab238858; size =      6760; name = CAT.DAT
+    file[]: crc = f95b0c82; size =   1171456; name = MPC_TOON.EXE
+    file[]: crc = b2d716fe; size =      6305; name = SID.DAT
+    file[]: crc = 8ce938b5; size =    517292; name = TOONS.HLP
+    file[]: crc = f5be9a85; size =  12713472; name = INTROS.DLL
+    file[]: crc = b8a660bc; size =   8187404; name = TOON2.AVI
+    file[]: crc = 33b6b5f6; size =   1687436; name = TOONDIF.PRS
+    file[]: crc = 1481ade8; size =   3827712; name = TOONRSRC.DLL
+    file[]:                                   name = CD\CDDA.SOU; cdda = 141/152/135/61/138/131/123/129/135/134/138/117/129/152/175/184/137/151/95/147/118/133/136/132
 end
 
 end
