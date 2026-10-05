@@ -174,11 +174,7 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
-        {
-          path_create("10.SCR");
-          path_create("29.SCR");
           file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
-        }
     ]]]
 end
 

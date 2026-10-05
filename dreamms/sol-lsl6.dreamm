@@ -184,10 +184,7 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
-        {
-          path_create("911.SCR");
           file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
-        }
     ]]]
 end
 

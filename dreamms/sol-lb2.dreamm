@@ -172,10 +172,7 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
-        {
-          path_create("10.SCR"); // Prevents Debugger Mode
           file_save("$$(rootpath)\\WINDOWS\\SIERRA.INI", "$$(INI)");
-        }
     ]]]
 end
 

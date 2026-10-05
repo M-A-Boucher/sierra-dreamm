@@ -93,9 +93,9 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath).    ; writable = true;
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
 
 //
 // Base files for v1.0
@@ -251,7 +251,6 @@ game[v1.02-cd]:
     file[]: crc = d7b6aa1d; size =    456048; name = KRONDOR.EXE
     file[]: crc = f1c23f87; size =     14165; name = KRONDOR.RMF
     file[]: crc = 0baeb6c4; size =       109; name = MT32.DRV
-    file[]: crc = cf3770f2; size =       177; name = RESOURCE.CFG
     file[]: crc = 46fbecdf; size =        97; name = SNDBLAST.DRV
     file[]: crc = d72a793f; size =    334605; name = STARTUP.GAM
     file[]: crc = fe78b9a7; size =       118; name = STD.DRV
