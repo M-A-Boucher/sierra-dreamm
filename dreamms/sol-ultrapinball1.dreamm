@@ -1,0 +1,128 @@
+//
+// 3-D Ultra Pinball
+//
+desc[sol-ultrapinball1]:
+
+name = 3-D Ultra Pinball
+icon = sol-ultrapinball1.png
+machine = pc
+osenv = windows
+winres = 800x600x8
+rootpath = C:\
+launch = $(rootpath)\PINBALL.EXE
+audiohw = gmidi
+mips = $(MIPS_MAX)
+filter = sierra, dynamix, pinball
+
+//
+// file system
+//
+mount[]: vpath = C:\; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = C:\; srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+
+INI = [[[$(CRLF)
+    [UPBALL]
+    InstallPath=C:\
+    CDPath=C:\
+]]]
+
+PINBALL = [[[$(CRLF)
+    [Sound]
+    SoundCard=1
+    MusicType=1
+    Volume=85
+
+    [Display]
+    ScreenWidth=800
+    ScreenHeight=600
+    ColorDepth=8
+    Fullscreen=1
+
+    [Controls]
+    Left=P
+    Right=K
+    FlipperLeft=L
+    FlipperRight=O
+    LaunchSpace=SPACE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
+        file_save("$$(rootpath)\\PINBALL.INI", "$$(PINBALL)");
+    ]]]
+end
+
+//
+// 1995
+//
+game[1995]:
+    name = 1995
+    anchorfile = PINBALL.EXE
+    anchordepth = 1
+    file[]: crc = f7cb253c; size =     14416; name = CTL3D.DLL
+    file[]: crc = 0816ce7e; size =      5404; name = DRUM.BNK
+    file[]: crc = 0fd321ab; size =     46473; name = HMIDRV.WIN
+    file[]: crc = e2b26bb3; size =     21142; name = HMIMDRV.WIN
+    file[]: crc = bd43d549; size =      5404; name = MELODIC.BNK
+    file[]: crc = fa720105; size =     12288; name = MVAPI2.DLL
+    file[]: crc = 94355f74; size =    138864; name = MVBMP2.DLL
+    file[]: crc = 8a2eb778; size =     19968; name = MVBRKR2.DLL
+    file[]: crc = efa05dd1; size =     52224; name = MVFS2.DLL
+    file[]: crc = 719c38d8; size =    160768; name = MVFTSUI2.DLL
+    file[]: crc = 7093389a; size =    286768; name = MVIEWER2.EXE
+    file[]: crc = f8bf4b24; size =     93184; name = MVMCI2.DLL
+    file[]: crc = de382f64; size =     53760; name = MVSRCH2.DLL
+    file[]: crc = 74ed75bc; size =     24576; name = MVTITLE2.DLL
+    file[]: crc = 1e41efe2; size =     54363; name = PBHELP.EXE
+    file[]: crc = ce0f4449; size =    385024; name = PINBALL.EXE
+    file[]: crc = 0d535047; size =   9766723; name = PINBALL.MVB
+    file[]: crc = b8d2bf15; size =  10564714; name = RESOURCE.001
+    file[]: crc = eac38957; size =  10123435; name = RESOURCE.002
+    file[]: crc = c673c172; size =      3268; name = RESOURCE.MAP
+    file[]: crc = 625b3008; size =     23040; name = SOS32S02.DLL
+    file[]: crc = 3f025124; size =     82944; name = SOS9502.DLL
+    file[]: crc = 6dfe691a; size =      3960; name = SOSLIB.INI
+    file[]: crc = 87f8a5da; size =     73703; name = SOSLIBS2.DLL
+    file[]: crc = a6fac09f; size =  12430068; name = SHELL\FINALE.AVI
+    file[]: crc = 7603a00d; size =   6426584; name = SHELL\UPB.AVI
+
+    file[]: crc = 65af31af; size =     46592; name = CD\AUTORUN.EXE
+    file[]: crc = 531949dc; size =       966; name = CD\AUTORUN.INF
+    file[]: crc = db898f5d; size =     36848; name = CD\BOOTDISK.EXE
+    file[]: crc = 581b5321; size =       766; name = CD\BOOTDISK.ICO
+    file[]: crc = ee3e7d13; size =      2363; name = CD\LANGUAGE.INF
+    file[]: crc = 7df6ad02; size =      2688; name = CD\README.WRI
+    file[]: crc = 1a931a7e; size =     27056; name = CD\SETUP.EXE
+    file[]: crc = b4a317b8; size =    324210; name = CD\SETUP.SOL
+    file[]: crc = 5193ee6f; size =      7038; name = CD\SIERRA.INF
+    file[]: crc = f7cb253c; size =     14416; name = CD\UPINBALL\CTL3D.DLL
+    file[]: crc = 0816ce7e; size =      5404; name = CD\UPINBALL\DRUM.BNK
+    file[]: crc = 0fd321ab; size =     46473; name = CD\UPINBALL\HMIDRV.WIN
+    file[]: crc = e2b26bb3; size =     21142; name = CD\UPINBALL\HMIMDRV.WIN
+    file[]: crc = bd43d549; size =      5404; name = CD\UPINBALL\MELODIC.BNK
+    file[]: crc = fa720105; size =     12288; name = CD\UPINBALL\MVAPI2.DLL
+    file[]: crc = 94355f74; size =    138864; name = CD\UPINBALL\MVBMP2.DLL
+    file[]: crc = 8a2eb778; size =     19968; name = CD\UPINBALL\MVBRKR2.DLL
+    file[]: crc = efa05dd1; size =     52224; name = CD\UPINBALL\MVFS2.DLL
+    file[]: crc = 719c38d8; size =    160768; name = CD\UPINBALL\MVFTSUI2.DLL
+    file[]: crc = 7093389a; size =    286768; name = CD\UPINBALL\MVIEWER2.EXE
+    file[]: crc = f8bf4b24; size =     93184; name = CD\UPINBALL\MVMCI2.DLL
+    file[]: crc = de382f64; size =     53760; name = CD\UPINBALL\MVSRCH2.DLL
+    file[]: crc = 74ed75bc; size =     24576; name = CD\UPINBALL\MVTITLE2.DLL
+    file[]: crc = 1e41efe2; size =     54363; name = CD\UPINBALL\PBHELP.EXE
+    file[]: crc = ce0f4449; size =    385024; name = CD\UPINBALL\PINBALL.EXE
+    file[]: crc = 0d535047; size =   9766723; name = CD\UPINBALL\PINBALL.MVB
+    file[]: crc = b8d2bf15; size =  10564714; name = CD\UPINBALL\RESOURCE.001
+    file[]: crc = eac38957; size =  10123435; name = CD\UPINBALL\RESOURCE.002
+    file[]: crc = c673c172; size =      3268; name = CD\UPINBALL\RESOURCE.MAP
+    file[]: crc = 625b3008; size =     23040; name = CD\UPINBALL\SOS32S02.DLL
+    file[]: crc = 3f025124; size =     82944; name = CD\UPINBALL\SOS9502.DLL
+    file[]: crc = 6dfe691a; size =      3960; name = CD\UPINBALL\SOSLIB.INI
+    file[]: crc = 87f8a5da; size =     73703; name = CD\UPINBALL\SOSLIBS2.DLL
+    file[]: crc = a6fac09f; size =  12430068; name = CD\UPINBALL\SHELL\FINALE.AVI
+    file[]: crc = 7603a00d; size =   6426584; name = CD\UPINBALL\SHELL\UPB.AVI
+end
+
+end
