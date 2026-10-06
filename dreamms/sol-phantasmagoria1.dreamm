@@ -1,10 +1,10 @@
 //
 // Phantasmagoria
 //
-desc[sol-phantas]:
+desc[sol-phantasmagoria1]:
 
 name = Phantasmagoria
-icon = sol-phantas.png
+icon = sol-phantasmagoria1.png
 machine = pc
 osenv = dos
 rootpath = C:\
@@ -135,9 +135,7 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
 
         if (!file_exists("$$(rootpath)\\PREF.DAT"))
-        {
           file_save("PREF.DAT", "`h:01 00 00 00 00 00 7F 00 0F 00");
-        }
     ]]]
 end
 

@@ -1,0 +1,57 @@
+desc[sol-afterdarkgames]:
+
+name = After Dark Games
+icon = sol-afterdarkgames.png
+machine = pc
+rootpath = C:\SIERRA\After Dark Games
+launch = "$(rootpath)\After Dark Games.exe"
+osenv = windows 98
+winres = 640x480x16
+filter = sierra, action
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// 
+//
+game[pc-cd-en]:
+    name = US CD
+    anchorfile = After Dark Games.exe
+    file[]: crc = e5a9a5e5; size =     25088; name = ADGHopper.exe
+    file[]: crc = 43ce4024; size =    257024; name = adgxpl10.dll
+    file[]: crc = c499925c; size =     67584; name = After Dark Games.exe
+    file[]: crc = 7d4132a6; size =     99840; name = After Dark Solitaire.adz
+    file[]: crc = 25713a88; size =    117760; name = Bad Dog 911.adz
+    file[]: crc = 8005a2c2; size =     40960; name = Default.adz
+    file[]: crc = e3f17fb3; size =    111104; name = Fish Shtick.adz
+    file[]: crc = 23fd2302; size =     95744; name = Foggy Boxes.adz
+    file[]: crc = 4123e2f9; size =    116736; name = Hula Girl.adz
+    file[]: crc = c3698445; size =    145920; name = MooShu Tiles.adz
+    file[]: crc = c82f7756; size =    135168; name = Mowin' Maniac.adz
+    file[]: crc = 72524fcd; size =     91136; name = Rodger Dodger.adz
+    file[]: crc = 44b9c0ff; size =   1020928; name = Rodger.ad
+    file[]: crc = 3f8f8bce; size =    126464; name = Roof Rats.adz
+    file[]: crc = 13394d24; size =    196096; name = Toaster Run.adz
+    file[]: crc = d35d5ce8; size =    426496; name = Zapper.adz
+    file[]: crc = a956a489; size =    103473; name = Data\BadDog911.dat
+    file[]: crc = 4834b0cc; size =   1679286; name = Data\dflt.srf
+    file[]: crc = 5d6aa20c; size =     53938; name = Data\Fish Shtick.dat
+    file[]: crc = 17cf6976; size =   1753171; name = Data\Fish.srf
+    file[]: crc = dd03efc3; size =   1179207; name = Data\Fogy.srf
+    file[]: crc = 7008a3ee; size =   1647754; name = Data\Hula.srf
+    file[]: crc = 08c28968; size =   2507949; name = Data\Mown.srf
+    file[]: crc = 2c6b8f0e; size =   2423755; name = Data\Mush.srf
+    file[]: crc = 18e82452; size =    593098; name = Data\Outer.srf
+    file[]: crc = c52c7a5e; size =    532177; name = Data\Rodg.srf
+    file[]: crc = 4dc7b9c2; size =   1438517; name = Data\Roof.srf
+    file[]: crc = 13e5672f; size =   2709145; name = Data\Solt.srf
+    file[]: crc = 711fabd1; size =   6167794; name = Data\Tost.srf
+    file[]: crc = b34bb5c9; size =   3357406; name = Data\Word.srf
+    file[]: crc = f8eee850; size =   2406894; name = Data\Zapr.srf
+end
+
+end
