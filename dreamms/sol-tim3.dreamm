@@ -1,0 +1,89 @@
+//
+// The Incredible Machine 3
+//
+desc[sol-tim3]:
+
+name = The Incredible Machine 3
+icon = sol-tim3.png
+machine = pc
+osenv = windows
+rootpath = C:\
+launch = $(rootpath)\TIMWIN.EXE
+winres = 1024x768x8
+mips = $(MIPS_MAX)
+audiohw = gmidi
+filter = dynamix, sierra, puzzle
+
+INI = [[[$(CRLF)
+    [TimWin]
+    InstallPath=C:\
+    CDPath=D:\
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = TIMWIN.EXE
+    anchordepth = 1
+    file[]: crc = f7cb253c; size =     14416; name = CTL3D.DLL
+    file[]: crc = 0816ce7e; size =      5404; name = DRUM.BNK
+    file[]: crc = 7d7acb0e; size =       788; name = ENGLISH.DAT
+    file[]: crc = 8ac747c7; size =    469457; name = FRENCH.DAT
+    file[]: crc = 5fbb4b45; size =    440153; name = GERMAN.DAT
+    file[]: crc = fe6e3f59; size =   5224416; name = GOALS.VOC
+    file[]: crc = ec837f2e; size =  11550237; name = HELP.VOC
+    file[]: crc = 03f07b79; size =   4056859; name = HINT1.VOC
+    file[]: crc = 7339f23e; size =   2562796; name = HINT2.VOC
+    file[]: crc = 524fad64; size =   1203154; name = HINT3.VOC
+    file[]: crc = d8be92ff; size =    410850; name = HINT4.VOC
+    file[]: crc = 394d3129; size =    153702; name = HINT5.VOC
+    file[]: crc = 74dc72f8; size =    212986; name = HINT6.VOC
+    file[]: crc = 48dcaf00; size =     31510; name = HINT7.VOC
+    file[]: crc = 0fd321ab; size =     46473; name = HMIDRV.WIN
+    file[]: crc = e2b26bb3; size =     21142; name = HMIMDRV.WIN
+    file[]: crc = 51c3534f; size =    375213; name = ITALIAN.DAT
+    file[]: crc = bd43d549; size =      5404; name = MELODIC.BNK
+    file[]: crc = fa720105; size =     12288; name = MVAPI2.DLL
+    file[]: crc = 94355f74; size =    138864; name = MVBMP2.DLL
+    file[]: crc = 8a2eb778; size =     19968; name = MVBRKR2.DLL
+    file[]: crc = efa05dd1; size =     52224; name = MVFS2.DLL
+    file[]: crc = 719c38d8; size =    160768; name = MVFTSUI2.DLL
+    file[]: crc = 7093389a; size =    286768; name = MVIEWER2.EXE
+    file[]: crc = de382f64; size =     53760; name = MVSRCH2.DLL
+    file[]: crc = 74ed75bc; size =     24576; name = MVTITLE2.DLL
+    file[]: crc = 011580dc; size =   3004874; name = PROFESOR.VOC
+    file[]: crc = f5318296; size =   7508126; name = RESOURCE.001
+    file[]: crc = 17c8b6cb; size =   1783838; name = RESOURCE.002
+    file[]: crc = 93cb45fe; size =     12276; name = RESOURCE.MAP
+    file[]: crc = 625b3008; size =     23040; name = SOS32S02.DLL
+    file[]: crc = 3f025124; size =     82944; name = SOS9502.DLL
+    file[]: crc = 6dfe691a; size =      3960; name = SOSLIB.INI
+    file[]: crc = 87f8a5da; size =     73703; name = SOSLIBS2.DLL
+    file[]: crc = 9756fb03; size =    464395; name = SPANISH.DAT
+    file[]: crc = 920f6851; size =   4908545; name = TIME.MVB
+    file[]: crc = 920f6851; size =   4908545; name = TIMF.MVB
+    file[]: crc = 920f6851; size =   4908545; name = TIMG.MVB
+    file[]: crc = 49e804b1; size =     43520; name = TIMHELP.EXE
+    file[]: crc = 920f6851; size =   4908545; name = TIMI.MVB
+    file[]: crc = 920f6851; size =   4908545; name = TIMS.MVB
+    file[]: crc = 8e9dfb55; size =    454656; name = TIMWIN.EXE
+    file[]: crc = 9bfc7902; size =       385; name = TIMWIN.INI
+    file[]:                                   name = CD\CDDA.SOU; cdda = 171/165/192/189/158/164/163/153/115/169/187/142/135/171/182/190/194/133/176/178/4
+end
+
+end
