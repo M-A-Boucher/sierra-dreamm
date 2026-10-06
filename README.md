@@ -75,6 +75,7 @@ Not yet supported: <img width="24" height="24" alt="dos-unsupported" src="https:
 | Mixed-Up Mother Goose (SCI)                                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" />       	|
 | Pepper's Adventures in Time                                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" />      	|
 | Phantasmagoria                                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" /> <img width="24" height="24" alt="win-unsupported" src="https://github.com/user-attachments/assets/0a08bfe9-80ab-4a80-8664-b5ebea541289" />       	|
+| Phantasmagoria: A Puzzle of Flesh                                                	| 🇺🇸         	| <img width="24" height="24" alt="win" src="https://github.com/user-attachments/assets/1081d584-e3b1-44e4-bffe-7244ddb11c8b" />       	|
 | Police Quest: In Pursuit of the Death Angel                                    	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Police Quest: In Pursuit of the Death Angel (SCI)                              	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
 | Police Quest II: The Vengeance                                                 	| 🇺🇸         	|<img width="24" height="24" alt="DOS" src="https://github.com/user-attachments/assets/7f9f4da3-eebc-4ee9-bf57-c803439b84b0" />       	|
@@ -141,6 +142,7 @@ A huge thank you to the following people for their continuous help with this .dr
 - gschmidl
 - eientei
 - Losetech
+- StardustMagica
 
 And a special thanks to Aaron Giles for his DREAMM emulator: https://dreamm.aarongiles.com
 
