@@ -13,6 +13,17 @@ mips = $(MIPS_MAX)
 audiohw = gmidi
 filter = sierra, adventure
 
+CFG = [[[$(CRLF)
+    videoDrv      = VESA.DRV
+    soundDrv      = MIDNONE.DRV
+    audioDrv      = DACBLAST.DRV
+    joyDrv        = NO
+    mouseDrv      = STDMOUSE.DRV
+    memoryDrv     = ARM.DRV
+    cdSpeed       = 2
+    $(COMMON)
+]]]
+
 WIN = [[[$(CRLF)
     [Windows]
     title         = Phantasmagoria - A Puzzle of Flesh
@@ -33,24 +44,36 @@ WIN = [[[$(CRLF)
     leadSubmits   = 4
     colorCursor   = TRUE
     maxCursorSize = 2016
-    palette       = $(rootpath)\DUK
+    $(COMMON)
+]]]
+
+COMMON = [[[$(CRLF)
     resAud        = $(rootpath)
     resSfx        = $(rootpath)
     resMap        = $(rootpath)
     resCDisc      = $(rootpath)
     patchDir      = $(rootpath);$(rootpath)\PATCHES
     movieDir      = $(rootpath)\DUK
-    robot         = $(rootpath)\ROBOT
+    palette       = $(rootpath)\DUK
     discID        = RESSCI
     CD:           = $(rootpath)
 ]]]
 
-script[init]: code = file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)")
+script[init]:
+    code = [[[$(CRLF)
+        if (is_dos())
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_windows())
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
+    ]]]
+end
 
 //
 // filesystem
 //
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsupgradepath); condition = is_upgrader()
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
@@ -75,28 +98,13 @@ game[v1.0]:
     file[]: crc = b5a9f26e; size =     66244; name = 999.CLU
     file[]: crc = 057075d9; size =      1061; name = 999.PAL
     file[]: crc = f5b8e538; size =     81420; name = 999.V56
-    file[]: crc = 093b1e3d; size =      5208; name = BDWIN95.TXT
-    file[]: crc = d697c987; size =     20992; name = BDXSETUP.EXE
-    file[]: crc = 031d1607; size =     36371; name = BOOTDISK.EXE
-    file[]: crc = 581b5321; size =       766; name = BOOTDISK.ICO
-    file[]: crc = 94784f5d; size =       717; name = CDCHECK.BAT
     file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
     file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
     file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = 7b42d20c; size =      8504; name = DACRRA.DRV
-    file[]: crc = 767851dd; size =     11993; name = DB4SETUP.INF
-    file[]: crc = 1b96c304; size =     24576; name = DBVERCHK.EXE
-    file[]: crc = 9cf70a7c; size =     24576; name = DSETUP.DLL
-    file[]: crc = 85165684; size =     45104; name = DSETUP6E.DLL
-    file[]: crc = ddeef63d; size =     44848; name = DSETUP6J.DLL
-    file[]: crc = 5107a42a; size =     46080; name = DSETUPE.DLL
-    file[]: crc = a62dbe1a; size =     46080; name = DSETUPJ.DLL
-    file[]: crc = 92d29985; size =     17920; name = DSSETUP.EXE
     file[]: crc = b46bc05e; size =    143872; name = DUKDLL95.DLL
-    file[]: crc = 79e86abd; size =     14438; name = LANGUAGE.INF
-    file[]: crc = 64492198; size =      3714; name = MIDITEST.MID
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = d2b7f36c; size =    312832; name = MSVCRT40.DLL
     file[]: crc = 52bdcc92; size =     34304; name = README.WRI
@@ -126,14 +134,10 @@ game[v1.0]:
     file[]: crc = 9a1bae7d; size =   8824393; name = RESSCI.LRG
     file[]: crc = 37c7445d; size =   8271488; name = RESSCI.MED
     file[]: crc = 70b6917d; size =   3802284; name = RESSCI.PAT
-    file[]: crc = ce432817; size =     32560; name = SETUP.EXE
-    file[]: crc = e265b36e; size =    979445; name = SETUP.SOL
     file[]: crc = fc93d2f6; size =      8503; name = SIERRA.ERR
-    file[]: crc = 1c4d5a24; size =     16240; name = SIERRA.INF
     file[]: crc = 1fc42b09; size =    584704; name = SIERRAW.EXE
     file[]: crc = 682f3f6c; size =    305152; name = SIGSPAT.EXE
     file[]: crc = 4b772fcd; size =        11; name = VERSION
-    file[]: crc = 865f3f41; size =        12; name = VERSION.
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 55d705f7; size =     66244; name = DUK\1.CLU
     file[]: crc = 1659db93; size =  30256590; name = DUK\1.DUK
@@ -1133,6 +1137,54 @@ game[v1.0]:
     file[]: crc = 449495fb; size =      5802; name = PATCHES\6506.CSC
     file[]: crc = 39432219; size =   2005752; name = PATCHES\811.WAV
     file[]: crc = 31cded3c; size =      7978; name = PATCHES\9021.CSC
+end
+
+// P2FIX.ZIP - fixes "error 47, not an object" when clicking
+// on the door to the computer room in chapter five
+addon[p2fix]:
+    name = Chapter 5 Patch
+    upgradeids = v1.0
+    anchorfile = 3485.CSC
+    file[]: crc = 8903688d; size =      4010; name = 3485.CSC   // 1996-12-09
+end
+
+//
+// v1.0 + DOS patch (includes P2FIX)
+//
+game[v1.0.06-dos]:
+    name = v1.0.06, DOS
+    imports = v1.0
+    osenv = dos
+    audiohw = sb16
+    launch = $(rootpath)\SIERRA.EXE RESOURCE.CFG
+    anchorfile = SIERRA.EXE
+    file[]: crc = ede2bf74; size =     29212; name = 0.CSC
+    file[]: crc = e86df94f; size =      2282; name = 2037.MSG
+    file[]: crc = 3639d540; size =      1576; name = 2038.MSG
+    file[]: crc = 08daa021; size =      4035; name = 2039.MSG
+    file[]: crc = 8903688d; size =      4010; name = 3485.CSC
+    file[]: crc = 5c3537eb; size =      5396; name = 4051.CSC
+    file[]: crc = be0d48fc; size =    308249; name = 8001.P56
+    file[]: crc = ac37c3df; size =      4916; name = 62999.CSC
+    file[]: crc = c6ef4e25; size =     36290; name = 63019.CSC
+    file[]: crc = 99380281; size =     11828; name = 64978.CSC
+    file[]: crc = 437d872b; size =    956285; name = SIERRA.EXE
+    file[]: crc = 8c905ba6; size =        10; name = VERSION
+end
+
+
+// v1.0 DOS Patch, Installer (P2DOS.ZIP)
+upgrader[v1.0-dos-patch-installer]:
+    name = DOS v1.0.06 Patch Installer
+    upgradeids = v1.0
+    osenv = dos
+    launch = $(rootpath)\PATCHIT.EXE P2.RTP
+    anchorfile = P2.RTP
+    file[]: crc = 0cedf9be; size =    888795; name = P2.RTP
+    file[]: crc = 0e3f24c0; size =      8768; name = PATCH.BAT
+    file[]: crc = 30908d21; size =      6394; name = PATCH2.BAT
+    file[]: crc = b6cc2f2a; size =     76981; name = PATCHIT.EXE
+    file[]: crc = 6bf11caf; size =      8279; name = POPCHAR.EXE
 end
 
 end
