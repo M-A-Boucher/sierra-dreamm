@@ -6,19 +6,19 @@ desc[sol-brain4]:
 name = Time Warp of Dr. Brain
 icon = sol-brain4.png
 machine = pc
-osenv = windows 95
+osenv = windows
 rootpath = C:\
 launch = $(rootpath)\DRBRAIN4.EXE
 mips = $(MIPS_MAX)
 audiohw = gmidi
-filter = sierra, puzzle
 winres = 640x480x8
+filter = sierra, puzzle
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.0
@@ -26,26 +26,8 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.0]:
     name = v1.0
     anchorfile = DRBRAIN4.EXE
-    file[]: crc = a4fdc226; size =     18432; name = AUTORUN.EXE
-    file[]: crc = 578e0f34; size =        48; name = AUTORUN.INF
-    file[]: crc = 093b1e3d; size =      5208; name = BDWIN95.TXT
-    file[]: crc = d697c987; size =     20992; name = BDXSETUP.EXE
-    file[]: crc = 32741db9; size =      9301; name = CONTACT.TXT
-    file[]: crc = 1b96c304; size =     24576; name = DBVERCHK.EXE
     file[]: crc = 49113b91; size =    769024; name = DRBRAIN4.EXE
-    file[]: crc = 9cf70a7c; size =     24576; name = DSETUP.DLL
-    file[]: crc = 85165684; size =     45104; name = DSETUP6E.DLL
-    file[]: crc = ddeef63d; size =     44848; name = DSETUP6J.DLL
-    file[]: crc = 5107a42a; size =     46080; name = DSETUPE.DLL
-    file[]: crc = a62dbe1a; size =     46080; name = DSETUPJ.DLL
-    file[]: crc = fa4c4006; size =     19968; name = NT_SETUP.EXE
-    file[]: crc = 266df688; size =      1989; name = NT_SETUP.TXT
-    file[]: crc = d832d2a6; size =     32336; name = SETUP.EXE
-    file[]: crc = 3f8d4b43; size =    568257; name = SETUP.SOL
-    file[]: crc = ac7b992f; size =     26406; name = SIERRA.INF
     file[]: crc = 1bdbf637; size =        82; name = VERSION.TXT
-    file[]: crc = 00000000; size =         0; name = WARP68.
-    file[]: crc = a4cbea45; size =   1001035; name = WARPPPC.
     file[]: crc = 380ffdba; size =   1708672; name = (DATA)\ALCHEMY.PGF
     file[]: crc = 82b3c2c5; size =  13548236; name = (DATA)\BEAVDAM.PGF
     file[]: crc = 63df7354; size =    700753; name = (DATA)\CAVEROCK.PGF
@@ -218,387 +200,25 @@ game[v1.0]:
     file[]: crc = 9fe97329; size =    163840; name = SIGS\SIGSREG.EXE
     file[]: crc = 9ead1af9; size =    221696; name = SIGS\SNWVALID.DLL
     file[]: crc = af418c7c; size =     10701; name = SIGS\SNWVALID.HLP
-    file[]: crc = 460a3ed2; size =     10321; name = WIN32SE\32SINST.INF
-    file[]: crc = 0a311382; size =     25962; name = WIN32SE\32SINST.MST
-    file[]: crc = ebc07351; size =      9813; name = WIN32SE\_MSSETUP.EXE
-    file[]: crc = b5786357; size =     89504; name = WIN32SE\_MSTEST.EXE
-    file[]: crc = 663741f1; size =    158180; name = WIN32SE\CARDS.DLL
-    file[]: crc = 337407fa; size =    284432; name = WIN32SE\COMCTL32.DLL
-    file[]: crc = a8ca0cbb; size =     54784; name = WIN32SE\COMDLG32.DLL
-    file[]: crc = db53cf5c; size =    109056; name = WIN32SE\COMPOBJ.DLL
-    file[]: crc = 588ac88b; size =    204592; name = WIN32SE\CRTDLL.DLL
-    file[]: crc = 4ae06c94; size =      6828; name = WIN32SE\CTYPE.NLS
-    file[]: crc = 6c8581c0; size =     49188; name = WIN32SE\FREECELL.EXE
-    file[]: crc = dac53ef1; size =     18751; name = WIN32SE\FREECELL.HLP
-    file[]: crc = 595e4b5f; size =    253936; name = WIN32SE\FTSRCH.DLL
-    file[]: crc = c9b82a2b; size =     13824; name = WIN32SE\INIUPD.DLL
-    file[]: crc = 86d73e52; size =      7142; name = WIN32SE\L_INTL.NLS
-    file[]: crc = a0f98edd; size =      7142; name = WIN32SE\L_TRK.NLS
-    file[]: crc = 21e092d6; size =     55588; name = WIN32SE\LOCALE.NLS
-    file[]: crc = 2b0e98ad; size =      5120; name = WIN32SE\LZ32.DLL
-    file[]: crc = 8bac66e9; size =     74528; name = WIN32SE\MSCOMSTF.DLL
-    file[]: crc = b73b5ab2; size =     24912; name = WIN32SE\MSCUISTF.DLL
-    file[]: crc = bf8f1809; size =     22097; name = WIN32SE\MSDETECT.INC
-    file[]: crc = 2bd46f8f; size =     24544; name = WIN32SE\MSDETSTF.DLL
-    file[]: crc = 5a9638c2; size =     65440; name = WIN32SE\MSINSSTF.DLL
-    file[]: crc = bd3d3075; size =     14928; name = WIN32SE\MSSHLSTF.DLL
-    file[]: crc = d342f37d; size =      6144; name = WIN32SE\MSUILSTF.DLL
-    file[]: crc = 20ebb2be; size =     11776; name = WIN32SE\NETAPI32.DLL
-    file[]: crc = ef1a3ee5; size =     59904; name = WIN32SE\NTMSG.DLL
-    file[]: crc = e6c14cc5; size =    304640; name = WIN32SE\OLE2.DLL
-    file[]: crc = 3021932a; size =     28113; name = WIN32SE\OLE2.REG
-    file[]: crc = f6bfb5bb; size =     57328; name = WIN32SE\OLE2CONV.DLL
-    file[]: crc = 9a0402f9; size =    165008; name = WIN32SE\OLE2DISP.DLL
-    file[]: crc = f66c3cdb; size =    152976; name = WIN32SE\OLE2NLS.DLL
-    file[]: crc = cf57a616; size =     51712; name = WIN32SE\OLE2PROX.DLL
-    file[]: crc = 89fb0ee0; size =     25088; name = WIN32SE\OLE2THK.DLL
-    file[]: crc = 7348ef6a; size =    366080; name = WIN32SE\OLE32.DLL
-    file[]: crc = 52792ce1; size =    232720; name = WIN32SE\OLEAUT32.DLL
-    file[]: crc = 974167d6; size =     82944; name = WIN32SE\OLECLI.DLL
-    file[]: crc = 6af2ae79; size =     19968; name = WIN32SE\OLECLI32.DLL
-    file[]: crc = 91655876; size =    112128; name = WIN32SE\OLEDLG.DLL
-    file[]: crc = 192480dd; size =     10752; name = WIN32SE\OLESVR32.DLL
-    file[]: crc = d4fadfdc; size =      2338; name = WIN32SE\P_037.NLS
-    file[]: crc = d261ed30; size =      4130; name = WIN32SE\P_10000.NLS
-    file[]: crc = a49a46cc; size =     87586; name = WIN32SE\P_10001.NLS
-    file[]: crc = 407c5121; size =      3362; name = WIN32SE\P_10006.NLS
-    file[]: crc = 43bb5d14; size =      3106; name = WIN32SE\P_10007.NLS
-    file[]: crc = d401a1c1; size =      3362; name = WIN32SE\P_10029.NLS
-    file[]: crc = 69e27ebf; size =      3874; name = WIN32SE\P_10079.NLS
-    file[]: crc = d00bcde4; size =      3874; name = WIN32SE\P_10081.NLS
-    file[]: crc = 75285f6d; size =      2338; name = WIN32SE\P_1026.NLS
-    file[]: crc = 807d7642; size =      5410; name = WIN32SE\P_1250.NLS
-    file[]: crc = 78e3d1d5; size =      3874; name = WIN32SE\P_1251.NLS
-    file[]: crc = ff907fd9; size =      5410; name = WIN32SE\P_1252.NLS
-    file[]: crc = ad2401e0; size =      4130; name = WIN32SE\P_1253.NLS
-    file[]: crc = bf29fe04; size =      5410; name = WIN32SE\P_1254.NLS
-    file[]: crc = 4a9ff7aa; size =      5922; name = WIN32SE\P_437.NLS
-    file[]: crc = 2988bee1; size =      2338; name = WIN32SE\P_500.NLS
-    file[]: crc = 5ac86dc2; size =      4130; name = WIN32SE\P_737.NLS
-    file[]: crc = a690adcf; size =      5922; name = WIN32SE\P_850.NLS
-    file[]: crc = eb81a104; size =      5922; name = WIN32SE\P_852.NLS
-    file[]: crc = 9d701d57; size =      4386; name = WIN32SE\P_855.NLS
-    file[]: crc = 31b7de6f; size =      6178; name = WIN32SE\P_857.NLS
-    file[]: crc = 57d0d1a8; size =      5922; name = WIN32SE\P_860.NLS
-    file[]: crc = e67a4945; size =      5922; name = WIN32SE\P_861.NLS
-    file[]: crc = 2b6098ba; size =      5922; name = WIN32SE\P_863.NLS
-    file[]: crc = 362227f2; size =      5922; name = WIN32SE\P_865.NLS
-    file[]: crc = f1b43b77; size =      4386; name = WIN32SE\P_866.NLS
-    file[]: crc = b836d44d; size =      4386; name = WIN32SE\P_869.NLS
-    file[]: crc = 3762b19e; size =      2594; name = WIN32SE\P_875.NLS
-    file[]: crc = 9db67f37; size =     88098; name = WIN32SE\P_932.NLS
-    file[]: crc = c223098a; size =    104482; name = WIN32SE\P_936.NLS
-    file[]: crc = b76ef725; size =    104994; name = WIN32SE\P_949.NLS
-    file[]: crc = 55164aa1; size =    130594; name = WIN32SE\P_950.NLS
-    file[]: crc = 057eff48; size =    162576; name = WIN32SE\RICHED32.DLL
-    file[]: crc = c6ef561b; size =      9216; name = WIN32SE\SCK16THK.DLL
-    file[]: crc = ce4efa87; size =     55620; name = WIN32SE\SETUPAPI.INC
-    file[]: crc = 1ac3f761; size =      7680; name = WIN32SE\SHELL32.DLL
-    file[]: crc = 13ff50b7; size =    262148; name = WIN32SE\SORTKEY.NLS
-    file[]: crc = 40852789; size =      3306; name = WIN32SE\SORTTBLS.NLS
-    file[]: crc = 3d9a5fce; size =      5472; name = WIN32SE\STDOLE.TLB
-    file[]: crc = 14d4d2fe; size =      7168; name = WIN32SE\STDOLE32.TLB
-    file[]: crc = 3896800c; size =    157696; name = WIN32SE\STORAGE.DLL
-    file[]: crc = 091798f5; size =    177824; name = WIN32SE\TYPELIB.DLL
-    file[]: crc = f0a3aed6; size =     34080; name = WIN32SE\UNICODE.NLS
-    file[]: crc = df1db248; size =      4608; name = WIN32SE\VERSION.DLL
-    file[]: crc = 744cd624; size =     36587; name = WIN32SE\W32S.386
-    file[]: crc = d6cb92bb; size =    236544; name = WIN32SE\W32SCOMB.DLL
-    file[]: crc = 18df2c1d; size =     82944; name = WIN32SE\W32SKRNL.DLL
-    file[]: crc = 1c845a98; size =     12544; name = WIN32SE\W32SYS.DLL
-    file[]: crc = 63df1839; size =       880; name = WIN32SE\WIN32S.EXE
-    file[]: crc = c6458777; size =    167424; name = WIN32SE\WIN32S16.DLL
-    file[]: crc = 89904c6c; size =     21473; name = WIN32SE\WINDOWS.HLP
-    file[]: crc = bf2c3e46; size =       930; name = WIN32SE\WINHLP32.CNT
-    file[]: crc = e80370d2; size =    336400; name = WIN32SE\WINHLP32.EXE
-    file[]: crc = dfb422e1; size =     31684; name = WIN32SE\WINHLP32.HLP
-    file[]: crc = 95e4fc25; size =     65628; name = WIN32SE\WINMM.DLL
-    file[]: crc = 0454b9c1; size =     29184; name = WIN32SE\WINMM16.DLL
-    file[]: crc = e7414a15; size =      9216; name = WIN32SE\WINSPOOL.DRV
-    file[]: crc = 7a7b8d78; size =     24624; name = WIN32SE\WSETUP.EXE
-    file[]: crc = 8e651735; size =       611; name = WIN32SE\WSETUP.LST
-    file[]: crc = 1da47474; size =     13824; name = WIN32SE\WSOCK32.DLL
-    file[]: crc = dc791485; size =     10321; name = WIN32SF\32SINST.INF
-    file[]: crc = 90f55d74; size =     26169; name = WIN32SF\32SINST.MST
-    file[]: crc = ebc07351; size =      9813; name = WIN32SF\_MSSETUP.EXE
-    file[]: crc = b5786357; size =     89504; name = WIN32SF\_MSTEST.EXE
-    file[]: crc = 663741f1; size =    158180; name = WIN32SF\CARDS.DLL
-    file[]: crc = ba37ab93; size =    284944; name = WIN32SF\COMCTL32.DLL
-    file[]: crc = 40f5fc2d; size =     59904; name = WIN32SF\COMDLG32.DLL
-    file[]: crc = db53cf5c; size =    109056; name = WIN32SF\COMPOBJ.DLL
-    file[]: crc = 588ac88b; size =    204592; name = WIN32SF\CRTDLL.DLL
-    file[]: crc = 4ae06c94; size =      6828; name = WIN32SF\CTYPE.NLS
-    file[]: crc = 6c8581c0; size =     49188; name = WIN32SF\FREECELL.EXE
-    file[]: crc = dac53ef1; size =     18751; name = WIN32SF\FREECELL.HLP
-    file[]: crc = 0b1e0288; size =    254960; name = WIN32SF\FTSRCH.DLL
-    file[]: crc = c9b82a2b; size =     13824; name = WIN32SF\INIUPD.DLL
-    file[]: crc = 86d73e52; size =      7142; name = WIN32SF\L_INTL.NLS
-    file[]: crc = a0f98edd; size =      7142; name = WIN32SF\L_TRK.NLS
-    file[]: crc = 21e092d6; size =     55588; name = WIN32SF\LOCALE.NLS
-    file[]: crc = 2b0e98ad; size =      5120; name = WIN32SF\LZ32.DLL
-    file[]: crc = 8bac66e9; size =     74528; name = WIN32SF\MSCOMSTF.DLL
-    file[]: crc = 413642f8; size =     26128; name = WIN32SF\MSCUISTF.DLL
-    file[]: crc = bf8f1809; size =     22097; name = WIN32SF\MSDETECT.INC
-    file[]: crc = 2bd46f8f; size =     24544; name = WIN32SF\MSDETSTF.DLL
-    file[]: crc = 5a9638c2; size =     65440; name = WIN32SF\MSINSSTF.DLL
-    file[]: crc = bd3d3075; size =     14928; name = WIN32SF\MSSHLSTF.DLL
-    file[]: crc = d342f37d; size =      6144; name = WIN32SF\MSUILSTF.DLL
-    file[]: crc = 20ebb2be; size =     11776; name = WIN32SF\NETAPI32.DLL
-    file[]: crc = ef1a3ee5; size =     59904; name = WIN32SF\NTMSG.DLL
-    file[]: crc = e6c14cc5; size =    304640; name = WIN32SF\OLE2.DLL
-    file[]: crc = 3021932a; size =     28113; name = WIN32SF\OLE2.REG
-    file[]: crc = f6bfb5bb; size =     57328; name = WIN32SF\OLE2CONV.DLL
-    file[]: crc = 9a0402f9; size =    165008; name = WIN32SF\OLE2DISP.DLL
-    file[]: crc = f66c3cdb; size =    152976; name = WIN32SF\OLE2NLS.DLL
-    file[]: crc = cf57a616; size =     51712; name = WIN32SF\OLE2PROX.DLL
-    file[]: crc = 89fb0ee0; size =     25088; name = WIN32SF\OLE2THK.DLL
-    file[]: crc = 7348ef6a; size =    366080; name = WIN32SF\OLE32.DLL
-    file[]: crc = 52792ce1; size =    232720; name = WIN32SF\OLEAUT32.DLL
-    file[]: crc = 974167d6; size =     82944; name = WIN32SF\OLECLI.DLL
-    file[]: crc = 6af2ae79; size =     19968; name = WIN32SF\OLECLI32.DLL
-    file[]: crc = 33719288; size =    114688; name = WIN32SF\OLEDLG.DLL
-    file[]: crc = 192480dd; size =     10752; name = WIN32SF\OLESVR32.DLL
-    file[]: crc = d4fadfdc; size =      2338; name = WIN32SF\P_037.NLS
-    file[]: crc = d261ed30; size =      4130; name = WIN32SF\P_10000.NLS
-    file[]: crc = a49a46cc; size =     87586; name = WIN32SF\P_10001.NLS
-    file[]: crc = 407c5121; size =      3362; name = WIN32SF\P_10006.NLS
-    file[]: crc = 43bb5d14; size =      3106; name = WIN32SF\P_10007.NLS
-    file[]: crc = d401a1c1; size =      3362; name = WIN32SF\P_10029.NLS
-    file[]: crc = 69e27ebf; size =      3874; name = WIN32SF\P_10079.NLS
-    file[]: crc = d00bcde4; size =      3874; name = WIN32SF\P_10081.NLS
-    file[]: crc = 75285f6d; size =      2338; name = WIN32SF\P_1026.NLS
-    file[]: crc = 807d7642; size =      5410; name = WIN32SF\P_1250.NLS
-    file[]: crc = 78e3d1d5; size =      3874; name = WIN32SF\P_1251.NLS
-    file[]: crc = ff907fd9; size =      5410; name = WIN32SF\P_1252.NLS
-    file[]: crc = ad2401e0; size =      4130; name = WIN32SF\P_1253.NLS
-    file[]: crc = bf29fe04; size =      5410; name = WIN32SF\P_1254.NLS
-    file[]: crc = 4a9ff7aa; size =      5922; name = WIN32SF\P_437.NLS
-    file[]: crc = 2988bee1; size =      2338; name = WIN32SF\P_500.NLS
-    file[]: crc = 5ac86dc2; size =      4130; name = WIN32SF\P_737.NLS
-    file[]: crc = a690adcf; size =      5922; name = WIN32SF\P_850.NLS
-    file[]: crc = eb81a104; size =      5922; name = WIN32SF\P_852.NLS
-    file[]: crc = 9d701d57; size =      4386; name = WIN32SF\P_855.NLS
-    file[]: crc = 31b7de6f; size =      6178; name = WIN32SF\P_857.NLS
-    file[]: crc = 57d0d1a8; size =      5922; name = WIN32SF\P_860.NLS
-    file[]: crc = e67a4945; size =      5922; name = WIN32SF\P_861.NLS
-    file[]: crc = 2b6098ba; size =      5922; name = WIN32SF\P_863.NLS
-    file[]: crc = 362227f2; size =      5922; name = WIN32SF\P_865.NLS
-    file[]: crc = f1b43b77; size =      4386; name = WIN32SF\P_866.NLS
-    file[]: crc = b836d44d; size =      4386; name = WIN32SF\P_869.NLS
-    file[]: crc = 3762b19e; size =      2594; name = WIN32SF\P_875.NLS
-    file[]: crc = 9db67f37; size =     88098; name = WIN32SF\P_932.NLS
-    file[]: crc = c223098a; size =    104482; name = WIN32SF\P_936.NLS
-    file[]: crc = b76ef725; size =    104994; name = WIN32SF\P_949.NLS
-    file[]: crc = 55164aa1; size =    130594; name = WIN32SF\P_950.NLS
-    file[]: crc = 8a7df2dc; size =    162576; name = WIN32SF\RICHED32.DLL
-    file[]: crc = c6ef561b; size =      9216; name = WIN32SF\SCK16THK.DLL
-    file[]: crc = ce4efa87; size =     55620; name = WIN32SF\SETUPAPI.INC
-    file[]: crc = 1ac3f761; size =      7680; name = WIN32SF\SHELL32.DLL
-    file[]: crc = 13ff50b7; size =    262148; name = WIN32SF\SORTKEY.NLS
-    file[]: crc = 40852789; size =      3306; name = WIN32SF\SORTTBLS.NLS
-    file[]: crc = 3d9a5fce; size =      5472; name = WIN32SF\STDOLE.TLB
-    file[]: crc = 14d4d2fe; size =      7168; name = WIN32SF\STDOLE32.TLB
-    file[]: crc = 3896800c; size =    157696; name = WIN32SF\STORAGE.DLL
-    file[]: crc = 091798f5; size =    177824; name = WIN32SF\TYPELIB.DLL
-    file[]: crc = f0a3aed6; size =     34080; name = WIN32SF\UNICODE.NLS
-    file[]: crc = df1db248; size =      4608; name = WIN32SF\VERSION.DLL
-    file[]: crc = fff40d72; size =     36587; name = WIN32SF\W32S.386
-    file[]: crc = d6cb92bb; size =    236544; name = WIN32SF\W32SCOMB.DLL
-    file[]: crc = 18df2c1d; size =     82944; name = WIN32SF\W32SKRNL.DLL
-    file[]: crc = e6e7f87f; size =     12688; name = WIN32SF\W32SYS.DLL
-    file[]: crc = 63df1839; size =       880; name = WIN32SF\WIN32S.EXE
-    file[]: crc = c6458777; size =    167424; name = WIN32SF\WIN32S16.DLL
-    file[]: crc = 89904c6c; size =     21473; name = WIN32SF\WINDOWS.HLP
-    file[]: crc = bf2c3e46; size =       930; name = WIN32SF\WINHLP32.CNT
-    file[]: crc = 94b6750c; size =    341520; name = WIN32SF\WINHLP32.EXE
-    file[]: crc = dfb422e1; size =     31684; name = WIN32SF\WINHLP32.HLP
-    file[]: crc = 95e4fc25; size =     65628; name = WIN32SF\WINMM.DLL
-    file[]: crc = 0454b9c1; size =     29184; name = WIN32SF\WINMM16.DLL
-    file[]: crc = e7414a15; size =      9216; name = WIN32SF\WINSPOOL.DRV
-    file[]: crc = 7a7b8d78; size =     24624; name = WIN32SF\WSETUP.EXE
-    file[]: crc = 4d44f493; size =       630; name = WIN32SF\WSETUP.LST
-    file[]: crc = 1da47474; size =     13824; name = WIN32SF\WSOCK32.DLL
-    file[]: crc = de5ebe1f; size =     10321; name = WIN32SG\32SINST.INF
-    file[]: crc = 5349d5dc; size =     26103; name = WIN32SG\32SINST.MST
-    file[]: crc = ebc07351; size =      9813; name = WIN32SG\_MSSETUP.EXE
-    file[]: crc = b5786357; size =     89504; name = WIN32SG\_MSTEST.EXE
-    file[]: crc = 663741f1; size =    158180; name = WIN32SG\CARDS.DLL
-    file[]: crc = 122c25da; size =    284432; name = WIN32SG\COMCTL32.DLL
-    file[]: crc = fb78c6d6; size =     59392; name = WIN32SG\COMDLG32.DLL
-    file[]: crc = db53cf5c; size =    109056; name = WIN32SG\COMPOBJ.DLL
-    file[]: crc = 588ac88b; size =    204592; name = WIN32SG\CRTDLL.DLL
-    file[]: crc = 4ae06c94; size =      6828; name = WIN32SG\CTYPE.NLS
-    file[]: crc = 6c8581c0; size =     49188; name = WIN32SG\FREECELL.EXE
-    file[]: crc = dac53ef1; size =     18751; name = WIN32SG\FREECELL.HLP
-    file[]: crc = 61fcd886; size =    254960; name = WIN32SG\FTSRCH.DLL
-    file[]: crc = c9b82a2b; size =     13824; name = WIN32SG\INIUPD.DLL
-    file[]: crc = 86d73e52; size =      7142; name = WIN32SG\L_INTL.NLS
-    file[]: crc = a0f98edd; size =      7142; name = WIN32SG\L_TRK.NLS
-    file[]: crc = 21e092d6; size =     55588; name = WIN32SG\LOCALE.NLS
-    file[]: crc = 2b0e98ad; size =      5120; name = WIN32SG\LZ32.DLL
-    file[]: crc = 8bac66e9; size =     74528; name = WIN32SG\MSCOMSTF.DLL
-    file[]: crc = e1d2e576; size =     25904; name = WIN32SG\MSCUISTF.DLL
-    file[]: crc = bf8f1809; size =     22097; name = WIN32SG\MSDETECT.INC
-    file[]: crc = 2bd46f8f; size =     24544; name = WIN32SG\MSDETSTF.DLL
-    file[]: crc = 5a9638c2; size =     65440; name = WIN32SG\MSINSSTF.DLL
-    file[]: crc = bd3d3075; size =     14928; name = WIN32SG\MSSHLSTF.DLL
-    file[]: crc = d342f37d; size =      6144; name = WIN32SG\MSUILSTF.DLL
-    file[]: crc = 20ebb2be; size =     11776; name = WIN32SG\NETAPI32.DLL
-    file[]: crc = ef1a3ee5; size =     59904; name = WIN32SG\NTMSG.DLL
-    file[]: crc = e6c14cc5; size =    304640; name = WIN32SG\OLE2.DLL
-    file[]: crc = 3021932a; size =     28113; name = WIN32SG\OLE2.REG
-    file[]: crc = f6bfb5bb; size =     57328; name = WIN32SG\OLE2CONV.DLL
-    file[]: crc = 9a0402f9; size =    165008; name = WIN32SG\OLE2DISP.DLL
-    file[]: crc = f66c3cdb; size =    152976; name = WIN32SG\OLE2NLS.DLL
-    file[]: crc = cf57a616; size =     51712; name = WIN32SG\OLE2PROX.DLL
-    file[]: crc = 89fb0ee0; size =     25088; name = WIN32SG\OLE2THK.DLL
-    file[]: crc = 7348ef6a; size =    366080; name = WIN32SG\OLE32.DLL
-    file[]: crc = 52792ce1; size =    232720; name = WIN32SG\OLEAUT32.DLL
-    file[]: crc = 974167d6; size =     82944; name = WIN32SG\OLECLI.DLL
-    file[]: crc = 6af2ae79; size =     19968; name = WIN32SG\OLECLI32.DLL
-    file[]: crc = d1b716ef; size =    114688; name = WIN32SG\OLEDLG.DLL
-    file[]: crc = 192480dd; size =     10752; name = WIN32SG\OLESVR32.DLL
-    file[]: crc = d4fadfdc; size =      2338; name = WIN32SG\P_037.NLS
-    file[]: crc = d261ed30; size =      4130; name = WIN32SG\P_10000.NLS
-    file[]: crc = a49a46cc; size =     87586; name = WIN32SG\P_10001.NLS
-    file[]: crc = 407c5121; size =      3362; name = WIN32SG\P_10006.NLS
-    file[]: crc = 43bb5d14; size =      3106; name = WIN32SG\P_10007.NLS
-    file[]: crc = d401a1c1; size =      3362; name = WIN32SG\P_10029.NLS
-    file[]: crc = 69e27ebf; size =      3874; name = WIN32SG\P_10079.NLS
-    file[]: crc = d00bcde4; size =      3874; name = WIN32SG\P_10081.NLS
-    file[]: crc = 75285f6d; size =      2338; name = WIN32SG\P_1026.NLS
-    file[]: crc = 807d7642; size =      5410; name = WIN32SG\P_1250.NLS
-    file[]: crc = 78e3d1d5; size =      3874; name = WIN32SG\P_1251.NLS
-    file[]: crc = ff907fd9; size =      5410; name = WIN32SG\P_1252.NLS
-    file[]: crc = ad2401e0; size =      4130; name = WIN32SG\P_1253.NLS
-    file[]: crc = bf29fe04; size =      5410; name = WIN32SG\P_1254.NLS
-    file[]: crc = 4a9ff7aa; size =      5922; name = WIN32SG\P_437.NLS
-    file[]: crc = 2988bee1; size =      2338; name = WIN32SG\P_500.NLS
-    file[]: crc = 5ac86dc2; size =      4130; name = WIN32SG\P_737.NLS
-    file[]: crc = a690adcf; size =      5922; name = WIN32SG\P_850.NLS
-    file[]: crc = eb81a104; size =      5922; name = WIN32SG\P_852.NLS
-    file[]: crc = 9d701d57; size =      4386; name = WIN32SG\P_855.NLS
-    file[]: crc = 31b7de6f; size =      6178; name = WIN32SG\P_857.NLS
-    file[]: crc = 57d0d1a8; size =      5922; name = WIN32SG\P_860.NLS
-    file[]: crc = e67a4945; size =      5922; name = WIN32SG\P_861.NLS
-    file[]: crc = 2b6098ba; size =      5922; name = WIN32SG\P_863.NLS
-    file[]: crc = 362227f2; size =      5922; name = WIN32SG\P_865.NLS
-    file[]: crc = f1b43b77; size =      4386; name = WIN32SG\P_866.NLS
-    file[]: crc = b836d44d; size =      4386; name = WIN32SG\P_869.NLS
-    file[]: crc = 3762b19e; size =      2594; name = WIN32SG\P_875.NLS
-    file[]: crc = 9db67f37; size =     88098; name = WIN32SG\P_932.NLS
-    file[]: crc = c223098a; size =    104482; name = WIN32SG\P_936.NLS
-    file[]: crc = b76ef725; size =    104994; name = WIN32SG\P_949.NLS
-    file[]: crc = 55164aa1; size =    130594; name = WIN32SG\P_950.NLS
-    file[]: crc = 715d59f1; size =    162576; name = WIN32SG\RICHED32.DLL
-    file[]: crc = c6ef561b; size =      9216; name = WIN32SG\SCK16THK.DLL
-    file[]: crc = ce4efa87; size =     55620; name = WIN32SG\SETUPAPI.INC
-    file[]: crc = 1ac3f761; size =      7680; name = WIN32SG\SHELL32.DLL
-    file[]: crc = 13ff50b7; size =    262148; name = WIN32SG\SORTKEY.NLS
-    file[]: crc = 40852789; size =      3306; name = WIN32SG\SORTTBLS.NLS
-    file[]: crc = 3d9a5fce; size =      5472; name = WIN32SG\STDOLE.TLB
-    file[]: crc = 14d4d2fe; size =      7168; name = WIN32SG\STDOLE32.TLB
-    file[]: crc = 3896800c; size =    157696; name = WIN32SG\STORAGE.DLL
-    file[]: crc = 091798f5; size =    177824; name = WIN32SG\TYPELIB.DLL
-    file[]: crc = f0a3aed6; size =     34080; name = WIN32SG\UNICODE.NLS
-    file[]: crc = df1db248; size =      4608; name = WIN32SG\VERSION.DLL
-    file[]: crc = 09c28f44; size =     36587; name = WIN32SG\W32S.386
-    file[]: crc = d6cb92bb; size =    236544; name = WIN32SG\W32SCOMB.DLL
-    file[]: crc = 18df2c1d; size =     82944; name = WIN32SG\W32SKRNL.DLL
-    file[]: crc = ea024c0b; size =     12768; name = WIN32SG\W32SYS.DLL
-    file[]: crc = 63df1839; size =       880; name = WIN32SG\WIN32S.EXE
-    file[]: crc = c6458777; size =    167424; name = WIN32SG\WIN32S16.DLL
-    file[]: crc = 89904c6c; size =     21473; name = WIN32SG\WINDOWS.HLP
-    file[]: crc = bf2c3e46; size =       930; name = WIN32SG\WINHLP32.CNT
-    file[]: crc = 73896787; size =    340496; name = WIN32SG\WINHLP32.EXE
-    file[]: crc = dfb422e1; size =     31684; name = WIN32SG\WINHLP32.HLP
-    file[]: crc = 95e4fc25; size =     65628; name = WIN32SG\WINMM.DLL
-    file[]: crc = 0454b9c1; size =     29184; name = WIN32SG\WINMM16.DLL
-    file[]: crc = e7414a15; size =      9216; name = WIN32SG\WINSPOOL.DRV
-    file[]: crc = 7a7b8d78; size =     24624; name = WIN32SG\WSETUP.EXE
-    file[]: crc = e671701b; size =       617; name = WIN32SG\WSETUP.LST
-    file[]: crc = 1da47474; size =     13824; name = WIN32SG\WSOCK32.DLL
-    file[]: crc = 4d678301; size =      7543; name = _MSSETUP.EX_
-    file[]: crc = 1d34e868; size =     55370; name = _MSTEST.EX_
-    file[]: crc = a0307615; size =      7736; name = CMACRO32.IN_
-    file[]: crc = a0b67fa1; size =      1162; name = DVA.38_
-    file[]: crc = 9ce4cf33; size =     41320; name = MSCOMSTF.DL_
-    file[]: crc = 3da26aad; size =      8798; name = MSCUISTF.DL_
-    file[]: crc = 9efe078a; size =      4726; name = MSDETECT.IN_
-    file[]: crc = ebc68d52; size =     14949; name = MSDETSTF.DL_
-    file[]: crc = 7aee789c; size =     40805; name = MSINSSTF.DL_
-    file[]: crc = 5d9b6de0; size =      1361; name = MSREGDB.IN_
-    file[]: crc = 7a7b8d78; size =     24624; name = MSSETUP.EXE
-    file[]: crc = ac59c752; size =       563; name = MSSETUP.LST
-    file[]: crc = 30e8b48d; size =      1151; name = MSSHARED.IN_
-    file[]: crc = 3fc4f92c; size =      9226; name = MSSHLSTF.DL_
-    file[]: crc = b274cf0a; size =      3970; name = MSUILSTF.DL_
-    file[]: crc = f146e0fe; size =     13459; name = SETUPAPI.IN_
-    file[]: crc = 0baf99c8; size =     18127; name = SETUPHLP.DL_
-    file[]: crc = cba256b8; size =     47327; name = WING.DL_
-    file[]: crc = 02a583bf; size =     81789; name = WING.HL_
-    file[]: crc = 120baf61; size =      1579; name = WING.IN_
-    file[]: crc = 17c227ff; size =       768; name = WING.LI_
-    file[]: crc = 92ddfa0a; size =     10600; name = WING.MST
-    file[]: crc = c99ee5cd; size =      6713; name = WING32.DL_
-    file[]: crc = 2713f8d0; size =      2767; name = WING32.LI_
-    file[]: crc = 9af214ff; size =     87460; name = WINGDE.DL_
-    file[]: crc = 1d9880ae; size =      5144; name = WINGDIB.DR_
-    file[]: crc = cac27720; size =      3326; name = WINGPAL.WN_
-    file[]: crc = 4d678301; size =      7543; name = WINGF\_MSSETUP.EX_
-    file[]: crc = 1d34e868; size =     55370; name = WINGF\_MSTEST.EX_
-    file[]: crc = a0307615; size =      7736; name = WINGF\CMACRO32.IN_
-    file[]: crc = a0b67fa1; size =      1162; name = WINGF\DVA.38_
-    file[]: crc = 9ce4cf33; size =     41320; name = WINGF\MSCOMSTF.DL_
-    file[]: crc = 3da26aad; size =      8798; name = WINGF\MSCUISTF.DL_
-    file[]: crc = 9efe078a; size =      4726; name = WINGF\MSDETECT.IN_
-    file[]: crc = ebc68d52; size =     14949; name = WINGF\MSDETSTF.DL_
-    file[]: crc = 7aee789c; size =     40805; name = WINGF\MSINSSTF.DL_
-    file[]: crc = 5d9b6de0; size =      1361; name = WINGF\MSREGDB.IN_
-    file[]: crc = 7a7b8d78; size =     24624; name = WINGF\MSSETUP.EXE
-    file[]: crc = 5c71e691; size =       579; name = WINGF\MSSETUP.LST
-    file[]: crc = 30e8b48d; size =      1151; name = WINGF\MSSHARED.IN_
-    file[]: crc = 3fc4f92c; size =      9226; name = WINGF\MSSHLSTF.DL_
-    file[]: crc = b274cf0a; size =      3970; name = WINGF\MSUILSTF.DL_
-    file[]: crc = f146e0fe; size =     13459; name = WINGF\SETUPAPI.IN_
-    file[]: crc = 0baf99c8; size =     18127; name = WINGF\SETUPHLP.DL_
-    file[]: crc = cba256b8; size =     47327; name = WINGF\WING.DL_
-    file[]: crc = 02a583bf; size =     81789; name = WINGF\WING.HL_
-    file[]: crc = 120baf61; size =      1579; name = WINGF\WING.IN_
-    file[]: crc = 17c227ff; size =       768; name = WINGF\WING.LI_
-    file[]: crc = 92ddfa0a; size =     10600; name = WINGF\WING.MST
-    file[]: crc = c99ee5cd; size =      6713; name = WINGF\WING32.DL_
-    file[]: crc = 2713f8d0; size =      2767; name = WINGF\WING32.LI_
-    file[]: crc = 9af214ff; size =     87460; name = WINGF\WINGDE.DL_
-    file[]: crc = 1d9880ae; size =      5144; name = WINGF\WINGDIB.DR_
-    file[]: crc = cac27720; size =      3326; name = WINGF\WINGPAL.WN_
-    file[]: crc = 4d678301; size =      7543; name = WINGG\_MSSETUP.EX_
-    file[]: crc = 1d34e868; size =     55370; name = WINGG\_MSTEST.EX_
-    file[]: crc = a0307615; size =      7736; name = WINGG\CMACRO32.IN_
-    file[]: crc = a0b67fa1; size =      1162; name = WINGG\DVA.38_
-    file[]: crc = 9ce4cf33; size =     41320; name = WINGG\MSCOMSTF.DL_
-    file[]: crc = 3da26aad; size =      8798; name = WINGG\MSCUISTF.DL_
-    file[]: crc = 9efe078a; size =      4726; name = WINGG\MSDETECT.IN_
-    file[]: crc = ebc68d52; size =     14949; name = WINGG\MSDETSTF.DL_
-    file[]: crc = 7aee789c; size =     40805; name = WINGG\MSINSSTF.DL_
-    file[]: crc = 5d9b6de0; size =      1361; name = WINGG\MSREGDB.IN_
-    file[]: crc = 7a7b8d78; size =     24624; name = WINGG\MSSETUP.EXE
-    file[]: crc = 6eb82ee3; size =       585; name = WINGG\MSSETUP.LST
-    file[]: crc = 30e8b48d; size =      1151; name = WINGG\MSSHARED.IN_
-    file[]: crc = 3fc4f92c; size =      9226; name = WINGG\MSSHLSTF.DL_
-    file[]: crc = b274cf0a; size =      3970; name = WINGG\MSUILSTF.DL_
-    file[]: crc = f146e0fe; size =     13459; name = WINGG\SETUPAPI.IN_
-    file[]: crc = 0baf99c8; size =     18127; name = WINGG\SETUPHLP.DL_
-    file[]: crc = cba256b8; size =     47327; name = WINGG\WING.DL_
-    file[]: crc = 02a583bf; size =     81789; name = WINGG\WING.HL_
-    file[]: crc = 120baf61; size =      1579; name = WINGG\WING.IN_
-    file[]: crc = 17c227ff; size =       768; name = WINGG\WING.LI_
-    file[]: crc = 92ddfa0a; size =     10600; name = WINGG\WING.MST
-    file[]: crc = c99ee5cd; size =      6713; name = WINGG\WING32.DL_
-    file[]: crc = 2713f8d0; size =      2767; name = WINGG\WING32.LI_
-    file[]: crc = 9af214ff; size =     87460; name = WINGG\WINGDE.DL_
-    file[]: crc = 1d9880ae; size =      5144; name = WINGG\WINGDIB.DR_
-    file[]: crc = cac27720; size =      3326; name = WINGG\WINGPAL.WN_
+end
+
+//
+// v1.0.2.2
+//
+game[v1.0.2.2]:
+    name = v1.0.2.2
+    imports = v1.0
+    file[]: crc = c1cf662a; size =    777728; name = DRBRAIN4.EXE
+    file[]: crc = 3ab16059; size =       169; name = VER.TXT
+    file[]: crc = c5518dfc; size =    319715; name = (DATA)\GLOBAL.PGF
+    file[]: crc = 572bcf35; size =     37376; name = FRENCH\README.WRI
+    file[]: crc = ca84ac30; size =     27392; name = GERMAN\README.WRI
+    file[]: crc = 69620751; size =    507392; name = SIGS\SIERRANW.DLL
+    file[]: crc = 5467985e; size =    218112; name = SIGS\SNWVALID.DLL
+    file[]: crc = 048e7fba; size =     10700; name = SIGS\SNWVALID.HLP
+    file[]: remove = SIGS\MFC40.DLL
+    file[]: remove = SIGS\MSVCRT40.DLL
+    file[]: remove = VERSION.TXT
 end
 
 end
