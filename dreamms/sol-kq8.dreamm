@@ -140,7 +140,7 @@ INF = [[[$(CRLF)
     Drive=C:\
 ]]]
 
-KQ = [[[$(CRLF)
+MAIN = [[[$(CRLF)
     [Window]
     classType=KQMainWindow
     x=0
@@ -151,7 +151,7 @@ KQ = [[[$(CRLF)
     shutDownOK=1
 ]]]
 
-CS = [[[$(CRLF)
+OPTIONS = [[[$(CRLF)
     KQSound::setSpeechVol 1
     KQSound::setSfxVol    1
     KQSound::setMusicVol  1
@@ -176,64 +176,14 @@ MOVEKEYS = [[[$(CRLF)
     $(KEYBINDS)
 ]]]
 
-CLASSIC = [[[$(CRLF)
-    [MovekeysScreen]
-    classType=KQMoveKeysScreen
-    guiFile=Movekey.gui
-    palette=Menus.ppl
-    volume=game / $KQGame::BitDepth GUI
-    bgColor=0
-    useWorldPal=0
-    cursor=IDBMA_CURSGUI
-    moveSound=click.aud
-    selectSound=intrface.aud
-    KeyChar0=38
-    KeyName0=#84
-    KeyWord0=up
-    KeyChar1=40
-    KeyName1=#85
-    KeyWord1=down
-    KeyChar2=39
-    KeyName2=#81
-    KeyWord2=right
-    KeyChar3=37
-    KeyName3=#83
-    KeyWord3=left
-    KeyChar4=35
-    KeyName4=#80
-    KeyWord4=end
-    KeyChar5=45
-    KeyName5=#82
-    KeyWord5=insert
-    KeyChar6=46
-    KeyName6=#86
-    KeyWord6=delete
-    KeyChar7=36
-    KeyName7=#92
-    KeyWord7=home
-    KeyChar8=9
-    KeyName8=#93
-    KeyWord8=tab
-    KeyChar9=16
-    KeyName9=#89
-    KeyWord9=shift
-    KeyChar10=17
-    KeyName10=#90
-    KeyWord10=control
-    KeyChar11=18
-    KeyName11=#106
-    KeyWord11=alt
-    KeyChar12=32
-    KeyName12=#91
-    KeyWord12=space
-]]]
-
 script[init]:
     code = [[[$(CRLF)
         file_save("$$(rootpath)\\MASK.INF", "$$(INF)");
-        file_save("$$(rootpath)\\OPTIONS.CS", "$$(CS)");
-        file_save("$$(rootpath)\\MAIN.KQ", "$$(KQ)");
+        file_save("$$(rootpath)\\OPTIONS.CS", "$$(OPTIONS)");
         file_save("$$(rootpath)\\MOVEKEYS.KQ", "$$(MOVEKEYS)");
+
+        if (!file_exists("$$(rootpath)\\MAIN.KQ"))
+          file_save("$$(rootpath)\\MAIN.KQ", "$$(MAIN)");
     ]]]
 end
 
@@ -6731,4 +6681,4 @@ game[v1.0.0.3]:
     file[]: crc = 4167c441; size =     28579; name = temple4\kq.vol
 end
 
-end
+end 
