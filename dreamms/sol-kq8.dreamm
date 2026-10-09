@@ -9,7 +9,6 @@ machine = pc
 osenv = windows 95
 rootpath = C:\
 launch = $(rootpath)\Mask.exe
-mips = $(MIPS_MAX)
 audiohw = gmidi
 filter = sierra
 
@@ -104,8 +103,6 @@ config[keyboard]:
             KeyChar12=9
             KeyName12=#93
             KeyWord12=tab
-            KeyName12=#91
-            KeyWord12=space
         ]]]
     end
 end
@@ -115,9 +112,9 @@ end
 //
 config[renderer]:
     title = Renderer Configuration
+    condition = test()
     option[software]:
         name = Software
-        condition = test()
         MODE = [[[$(CRLF)
             setShadowMask 5
             useDynamicLighting 1
@@ -146,7 +143,7 @@ MAIN = [[[$(CRLF)
     y=0
     numRasters=3000
     background=0
-    aviPlayed=0
+    aviPlayed=1
     shutDownOK=1
 ]]]
 
@@ -154,39 +151,80 @@ OPTIONS = [[[$(CRLF)
     KQSound::setSpeechVol 1
     KQSound::setSfxVol    1
     KQSound::setMusicVol  1
-    setShadowMask 1
+    setShadowMask 15
     useDynamicLighting 0
     set Options::Captions false
     notStartingHelp 0
     assignGModeName D3D-display
-    setBrightness 47
+    setBrightness 49
     set800mode 0
 ]]]
 
 MOVEKEYS = [[[$(CRLF)
-    [MovekeysScreen]
-    classType=KQMoveKeysScreen
-    guiFile=Movekey.gui
-    palette=Menus.ppl
-    volume=game / $KQGame::BitDepth GUI
-    bgColor=0
-    useWorldPal=0
-    cursor=IDBMA_CURSGUI
-    moveSound=click.aud
-    selectSound=intrface.aud
-    $(KEYBINDS)
+[MovekeysScreen]
+classType=KQMoveKeysScreen
+guiFile=Movekey.gui
+palette=Menus.ppl
+volume=game / $KQGame::BitDepth GUI
+bgColor=0
+useWorldPal=0
+cursor=IDBMA_CURSGUI
+moveSound=click.aud
+selectSound=intrface.aud
+KeyChar0=87
+KeyName0=W
+KeyWord0=w
+KeyChar1=83
+KeyName1=S
+KeyWord1=s
+KeyChar2=68
+KeyName2=D
+KeyWord2=d
+KeyChar3=65
+KeyName3=A
+KeyWord3=a
+KeyChar4=16
+KeyName4=#89
+KeyWord4=shift
+KeyChar5=32
+KeyName5=#91
+KeyWord5=space
+KeyChar6=81
+KeyName6=Q
+KeyWord6=q
+KeyChar7=36
+KeyName7=#92
+KeyWord7=home
+KeyChar8=77
+KeyName8=M
+KeyWord8=m
+KeyChar9=69
+KeyName9=E
+KeyWord9=e
+KeyChar10=17
+KeyName10=#90
+KeyWord10=control
+KeyChar11=18
+KeyName11=#106
+KeyWord11=alt
+KeyChar12=9
+KeyName12=#93
+KeyWord12=tab
+
 ]]]
 
 script[init]:
     code = [[[$(CRLF)
         file_save("$$(rootpath)\\MASK.INF", "$$(MASK)");
-        file_save("$$(rootpath)\\MOVEKEYS.KQ", "$$(MOVEKEYS)");
 
-        if (!file_exists("$$(rootpath)\\OPTIONS.CS"))
-          file_save("$$(rootpath)\\OPTIONS.CS", "$$(OPTIONS)");
+        if (!file_exists("$$(rootpath)\\MOVEKEYS.KQ"))
+          file_save("$$(rootpath)\\MOVEKEYS.KQ", "$$(MOVEKEYS)");
 
         if (!file_exists("$$(rootpath)\\MAIN.KQ"))
           file_save("$$(rootpath)\\MAIN.KQ", "$$(MAIN)");
+
+        if (!file_exists("$$(rootpath)\\OPTIONS.CS"))
+          file_save("$$(rootpath)\\OPTIONS.CS",  "$$(OPTIONS)");
     ]]]
 end
 
