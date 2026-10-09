@@ -37,6 +37,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[sadl]:
         name = $(ADLIB_NAME) + $(SB16_NAME)
         audiohw = adlib+sb16

@@ -103,8 +103,8 @@ config[sound]:
     end
     option[sb16]:
         name = $(SB16_NAME); priority = 2
-        SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
-        condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+        SOUND_DRIVER = SNDBLAST.DRV; AUDIOHW = sb16
+        condition = file_exists("$$(rootpath)\\SNDBLAST.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)

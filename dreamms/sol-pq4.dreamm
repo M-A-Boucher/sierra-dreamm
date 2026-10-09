@@ -72,15 +72,15 @@ config[sound]:
         SOUND_DRIVER = ADL.DRV; AUDIOHW = adlib
         condition = file_exists("$$(rootpath)\\ADL.DRV")
     end
-    option[sadl]:
-        name = $(ADLIB_NAME) + $(SB16_NAME)
-        SOUND_DRIVER = SADL.DRV; AUDIOHW = sb16+adlib
-        condition = file_exists("$$(rootpath)\\SADL.DRV")
-    end
     option[sb16]:
         name = $(SB16_NAME)
         SOUND_DRIVER = SBPRO.DRV; AUDIOHW = sb16
         condition = file_exists("$$(rootpath)\\SBPRO.DRV")
+    end
+    option[sadl]:
+        name = $(ADLIB_NAME) + $(SB16_NAME)
+        SOUND_DRIVER = SADL.DRV; AUDIOHW = sb16+adlib
+        condition = file_exists("$$(rootpath)\\SADL.DRV")
     end
     option[mt32]:
         name = $(MT32_NAME)
