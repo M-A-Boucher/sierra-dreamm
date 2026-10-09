@@ -104,7 +104,7 @@ config[keyboard]:
             KeyChar12=9
             KeyName12=#93
             KeyWord12=tab
-            yName12=#91
+            KeyName12=#91
             KeyWord12=space
         ]]]
     end
@@ -117,7 +117,7 @@ config[renderer]:
     title = Renderer Configuration
     option[software]:
         name = Software
-        winres = 640x480x16
+        condition = test()
         MODE = [[[$(CRLF)
             setShadowMask 5
             useDynamicLighting 1
@@ -125,8 +125,7 @@ config[renderer]:
         ]]]
     end
     option[hardware]:
-        name = Direct3D
-        winres = 640x480x16; priority = 1
+        name = Direct3D; priority = 1
         MODE = [[[$(CRLF)
             setShadowMask 0
             useDynamicLighting 0
@@ -135,7 +134,7 @@ config[renderer]:
     end
 end
 
-INF = [[[$(CRLF)
+MASK = [[[$(CRLF)
     [Install]
     Drive=C:\
 ]]]
@@ -155,11 +154,13 @@ OPTIONS = [[[$(CRLF)
     KQSound::setSpeechVol 1
     KQSound::setSfxVol    1
     KQSound::setMusicVol  1
-    set Options::Captions true
+    setShadowMask 1
+    useDynamicLighting 0
+    set Options::Captions false
     notStartingHelp 0
-    setBrightness 48
+    assignGModeName D3D-display
+    setBrightness 47
     set800mode 0
-    $(MODE)
 ]]]
 
 MOVEKEYS = [[[$(CRLF)
@@ -178,9 +179,11 @@ MOVEKEYS = [[[$(CRLF)
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\MASK.INF", "$$(INF)");
-        file_save("$$(rootpath)\\OPTIONS.CS", "$$(OPTIONS)");
+        file_save("$$(rootpath)\\MASK.INF", "$$(MASK)");
         file_save("$$(rootpath)\\MOVEKEYS.KQ", "$$(MOVEKEYS)");
+
+        if (!file_exists("$$(rootpath)\\OPTIONS.CS"))
+          file_save("$$(rootpath)\\OPTIONS.CS", "$$(OPTIONS)");
 
         if (!file_exists("$$(rootpath)\\MAIN.KQ"))
           file_save("$$(rootpath)\\MAIN.KQ", "$$(MAIN)");
@@ -204,13 +207,10 @@ game[v1.0]:
     file[]: crc = 483d64e3; size =      1482; name = Connor.sae
     file[]: crc = c0c8811f; size =      1129; name = Console.cs
     file[]: crc = fd566c5c; size =    361472; name = Ha312w32.dll
-    file[]: crc = 75de7a7e; size =        88; name = main.kq
     file[]: crc = 2ffea7a8; size =      4412; name = mask.cs
     file[]: crc = 8d08b016; size =   2484224; name = Mask.exe
     file[]: crc = 24319c1b; size =    135478; name = Maskstrt.bmp
-    file[]: crc = 4509d786; size =       778; name = movekeys.kq
     file[]: crc = e3248bbf; size =    266240; name = Msvcrt.dll
-    file[]: crc = 2ebbe216; size =       225; name = Options.cs
     file[]: crc = ce75608e; size =     41600; name = Sh34w32.dbg
     file[]: crc = b06b02e1; size =    108480; name = Sh34w32.dll
     file[]: crc = 21b35d94; size =       368; name = starttxt.txt
