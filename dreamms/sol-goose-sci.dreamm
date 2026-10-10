@@ -98,6 +98,22 @@ config[sound]:
 end
 
 //
+// midi configuration
+//
+config[midi]:
+    title = MIDI Configuration
+    condition = is_windows()
+    option[basesynth]:
+        name = Base Synth (11-channel)
+        SOUND_DRIVER = basesynth
+    end
+    option[highsynth]:
+        name = High Synth (16-channel); priority = 1
+        SOUND_DRIVER = highsynth
+    end
+end
+
+//
 // sfx configuration
 //
 config[sfx]:
@@ -115,6 +131,33 @@ config[sfx]:
     end
 end
 
+//
+// language configuration
+//
+config[language]:
+    title = Language Configuration
+    option[german]:
+        name = Deutsch
+        LANGUAGE = GERMAN
+        condition = file_exists("$$(rootpath)\\GERMAN\\RESOURCE.AUD")
+    end
+    option[english]:
+        name = English; priority = 1
+        LANGUAGE = ENGLISH
+    end
+    option[spanish]:
+        name = Español
+        LANGUAGE = SPANISH
+        condition = file_exists("$$(rootpath)\\SPANISH\\RESOURCE.AUD")
+    end
+
+    option[french]:
+        name = Français
+        LANGUAGE = FRENCH
+        condition = file_exists("$$(rootpath)\\FRENCH\\RESOURCE.AUD")
+    end
+end
+
 INSTALL = [[[$(CRLF)
     COPY RESOURCE.A01+RESOURCE.A02+RESOURCE.A03 RESOURCE.AUD
     COPY RESOURCE.P01+RESOURCE.P02+RESOURCE.P03 RESOURCE.000
@@ -129,6 +172,7 @@ CFG = [[[$(CRLF)
     mouseDrv     = STDMOUSE.DRV
     minHunk      = 200k
     directory    = $(rootpath)
+    patchDir     = $(rootpath)
 ]]]
 
 WIN_CFG = [[[$(CRLF)
@@ -152,10 +196,11 @@ WIN_CFG = [[[$(CRLF)
     wheight      = 480
     pagelock     = FALSE
     borderpixels = 5
-    winAudioSize = 62k
+    winAudioSize = 63k
     scimink      = 1700
     showmem      = FALSE
-    synthtype    = highsynth
+    synthtype    = $(SOUND_DRIVER)
+    defLang      = $(LANGUAGE)
 ]]]
 
 script[init]:
@@ -340,6 +385,28 @@ game[1991-cd]:
 end
 
 //
+// 1995 Rerelease, CD
+//
+game[1995-rerelease-cd]:
+    name = 1995 Rerelease, CD
+    imports = 1991-cd
+    file[]: crc = 4308310c; size =     34533; name = AUDBLAST.DRV
+    file[]: crc = 6374598a; size =     34066; name = AUDDISNY.DRV
+    file[]: crc = 4e2cbe42; size =     33891; name = AUDPS1.DRV
+    file[]: crc = 9e7c2afa; size =     34082; name = AUDTANDY.DRV
+    file[]: crc = fbe3a725; size =     15537; name = METER.DLL   ; optional = true
+    file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
+    file[]: crc = ac0a9845; size =   4369438; name = RESOURCE.001
+    file[]: crc = 353dff37; size =      5790; name = RESOURCE.MAP
+    file[]: crc = aec9a904; size =    122368; name = SCIGOOSE.EXE; optional = true
+    file[]: crc = af4e40cd; size =    114541; name = SIERRA.EXE
+    file[]: crc = c1090e1a; size =     21038; name = SOUND.001
+    file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
+    file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
+    file[]: crc = 35b0fb0f; size =     12288; name = WINDLL.DLL  ; optional = true
+end
+
+//
 // Deluxe, 1995, CD
 //
 game[1995-cd]:
@@ -417,6 +484,110 @@ game[1995-cd]:
     file[]: crc = d6b9f0df; size =       143; name = SPANISH\7.MAP
     file[]: crc = 06085215; size =       136; name = SPANISH\9.MAP
     file[]: crc = 9af6be8a; size = 109491074; name = SPANISH\RESOURCE.AUD
+end
+
+//
+// Deluxe Europe, 1995, CD
+//
+game[1995-deluxe-eu-cd]:
+    name = Deluxe Europe, 1995, CD
+    launch = $(rootpath)\SIERRAW.EXE \RESOURCE.CFG
+    anchorfile = RESSCI.000
+    osenv = windows 95
+    mips = $(MIPS_MAX)
+    winres = 640x480x8
+    file[]: crc = 7004da19; size =       997; name = 0.MAP
+    file[]: crc = 56f79a8e; size =       248; name = 1.MAP
+    file[]: crc = c806dc9a; size =       213; name = 12.MAP
+    file[]: crc = ff4c6114; size =       150; name = 13.MAP
+    file[]: crc = 0e78a11b; size =       115; name = 15.MAP
+    file[]: crc = 90135f6a; size =       150; name = 18.MAP
+    file[]: crc = e5212eb3; size =       143; name = 21.MAP
+    file[]: crc = 2a15542f; size =       171; name = 23.MAP
+    file[]: crc = 135ae749; size =       150; name = 27.MAP
+    file[]: crc = 947569f7; size =       199; name = 3.MAP
+    file[]: crc = d3587847; size =       164; name = 31.MAP
+    file[]: crc = 35e49071; size =       157; name = 33.MAP
+    file[]: crc = 2e1178b5; size =       199; name = 36.MAP
+    file[]: crc = e662d9fb; size =       157; name = 37.MAP
+    file[]: crc = e1a8c02f; size =       186; name = 400.MAP
+    file[]: crc = 9c64d3bd; size =       143; name = 41.MAP
+    file[]: crc = e76e5a9c; size =       171; name = 43.MAP
+    file[]: crc = f666724a; size =       213; name = 5.MAP
+    file[]: crc = 63f0888f; size =       887; name = 65535.MAP
+    file[]: crc = fff093d8; size =       150; name = 7.MAP
+    file[]: crc = e47b1bd0; size =       143; name = 9.MAP
+    file[]: crc = 50a64d83; size =      4969; name = RESMAP.000
+    file[]: crc = d91698b4; size =      4969; name = RESMDT.000
+    file[]: crc = 0ec4ab14; size =  94911639; name = RESOURCE.AUD
+    file[]: crc = 38b2f3b8; size =  22892974; name = RESOURCE.SFX
+    file[]: crc = 4ae81389; size =  17205800; name = RESSCI.000
+    file[]: crc = 33143a0f; size =    146430; name = SCIDLL.DLL
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = 969cfbe1; size =    729796; name = SIERRAW.EXE
+    file[]: crc = c903ddfb; size =       934; name = FRENCH\0.MAP
+    file[]: crc = ca896ec9; size =       241; name = FRENCH\1.MAP
+    file[]: crc = 8c0701f4; size =       199; name = FRENCH\12.MAP
+    file[]: crc = 88da9f88; size =       129; name = FRENCH\13.MAP
+    file[]: crc = 8322f248; size =       101; name = FRENCH\15.MAP
+    file[]: crc = 33b12bc6; size =       143; name = FRENCH\18.MAP
+    file[]: crc = c3b7be78; size =       129; name = FRENCH\21.MAP
+    file[]: crc = 8942b673; size =       164; name = FRENCH\23.MAP
+    file[]: crc = b7c3488a; size =       143; name = FRENCH\27.MAP
+    file[]: crc = 290b8e61; size =       192; name = FRENCH\3.MAP
+    file[]: crc = e991b64b; size =       157; name = FRENCH\31.MAP
+    file[]: crc = e59bf84a; size =       143; name = FRENCH\33.MAP
+    file[]: crc = 49e5ce0f; size =       192; name = FRENCH\36.MAP
+    file[]: crc = 88672f32; size =       150; name = FRENCH\37.MAP
+    file[]: crc = 5dee5980; size =       291; name = FRENCH\400.MAP
+    file[]: crc = 4011714e; size =       136; name = FRENCH\41.MAP
+    file[]: crc = 8dc144b4; size =       164; name = FRENCH\43.MAP
+    file[]: crc = 802a0e02; size =       143; name = FRENCH\5.MAP
+    file[]: crc = 408836e3; size =       143; name = FRENCH\7.MAP
+    file[]: crc = 2f98dcb9; size =       136; name = FRENCH\9.MAP
+    file[]: crc = 9276a125; size =  62524396; name = FRENCH\RESOURCE.AUD
+    file[]: crc = aca7d31a; size =       955; name = GERMAN\0.MAP
+    file[]: crc = dbc00776; size =       241; name = GERMAN\1.MAP
+    file[]: crc = 48c35e78; size =       199; name = GERMAN\12.MAP
+    file[]: crc = 771c10a0; size =       129; name = GERMAN\13.MAP
+    file[]: crc = 3230dc07; size =       101; name = GERMAN\15.MAP
+    file[]: crc = a3ca9dde; size =       143; name = GERMAN\18.MAP
+    file[]: crc = 58d9ad60; size =       129; name = GERMAN\21.MAP
+    file[]: crc = d98bafac; size =       164; name = GERMAN\23.MAP
+    file[]: crc = bd9c2d62; size =       143; name = GERMAN\27.MAP
+    file[]: crc = d7a44d22; size =       192; name = GERMAN\3.MAP
+    file[]: crc = ea983dce; size =       157; name = GERMAN\31.MAP
+    file[]: crc = 68b28ea6; size =       143; name = GERMAN\33.MAP
+    file[]: crc = 6af83f18; size =       185; name = GERMAN\36.MAP
+    file[]: crc = f268be2f; size =       150; name = GERMAN\37.MAP
+    file[]: crc = 24cc0652; size =       179; name = GERMAN\400.MAP
+    file[]: crc = 11766e01; size =       136; name = GERMAN\41.MAP
+    file[]: crc = df18f221; size =       164; name = GERMAN\43.MAP
+    file[]: crc = 75ff36bf; size =       143; name = GERMAN\5.MAP
+    file[]: crc = ebaeeb03; size =       143; name = GERMAN\7.MAP
+    file[]: crc = 2989e67d; size =       136; name = GERMAN\9.MAP
+    file[]: crc = 01accccc; size =  96487613; name = GERMAN\RESOURCE.AUD
+    file[]: crc = 78cf50c4; size =       969; name = SPANISH\0.MAP
+    file[]: crc = 246b07bf; size =       241; name = SPANISH\1.MAP
+    file[]: crc = 38d4d194; size =       199; name = SPANISH\12.MAP
+    file[]: crc = f778b4af; size =       129; name = SPANISH\13.MAP
+    file[]: crc = 1f840964; size =       101; name = SPANISH\15.MAP
+    file[]: crc = 50d82a87; size =       143; name = SPANISH\18.MAP
+    file[]: crc = feb8522b; size =       129; name = SPANISH\21.MAP
+    file[]: crc = d0bb1962; size =       164; name = SPANISH\23.MAP
+    file[]: crc = a0a81fee; size =       143; name = SPANISH\27.MAP
+    file[]: crc = 58d18a11; size =       192; name = SPANISH\3.MAP
+    file[]: crc = ad31b252; size =       157; name = SPANISH\31.MAP
+    file[]: crc = 01730f59; size =       143; name = SPANISH\33.MAP
+    file[]: crc = a2ae3839; size =       185; name = SPANISH\36.MAP
+    file[]: crc = 5490b39c; size =       150; name = SPANISH\37.MAP
+    file[]: crc = fa4957b9; size =       179; name = SPANISH\400.MAP
+    file[]: crc = 6d7b5522; size =       129; name = SPANISH\41.MAP
+    file[]: crc = d34bc13a; size =       164; name = SPANISH\43.MAP
+    file[]: crc = 3be6eadd; size =       143; name = SPANISH\5.MAP
+    file[]: crc = ace39a23; size =       143; name = SPANISH\7.MAP
+    file[]: crc = f56ffc82; size =       136; name = SPANISH\9.MAP
+    file[]: crc = 3b7c0053; size = 106272450; name = SPANISH\RESOURCE.AUD
 end
 
 end
