@@ -250,9 +250,9 @@ game[v1.0-int-12.23.91-4x1.2m]:
 end
 
 //
-// v1.10 Base Files
+// v1.1 Base Files
 //
-fragment[v1.10-base]:
+fragment[v1.1-base]:
     file[]: crc = a35880d0; size =      5368; name = 140.HEP
     file[]: crc = 7026d42b; size =     11500; name = 140.SCR
     file[]: crc = 09ee8102; size =       174; name = 141.HEP
@@ -284,23 +284,23 @@ fragment[v1.10-base]:
 end
 
 //
-// v1.10, Int. 2.000.286, 3x1.44M
+// v1.1, Int. 6.12.92, 3x1.44M
 //
-game[v1.10-int-2.000.286-3x1.44m]:
-    name = v1.10, Int. 2.000.286, 3x1.44M
-    imports = v1.10-base
+game[v1.1-int-6.12.92-3x1.44m]:
+    name = v1.1, Int. 6.12.92, 3x1.44M
+    imports = v1.1-base
     anchorfile = RESOURCE.000
     file[]: crc = e34a610a; size =   3428654; name = RESOURCE.000
 end
 
 //
-// v1.10, Int. 2.000.286, 3x1.44M, Installer
+// v1.1, Int. 6.12.92, 3x1.44M, Installer
 //
-installer[v1.10-int-2.000.286-3x1.44m-installer]:
-    name = v1.10, Int. 2.000.286, 3x1.44M, Installer
-    installid = v1.10-int-2.000.286-3x1.44m
+installer[v1.10-int-6.12.92-3x1.44m-installer]:
+    name = v1.1, Int. 6.12.92, 3x1.44M, Installer
+    installid = v1.1-int-6.12.92-3x1.44m
     launch = DREAMM.BAT
-    imports = v1.10-base
+    imports = v1.1-base
     anchorfile = RESOURCE.P03
     file[]: crc = 971949f0; size =   1037000; name = RESOURCE.P01
     file[]: crc = 964bc9d7; size =   1440000; name = RESOURCE.P02
