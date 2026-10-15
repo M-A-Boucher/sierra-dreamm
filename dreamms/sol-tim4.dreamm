@@ -1,0 +1,80 @@
+//
+// The Incredible Machine: Even More Contraptions
+//
+desc[sol-tim4]:
+
+name = The Incredible Machine: Even More Contraptions
+icon = sol-tim4.png
+machine = pc
+osenv = windows 98
+rootpath = C:\
+launch = $(rootpath)\EvenMore.exe
+audiohw = gmidi
+winres = 800x600x16
+filter = sierra, dynamix, puzzle
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+
+game[v1.0]:
+    name = v1.0
+    anchorfile = EvenMore.exe
+    anchordepth = 2
+    file[]: crc = b84cabbe; size =      2189; name = evenmore.cnt
+    file[]: crc = f4e3d9e8; size =    675931; name = EvenMore.exe
+    file[]: crc = 0fd61e53; size =     26258; name = EvenMore.GID
+    file[]: crc = 82f766e5; size =  48161987; name = Interfaces.tbv
+    file[]: crc = 7bada2b0; size =   5038713; name = Intro.tbv
+    file[]: crc = 3b334a76; size =   1113137; name = Levels.tbv
+    file[]: crc = 0c766a34; size = 145683825; name = Music.tbv
+    file[]: crc = de3db3b9; size =  11106455; name = Parts.tbv
+    file[]: crc = 9aaedf36; size =   1056768; name = Roboex32.dll
+    file[]: crc = 6ee870fe; size =   1880793; name = Sounds.tbv
+    file[]: crc = 8b89b8b1; size =     70364; name = System.tbv
+    file[]: crc = a7f69d2a; size =       158; name = Version.txt
+    file[]: crc = c709a7b6; size =  46096641; name = Voice.tbv
+    file[]: crc = 9e1cec47; size =     20912; name = music\sx_1000.mid
+    file[]: crc = 029963cb; size =     20349; name = music\sx_1001.mid
+    file[]: crc = 3d0bc9cf; size =     19575; name = music\sx_1002.mid
+    file[]: crc = b41a59c0; size =     25106; name = music\sx_1003.mid
+    file[]: crc = 0097e2df; size =     22070; name = music\sx_1005.mid
+    file[]: crc = 5971bf3e; size =     25111; name = music\sx_1006.mid
+    file[]: crc = 6d589852; size =     44695; name = music\sx_1007.mid
+    file[]: crc = 8fb76bb6; size =     20051; name = music\sx_1011.mid
+    file[]: crc = 86f56da1; size =     18450; name = music\sx_1013.mid
+    file[]: crc = ba5061dc; size =     15768; name = music\sx_1014.mid
+    file[]: crc = 087b40ea; size =     22493; name = music\sx_1016.mid
+    file[]: crc = b9b4ac95; size =      9720; name = music\sx_1018.mid
+    file[]: crc = bd3c2a58; size =      9197; name = music\sx_1019.mid
+    file[]: crc = 76863e8b; size =     15523; name = music\sx_1021.mid
+    file[]: crc = 2dbf09ad; size =     30381; name = music\sx_1022.mid
+    file[]: crc = 8fa0ed15; size =     22695; name = music\sx_1023.mid
+    file[]: crc = 46094795; size =     21914; name = music\sx_1024.mid
+    file[]: crc = 8e365e56; size =     27409; name = music\sx_1025.mid
+    file[]: crc = 4b2ba454; size =     15650; name = music\sx_1026.mid
+    file[]: crc = ca6cb214; size =     35761; name = music\sx_1028.mid
+    file[]: crc = 90033569; size =     21275; name = music\sx_1029.mid
+    file[]: crc = 4fd05f9b; size =     33661; name = music\sx_1030.mid
+    file[]: crc = 58ff51d0; size =     51887; name = music\sx_1031.mid
+    file[]: crc = f9f7adfe; size =     62904; name = music\sx_1032.mid
+    file[]: crc = 8ca06da5; size =     36678; name = music\sx_1033.mid
+    file[]: crc = 1934438f; size =     16532; name = music\sx_1034.mid
+    file[]: crc = 7234c43c; size =     19426; name = music\sx_1035.mid
+    file[]: crc = 94dcba50; size =     27751; name = music\sx_1036.mid
+    file[]: crc = 6604b451; size =     24600; name = music\sx_1037.mid
+    file[]: crc = 340ef3d0; size =     36877; name = music\sx_1038.mid
+    file[]: crc = f609eff0; size =     48894; name = music\sx_1039.MID
+    file[]: crc = a84bc8f8; size =     41879; name = music\sx_1040.mid
+    file[]: crc = 97844dd2; size =     30914; name = music\sx_1041.MID
+    file[]: crc = d2d0fc3f; size =     21418; name = music\sx_1042.MID
+    file[]: crc = f241afe6; size =     60315; name = music\sx_1043.MID
+    file[]: crc = b28d8a4d; size =     12160; name = music\sx_1044.MID
+    file[]: crc = 9e1cec47; size =     20912; name = music\sx_1049.MID
+    file[]: crc = 1c7d8269; size =  22669271; name = CD\Contraptions\Files\EvenMore.hlp
+end
+
+end
