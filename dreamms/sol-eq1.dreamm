@@ -296,7 +296,7 @@ end
 //
 // v1.1, Int. 6.12.92, 3x1.44M, Installer
 //
-installer[v1.10-int-6.12.92-3x1.44m-installer]:
+installer[v1.1-int-6.12.92-3x1.44m-installer]:
     name = v1.1, Int. 6.12.92, 3x1.44M, Installer
     installid = v1.1-int-6.12.92-3x1.44m
     launch = DREAMM.BAT
@@ -542,7 +542,7 @@ end
 //
 addon[gmidi]:
     name = General MIDI Patch
-    upgradeids = v1.0-int-12.23.91-3x1.44m-1x720k, v1.0-int-12.23.91-4x1.2m, v1.10-int-2.000.286-3x1.44m
+    upgradeids = v1.0-int-12.23.91-3x1.44m-1x720k, v1.0-int-12.23.91-4x1.2m, v1.1-int-6.12.92-3x1.44m
     anchorfile = GENMIDI.DRV
     file[]: crc = 23f16d8f; size =      2577; name = GENMIDI.DRV
     file[]: crc = 4159050c; size =      1301; name = 4.PAT
