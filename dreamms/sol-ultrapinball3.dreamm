@@ -28,7 +28,7 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
 
 //
-// 2000
+// 1995
 //
 game[2000]:
     name = 2000
@@ -48,7 +48,7 @@ game[2000]:
     file[]: crc = e21190d7; size =   6270796; name = Data\Hershey1.mov
     file[]: crc = 273feb2b; size =   9928696; name = Data\Hershey2.avi
     file[]: crc = e8d722bf; size =   6228344; name = Data\Hershey2.mov
-    file[]: crc = 6188106f; size =   3660592; name = Data\Intro.avi
+    file[]: crc = 6188106f; size =   3660592; name = CD\Thrillride\Data\Intro.avi
     file[]: crc = 37610b9d; size =   2142828; name = Data\Intro.mov
     file[]: crc = 56813f53; size =   6942302; name = Data\Menus16.tbv
     file[]: crc = 691ba0f0; size =   3574191; name = Data\Menus8.tbv
@@ -70,7 +70,7 @@ game[2000]:
     file[]: crc = bae1be51; size =   2871481; name = Data\TblHint8.tbv
     file[]: crc = d4a5e7ae; size =     33734; name = Data\Text.tbv
     file[]: crc = d3dedbe6; size =   7748613; name = Data\Voice.tbv
-    file[]: crc = 1d0c1603; size =  17775752; name = CD\Version.txt
+    file[]: crc = 6188106f; size =   3660592; name = CD\Thrillride\Data\Intro.avi
 end
 
 end
