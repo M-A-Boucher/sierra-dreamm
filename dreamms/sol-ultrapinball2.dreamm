@@ -55,24 +55,12 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
 
 //
-// 1995
+// 1996
 //
-game[1995]:
-    name = 1995
+game[1996]:
+    name = 1996
     anchorfile = PINBALL2.EXE
     anchordepth = 2
-    file[]: crc = 5db7c015; size =    159480; name = AUTORUN.BMP
-    file[]: crc = 1c687167; size =     99351; name = AUTORUN.EXE
-    file[]: crc = b4749455; size =      2528; name = AUTORUN.INF
-    file[]: crc = db898f5d; size =     36848; name = BOOTDISK.EXE
-    file[]: crc = 581b5321; size =       766; name = BOOTDISK.ICO
-    file[]: crc = 3eca82af; size =     15872; name = DSETUP.DLL
-    file[]: crc = 4eceae92; size =     33376; name = DSETUP16.DLL
-    file[]: crc = 749ca232; size =     31168; name = SETUP.EXE
-    file[]: crc = 5d59b4a0; size =    462312; name = SETUP.SOL
-    file[]: crc = cd8f466f; size =     13497; name = SIERRA.INF
-
-
     file[]: crc = 233f0f9c; size =   6846464; name = FINAL1.AVI
     file[]: crc = c70204a5; size =  12301602; name = FINAL2.AVI
     file[]: crc = 0363e25e; size =   4282978; name = INTRO1.AVI
