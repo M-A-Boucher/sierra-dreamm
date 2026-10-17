@@ -1,0 +1,172 @@
+//
+// 3-D Ultra Pinball: Creep Night
+//
+desc[sol-ultrapinball2]:
+
+name = 3-D Ultra Pinball: Creep Night
+icon = sol-ultrapinball2.png
+machine = pc
+osenv = windows
+winres = 800x600x8
+rootpath = C:\
+launch = $(rootpath)\PINBALL2.EXE
+audiohw = gmidi
+mips = $(MIPS_MAX)
+filter = sierra, dynamix, pinball
+
+INI = [[[$(CRLF)
+    [UPBALL]
+    InstallPath=C:\
+    CDPath=C:\
+]]]
+
+PINBALL2 = [[[$(CRLF)
+    [Sound]
+    SoundCard=1
+    MusicType=1
+    Volume=85
+
+    [Display]
+    ScreenWidth=800
+    ScreenHeight=600
+    ColorDepth=8
+    Fullscreen=1
+
+    [Controls]
+    Left=P
+    Right=K
+    FlipperLeft=L
+    FlipperRight=O
+    LaunchSpace=SPACE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\SIERRA.INI", "$$(INI)");
+        file_save("$$(rootpath)\\PINBALL2.INI", "$$(PINBALL2)");
+    ]]]
+end
+
+//
+// file system
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+
+//
+// 1995
+//
+game[1995]:
+    name = 1995
+    anchorfile = PINBALL2.EXE
+    anchordepth = 2
+    file[]: crc = 5db7c015; size =    159480; name = AUTORUN.BMP
+    file[]: crc = 1c687167; size =     99351; name = AUTORUN.EXE
+    file[]: crc = b4749455; size =      2528; name = AUTORUN.INF
+    file[]: crc = db898f5d; size =     36848; name = BOOTDISK.EXE
+    file[]: crc = 581b5321; size =       766; name = BOOTDISK.ICO
+    file[]: crc = 3eca82af; size =     15872; name = DSETUP.DLL
+    file[]: crc = 4eceae92; size =     33376; name = DSETUP16.DLL
+    file[]: crc = 749ca232; size =     31168; name = SETUP.EXE
+    file[]: crc = 5d59b4a0; size =    462312; name = SETUP.SOL
+    file[]: crc = cd8f466f; size =     13497; name = SIERRA.INF
+
+
+    file[]: crc = 233f0f9c; size =   6846464; name = FINAL1.AVI
+    file[]: crc = c70204a5; size =  12301602; name = FINAL2.AVI
+    file[]: crc = 0363e25e; size =   4282978; name = INTRO1.AVI
+    file[]: crc = c6d4afb4; size =   7620268; name = INTRO2.AVI
+    file[]: crc = 3ad97b83; size =    462848; name = PINBALL2.EXE
+    file[]: crc = b5284cad; size = 121247137; name = RESOURCE.001
+    file[]: crc = 64731315; size =      6853; name = RESOURCE.MAP
+    file[]: crc = 6920cb66; size =     40425; name = MID\SX_1000.MID
+    file[]: crc = a8cabbcb; size =     18257; name = MID\SX_1001.MID
+    file[]: crc = 3db59d3a; size =     14485; name = MID\SX_1002.MID
+    file[]: crc = c63c381c; size =     19978; name = MID\SX_1003.MID
+    file[]: crc = 5750d13a; size =     24744; name = MID\SX_1004.MID
+    file[]: crc = 5c3790a5; size =     25354; name = MID\SX_1005.MID
+    file[]: crc = b2507f16; size =     17173; name = MID\SX_1006.MID
+    file[]: crc = c54e8cfe; size =     12783; name = MID\SX_1007.MID
+    file[]: crc = cae135e6; size =     25462; name = MID\SX_1008.MID
+    file[]: crc = 41be6fb6; size =     18114; name = MID\SX_1009.MID
+    file[]: crc = b183aec2; size =     55682; name = MID\SX_1010.MID
+    file[]: crc = b2aaabef; size =     10376; name = MID\SX_1011.MID
+    file[]: crc = 91d4c13e; size =     19605; name = MID\SX_1012.MID
+    file[]: crc = 4897515a; size =     22557; name = MID\SX_1013.MID
+    file[]: crc = 462625a8; size =     16423; name = MID\SX_1014.MID
+    file[]: crc = 13504b75; size =     19985; name = MID\SX_1015.MID
+    file[]: crc = 7cce5ef9; size =     24101; name = MID\SX_1016.MID
+    file[]: crc = 684ff22c; size =     31046; name = MID\SX_1017.MID
+    file[]: crc = 6abac93f; size =     19431; name = MID\SX_1018.MID
+    file[]: crc = 2f35e34a; size =     39332; name = MID\SX_1019.MID
+    file[]: crc = 7cb279be; size =     15543; name = MID\SX_1020.MID
+    file[]: crc = 6f248a9c; size =     12894; name = MID\SX_1021.MID
+    file[]: crc = 6bdbca6b; size =     15195; name = MID\SX_1022.MID
+    file[]: crc = c3079cbd; size =     17772; name = MID\SX_1023.MID
+    file[]: crc = e2d7b151; size =     12180; name = MID\SX_1024.MID
+    file[]: crc = 97379607; size =     52654; name = MID\SX_1025.MID
+    file[]: crc = 03397b9d; size =      6607; name = MID\SX_1026.MID
+    file[]: crc = 35035668; size =     20140; name = MID\SX_1027.MID
+    file[]: crc = 506a13da; size =     20029; name = MID\SX_1028.MID
+    file[]: crc = 8a5b1aa3; size =     10828; name = MID\SX_1029.MID
+    file[]: crc = 6257378a; size =      5884; name = MID\SX_1030.MID
+    file[]: crc = 87dba819; size =     14845; name = MID\SX_1031.MID
+    file[]: crc = 6d5764f2; size =     16040; name = MID\SX_1032.MID
+    file[]: crc = 879a9870; size =     14811; name = MID\SX_1033.MID
+    file[]: crc = 3d22a2f6; size =     14254; name = MID\SX_1034.MID
+    file[]: crc = eef4ced5; size =     12951; name = MID\SX_1035.MID
+    file[]: crc = 9b2525c7; size =     16461; name = MID\SX_1036.MID
+    file[]: crc = ce8baf43; size =      4126; name = ENGLISH\LANGUAGE.INF
+    file[]: crc = b5b94d60; size =        30; name = ENGLISH\PINBALL2.INI
+    file[]: crc = 49f30022; size =     15360; name = ENGLISH\README.DOC
+    file[]: crc = 60d45122; size =      3502; name = ENGLISH\README.WRI
+    file[]: crc = b185ad5c; size =     85122; name = ENGLISH\SNDTEST.WAV
+    file[]: crc = cb69a177; size =      1592; name = ENGLISH\HELP\PB2.CNT
+    file[]: crc = 99cb4336; size =   6317586; name = ENGLISH\HELP\PB2.HLP
+    file[]: crc = 1d02f141; size =     44144; name = ENGLISH\HELP\RECORD.WAV
+    file[]: crc = 917bee14; size =    901006; name = ENGLISH\HELP\SS01A.WAV
+    file[]: crc = 6f960f61; size =    761284; name = ENGLISH\HELP\SS02A.WAV
+    file[]: crc = b00c30cc; size =    603230; name = ENGLISH\HELP\SS03A.WAV
+    file[]: crc = aa28edc5; size =    562352; name = ENGLISH\HELP\SS04A.WAV
+    file[]: crc = 6feb8267; size =    389504; name = ENGLISH\HELP\SS05A.WAV
+    file[]: crc = b0c4d50f; size =    737276; name = ENGLISH\HELP\SS06A.WAV
+    file[]: crc = 3ef454c9; size =   1101098; name = ENGLISH\HELP\SS07A.WAV
+    file[]: crc = aaaf36c1; size =    874408; name = ENGLISH\HELP\SS08A.WAV
+    file[]: crc = 3df6a27c; size =    561854; name = ENGLISH\HELP\SS09A.WAV
+    file[]: crc = 49a346ea; size =    268383; name = ENGLISH\HELP\SS09A2.WAV
+    file[]: crc = 93c44f1a; size =    723200; name = ENGLISH\HELP\SS10A.WAV
+    file[]: crc = 9640be17; size =    343183; name = ENGLISH\HELP\SS10A2.WAV
+    file[]: crc = c9dce1ee; size =    687450; name = ENGLISH\HELP\SS11A.WAV
+    file[]: crc = ea423f42; size =    934880; name = ENGLISH\HELP\SS12A.WAV
+    file[]: crc = 54ea0312; size =    416970; name = ENGLISH\HELP\SS13A.WAV
+    file[]: crc = d7bf1e7a; size =    789998; name = ENGLISH\HELP\SS14A.WAV
+    file[]: crc = 477226cf; size =    685142; name = ENGLISH\HELP\SS15A.WAV
+    file[]: crc = 7f43c623; size =    327682; name = ENGLISH\HELP\SS16A.WAV
+    file[]: crc = 840cb980; size =    453836; name = ENGLISH\HELP\SS17A.WAV
+    file[]: crc = 28cdf3cd; size =    321872; name = ENGLISH\HELP\SS18A.WAV
+    file[]: crc = 8471fb51; size =    402340; name = ENGLISH\HELP\SS19A.WAV
+    file[]: crc = b8b4dfa0; size =    377956; name = ENGLISH\HELP\SS20A.WAV
+    file[]: crc = db08ae4e; size =    357392; name = ENGLISH\HELP\SS21A.WAV
+    file[]: crc = 304d25f3; size =    498342; name = ENGLISH\HELP\SS22A.WAV
+    file[]: crc = 456322bf; size =    483490; name = ENGLISH\HELP\SS23A.WAV
+    file[]: crc = be85bfaa; size =    373018; name = ENGLISH\HELP\SS24A.WAV
+    file[]: crc = 96ad5453; size =    826410; name = ENGLISH\HELP\SS25A.WAV
+    file[]: crc = 7cf83eba; size =  30861725; name = ENGLISH\LARGE\OVERRIDE.DAT
+    file[]: crc = 73762d18; size =   6969843; name = ENGLISH\MEDIUM\OVERRIDE.DAT
+    file[]: crc = 8c8af2e2; size =    248028; name = ENGLISH\SMALL\BLAH.DAT
+    file[]: crc = abe91e11; size =    446164; name = ENGLISH\SMALL\OVERRIDE.DAT
+    file[]: crc = 8e4ed2eb; size =      4092; name = FRENCH\LANGUAGE.INF
+    file[]: crc = 13b5a0b5; size =        29; name = FRENCH\PINBALL2.INI
+    file[]: crc = 4a32abf8; size =      1506; name = FRENCH\README.WRI
+    file[]: crc = b185ad5c; size =     85122; name = FRENCH\SNDTEST.WAV
+    file[]: crc = f1a39d93; size =      4574; name = GERMAN\LANGUAGE.INF
+    file[]: crc = 8a91fea1; size =        29; name = GERMAN\PINBALL2.INI
+    file[]: crc = e1223c7a; size =       959; name = GERMAN\README.WRI
+    file[]: crc = b185ad5c; size =     85122; name = GERMAN\SNDTEST.WAV
+    file[]: crc = 7d65e772; size =    143388; name = DSOUND.DLL
+    file[]: crc = 13fbae4f; size =      2552; name = DSOUND.INI
+    file[]:                                   name = CD\CDDA.SOU; cdda = 79/82
+end
+
+end
