@@ -37,6 +37,13 @@ INSTALL = [[[$(CRLF)
     PRSADD LR256.PRS SOUND.PRS
 ]]]
 
+INI = [[[$(CRLF)
+    [environment]
+    CDdrive=D
+    CDinst=0
+    resources=0000000002
+]]]
+
 script[init]:
     code = [[[$(CRLF)
         if (is_installer())
@@ -44,6 +51,9 @@ script[init]:
 
         if (is_game() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
+
+        if (is_game() && is_windows())
+          file_save("$$(rootpath)\\WINDOWS\\LODERUNN.INI", "$$(INI)");
     ]]]
 end
 
@@ -192,8 +202,7 @@ game[v1.0-win]:
     anchorfile = LODERUNN.EXE
     anchordepth = 2
     file[]: crc = ba00d4ee; size =     24540; name = BALLOONH.DLL
-    file[]: crc = 9d711245; size =     97936; name = COMMDLG.DLL
-    file[]: crc = 68053e64; size =     30544; name = DIB.DRV
+    file[]: crc = 4428ac13; size =     71680; name = INSTLLR.EXE
     file[]: crc = d455523a; size =    463360; name = LODERUNN.EXE
     file[]: crc = 108feb60; size =      5302; name = DATA\LR_DAT01.PRD
     file[]: crc = 88078ae9; size =   6868498; name = DATA\LR_DAT01.PRS
@@ -215,16 +224,10 @@ game[v1.0-win]:
     file[]: crc = afb7389e; size =    261472; name = DATA\LR_DAT09.PRS
     file[]: crc = bad38172; size =       822; name = DATA\LR_DAT10.PRD
     file[]: crc = 9df4ff30; size =     53663; name = DATA\LR_DAT10.PRS
-    file[]: crc = 328b1d70; size =      5600; name = JOYSTICK\IBMJOY.DRV
-    file[]: crc = 09097a8c; size =     15984; name = JOYSTICK\JOYSTICK.CPL
-    file[]: crc = 3b532a64; size =       226; name = JOYSTICK\OEMSETUP.INF
     file[]: crc = c6d03b85; size =     18145; name = PUZZLES\SAMPLE1.PZL
-    file[]: crc = 345cd097; size =      1966; name = WING\DVA.386
-    file[]: crc = 420c7155; size =     92208; name = WING\WING.DLL
-    file[]: crc = c259f8ca; size =     12800; name = WING\WING32.DLL
-    file[]: crc = 3b514083; size =    188960; name = WING\WINGDE.DLL
-    file[]: crc = 1be07fa4; size =      6736; name = WING\WINGDIB.DRV
-    file[]: crc = a2b26dc7; size =      5024; name = WING\WINGPAL.WND
+    file[]: crc = 328b1d70; size =      5600; name = WINDOWS\IBMJOY.DRV
+    file[]: crc = 3b532a64; size =       226; name = WINDOWS\OEMSETUP.INF
+    file[]: crc = 09097a8c; size =     15984; name = WINDOWS\SYSTEM\JOYSTICK.CPL
     file[]:                                   name = CD\CDDA.SOU; cdda = 93/244/166/64/155/102/157/74/119/85/137/89/159/73/134/58/133/79/150/95/123/83/14/26/24/16/28/26/27/23/19/274
 end
 
