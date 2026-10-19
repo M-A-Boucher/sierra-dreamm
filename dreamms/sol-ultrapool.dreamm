@@ -1,0 +1,96 @@
+//
+// 3-D Ultra: Cool Pool
+//
+desc[sol-ultra1]:
+
+name = 3-D Ultra: Cool Pool
+icon = sol-ultra1.png
+machine = pc
+osenv = windows
+rootpath = C:\
+launch = $(rootpath)\coolpool.exe
+audiohw = gmidi
+mips = $(MIPS_MAX)
+filter = sierra, dynamix
+
+//
+// file system
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = coolpool.exe
+    anchordepth = 1
+    file[]: crc = 72166d61; size =    659456; name = coolpool.exe
+    file[]: crc = c7247fe0; size =     96256; name = SMACKW32.DLL
+    file[]: crc = 7184ed02; size =     36864; name = gamelogic\24Cents.dll
+    file[]: crc = ab20260f; size =     32768; name = gamelogic\Billiards.dll
+    file[]: crc = 10670de0; size =     36864; name = gamelogic\Bombs.dll
+    file[]: crc = 14389e17; size =     32768; name = gamelogic\Chameleon.dll
+    file[]: crc = eb164fe5; size =        75; name = gamelogic\Computer1.cfg
+    file[]: crc = 694a04a4; size =        75; name = gamelogic\Computer2.cfg
+    file[]: crc = 6a33d77c; size =        75; name = gamelogic\Computer3.cfg
+    file[]: crc = 597c543d; size =     36864; name = gamelogic\Cutthroat.dll
+    file[]: crc = 341ce60c; size =     36864; name = gamelogic\EightBall.dll
+    file[]: crc = aa1ec5db; size =     36864; name = gamelogic\NineBall.dll
+    file[]: crc = fa277a32; size =     49152; name = gamelogic\Poker.dll
+    file[]: crc = b124a13a; size =     32768; name = gamelogic\Rocket.dll
+    file[]: crc = 0a79bda7; size =     36864; name = gamelogic\Rotation.dll
+    file[]: crc = f8b7e2c7; size =  18987320; name = movies\24cents.smk
+    file[]: crc = aff2f648; size =  25913772; name = movies\advanced.smk
+    file[]: crc = b1538850; size =  13585976; name = movies\billiards.smk
+    file[]: crc = 420f96f4; size =  25906076; name = movies\bombs.smk
+    file[]: crc = 0045fbd7; size =  16955452; name = movies\chameleon.smk
+    file[]: crc = e1b98576; size =  20446036; name = movies\cutthroat.smk
+    file[]: crc = ec29026e; size =  27780948; name = movies\eightball.smk
+    file[]: crc = b2cf672c; size =  28457736; name = movies\howtoshoot.smk
+    file[]: crc = 293077ad; size =  17366908; name = movies\nineball.smk
+    file[]: crc = 15be1de9; size =  32422364; name = movies\poker.smk
+    file[]: crc = 50f30e1c; size =  13158752; name = movies\rocket.smk
+    file[]: crc = 5c843273; size =  15660684; name = movies\rotation.smk
+    file[]: crc = 8132ce64; size =  23322059; name = volumes\common.tbv
+    file[]: crc = 115c1967; size =    146130; name = volumes\dialog.tbv
+    file[]: crc = e852052d; size =   1448533; name = volumes\diffmenu.tbv
+    file[]: crc = a16724cb; size =    529798; name = volumes\gamesmenu.tbv
+    file[]: crc = 0732b8d8; size =    424420; name = volumes\gatheringmenu.tbv
+    file[]: crc = 79bb8c05; size =   8850193; name = volumes\intro.tbv
+    file[]: crc = 4363b09e; size =   2591506; name = volumes\loadingmenu.tbv
+    file[]: crc = d87ac46e; size =    443759; name = volumes\loginmenu.tbv
+    file[]: crc = 4a2248ba; size =   4598220; name = volumes\mainmenu.tbv
+    file[]: crc = 5eb0f1d0; size =  52584653; name = volumes\music.tbv
+    file[]: crc = 52ab54de; size =   1665522; name = volumes\namesmenu.tbv
+    file[]: crc = b3e60574; size =   1938097; name = volumes\playermenu.tbv
+    file[]: crc = 9337c705; size =    793628; name = volumes\prefmenu.tbv
+    file[]: crc = 8010bcd4; size =    438901; name = volumes\replymenu.tbv
+    file[]: crc = 67fa314c; size =   4506757; name = volumes\selectmenu.tbv
+    file[]: crc = 147fc246; size =    595464; name = volumes\settingsmenu.tbv
+    file[]: crc = b42ca446; size =   1718577; name = volumes\sounds.tbv
+    file[]: crc = 6baf89fb; size =   1160716; name = volumes\waitingmenu.tbv
+    file[]: crc = e18cc52d; size =   3615212; name = volumes\games\24cents.tbv
+    file[]: crc = f9b5d038; size =  10384544; name = volumes\games\24cents_classic.tbv
+    file[]: crc = f324106b; size =  11073662; name = volumes\games\24cents_cool.tbv
+    file[]: crc = ecc4406e; size =   2610464; name = volumes\games\billiards.tbv
+    file[]: crc = f7b24549; size =   3989029; name = volumes\games\bombs.tbv
+    file[]: crc = 4fb421d3; size =   7129734; name = volumes\games\bombs_classic.tbv
+    file[]: crc = 2fa14648; size =   7865542; name = volumes\games\bombs_cool.tbv
+    file[]: crc = 5a10caf0; size =   2998207; name = volumes\games\chameleon.tbv
+    file[]: crc = adf01187; size =  11398118; name = volumes\games\chameleon_classic.tbv
+    file[]: crc = 8f9bb50b; size =  11270236; name = volumes\games\chameleon_cool.tbv
+    file[]: crc = 20fceb96; size =   2613565; name = volumes\games\cutthroat.tbv
+    file[]: crc = 39f7c735; size =   2613192; name = volumes\games\eightball.tbv
+    file[]: crc = 0b19ab3b; size =   2832556; name = volumes\games\nineball.tbv
+    file[]: crc = e052838b; size =  10146998; name = volumes\games\poker.tbv
+    file[]: crc = fdac342e; size =  10618457; name = volumes\games\poker_classic.tbv
+    file[]: crc = 535a55c8; size =  11013549; name = volumes\games\poker_cool.tbv
+    file[]: crc = adb2b4e7; size =   3838061; name = volumes\games\rocket.tbv
+    file[]: crc = 2c606dae; size =  11453621; name = volumes\games\rocket_classic.tbv
+    file[]: crc = b98c5313; size =   4628800; name = volumes\games\rocket_cool.tbv
+    file[]: crc = 93164d42; size =   2826046; name = volumes\games\rotation.tbv
+end
+
+end

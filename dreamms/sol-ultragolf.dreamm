@@ -1,0 +1,198 @@
+//
+// 3-D Ultra MiniGolf
+//
+desc[sol-ultragolf]:
+
+name = 3-D Ultra MiniGolf
+icon = sol-ultragolf.png
+machine = pc
+osenv = windows
+winres = 800x600x16
+rootpath = C:\
+launch = $(rootpath)\MINIGOLF.EXE
+audiohw = gmidi
+mips = $(MIPS_MAX)
+filter = sierra, dynamix
+
+//
+// file system
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = MINIGOLF.EXE
+    anchordepth = 1
+    file[]: crc = fc7b769f; size =   5705216; name = MENGDIBS.DLX
+    file[]: crc = 3147a682; size =     43008; name = MENGLISH.DLX
+    file[]: crc = 9914b087; size =     51320; name = MGFONT1.TTF
+    file[]: crc = bd547127; size =     26468; name = MGFONT2.TTF
+    file[]: crc = 5aaff0b5; size =     55204; name = MGFONT3.TTF
+    file[]: crc = 972ec133; size =       577; name = MGHELP.CNT
+    file[]: crc = ef2132e0; size =   1380164; name = MGHELP.HLP
+    file[]: crc = 3363479d; size =     30662; name = MGTILE.BMP
+    file[]: crc = 0e84f7f6; size =    409088; name = MINIGOLF.EXE
+    file[]: crc = 584f85a9; size =    787510; name = SIERRA10.BMP
+    file[]: crc = 687dbe82; size =    308278; name = SIERRA6.BMP
+    file[]: crc = bf9f0461; size =   7549491; name = DATA\BIGSHOE.RBX
+    file[]: crc = 54d6a795; size =  10629909; name = DATA\BUGS.RBX
+    file[]: crc = 2a3ebc52; size =  20038342; name = DATA\DINOSAUR.RBX
+    file[]: crc = 41fba7c6; size =  11702333; name = DATA\FAIRYLND.RBX
+    file[]: crc = 95d5a38a; size =   9586781; name = DATA\FORT.RBX
+    file[]: crc = 10e1ce5d; size =  13978367; name = DATA\HAUNTEDH.RBX
+    file[]: crc = 44551ee2; size =   6578342; name = DATA\INTRO_1.AVI
+    file[]: crc = 3fd7ab06; size =  15176008; name = DATA\INTRO_2.AVI
+    file[]: crc = 132f5539; size =  12934510; name = DATA\JUNGLE.RBX
+    file[]: crc = ca795bd9; size =   8190457; name = DATA\LITEHOUS.RBX
+    file[]: crc = 965e0769; size =   9656212; name = DATA\LOSTMINE.RBX
+    file[]: crc = 3c7e0f5f; size =   1842577; name = DATA\MAIN.RBX
+    file[]: crc = 795e5ff3; size =  26773261; name = DATA\MOONBASE.RBX
+    file[]: crc = 43d3df45; size =  18151721; name = DATA\MOONCRAT.RBX
+    file[]: crc = c0085098; size =   9928997; name = DATA\NEPTUNES.RBX
+    file[]: crc = d4c857f5; size =  12590099; name = DATA\PRACTICE.RBX
+    file[]: crc = 419c43e9; size =  11353944; name = DATA\PUTTING.AVI
+    file[]: crc = df39b955; size =   4865836; name = DATA\ROCKET.RBX
+    file[]: crc = 4a182fec; size =   6474559; name = DATA\SAWMILL.RBX
+    file[]: crc = e8b05fd6; size =  15928617; name = DATA\SNOWMAN.RBX
+    file[]: crc = 9119d374; size =  18023561; name = DATA\VOLCANO.RBX
+    file[]: crc = aad76102; size =  13490612; name = DATA\WACKYTIM.RBX
+    file[]: crc = a13c1211; size =   7812983; name = DATA\WINDMILL.RBX
+    file[]: crc = f9f7adfe; size =     62904; name = MID\BIGSHOE.MID
+    file[]: crc = 771cf40b; size =     31947; name = MID\BUGS.MID
+    file[]: crc = 9860b4cc; size =     22070; name = MID\DINOSAUR.MID
+    file[]: crc = 90033569; size =     21275; name = MID\FAIRYLND.MID
+    file[]: crc = 97844dd2; size =     30914; name = MID\FORT.MID
+    file[]: crc = 59c31343; size =     15453; name = MID\HAUNTEDH.MID
+    file[]: crc = 6604b451; size =     24600; name = MID\JUNGLE.MID
+    file[]: crc = 1934438f; size =     16532; name = MID\LITEHOUS.MID
+    file[]: crc = 7234c43c; size =     19426; name = MID\LOSTMINE.MID
+    file[]: crc = 43c1f6db; size =     22080; name = MID\MOONBASE.MID
+    file[]: crc = d2d0fc3f; size =     21418; name = MID\MOONCRAT.MID
+    file[]: crc = 08497c3c; size =     32385; name = MID\NEPTUNES.MID
+    file[]: crc = b28d8a4d; size =     12160; name = MID\PRACTICE.MID
+    file[]: crc = 0beaabcb; size =     26067; name = MID\ROCKET.MID
+    file[]: crc = f8fcc9bf; size =     43560; name = MID\SAWMILL.MID
+    file[]: crc = 4fd05f9b; size =     33661; name = MID\SNOWMAN.MID
+    file[]: crc = b28d8a4d; size =     12160; name = MID\THEME.MID
+    file[]: crc = f241afe6; size =     60315; name = MID\VOLCANO.MID
+    file[]: crc = b9c83c72; size =     25394; name = MID\WACKYTIM.MID
+    file[]: crc = 94dcba50; size =     27751; name = MID\WINDMILL.MID
+    file[]:                                   name = CD\CDDA.SOU; cdda = 64/99/105/92/99/103/93/91/134/137/98/121/104/105/103/107/88
+end
+
+//
+// v2.0.0.6 Deluxe
+//
+game[v2.0.0.6-deluxe]:
+    name = v2.0.0.6 Deluxe
+    anchorfile = MINIGOLF.EXE
+    anchordepth = 1
+    file[]: crc = 3d218dcb; size =   2000240; name = MGHELP.HLP
+    file[]: crc = e9eab2d2; size =    472064; name = minigolf.exe
+    file[]: crc = 54de35ad; size =   7401494; name = minigolf.tbv
+    file[]: crc = c59ccac2; size =    867657; name = DATA\Banshee.mp3
+    file[]: crc = f0cda195; size =  17833964; name = DATA\Banshee.rbx
+    file[]: crc = a4e55651; size =    648594; name = DATA\BigShoe.mp3
+    file[]: crc = 45c87de7; size =   7417651; name = DATA\BIGSHOE.RBX
+    file[]: crc = 81f596b3; size =    733074; name = DATA\Bugs.mp3
+    file[]: crc = 15eb86dd; size =  10513334; name = DATA\BUGS.RBX
+    file[]: crc = 15407633; size =    862902; name = DATA\Cloud9.mp3
+    file[]: crc = 95bc3a6f; size =  12341291; name = DATA\cloud9.rbx
+    file[]: crc = 5154d7d9; size =    750080; name = DATA\DeepSea.mp3
+    file[]: crc = 939421ca; size =  28623582; name = DATA\DeepSea.rbx
+    file[]: crc = 30dfb09b; size =    750080; name = DATA\Deepsea1.mp3
+    file[]: crc = 7037c92d; size =    745691; name = DATA\Dinosaur.mp3
+    file[]: crc = e95ec41f; size =  19923607; name = DATA\DINOSAUR.RBX
+    file[]: crc = 860a3b10; size =    631588; name = DATA\evenmore.mp3
+    file[]: crc = b7a9c815; size =  12942379; name = DATA\EvenMore.rbx
+    file[]: crc = a62d30d5; size =    717897; name = DATA\FairyLnd.mp3
+    file[]: crc = fb1ec721; size =  11592139; name = DATA\FAIRYLND.RBX
+    file[]: crc = 4255a6ea; size =    632868; name = DATA\Fort.mp3
+    file[]: crc = 1db114ff; size =   9471310; name = DATA\FORT.RBX
+    file[]: crc = 8872702d; size =    782628; name = DATA\Future.mp3
+    file[]: crc = 28e48bf6; size =  36315101; name = DATA\future.rbx
+    file[]: crc = 205b9692; size =    955794; name = DATA\HauntedH.mp3
+    file[]: crc = d5ca4bdb; size =  13880974; name = DATA\HAUNTEDH.RBX
+    file[]: crc = 102986eb; size =   8273348; name = DATA\Intro_1.avi
+    file[]: crc = 5db4b1bc; size =  14296684; name = DATA\Intro_2.avi
+    file[]: crc = 614bdd85; size =    845531; name = DATA\Jungle.mp3
+    file[]: crc = 3dc2c89b; size =  12829958; name = DATA\JUNGLE.RBX
+    file[]: crc = 62dffd96; size =    641097; name = DATA\LiteHous.mp3
+    file[]: crc = 6104f7e1; size =   8069914; name = DATA\LITEHOUS.RBX
+    file[]: crc = 2c4ef354; size =    938240; name = DATA\LostMine.mp3
+    file[]: crc = f9b9746d; size =   9546163; name = DATA\LOSTMINE.RBX
+    file[]: crc = b65fb29e; size =   1035702; name = DATA\MADLAB.mp3
+    file[]: crc = 16bf9c6f; size =  16629778; name = DATA\madlab.rbx
+    file[]: crc = 964d3edf; size =   1765014; name = DATA\main.rbx
+    file[]: crc = 5665af31; size =    759954; name = DATA\Monster.mp3
+    file[]: crc = 4e21c2ec; size =  37626041; name = DATA\Monster.rbx
+    file[]: crc = b7e4a80d; size =    759954; name = DATA\Monster1.mp3
+    file[]: crc = 4a408b45; size =    736731; name = DATA\MoonBase.mp3
+    file[]: crc = 76d32205; size =  26681017; name = DATA\MOONBASE.RBX
+    file[]: crc = e745384d; size =    727588; name = DATA\MoonCrat.mp3
+    file[]: crc = 9932eb4f; size =  18022414; name = DATA\MOONCRAT.RBX
+    file[]: crc = 374a52c8; size =    695588; name = DATA\Neptunes.mp3
+    file[]: crc = b920b411; size =   9826144; name = DATA\NEPTUNES.RBX
+    file[]: crc = ebaa33cf; size =    447634; name = DATA\Practice.mp3
+    file[]: crc = d56d23eb; size =  12460652; name = DATA\PRACTICE.RBX
+    file[]: crc = 21c4b3f8; size =  17722170; name = DATA\Putting.avi
+    file[]: crc = 4a408b45; size =    736731; name = DATA\Rocket.mp3
+    file[]: crc = 6892de7e; size =   4720308; name = DATA\ROCKET.RBX
+    file[]: crc = 40230676; size =    792137; name = DATA\RRepair.mp3
+    file[]: crc = ca6e6532; size =  16532638; name = DATA\RRepair.rbx
+    file[]: crc = a4e55651; size =    648594; name = DATA\SawMill.mp3
+    file[]: crc = 02c86187; size =   6353927; name = DATA\SAWMILL.RBX
+    file[]: crc = 4a655633; size =    721371; name = DATA\SnowMan.mp3
+    file[]: crc = f4f2c964; size =  15806820; name = DATA\SNOWMAN.RBX
+    file[]: crc = f1bdec0d; size =    834377; name = DATA\Theme.mp3
+    file[]: crc = f06d59fd; size =    672365; name = DATA\Theme1.mp3
+    file[]: crc = 278190fc; size =    783177; name = DATA\Theme2.mp3
+    file[]: crc = 83f61f8c; size =    648228; name = DATA\Tornado.mp3
+    file[]: crc = c69ebbc5; size =  23440491; name = DATA\Tornado.rbx
+    file[]: crc = af715982; size =    686080; name = DATA\Volcano.mp3
+    file[]: crc = ef157d9b; size =  17903980; name = DATA\VOLCANO.RBX
+    file[]: crc = 42c6c2c8; size =    604160; name = DATA\WackyTIM.mp3
+    file[]: crc = c3bf6e89; size =  13354526; name = DATA\WACKYTIM.RBX
+    file[]: crc = 7883722d; size =    694491; name = DATA\Windmill.mp3
+    file[]: crc = 16d760f5; size =   7687712; name = DATA\WINDMILL.RBX
+    file[]: crc = 3b51ced4; size =     40748; name = Mid\banshee.mid
+    file[]: crc = f9f7adfe; size =     62904; name = Mid\BIGSHOE.MID
+    file[]: crc = 771cf40b; size =     31947; name = Mid\BUGS.MID
+    file[]: crc = 0b3864ab; size =     37340; name = Mid\CLOUD9.MID
+    file[]: crc = ca6cb214; size =     35761; name = Mid\DEEPSEA.MID
+    file[]: crc = 17ea444a; size =     34679; name = Mid\deepsea1.MID
+    file[]: crc = 9860b4cc; size =     22070; name = Mid\DINOSAUR.MID
+    file[]: crc = 42d565aa; size =     29643; name = Mid\evenmore.MID
+    file[]: crc = 90033569; size =     21275; name = Mid\FAIRYLND.MID
+    file[]: crc = 97844dd2; size =     30914; name = Mid\FORT.MID
+    file[]: crc = f609eff0; size =     48894; name = Mid\Future.MID
+    file[]: crc = 59c31343; size =     15453; name = Mid\hauntedh.mid
+    file[]: crc = 6604b451; size =     24600; name = Mid\JUNGLE.MID
+    file[]: crc = 1934438f; size =     16532; name = Mid\LITEHOUS.MID
+    file[]: crc = 7234c43c; size =     19426; name = Mid\LOSTMINE.MID
+    file[]: crc = 8ca06da5; size =     36678; name = Mid\MadLab.MID
+    file[]: crc = ae3d8eb7; size =     22017; name = Mid\monster.mid
+    file[]: crc = 526ee072; size =     22028; name = Mid\monster1.mid
+    file[]: crc = 43c1f6db; size =     22080; name = Mid\MOONBASE.MID
+    file[]: crc = d2d0fc3f; size =     21418; name = Mid\MOONCRAT.MID
+    file[]: crc = 08497c3c; size =     32385; name = Mid\NEPTUNES.MID
+    file[]: crc = b28d8a4d; size =     12160; name = Mid\practice.mid
+    file[]: crc = 0beaabcb; size =     26067; name = Mid\rocket.mid
+    file[]: crc = 340ef3d0; size =     36877; name = Mid\RRepair.mid
+    file[]: crc = f8fcc9bf; size =     43560; name = Mid\SAWMILL.MID
+    file[]: crc = 4fd05f9b; size =     33661; name = Mid\SNOWMAN.MID
+    file[]: crc = a84bc8f8; size =     41879; name = Mid\theme.mid
+    file[]: crc = 7d2ee84c; size =     47621; name = Mid\Theme1.MID
+    file[]: crc = 58ff51d0; size =     51887; name = Mid\Theme2.mid
+    file[]: crc = 66141d44; size =     42953; name = Mid\Tornado.mid
+    file[]: crc = f241afe6; size =     60315; name = Mid\VOLCANO.MID
+    file[]: crc = b9c83c72; size =     25394; name = Mid\wackytim.mid
+    file[]: crc = 94dcba50; size =     27751; name = Mid\WINDMILL.MID
+end
+
+end

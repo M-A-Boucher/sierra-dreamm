@@ -1,0 +1,75 @@
+//
+// 3-D Ultra Pinball: Thrillride
+//
+desc[sol-ultrapinball5]:
+
+name = 3-D Ultra Pinball: Thrillride
+icon = sol-ultrapinball5.png
+machine = pc
+osenv = windows
+winres = 800x600x16
+rootpath = C:\
+launch = $(rootpath)\Pinball.exe
+audiohw = gmidi
+mips = $(MIPS_MAX)
+filter = sierra, dynamix, pinball
+
+script[init]:
+    code = [[[$(CRLF)
+        drive_set_label("D", "THRILLRIDE");
+    ]]]
+end
+
+//
+// file system
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = Pinball.exe
+    anchordepth = 2
+    file[]: crc = 5d545869; size =       816; name = kver.pub
+    file[]: crc = 77256afa; size =    499712; name = Pinball.exe
+    file[]: crc = 14e9621f; size =     53248; name = Tbl6A.dll
+    file[]: crc = 7e078ea4; size =     45056; name = Tbl6B.dll
+    file[]: crc = a5fbbfb1; size =    118784; name = Tbl6Main.dll
+    file[]: crc = 0cae74fe; size =    950272; name = WONDLL.dll
+    file[]: crc = 1ab573b2; size =       138; name = Version.txt
+    file[]: crc = 1d0c1603; size =  17775752; name = Data\Common.tbv
+    file[]: crc = 4430d97b; size =   8199560; name = Data\Common16.tbv
+    file[]: crc = 09c97f84; size =   4125100; name = Data\Common8.tbv
+    file[]: crc = d5fbdf74; size =   9555064; name = Data\Hershey1.avi
+    file[]: crc = e21190d7; size =   6270796; name = Data\Hershey1.mov
+    file[]: crc = 273feb2b; size =   9928696; name = Data\Hershey2.avi
+    file[]: crc = e8d722bf; size =   6228344; name = Data\Hershey2.mov
+    file[]: crc = 37610b9d; size =   2142828; name = Data\Intro.mov
+    file[]: crc = 56813f53; size =   6942302; name = Data\Menus16.tbv
+    file[]: crc = 691ba0f0; size =   3574191; name = Data\Menus8.tbv
+    file[]: crc = b54937d7; size =   9858230; name = Data\Music16.tbv
+    file[]: crc = 8564d02e; size =  19715382; name = Data\Music8.tbv
+    file[]: crc = 3d948173; size =   7939397; name = Data\Sfx16.tbv
+    file[]: crc = 73f8827a; size =   7033346; name = Data\Sfx8.tbv
+    file[]: crc = 8d57bc8b; size =   5053850; name = Data\TBL6A16.tbv
+    file[]: crc = c0efec5b; size =   2762231; name = Data\TBL6A8.tbv
+    file[]: crc = c50ff88f; size =   7222830; name = Data\TBL6B16.tbv
+    file[]: crc = 415b17bd; size =   3355407; name = Data\Tbl6B8.tbv
+    file[]: crc = d34bce47; size =  20519326; name = Data\Tbl6Main16.tbv
+    file[]: crc = 66dafb88; size =  11504355; name = Data\Tbl6Main8.tbv
+    file[]: crc = 7cf6a78e; size =   3558009; name = Data\TBL6MAINB16.tbv
+    file[]: crc = ec4b4c45; size =   2007787; name = Data\Tbl6MainB8.tbv
+    file[]: crc = 8a649191; size =   1876711; name = Data\Tbl6MainC16.tbv
+    file[]: crc = 78c78859; size =   1493694; name = Data\Tbl6MainC8.tbv
+    file[]: crc = 368dd9a0; size =   4482306; name = Data\TblHint16.tbv
+    file[]: crc = bae1be51; size =   2871481; name = Data\TblHint8.tbv
+    file[]: crc = d4a5e7ae; size =     33734; name = Data\Text.tbv
+    file[]: crc = d3dedbe6; size =   7748613; name = Data\Voice.tbv
+    file[]: crc = 6188106f; size =   3660592; name = CD\Thrillride\Data\Intro.avi
+end
+
+end

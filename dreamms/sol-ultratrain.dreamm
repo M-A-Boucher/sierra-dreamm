@@ -1,0 +1,62 @@
+//
+// 3-D Ultra Lionel Train Town
+//
+desc[sol-ultratrain]:
+
+name = 3-D Ultra Lionel Train Town
+icon = sol-ultratrain.png
+machine = pc
+osenv = windows
+winres = 800x600x16
+rootpath = C:\
+launch = $(rootpath)\TrainDlx.exe
+audiohw = gmidi
+mips = $(MIPS_MAX)
+filter = sierra, dynamix, pinball
+
+//
+// file system
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+
+script[init]:
+    code = [[[$(CRLF)
+        drive_set_label("D", "TRAINTOWNDLX");
+    ]]]
+end
+
+
+//
+// v2.0 Deluxe
+//
+game[v2.0]:
+    name = v2.0 Deluxe
+    anchorfile = TrainDlx.exe
+    anchordepth = 1
+    file[]: crc = 3a7a99b9; size =      1953; name = Career.ini
+    file[]: crc = 9ac833ce; size =    247693; name = DataBug.tbv
+    file[]: crc = 23c481ee; size =        79; name = DataEdit.tbv
+    file[]: crc = 19206d20; size =   2356236; name = DataLay.tbv
+    file[]: crc = 2f418f19; size =     53220; name = DataLay2.tbv
+    file[]: crc = 6b4c3dd3; size =  49765771; name = DataMus.tbv
+    file[]: crc = 6a884967; size =  10610404; name = DataShl.tbv
+    file[]: crc = 23c481ee; size =        79; name = DataShl2.tbv
+    file[]: crc = dd077441; size =  29934921; name = DataSim.tbv
+    file[]: crc = 3cc68b5f; size =  54403214; name = DataSim2.tbv
+    file[]: crc = 863d577a; size =   3559108; name = DataVoc.tbv
+    file[]: crc = 03c6e70a; size =  25022135; name = DataVoc2.tbv
+    file[]: crc = 9fec15b0; size =        66; name = HiScores.ini
+    file[]: crc = e74deadf; size =        20; name = LayoutTemp.rr
+    file[]: crc = e74deadf; size =        20; name = Prefs.dat
+    file[]: crc = c03e6424; size =    897024; name = TrainDlx.exe
+    file[]: crc = 0148c8de; size =      2238; name = Media\CURS001.ANI
+    file[]: crc = d775373d; size =     18076; name = Media\CURS003.ANI
+    file[]: crc = eeccac46; size =      2238; name = Media\CURS006.ANI
+    file[]: crc = 7fa61764; size =  14771332; name = CD\Train\Media\Intro.avi
+    file[]: crc = 5efef777; size =  32232590; name = CD\Train\Media\IntroX.avi
+
+end
+
+end

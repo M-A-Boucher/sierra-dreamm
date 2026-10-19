@@ -55,10 +55,10 @@ script[init]:
 end
 
 //
-// 1995
+// v1.0
 //
-game[1995]:
-    name = 1995
+game[v1.0]:
+    name = v1.0
     anchorfile = PINBALL.EXE
     anchordepth = 1
     file[]: crc = f7cb253c; size =     14416; name = CTL3D.DLL
@@ -87,16 +87,6 @@ game[1995]:
     file[]: crc = 87f8a5da; size =     73703; name = SOSLIBS2.DLL
     file[]: crc = a6fac09f; size =  12430068; name = SHELL\FINALE.AVI
     file[]: crc = 7603a00d; size =   6426584; name = SHELL\UPB.AVI
-
-    file[]: crc = 65af31af; size =     46592; name = CD\AUTORUN.EXE
-    file[]: crc = 531949dc; size =       966; name = CD\AUTORUN.INF
-    file[]: crc = db898f5d; size =     36848; name = CD\BOOTDISK.EXE
-    file[]: crc = 581b5321; size =       766; name = CD\BOOTDISK.ICO
-    file[]: crc = ee3e7d13; size =      2363; name = CD\LANGUAGE.INF
-    file[]: crc = 7df6ad02; size =      2688; name = CD\README.WRI
-    file[]: crc = 1a931a7e; size =     27056; name = CD\SETUP.EXE
-    file[]: crc = b4a317b8; size =    324210; name = CD\SETUP.SOL
-    file[]: crc = 5193ee6f; size =      7038; name = CD\SIERRA.INF
     file[]: crc = f7cb253c; size =     14416; name = CD\UPINBALL\CTL3D.DLL
     file[]: crc = 0816ce7e; size =      5404; name = CD\UPINBALL\DRUM.BNK
     file[]: crc = 0fd321ab; size =     46473; name = CD\UPINBALL\HMIDRV.WIN

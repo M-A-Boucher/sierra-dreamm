@@ -1,0 +1,88 @@
+//
+// 3-D Ultra Pinball: NASCAR Pinball
+//
+desc[sol-ultrapinball4]:
+
+name = 3-D Ultra Pinball: NASCAR Pinball
+icon = sol-ultrapinball4.png
+machine = pc
+osenv = windows
+rootpath = C:\
+launch = $(rootpath)\Pinball.exe
+audiohw = gmidi
+filter = sierra, dynamix, pinball
+
+//
+// file system
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = Pinball.exe
+    anchordepth = 1
+    file[]: crc = 01757962; size =       559; name = NCARPB.CNT
+    file[]: crc = 554a871c; size =   2576563; name = NCARPB.HLP
+    file[]: crc = 959d106f; size =     42496; name = ns1.dll
+    file[]: crc = b38a1567; size =     78848; name = ns2.dll
+    file[]: crc = 23d6883b; size =     44544; name = ns3.dll
+    file[]: crc = fd5c58d5; size =    344064; name = Pinball.exe
+    file[]: crc = 2a1152cd; size =   2596666; name = avi\18uv.avi
+    file[]: crc = bc494a4a; size =   1992534; name = avi\18v.avi
+    file[]: crc = 820b76a8; size =   2633886; name = avi\3uv.avi
+    file[]: crc = da1b12ad; size =   2274976; name = avi\3v.avi
+    file[]: crc = 259a3665; size =   2897620; name = avi\5uv.avi
+    file[]: crc = 2caa1a0f; size =   2255362; name = avi\5v.avi
+    file[]: crc = d959e7bb; size =   2657652; name = avi\94uv.avi
+    file[]: crc = 175225b5; size =   2034290; name = avi\94v.avi
+    file[]: crc = fa364354; size =  13320220; name = avi\atlanta.avi
+    file[]: crc = 9a222c52; size =   8203034; name = avi\bill_bio.avi
+    file[]: crc = f17f6095; size =   6783632; name = avi\bobby_bio.avi
+    file[]: crc = 4167f5c3; size =  14169664; name = avi\bristol.avi
+    file[]: crc = 4b4e3f4b; size =   7603834; name = avi\dale_bio.avi
+    file[]: crc = c87fbc75; size =  32936530; name = avi\history.avi
+    file[]: crc = 9ae3c043; size =  11032470; name = avi\intro.avi
+    file[]: crc = 120f4917; size =  13889934; name = avi\pit_crew.avi
+    file[]: crc = 0fd64354; size =  15870760; name = avi\talladega.avi
+    file[]: crc = ce84df58; size =   8554928; name = avi\Terry_bio.avi
+    file[]: crc = d4c6994b; size =  14628210; name = avi\watkins.avi
+    file[]: crc = 88da40ea; size =   4791645; name = data\common.tbv
+    file[]: crc = e4ef131a; size =  13883135; name = data\menus.tbv
+    file[]: crc = dedd325c; size =  16646329; name = data\music.tbv
+    file[]: crc = 4c911309; size =    764284; name = data\ns1_18.tbv
+    file[]: crc = 8effbdd3; size =    769033; name = data\ns1_3.tbv
+    file[]: crc = fe6535fc; size =    770450; name = data\ns1_5.tbv
+    file[]: crc = 7ea60e06; size =    762541; name = data\ns1_94.tbv
+    file[]: crc = d23ffa1b; size =   2493889; name = data\ns2_18.tbv
+    file[]: crc = 0879fedc; size =   2475011; name = data\ns2_3.tbv
+    file[]: crc = 619ec2a5; size =   2490008; name = data\ns2_5.tbv
+    file[]: crc = 55ed04d4; size =   2470143; name = data\ns2_94.tbv
+    file[]: crc = e16810a9; size =   7363248; name = data\ns3_18.tbv
+    file[]: crc = 12269370; size =   5829807; name = data\ns3_3.tbv
+    file[]: crc = 6b27ad87; size =   7687882; name = data\ns3_5.tbv
+    file[]: crc = d812ca0e; size =   7723466; name = data\ns3_94.tbv
+    file[]: crc = 9fee9141; size =   7734890; name = data\sfx.tbv
+    file[]: crc = bf91be54; size =  17521817; name = data\voice.tbv
+    file[]: crc = 37ab7ee7; size =   4795682; name = data16\common_16.tbv
+    file[]: crc = 4eeb053b; size =   8327920; name = data16\music_16.tbv
+    file[]: crc = d3d4e9c1; size =   1217619; name = data16\ns1_18_16.tbv
+    file[]: crc = 6ade0a33; size =   1193380; name = data16\ns1_3_16.tbv
+    file[]: crc = 1c2469e5; size =   1235053; name = data16\ns1_5_16.tbv
+    file[]: crc = 62352955; size =   1215479; name = data16\ns1_94_16.tbv
+    file[]: crc = 9748cebe; size =   3864733; name = data16\ns2_18_16.tbv
+    file[]: crc = 36b8d0c9; size =   3854056; name = data16\ns2_3_16.tbv
+    file[]: crc = 7ec3373c; size =   3909120; name = data16\ns2_5_16.tbv
+    file[]: crc = ea8348c7; size =   3879601; name = data16\ns2_94_16.tbv
+    file[]: crc = 90c8612e; size =  12760662; name = data16\ns3_18_16.tbv
+    file[]: crc = 8fa51c54; size =   9924799; name = data16\ns3_3_16.tbv
+    file[]: crc = 298722b0; size =  13620225; name = data16\ns3_5_16.tbv
+    file[]: crc = edf83ebb; size =  13382032; name = data16\ns3_94_16.tbv
+    file[]: crc = 89a5e3ca; size =   4311002; name = data16\sfx_16.tbv
+    file[]: crc = 877ac498; size =      1825; name = data16\ThrillSeekers.txt
+end
+
+end
