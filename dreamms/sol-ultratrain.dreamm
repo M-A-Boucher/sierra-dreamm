@@ -1,9 +1,9 @@
 //
-// 3-D Ultra Lionel Train Town
+// 3-D Ultra: Lionel Train Town
 //
 desc[sol-ultratrain]:
 
-name = 3-D Ultra Lionel Train Town
+name = 3-D Ultra: Lionel Train Town
 icon = sol-ultratrain.png
 machine = pc
 osenv = windows
@@ -11,8 +11,7 @@ winres = 800x600x16
 rootpath = C:\
 launch = $(rootpath)\TrainDlx.exe
 audiohw = gmidi
-mips = $(MIPS_MAX)
-filter = sierra, dynamix, pinball
+filter = sierra, dynamix, simulation
 
 //
 // file system
@@ -56,7 +55,6 @@ game[v2.0]:
     file[]: crc = eeccac46; size =      2238; name = Media\CURS006.ANI
     file[]: crc = 7fa61764; size =  14771332; name = CD\Train\Media\Intro.avi
     file[]: crc = 5efef777; size =  32232590; name = CD\Train\Media\IntroX.avi
-
 end
 
 end
