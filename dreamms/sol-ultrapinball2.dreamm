@@ -19,7 +19,7 @@ filter = sierra, dynamix, pinball
 //
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
 
 //
 // v1.0
@@ -102,12 +102,12 @@ game[v1.0]:
     file[]: crc = 456322bf; size =    483490; name = ENGLISH\HELP\SS23A.WAV
     file[]: crc = be85bfaa; size =    373018; name = ENGLISH\HELP\SS24A.WAV
     file[]: crc = 96ad5453; size =    826410; name = ENGLISH\HELP\SS25A.WAV
-    file[]: crc = 7cf83eba; size =  30861725; name = ENGLISH\LARGE\OVERRIDE.DAT
-    file[]: crc = 73762d18; size =   6969843; name = ENGLISH\MEDIUM\OVERRIDE.DAT
-    file[]: crc = 8c8af2e2; size =    248028; name = ENGLISH\SMALL\BLAH.DAT
-    file[]: crc = abe91e11; size =    446164; name = ENGLISH\SMALL\OVERRIDE.DAT
-    file[]: crc = 7d65e772; size =    143388; name = DSOUND.DLL
-    file[]: crc = 13fbae4f; size =      2552; name = DSOUND.INI
+    file[]: crc = 7cf83eba; size =  30861725; name = ENGLISH\LARGE\OVERRIDE.DAT ; optional = true
+    file[]: crc = 73762d18; size =   6969843; name = ENGLISH\MEDIUM\OVERRIDE.DAT; optional = true
+    file[]: crc = 8c8af2e2; size =    248028; name = ENGLISH\SMALL\BLAH.DAT     ; optional = true
+    file[]: crc = abe91e11; size =    446164; name = ENGLISH\SMALL\OVERRIDE.DAT ; optional = true
+    file[]: crc = 7d65e772; size =    143388; name = WIN31\DSOUND.DLL
+    file[]: crc = 13fbae4f; size =      2552; name = WIN31\DSOUND.INI
     file[]:                                   name = CD\CDDA.SOU; cdda = 79/82
 end
 
@@ -129,4 +129,26 @@ game[v1.0.0.1-le]:
     file[]:                                   name = CD\CDDA.SOU; cdda = 81/82
 end
 
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    launch = $(rootpath)\PB2DEMO.EXE
+    anchorfile = PB2DEMO.EXE
+    file[]: crc = 5e75d783; size =    442368; name = PB2DEMO.EXE
+    file[]: crc = df0076bb; size =  13006746; name = RESOURCE.001
+    file[]: crc = 5f3aaccc; size =      2437; name = RESOURCE.MAP
+    file[]: crc = 6920cb66; size =     40425; name = MID\SX_1000.MID
+    file[]: crc = a8cabbcb; size =     18257; name = MID\SX_1001.MID
+    file[]: crc = 3db59d3a; size =     14485; name = MID\SX_1002.MID
+    file[]: crc = c63c381c; size =     19978; name = MID\SX_1003.MID
+    file[]: crc = 5750d13a; size =     24744; name = MID\SX_1004.MID
+    file[]: crc = 5c3790a5; size =     25354; name = MID\SX_1005.MID
+    file[]: crc = b2507f16; size =     17173; name = MID\SX_1006.MID
+    file[]: crc = c54e8cfe; size =     12783; name = MID\SX_1007.MID
+    file[]: crc = cae135e6; size =     25462; name = MID\SX_1008.MID
+    file[]: crc = 41be6fb6; size =     18114; name = MID\SX_1009.MID
+    file[]: crc = 7d65e772; size =    143388; name = WIN31\DSOUND.DLL
+    file[]: crc = 13fbae4f; size =      2552; name = WIN31\DSOUND.INI
 end
