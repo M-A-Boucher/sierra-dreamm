@@ -1,9 +1,9 @@
 //
-// 3-D Ultra MiniGolf
+// 3-D Ultra: MiniGolf
 //
 desc[sol-ultragolf]:
 
-name = 3-D Ultra MiniGolf
+name = 3-D Ultra: MiniGolf
 icon = sol-ultragolf.png
 machine = pc
 osenv = windows

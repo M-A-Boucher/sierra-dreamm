@@ -1,16 +1,15 @@
 //
 // 3-D Ultra: Cool Pool
 //
-desc[sol-ultra1]:
+desc[sol-ultrapool]:
 
 name = 3-D Ultra: Cool Pool
-icon = sol-ultra1.png
+icon = sol-ultrapool.png
 machine = pc
 osenv = windows
 rootpath = C:\
 launch = $(rootpath)\coolpool.exe
 audiohw = gmidi
-mips = $(MIPS_MAX)
 filter = sierra, dynamix
 
 //
