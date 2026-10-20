@@ -7,11 +7,10 @@ name = 3-D Ultra MiniGolf
 icon = sol-ultragolf.png
 machine = pc
 osenv = windows
-winres = 800x600x16
+winres = 800x600x32
 rootpath = C:\
 launch = $(rootpath)\MINIGOLF.EXE
 audiohw = gmidi
-mips = $(MIPS_MAX)
 filter = sierra, dynamix
 
 //
@@ -193,6 +192,24 @@ game[v2.0.0.6-deluxe]:
     file[]: crc = f241afe6; size =     60315; name = Mid\VOLCANO.MID
     file[]: crc = b9c83c72; size =     25394; name = Mid\wackytim.mid
     file[]: crc = 94dcba50; size =     27751; name = Mid\WINDMILL.MID
+end
+
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = minigolf.exe
+    file[]: crc = 0ae49385; size =   1613209; name = demo.tbv
+    file[]: crc = 5e40f2a7; size =    406016; name = minigolf.exe
+    file[]: crc = f177fbb1; size =     29122; name = DATA\litehous.cs
+    file[]: crc = 5c8b4538; size =    296360; name = DATA\litehous.mod
+    file[]: crc = ca795bd9; size =   8190457; name = DATA\litehous.rbx
+    file[]: crc = f9ce52e9; size =   1925743; name = DATA\MAIN.RBX
+    file[]: crc = f4f0a6a5; size =  37489874; name = DATA\monster.rbx
+    file[]: crc = 1934438f; size =     16532; name = Mid\litehous.mid
+    file[]: crc = 18ac1c22; size =     34788; name = Mid\monster.mid
+    file[]: crc = b28d8a4d; size =     12160; name = Mid\theme.mid
 end
 
 end
