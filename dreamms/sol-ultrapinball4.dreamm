@@ -85,4 +85,19 @@ game[v1.0]:
     file[]: crc = 877ac498; size =      1825; name = data16\ThrillSeekers.txt
 end
 
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = Pinball.exe
+    file[]: crc = d0033f45; size =     54784; name = ns2.dll
+    file[]: crc = 28a1670b; size =    333312; name = Pinball.exe
+    file[]: crc = e7d7d93d; size =   2160226; name = demodata\common.tbv
+    file[]: crc = 805856cc; size =   1341171; name = demodata\menus.tbv
+    file[]: crc = 1dd3b004; size =   2376638; name = demodata\ns2_5.tbv
+    file[]: crc = 393a26e7; size =  11293495; name = demodata\sfx.tbv
+    file[]: crc = e3738ed1; size =  16739047; name = demodata\voice.tbv
+end
+
 end
