@@ -1,9 +1,9 @@
 //
-// 3-D Ultra Radio Control Racers
+// 3-D Ultra: Radio Control Racers
 //
 desc[sol-ultraracers]:
 
-name = 3-D Ultra Radio Control Racers
+name = 3-D Ultra: Radio Control Racers
 icon = sol-ultraracers.png
 machine = pc
 osenv = windows
@@ -33,13 +33,12 @@ script[init]:
     ]]]
 end
 
-
 //
 // file system
 //
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_exists("$$(rootpath)\\CD\\CDDA.SOU")
 
 //
 // v1.0
@@ -830,6 +829,23 @@ game[v2.0-deluxe]:
     file[]: crc = 196f796a; size =     49208; name = Paint\stadium\WetNWild.bmp
     file[]: crc = c5cc204a; size =     49206; name = Paint\stadium\ZipperST.bmp
     file[]:                                   name = CD\CDDA.SOU; cdda = 186/177/187/184/224/183/184/181/121/63/186/184/183/188/123
+end
+
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = RCRacers.exe
+    file[]: crc = 85e105a0; size =  14224777; name = demo.tbv
+    file[]: crc = 00b59265; size =       167; name = game.ini
+    file[]: crc = 8e262986; size =     12436; name = HELP.tbf
+    file[]: crc = db793ed4; size =    491520; name = RCRacers.exe
+    file[]: crc = cba66c5a; size =     17468; name = RCRacers.ini
+    file[]: crc = 6943dbdc; size =   8385791; name = DATA\main.rbx
+    file[]: crc = 7df2b6fc; size =    444716; name = DATA\results.rbx
+    file[]: crc = 322731e3; size =      2181; name = DATA\undercon.cs
+    file[]: crc = e3fa91cb; size =   9581083; name = DATA\undercon.rbx
 end
 
 end
