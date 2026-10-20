@@ -81,4 +81,21 @@ game[v1.0]:
     file[]: crc = e730e054; size =     15700; name = Mid\sx_1750.mid
 end
 
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    launch = $(rootpath)\PB3Demo.exe
+    anchorfile = PB3Demo.exe
+    file[]: crc = 275883b3; size =    311296; name = PB3Demo.exe
+    file[]: crc = d8985770; size =   9038309; name = RESOURCE.001
+    file[]: crc = 3195a1bc; size =      1325; name = RESOURCE.MAP
+    file[]: crc = 480359c9; size =    138814; name = v0.dll
+    file[]: crc = ece43f15; size =     32001; name = Mid\sx_1000.mid
+    file[]: crc = a2861063; size =     16495; name = Mid\sx_1001.mid
+    file[]: crc = 0e1ae1e5; size =      7059; name = Mid\sx_1002.mid
+    file[]: crc = fab7b139; size =     12610; name = Mid\sx_1003.mid
+end
+
 end
