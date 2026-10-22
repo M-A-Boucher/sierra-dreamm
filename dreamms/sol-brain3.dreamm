@@ -6,12 +6,12 @@ desc[sol-brain3]:
 name = Lost Mind of Dr. Brain
 icon = sol-brain3.png
 machine = pc
-osenv = windows 95
+osenv = windows 3.1
 rootpath = C:\
 launch = $(rootpath)\DRBRAIN3.EXE
 audiohw = gmidi
-filter = sierra, puzzle
 winres = 640x480x8
+filter = sierra, puzzle
 
 //
 // filesystem
@@ -81,11 +81,28 @@ game[v1.0]:
     file[]: crc = e74f49ec; size =   9258496; name = 9TRAIN.DLL
     file[]: crc = 25054b75; size =  12401152; name = 9WORD.DLL
     file[]: crc = 765cd553; size =    506080; name = DRBRAIN3.EXE
-    file[]: crc = f13556a6; size =         8; name = INSTALLD.DB3; optional = true
-    file[]: crc = 4f959e66; size =       456; name = LANGUAGE.INF; optional = true
-    file[]: crc = 99903e7f; size =     30880; name = SETUP.EXE   ; optional = true
-    file[]: crc = 55df4d2d; size =    457707; name = SETUP.SOL
-    file[]: crc = 22aab44e; size =       900; name = SIERRA.INF  ; optional = true
+end
+
+//
+// v1.0 Rerelease (1994)
+//
+game[v1.0-rerelease-1994]:
+    name = v1.0 Rerelease (1994)
+    imports = v1.0
+    file[]: crc = 65a0d621; size =     57344; name = 8DEMO.DLL
+    file[]: crc = c0a16e23; size =    506080; name = DRBRAIN3.EXE
+end
+
+//
+// v1.0 Rerelease (1997)
+//
+game[v1.0-rerelease-1997]:
+    name = v1.0 Rerelease (1997)
+    imports = v1.0
+    file[]: crc = f58427e1; size =   8978432; name = 0GLOBAL.DLL
+    file[]: remove = 8DEMO.DLL
+    file[]: crc = fdac05c0; size =   4421632; name = 9DREAM.DLL
+    file[]: crc = 301cc08a; size =  13224960; name = 9PENTODE.DLL
 end
 
 end
