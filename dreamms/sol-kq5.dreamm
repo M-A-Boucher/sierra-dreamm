@@ -516,7 +516,7 @@ game[v0.000.149-it-8x1.44m]:
 end
 
 //
-// Base Files for v0.000.149
+// Base Files for v1.000.052
 //
 fragment[v1.000.052-base]:
     file[]: crc = a4780234; size =      9960; name = 0.SCR
@@ -565,35 +565,25 @@ fragment[v1.000.052-base]:
 end
 
 //
-// v1.000.052, CD, DOS
+// v1.000.052, CD
 //
-game[v1.000.052-cd-dos]:
-    name = v1.000.052, CD, DOS
+game[v1.000.052-cd]:
+    name = v1.000.052, CD
     imports = v1.000.052-base
     anchorfile = SIERRA.EXE
-    file[]: crc = 027971c8; size =    138499; name = SIERRA.EXE
-    file[]: crc = f98e5250; size =        11; name = VERSION
-
-end
-
-//
-// v1.000.052, CD, Windows
-//
-game[v1.000.052-cd-win]:
-    name = v1.000.052, CD, DOS
-    imports = v1.000.052-base
-    anchorfile = SCIKQ5.EXE
     file[]: crc = fbe3a725; size =     15537; name = METER.DLL
     file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
     file[]: crc = 18f5ba6b; size =     13312; name = SCIDLL.DLL
     file[]: crc = 9772c8cb; size =    140288; name = SCIKQ5.EXE
+    file[]: crc = 027971c8; size =    138499; name = SIERRA.EXE
+    file[]: crc = f98e5250; size =        11; name = VERSION
 end
 
 //
-// v1.000.052, CD, SierraOriginals
+// SierraOriginals (v1.000.052)
 //
-game[v1.000.052-cd-originals]:
-    name = v1.000.052, CD, SierraOriginals
+game[v1.000.052-originals]:
+    name = SierraOriginals (v1.000.052)
     anchorfile = RESOURCE.001
     file[]: crc = bffcfa92; size =        73; name = 10126.SYN
     file[]: crc = 1922c2af; size =     12288; name = 124.SCR
@@ -623,8 +613,6 @@ game[v1.000.052-cd-originals]:
     file[]: crc = 77ba0ffd; size =     13122; name = RESOURCE.MAP
     file[]: crc = 741351aa; size =     13312; name = SCIDLL.DLL
     file[]: crc = 57967e66; size =    137216; name = SCIKQ5.EXE
-    file[]: crc = f4de1528; size =     55820; name = SETUP.EXE
-    file[]: crc = 9b280939; size =       675; name = SETUP.INF
     file[]: crc = dfc16d10; size =    137784; name = SIERRA.EXE
     file[]: crc = 11b619e7; size =      1461; name = STD.DRV
     file[]: crc = cecb955a; size =      3950; name = TANDY3V.DRV
@@ -635,43 +623,24 @@ game[v1.000.052-cd-originals]:
 end
 
 //
-// King’s Quest - Collector's Edition (v1.000.052, DOS)
+// King’s Quest - Collector's Edition (v1.000.052)
 //
-game[v1.000.052-kings-quest-collectors-edition-dos]:
-    name = King’s Quest - Collector's Edition (v1.000.052, DOS)
-    imports = v1.000.052-cd-dos
+game[v1.000.052-kings-quest-collectors-edition]:
+    name = King’s Quest - Collector's Edition (v1.000.052)
+    imports = v1.000.052-cd
     anchorfile = SIERRA.EXE
     anchordepth = 1
+    file[]: crc = 1233be6b; size =    140288; name = SCIKQ5.EXE
     file[]: crc = 027971c8; size =    138499; name = SIERRA.EXE
 end
 
 //
-// King’s Quest - Collector's Edition (v1.000.052, Windows)
+// GOG (v1.000.052)
 //
-game[v1.000.052-kings-quest-collectors-edition-win]:
-    name = King’s Quest - Collector's Edition (v1.000.052, Windows)
-    imports = v1.000.052-cd-win
-    anchorfile = SCIKQ5.EXE
-    anchordepth = 1
-    file[]: crc = 1233be6b; size =    140288; name = SCIKQ5.EXE
-end
-
-//
-// GOG (v1.000.052, DOS)
-//
-game[v1.000.052-gog-dos]:
-    name = GOG (v1.000.052, DOS)
-    imports = v1.000.052-kings-quest-collectors-edition-dos
+game[v1.000.052-gog]:
+    name = GOG (v1.000.052)
+    imports = v1.000.052-kings-quest-collectors-edition
     anchorfile = RESOURCE.000
     file[]: crc = 4200f1ba; size =    571368; name = RESOURCE.000
 end
 
-//
-// GOG (v1.000.052, Windows)
-//
-game[v1.000.052-gog-win]:
-    name = GOG (v1.000.052, Windows)
-    imports = v1.000.052-kings-quest-collectors-edition-win
-    anchorfile = RESOURCE.000
-    file[]: crc = 4200f1ba; size =    571368; name = RESOURCE.000
-end
