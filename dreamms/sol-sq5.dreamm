@@ -98,6 +98,8 @@ INSTALL = COPY RESOURCE.001+RESOURCE.002+RESOURCE.003+RESOURCE.004+RESOURCE.005 
 
 script[init]:
     code = [[[$(CRLF)
+        video_suppress(is_installer());
+        
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 

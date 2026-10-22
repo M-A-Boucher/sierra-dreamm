@@ -61,6 +61,8 @@ LAUNCH = [[[$(CRLF)
 
 script[init]:
     code = [[[$(CRLF)
+        video_suppress(is_installer());
+        
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
