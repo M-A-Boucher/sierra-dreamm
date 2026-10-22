@@ -13,7 +13,6 @@ audiohw = $(SOUNDHW)+$(MUSICHW)
 mips = $(MIPS_386DX_33)
 ramkb = 4068
 filter = sierra, action
-TANDY = 0
 SOUNDHW = speaker
 MUSICHW = speaker
 
@@ -25,7 +24,7 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; machine = tandy
-        VIDEO_DRIVER = TGA; TANDY = 1
+        VIDEO_DRIVER = TGA
         SOUND_DRIVER = SNDJR.DRV; MUSIC_DRIVER = MSCJR.DRV
         condition = file_exists("$$(rootpath)\\GMTGA.BIN")
     end
@@ -60,7 +59,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUNDHW = speaker; SOUND_DRIVER = SNDSTD.DRV
@@ -78,7 +77,7 @@ end
 //
 config[music]:
     title = Music Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         MUSICHW = adlib; MUSIC_DRIVER = MSCSTD.DRV

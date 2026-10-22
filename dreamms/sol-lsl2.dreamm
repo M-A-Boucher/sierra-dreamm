@@ -12,7 +12,6 @@ launch = $(rootpath)\SCIV.EXE
 mips = $(MIPS_386DX_33)
 ramkb = 1024
 filter = sierra, adventure
-TANDY = 0
 
 //
 // graphics configuration
@@ -22,7 +21,7 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
     end
     option[hercules]: 
@@ -62,7 +61,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker

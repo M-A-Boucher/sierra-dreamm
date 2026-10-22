@@ -12,7 +12,6 @@ mips = $(MIPS_486DX_33)
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, strategy
-TANDY = 0
 AUDIO_DRIVER = $(NULL)
 
 //
@@ -52,7 +51,7 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
     end
     option[ega]:
@@ -80,7 +79,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker

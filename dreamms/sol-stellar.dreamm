@@ -13,7 +13,6 @@ mips = $(MIPS_386SX_20)
 ramkb = 8192
 audiohw = $(SOUNDHW)+$(MUSICHW)
 filter = dynamix, action
-TANDY = 0
 
 //
 // graphics configuration
@@ -23,7 +22,7 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEODRV = 3; AUDIODRV = 2; TANDY = 1; G_OPT = 4; A_OPT = 1; S_OPT = 1
+        VIDEODRV = 3; AUDIODRV = 2; G_OPT = 4; A_OPT = 1; S_OPT = 1
     end
     option[cga-mono]:       
         name = Monochrome $(CGA_NAME)
@@ -57,7 +56,7 @@ end
 //
 config[music]:
     title = Music Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         MUSICHW = speaker; AUDIODRV = 1; A_OPT = 0
@@ -86,7 +85,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY) && file_exists("$$(rootpath)\\STL7_11K.002")
+    condition = !is_tandy() && file_exists("$$(rootpath)\\STL7_11K.002")
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUNDHW = speaker

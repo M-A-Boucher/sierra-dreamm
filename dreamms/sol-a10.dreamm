@@ -12,7 +12,6 @@ launch = $(rootpath)\A10.COM
 mips = $(MIPS_386SX_20)
 ramkb = 8192
 filter = dynamix, sierra, simulation
-TANDY = 0
 
 //
 // graphics configuration
@@ -22,7 +21,7 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEO_CONFIG = 3; SOUND_CONFIG = 2; SOUND_CONFIG_15 = 0; TANDY = 1
+        VIDEO_CONFIG = 3; SOUND_CONFIG = 2; SOUND_CONFIG_15 = 0
     end
     option[cga]:
         name = $(CGA_NAME)
@@ -46,7 +45,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker

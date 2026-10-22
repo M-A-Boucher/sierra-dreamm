@@ -14,7 +14,6 @@ ramkb = 4096
 videohw = vga;
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
-TANDY = 0
 AUDIO_DRIVER = 
 
 //
@@ -46,13 +45,13 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
     option[tandy-3v]: 
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY3V.DRV
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY3V.DRV")
     end
     option[ega]:
@@ -86,7 +85,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY) && !is_windows()
+    condition = !is_tandy() && !is_windows()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker

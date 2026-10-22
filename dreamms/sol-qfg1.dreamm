@@ -13,7 +13,6 @@ mips = $(MIPS_486DX_33)
 ramkb = 8096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
-TANDY = 0
 
 //
 // graphics configuration
@@ -23,7 +22,7 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = JR.DRV
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\JR.DRV")
     end
     option[hercmono]:
@@ -81,7 +80,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -119,7 +118,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16

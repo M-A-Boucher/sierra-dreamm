@@ -14,7 +14,6 @@ videohw = vga;
 ramkb = 4096
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
-TANDY = 0
 LANGUAGE = 1
 
 //

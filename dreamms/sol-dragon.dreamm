@@ -14,7 +14,6 @@ ramkb = 2048
 filter = dynamix, sierra, adventure
 videohw = vga
 VIDEODRV = 8
-TANDY = 0
 
 //
 // graphics configuration
@@ -25,7 +24,7 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        VIDEODRV = 3; AUDIODRV = 0; TANDY = 1
+        VIDEODRV = 3; AUDIODRV = 0
     end
     option[cga]:       
         name = CGA (Composite)
@@ -49,7 +48,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker

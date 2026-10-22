@@ -13,7 +13,6 @@ mips = $(MIPS_386DX_33)
 nothrottle = 5
 ramkb = 1024
 filter = sierra, adventure
-TANDY = 0
 
 //
 // graphics configuration
@@ -23,7 +22,7 @@ config[graphics]:
     option[tandy]: 
         name = $(TVIDEO_NAME)
         videohw = cga; nothrottle = 4.2; machine = tandy
-        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV; TANDY = 1
+        VIDEO_DRIVER = TANDY320.DRV; SOUND_DRIVER = TANDY.DRV
         condition = file_exists("$$(rootpath)\\TANDY320.DRV") && file_exists("$$(rootpath)\\TANDY.DRV")
     end
     option[hercules]:
@@ -69,7 +68,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker

@@ -14,7 +14,6 @@ ramkb = 8192
 filter = dynamix, adventure
 videohw = vga
 VIDEODRV = 0x08
-TANDY = 0
 EGA_VERSION = 0
 
 //
@@ -26,9 +25,7 @@ config[graphics]:
     option[tandy]:
         name = $(TVIDEO_NAME)
         videohw = cga; audiohw = speaker; machine = tandy
-        TANDY = 1
-        VIDEODRV = 0x03
-        AUDIODRV = 0x00
+        VIDEODRV = 0x03; AUDIODRV = 0x00
     end
     option[cga]:       
         name = Monochrome $(CGA_NAME)
@@ -52,7 +49,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
