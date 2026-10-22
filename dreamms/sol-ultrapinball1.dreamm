@@ -16,9 +16,9 @@ filter = sierra, dynamix, pinball
 //
 // file system
 //
-mount[]: vpath = C:\; srcpath = $(ifsdeltapath)  ; writable = true
-mount[]: vpath = C:\; srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)\CD
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
 
 INI = [[[$(CRLF)
     [UPBALL]
@@ -112,6 +112,28 @@ game[v1.0]:
     file[]: crc = 87f8a5da; size =     73703; name = CD\UPINBALL\SOSLIBS2.DLL
     file[]: crc = a6fac09f; size =  12430068; name = CD\UPINBALL\SHELL\FINALE.AVI
     file[]: crc = 7603a00d; size =   6426584; name = CD\UPINBALL\SHELL\UPB.AVI
+end
+
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = PINBALL.EXE
+    file[]: crc = f7cb253c; size =     14416; name = CTL3D.DLL
+    file[]: crc = 0816ce7e; size =      5404; name = DRUM.BNK
+    file[]: crc = 0fd321ab; size =     46473; name = HMIDRV.WIN
+    file[]: crc = e2b26bb3; size =     21142; name = HMIMDRV.WIN
+    file[]: crc = bd43d549; size =      5404; name = MELODIC.BNK
+    file[]: crc = 27d6f348; size =    385024; name = PINBALL.EXE
+    file[]: crc = cb730247; size =   3061483; name = RESOURCE.001
+    file[]: crc = a9cee7a4; size =   3986769; name = RESOURCE.002
+    file[]: crc = ea26c5b2; size =      1156; name = RESOURCE.MAP
+    file[]: crc = 4e34c874; size =      1830; name = RESOURCE.RME
+    file[]: crc = 625b3008; size =     23040; name = SOS32S02.DLL
+    file[]: crc = 3f025124; size =     82944; name = SOS9502.DLL
+    file[]: crc = 6dfe691a; size =      3960; name = SOSLIB.INI
+    file[]: crc = 87f8a5da; size =     73703; name = SOSLIBS2.DLL
 end
 
 end

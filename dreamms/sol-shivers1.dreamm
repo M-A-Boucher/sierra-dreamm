@@ -38,15 +38,14 @@ WIN = [[[$(CRLF)
     enableMidi     = FALSE
     requireDAC     = TRUE
     useMIDI        = FALSE
-    resMap         = C:\
-    resSfx         = C:\
-    patchDir       = C:\
-    movieDir       = C:\MOVIES
+    resMap         = $(rootpath)
+    resSfx         = $(rootpath)
+    movieDir       = $(rootpath)\MOVIES
 ]]]
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");
     ]]]
 end
 
@@ -83,6 +82,25 @@ game[v1.02-cd]:
     file[]: crc = 8fd3abfc; size =   3279296; name = MOVIES\35180.VMD
     file[]: crc = 0809fb26; size =  18208003; name = MOVIES\39260.VMD
     file[]: crc = 9a0d79b5; size =   2018299; name = MOVIES\39310.VMD
+    file[]: crc = f8f50383; size =   2651121; name = MOVIES\900.VMD
+end
+
+//
+// Demo
+//
+demo[demo]:
+    name = Demo
+    anchorfile = SIERRAW.EXE
+    file[]: crc = 46a55df8; size =       607; name = 65535.MAP
+    file[]: crc = 234f6cda; size =      7069; name = RESMAP.000
+    file[]: crc = 2e6bcd57; size =      7069; name = RESMDT.000
+    file[]: crc = 003cbc27; size =  17058964; name = RESOURCE.SFX
+    file[]: crc = 168593bb; size =  37404155; name = RESSCI.000
+    file[]: crc = 2a4ce26b; size =    142934; name = SCIDLL.DLL
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = 055bb75a; size =    793472; name = SIERRAW.EXE
+    file[]: crc = 493dd282; size =  11764182; name = MOVIES\1002.VMD
+    file[]: crc = 4de21ec1; size =   4919038; name = MOVIES\3361.VMD
     file[]: crc = f8f50383; size =   2651121; name = MOVIES\900.VMD
 end
 
