@@ -9,7 +9,6 @@ machine = pc
 osenv = windows
 rootpath = C:\
 launch = $(rootpath)\SIERRAW.EXE
-mips = $(MIPS_MAX)
 audiohw = gmidi
 filter = sierra, adventure
 

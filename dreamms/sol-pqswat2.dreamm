@@ -9,7 +9,6 @@ machine = pc
 osenv = windows 95
 rootpath = C:\
 launch = $(rootpath)\SETUP.EXE
-mips = $(MIPS_MAX)
 audiohw = gmidi
 winres = 640x480x16
 filter = sierra, strategy

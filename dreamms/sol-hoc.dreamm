@@ -120,7 +120,6 @@ end
 installer[v1.0-int-5.21.91-6x1.44m-installer]:
     name = v1.0, Int. 5.21.91, 6x1.44M, Installer
     installid = v1.0-int-5.21.91-6x1.44m
-    mips = $(MIPS_MAX)
     rootpath = A:\
     launch = INSTALL.COM
     anchorfile = VOLUME.000
@@ -160,7 +159,6 @@ end
 installer[v1.0-int-5.21.91-7x1.2m-installer]:
     name = v1.0, Int. 5.21.91, 7x1.2M, Installer
     installid = v1.0-int-5.21.91-7x1.2m
-    mips = $(MIPS_MAX)
     rootpath = A:\
     launch = INSTALL.COM
     anchorfile = VOLUME.000
@@ -198,7 +196,6 @@ end
 installer[v1.0-int-6.18.91-4x1.2m-installer]:
     name = v1.0, Int. 6.18.91, 4x1.2M, 16 Color, Installer
     installid = v1.0-int-6.18.91-4x1.2m
-    mips = $(MIPS_MAX)
     rootpath = A:\
     launch = INSTALL.COM
     anchorfile = VOLUME.000
@@ -235,7 +232,6 @@ end
 installer[v1.0-int-6.18.91-6x720k-installer]:
     name = v1.0, Int. 6.18.91, 6x720K, 16 Color, Installer
     installid = v1.0-int-6.18.91-6x720k
-    mips = $(MIPS_MAX)
     rootpath = A:\
     launch = INSTALL.COM
     anchorfile = VOLUME.000

@@ -9,7 +9,6 @@ machine = pc
 osenv = windows
 rootpath = C:\
 launch = $(rootpath)\DRBRAIN4.EXE
-mips = $(MIPS_MAX)
 audiohw = gmidi
 winres = 640x480x8
 filter = sierra, puzzle

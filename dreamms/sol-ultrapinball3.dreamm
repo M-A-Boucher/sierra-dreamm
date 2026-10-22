@@ -11,7 +11,6 @@ winres = 640x480x32
 rootpath = C:\
 launch = $(rootpath)\Pinball3.exe
 audiohw = gmidi
-mips = $(MIPS_MAX)
 filter = sierra, dynamix, pinball
 
 //

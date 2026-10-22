@@ -112,7 +112,6 @@ end
 installer[v1.0-int-7.27.94-installer]:
     name = v1.0, Int. 7.27.94, Installer
     installid = v1.0-int-7.27.94
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     anchorfile = RESOURCE.002
     file[]: crc = b6f10bf0; size =   1224483; name = RESOURCE.000

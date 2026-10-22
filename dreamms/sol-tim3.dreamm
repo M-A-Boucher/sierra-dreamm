@@ -10,7 +10,6 @@ osenv = windows
 rootpath = C:\
 launch = $(rootpath)\TIMWIN.EXE
 winres = 1024x768x8
-mips = $(MIPS_MAX)
 audiohw = gmidi
 filter = dynamix, sierra, puzzle
 

@@ -133,7 +133,6 @@ end
 installer[v1.0-int-11.5.93-2x1.44m-installer]:
     name = v1.0, Int. 11.5.93, 2x1.44M, Installer
     installid = v1.0-int-11.5.93-2x1.44m
-    mips = $(MIPS_MAX)
     launch = $(rootpath)\DREAMM.BAT
     imports = v1.0-base
     anchorfile = UNCHUNK.EXE 

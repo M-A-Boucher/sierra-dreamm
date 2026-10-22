@@ -184,7 +184,6 @@ end
 installer[v2.0-int-8.27.92-5x1.44m-installer]:
     name = v2.0, Int. 8.27.92, 5x1.44M, Installer
     installid = v2.0-int-8.27.92-5x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v2.0-base
     anchorfile = RESOURCE.001

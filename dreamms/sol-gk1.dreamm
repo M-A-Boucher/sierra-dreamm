@@ -349,7 +349,6 @@ end
 installer[v1.0-int-11.22.93-11x1.44m-installer]:
     name = v1.0, Int. 11.22.93, 11x1.44M, Installer
     installid = v1.0-int-11.22.93-11x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = RESOURCE.SFX
@@ -424,7 +423,6 @@ end
 installer[v1.0-int-12.22.93-11x1.44m-installer]:
     name = v1.0, Int. 12.22.93, 11x1.44M, Installer
     installid = v1.0-int-12.22.93-11x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-int-11.22.93-11x1.44m-installer
     anchorfile = RESOURCE.SFX
@@ -713,7 +711,6 @@ end
 installer[v1.0-int-1.17.94-fr-11x1.44m-installer]:
     name = v1.0, Int. 1.17.94, French, 11x1.44M, Installer
     installid = v1.0-int-1.17.94-fr-11x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-int-1.17.94-fr-base
     anchorfile = RESOURCE.SFX
@@ -797,7 +794,6 @@ end
 installer[v1.0-int-1.17.94-de-11x1.44m-installer]:
     name = v1.0, Int. 1.17.94, German, 11x1.44M, Installer
     installid = v1.0-int-1.17.94-de-11x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-int-1.17.94-de-base
     anchorfile = RESOURCE.SFX

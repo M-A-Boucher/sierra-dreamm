@@ -16,6 +16,47 @@ filter = sierra, adventure
 TANDY = 0
 
 //
+// environment configuration
+//
+config[environment]:
+    title = Environment Configuration
+    condition = !is_installer()
+    option[dos-sciv]: 
+        name = DOS
+        launch = $(rootpath)\SCIV.EXE
+        condition = file_exists("$$(rootpath)\\SCIV.EXE")
+    end
+    option[dos-scidhuv]: 
+        name = DOS
+        launch = $(rootpath)\SCIDHUV.EXE
+        condition = file_exists("$$(rootpath)\\SCIDHUV.EXE")
+    end
+    option[dos-sierra]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        mips = $(MIPS_MAX)
+        launch = $(rootpath)\SCIGOOSE.EXE \RESOURCE.CFG
+        condition = file_exists("$$(rootpath)\\SCIGOOSE.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 95
+        audiohw = gmidi
+        winres = 640x480x8
+        mips = $(MIPS_MAX)
+        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.CFG
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
+//
 // graphics configuration
 //
 config[graphics]:
@@ -44,11 +85,17 @@ config[graphics]:
         VIDEO_DRIVER = CGA320C.DRV
         condition = file_exists("$$(rootpath)\\CGA320C.DRV")
     end
-    option[ega]:
+    option[ega320]:
         name = $(EGA_NAME)
         videohw = ega; priority = 1
         VIDEO_DRIVER = EGA320.DRV
         condition = file_exists("$$(rootpath)\\EGA320.DRV")
+    end
+    option[ega640]:
+        name = $(EGA_NAME)
+        videohw = ega; priority = 1
+        VIDEO_DRIVER = EGA640.DRV
+        condition = file_exists("$$(rootpath)\\EGA640.DRV")
     end
     option[mcga]:     
         name = $(MCGA_NAME)
@@ -69,7 +116,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = !$(TANDY)
+    condition = is_dos() && !$(TANDY)
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -118,7 +165,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
-    condition = !$(TANDY)
+    condition = is_dos() && !$(TANDY)
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
@@ -128,33 +175,6 @@ config[sfx]:
         name = Off
         AUDIO_DRIVER = AUDNONE.DRV; SFX = $(NULL)
         condition = file_exists("$$(rootpath)\\AUDNONE.DRV")
-    end
-end
-
-//
-// language configuration
-//
-config[language]:
-    title = Language Configuration
-    option[german]:
-        name = Deutsch
-        LANGUAGE = GERMAN
-        condition = file_exists("$$(rootpath)\\GERMAN\\RESOURCE.AUD")
-    end
-    option[english]:
-        name = English; priority = 1
-        LANGUAGE = ENGLISH
-    end
-    option[spanish]:
-        name = Español
-        LANGUAGE = SPANISH
-        condition = file_exists("$$(rootpath)\\SPANISH\\RESOURCE.AUD")
-    end
-
-    option[french]:
-        name = Français
-        LANGUAGE = FRENCH
-        condition = file_exists("$$(rootpath)\\FRENCH\\RESOURCE.AUD")
     end
 end
 
@@ -233,7 +253,7 @@ game[v1.011-int-9.20.90-2x720k]:
     file[]: crc = 4f711b2c; size =      2029; name = CGA320M.DRV
     file[]: crc = 02f91723; size =      5825; name = CMS.DRV
     file[]: crc = 3b2fc0de; size =      1952; name = EGA320.DRV
-    file[]: crc = c866db6d; size =      1953; name = EXPLORER.DRV; optional = true
+    file[]: crc = c866db6d; size =      1953; name = EXPLORER.DRV
     file[]: crc = 0b00f56f; size =      2193; name = HERCMONO.DRV
     file[]: crc = b495c666; size =       446; name = IBMKBD.DRV
     file[]: crc = fa815721; size =       541; name = JOYSTICK.DRV
@@ -245,7 +265,6 @@ game[v1.011-int-9.20.90-2x720k]:
     file[]: crc = c4f37aac; size =    719398; name = RESOURCE.002
     file[]: crc = 5c4966c3; size =      2598; name = RESOURCE.MAP
     file[]: crc = fd6dee90; size =     44443; name = SCIV.EXE
-    file[]: crc = 0d3eab36; size =       538; name = SIERRA.COM  ; optional = true
     file[]: crc = 06a89f36; size =        60; name = STATE.RST   ; optional = true
     file[]: crc = 05dbf64a; size =      2466; name = STD.DRV
     file[]: crc = 0ac2441a; size =      3445; name = TANDY.DRV
@@ -255,21 +274,8 @@ game[v1.011-int-9.20.90-2x720k]:
 end
 
 //
-// v1.011, Int. 9.20.90, 5x360K       *** doesn't load ***
+// v1.011, Int. 9.20.90, 5x360K  *** MISSING ***
 //
-game[v1.011-int-9.20.90-5x360k]:
-    name = v1.011, Int. 9.20.90, 5x360K
-    imports = v1.011-int-9.20.90-2x720k
-    anchorfile = RESOURCE.001
-    file[]: crc = c38d6841; size =    140375; name = RESOURCE.000
-    file[]: crc = 6d8c8fd6; size =     52648; name = RESOURCE.001
-    file[]: crc = 71f450e5; size =    204401; name = RESOURCE.002
-    file[]: crc = 1a09a243; size =    166990; name = RESOURCE.003
-    file[]: crc = 3e9eb226; size =    146251; name = RESOURCE.004
-    file[]: crc = c67c93c6; size =    110979; name = RESOURCE.005
-    file[]: crc = a92ffe7b; size =      2010; name = RESOURCE.MAP
-    file[]: crc = 2f455ff1; size =     44443; name = SCIV.EXE
-end
 
 fragment[v2.000-base]:
     file[]: crc = d320a55c; size =       506; name = 0.MAP
@@ -315,7 +321,6 @@ end
 //
 game[v2.000]:
     name = v2.000
-    launch = SCIDHUV.EXE
     imports = v2.000-base
     anchorfile = RESOURCE.000
     file[]: crc = 3ebcc6c8; size =   2948975; name = RESOURCE.000
@@ -349,7 +354,6 @@ end
 //
 game[1991-cd]:
     name = 1991, CD
-    launch = SIERRA.EXE
     anchorfile = RESOURCE.001
     file[]: crc = 3cdb7101; size =      7976; name = ADL.DRV
     file[]: crc = 88c58ff4; size =      9864; name = AUDBLAST.DRV
@@ -379,7 +383,7 @@ game[1991-cd]:
     file[]: crc = ac0a9845; size =   4369438; name = RESOURCE.001
     file[]: crc = 353dff37; size =      5790; name = RESOURCE.MAP
     file[]: crc = 32f7b79d; size =    114541; name = SIERRA.EXE
-    file[]: crc = 80f1c797; size =    124553; name = SIERRADZ.EXE ; optional = true
+    file[]: crc = 80f1c797; size =    124553; name = SIERRADZ.EXE; optional = true
     file[]: crc = dcccb200; size =      1448; name = STD.DRV
     file[]: crc = 8ee60889; size =      4426; name = VGA320.DRV
 end
@@ -394,16 +398,16 @@ game[1995-rerelease-cd]:
     file[]: crc = 6374598a; size =     34066; name = AUDDISNY.DRV
     file[]: crc = 4e2cbe42; size =     33891; name = AUDPS1.DRV
     file[]: crc = 9e7c2afa; size =     34082; name = AUDTANDY.DRV
-    file[]: crc = fbe3a725; size =     15537; name = METER.DLL   ; optional = true
+    file[]: crc = fbe3a725; size =     15537; name = METER.DLL
     file[]: crc = 15b7e056; size =      1989; name = MT32.DRV
     file[]: crc = ac0a9845; size =   4369438; name = RESOURCE.001
     file[]: crc = 353dff37; size =      5790; name = RESOURCE.MAP
-    file[]: crc = aec9a904; size =    122368; name = SCIGOOSE.EXE; optional = true
+    file[]: crc = aec9a904; size =    122368; name = SCIGOOSE.EXE
     file[]: crc = af4e40cd; size =    114541; name = SIERRA.EXE
     file[]: crc = c1090e1a; size =     21038; name = SOUND.001
     file[]: crc = 89f94bd3; size =      4461; name = VGA320.DRV
     file[]: crc = 68f8461e; size =      4369; name = VGA320BW.DRV
-    file[]: crc = 35b0fb0f; size =     12288; name = WINDLL.DLL  ; optional = true
+    file[]: crc = 35b0fb0f; size =     12288; name = WINDLL.DLL
 end
 
 //
@@ -411,11 +415,7 @@ end
 //
 game[1995-cd]:
     name = Deluxe, 1995, CD
-    launch = $(rootpath)\SIERRAW.EXE \RESOURCE.CFG
     anchorfile = RESOURCE.000
-    osenv = windows 95
-    mips = $(MIPS_MAX)
-    winres = 640x480x8
     file[]: crc = 7c86ab70; size =       990; name = 0.MAP
     file[]: crc = 98b8aa17; size =   9769216; name = 0GLOBAL.DLL
     file[]: crc = 5154c7d2; size =    348672; name = 0SONG01.DLL
@@ -491,11 +491,7 @@ end
 //
 game[1995-deluxe-eu-cd]:
     name = Deluxe Europe, 1995, CD
-    launch = $(rootpath)\SIERRAW.EXE \RESOURCE.CFG
     anchorfile = RESSCI.000
-    osenv = windows 95
-    mips = $(MIPS_MAX)
-    winres = 640x480x8
     file[]: crc = 7004da19; size =       997; name = 0.MAP
     file[]: crc = 56f79a8e; size =       248; name = 1.MAP
     file[]: crc = c806dc9a; size =       213; name = 12.MAP

@@ -171,7 +171,6 @@ end
 installer[v1.0-int-9.15.92-5x1.44m-installer]:
     name = v1.0, Int. 9.15.92, 5x1.44M, Installer
     installid = v1.0-int-9.15.92
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.x-base
     anchorfile = RESOURCE.001
@@ -189,7 +188,6 @@ end
 installer[v1.0-int-9.15.92-6x1.2m-installer]:
     name = v1.0, Int. 9.15.92, 6x1.2M, Installer
     installid = v1.0-int-9.15.92
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.x-base
     anchorfile = RESOURCE.006
@@ -229,7 +227,6 @@ end
 installer[v1.1-int-11.9.92-5x1.44m-installer]:
     name = v1.1, Int. 11.9.92, 5x1.44M, Installer
     installid = v1.1-int-11.9.92
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.x-base
     anchorfile = RESOURCE.001

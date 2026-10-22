@@ -143,7 +143,6 @@ end
 installer[v1.0-int-9.10.94-4x144m-installer]:
     name = v1.0, Int. 9.10.94, 4x1.44M, Installer
     installid = v1.0-int-9.10.94-4x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     anchorfile = UNCHUNK.EXE
     file[]: crc = 612a205a; size =         8; name = BB94.VER

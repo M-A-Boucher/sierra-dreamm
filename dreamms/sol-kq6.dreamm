@@ -341,7 +341,6 @@ end
 installer[v1.0-int-9.28.92-9x1.44m-installer]:
     name = v1.0, Int. 9.28.92, 9x1.44M, Installer
     installid = v1.0-int-9.28.92-9x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = RESOURCE.P06
@@ -570,7 +569,6 @@ end
 installer[v1.0-int-9.28.92-11x1.2m-installer]:
     name = v1.0, Int. 9.28.92, 11x1.2M, Installer
     installid = v1.0-int-9.28.92-11x1.2m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-int-9.28.92-9x1.44m-installer
     anchorfile = RESOURCE.P07
@@ -830,7 +828,6 @@ end
 installer[v1.0-int-11.13.92-fr-10x1.44m-installer]:
     name = v1.0, Int. 11.13.92, French, 10x1.44M, Installer
     installid = v1.0-int-11.13.92-fr-10x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = RESOURCE.P06
@@ -1221,7 +1218,6 @@ end
 installer[v1.0-int-11.18.92-de-10x1.44m-installer]:
     name = v1.0, Int. 11.18.92, German, 10x1.44M, Installer
     installid = v1.0-int-11.18.92-de-10x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = RESOURCE.P06
@@ -1914,7 +1910,6 @@ end
 installer[v1.000-de-kings-quest-collectors-edition-installer]:
     name = King's Quest - Collector's Edition, German (v1.000), Installer
     installid = v1.000-de-kings-quest-collectors-edition
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.000-de-base
     anchorfile = RESOURCE.AUD

@@ -9,7 +9,6 @@ machine = pc
 osenv = windows 95
 rootpath = C:\
 launch = $(rootpath)\Mask.exe
-mips = $(MIPS_MAX)
 audiohw = gmidi
 filter = sierra
 

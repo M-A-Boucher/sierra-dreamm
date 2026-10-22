@@ -288,7 +288,6 @@ end
 installer[v1.0-int-11.6.93-6x1.44m-installer]:
     name = v1.0, Int. 11.6.93, 6x1.44M, Installer
     installid = v1.0-int-11.6.93-6x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = SIERRA.EXE
@@ -340,7 +339,6 @@ end
 installer[v1.0-int-11.18.93-6x1.44m-installer]:
     name = v1.0, Int. 11.18.93, 6x1.44M, Installer
     installid = v1.0-int-11.6.93-6x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base, v1.0-int-11.6.93-6x1.44m-installer
     anchorfile = SIERRA.EXE

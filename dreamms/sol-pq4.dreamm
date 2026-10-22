@@ -240,7 +240,6 @@ end
 installer[v1.0-int-11.27.93-12x1.44m-installer]:
     name = v1.0, Int. 11.27.93, 12x1.44M, Installer
     installid = v1.0-int-11.27.93-12x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-base
     anchorfile = RESOURCE.SFX
@@ -291,7 +290,6 @@ end
 installer[v1.0-int-12.14.93-12x1.44m-installer]:
     name = v1.0, Int. 12.14.93, 12x1.44M, Installer
     installid = v1.0-int-12.14.93-12x1.44m
-    mips = $(MIPS_MAX)
     launch = DREAMM.BAT
     imports = v1.0-int-11.27.93-12x1.44m-installer
     anchorfile = RESOURCE.SFX
