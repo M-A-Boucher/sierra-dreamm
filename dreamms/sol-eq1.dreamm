@@ -73,7 +73,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = is_dos() && !$(TANDY)
+    condition = is_dos() && !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker

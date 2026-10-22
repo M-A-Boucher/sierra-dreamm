@@ -115,7 +115,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
-    condition = is_dos() && !$(TANDY)
+    condition = is_dos() && !is_tandy()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -164,7 +164,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
-    condition = is_dos() && !$(TANDY)
+    condition = is_dos() && !is_tandy()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
