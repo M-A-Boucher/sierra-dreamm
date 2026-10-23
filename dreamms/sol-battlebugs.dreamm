@@ -80,6 +80,11 @@ mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
+// copy protection script
+//
+$(include cp-battlebugs.inc)
+
+//
 // v1.0, Int. 7.27.94
 //
 game[v1.0-int-7.27.94]:
