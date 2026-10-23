@@ -193,17 +193,15 @@ installer[v1.0-int-7.29.93-7x1.44m-de-installer]:
     name = v1.0, Int. 7.29.93, 7x1.44M, German, Installer
     installid = v1.0-int-7.29.93-7x1.44m-de
     launch = DREAMM.BAT
-    imports = v1.0-base
+    imports = v1.0-int-6.15.93-7x1.44m-installer
     anchorfile = RESOURCE.000
     file[]: crc = 4b42ac73; size =    455824; name = KRONDOR.EXE
-    file[]: crc = e5db9dc6; size =    752329; name = RESOURCE.000
     file[]: crc = efe1624b; size =   1456234; name = RESOURCE.001
     file[]: crc = de6fb32c; size =   1456411; name = RESOURCE.002
     file[]: crc = 1fa52b4b; size =   1456132; name = RESOURCE.003
     file[]: crc = 92984ae0; size =   1456190; name = RESOURCE.004
     file[]: crc = 837911ee; size =   1456433; name = RESOURCE.005
     file[]: crc = 718e5489; size =   1399750; name = RESOURCE.006
-    file[]: crc = ca0e1137; size =     15862; name = UNCHUNK.EXE
 end
 
 //
