@@ -174,10 +174,10 @@ installer[v1.01-int-6.28.93-7x1.44m-installer]:
 end
 
 //
-// v1.0, Int. 7.29.93, 7x1.44M, German
+// v1.0, Int. 7.29.93, German, 7x1.44M
 //
-game[v1.0-int-7.29.93-7x1.44m-de]:
-    name = v1.0, Int. 7.29.93, 7x1.44M, German
+game[v1.0-int-7.29.93-de-7x1.44m]:
+    name = v1.0, Int. 7.29.93, German, 7x1.44M
     imports = v1.0-int-6.15.93-7x1.44m
     anchorfile = KRONDOR.001
     file[]: crc = c5637c2e; size =  12161020; name = KRONDOR.001
@@ -187,11 +187,11 @@ game[v1.0-int-7.29.93-7x1.44m-de]:
 end
 
 //
-// v1.0, Int. 7.29.93, 7x1.44M, German, Installer
+// v1.0, Int. 7.29.93, German, 7x1.44M, Installer
 //
-installer[v1.0-int-7.29.93-7x1.44m-de-installer]:
-    name = v1.0, Int. 7.29.93, 7x1.44M, German, Installer
-    installid = v1.0-int-7.29.93-7x1.44m-de
+installer[v1.0-int-7.29.93-de-7x1.44m-installer]:
+    name = v1.0, Int. 7.29.93, German, 7x1.44M, Installer
+    installid = v1.0-int-7.29.93-de-7x1.44m
     launch = DREAMM.BAT
     imports = v1.0-int-6.15.93-7x1.44m-installer
     anchorfile = RESOURCE.000
