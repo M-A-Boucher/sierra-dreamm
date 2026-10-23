@@ -18,11 +18,6 @@ filter = dynamix, action
 //
 config[graphics]:
     title = Graphics Configuration
-    option[tandy]:
-        name = $(TVIDEO_NAME)
-        videohw = cga; audiohw = speaker; machine = tandy
-        VIDEODRV = 3; AUDIODRV = 1
-    end
     option[ega]:
         name = $(EGA_NAME)
         videohw = ega
@@ -65,15 +60,15 @@ end
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$(VIDEODRV) $(AUDIODRV)");
+        file_save("$$(rootpath)\\RESOURCE.CFG", "`h:$$(VIDEODRV) $$(AUDIODRV)");
     ]]]
 end
 
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
 // v1.0, Int. 11.14.91, 4x1.2M
@@ -89,10 +84,10 @@ game[v1.0-int-11.14.91-4x1.2m]:
 end
 
 //
-// v1.0, Int. 11.14.91, 7x720K
+// v1.0, Int. 11.14.91, 6x720K
 //
-game[v1.0-int-11.14.91-7x720k]:
-    name = v1.0, Int. 11.14.91, 7x720K
+game[v1.0-int-11.14.91-6x720k]:
+    name = v1.0, Int. 11.14.91, 6x720K
     imports = v1.0-int-11.14.91-4x1.2m
     file[]: crc = b48a2ed6; size =    685281; name = VOLUME.001
     file[]: crc = 925083f3; size =    728800; name = VOLUME.002
@@ -100,6 +95,32 @@ game[v1.0-int-11.14.91-7x720k]:
     file[]: crc = ad588dae; size =    726136; name = VOLUME.004
     file[]: crc = 42c0627a; size =    595597; name = VOLUME.005
     file[]: crc = b47b7119; size =      4649; name = VOLUME.RMF
+end
+
+//
+// v1.01, Int. 1.17.92, 4x1.2M
+//
+game[v1.01-int-1.17.92-4x1.2m]:
+    name = v1.01, Int. 1.17.92, 4x1.2M
+    imports = v1.0-int-11.14.91-4x1.2m
+    file[]: crc = 437e4685; size =    650741; name = NOVA.EXE
+    file[]: crc = 77e6b222; size =   1130737; name = VOLUME.001
+    file[]: crc = c5701471; size =   1123205; name = VOLUME.003
+    file[]: crc = b968891a; size =      4619; name = VOLUME.RMF
+end
+
+//
+// v1.01, Int. 1.17.92, 6x720K
+//
+game[v1.01-int-1.17.92-6x720k]:
+    name = v1.01, Int. 1.17.92, 6x720K
+    imports = v1.01-int-1.17.92-4x1.2m
+    file[]: crc = 4d8a37b5; size =    684224; name = VOLUME.001
+    file[]: crc = a0424160; size =    728983; name = VOLUME.002
+    file[]: crc = e25a34b2; size =    728763; name = VOLUME.003
+    file[]: crc = 135981a7; size =    726295; name = VOLUME.004
+    file[]: crc = 0116418f; size =    595749; name = VOLUME.005
+    file[]: crc = b206ac90; size =      4649; name = VOLUME.RMF
 end
 
 end
