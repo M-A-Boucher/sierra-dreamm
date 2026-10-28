@@ -25,13 +25,21 @@ config[environment]:
         launch = $(rootpath)\SIERRA.EXE
         condition = file_exists("$$(rootpath)\\SIERRA.EXE")
     end
-    option[win]:
+    option[win-sierraw]:
         name = Windows
         osenv = windows 3.1
         audiohw = gmidi
         winres = 640x480x8
         launch = $(rootpath)\SIERRAW.EXE
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+    option[win-sciwv]:
+        name = Windows
+        osenv = windows 3.1
+        audiohw = gmidi
+        winres = 640x480x8
+        launch = $(rootpath)\SCIWV.EXE
+        condition = file_exists("$$(rootpath)\\SCIWV.EXE")
     end
 end
 
@@ -215,11 +223,14 @@ fragment[v1.0-base]:
     file[]: crc = 407fc3c1; size =      6158; name = INTERP.ERR
     file[]: crc = baeddd01; size =       607; name = JOYSTICK.DRV
     file[]: crc = c546223c; size =       596; name = MESSAGE.MAP
+    file[]: crc = 381b6698; size =      6442; name = MMAWARE.DLL
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 6bd30391; size =      9909; name = PROAUDIO.DRV
     file[]: crc = 356fed16; size =      5816; name = RESOURCE.MAP
     file[]: crc = 005841fd; size =    331706; name = RESOURCE.MSG
     file[]: crc = 5dd20d37; size =      9766; name = SBPRO.DRV
+    file[]: crc = bb934347; size =     15872; name = SCIDLL.DLL
+    file[]: crc = c7e711b0; size =    182784; name = SCIWV.EXE
     file[]: crc = cb2974d0; size =     71005; name = SIERRA.EXE
     file[]: crc = 578efe57; size =      1481; name = STD.DRV
     file[]: crc = 02910016; size =      4029; name = TANDY3V.DRV
