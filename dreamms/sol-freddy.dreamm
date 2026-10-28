@@ -7,7 +7,7 @@ name = Freddy Pharkas, Frontier Pharmacist
 icon = sol-freddy.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA\FREDDY
 launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 4096
@@ -172,7 +172,7 @@ script[init]:
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
-        if (is_game() && is_dos())
+        if (!is_installer() && is_dos())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
@@ -432,17 +432,14 @@ game[v1.0-cd]:
     file[]: crc = 9f7e188a; size =      8252; name = VGA320.DRV
 end
 
+// 
+// Demo Base Files
 //
-// Interactive Demo
-//
-demo[interactive-demo]:
-    name = Interactive Demo
-    anchorfile = RESOURCE.000
+fragment[demo-base]:
     file[]: crc = 2e97e1e3; size =      1684; name = 220.HEP
     file[]: crc = d0969820; size =     15370; name = 220.MSG
     file[]: crc = 7bdf75c1; size =      1890; name = 220.SCR
     file[]: crc = 8df9f5fc; size =      1289; name = 220.SHM
-    file[]: crc = 48570c54; size =        50; name = 65535.MAP
     file[]: crc = 2596aa71; size =      9295; name = ADL.DRV
     file[]: crc = e1ca2a36; size =      6516; name = AUDBLAST.DRV; optional = true
     file[]: crc = a8bf01e5; size =      5250; name = AUDDISNY.DRV
@@ -462,13 +459,37 @@ demo[interactive-demo]:
     file[]: crc = a885862d; size =      2542; name = MT32.DRV
     file[]: crc = 03b1ca77; size =      9884; name = PROAUDIO.DRV
     file[]: crc = 48c842a6; size =    867724; name = RESOURCE.000
-    file[]: crc = a74cdb6f; size =    536098; name = RESOURCE.AUD
     file[]: crc = ad91c324; size =      1909; name = RESOURCE.MAP
     file[]: crc = 33312260; size =     68460; name = SIERRA.EXE
     file[]: crc = c6c6fb9e; size =      1465; name = STD.DRV
     file[]: crc = b657f9f6; size =        74; name = VERSION
     file[]: crc = b23e65cf; size =      7505; name = VGA320.DRV
     file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
+end
+
+//
+// Interactive Demo
+//
+demo[interactive-demo]:
+    name = Interactive Demo
+    imports = demo-base
+    anchorfile = RESOURCE.000
+    file[]: crc = 48570c54; size =        50; name = 65535.MAP
+    file[]: crc = a74cdb6f; size =    536098; name = RESOURCE.AUD
+end
+
+//
+// Interactive Demo Installer
+//
+installer[interactive-demo-installer]:
+    name = Interactive Demo Installer
+    installid = interactive-demo
+    launch = $(rootpath)\AUDDCOMP.EXE .\
+    imports = demo-base
+    anchorfile = AUDDCOMP.EXE
+    file[]: crc = 7d0fc20b; size =        50; name = 65535.MAP
+    file[]: crc = c21325c0; size =      9575; name = AUDDCOMP.EXE
+    file[]: crc = febb5d00; size =    137846; name = RESOURCE.AUD
 end
 
 end
