@@ -7,12 +7,12 @@ name = Aces of the Deep
 icon = sol-aotd.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\DYNAMIX\AOD
 launch = $(rootpath)\SOUNDSET.EXE
 mips = $(MIPS_486DX_33)
-ramkb = 8192
-filter = dynamix, sierra, simulation
 videohw = vga
+ramkb = 8192
+filter = dynamix, simulation
 
 //
 // sound configuration
@@ -37,42 +37,46 @@ config[sound]:
 end
 
 CFG = [[[$(CRLF)
- videoDrv  = VESA.DRV
- soundDrv  = ADL.DRV
- audioDrv  = DACBLAST.DRV
- joyDrv    = NO
- mouseDrv  = STDMOUSE.DRV
- memoryDrv = ARM.DRV
- directory = \DYNAMIX\AODCD
- audio = .
-SCTDIRECTORY = .
-doclanguage = ENGLISH
-language = 1
-cmd = aod
-minCPU = 386
-minhunk = 1k
-audiosize=64k
-cd=no
-[SoundFX]
-Driver#=0
-DMA=
-IRQ=
-PortAddress=
-[Music]
-Driver#=0
-PortAddress=
-[SoundSet]
-pathSoundPlay=.\sound\
-pathDrivers=.\sound\
-digiFile=.\sound\sonarret.raw
-digiName=sonar ping
-midiFile=.\sound\departra.hmp
-midiName=music
-[language] 
-uselanguage=English
+    videoDrv      = VESA.DRV
+    soundDrv      = ADL.DRV
+    audioDrv      = DACBLAST.DRV
+    joyDrv        = NO
+    mouseDrv      = STDMOUSE.DRV
+    memoryDrv     = ARM.DRV
+    directory     = $(rootpath)
+    audio         = $(rootpath)
+    SCTDIRECTORY  = $(rootpath)
+    doclanguage   = ENGLISH
+    language      = 1
+    cmd           = aod
+    minCPU        = 386
+    minhunk       = 1k
+    audiosize     = 64k
+    cd            = NO
 
-[FlicPlayer]
-pathFlic=D:\intro\
+    [SoundFX]
+    Driver#       = 0
+    DMA           =
+    IRQ           =
+    PortAddress   =
+
+    [Music]
+    Driver#       = 0
+    PortAddress   =
+
+    [SoundSet]
+    pathSoundPlay = $(rootpath)\sound\
+    pathDrivers   = $(rootpath)\sound\
+    digiFile      = $(rootpath)\sound\sonarret.raw
+    digiName      = sonar ping
+    midiFile      = $(rootpath)\sound\departra.hmp
+    midiName      = music
+
+    [language] 
+    uselanguage   = English
+
+    [FlicPlayer]
+    pathFlic      = D:\intro\
 ]]]
 
 INSTALL = [[[$(CRLF)
@@ -547,6 +551,78 @@ installer[v1.0-int-9.25.94-5x1.44m-installer]:
     file[]: crc = 7e961e23; size =   1439732; name = RESOURCE.002
     file[]: crc = 1acfa7aa; size =   1439906; name = RESOURCE.003
     file[]: crc = 168005f5; size =    593544; name = RESOURCE.004
+    file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
+end
+
+//
+// v1.1, Int. 11.3.94
+//
+game[v1.1-int-11.3.94]:
+    name = v1.1, Int. 11.3.94
+    imports = v1.0-int-9.25.94
+    file[]: crc = b913d497; size =        17; name = CONFIG.DAT
+    file[]: crc = 0dfeba20; size =       131; name = SIMIN.DAT 
+    file[]: crc = 721696cf; size =      1504; name = SIMOUT.DAT
+    file[]: crc = a59d5d84; size =      9262; name = SOUNDSET.INI
+    file[]: crc = e0572b26; size =    207898; name = INTRO\INTRO.EXE
+    file[]: crc = 922a05ae; size =    391810; name = SHELL\PS.EXE
+    file[]: crc = 19a7578d; size =        11; name = SHELL\SW\AIR.ST_
+    file[]: crc = d61deaa6; size =        24; name = SHELL\SW\CONVOY.ST_
+    file[]: crc = e92cfcad; size =        25; name = SHELL\SW\CREW.ST_
+    file[]: crc = f70c6fdb; size =        44; name = SHELL\SW\DATES.ST_
+    file[]: crc = 3deb3663; size =       117; name = SHELL\SW\DAY.ST_
+    file[]: crc = fe2da7da; size =     46600; name = SHELL\SW\DOENITZ.BMP
+    file[]: crc = 01b27e04; size =        30; name = SHELL\SW\EASY.ST_
+    file[]: crc = 8a23d9b8; size =        30; name = SHELL\SW\ESCORT.ST_
+    file[]: crc = d52ecaea; size =        62; name = SHELL\SW\MONTH.ST_
+    file[]: crc = 32c1131d; size =        32; name = SHELL\SW\NOVICE.ST_
+    file[]: crc = 34086624; size =        30; name = SHELL\SW\PACK.ST_
+    file[]: crc = 83c676c3; size =       208; name = SHELL\SW\PERIODS.ST_
+    file[]: crc = 2766ff1e; size =        23; name = SHELL\SW\SEAS.ST_
+    file[]: crc = ac9be76e; size =      6730; name = SHELL\SW\SHELL.TXT
+    file[]: crc = ecdd1f5d; size =        81; name = SHELL\SW\SUBTYPE.ST_
+    file[]: crc = 963b954d; size =        26; name = SHELL\SW\TIME.ST_
+    file[]: crc = a04debbe; size =      7639; name = SHELL\SW\TOP_COMM.LST
+    file[]: crc = 6e75467f; size =        56; name = SHELL\SW\TRAIN.ST_
+    file[]: crc = 7fa4a53c; size =       410; name = SHELL\SW\TRAINTXT.ST_
+    file[]: crc = 261c366e; size =        32; name = SHELL\SW\WARSHIP.ST_
+    file[]: crc = b0ea0496; size =        35; name = SHELL\SW\WEATHER.ST_
+    file[]: crc = f70c6fdb; size =        44; name = SHELL\SW\YEAR.ST_
+    file[]: crc = bbdb25d4; size =     13445; name = SIM\LANGUAGE.TXT
+    file[]: crc = 68020704; size =     11844; name = SIM\RADIOLOG.DAT
+    file[]: crc = 936c52e2; size =    727656; name = SIM\SHAPES.VOL
+    file[]: crc = 9c2fb294; size =    613254; name = SIM\SUBSIM.EXE
+    file[]: crc = d9b11b86; size =     12626; name = SIM\SW_BIGM.FNT
+    file[]: crc = be7804a0; size =      5087; name = SIM\SW_SML4.FNT
+    file[]: crc = 590b0cd0; size =     23721; name = SOUND\BIGBOOGL.HMP
+    file[]: crc = 5ae5b66b; size =     31951; name = SOUND\EMPERORL.HMP
+    file[]: crc = 0462f590; size =     82322; name = SOUND\HMIDET.386
+    file[]: crc = 144c82d2; size =    243556; name = SOUND\HMIDRV.386
+    file[]: crc = 7c3493d9; size =    104449; name = SOUND\HMIMDRV.386
+    file[]: crc = b286976e; size =     28429; name = SOUND\MOZART_L.HMP
+    file[]: crc = 36e9cd62; size =     26009; name = SOUND\THEBOUNL.HMP
+    file[]: crc = cd3e3bc6; size =      7295; name = SOUND\TORCH__L.HMP
+    file[]: remove = SHELL\SW\ASSERT.LOG
+    file[]: remove = SHELL\SW\OPTIONS.CRN
+    file[]: remove = SHELL\SW\OPTIONS.TEM
+    file[]: remove = SHELL\SW\TRAINING.CRN
+    file[]: remove = SHELL\SW\TRAINING.TEM
+    file[]: remove = SOUND\SOUNDSET.INI
+end
+
+//
+// v1.1, Int. 11.3.94, 5x1.44M, Installer
+//
+installer[v1.1-int-11.3.94-5x1.44m-installer]:
+    name = v1.1, Int. 11.3.94, 5x1.44M, Installer
+    installid = v1.1-int-11.3.94
+    launch = DREAMM.BAT
+    anchorfile = RESOURCE.004
+    file[]: crc = 11c6b522; size =   1079682; name = RESOURCE.000
+    file[]: crc = a8e59760; size =   1439646; name = RESOURCE.001
+    file[]: crc = fc4ac9f5; size =   1439622; name = RESOURCE.002
+    file[]: crc = d32db89e; size =   1439623; name = RESOURCE.003
+    file[]: crc = 35e3048c; size =    868220; name = RESOURCE.004
     file[]: crc = ceddc4ab; size =     15926; name = UNCHUNK.EXE
 end
 
