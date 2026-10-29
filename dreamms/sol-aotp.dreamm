@@ -7,7 +7,7 @@ name = Aces of the Pacific
 icon = sol-aotp.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\DYNAMIX\ACES
 launch = $(rootpath)\ACES.COM
 mips = $(MIPS_486DX2_66)
 ramkb = 8192
@@ -133,17 +133,12 @@ end
 //
 installer[v1.0-int-5.22.92-4x1.2m-installer]:
     name = v1.0, Int. 5.22.92, 4x1.2M, Installer
-    installid = v1.0-int-5.22.92
-    launch = DREAMM.BAT
-    imports = v1.0x-base
-    anchorfile = RESOURCE.003
+    imports = v1.0-int-5.22.92-3x1.44m-installer
     file[]: crc = 9981018a; size =    999841; name = RESOURCE.000
     file[]: crc = 1d1f0445; size =   1212873; name = RESOURCE.001
     file[]: crc = b982c1f5; size =   1212787; name = RESOURCE.002
     file[]: crc = 92a7a59b; size =    511170; name = RESOURCE.003
-    file[]: crc = f1338f5f; size =     15456; name = UNCHUNK.EXE
 end
-
 
 //
 // v1.01, Int. 6.4.92
@@ -223,6 +218,18 @@ installer[v1.2-int-9.10.92-3x1.44m-installer]:
     file[]: crc = f3c034bf; size =   1449877; name = RESOURCE.001
     file[]: crc = 4df02687; size =   1248719; name = RESOURCE.002
     file[]: crc = a2dd4d78; size =     15799; name = UNCHUNK.EXE
+end
+
+//
+// v1.2, Int. 9.10.92, 4x1.2M, Installer
+//
+installer[v1.2-int-9.10.92-4x1.2m-installer]:
+    name = v1.2, Int. 9.10.92, 4x1.2M, Installer
+    imports = v1.2-int-9.10.92-3x1.44m-installer
+    file[]: crc = 4d538d19; size =    999807; name = RESOURCE.000
+    file[]: crc = 2478349f; size =   1212601; name = RESOURCE.001
+    file[]: crc = ecebac9c; size =   1212569; name = RESOURCE.002
+    file[]: crc = 37b30b9c; size =    523642; name = RESOURCE.003
 end
 
 //
