@@ -7,13 +7,16 @@ name = Sid & Al’s Incredible Toons
 icon = sol-toons.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA
 launch = $(rootpath)\TOONS.EXE
 mips = $(MIPS_486DX_33)
 ramkb = 8192
 videohw = vga
 audiohw = $(AUDIOHW)+$(SFX)
 filter = dynamix, sierra, puzzle
+SOUND_DRIVER = $(NULL)
+AUDIO_DRIVER = $(NULL)
+LANGUAGE = $(NULL)
 
 //
 // sound configuration
@@ -80,8 +83,6 @@ INSTALL = [[[$(CRLF)
 
 script[init]:
     code = [[[$(CRLF)
-        video_suppress(is_installer());
-        
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
 
@@ -135,6 +136,7 @@ end
 installer[v1.0-int-11.5.93-2x1.44m-installer]:
     name = v1.0, Int. 11.5.93, 2x1.44M, Installer
     installid = v1.0-int-11.5.93-2x1.44m
+    mips = $(MIPS_MAX)
     launch = $(rootpath)\DREAMM.BAT
     imports = v1.0-base
     anchorfile = UNCHUNK.EXE 
