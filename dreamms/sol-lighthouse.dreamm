@@ -11,7 +11,8 @@ osenv = dos
 mips = $(MIPS_P75)
 audiohw = sb16+gmidi
 ramkb = 16384
-videohw = svga
+drivetypes = FFHCCC
+filter = sierra, puzzle, adventure
 
 //
 // os configuration
@@ -35,11 +36,11 @@ end
 //
 // File System
 //
-mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)                  ; writable = true
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)        ; writable = true
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)                ; condition = !is_demo()
-mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)/DISC1; disc = 1; condition = !is_demo()
-mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)/DISC2; disc = 2; condition = !is_demo()
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)      ; condition = !is_demo()
+mount[]: vpath = E:\        ; srcpath = $(ifsinstallpath)/DISC1; condition = !is_demo()
+mount[]: vpath = F:\        ; srcpath = $(ifsinstallpath)/DISC2; condition = !is_demo()
 
 
 CFG = [[[$(CRLF)
@@ -47,7 +48,7 @@ CFG = [[[$(CRLF)
     soundDrv       = MIDNONE.DRV
     audioDrv       = DACBLAST.DRV
     joyDrv         = NO
-    directory      = C:\
+    directory      = C:\SIERRA\LIGHTDOS
     cmd            = LIGHT
     mouseDrv       = NONE
     memoryDrv      = NONE
@@ -55,15 +56,16 @@ CFG = [[[$(CRLF)
     language       = 1
     minCPU         = 486
     maxSubmits     = 15
-    CD             = yes
+    CD             = YES
     cacheSize3     = 100
-    resAUD         = D:\
-    resSFX         = D:\
-    resMap         = D:\
-    rescdisc       = D:\
-    movieDir       = D:\MOVIES 
-    robot          = D:\ROBOTS 
-    patchDir       = D:\PATCHES;$(rootpath)
+    resAUD         = CD:\
+    resSFX         = CD:\
+    resMap         = CD:\
+    rescdisc       = CD:\
+    movieDir       = CD:\MOVIES 
+    robot          = CD:\ROBOTS 
+    patchDir       = CD:\PATCHES;$(rootpath)
+    CD:            = D:;E:;F:
 ]]]        
 
 COMMON_WIN = [[[$(CRLF)
@@ -101,7 +103,7 @@ WIN = [[[$(CRLF)
     robot          = CD:\ROBOTS
     patchDir       = CD:\PATCHES;$(rootpath)
     discID         = RESSCI
-    CD:            = D:
+    CD:            = D:;E:;F:
 ]]]
 
 DEMO_WIN = [[[$(CRLF)
@@ -2153,6 +2155,5 @@ demo[sol-lighthouse-english-demo]:
     file[]: crc = fc93d2f6; size =      8503; name = SIERRA.ERR
     file[]: crc = 4e557231; size =    546816; name = SIERW5.EXE; exactonly = true
 end
-
 
 end
