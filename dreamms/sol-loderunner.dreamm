@@ -65,7 +65,7 @@ INI = [[[$(CRLF)
 
 script[init]:
     code = [[[$(CRLF)
-        video_suppress(is_installer());
+        video_suppress(is_installer() && !is_windows());
         
         if (is_installer())
           file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
@@ -74,7 +74,17 @@ script[init]:
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
         if (is_game() && is_windows())
-          file_save("$$(rootpath)\\WINDOWS\\LODERUNN.INI", "$$(INI)");
+          file_save("C:\\WINDOWS\\LODERUNN.INI", "$$(INI)");
+    ]]]
+end
+
+script[autoinstall]:
+    condition = is_installer() && is_windows()
+    code = [[[
+        keyboard_type("C:\\SIERRA\r", 500);
+        keyboard_type("A:\\\r", 500);
+        keyboard_type("\r", 500);
+        // Now what?
     ]]]
 end
 
@@ -212,13 +222,155 @@ installer[v1.0-int-9.23.94-5x1.44m-installer]:
 end
 
 //
+// v1.01, Int. 8.25.94, 4x1.44M
+//
+game[v1.01-int-8.25.94-4x1.44m]:
+    name = v1.01, Int. 8.25.94, 4x1.44M
+    osenv = windows 3.1
+    audiohw = gmidi
+    anchorfile = LODERUNN.EXE
+    file[]: crc = ba00d4ee; size =     24540; name = BALLOONH.DLL
+    file[]: crc = c15ba95e; size =     71680; name = INSTLLR.EXE
+    file[]: crc = 4ef0f0c0; size =    438272; name = LODERUNN.EXE
+    file[]: crc = bad38172; size =       822; name = DATA\LR_DAT01.PRD
+    file[]: crc = 4d99bb5e; size =   2135825; name = DATA\LR_DAT01.PRS
+    file[]: crc = de6deb99; size =      1462; name = DATA\LR_DAT02.PRD
+    file[]: crc = 24869cf1; size =   1181702; name = DATA\LR_DAT02.PRS
+    file[]: crc = bb793d69; size =      2102; name = DATA\LR_DAT03.PRD
+    file[]: crc = fc7ea843; size =    159480; name = DATA\LR_DAT03.PRS
+    file[]: crc = 9498095f; size =     11062; name = DATA\LR_DAT04.PRD
+    file[]: crc = 851e7fc0; size =    340036; name = DATA\LR_DAT04.PRS
+    file[]: crc = ef1c40ab; size =      4022; name = DATA\LR_DAT05.PRD
+    file[]: crc = 69408107; size =   1152510; name = DATA\LR_DAT05.PRS
+    file[]: crc = 73770d9a; size =      2102; name = DATA\LR_DAT06.PRD
+    file[]: crc = c0f355ff; size =    937051; name = DATA\LR_DAT06.PRS
+    file[]: crc = af71c7f0; size =      1462; name = DATA\LR_DAT07.PRD
+    file[]: crc = a7472cbf; size =    908332; name = DATA\LR_DAT07.PRS
+    file[]: crc = 67adf041; size =      3382; name = DATA\LR_DAT08.PRD
+    file[]: crc = 5fd8aa1a; size =   2428288; name = DATA\LR_DAT08.PRS
+    file[]: crc = 73770d9a; size =      2102; name = DATA\LR_DAT09.PRD
+    file[]: crc = 9610ba79; size =    261208; name = DATA\LR_DAT09.PRS
+    file[]: crc = bad38172; size =       822; name = DATA\LR_DAT10.PRD
+    file[]: crc = b7343e1c; size =     53593; name = DATA\LR_DAT10.PRS
+    file[]: crc = 0de93656; size =     24180; name = MUSIC\LRANCNT1.MID
+    file[]: crc = 0ec70b78; size =      4702; name = MUSIC\LRANCNT2.MID
+    file[]: crc = c9b7be41; size =     36338; name = MUSIC\LRCRYST1.MID
+    file[]: crc = 0bf253e3; size =      2985; name = MUSIC\LRCRYST2.MID
+    file[]: crc = 518ebbd8; size =     32563; name = MUSIC\LRDARK1.MID
+    file[]: crc = e56ba832; size =      5817; name = MUSIC\LRDARK2.MID
+    file[]: crc = 67b06e87; size =     18270; name = MUSIC\LREND1.MID
+    file[]: crc = 91759e8d; size =     23377; name = MUSIC\LRFOSSL1.MID
+    file[]: crc = bb51ba19; size =     11981; name = MUSIC\LRFOSSL2.MID
+    file[]: crc = 0f4f0d3c; size =     19168; name = MUSIC\LRFUNGS1.MID
+    file[]: crc = 6bd3bc6d; size =      4744; name = MUSIC\LRFUNGS2.MID
+    file[]: crc = dae18c62; size =     11492; name = MUSIC\LRICE1.MID
+    file[]: crc = 51732a00; size =      4166; name = MUSIC\LRICE2.MID
+    file[]: crc = 6dae45c5; size =     40872; name = MUSIC\LRINDST1.MID
+    file[]: crc = 4e47e958; size =      4888; name = MUSIC\LRINDST2.MID
+    file[]: crc = 4ddcf61b; size =     31843; name = MUSIC\LRJUNGL1.MID
+    file[]: crc = 4ddcf61b; size =     31843; name = MUSIC\LRJUNGL2.MID
+    file[]: crc = 6f66cd41; size =     37024; name = MUSIC\LRLAVA1.MID
+    file[]: crc = 5054556d; size =      4089; name = MUSIC\LRLAVA2.MID
+    file[]: crc = ea969aad; size =     14664; name = MUSIC\LRMENU1.MID
+    file[]: crc = 486315da; size =     27544; name = MUSIC\LRPHOSP1.MID
+    file[]: crc = 0ce830e5; size =      3882; name = MUSIC\LRPHOSP2.MID
+    file[]: crc = 116dae3e; size =     23361; name = MUSIC\LRTITLE1.MID
+    file[]: crc = c6d03b85; size =     18145; name = PUZZLES\SAMPLE1.PZL
+    file[]: crc = 328b1d70; size =      5600; name = WINDOWS\IBMJOY.DRV
+    file[]: crc = cf97bf63; size =       233; name = WINDOWS\OEMSETUP.INF
+    file[]: crc = 09097a8c; size =     15984; name = WINDOWS\SYSTEM\JOYSTICK.CPL
+end
+
+//
+// v1.01, Int. 8.25.94, 4x1.44M, Installer
+//
+installer[v1.01-int-8.25.94-4x1.44m-installer]:
+    name = v1.01, Int. 8.25.94, 4x1.44M, Installer
+    installid = v1.01-int-8.25.94-4x1.44m
+    osenv = windows 3.1
+    audiohw = gmidi
+    rootpath = A:\
+    launch = $(rootpath)\INSTALL.EXE
+    anchorfile = INSTALL.EXE
+    file[]: crc = 385044c9; size =      9705; name = BALLOONH.ARJ
+    file[]: crc = d510aac8; size =     54547; name = COMMDLG.DL_
+    file[]: crc = 47fb20ed; size =     22478; name = DIB.DR_
+    file[]: crc = 6c1856a0; size =      3826; name = IBMJOY.DR_
+    file[]: crc = d08f2f2d; size =      6768; name = INSTALL.DAT
+    file[]: crc = c15ba95e; size =     71680; name = INSTALL.EXE
+    file[]: crc = e4c43060; size =      1089; name = INSTDETL.DAT
+    file[]: crc = 57ccca6a; size =      7759; name = JOYSTICK.CP_
+    file[]: crc = 84367a88; size =    150876; name = LODERUNN.ARJ
+    file[]: crc = 6611e246; size =   1298746; name = LR_DAT01.ARJ
+    file[]: crc = be8f8aae; size =    352049; name = LR_DAT02.ARJ
+    file[]: crc = 468f1695; size =     56096; name = LR_DAT03.ARJ
+    file[]: crc = f8c915eb; size =    111323; name = LR_DAT04.ARJ
+    file[]: crc = 456342b7; size =    718364; name = LR_DAT05.ARJ
+    file[]: crc = ca8e7d6f; size =    396493; name = LR_DAT06.ARJ
+    file[]: crc = 4c4fbeb9; size =    365662; name = LR_DAT07.ARJ
+    file[]: crc = bb62b96b; size =    711235; name = LR_DAT08.ARJ
+    file[]: crc = 458b9352; size =     81143; name = LR_DAT09.ARJ
+    file[]: crc = 571380e1; size =     14889; name = LR_DAT10.ARJ
+    file[]: crc = 185b8e09; size =     11282; name = LR_PRD.ARJ
+    file[]: crc = edfa025e; size =     10913; name = LRANCTC.MI_
+    file[]: crc = c56c8559; size =      2552; name = LRANCTC2.MI_
+    file[]: crc = 07546142; size =      1623; name = LRANCTG2.MI_
+    file[]: crc = 61fe9672; size =      9194; name = LRANCTGM.MI_
+    file[]: crc = 3dd24bb7; size =     15483; name = LRCRYSC.MI_
+    file[]: crc = b579757b; size =      1872; name = LRCRYSC2.MI_
+    file[]: crc = a614329c; size =      1367; name = LRCRYSG2.MI_
+    file[]: crc = e0651c12; size =     12165; name = LRCRYSGM.MI_
+    file[]: crc = af28008a; size =     15826; name = LRDARKC.MI_
+    file[]: crc = 5d525858; size =      2917; name = LRDARKC2.MI_
+    file[]: crc = 2907f507; size =      1753; name = LRDARKG2.MI_
+    file[]: crc = 80a9e2aa; size =     11885; name = LRDARKGM.MI_
+    file[]: crc = 225d8954; size =      8831; name = LRENDC.MI_
+    file[]: crc = d9594c7f; size =      7140; name = LRENDGM.MI_
+    file[]: crc = 72a4ec24; size =     10405; name = LRFOSSC.MI_
+    file[]: crc = 1954d44f; size =      4120; name = LRFOSSC2.MI_
+    file[]: crc = b3288cce; size =      2342; name = LRFOSSG2.MI_
+    file[]: crc = 642d3705; size =      8743; name = LRFOSSGM.MI_
+    file[]: crc = 4bdd5e48; size =      8247; name = LRFUNGC.MI_
+    file[]: crc = dc38607e; size =      2077; name = LRFUNGC2.MI_
+    file[]: crc = 5db99c9f; size =      1036; name = LRFUNGG2.MI_
+    file[]: crc = 2f8e91a3; size =      6896; name = LRFUNGGM.MI_
+    file[]: crc = b7de1ec9; size =      5666; name = LRICEWC.MI_
+    file[]: crc = 08f86c98; size =      2643; name = LRICEWC2.MI_
+    file[]: crc = aec147ac; size =      1772; name = LRICEWG2.MI_
+    file[]: crc = 814e807e; size =      4220; name = LRICEWGM.MI_
+    file[]: crc = c317e0e7; size =     16942; name = LRINDYC.MI_
+    file[]: crc = 0a10d827; size =      2318; name = LRINDYC2.MI_
+    file[]: crc = 10a8cf65; size =      1813; name = LRINDYG2.MI_
+    file[]: crc = a04d9cca; size =     16795; name = LRINDYGM.MI_
+    file[]: crc = 498fc246; size =     13983; name = LRJUNGC.MI_
+    file[]: crc = 498fc246; size =     13983; name = LRJUNGC2.MI_
+    file[]: crc = 2970375b; size =      9996; name = LRJUNGG2.MI_
+    file[]: crc = 2970375b; size =      9996; name = LRJUNGGM.MI_
+    file[]: crc = 7a79ea8d; size =     16023; name = LRLAVAC.MI_
+    file[]: crc = f689bc67; size =      2536; name = LRLAVAC2.MI_
+    file[]: crc = 662e09a5; size =      2374; name = LRLAVAG2.MI_
+    file[]: crc = b13d4057; size =     14110; name = LRLAVAGM.MI_
+    file[]: crc = 2585e563; size =      7108; name = LRMENUC.MI_
+    file[]: crc = 45dc3dac; size =      4250; name = LRMENUGM.MI_
+    file[]: crc = a13d2e04; size =     12715; name = LRPHOSC.MI_
+    file[]: crc = 78bcd27a; size =      2289; name = LRPHOSC2.MI_
+    file[]: crc = 478fb594; size =      1720; name = LRPHOSG2.MI_
+    file[]: crc = 02ad7114; size =      9195; name = LRPHOSGM.MI_
+    file[]: crc = 10bb2036; size =      6308; name = LRTEXT.ARJ
+    file[]: crc = 68d644fc; size =      9547; name = LRTITLC.MI_
+    file[]: crc = 14d5f434; size =      9620; name = LRTITLGM.MI_
+    file[]: crc = 2ba6c152; size =       225; name = OEMSETUP.IN_
+    file[]: crc = 81eb2a2b; size =      7395; name = SAMPLE1.PZ_
+end
+
+//
 // v1.0, CD, Windows
 //
 game[v1.0-win]:
     name = v1.0, CD, Windows
     osenv = windows 3.1
-    launch = $(rootpath)\LODERUNN.EXE
     audiohw = gmidi
+    launch = $(rootpath)\LODERUNN.EXE
     anchorfile = LODERUNN.EXE
     anchordepth = 2
     file[]: crc = ba00d4ee; size =     24540; name = BALLOONH.DLL
