@@ -6,29 +6,48 @@ desc[sol-gk2]:
 name = The Beast Within: A Gabriel Knight Mystery
 icon = sol-gk2.png
 machine = pc
-rootpath = C:\sierra\gk2dos
+rootpath = C:\SIERRA\GK2DOS
 launch = $(rootpath)\sierra.exe
 osenv = dos
-fixdivover = true
 mips = $(MIPS_P100)
 ramkb = 16384
 audiohw = sb16
-videohw = svga
+drivetypes = FFHCCCCCC
 filter = gabrielknight, sierra, adventure
 
 //
-// File System
-// The user must switch between discs when prompted either via DREAMM's in-game menu or by pressing the appropriate key combination (e.g., Alt/Cmd + 2 for Disc 2).
+// environment configuration
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath);    writable = true
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC1; disc = 1
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC2; disc = 2
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC3; disc = 3
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC4; disc = 4
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC5; disc = 5
-mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC6; disc = 6
+config[environment]:
+    title = Environment Configuration
+    option[dos]: 
+        name = DOS
+        launch = $(rootpath)\SIERRA.EXE
+        condition = file_exists("$$(rootpath)\\SIERRA.EXE")
+    end
+    option[win]:
+        name = Windows
+        osenv = windows 95
+        audiohw = gmidi
+        mips = $(MIPS_MAX)
+        winres = 640x480x8
+        launch = $(rootpath)\SIERRAW.EXE
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
+    end
+end
+
+//
+// File System
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)/DISC1
+mount[]: vpath = E:\        ; srcpath = $(ifsinstallpath)/DISC2
+mount[]: vpath = F:\        ; srcpath = $(ifsinstallpath)/DISC3
+mount[]: vpath = G:\        ; srcpath = $(ifsinstallpath)/DISC4
+mount[]: vpath = H:\        ; srcpath = $(ifsinstallpath)/DISC5
+mount[]: vpath = I:\        ; srcpath = $(ifsinstallpath)/DISC6
 
 //
 // The game creates a RESOURCE.CFG file to locate the files it needs.
@@ -37,97 +56,77 @@ mount[]: vpath = D:\; srcpath = $(ifsinstallpath)/DISC6; disc = 6
 // The Brazilian release features English voices and Portuguese text. Its LANGUAGE value is 351.
 //
 
-DOSCONFIGFILE = [[[$(CRLF)
-    videoDrv  = VESA.DRV
-    soundDrv  = MIDNONE.DRV
-    audioDrv  = DACBLAST.DRV
-    joyDrv    = NO
-    directory = \sierra\gk2dos
-    cmd        = GK2DOS
-    mouseDrv   = NONE
-    memoryDrv  = NONE
-    minMemory  = 1600k
-    brightness = 0
-    language   = $(LANGUAGE)
-    minCPU     = 486
-    cd         = YES
-    smartdrv   = YES
-
-    cdSpeed=4
-    resAUD=CD:\
-    resSFX=CD:\
-    resMAP=CD:\;C:\sierra\gk2dos
-    rescdisc=CD:\
-    patchDir=C:\sierra\gk2dos;CD:\
-    audio=C:\sierra\gk2dos;CD:\
-    movieDir=CD:\movies
-    robot=CD:\robot
-    discID=GK2R1
-    CD:=D:;
+CFG = [[[$(CRLF)
+    videoDrv      = VESA.DRV
+    soundDrv      = MIDNONE.DRV
+    audioDrv      = DACBLAST.DRV
+    joyDrv        = NO
+    directory     = \SIERRA\GK2DOS
+    cmd           = GK2DOS
+    mouseDrv      = NONE
+    memoryDrv     = NONE
+    minMemory     = 1600k
+    brightness    = 0
+    language      = $(LANGUAGE)
+    minCPU        = 486
+    cd            = YES
+    smartdrv      = YES
+    cdSpeed       = 4
+    resAUD        = CD:\
+    resSFX        = CD:\
+    resMAP        = CD:\;$(rootpath)
+    rescdisc      = CD:\
+    patchDir      = CD:\;$(rootpath)
+    audio         = CD:\;$(rootpath)
+    movieDir      = CD:\MOVIES
+    robot         = CD:\ROBOT
+    discID        = GK2R1
+    CD:           = D:;E:;F:;G:;H:;I:
 ]]]
 
-
-//
-// The Windows version has not yet been added so this is for reference purposes.
-//
-
-//
-// Fragment for Windows
-//
-fragment[win32-base]:
-    osenv = windows 95
-    rootpath = C:\SIERRA\GK2DOS
-    launch = "$(rootpath)\SIERRAW.EXE"
-    audiohw = gmidi
-    winres = 640x480x8
-    mips = $(MIPS_MAX)
-end
-
-
-WINCONFIGFILE = [[[$(CRLF)
+WIN = [[[$(CRLF)
     [Windows]
-    language= $(LANGUAGE)
-    title=Gabriel Knight: The Beast Within
-    titleBar=TRUE
-    allowresize=FALSE
-    wwidth=640
-    wheight=480
-    sciMinK=2100
-    sciMaxK=7000
-    borderpixels=10
-    reservek4=700
-    reservek8=700    
-    reservek16=2000
-    wingMinK=2700
-    confirmdac=TRUE
-    leadSubmits=4
-    maxCursorSize=4
-    resAud=CD:\    
-    resSfx=CD:\
-    resMap=CD:\;C:\SIERRA\GK2DOS
-    rescdisc=CD:\
-    patchDir=CD:\PATCHES;D:\SIERRA\GK2DOS;CD:\
-    movieDir=CD:\MOVIES
-    robot=CD:\ROBOT
-    discID=GK2R1
-    CD:=D:
+    title         = Gabriel Knight: The Beast Within
+    titleBar      = TRUE
+    allowresize   = FALSE
+    wwidth        = 640
+    wheight       = 480
+    sciMinK       = 2100
+    sciMaxK       = 7000
+    borderpixels  = 10
+    reservek4     = 700
+    reservek8     = 700    
+    reservek16    = 2000
+    wingMinK      = 2700
+    confirmdac    = TRUE
+    leadSubmits   = 4
+    maxCursorSize = 4
+    language      = $(LANGUAGE)
+    resAud        = CD:\    
+    resSfx        = CD:\
+    resMap        = CD:\;$(rootpath)
+    rescdisc      = CD:\
+    patchDir      = CD:\PATCHES;D:\SIERRA\GK2DOS;$(rootpath)
+    movieDir      = CD:\MOVIES
+    robot         = CD:\ROBOT
+    discID        = GK2R1
+    CD:           = D:;E:;F:;G:;H:;I:
 ]]]
-
 
 script[init]:
     code = [[[$(CRLF)
         if (is_dos())
-          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(DOSCONFIGFILE)");
+          file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
         
         if (is_windows())
-          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WINCONFIGFILE)");		
+          file_save("$$(rootpath)\\RESOURCE.WIN", "$$(WIN)");		
     ]]]
 end
 
 //
-// Files common to version 1.0 (English, French, German)
+// v1.0 English, French, German Base Files
 //
-fragment[common10]:
+fragment[v1.0-base]:
     file[]: crc = 4f2ac93d; size =  12737427; name = DISC1\MOVIES\10010.VMD
     file[]: crc = 4808f9ea; size =   2171278; name = DISC1\MOVIES\120.VMD
     file[]: crc = 6fcad0e8; size =    619088; name = DISC1\MOVIES\160.VMD
@@ -183,7 +182,6 @@ fragment[common10]:
     file[]: crc = b6545716; size =   2604039; name = DISC1\MOVIES\9420.VMD
     file[]: crc = f8de57c2; size =   1124083; name = DISC1\ROBOT\11027.RBT
     file[]: crc = 5ee62a64; size =    619932; name = DISC1\ROBOT\12027.RBT
-    file[]: crc = e03f5c68; size =     39424; name = DISC2\AUTOPLAY.EXE
     file[]: crc = 1af8e7b9; size =        10; name = DISC2\GK2R1.002
     file[]: crc = 4a96ee6a; size =   4195000; name = DISC2\RESOURCE.SFX
     file[]: crc = a4f10f6e; size =    553885; name = DISC2\MOVIES\1210.VMD
@@ -202,7 +200,6 @@ fragment[common10]:
     file[]: crc = 70df1217; size =    454213; name = DISC2\MOVIES\1331.VMD
     file[]: crc = ef79c02a; size =   3731563; name = DISC2\MOVIES\1470.VMD
     file[]: crc = 0db7dd5b; size =   1068996; name = DISC2\MOVIES\1480.VMD
-    file[]: crc = e03f5c68; size =     39424; name = DISC3\AUTOPLAY.EXE
     file[]: crc = 505da42c; size =        12; name = DISC3\GK2R1.003
     file[]: crc = 4808f9ea; size =   2171278; name = DISC3\MOVIES\120.VMD
     file[]: crc = 6fcad0e8; size =    619088; name = DISC3\MOVIES\160.VMD
@@ -243,7 +240,6 @@ fragment[common10]:
     file[]: crc = ce6376d7; size =    327917; name = DISC3\MOVIES\680.VMD
     file[]: crc = 9bb1a74b; size =   1445061; name = DISC3\MOVIES\90.VMD
     file[]: crc = 83b5ae2b; size =   1400988; name = DISC3\MOVIES\91.VMD
-    file[]: crc = e03f5c68; size =     39424; name = DISC4\AUTOPLAY.EXE
     file[]: crc = 89fbc23e; size =        11; name = DISC4\GK2R1.004
     file[]: crc = 098f689a; size =    335417; name = DISC4\MOVIES\1230.VMD
     file[]: crc = a9b59926; size =    273630; name = DISC4\MOVIES\1270.VMD
@@ -275,9 +271,7 @@ fragment[common10]:
     file[]: crc = bd19fcab; size =    335095; name = DISC4\MOVIES\4601.VMD
     file[]: crc = 4bcdab15; size =   5169493; name = DISC4\MOVIES\5180.VMD
     file[]: crc = 29a7ee65; size =    510148; name = DISC4\MOVIES\5340.VMD
-    file[]: crc = e03f5c68; size =     39424; name = DISC5\AUTOPLAY.EXE
     file[]: crc = 0d672d85; size =        11; name = DISC5\GK2R1.005
-    file[]: crc = e03f5c68; size =     39424; name = DISC6\AUTOPLAY.EXE
     file[]: crc = 0177aef0; size =        10; name = DISC6\GK2R1.006
     file[]: crc = 1293fc5c; size =  11720427; name = DISC6\RESOURCE.SFX
     file[]: crc = 098f689a; size =    335417; name = DISC6\MOVIES\1230.VMD
@@ -378,12 +372,12 @@ end
 
 
 //
-// English version 1.0
+// v1.0
 //
-game[sol-gk2-eng-10]:
-    name = English 1.0 (DOS)
-    imports = common10
-    anchorfile = 11.SCR
+game[v1.0]:
+    name = v1.0
+    imports = v1.0-base
+    anchorfile = SIERRA.EXE
     anchordepth = 1
     LANGUAGE = 1
     file[]: crc = ab0ed917; size =       290; name = 11.HEP
@@ -416,39 +410,23 @@ game[sol-gk2-eng-10]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = 7b42d20c; size =      8504; name = DACRRA.DRV
-    file[]: crc = 5d282f48; size =      6659; name = HAVEVESA.EXE
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 14bf3c59; size =      8383; name = RESMAP.PAT
     file[]: crc = dd4a638d; size =      8383; name = RESMDT.PAT
     file[]: crc = 7e2df829; size =  13357741; name = RESSCI.PAT
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 1e550265; size =    818903; name = SIERRA.EXE
-    file[]: crc = 3731ecd2; size =    260250; name = UVCONFIG.EXE
+    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
     file[]: crc = 812e6eac; size =         6; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = f177d3b5; size =      9333; name = DISC1\COPYMEGS.EXE
-    file[]: crc = a03cdf9e; size =       995; name = DISC1\COPYMEGS.PIF
-    file[]: crc = 3eb0cdbd; size =       766; name = DISC1\GK2.ICO
     file[]: crc = 14a285ac; size =         2; name = DISC1\GK2R1.001
-    file[]: crc = f85a03f3; size =     77682; name = DISC1\HDDTEC.EXE
-    file[]: crc = 37e28ada; size =      4983; name = DISC1\INSTALL.SCR
-    file[]: crc = e2306ee0; size =     10240; name = DISC1\INSTALL.WRI
-    file[]: crc = 1e1d74b6; size =      2647; name = DISC1\LANGUAGE.INF
-    file[]: crc = 64492198; size =      3714; name = DISC1\MIDITEST.MID
-    file[]: crc = 70b6ec92; size =     26516; name = DISC1\README
-    file[]: crc = 90549934; size =        14; name = DISC1\README.BAT
-    file[]: crc = b9e5028e; size =    198784; name = DISC1\README.WRI
     file[]: crc = d149bd84; size =      2776; name = DISC1\RESMAP.001
     file[]: crc = d5dce3ca; size =      2776; name = DISC1\RESMDT.001
     file[]: crc = 9ab5773d; size =  25557948; name = DISC1\RESOURCE.AUD
     file[]: crc = 2e181182; size =  17280001; name = DISC1\RESOURCE.SFX
     file[]: crc = fb7880a1; size =  50496082; name = DISC1\RESSCI.001
     file[]: crc = 40f50f2f; size =    143642; name = DISC1\SCIDLL.DLL
-    file[]: crc = 50cfa43e; size =     29472; name = DISC1\SETUP.EXE
-    file[]: crc = 781a7442; size =    404443; name = DISC1\SETUP.SOL
-    file[]: crc = 9b6c8583; size =      3790; name = DISC1\SIERRA.INF
-    file[]: crc = ffa8eaf8; size =    715504; name = DISC1\SIERRAW.EXE
-    file[]: crc = 812e6eac; size =         6; name = DISC1\VERSION
     file[]: crc = e617d0a7; size =   5371929; name = DISC1\MOVIES\100.VMD
     file[]: crc = ffd7c691; size =   3125020; name = DISC1\MOVIES\1000.VMD
     file[]: crc = fd80b0fb; size =   1515174; name = DISC1\MOVIES\1010.VMD
@@ -544,12 +522,10 @@ game[sol-gk2-eng-10]:
     file[]: crc = d7983f91; size =   4605342; name = DISC1\MOVIES\980.VMD
     file[]: crc = 384f9929; size =  15834719; name = DISC1\MOVIES\990.VMD
     file[]: crc = 2fc11139; size =  15909148; name = DISC1\MOVIES\991.VMD
-    file[]: crc = 883783c7; size =       605; name = DISC2\AUTORUN.INF
     file[]: crc = e80556d7; size =      1975; name = DISC2\RESMAP.002
     file[]: crc = 77fe23f6; size =      1975; name = DISC2\RESMDT.002
     file[]: crc = 946d23eb; size =  30423849; name = DISC2\RESOURCE.AUD
     file[]: crc = 8b35b959; size =  42015676; name = DISC2\RESSCI.002
-    file[]: crc = 812e6eac; size =         6; name = DISC2\VERSION
     file[]: crc = 6dfaa751; size =  30891651; name = DISC2\MOVIES\1170.VMD
     file[]: crc = 17af05e7; size =   2405329; name = DISC2\MOVIES\1190.VMD
     file[]: crc = f0560fc8; size =   1010001; name = DISC2\MOVIES\1250.VMD
@@ -642,13 +618,11 @@ game[sol-gk2-eng-10]:
     file[]: crc = 8bba321c; size =    406775; name = DISC2\MOVIES\4600.VMD
     file[]: crc = 25ff2fc6; size =    335095; name = DISC2\MOVIES\4601.VMD
     file[]: crc = a0568e17; size = 117159747; name = DISC2\MOVIES\9430.VMD
-    file[]: crc = 883783c7; size =       605; name = DISC3\AUTORUN.INF
     file[]: crc = 4a1ba12a; size =      1687; name = DISC3\RESMAP.003
     file[]: crc = c76337fb; size =      1687; name = DISC3\RESMDT.003
     file[]: crc = 6b6785f4; size =  27752999; name = DISC3\RESOURCE.AUD
     file[]: crc = c1d2086c; size =  37410593; name = DISC3\RESOURCE.SFX
     file[]: crc = eddf53f1; size =  35313750; name = DISC3\RESSCI.003
-    file[]: crc = 812e6eac; size =         6; name = DISC3\VERSION
     file[]: crc = 17fcc872; size =   5408129; name = DISC3\MOVIES\2320.VMD
     file[]: crc = 906d9dac; size =   9231272; name = DISC3\MOVIES\2330.VMD
     file[]: crc = 32c7cafa; size =   2417253; name = DISC3\MOVIES\2360.VMD
@@ -761,13 +735,11 @@ game[sol-gk2-eng-10]:
     file[]: crc = f7c439ff; size =   6210154; name = DISC3\MOVIES\4080.VMD
     file[]: crc = 0d5848c7; size =   7135614; name = DISC3\MOVIES\4090.VMD
     file[]: crc = 563d2a48; size =  20229011; name = DISC3\MOVIES\4100.VMD
-    file[]: crc = 883783c7; size =       605; name = DISC4\AUTORUN.INF
     file[]: crc = 1f387497; size =      2719; name = DISC4\RESMAP.004
     file[]: crc = a629fda5; size =      2719; name = DISC4\RESMDT.004
     file[]: crc = 8a0ec320; size =  81035281; name = DISC4\RESOURCE.AUD
     file[]: crc = 1c479003; size =   9415907; name = DISC4\RESOURCE.SFX
     file[]: crc = 929c0b26; size =  58317316; name = DISC4\RESSCI.004
-    file[]: crc = 812e6eac; size =         6; name = DISC4\VERSION
     file[]: crc = a9cf198f; size =    776556; name = DISC4\MOVIES\1640.VMD
     file[]: crc = 03cb29a7; size =   1073458; name = DISC4\MOVIES\1750.VMD
     file[]: crc = 1fa7ceb4; size =   1295522; name = DISC4\MOVIES\1760.VMD
@@ -857,13 +829,11 @@ game[sol-gk2-eng-10]:
     file[]: crc = c22fdded; size =    544050; name = DISC4\ROBOT\30960.RBT
     file[]: crc = 6bb61ca0; size =    191739; name = DISC4\ROBOT\32930.RBT
     file[]: crc = eab2b1c5; size =    364637; name = DISC4\ROBOT\32960.RBT
-    file[]: crc = 883783c7; size =       605; name = DISC5\AUTORUN.INF
     file[]: crc = 36b504e5; size =      2065; name = DISC5\RESMAP.005
     file[]: crc = 0592d49b; size =      2065; name = DISC5\RESMDT.005
     file[]: crc = 98a12b09; size =  31106234; name = DISC5\RESOURCE.AUD
     file[]: crc = c544aedf; size =  46630950; name = DISC5\RESOURCE.SFX
     file[]: crc = 96964d49; size =  38075705; name = DISC5\RESSCI.005
-    file[]: crc = 812e6eac; size =         6; name = DISC5\VERSION
     file[]: crc = 92b6382a; size =   2094618; name = DISC5\MOVIES\2430.VMD
     file[]: crc = eb192382; size =   1723790; name = DISC5\MOVIES\2440.VMD
     file[]: crc = 8669a8ac; size =   1843412; name = DISC5\MOVIES\3420.VMD
@@ -1023,12 +993,10 @@ game[sol-gk2-eng-10]:
     file[]: crc = 021ccb03; size =   2040289; name = DISC5\MOVIES\7030.VMD
     file[]: crc = f40c26db; size =  14699000; name = DISC5\MOVIES\7050.VMD
     file[]: crc = a5a32338; size =   3464703; name = DISC5\MOVIES\7052.VMD
-    file[]: crc = 883783c7; size =       605; name = DISC6\AUTORUN.INF
     file[]: crc = 544c1c14; size =      2977; name = DISC6\RESMAP.006
     file[]: crc = d2072b7f; size =      2977; name = DISC6\RESMDT.006
     file[]: crc = ffaf656e; size =  41664566; name = DISC6\RESOURCE.AUD
     file[]: crc = 46309a6d; size =  60659424; name = DISC6\RESSCI.006
-    file[]: crc = 812e6eac; size =         6; name = DISC6\VERSION
     file[]: crc = 5f9ae457; size =  54076156; name = DISC6\MOVIES\7180.VMD
     file[]: crc = daec70bf; size =   2036115; name = DISC6\MOVIES\7510.VMD
     file[]: crc = e55478a6; size =  16149803; name = DISC6\MOVIES\7541.VMD
@@ -1105,41 +1073,12 @@ game[sol-gk2-eng-10]:
     file[]: crc = 5fdcc829; size =   5920541; name = DISC6\MOVIES\9240.VMD
 end
 
-
 //
-// English version 1.0 (Windows)
+// v1.1
 //
-game[sol-gk2-eng-10-win]:
-    name = English 1.0 (Windows)
-    anchorfile = SIERRAW.EXE
-    anchordepth = 2
-    LANGUAGE = 1
-    imports = sol-gk2-eng-10, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
-    file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
-end
-
-
-//
-// English version 1.1
-//
-game[sol-gk2-eng-11]:
-    name = English 1.1 (DOS)
-    anchorfile = 1020.HEP
-    anchordepth = 2
-    LANGUAGE = 1
-    imports = sol-gk2-eng-10
+game[v1.1]:
+    name = v1.1
+    imports = v1.0
     file[]: crc = 62cb383d; size =       562; name = 1020.HEP
     file[]: crc = 0fe39ebe; size =      1294; name = 1020.SCR
     file[]: crc = ee801cf5; size =      3210; name = 11.SCR
@@ -1175,174 +1114,22 @@ game[sol-gk2-eng-11]:
     file[]: crc = 9771c34d; size =      1698; name = 840.SCR
     file[]: crc = 6e225826; size =     22064; name = 991.AUD
     file[]: crc = 47d7f9a9; size =         6; name = VERSION
-    file[]: crc = 47d7f9a9; size =         6; name = DISC1\VERSION
-    file[]: crc = 40cb16ee; size =    206824; name = DISC1\AUTOPLAY.BMP
-    file[]: crc = e03f5c68; size =     39424; name = DISC1\AUTOPLAY.EXE
-    file[]: crc = 66beb6cc; size =       643; name = DISC1\AUTORUN.INF
-    file[]: crc = 615fd71a; size =      5888; name = DISC1\INSTALL.BAK
-    file[]: crc = bb2e417c; size =      5912; name = DISC1\INSTALL.SCR
-    file[]: crc = dc2204a7; size =       337; name = DISC1\RESOURCE.BAK
-    file[]: crc = dcf02665; size =      4816; name = DISC1\SIERRA.BAK
-    file[]: crc = 2141008b; size =      4849; name = DISC1\SIERRA.INF
-    file[]: crc = 6b9ecce5; size =         5; name = DISC1\VERSION.BAK
-    file[]: crc = fcb3abe1; size =      4882; name = DISC1\MOVIES\CH1.BAK
-    file[]: crc = 99dfc133; size =      4991; name = DISC1\MOVIES\CH1.BAT
-    file[]: crc = 6a5ca6d2; size =         5; name = DISC2\VERSION
-    file[]: crc = e0256480; size =      1946; name = DISC2\MOVIES\CH2.BAK
-    file[]: crc = 98e20b87; size =      3571; name = DISC2\MOVIES\CH2.BAT
-    file[]: crc = 6a5ca6d2; size =         5; name = DISC3\VERSION
-    file[]: crc = aecb4677; size =      2700; name = DISC3\MOVIES\CH3.BAK
-    file[]: crc = 46462586; size =      4970; name = DISC3\MOVIES\CH3.BAT
-    file[]: crc = 6a5ca6d2; size =         5; name = DISC4\VERSION
-    file[]: crc = 40911e47; size =      1874; name = DISC4\MOVIES\CH4.BAK
-    file[]: crc = 353c645f; size =      3439; name = DISC4\MOVIES\CH4.BAT
-    file[]: crc = 6a5ca6d2; size =         5; name = DISC5\VERSION
-    file[]: crc = fb9d840a; size =      2859; name = DISC5\MOVIES\CH5.BAK
-    file[]: crc = 97fbefe2; size =      5249; name = DISC5\MOVIES\CH5.BAT
-    file[]: crc = 6a5ca6d2; size =         5; name = DISC6\VERSION
-    file[]: crc = a3280a35; size =  54075816; name = DISC6\MOVIES\7180.VMD
-    file[]: crc = 8bb9ed8a; size =      2810; name = DISC6\MOVIES\CH6.BAK
-    file[]: crc = b3d19c30; size =      5155; name = DISC6\MOVIES\CH6.BAT
 end
 
-
 //
-// English version 1.1 (Windows)
-//
-game[sol-gk2-eng-11-win]:
-    name = English 1.1 (Windows)
-    anchorfile = SIERRAW.EXE
-    anchordepth = 2
-    LANGUAGE = 1
-    imports = sol-gk2-eng-11, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
-    file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
-end
-
-
-//
-// English version 1.11
+// v1.11
 // This version is also available as part of the Gabriel Knight Mysteries compilation.
 //
-game[sol-gk2-eng-111]:
-    name = English 1.11 (DOS)
-    anchorfile = 4002.SCR
-    anchordepth = 2
-    LANGUAGE = 1    
-    file[]: crc = 62cb383d; size =       562; name = 1020.HEP
-    file[]: crc = 0fe39ebe; size =      1294; name = 1020.SCR
-    file[]: crc = ab0ed917; size =       290; name = 11.HEP
-    file[]: crc = ee801cf5; size =      3210; name = 11.SCR
-    file[]: crc = 61b8331f; size =      1164; name = 1120.HEP
-    file[]: crc = 767b9372; size =      2542; name = 1120.SCR
-    file[]: crc = 26dd8d4f; size =      1590; name = 1160.HEP
-    file[]: crc = 213f76bf; size =      6080; name = 1160.SCR
-    file[]: crc = 3ee9f618; size =      1368; name = 11752.HEP
-    file[]: crc = edd55f52; size =      3424; name = 11752.SCR
-    file[]: crc = 58e349e5; size =       920; name = 120.HEP
-    file[]: crc = f1c468bf; size =      2370; name = 120.SCR
-    file[]: crc = 54fd513d; size =     52132; name = 122.V56
-    file[]: crc = a03b4ec2; size =    307969; name = 13086.P56
-    file[]: crc = 1ec8236a; size =       514; name = 1313.HEP
-    file[]: crc = 6736071f; size =      2094; name = 1313.SCR
-    file[]: crc = 57021b02; size =     17432; name = 20.HEP
-    file[]: crc = a08bdd3e; size =     14864; name = 20.SCR
-    file[]: crc = b33e0602; size =      2272; name = 200.HEP
-    file[]: crc = 320f778a; size =      4144; name = 200.SCR
-    file[]: crc = 724e8639; size =    106364; name = 20131.V56
-    file[]: crc = 13e796c9; size =       676; name = 210.HEP
-    file[]: crc = 24b5bb38; size =      2744; name = 210.SCR
-    file[]: crc = 8ce9a207; size =       980; name = 230.HEP
-    file[]: crc = 78820fae; size =      1838; name = 230.SCR
-    file[]: crc = 2c0b7da8; size =      1486; name = 27.HEP
-    file[]: crc = 4bf7bdc3; size =      1800; name = 27.SCR
-    file[]: crc = c7874077; size =      1224; name = 3210.HEP
-    file[]: crc = a46cb557; size =       830; name = 3210.SCR
-    file[]: crc = 8f8d6cb4; size =       336; name = 34.HEP
-    file[]: crc = 258efe8c; size =      1674; name = 34.SCR
-    file[]: crc = ae474255; size =       178; name = 37.HEP
-    file[]: crc = cf06fec8; size =       942; name = 37.SCR
-    file[]: crc = b82461fa; size =       152; name = 4001.HEP
-    file[]: crc = 08041668; size =       378; name = 4001.SCR
+game[v1.11]:
+    name = v1.11
+    imports = v1.1
     file[]: crc = 5cf83a29; size =      1246; name = 4002.SCR
-    file[]: crc = dff83547; size =       444; name = 4020.HEP
-    file[]: crc = 25bb2ecb; size =      1008; name = 4020.SCR
-    file[]: crc = f8de7e91; size =       832; name = 430.HEP
-    file[]: crc = 6a789255; size =      3558; name = 430.SCR
-    file[]: crc = e62303dc; size =       746; name = 4420.HEP
-    file[]: crc = 5e720737; size =       662; name = 4420.SCR
-    file[]: crc = 651fab66; size =       872; name = 470.HEP
     file[]: crc = 103e3788; size =      1812; name = 470.SCR
-    file[]: crc = 1470595f; size =       818; name = 520.HEP
     file[]: crc = 08342129; size =      1224; name = 520.SCR
-    file[]: crc = 4eb240ac; size =       484; name = 55.HEP
-    file[]: crc = 8fec78eb; size =      4470; name = 55.SCR
-    file[]: crc = f7d0f871; size =       396; name = 720.HEP
-    file[]: crc = 2da6f662; size =      1174; name = 720.SCR
-    file[]: crc = c2832dfa; size =      1364; name = 800.HEP
-    file[]: crc = be5f7033; size =      1666; name = 800.SCR
-    file[]: crc = 0308d3cc; size =       618; name = 840.HEP
-    file[]: crc = 9771c34d; size =      1698; name = 840.SCR
     file[]: crc = 874bbcd7; size =       176; name = 8520.SCR
-    file[]: crc = 6469dcc8; size =      7411; name = 92.MSG
-    file[]: crc = eaca1830; size =       501; name = 92.SHM
-    file[]: crc = 6e225826; size =     22064; name = 991.AUD
-    file[]: crc = 168e8eed; size =     23760; name = 9944.V56
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
-    file[]: crc = 7b42d20c; size =      8504; name = DACRRA.DRV
-    file[]: crc = 5d282f48; size =      6659; name = HAVEVESA.EXE
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE
-    file[]: crc = c308d11d; size =     21426; name = INSTALL.HLP
-    file[]: crc = eba20f31; size =      9590; name = INSTALL.TXT
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = 14bf3c59; size =      8383; name = RESMAP.PAT
-    file[]: crc = dd4a638d; size =      8383; name = RESMDT.PAT
-    file[]: crc = 7e2df829; size =  13357741; name = RESSCI.PAT
-    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
-    file[]: crc = 1e550265; size =    818903; name = SIERRA.EXE
-    file[]: crc = 3731ecd2; size =    260250; name = UVCONFIG.EXE
     file[]: crc = 385063fe; size =         6; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 4efac947; size =      1046; name = DISC1\4002.HEP
     file[]: crc = 6d150a4d; size =       728; name = DISC1\8520.HEP
-    file[]: crc = 40cb16ee; size =    206824; name = DISC1\AUTOPLAY.BMP
-    file[]: crc = e03f5c68; size =     39424; name = DISC1\AUTOPLAY.EXE
-    file[]: crc = 66beb6cc; size =       643; name = DISC1\AUTORUN.INF
-    file[]: crc = f177d3b5; size =      9333; name = DISC1\COPYMEGS.EXE
-    file[]: crc = a03cdf9e; size =       995; name = DISC1\COPYMEGS.PIF
-    file[]: crc = 3eb0cdbd; size =       766; name = DISC1\GK2.ICO
-    file[]: crc = 14a285ac; size =         2; name = DISC1\GK2R1.001
-    file[]: crc = f85a03f3; size =     77682; name = DISC1\HDDTEC.EXE
-    file[]: crc = bb2e417c; size =      5912; name = DISC1\INSTALL.BAK
-    file[]: crc = aa9dbc21; size =      6012; name = DISC1\INSTALL.SCR
-    file[]: crc = 64492198; size =      3714; name = DISC1\MIDITEST.MID
-    file[]: crc = 70b6ec92; size =     26516; name = DISC1\README
-    file[]: crc = 90549934; size =        14; name = DISC1\README.BAT
-    file[]: crc = b9e5028e; size =    198784; name = DISC1\README.WRI
-    file[]: crc = d149bd84; size =      2776; name = DISC1\RESMAP.001
-    file[]: crc = d5dce3ca; size =      2776; name = DISC1\RESMDT.001
-    file[]: crc = 9ab5773d; size =  25557948; name = DISC1\RESOURCE.AUD
-    file[]: crc = dc2204a7; size =       337; name = DISC1\RESOURCE.BAK
-    file[]: crc = 2e181182; size =  17280001; name = DISC1\RESOURCE.SFX
-    file[]: crc = fb7880a1; size =  50496082; name = DISC1\RESSCI.001
-    file[]: crc = 40f50f2f; size =    143642; name = DISC1\SCIDLL.DLL
-    file[]: crc = 2141008b; size =      4849; name = DISC1\SIERRA.BAK
-    file[]: crc = ffa8eaf8; size =    715504; name = DISC1\SIERRAW.EXE
     file[]: crc = d8065c10; size =   4690382; name = DISC1\MOVIES\100.VMD
     file[]: crc = da71cafe; size =   2775013; name = DISC1\MOVIES\1000.VMD
     file[]: crc = cc5c24d2; size =  10169106; name = DISC1\MOVIES\10010.VMD
@@ -1413,9 +1200,9 @@ game[sol-gk2-eng-111]:
     file[]: crc = 0eb6e38d; size =   2129199; name = DISC1\MOVIES\470.VMD
     file[]: crc = ed339cdf; size =   2717972; name = DISC1\MOVIES\480.VMD
     file[]: crc = e89b5b9b; size =   1872205; name = DISC1\MOVIES\490.VMD
-    file[]: crc = 6584a96c; size =   1083546; name = DISC1\MOVIES\50.VMD
+    file[]: crc = 6584a96c; size =   1083546; name = DISC1\MOVIES\50.VMD/
     file[]: crc = 499bd09f; size =   1916329; name = DISC1\MOVIES\500.VMD
-    file[]: crc = c8c6ad20; size =   1078759; name = DISC1\MOVIES\51.VMD
+    file[]: crc = c8c6ad20; size =   1078759; name = DISC1\MOVIES\51.VMD/
     file[]: crc = 5da3c762; size =   2358536; name = DISC1\MOVIES\510.VMD
     file[]: crc = 5ac47a28; size =   7515559; name = DISC1\MOVIES\520.VMD
     file[]: crc = 2b88b937; size =   3538979; name = DISC1\MOVIES\530.VMD
@@ -1426,7 +1213,7 @@ game[sol-gk2-eng-111]:
     file[]: crc = a6ec6cf4; size =   3213723; name = DISC1\MOVIES\570.VMD
     file[]: crc = ac58ccf0; size =   9195898; name = DISC1\MOVIES\580.VMD
     file[]: crc = 3e08c79b; size =   3025313; name = DISC1\MOVIES\591.VMD
-    file[]: crc = 9a7d5217; size =    510997; name = DISC1\MOVIES\60.VMD
+    file[]: crc = 9a7d5217; size =    510997; name = DISC1\MOVIES\60.VMD/
     file[]: crc = 3e5e00e2; size =   1069769; name = DISC1\MOVIES\600.VMD
     file[]: crc = 39a1089f; size =    207069; name = DISC1\MOVIES\610.VMD
     file[]: crc = 76062aed; size =    334918; name = DISC1\MOVIES\620.VMD
@@ -1436,7 +1223,7 @@ game[sol-gk2-eng-111]:
     file[]: crc = b1d3df37; size =   1258854; name = DISC1\MOVIES\670.VMD
     file[]: crc = c757a7c1; size =    291048; name = DISC1\MOVIES\680.VMD
     file[]: crc = 29bcbe5e; size =   6713490; name = DISC1\MOVIES\690.VMD
-    file[]: crc = 136aea87; size =   1488735; name = DISC1\MOVIES\70.VMD
+    file[]: crc = 136aea87; size =   1488735; name = DISC1\MOVIES\70.VMD/
     file[]: crc = e6fd1352; size =   1736064; name = DISC1\MOVIES\700.VMD
     file[]: crc = fa92c5b2; size =   2604416; name = DISC1\MOVIES\710.VMD
     file[]: crc = c488421d; size =   1561543; name = DISC1\MOVIES\720.VMD
@@ -1445,7 +1232,7 @@ game[sol-gk2-eng-111]:
     file[]: crc = a0f6d8d8; size =   2755497; name = DISC1\MOVIES\760.VMD
     file[]: crc = 0eaff454; size =   5928283; name = DISC1\MOVIES\780.VMD
     file[]: crc = 5249720e; size =   5701621; name = DISC1\MOVIES\790.VMD
-    file[]: crc = bcddf627; size =    830646; name = DISC1\MOVIES\80.VMD
+    file[]: crc = bcddf627; size =    830646; name = DISC1\MOVIES\80.VMD/
     file[]: crc = 07390b85; size =   2622939; name = DISC1\MOVIES\800.VMD
     file[]: crc = e1e36e41; size =   2666471; name = DISC1\MOVIES\810.VMD
     file[]: crc = 2a20db85; size =   1787353; name = DISC1\MOVIES\820.VMD
@@ -1456,9 +1243,9 @@ game[sol-gk2-eng-111]:
     file[]: crc = 012cb116; size =    708278; name = DISC1\MOVIES\852.VMD
     file[]: crc = 388063e3; size =   2334972; name = DISC1\MOVIES\870.VMD
     file[]: crc = 23dd7592; size =   2343833; name = DISC1\MOVIES\890.VMD
-    file[]: crc = 92293160; size =    922182; name = DISC1\MOVIES\90.VMD
+    file[]: crc = 92293160; size =    922182; name = DISC1\MOVIES\90.VMD/
     file[]: crc = 60881321; size =   2403901; name = DISC1\MOVIES\900.VMD
-    file[]: crc = 671dcc67; size =    846585; name = DISC1\MOVIES\91.VMD
+    file[]: crc = 671dcc67; size =    846585; name = DISC1\MOVIES\91.VMD/
     file[]: crc = 771b9f74; size =   4254880; name = DISC1\MOVIES\910.VMD
     file[]: crc = 865ca40d; size =   1820626; name = DISC1\MOVIES\920.VMD
     file[]: crc = 3704f24f; size =   2297118; name = DISC1\MOVIES\930.VMD
@@ -1491,137 +1278,6 @@ game[sol-gk2-eng-111]:
     file[]: crc = 960ec9bf; size =   3927726; name = DISC1\MOVIES\980.VMD
     file[]: crc = 4bd38a3b; size =  13306989; name = DISC1\MOVIES\990.VMD
     file[]: crc = 9e4cf875; size =  13199920; name = DISC1\MOVIES\991.VMD
-    file[]: crc = 99dfc133; size =      4991; name = DISC1\MOVIES\CH1.BAT
-    file[]: crc = f8de57c2; size =   1124083; name = DISC1\ROBOT\11027.RBT
-    file[]: crc = 5ee62a64; size =    619932; name = DISC1\ROBOT\12027.RBT
-    file[]: crc = e03f5c68; size =     39424; name = DISC2\AUTOPLAY.EXE
-    file[]: crc = 883783c7; size =       605; name = DISC2\AUTORUN.INF
-    file[]: crc = 1af8e7b9; size =        10; name = DISC2\GK2R1.002
-    file[]: crc = e80556d7; size =      1975; name = DISC2\RESMAP.002
-    file[]: crc = 77fe23f6; size =      1975; name = DISC2\RESMDT.002
-    file[]: crc = 946d23eb; size =  30423849; name = DISC2\RESOURCE.AUD
-    file[]: crc = 4a96ee6a; size =   4195000; name = DISC2\RESOURCE.SFX
-    file[]: crc = 8b35b959; size =  42015676; name = DISC2\RESSCI.002
-    file[]: crc = 385063fe; size =         6; name = DISC2\VERSION
-    file[]: crc = 6dfaa751; size =  30891651; name = DISC2\MOVIES\1170.VMD
-    file[]: crc = 17af05e7; size =   2405329; name = DISC2\MOVIES\1190.VMD
-    file[]: crc = a4f10f6e; size =    553885; name = DISC2\MOVIES\1210.VMD
-    file[]: crc = 098f689a; size =    335417; name = DISC2\MOVIES\1230.VMD
-    file[]: crc = f0560fc8; size =   1010001; name = DISC2\MOVIES\1250.VMD
-    file[]: crc = 534b856e; size =    546221; name = DISC2\MOVIES\1260.VMD
-    file[]: crc = 93676bf7; size =    273630; name = DISC2\MOVIES\1270.VMD
-    file[]: crc = e8ab5971; size =    350129; name = DISC2\MOVIES\1271.VMD
-    file[]: crc = 164a2d2f; size =    497039; name = DISC2\MOVIES\1280.VMD
-    file[]: crc = 94ffc48d; size =   1510744; name = DISC2\MOVIES\1290.VMD
-    file[]: crc = 8c30d833; size =    880527; name = DISC2\MOVIES\1300.VMD
-    file[]: crc = 73f000ed; size =   1478953; name = DISC2\MOVIES\1301.VMD
-    file[]: crc = ba63e30c; size =    741635; name = DISC2\MOVIES\1302.VMD
-    file[]: crc = e93334ee; size =    784980; name = DISC2\MOVIES\1303.VMD
-    file[]: crc = 4711cd02; size =    597655; name = DISC2\MOVIES\1304.VMD
-    file[]: crc = a1b50ff8; size =   1829352; name = DISC2\MOVIES\1320.VMD
-    file[]: crc = d8aa1de8; size =    853872; name = DISC2\MOVIES\1330.VMD
-    file[]: crc = 70df1217; size =    454213; name = DISC2\MOVIES\1331.VMD
-    file[]: crc = 33e91a67; size =    817733; name = DISC2\MOVIES\1340.VMD
-    file[]: crc = 0ed94325; size =   2909774; name = DISC2\MOVIES\1350.VMD
-    file[]: crc = 92baed1f; size =   1244994; name = DISC2\MOVIES\1360.VMD
-    file[]: crc = 31f8febb; size =   2475421; name = DISC2\MOVIES\1370.VMD
-    file[]: crc = ca172a0d; size =   5387052; name = DISC2\MOVIES\1380.VMD
-    file[]: crc = e05edc23; size =   2957108; name = DISC2\MOVIES\1390.VMD
-    file[]: crc = 2ebb2836; size =   2098479; name = DISC2\MOVIES\1400.VMD
-    file[]: crc = 5f713ea7; size =   5946590; name = DISC2\MOVIES\1410.VMD
-    file[]: crc = 7e677588; size =   3233751; name = DISC2\MOVIES\1420.VMD
-    file[]: crc = 5560306f; size =   2879178; name = DISC2\MOVIES\1430.VMD
-    file[]: crc = 3473fa80; size =   1791403; name = DISC2\MOVIES\1440.VMD
-    file[]: crc = 7faa9216; size =   2908309; name = DISC2\MOVIES\1450.VMD
-    file[]: crc = 0e8eda62; size =   2450776; name = DISC2\MOVIES\1460.VMD
-    file[]: crc = ef79c02a; size =   3731563; name = DISC2\MOVIES\1470.VMD
-    file[]: crc = 0db7dd5b; size =   1068996; name = DISC2\MOVIES\1480.VMD
-    file[]: crc = 2d75aba3; size =   2616017; name = DISC2\MOVIES\1490.VMD
-    file[]: crc = 39ba6b3f; size =   1180155; name = DISC2\MOVIES\1500.VMD
-    file[]: crc = 9a25fa0c; size =    779033; name = DISC2\MOVIES\1501.VMD
-    file[]: crc = 9cde35de; size =   1544058; name = DISC2\MOVIES\1510.VMD
-    file[]: crc = 1eca1a15; size =   1543162; name = DISC2\MOVIES\1511.VMD
-    file[]: crc = 1d5d517a; size =   2889587; name = DISC2\MOVIES\1520.VMD
-    file[]: crc = ec909ecf; size =   2180758; name = DISC2\MOVIES\1530.VMD
-    file[]: crc = 0aa56748; size =    223203; name = DISC2\MOVIES\1540.VMD
-    file[]: crc = 417f281e; size =  18107585; name = DISC2\MOVIES\1550.VMD
-    file[]: crc = 7ea177d4; size =   2259645; name = DISC2\MOVIES\1560.VMD
-    file[]: crc = b32ba018; size =   1806179; name = DISC2\MOVIES\1570.VMD
-    file[]: crc = 0ea43af0; size =   1556018; name = DISC2\MOVIES\1571.VMD
-    file[]: crc = ce55eba7; size =   1300433; name = DISC2\MOVIES\1580.VMD
-    file[]: crc = 00ada1c8; size =   5390129; name = DISC2\MOVIES\1581.VMD
-    file[]: crc = 12b27f0e; size =    804998; name = DISC2\MOVIES\1582.VMD
-    file[]: crc = 1f4c8496; size =    394576; name = DISC2\MOVIES\1583.VMD
-    file[]: crc = b655249b; size =   2335242; name = DISC2\MOVIES\1590.VMD
-    file[]: crc = 9590972f; size =   6949092; name = DISC2\MOVIES\1600.VMD
-    file[]: crc = a9cf198f; size =    776556; name = DISC2\MOVIES\1640.VMD
-    file[]: crc = acc96d55; size =   1568499; name = DISC2\MOVIES\1650.VMD
-    file[]: crc = 5369b47c; size =   1527025; name = DISC2\MOVIES\1660.VMD
-    file[]: crc = 67d3a18c; size =    804263; name = DISC2\MOVIES\1670.VMD
-    file[]: crc = 52f667bd; size =   1867151; name = DISC2\MOVIES\1680.VMD
-    file[]: crc = c752ff44; size =   1200007; name = DISC2\MOVIES\1690.VMD
-    file[]: crc = 897c37e4; size =    723928; name = DISC2\MOVIES\1720.VMD
-    file[]: crc = 1de9df61; size =   1751652; name = DISC2\MOVIES\1730.VMD
-    file[]: crc = 86425d13; size =   2482321; name = DISC2\MOVIES\1740.VMD
-    file[]: crc = 03cb29a7; size =   1073458; name = DISC2\MOVIES\1750.VMD
-    file[]: crc = 1fa7ceb4; size =   1295522; name = DISC2\MOVIES\1760.VMD
-    file[]: crc = 4f01f0a3; size =   5785855; name = DISC2\MOVIES\1770.VMD
-    file[]: crc = c1c50cf9; size =   4040718; name = DISC2\MOVIES\1780.VMD
-    file[]: crc = 581f95e3; size =   5539771; name = DISC2\MOVIES\1790.VMD
-    file[]: crc = 074686c0; size =   6818691; name = DISC2\MOVIES\1800.VMD
-    file[]: crc = 95d9b98a; size =   5630394; name = DISC2\MOVIES\1810.VMD
-    file[]: crc = 15eb4184; size =   7777105; name = DISC2\MOVIES\1820.VMD
-    file[]: crc = dda9b4f1; size =   5470720; name = DISC2\MOVIES\1830.VMD
-    file[]: crc = 2d5fdfaf; size =   3453238; name = DISC2\MOVIES\1840.VMD
-    file[]: crc = 5c8c27ad; size =  10201447; name = DISC2\MOVIES\1850.VMD
-    file[]: crc = d1afdefa; size =   5330455; name = DISC2\MOVIES\1860.VMD
-    file[]: crc = df15bcf8; size =   7240702; name = DISC2\MOVIES\1870.VMD
-    file[]: crc = a3d0ac9d; size =   6068754; name = DISC2\MOVIES\1880.VMD
-    file[]: crc = d261ac40; size =   6205842; name = DISC2\MOVIES\1890.VMD
-    file[]: crc = 4e0ac740; size =    757241; name = DISC2\MOVIES\1900.VMD
-    file[]: crc = 70b5e0b8; size =    630581; name = DISC2\MOVIES\1910.VMD
-    file[]: crc = d18c6bf2; size =    900583; name = DISC2\MOVIES\1920.VMD
-    file[]: crc = 7cea4cbb; size =   4988565; name = DISC2\MOVIES\1930.VMD
-    file[]: crc = 3e6b234e; size =   1747964; name = DISC2\MOVIES\1940.VMD
-    file[]: crc = b6112816; size =  30362247; name = DISC2\MOVIES\1950.VMD
-    file[]: crc = 61dfa6a7; size =   1290390; name = DISC2\MOVIES\1960.VMD
-    file[]: crc = e384d68b; size =   1892383; name = DISC2\MOVIES\1970.VMD
-    file[]: crc = d952d954; size =   1634199; name = DISC2\MOVIES\1980.VMD
-    file[]: crc = 1dd9895e; size =   2121578; name = DISC2\MOVIES\1990.VMD
-    file[]: crc = ce07f10e; size =   1112808; name = DISC2\MOVIES\2000.VMD
-    file[]: crc = 6788c7c5; size =   3720562; name = DISC2\MOVIES\2010.VMD
-    file[]: crc = d101d636; size =   5125151; name = DISC2\MOVIES\2020.VMD
-    file[]: crc = 85a9fb68; size =   1899280; name = DISC2\MOVIES\2030.VMD
-    file[]: crc = 192a11af; size =   3527832; name = DISC2\MOVIES\2040.VMD
-    file[]: crc = 7044a2a1; size =   1942758; name = DISC2\MOVIES\2050.VMD
-    file[]: crc = e2619206; size =   5997234; name = DISC2\MOVIES\2060.VMD
-    file[]: crc = 3f6fc45d; size =   2922833; name = DISC2\MOVIES\2070.VMD
-    file[]: crc = b50b952a; size =   4522063; name = DISC2\MOVIES\2080.VMD
-    file[]: crc = ad94a481; size =   8939862; name = DISC2\MOVIES\2090.VMD
-    file[]: crc = c45de285; size =   7811414; name = DISC2\MOVIES\2110.VMD
-    file[]: crc = 1b8b2870; size =   2609709; name = DISC2\MOVIES\2120.VMD
-    file[]: crc = 1240ce19; size =    332957; name = DISC2\MOVIES\2130.VMD
-    file[]: crc = b732536f; size =    308815; name = DISC2\MOVIES\2131.VMD
-    file[]: crc = 38be6201; size =   1034704; name = DISC2\MOVIES\2140.VMD
-    file[]: crc = 4b628678; size =    961089; name = DISC2\MOVIES\2170.VMD
-    file[]: crc = e85fe49c; size =   2964298; name = DISC2\MOVIES\2180.VMD
-    file[]: crc = 6885e84c; size =   2467643; name = DISC2\MOVIES\2190.VMD
-    file[]: crc = 138f42e8; size =  37273834; name = DISC2\MOVIES\2200.VMD
-    file[]: crc = 6d79df02; size =   9899948; name = DISC2\MOVIES\2230.VMD
-    file[]: crc = 8bba321c; size =    406775; name = DISC2\MOVIES\4600.VMD
-    file[]: crc = 25ff2fc6; size =    335095; name = DISC2\MOVIES\4601.VMD
-    file[]: crc = a0568e17; size = 117159747; name = DISC2\MOVIES\9430.VMD
-    file[]: crc = e0256480; size =      1946; name = DISC2\MOVIES\CH2.BAK
-    file[]: crc = 98e20b87; size =      3571; name = DISC2\MOVIES\CH2.BAT
-    file[]: crc = e03f5c68; size =     39424; name = DISC3\AUTOPLAY.EXE
-    file[]: crc = 883783c7; size =       605; name = DISC3\AUTORUN.INF
-    file[]: crc = 505da42c; size =        12; name = DISC3\GK2R1.003
-    file[]: crc = 4a1ba12a; size =      1687; name = DISC3\RESMAP.003
-    file[]: crc = c76337fb; size =      1687; name = DISC3\RESMDT.003
-    file[]: crc = 6b6785f4; size =  27752999; name = DISC3\RESOURCE.AUD
-    file[]: crc = c1d2086c; size =  37410593; name = DISC3\RESOURCE.SFX
-    file[]: crc = eddf53f1; size =  35313750; name = DISC3\RESSCI.003
-    file[]: crc = 385063fe; size =         6; name = DISC3\VERSION
     file[]: crc = 8cd12e2c; size =   1494915; name = DISC3\MOVIES\120.VMD
     file[]: crc = 824d89c6; size =    596310; name = DISC3\MOVIES\160.VMD
     file[]: crc = 67019e07; size =    464001; name = DISC3\MOVIES\161.VMD
@@ -1765,25 +1421,14 @@ game[sol-gk2-eng-111]:
     file[]: crc = a58c32d0; size =   6745937; name = DISC3\MOVIES\4090.VMD
     file[]: crc = 017de7dd; size =  18736997; name = DISC3\MOVIES\4100.VMD
     file[]: crc = 82352e0b; size =   3216535; name = DISC3\MOVIES\4110.VMD
-    file[]: crc = d83637af; size =   1083546; name = DISC3\MOVIES\50.VMD
+    file[]: crc = d83637af; size =   1083546; name = DISC3\MOVIES\50.VMD/
     file[]: crc = 39a1089f; size =    207069; name = DISC3\MOVIES\610.VMD
     file[]: crc = b7f6ab45; size =    334918; name = DISC3\MOVIES\620.VMD
     file[]: crc = 6892e24a; size =    546230; name = DISC3\MOVIES\621.VMD
     file[]: crc = d8e0b58a; size =    767483; name = DISC3\MOVIES\630.VMD
     file[]: crc = cdf93436; size =    291048; name = DISC3\MOVIES\680.VMD
-    file[]: crc = 6b1ff14c; size =    922182; name = DISC3\MOVIES\90.VMD
-    file[]: crc = 8d62a373; size =    846585; name = DISC3\MOVIES\91.VMD
-    file[]: crc = aecb4677; size =      2700; name = DISC3\MOVIES\CH3.BAK
-    file[]: crc = 46462586; size =      4970; name = DISC3\MOVIES\CH3.BAT
-    file[]: crc = e03f5c68; size =     39424; name = DISC4\AUTOPLAY.EXE
-    file[]: crc = 883783c7; size =       605; name = DISC4\AUTORUN.INF
-    file[]: crc = 89fbc23e; size =        11; name = DISC4\GK2R1.004
-    file[]: crc = 1f387497; size =      2719; name = DISC4\RESMAP.004
-    file[]: crc = a629fda5; size =      2719; name = DISC4\RESMDT.004
-    file[]: crc = 8a0ec320; size =  81035281; name = DISC4\RESOURCE.AUD
-    file[]: crc = 1c479003; size =   9415907; name = DISC4\RESOURCE.SFX
-    file[]: crc = 929c0b26; size =  58317316; name = DISC4\RESSCI.004
-    file[]: crc = cc832cba; size =         4; name = DISC4\VERSION
+    file[]: crc = 6b1ff14c; size =    922182; name = DISC3\MOVIES\90.VMD/
+    file[]: crc = 8d62a373; size =    846585; name = DISC3\MOVIES\91.VMD/
     file[]: crc = c5fe6335; size =    287631; name = DISC4\MOVIES\1230.VMD
     file[]: crc = a5461dad; size =    244866; name = DISC4\MOVIES\1270.VMD
     file[]: crc = eaa49a64; size =    285846; name = DISC4\MOVIES\1271.VMD
@@ -1887,33 +1532,6 @@ game[sol-gk2-eng-111]:
     file[]: crc = e06f173f; size =   7255478; name = DISC4\MOVIES\5330.VMD
     file[]: crc = a7fb7a5f; size =    438659; name = DISC4\MOVIES\5340.VMD
     file[]: crc = be97e8bb; size =  16998828; name = DISC4\MOVIES\5370.VMD
-    file[]: crc = 4c4f4c13; size =  89235733; name = DISC4\MOVIES\6480.VMD
-    file[]: crc = 40911e47; size =      1874; name = DISC4\MOVIES\CH4.BAK
-    file[]: crc = 353c645f; size =      3439; name = DISC4\MOVIES\CH4.BAT
-    file[]: crc = daecf359; size =    806888; name = DISC4\ROBOT\10488.RBT
-    file[]: crc = 996bb85c; size =    540994; name = DISC4\ROBOT\10910.RBT
-    file[]: crc = e962971d; size =    782671; name = DISC4\ROBOT\10920.RBT
-    file[]: crc = 7adadb97; size =    412053; name = DISC4\ROBOT\11488.RBT
-    file[]: crc = cec975f1; size =    488532; name = DISC4\ROBOT\11519.RBT
-    file[]: crc = 3b726e91; size =    336749; name = DISC4\ROBOT\12910.RBT
-    file[]: crc = b6c7764a; size =    694122; name = DISC4\ROBOT\12920.RBT
-    file[]: crc = 3f65c3f0; size =    382135; name = DISC4\ROBOT\20920.RBT
-    file[]: crc = 52217b4d; size =    459527; name = DISC4\ROBOT\20950.RBT
-    file[]: crc = ad6febca; size =    348878; name = DISC4\ROBOT\22920.RBT
-    file[]: crc = c3068107; size =    431306; name = DISC4\ROBOT\22950.RBT
-    file[]: crc = b49b214f; size =    324754; name = DISC4\ROBOT\30930.RBT
-    file[]: crc = c22fdded; size =    544050; name = DISC4\ROBOT\30960.RBT
-    file[]: crc = 6bb61ca0; size =    191739; name = DISC4\ROBOT\32930.RBT
-    file[]: crc = eab2b1c5; size =    364637; name = DISC4\ROBOT\32960.RBT
-    file[]: crc = e03f5c68; size =     39424; name = DISC5\AUTOPLAY.EXE
-    file[]: crc = 883783c7; size =       605; name = DISC5\AUTORUN.INF
-    file[]: crc = 0d672d85; size =        11; name = DISC5\GK2R1.005
-    file[]: crc = 36b504e5; size =      2065; name = DISC5\RESMAP.005
-    file[]: crc = 0592d49b; size =      2065; name = DISC5\RESMDT.005
-    file[]: crc = 98a12b09; size =  31106234; name = DISC5\RESOURCE.AUD
-    file[]: crc = c544aedf; size =  46630950; name = DISC5\RESOURCE.SFX
-    file[]: crc = 96964d49; size =  38075705; name = DISC5\RESSCI.005
-    file[]: crc = 385063fe; size =         6; name = DISC5\VERSION
     file[]: crc = 2f1c202c; size =   1721523; name = DISC5\MOVIES\2430.VMD
     file[]: crc = 6b5ff678; size =   1446824; name = DISC5\MOVIES\2440.VMD
     file[]: crc = 01f9db92; size =   1635876; name = DISC5\MOVIES\3420.VMD
@@ -2073,277 +1691,28 @@ game[sol-gk2-eng-111]:
     file[]: crc = 127a926c; size =   1758059; name = DISC5\MOVIES\7030.VMD
     file[]: crc = 0a24fbba; size =  11509940; name = DISC5\MOVIES\7050.VMD
     file[]: crc = 30a149cd; size =   2726327; name = DISC5\MOVIES\7052.VMD
-    file[]: crc = fb9d840a; size =      2859; name = DISC5\MOVIES\CH5.BAK
-    file[]: crc = 97fbefe2; size =      5249; name = DISC5\MOVIES\CH5.BAT
-    file[]: crc = e03f5c68; size =     39424; name = DISC6\AUTOPLAY.EXE
-    file[]: crc = 883783c7; size =       605; name = DISC6\AUTORUN.INF
-    file[]: crc = 0177aef0; size =        10; name = DISC6\GK2R1.006
-    file[]: crc = 544c1c14; size =      2977; name = DISC6\RESMAP.006
-    file[]: crc = d2072b7f; size =      2977; name = DISC6\RESMDT.006
-    file[]: crc = ffaf656e; size =  41664566; name = DISC6\RESOURCE.AUD
-    file[]: crc = 1293fc5c; size =  11720427; name = DISC6\RESOURCE.SFX
-    file[]: crc = 46309a6d; size =  60659424; name = DISC6\RESSCI.006
-    file[]: crc = 385063fe; size =         6; name = DISC6\VERSION
-    file[]: crc = 098f689a; size =    335417; name = DISC6\MOVIES\1230.VMD
-    file[]: crc = a1b50ff8; size =   1829352; name = DISC6\MOVIES\1320.VMD
-    file[]: crc = d8aa1de8; size =    853872; name = DISC6\MOVIES\1330.VMD
-    file[]: crc = 70df1217; size =    454213; name = DISC6\MOVIES\1331.VMD
-    file[]: crc = 0aa56748; size =    223203; name = DISC6\MOVIES\1540.VMD
-    file[]: crc = 12b27f0e; size =    804998; name = DISC6\MOVIES\1582.VMD
-    file[]: crc = 1f4c8496; size =    394576; name = DISC6\MOVIES\1583.VMD
-    file[]: crc = e1c79f6d; size =   1613912; name = DISC6\MOVIES\4270.VMD
-    file[]: crc = c6b77bfc; size =   1698429; name = DISC6\MOVIES\4271.VMD
-    file[]: crc = 8bba321c; size =    406775; name = DISC6\MOVIES\4600.VMD
-    file[]: crc = bd19fcab; size =    335095; name = DISC6\MOVIES\4601.VMD
     file[]: crc = a3280a35; size =  54075816; name = DISC6\MOVIES\7180.VMD
-    file[]: crc = daec70bf; size =   2036115; name = DISC6\MOVIES\7510.VMD
-    file[]: crc = fa9b1490; size =   1865607; name = DISC6\MOVIES\7520.VMD
-    file[]: crc = e55478a6; size =  16149803; name = DISC6\MOVIES\7541.VMD
-    file[]: crc = 7562c2bd; size =   7296593; name = DISC6\MOVIES\7550.VMD
-    file[]: crc = 720d6275; size =   4716753; name = DISC6\MOVIES\7560.VMD
-    file[]: crc = d719fe9f; size =   3383885; name = DISC6\MOVIES\7570.VMD
-    file[]: crc = 9b3ccb49; size =   3868415; name = DISC6\MOVIES\7580.VMD
-    file[]: crc = e0423ea8; size =   6891225; name = DISC6\MOVIES\7590.VMD
-    file[]: crc = 459dc70b; size =   3102245; name = DISC6\MOVIES\7600.VMD
-    file[]: crc = d6a7c4d1; size =   4862709; name = DISC6\MOVIES\7610.VMD
-    file[]: crc = edfe557f; size =   1645739; name = DISC6\MOVIES\7640.VMD
-    file[]: crc = e7cd6d6f; size =   1316314; name = DISC6\MOVIES\7650.VMD
-    file[]: crc = 0362cb89; size =   1138623; name = DISC6\MOVIES\7660.VMD
-    file[]: crc = 1012cff9; size =   4401866; name = DISC6\MOVIES\7670.VMD
-    file[]: crc = 6ab0b99b; size =   1723695; name = DISC6\MOVIES\7690.VMD
-    file[]: crc = ebe8c963; size =   3290403; name = DISC6\MOVIES\7700.VMD
-    file[]: crc = 6ae3bbef; size =   7969820; name = DISC6\MOVIES\7710.VMD
-    file[]: crc = eedc39de; size =   1145560; name = DISC6\MOVIES\7720.VMD
-    file[]: crc = e26add58; size =   2296320; name = DISC6\MOVIES\7760.VMD
-    file[]: crc = fd9d2a9e; size =    948259; name = DISC6\MOVIES\7770.VMD
-    file[]: crc = 755a7afe; size =   1368805; name = DISC6\MOVIES\7790.VMD
-    file[]: crc = 088e6a73; size =   2909146; name = DISC6\MOVIES\7810.VMD
-    file[]: crc = bc57ff06; size =   1113141; name = DISC6\MOVIES\7820.VMD
-    file[]: crc = 80dc49fa; size =   1947622; name = DISC6\MOVIES\7830.VMD
-    file[]: crc = 5e1a3fdb; size =   3501742; name = DISC6\MOVIES\7840.VMD
-    file[]: crc = cddd8088; size =   3104434; name = DISC6\MOVIES\7850.VMD
-    file[]: crc = db7af7ad; size =    774319; name = DISC6\MOVIES\7870.VMD
-    file[]: crc = 14df3bf8; size =    508495; name = DISC6\MOVIES\7871.VMD
-    file[]: crc = f0e1fa37; size =    369297; name = DISC6\MOVIES\7880.VMD
-    file[]: crc = 86f56d18; size =    339434; name = DISC6\MOVIES\7881.VMD
-    file[]: crc = 4183e206; size =    578684; name = DISC6\MOVIES\7890.VMD
-    file[]: crc = ef600887; size =    576001; name = DISC6\MOVIES\7910.VMD
-    file[]: crc = 80f8676b; size =    177429; name = DISC6\MOVIES\7920.VMD
-    file[]: crc = 32250061; size =   1856668; name = DISC6\MOVIES\7921.VMD
-    file[]: crc = 88c99ef4; size =   4123314; name = DISC6\MOVIES\7930.VMD
-    file[]: crc = dcac69b6; size =   1271262; name = DISC6\MOVIES\7940.VMD
-    file[]: crc = aad3efa2; size =   1300772; name = DISC6\MOVIES\7950.VMD
-    file[]: crc = b523cb53; size =   3895279; name = DISC6\MOVIES\7960.VMD
-    file[]: crc = c0b00d7a; size =   4166910; name = DISC6\MOVIES\7970.VMD
-    file[]: crc = 2ceaf01e; size =   3043118; name = DISC6\MOVIES\7980.VMD
-    file[]: crc = 8fbaeb81; size =   1593970; name = DISC6\MOVIES\8000.VMD
-    file[]: crc = c839e6f4; size =   1725818; name = DISC6\MOVIES\8001.VMD
-    file[]: crc = 21dd4b50; size =   3911727; name = DISC6\MOVIES\8010.VMD
-    file[]: crc = a3d1e75c; size =   3625726; name = DISC6\MOVIES\8020.VMD
-    file[]: crc = 930b7db7; size =  10382528; name = DISC6\MOVIES\8030.VMD
-    file[]: crc = dda62174; size =   1199020; name = DISC6\MOVIES\8040.VMD
-    file[]: crc = efb4f52c; size =    728494; name = DISC6\MOVIES\8050.VMD
-    file[]: crc = 8c8a8d20; size =    859896; name = DISC6\MOVIES\8051.VMD
-    file[]: crc = 7da8cd75; size =  11406583; name = DISC6\MOVIES\8070.VMD
-    file[]: crc = de69a2bb; size =   3732416; name = DISC6\MOVIES\8080.VMD
-    file[]: crc = 0439143b; size =    172932; name = DISC6\MOVIES\8180.VMD
-    file[]: crc = e8a6534e; size =   1730487; name = DISC6\MOVIES\8190.VMD
-    file[]: crc = d320c14d; size =   2046997; name = DISC6\MOVIES\8230.VMD
-    file[]: crc = 2c1895b6; size =   3113920; name = DISC6\MOVIES\8240.VMD
-    file[]: crc = e1ad064c; size =    945260; name = DISC6\MOVIES\8260.VMD
-    file[]: crc = f37adc2a; size =    996209; name = DISC6\MOVIES\8270.VMD
-    file[]: crc = a996d568; size =    737901; name = DISC6\MOVIES\8280.VMD
-    file[]: crc = fd0202a4; size =    451065; name = DISC6\MOVIES\8281.VMD
-    file[]: crc = 2949831e; size =   2578361; name = DISC6\MOVIES\8290.VMD
-    file[]: crc = dec4b645; size =   2355548; name = DISC6\MOVIES\8300.VMD
-    file[]: crc = 072a1df2; size =  15539992; name = DISC6\MOVIES\8310.VMD
-    file[]: crc = c4b9a457; size =   5338095; name = DISC6\MOVIES\8330.VMD
-    file[]: crc = 8416b4d5; size =   8923797; name = DISC6\MOVIES\8340.VMD
-    file[]: crc = a3bddc27; size =   2939041; name = DISC6\MOVIES\8350.VMD
-    file[]: crc = fdfee8c7; size =  23257048; name = DISC6\MOVIES\8360.VMD
-    file[]: crc = 0bd77d94; size =   7088151; name = DISC6\MOVIES\8380.VMD
-    file[]: crc = 45d48787; size =   3398150; name = DISC6\MOVIES\8390.VMD
-    file[]: crc = 7c7f5f85; size =    460490; name = DISC6\MOVIES\8400.VMD
-    file[]: crc = b4a841c6; size =    318256; name = DISC6\MOVIES\8401.VMD
-    file[]: crc = fc3fad34; size =   2597465; name = DISC6\MOVIES\8402.VMD
-    file[]: crc = 3b525eac; size =   2514824; name = DISC6\MOVIES\8403.VMD
-    file[]: crc = 595caf57; size =   2151212; name = DISC6\MOVIES\8410.VMD
-    file[]: crc = a57175f4; size =   1959702; name = DISC6\MOVIES\8411.VMD
-    file[]: crc = 6e1c321d; size =  11392572; name = DISC6\MOVIES\8420.VMD
-    file[]: crc = 7ee7bef2; size =   5033218; name = DISC6\MOVIES\8440.VMD
-    file[]: crc = 152e11a5; size =  24023635; name = DISC6\MOVIES\8450.VMD
-    file[]: crc = be463abd; size =   1004182; name = DISC6\MOVIES\8470.VMD
-    file[]: crc = bae02fc6; size =    882656; name = DISC6\MOVIES\8480.VMD
-    file[]: crc = 99d1be14; size =   2633475; name = DISC6\MOVIES\8500.VMD
-    file[]: crc = c6b086ee; size =   2837526; name = DISC6\MOVIES\8510.VMD
-    file[]: crc = ed834534; size =    877683; name = DISC6\MOVIES\8530.VMD
-    file[]: crc = 78c0f6d3; size =    115403; name = DISC6\MOVIES\8531.VMD
-    file[]: crc = 532cfe14; size =   2400568; name = DISC6\MOVIES\8540.VMD
-    file[]: crc = 17e76a2a; size =   3521203; name = DISC6\MOVIES\8550.VMD
-    file[]: crc = 98b9659d; size =   1767474; name = DISC6\MOVIES\8610.VMD
-    file[]: crc = 790a8c65; size =    300220; name = DISC6\MOVIES\8611.VMD
-    file[]: crc = aee5cb3f; size =    295338; name = DISC6\MOVIES\8612.VMD
-    file[]: crc = 65fc12b8; size =   1015336; name = DISC6\MOVIES\8660.VMD
-    file[]: crc = ab24bec2; size =    631296; name = DISC6\MOVIES\8670.VMD
-    file[]: crc = bcc2693b; size =   1099693; name = DISC6\MOVIES\8690.VMD
-    file[]: crc = 4456e31e; size =    885583; name = DISC6\MOVIES\8691.VMD
-    file[]: crc = 81e542fb; size =    933438; name = DISC6\MOVIES\8700.VMD
-    file[]: crc = f03f1bbf; size =    835724; name = DISC6\MOVIES\8710.VMD
-    file[]: crc = db798450; size =   2470914; name = DISC6\MOVIES\8720.VMD
-    file[]: crc = f7d0d10e; size =    335271; name = DISC6\MOVIES\8750.VMD
-    file[]: crc = 45cf981c; size =    702235; name = DISC6\MOVIES\8751.VMD
-    file[]: crc = 0b75403e; size =    285916; name = DISC6\MOVIES\8760.VMD
-    file[]: crc = 5b90e232; size =    694815; name = DISC6\MOVIES\8761.VMD
-    file[]: crc = a0650f6c; size =   3903212; name = DISC6\MOVIES\8770.VMD
-    file[]: crc = b9e6126d; size =   2994452; name = DISC6\MOVIES\8780.VMD
-    file[]: crc = 7c671bca; size =    372161; name = DISC6\MOVIES\8790.VMD
-    file[]: crc = 0f87264c; size =    398831; name = DISC6\MOVIES\8791.VMD
-    file[]: crc = 66da00ee; size =   3533937; name = DISC6\MOVIES\8800.VMD
-    file[]: crc = 69f69085; size =   6165727; name = DISC6\MOVIES\8810.VMD
-    file[]: crc = 5b312f89; size =   2888444; name = DISC6\MOVIES\8830.VMD
-    file[]: crc = e0f413d8; size =   3727212; name = DISC6\MOVIES\8840.VMD
-    file[]: crc = 7c062715; size =   1688937; name = DISC6\MOVIES\8860.VMD
-    file[]: crc = cdf124f3; size =   1684936; name = DISC6\MOVIES\8870.VMD
-    file[]: crc = b216dc34; size =   4362261; name = DISC6\MOVIES\8880.VMD
-    file[]: crc = 535277a2; size =   3842936; name = DISC6\MOVIES\8890.VMD
-    file[]: crc = 430d1295; size =   4430179; name = DISC6\MOVIES\8900.VMD
-    file[]: crc = 333de50c; size =   4966288; name = DISC6\MOVIES\8910.VMD
-    file[]: crc = 527ecdd1; size =   8837790; name = DISC6\MOVIES\8920.VMD
-    file[]: crc = 68a46340; size =   2606310; name = DISC6\MOVIES\8930.VMD
-    file[]: crc = 3c1b5f37; size =   2848481; name = DISC6\MOVIES\8940.VMD
-    file[]: crc = 8b712bd3; size =   2879613; name = DISC6\MOVIES\8950.VMD
-    file[]: crc = eaf939d7; size =   7141774; name = DISC6\MOVIES\8960.VMD
-    file[]: crc = 4368c797; size =   1340880; name = DISC6\MOVIES\8980.VMD
-    file[]: crc = b9781f4d; size =   1260271; name = DISC6\MOVIES\8990.VMD
-    file[]: crc = b8892b70; size =    786716; name = DISC6\MOVIES\9000.VMD
-    file[]: crc = 4f387115; size =    479013; name = DISC6\MOVIES\9001.VMD
-    file[]: crc = f61a4e0a; size =    350762; name = DISC6\MOVIES\9002.VMD
-    file[]: crc = 31a23744; size =   1305728; name = DISC6\MOVIES\9010.VMD
-    file[]: crc = b6694acd; size =   1203048; name = DISC6\MOVIES\9011.VMD
-    file[]: crc = 7ed7d257; size =    782312; name = DISC6\MOVIES\9020.VMD
-    file[]: crc = 2e68929d; size =   4509136; name = DISC6\MOVIES\9030.VMD
-    file[]: crc = ca86d46c; size =   1278060; name = DISC6\MOVIES\9040.VMD
-    file[]: crc = f0311b8f; size =   2192117; name = DISC6\MOVIES\9050.VMD
-    file[]: crc = 0d34a775; size =    667015; name = DISC6\MOVIES\9060.VMD
-    file[]: crc = a1c38113; size =    702760; name = DISC6\MOVIES\9061.VMD
-    file[]: crc = 2a65a106; size =    489295; name = DISC6\MOVIES\9070.VMD
-    file[]: crc = 22f6d8be; size =   1172670; name = DISC6\MOVIES\9071.VMD
-    file[]: crc = 4e936f46; size =    887378; name = DISC6\MOVIES\9160.VMD
-    file[]: crc = 19af0410; size =   4420670; name = DISC6\MOVIES\9180.VMD
-    file[]: crc = 1068773d; size =   2115783; name = DISC6\MOVIES\9190.VMD
-    file[]: crc = 7b50694b; size =   2935143; name = DISC6\MOVIES\9200.VMD
-    file[]: crc = d291dc5c; size =   2745670; name = DISC6\MOVIES\9210.VMD
-    file[]: crc = d9636219; size =   3338805; name = DISC6\MOVIES\9220.VMD
-    file[]: crc = 2245d6d4; size =   5093012; name = DISC6\MOVIES\9230.VMD
-    file[]: crc = 5fdcc829; size =   5920541; name = DISC6\MOVIES\9240.VMD
-    file[]: crc = bd10efae; size =   1241238; name = DISC6\MOVIES\9250.VMD
-    file[]: crc = 857a11fa; size =   1146278; name = DISC6\MOVIES\9260.VMD
-    file[]: crc = 2500f6b4; size =   3145024; name = DISC6\MOVIES\9280.VMD
-    file[]: crc = 97d443e0; size =   2886221; name = DISC6\MOVIES\9290.VMD
-    file[]: crc = 8bb9ed8a; size =      2810; name = DISC6\MOVIES\CH6.BAK
-    file[]: crc = b3d19c30; size =      5155; name = DISC6\MOVIES\CH6.BAT
-    file[]: crc = 996bb85c; size =    540994; name = DISC6\ROBOT\10910.RBT
-    file[]: crc = e962971d; size =    782671; name = DISC6\ROBOT\10920.RBT
-    file[]: crc = 3b726e91; size =    336749; name = DISC6\ROBOT\12910.RBT
-    file[]: crc = b6c7764a; size =    694122; name = DISC6\ROBOT\12920.RBT
-    file[]: crc = 3f65c3f0; size =    382135; name = DISC6\ROBOT\20920.RBT
-    file[]: crc = 52217b4d; size =    459527; name = DISC6\ROBOT\20950.RBT
-    file[]: crc = ad6febca; size =    348878; name = DISC6\ROBOT\22920.RBT
-    file[]: crc = c3068107; size =    431306; name = DISC6\ROBOT\22950.RBT
-    file[]: crc = b49b214f; size =    324754; name = DISC6\ROBOT\30930.RBT
-    file[]: crc = 356efc2e; size =    407910; name = DISC6\ROBOT\30960.RBT
-    file[]: crc = 6bb61ca0; size =    191739; name = DISC6\ROBOT\32930.RBT
-    file[]: crc = 1d6f4fce; size =    331595; name = DISC6\ROBOT\32960.RBT
 end    
 
-
 //
-// English version 1.11 (Windows)
+// v1.0, French
 //
-game[sol-gk2-eng-111-win]:
-    name = English 1.11 (Windows)
-    anchorfile = SIERRAW.EXE
-    anchordepth = 2
+game[v1.0-fr]:
+    name = v1.0, French
     LANGUAGE = 1
-    imports = sol-gk2-eng-111, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
-    file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
-end
-
-
-//
-// French version 1.0
-//
-game[sol-gk2-fra-10]:
-    name = French 1.0 (DOS)
-    anchorfile = 100.VMD
-    anchordepth = 2
-    imports = common10    
-    LANGUAGE = 1
-    file[]: crc = 6e225826; size =     22064; name = 991.AUD
-    file[]: crc = 253e5a22; size =      4404; name = DACBLAST.DRV
-    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
-    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
-    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
-    file[]: crc = 7b42d20c; size =      8504; name = DACRRA.DRV
-    file[]: crc = 5d282f48; size =      6659; name = HAVEVESA.EXE
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE
-    file[]: crc = f94d63f1; size =     21170; name = INSTALL.HLP
-    file[]: crc = 25ebc2bb; size =     10062; name = INSTALL.TXT
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    imports = v1.0-base, v1.0
+    anchorfile = SIERRA.EXE
     file[]: crc = 46b89461; size =      8401; name = RESMAP.PAT
     file[]: crc = cb8e6b03; size =      8401; name = RESMDT.PAT
     file[]: crc = 16a57cd8; size =  13316895; name = RESSCI.PAT
-    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 5786c128; size =    818903; name = SIERRA.EXE
-    file[]: crc = 3731ecd2; size =    260250; name = UVCONFIG.EXE
+    file[]: crc = fab13879; size =    715504; name = SIERRAW.EXE
     file[]: crc = ff6b9ecc; size =         6; name = VERSION
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = 471a65bf; size =       716; name = DISC1\11853.HEP
-    file[]: crc = 2d80b5fb; size =       906; name = DISC1\11853.SCR
-    file[]: crc = 73ace4f4; size =    307945; name = DISC1\13036.P56
-    file[]: crc = b16aa9a7; size =     31256; name = DISC1\140.V56
-    file[]: crc = a9e62cd2; size =    257548; name = DISC1\50360.WAV
-    file[]: crc = 40cb16ee; size =    206824; name = DISC1\AUTOPLAY.BMP
-    file[]: crc = e03f5c68; size =     39424; name = DISC1\AUTOPLAY.EXE
-    file[]: crc = b1cc1213; size =       651; name = DISC1\AUTORUN.INF
-    file[]: crc = f177d3b5; size =      9333; name = DISC1\COPYMEGS.EXE
-    file[]: crc = a03cdf9e; size =       995; name = DISC1\COPYMEGS.PIF
-    file[]: crc = 3eb0cdbd; size =       766; name = DISC1\GK2.ICO
-    file[]: crc = 14a285ac; size =         2; name = DISC1\GK2R1.001
-    file[]: crc = f85a03f3; size =     77682; name = DISC1\HDDTEC.EXE
-    file[]: crc = a358a118; size =      4704; name = DISC1\INSTALL.SCR
-    file[]: crc = 64492198; size =      3714; name = DISC1\MIDITEST.MID
-    file[]: crc = 53b0a2cc; size =     25189; name = DISC1\README
-    file[]: crc = 90549934; size =        14; name = DISC1\README.BAT
-    file[]: crc = a91f50d6; size =    381952; name = DISC1\README.WRI
     file[]: crc = 8b70bfcb; size =      2800; name = DISC1\RESMAP.001
     file[]: crc = 571e56b6; size =      2800; name = DISC1\RESMDT.001
     file[]: crc = c828185d; size =  21810559; name = DISC1\RESOURCE.AUD
     file[]: crc = 5637655e; size =  18777127; name = DISC1\RESOURCE.SFX
     file[]: crc = fdacabee; size =  50810410; name = DISC1\RESSCI.001
-    file[]: crc = 40f50f2f; size =    143642; name = DISC1\SCIDLL.DLL
-    file[]: crc = de876a90; size =     31168; name = DISC1\SETUP.EXE
-    file[]: crc = 176b315b; size =   1018577; name = DISC1\SETUP.SOL
-    file[]: crc = 3921edf1; size =      2980; name = DISC1\SIERRA.INF
-    file[]: crc = fab13879; size =    715504; name = DISC1\SIERRAW.EXE
-    file[]: crc = c1c67707; size =      2648; name = DISC1\ENGLISH\LANGUAGE.INF
-    file[]: crc = b9e5028e; size =    198784; name = DISC1\ENGLISH\README.WRI
-    file[]: crc = c2a1ddfd; size =      3078; name = DISC1\FRENCH\LANGUAGE.INF
-    file[]: crc = a91f50d6; size =    381952; name = DISC1\FRENCH\README.WRI
-    file[]: crc = 62d6271b; size =      2593; name = DISC1\GERMAN\LANGUAGE.INF
-    file[]: crc = 40e56388; size =     51840; name = DISC1\GERMAN\README.WRI
     file[]: crc = 8d37ddbd; size =   5491257; name = DISC1\MOVIES\100.VMD
     file[]: crc = 7d91f328; size =   3216024; name = DISC1\MOVIES\1000.VMD
     file[]: crc = ded70520; size =   1544162; name = DISC1\MOVIES\1010.VMD
@@ -2426,7 +1795,6 @@ game[sol-gk2-fra-10]:
     file[]: crc = 939abeda; size =   2740604; name = DISC1\MOVIES\9311.VMD
     file[]: crc = 7a70b758; size =   2852432; name = DISC1\MOVIES\9312.VMD
     file[]: crc = 9b834a31; size =   3298535; name = DISC1\MOVIES\9330.VMD
-    file[]: crc = 2d01a1ad; size =   3287108; name = DISC1\MOVIES\9331.VMD
     file[]: crc = 8d649458; size =   2714579; name = DISC1\MOVIES\9340.VMD
     file[]: crc = c9771dd9; size =   1532762; name = DISC1\MOVIES\9350.VMD
     file[]: crc = ca6501c8; size =   1323580; name = DISC1\MOVIES\9380.VMD
@@ -2439,20 +1807,10 @@ game[sol-gk2-fra-10]:
     file[]: crc = 47943bb8; size =   4688552; name = DISC1\MOVIES\980.VMD
     file[]: crc = a8e33ffb; size =  15896253; name = DISC1\MOVIES\990.VMD
     file[]: crc = bed54c53; size =  15945704; name = DISC1\MOVIES\991.VMD
-    file[]: crc = 471a65bf; size =       716; name = DISC2\11853.HEP
-    file[]: crc = 2d80b5fb; size =       906; name = DISC2\11853.SCR
-    file[]: crc = b16aa9a7; size =     31256; name = DISC2\140.V56
-    file[]: crc = eaaf0f29; size =    206513; name = DISC2\8349.P56
-    file[]: crc = d5180025; size =    206797; name = DISC2\8648.P56
-    file[]: crc = f5ceb3f0; size =    644284; name = DISC2\A1JK6G1Q.003
-    file[]: crc = 8b84f711; size =    205289; name = DISC2\A1JK6G1Q.005
-    file[]: crc = 34b05efd; size =    149072; name = DISC2\A1JK6R1Q.001
-    file[]: crc = 883783c7; size =       605; name = DISC2\AUTORUN.INF
     file[]: crc = d0b3b703; size =      1987; name = DISC2\RESMAP.002
     file[]: crc = 75797d68; size =      1987; name = DISC2\RESMDT.002
     file[]: crc = 3f535091; size =  27320184; name = DISC2\RESOURCE.AUD
     file[]: crc = c7bad734; size =  41367424; name = DISC2\RESSCI.002
-    file[]: crc = ff6b9ecc; size =         6; name = DISC2\VERSION
     file[]: crc = 70ab3755; size =  31299761; name = DISC2\MOVIES\1170.VMD
     file[]: crc = 3dd20b97; size =   2451754; name = DISC2\MOVIES\1190.VMD
     file[]: crc = 0c57f319; size =   1149986; name = DISC2\MOVIES\1250.VMD
@@ -2471,22 +1829,12 @@ game[sol-gk2-fra-10]:
     file[]: crc = b69b9b38; size =   2854717; name = DISC2\MOVIES\1450.VMD
     file[]: crc = 9ce81ab4; size =   2456382; name = DISC2\MOVIES\1460.VMD
     file[]: crc = 348897cd; size =   2500143; name = DISC2\MOVIES\1490.VMD
-    file[]: crc = 61bd4dd5; size =    867966; name = DISC2\MOVIES\1490.WAV
-    file[]: crc = 39ba6b3f; size =   1180155; name = DISC2\MOVIES\1500.VMD
-    file[]: crc = 9a25fa0c; size =    779033; name = DISC2\MOVIES\1501.VMD
-    file[]: crc = 9cde35de; size =   1544058; name = DISC2\MOVIES\1510.VMD
-    file[]: crc = 1eca1a15; size =   1543162; name = DISC2\MOVIES\1511.VMD
-    file[]: crc = 1d5d517a; size =   2889587; name = DISC2\MOVIES\1520.VMD
-    file[]: crc = ec909ecf; size =   2180758; name = DISC2\MOVIES\1530.VMD
-    file[]: crc = 0aa56748; size =    223203; name = DISC2\MOVIES\1540.VMD
     file[]: crc = 0689ca5f; size =  18169057; name = DISC2\MOVIES\1550.VMD
     file[]: crc = f1a57c24; size =   2278189; name = DISC2\MOVIES\1560.VMD
     file[]: crc = 77b299ab; size =   2065866; name = DISC2\MOVIES\1570.VMD
     file[]: crc = 050086ca; size =   1561974; name = DISC2\MOVIES\1571.VMD
     file[]: crc = 152760af; size =   1306705; name = DISC2\MOVIES\1580.VMD
     file[]: crc = 978bed54; size =   5355701; name = DISC2\MOVIES\1581.VMD
-    file[]: crc = 12b27f0e; size =    804998; name = DISC2\MOVIES\1582.VMD
-    file[]: crc = 1f4c8496; size =    394576; name = DISC2\MOVIES\1583.VMD
     file[]: crc = cf4c64bd; size =   2344644; name = DISC2\MOVIES\1590.VMD
     file[]: crc = 36029d18; size =   7027856; name = DISC2\MOVIES\1600.VMD
     file[]: crc = 1b6d492a; size =    678051; name = DISC2\MOVIES\1640.VMD
@@ -2495,7 +1843,6 @@ game[sol-gk2-fra-10]:
     file[]: crc = 972453de; size =    766076; name = DISC2\MOVIES\1670.VMD
     file[]: crc = 7d3ac5a8; size =   1803337; name = DISC2\MOVIES\1680.VMD
     file[]: crc = 65acdfd5; size =   1206213; name = DISC2\MOVIES\1690.VMD
-    file[]: crc = 897c37e4; size =    723928; name = DISC2\MOVIES\1720.VMD
     file[]: crc = bc0a63af; size =   1958356; name = DISC2\MOVIES\1730.VMD
     file[]: crc = 4f01ee65; size =   2570497; name = DISC2\MOVIES\1740.VMD
     file[]: crc = ef45420f; size =   1201750; name = DISC2\MOVIES\1750.VMD
@@ -2513,9 +1860,7 @@ game[sol-gk2-fra-10]:
     file[]: crc = ded776f2; size =   7232804; name = DISC2\MOVIES\1870.VMD
     file[]: crc = 686925df; size =   6064593; name = DISC2\MOVIES\1880.VMD
     file[]: crc = 308d0766; size =   6187496; name = DISC2\MOVIES\1890.VMD
-    file[]: crc = 4e0ac740; size =    757241; name = DISC2\MOVIES\1900.VMD
     file[]: crc = a41c4d43; size =    619551; name = DISC2\MOVIES\1910.VMD
-    file[]: crc = d18c6bf2; size =    900583; name = DISC2\MOVIES\1920.VMD
     file[]: crc = b9ee8a06; size =   5049271; name = DISC2\MOVIES\1930.VMD
     file[]: crc = d22bf71d; size =   1675866; name = DISC2\MOVIES\1940.VMD
     file[]: crc = d4c9ab82; size =  30141647; name = DISC2\MOVIES\1950.VMD
@@ -2535,29 +1880,17 @@ game[sol-gk2-fra-10]:
     file[]: crc = 5085fefc; size =   8979852; name = DISC2\MOVIES\2090.VMD
     file[]: crc = 555740f6; size =   7814038; name = DISC2\MOVIES\2110.VMD
     file[]: crc = e87569f1; size =   2660264; name = DISC2\MOVIES\2120.VMD
-    file[]: crc = 1240ce19; size =    332957; name = DISC2\MOVIES\2130.VMD
-    file[]: crc = b732536f; size =    308815; name = DISC2\MOVIES\2131.VMD
     file[]: crc = 047f8c1f; size =   1014713; name = DISC2\MOVIES\2140.VMD
     file[]: crc = 26968767; size =    970379; name = DISC2\MOVIES\2170.VMD
     file[]: crc = 3faa1b11; size =   2975452; name = DISC2\MOVIES\2180.VMD
     file[]: crc = ff31bb2a; size =   2551405; name = DISC2\MOVIES\2190.VMD
     file[]: crc = 10599de3; size =  37330475; name = DISC2\MOVIES\2200.VMD
-    file[]: crc = 6d79df02; size =   9899948; name = DISC2\MOVIES\2230.VMD
-    file[]: crc = 8bba321c; size =    406775; name = DISC2\MOVIES\4600.VMD
-    file[]: crc = 25ff2fc6; size =    335095; name = DISC2\MOVIES\4601.VMD
     file[]: crc = 4f6837e7; size = 117088306; name = DISC2\MOVIES\9430.VMD
-    file[]: crc = 471a65bf; size =       716; name = DISC3\11853.HEP
-    file[]: crc = 2d80b5fb; size =       906; name = DISC3\11853.SCR
-    file[]: crc = 73ace4f4; size =    307945; name = DISC3\13036.P56
-    file[]: crc = b16aa9a7; size =     31256; name = DISC3\140.V56
-    file[]: crc = a9e62cd2; size =    257548; name = DISC3\50360.WAV
-    file[]: crc = 883783c7; size =       605; name = DISC3\AUTORUN.INF
     file[]: crc = 22f69d6e; size =      1699; name = DISC3\RESMAP.003
     file[]: crc = d82d503c; size =      1699; name = DISC3\RESMDT.003
     file[]: crc = bba7882e; size =  24127746; name = DISC3\RESOURCE.AUD
     file[]: crc = 812b243e; size =  42551334; name = DISC3\RESOURCE.SFX
     file[]: crc = 130f1c72; size =  35200452; name = DISC3\RESSCI.003
-    file[]: crc = ff6b9ecc; size =         6; name = DISC3\VERSION
     file[]: crc = d73c10ef; size =   5420729; name = DISC3\MOVIES\2320.VMD
     file[]: crc = d6f0af90; size =   9090088; name = DISC3\MOVIES\2330.VMD
     file[]: crc = c9b05a9d; size =   2431790; name = DISC3\MOVIES\2360.VMD
@@ -2670,20 +2003,11 @@ game[sol-gk2-fra-10]:
     file[]: crc = 49e5f42b; size =   6241242; name = DISC3\MOVIES\4080.VMD
     file[]: crc = 99f9f9c9; size =   7125281; name = DISC3\MOVIES\4090.VMD
     file[]: crc = c465520f; size =  20241005; name = DISC3\MOVIES\4100.VMD
-    file[]: crc = 471a65bf; size =       716; name = DISC4\11853.HEP
-    file[]: crc = 2d80b5fb; size =       906; name = DISC4\11853.SCR
-    file[]: crc = b16aa9a7; size =     31256; name = DISC4\140.V56
-    file[]: crc = eaaf0f29; size =    206513; name = DISC4\8349.P56
-    file[]: crc = d5180025; size =    206797; name = DISC4\8648.P56
-    file[]: crc = 15dc0fda; size =    691044; name = DISC4\A1JK381Q.001
-    file[]: crc = 34b05efd; size =    149072; name = DISC4\A1JK6R1Q.001
-    file[]: crc = 883783c7; size =       605; name = DISC4\AUTORUN.INF
     file[]: crc = 4e903730; size =      2743; name = DISC4\RESMAP.004
     file[]: crc = 0ef8fdd8; size =      2743; name = DISC4\RESMDT.004
     file[]: crc = 0ae6ffd6; size =  76668746; name = DISC4\RESOURCE.AUD
     file[]: crc = 9e34076f; size =   9322294; name = DISC4\RESOURCE.SFX
     file[]: crc = ac8fe3fe; size =  58988750; name = DISC4\RESSCI.004
-    file[]: crc = ff6b9ecc; size =         6; name = DISC4\VERSION
     file[]: crc = 1b6d492a; size =    678051; name = DISC4\MOVIES\1640.VMD
     file[]: crc = ef45420f; size =   1201750; name = DISC4\MOVIES\1750.VMD
     file[]: crc = d0ef42cc; size =   1359066; name = DISC4\MOVIES\1760.VMD
@@ -2758,43 +2082,15 @@ game[sol-gk2-fra-10]:
     file[]: crc = 9aeb1f88; size =   8958914; name = DISC4\MOVIES\5330.VMD
     file[]: crc = 29418a91; size =  21135453; name = DISC4\MOVIES\5370.VMD
     file[]: crc = d2569dfc; size =  89626001; name = DISC4\MOVIES\6480.VMD
-    file[]: crc = daecf359; size =    806888; name = DISC4\ROBOT\10488.RBT
-    file[]: crc = 996bb85c; size =    540994; name = DISC4\ROBOT\10910.RBT
-    file[]: crc = e962971d; size =    782671; name = DISC4\ROBOT\10920.RBT
-    file[]: crc = 7adadb97; size =    412053; name = DISC4\ROBOT\11488.RBT
-    file[]: crc = cec975f1; size =    488532; name = DISC4\ROBOT\11519.RBT
-    file[]: crc = 3b726e91; size =    336749; name = DISC4\ROBOT\12910.RBT
-    file[]: crc = b6c7764a; size =    694122; name = DISC4\ROBOT\12920.RBT
-    file[]: crc = 3f65c3f0; size =    382135; name = DISC4\ROBOT\20920.RBT
-    file[]: crc = 52217b4d; size =    459527; name = DISC4\ROBOT\20950.RBT
-    file[]: crc = ad6febca; size =    348878; name = DISC4\ROBOT\22920.RBT
-    file[]: crc = c3068107; size =    431306; name = DISC4\ROBOT\22950.RBT
-    file[]: crc = b49b214f; size =    324754; name = DISC4\ROBOT\30930.RBT
-    file[]: crc = c22fdded; size =    544050; name = DISC4\ROBOT\30960.RBT
-    file[]: crc = 6bb61ca0; size =    191739; name = DISC4\ROBOT\32930.RBT
-    file[]: crc = eab2b1c5; size =    364637; name = DISC4\ROBOT\32960.RBT
-    file[]: crc = 471a65bf; size =       716; name = DISC5\11853.HEP
-    file[]: crc = 2d80b5fb; size =       906; name = DISC5\11853.SCR
-    file[]: crc = a7843025; size =    307969; name = DISC5\12090.P56
-    file[]: crc = 0e2852ce; size =      8869; name = DISC5\12090.V56
-    file[]: crc = 73ace4f4; size =    307945; name = DISC5\13036.P56
-    file[]: crc = b16aa9a7; size =     31256; name = DISC5\140.V56
-    file[]: crc = a9e62cd2; size =    257548; name = DISC5\50360.WAV
-    file[]: crc = 9bdfd199; size =     30317; name = DISC5\818.V56
-    file[]: crc = 693d1c7e; size =     67738; name = DISC5\A0EG0E1Q.001
-    file[]: crc = 883783c7; size =       605; name = DISC5\AUTORUN.INF
     file[]: crc = 2900e03d; size =      2077; name = DISC5\RESMAP.005
     file[]: crc = 402e3a66; size =      2077; name = DISC5\RESMDT.005
     file[]: crc = 3b70b0a6; size =  29553369; name = DISC5\RESOURCE.AUD
     file[]: crc = 9be2278c; size =  55565732; name = DISC5\RESOURCE.SFX
     file[]: crc = 929f5527; size =  37882126; name = DISC5\RESSCI.005
-    file[]: crc = ff6b9ecc; size =         6; name = DISC5\VERSION
-    file[]: crc = a7f86c3a; size =       464; name = DISC5\MOVIES\2430.LNK
     file[]: crc = 3148ba9a; size =   2093236; name = DISC5\MOVIES\2430.VMD
     file[]: crc = a64a6943; size =   1721934; name = DISC5\MOVIES\2440.VMD
     file[]: crc = d3e2c48b; size =   1893043; name = DISC5\MOVIES\3420.VMD
     file[]: crc = 97ef8700; size =  35748419; name = DISC5\MOVIES\5440.VMD
-    file[]: crc = 7923b649; size =   3473955; name = DISC5\MOVIES\5470.VMD
     file[]: crc = 7253ab7b; size =   4338884; name = DISC5\MOVIES\5530.VMD
     file[]: crc = 9c0fa1ca; size =   2449689; name = DISC5\MOVIES\5540.VMD
     file[]: crc = 6cd86d40; size =  20424719; name = DISC5\MOVIES\5560.VMD
@@ -2807,8 +2103,6 @@ game[sol-gk2-fra-10]:
     file[]: crc = 186186a6; size =  18506907; name = DISC5\MOVIES\5681.VMD
     file[]: crc = 8492e8d1; size =    872431; name = DISC5\MOVIES\5690.VMD
     file[]: crc = b4bf95c6; size =  12394794; name = DISC5\MOVIES\5700.VMD
-    file[]: crc = 21e01456; size =    915050; name = DISC5\MOVIES\5710.VMD
-    file[]: crc = a8bb76a1; size =   3134915; name = DISC5\MOVIES\5720.VMD
     file[]: crc = 679fccde; size =   2421409; name = DISC5\MOVIES\5730.VMD
     file[]: crc = 986732ff; size =   3358150; name = DISC5\MOVIES\5740.VMD
     file[]: crc = bb12f5a9; size =   6805149; name = DISC5\MOVIES\5750.VMD
@@ -2820,72 +2114,27 @@ game[sol-gk2-fra-10]:
     file[]: crc = 90bb2650; size =   1667689; name = DISC5\MOVIES\5850.VMD
     file[]: crc = 1972d00c; size =   1335956; name = DISC5\MOVIES\5860.VMD
     file[]: crc = 702e4ac0; size =   7045308; name = DISC5\MOVIES\5870.VMD
-    file[]: crc = 3f543580; size =   1090983; name = DISC5\MOVIES\5900.VMD
-    file[]: crc = 698a3823; size =   2556914; name = DISC5\MOVIES\5901.VMD
-    file[]: crc = af5e3d79; size =   1412804; name = DISC5\MOVIES\5902.VMD
-    file[]: crc = 0e7e6991; size =   6297047; name = DISC5\MOVIES\5903.VMD
-    file[]: crc = c6689a64; size =   8806726; name = DISC5\MOVIES\5920.VMD
-    file[]: crc = d6b3279e; size =   7217648; name = DISC5\MOVIES\5930.VMD
     file[]: crc = 9505b291; size =   4289360; name = DISC5\MOVIES\5940.VMD
     file[]: crc = 2da80bc8; size =   5560808; name = DISC5\MOVIES\5950.VMD
     file[]: crc = 339e27eb; size =   4053150; name = DISC5\MOVIES\5970.VMD
     file[]: crc = 1665e7bf; size =   1799057; name = DISC5\MOVIES\5980.VMD
     file[]: crc = 3c77f293; size =   3920907; name = DISC5\MOVIES\5990.VMD
     file[]: crc = b7190e90; size =   1636691; name = DISC5\MOVIES\6000.VMD
-    file[]: crc = 6c95e846; size =   2273054; name = DISC5\MOVIES\6050.VMD
-    file[]: crc = 6bb96d98; size =    682495; name = DISC5\MOVIES\6051.VMD
-    file[]: crc = 23b46b50; size =    684214; name = DISC5\MOVIES\6052.VMD
-    file[]: crc = 93ee52d3; size =    488929; name = DISC5\MOVIES\6053.VMD
-    file[]: crc = 0534fb99; size =    571719; name = DISC5\MOVIES\6054.VMD
     file[]: crc = 825f5476; size =   7763159; name = DISC5\MOVIES\6060.VMD
-    file[]: crc = 5d22d659; size =    879851; name = DISC5\MOVIES\6080.VMD
-    file[]: crc = 57026c37; size =    425905; name = DISC5\MOVIES\6081.VMD
-    file[]: crc = 11cadd02; size =    672675; name = DISC5\MOVIES\6082.VMD
-    file[]: crc = dc10dd14; size =    366208; name = DISC5\MOVIES\6083.VMD
-    file[]: crc = d8f5d9d0; size =   1307525; name = DISC5\MOVIES\6090.VMD
-    file[]: crc = 5a060980; size =   1302654; name = DISC5\MOVIES\6091.VMD
-    file[]: crc = 4a82175f; size =    231695; name = DISC5\MOVIES\610.VMD
-    file[]: crc = a4e7dfa8; size =   1645426; name = DISC5\MOVIES\6100.VMD
-    file[]: crc = 75a89d7f; size =   1876119; name = DISC5\MOVIES\6101.VMD
-    file[]: crc = 45f63a29; size =   1925708; name = DISC5\MOVIES\6102.VMD
-    file[]: crc = 7ae78a34; size =   1301533; name = DISC5\MOVIES\6110.VMD
     file[]: crc = 65bdbd2c; size =   3005339; name = DISC5\MOVIES\6120.VMD
     file[]: crc = 44195a17; size =   1251740; name = DISC5\MOVIES\6121.VMD
     file[]: crc = c1a23c2d; size =  10672321; name = DISC5\MOVIES\6140.VMD
     file[]: crc = 673da2c9; size =   8126668; name = DISC5\MOVIES\6150.VMD
     file[]: crc = 3af4a538; size =   5197435; name = DISC5\MOVIES\6160.VMD
     file[]: crc = 8d460870; size =   8280353; name = DISC5\MOVIES\6170.VMD
-    file[]: crc = baa741bc; size =    351700; name = DISC5\MOVIES\620.VMD
     file[]: crc = 0d550e75; size =   4426966; name = DISC5\MOVIES\6200.VMD
-    file[]: crc = 04fe313d; size =    562692; name = DISC5\MOVIES\621.VMD
     file[]: crc = 34f720f1; size =   3033256; name = DISC5\MOVIES\6210.VMD
     file[]: crc = 4feb9704; size =   2413399; name = DISC5\MOVIES\6220.VMD
     file[]: crc = 8bcbae09; size =   1167723; name = DISC5\MOVIES\6250.VMD
-    file[]: crc = fad0854c; size =    646032; name = DISC5\MOVIES\6260.VMD
-    file[]: crc = 209414be; size =    745713; name = DISC5\MOVIES\6261.VMD
     file[]: crc = 21a04618; size =    745713; name = DISC5\MOVIES\6262.VMD
-    file[]: crc = e2d1f30b; size =    745713; name = DISC5\MOVIES\6263.VMD
-    file[]: crc = af71e5ad; size =    163180; name = DISC5\MOVIES\6264.VMD
-    file[]: crc = e2d1f30b; size =    745713; name = DISC5\MOVIES\6265.VMD
-    file[]: crc = 422566f1; size =   1180239; name = DISC5\MOVIES\6280.VMD
-    file[]: crc = b9d2edb1; size =   1235549; name = DISC5\MOVIES\6281.VMD
-    file[]: crc = a8cfdd68; size =   2399505; name = DISC5\MOVIES\6290.VMD
-    file[]: crc = b60350c5; size =   3396559; name = DISC5\MOVIES\6291.VMD
-    file[]: crc = c6372d9e; size =   1095346; name = DISC5\MOVIES\630.VMD
-    file[]: crc = 88ae9974; size =   2198517; name = DISC5\MOVIES\6300.VMD
-    file[]: crc = a403d916; size =   2153803; name = DISC5\MOVIES\6301.VMD
     file[]: crc = fc5c1a5b; size =    605462; name = DISC5\MOVIES\6310.VMD
     file[]: crc = bd36e23e; size =    344587; name = DISC5\MOVIES\6311.VMD
     file[]: crc = 9f1a4f1e; size =  11013572; name = DISC5\MOVIES\6350.VMD
-    file[]: crc = 0740bb77; size =   2712560; name = DISC5\MOVIES\6440.VMD
-    file[]: crc = af345c49; size =   2837608; name = DISC5\MOVIES\6441.VMD
-    file[]: crc = 29ed7a62; size =    519604; name = DISC5\MOVIES\6450.VMD
-    file[]: crc = cef8e8d6; size =    665687; name = DISC5\MOVIES\6451.VMD
-    file[]: crc = dbe99fcc; size =    705351; name = DISC5\MOVIES\6452.VMD
-    file[]: crc = 4c06e702; size =   2131695; name = DISC5\MOVIES\6460.VMD
-    file[]: crc = b11b761a; size =    771099; name = DISC5\MOVIES\6462.VMD
-    file[]: crc = e7dcde52; size =   1746681; name = DISC5\MOVIES\6463.VMD
-    file[]: crc = c452bc00; size =    600953; name = DISC5\MOVIES\6464.VMD
     file[]: crc = 76a3dca3; size =   3033057; name = DISC5\MOVIES\6470.VMD
     file[]: crc = 67cc86a2; size =   2435280; name = DISC5\MOVIES\6500.VMD
     file[]: crc = 187c6877; size =   1322199; name = DISC5\MOVIES\6510.VMD
@@ -2899,41 +2148,10 @@ game[sol-gk2-fra-10]:
     file[]: crc = a16e6461; size =   3512754; name = DISC5\MOVIES\6610.VMD
     file[]: crc = ad20b4e8; size =   3200847; name = DISC5\MOVIES\6640.VMD
     file[]: crc = 104a31ba; size =   2859025; name = DISC5\MOVIES\6650.VMD
-    file[]: crc = e89754b6; size =   2946516; name = DISC5\MOVIES\6670.VMD
-    file[]: crc = d69ae8d4; size =    309082; name = DISC5\MOVIES\6671.VMD
-    file[]: crc = e66cc09a; size =   1720045; name = DISC5\MOVIES\6680.VMD
-    file[]: crc = a74cfc39; size =    927273; name = DISC5\MOVIES\6690.VMD
-    file[]: crc = 9a9a71b7; size =   1035755; name = DISC5\MOVIES\6691.VMD
-    file[]: crc = a4c61249; size =    768172; name = DISC5\MOVIES\6700.VMD
-    file[]: crc = 7edfc7b7; size =   1098169; name = DISC5\MOVIES\6701.VMD
-    file[]: crc = a64a8182; size =   1268771; name = DISC5\MOVIES\6710.VMD
-    file[]: crc = 4e774047; size =   1143270; name = DISC5\MOVIES\6711.VMD
-    file[]: crc = dc28d3b3; size =   1733211; name = DISC5\MOVIES\6712.VMD
     file[]: crc = ab0c9a31; size =   7159426; name = DISC5\MOVIES\6730.VMD
-    file[]: crc = c6d7027b; size =   5504224; name = DISC5\MOVIES\6740.VMD
-    file[]: crc = ecfd5ab5; size =   5608456; name = DISC5\MOVIES\6750.VMD
-    file[]: crc = f7c674a6; size =   5941720; name = DISC5\MOVIES\6751.VMD
-    file[]: crc = 79e3cad0; size =   4535767; name = DISC5\MOVIES\6760.VMD
     file[]: crc = b7a03f72; size =   4306283; name = DISC5\MOVIES\6770.VMD
-    file[]: crc = a45cd788; size =   5294056; name = DISC5\MOVIES\6780.VMD
-    file[]: crc = 1bbd9160; size =   1136113; name = DISC5\MOVIES\6790.VMD
-    file[]: crc = 0aaae0ed; size =   1303384; name = DISC5\MOVIES\6791.VMD
-    file[]: crc = ce6376d7; size =    327917; name = DISC5\MOVIES\680.VMD
-    file[]: crc = e866b5e6; size =   3565432; name = DISC5\MOVIES\6800.VMD
-    file[]: crc = 636cbe09; size =   3649878; name = DISC5\MOVIES\6810.VMD
-    file[]: crc = 600a1540; size =   4858966; name = DISC5\MOVIES\6820.VMD
-    file[]: crc = ed2fd7d3; size =   2921666; name = DISC5\MOVIES\6830.VMD
     file[]: crc = ca57e23e; size =  14607546; name = DISC5\MOVIES\6840.VMD
     file[]: crc = f67e43de; size =   5553083; name = DISC5\MOVIES\6850.VMD
-    file[]: crc = 7d076dbc; size =   1267196; name = DISC5\MOVIES\6880.VMD
-    file[]: crc = 19c8eb5b; size =    987123; name = DISC5\MOVIES\6881.VMD
-    file[]: crc = eedbcee1; size =   1215503; name = DISC5\MOVIES\6882.VMD
-    file[]: crc = 0894a547; size =   2158387; name = DISC5\MOVIES\6890.VMD
-    file[]: crc = 37b0ee35; size =   2512708; name = DISC5\MOVIES\6891.VMD
-    file[]: crc = bf6daddf; size =   1770721; name = DISC5\MOVIES\6892.VMD
-    file[]: crc = 874e90d8; size =   1748050; name = DISC5\MOVIES\6893.VMD
-    file[]: crc = 1f456f38; size =   1965114; name = DISC5\MOVIES\6894.VMD
-    file[]: crc = eed64474; size =   2083485; name = DISC5\MOVIES\6895.VMD
     file[]: crc = 457eb1b5; size =    513266; name = DISC5\MOVIES\6900.VMD
     file[]: crc = 6c368b94; size =    586104; name = DISC5\MOVIES\6901.VMD
     file[]: crc = b6bb0817; size =   6354653; name = DISC5\MOVIES\6902.VMD
@@ -2941,45 +2159,15 @@ game[sol-gk2-fra-10]:
     file[]: crc = 1d671619; size =   3507448; name = DISC5\MOVIES\6920.VMD
     file[]: crc = 2cad0cd7; size =  11466611; name = DISC5\MOVIES\6931.VMD
     file[]: crc = 19eda3a0; size =   1736371; name = DISC5\MOVIES\6940.VMD
-    file[]: crc = 9926a6ac; size =   2173716; name = DISC5\MOVIES\6960.VMD
-    file[]: crc = 0d3e9424; size =   1920787; name = DISC5\MOVIES\6961.VMD
     file[]: crc = 49327e23; size =  18564795; name = DISC5\MOVIES\6970.VMD
     file[]: crc = 8eb7f7fa; size =   3241350; name = DISC5\MOVIES\6980.VMD
     file[]: crc = bfedf611; size =   3480066; name = DISC5\MOVIES\6990.VMD
     file[]: crc = 9687b4d7; size =   2074285; name = DISC5\MOVIES\7030.VMD
     file[]: crc = 8fe85c97; size =  14731643; name = DISC5\MOVIES\7050.VMD
-    file[]: crc = a5a32338; size =   3464703; name = DISC5\MOVIES\7052.VMD
-    file[]: crc = 471a65bf; size =       716; name = DISC6\11853.HEP
-    file[]: crc = 2d80b5fb; size =       906; name = DISC6\11853.SCR
-    file[]: crc = b16aa9a7; size =     31256; name = DISC6\140.V56
-    file[]: crc = 4a689425; size =      7802; name = DISC6\30867.V56
-    file[]: crc = 9bdfd199; size =     30317; name = DISC6\818.REM
-    file[]: crc = eaaf0f29; size =    206513; name = DISC6\8349.P56
-    file[]: crc = d5180025; size =    206797; name = DISC6\8648.P56
-    file[]: crc = bfba73f7; size =    120105; name = DISC6\A0K0062O.001
-    file[]: crc = 441cd1e6; size =    136955; name = DISC6\A0K00708.001
-    file[]: crc = eac494d2; size =     76879; name = DISC6\A0KA0G1Q.001
-    file[]: crc = 6a7a92ea; size =     40289; name = DISC6\A0RS031Q.001
-    file[]: crc = 15dc0fda; size =    691044; name = DISC6\A1JK381Q.001
-    file[]: crc = 34b05efd; size =    149072; name = DISC6\A1JK6R1Q.001
-    file[]: crc = 36f913db; size =    329857; name = DISC6\A1K45O1Q.002
-    file[]: crc = 9c5b17f2; size =    271185; name = DISC6\A1K45O1Q.003
-    file[]: crc = dadd71a9; size =    311224; name = DISC6\A1K45O1Q.004
-    file[]: crc = 9d1980b9; size =    462528; name = DISC6\A1K45O1Q.005
-    file[]: crc = be9487bc; size =    297197; name = DISC6\A1K45O1Q.007
-    file[]: crc = bb5f7ca3; size =    296087; name = DISC6\A1K45O1Q.008
-    file[]: crc = c5eac263; size =    500955; name = DISC6\A1K45O1Q.00A
-    file[]: crc = c6241213; size =    442320; name = DISC6\A1K45O1Q.00B
-    file[]: crc = 3830abb7; size =    374818; name = DISC6\A1K45O1Q.00C
-    file[]: crc = f8057463; size =    375617; name = DISC6\A1K45O1Q.00D
-    file[]: crc = 10a67649; size =    575820; name = DISC6\A1K45O1Q.00E
-    file[]: crc = 24435325; size =     15274; name = DISC6\A1K45O1Q.00F
-    file[]: crc = 883783c7; size =       605; name = DISC6\AUTORUN.INF
     file[]: crc = 1a0bc943; size =      3001; name = DISC6\RESMAP.006
     file[]: crc = 89af05f7; size =      3001; name = DISC6\RESMDT.006
     file[]: crc = 9851a0a6; size =  42526342; name = DISC6\RESOURCE.AUD
     file[]: crc = 1f3e3d34; size =  60568486; name = DISC6\RESSCI.006
-    file[]: crc = ff6b9ecc; size =         6; name = DISC6\VERSION
     file[]: crc = de9071ea; size =  54084640; name = DISC6\MOVIES\7180.VMD
     file[]: crc = eb954b6e; size =   2094901; name = DISC6\MOVIES\7510.VMD
     file[]: crc = 7928c8aa; size =  16171863; name = DISC6\MOVIES\7541.VMD
@@ -3054,43 +2242,106 @@ game[sol-gk2-fra-10]:
     file[]: crc = 6a17abf5; size =   4443244; name = DISC6\MOVIES\9180.VMD
     file[]: crc = 7e3c2552; size =   3004040; name = DISC6\MOVIES\9200.VMD
     file[]: crc = 243125e5; size =   5879295; name = DISC6\MOVIES\9240.VMD
-end
 
-
-//
-// French version 1.0 (Windows)
-//
-game[sol-gk2-fra-10-win]:
-    name = French 1.0 (Windows)
-    anchorfile = SIERRAW.EXE
-    anchordepth = 2
-    LANGUAGE = 1
-    imports = sol-gk2-fra-10, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = fab13879; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
+    file[]: crc = 6e225826; size =     22064; name = 991.AUD
+    file[]: crc = 471a65bf; size =       716; name = DISC1\11853.HEP
+    file[]: crc = 2d80b5fb; size =       906; name = DISC1\11853.SCR
+    file[]: crc = 73ace4f4; size =    307945; name = DISC1\13036.P56
+    file[]: crc = b16aa9a7; size =     31256; name = DISC1\140.V56
+    file[]: crc = a9e62cd2; size =    257548; name = DISC1\50360.WAV
+    file[]: crc = 471a65bf; size =       716; name = DISC2\11853.HEP
+    file[]: crc = 2d80b5fb; size =       906; name = DISC2\11853.SCR
+    file[]: crc = b16aa9a7; size =     31256; name = DISC2\140.V56
+    file[]: crc = eaaf0f29; size =    206513; name = DISC2\8349.P56
+    file[]: crc = d5180025; size =    206797; name = DISC2\8648.P56
+    file[]: crc = f5ceb3f0; size =    644284; name = DISC2\A1JK6G1Q.003
+    file[]: crc = 8b84f711; size =    205289; name = DISC2\A1JK6G1Q.005
+    file[]: crc = 34b05efd; size =    149072; name = DISC2\A1JK6R1Q.001
+    file[]: crc = ff6b9ecc; size =         6; name = DISC2\VERSION
+    file[]: crc = 61bd4dd5; size =    867966; name = DISC2\MOVIES\1490.WAV
+    file[]: crc = 471a65bf; size =       716; name = DISC3\11853.HEP
+    file[]: crc = 2d80b5fb; size =       906; name = DISC3\11853.SCR
+    file[]: crc = 73ace4f4; size =    307945; name = DISC3\13036.P56
+    file[]: crc = b16aa9a7; size =     31256; name = DISC3\140.V56
+    file[]: crc = a9e62cd2; size =    257548; name = DISC3\50360.WAV
+    file[]: crc = 471a65bf; size =       716; name = DISC4\11853.HEP
+    file[]: crc = 2d80b5fb; size =       906; name = DISC4\11853.SCR
+    file[]: crc = b16aa9a7; size =     31256; name = DISC4\140.V56
+    file[]: crc = eaaf0f29; size =    206513; name = DISC4\8349.P56
+    file[]: crc = d5180025; size =    206797; name = DISC4\8648.P56
+    file[]: crc = 15dc0fda; size =    691044; name = DISC4\A1JK381Q.001
+    file[]: crc = 34b05efd; size =    149072; name = DISC4\A1JK6R1Q.001
+    file[]: crc = 471a65bf; size =       716; name = DISC5\11853.HEP
+    file[]: crc = 2d80b5fb; size =       906; name = DISC5\11853.SCR
+    file[]: crc = a7843025; size =    307969; name = DISC5\12090.P56
+    file[]: crc = 0e2852ce; size =      8869; name = DISC5\12090.V56
+    file[]: crc = 73ace4f4; size =    307945; name = DISC5\13036.P56
+    file[]: crc = b16aa9a7; size =     31256; name = DISC5\140.V56
+    file[]: crc = a9e62cd2; size =    257548; name = DISC5\50360.WAV
+    file[]: crc = 9bdfd199; size =     30317; name = DISC5\818.V56
+    file[]: crc = 693d1c7e; size =     67738; name = DISC5\A0EG0E1Q.001
+    file[]: crc = a7f86c3a; size =       464; name = DISC5\MOVIES\2430.LNK
+    file[]: crc = 471a65bf; size =       716; name = DISC6\11853.HEP
+    file[]: crc = 2d80b5fb; size =       906; name = DISC6\11853.SCR
+    file[]: crc = b16aa9a7; size =     31256; name = DISC6\140.V56
+    file[]: crc = 4a689425; size =      7802; name = DISC6\30867.V56
+    file[]: crc = 9bdfd199; size =     30317; name = DISC6\818.REM
+    file[]: crc = eaaf0f29; size =    206513; name = DISC6\8349.P56
+    file[]: crc = d5180025; size =    206797; name = DISC6\8648.P56
+    file[]: crc = bfba73f7; size =    120105; name = DISC6\A0K0062O.001
+    file[]: crc = 441cd1e6; size =    136955; name = DISC6\A0K00708.001
+    file[]: crc = eac494d2; size =     76879; name = DISC6\A0KA0G1Q.001
+    file[]: crc = 6a7a92ea; size =     40289; name = DISC6\A0RS031Q.001
+    file[]: crc = 15dc0fda; size =    691044; name = DISC6\A1JK381Q.001
+    file[]: crc = 34b05efd; size =    149072; name = DISC6\A1JK6R1Q.001
+    file[]: crc = 36f913db; size =    329857; name = DISC6\A1K45O1Q.002
+    file[]: crc = 9c5b17f2; size =    271185; name = DISC6\A1K45O1Q.003
+    file[]: crc = dadd71a9; size =    311224; name = DISC6\A1K45O1Q.004
+    file[]: crc = 9d1980b9; size =    462528; name = DISC6\A1K45O1Q.005
+    file[]: crc = be9487bc; size =    297197; name = DISC6\A1K45O1Q.007
+    file[]: crc = bb5f7ca3; size =    296087; name = DISC6\A1K45O1Q.008
+    file[]: crc = c5eac263; size =    500955; name = DISC6\A1K45O1Q.00A
+    file[]: crc = c6241213; size =    442320; name = DISC6\A1K45O1Q.00B
+    file[]: crc = 3830abb7; size =    374818; name = DISC6\A1K45O1Q.00C
+    file[]: crc = f8057463; size =    375617; name = DISC6\A1K45O1Q.00D
+    file[]: crc = 10a67649; size =    575820; name = DISC6\A1K45O1Q.00E
+    file[]: crc = 24435325; size =     15274; name = DISC6\A1K45O1Q.00F
+    file[]: remove = 11.HEP
+    file[]: remove = 11.SCR
+    file[]: remove = 1120.HEP
+    file[]: remove = 1120.SCR
+    file[]: remove = 1160.HEP
+    file[]: remove = 1160.SCR
+    file[]: remove = 11752.HEP
+    file[]: remove = 11752.SCR
+    file[]: remove = 13086.P56
+    file[]: remove = 210.HEP
+    file[]: remove = 210.SCR
+    file[]: remove = 27.HEP
+    file[]: remove = 27.SCR
+    file[]: remove = 34.HEP
+    file[]: remove = 34.SCR
+    file[]: remove = 4001.HEP
+    file[]: remove = 4001.SCR
+    file[]: remove = 4020.HEP
+    file[]: remove = 4020.SCR
+    file[]: remove = 720.HEP
+    file[]: remove = 720.SCR
+    file[]: remove = 92.MSG
+    file[]: remove = 92.SHM
+    file[]: remove = 9944.V56
     file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
 end
 
-
 //
-// German version 1.0
+// v1.0, German
 //
-game[sol-gk2-deu-10]:
-    name = German 1.0 (DOS)
+game[v1.0-de]:
+    name = v1.0, German
+    imports = v1.0-base 
+    LANGUAGE = 1
     anchorfile = A00M3X1Q.001
-    anchordepth = 2
-    imports = common10    
-    LANGUAGE = 1    
+    anchordepth = 1
     file[]: crc = 471a65bf; size =       716; name = 11853.HEP
     file[]: crc = 2d80b5fb; size =       906; name = 11853.SCR
     file[]: crc = ce337e00; size =    307969; name = 13036.P56
@@ -3116,47 +2367,22 @@ game[sol-gk2-deu-10]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = 7b42d20c; size =      8504; name = DACRRA.DRV
-    file[]: crc = 5d282f48; size =      6659; name = HAVEVESA.EXE
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE
-    file[]: crc = c0ef83e9; size =     22943; name = INSTALL.HLP
-    file[]: crc = ac80f95c; size =     11100; name = INSTALL.TXT
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 2fda0ab9; size =      8401; name = RESMAP.PAT
     file[]: crc = d6b9b818; size =      8401; name = RESMDT.PAT
     file[]: crc = 85c796c6; size =  13317644; name = RESSCI.PAT
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = f34af53d; size =    818903; name = SIERRA.EXE
-    file[]: crc = 3731ecd2; size =    260250; name = UVCONFIG.EXE
+    file[]: crc = 2b9385ec; size =    715504; name = SIERRAW.EXE
     file[]: crc = ff6b9ecc; size =         6; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = 40cb16ee; size =    206824; name = DISC1\AUTOPLAY.BMP
-    file[]: crc = e03f5c68; size =     39424; name = DISC1\AUTOPLAY.EXE
-    file[]: crc = 1760f609; size =       604; name = DISC1\AUTORUN.INF
-    file[]: crc = f177d3b5; size =      9333; name = DISC1\COPYMEGS.EXE
-    file[]: crc = 567740cb; size =       995; name = DISC1\COPYMEGS.PIF
-    file[]: crc = 3eb0cdbd; size =       766; name = DISC1\GK2.ICO
     file[]: crc = 14a285ac; size =         2; name = DISC1\GK2R1.001
-    file[]: crc = f85a03f3; size =     77682; name = DISC1\HDDTEC.EXE
-    file[]: crc = 5e71a2cf; size =      5297; name = DISC1\INSTALL.SCR
-    file[]: crc = e2306ee0; size =     10240; name = DISC1\INSTALL.WRI
-    file[]: crc = 64492198; size =      3714; name = DISC1\MIDITEST.MID
-    file[]: crc = ecf90fb4; size =     46367; name = DISC1\README
-    file[]: crc = 90549934; size =        14; name = DISC1\README.BAT
-    file[]: crc = 40e56388; size =     51840; name = DISC1\README.WRI
-    file[]: crc = ecf90fb4; size =     46367; name = DISC1\README1
     file[]: crc = 36fa023c; size =      2806; name = DISC1\RESMAP.001
     file[]: crc = c9e6ad22; size =      2806; name = DISC1\RESMDT.001
     file[]: crc = b8f17219; size =  23470911; name = DISC1\RESOURCE.AUD
     file[]: crc = e524c7c2; size =  18623497; name = DISC1\RESOURCE.SFX
     file[]: crc = 87e5aa57; size =  50942045; name = DISC1\RESSCI.001
-    file[]: crc = 40f50f2f; size =    143642; name = DISC1\SCIDLL.DLL
-    file[]: crc = a0e472e7; size =     28544; name = DISC1\SETUP.EXE
-    file[]: crc = f6914776; size =    800518; name = DISC1\SETUP.SOL
-    file[]: crc = 100bf73d; size =      3914; name = DISC1\SIERRA.INF
-    file[]: crc = 2b9385ec; size =    715504; name = DISC1\SIERRAW.EXE
-    file[]: crc = 6448b5d7; size =      2709; name = DISC1\ENGLISH\LANGUAGE.INF
-    file[]: crc = 4598a00a; size =      3223; name = DISC1\FRENCH\LANGUAGE.INF
-    file[]: crc = ad53c562; size =      2605; name = DISC1\GERMAN\LANGUAGE.INF
     file[]: crc = 08b1f2a5; size =   5468917; name = DISC1\MOVIES\100.VMD
     file[]: crc = 994317e2; size =   3140238; name = DISC1\MOVIES\1000.VMD
     file[]: crc = 2d0f0cb9; size =   1430789; name = DISC1\MOVIES\1010.VMD
@@ -3252,12 +2478,10 @@ game[sol-gk2-deu-10]:
     file[]: crc = 56f8a7c0; size =   4641764; name = DISC1\MOVIES\980.VMD
     file[]: crc = 9350ec00; size =  15853845; name = DISC1\MOVIES\990.VMD
     file[]: crc = d184f113; size =  15861838; name = DISC1\MOVIES\991.VMD
-    file[]: crc = 1760f609; size =       604; name = DISC2\AUTORUN.INF
     file[]: crc = a9862182; size =      1981; name = DISC2\RESMAP.002
     file[]: crc = 1ebbdcdd; size =      1981; name = DISC2\RESMDT.002
     file[]: crc = 2b4ed2c7; size =  29497911; name = DISC2\RESOURCE.AUD
     file[]: crc = cdd4c141; size =  41718539; name = DISC2\RESSCI.002
-    file[]: crc = ff6b9ecc; size =         6; name = DISC2\VERSION
     file[]: crc = f2c8cc2a; size =  31293143; name = DISC2\MOVIES\1170.VMD
     file[]: crc = c9ad2e06; size =   2449517; name = DISC2\MOVIES\1190.VMD
     file[]: crc = 7c818727; size =   1149986; name = DISC2\MOVIES\1250.VMD
@@ -3350,13 +2574,11 @@ game[sol-gk2-deu-10]:
     file[]: crc = 8bba321c; size =    406775; name = DISC2\MOVIES\4600.VMD
     file[]: crc = 25ff2fc6; size =    335095; name = DISC2\MOVIES\4601.VMD
     file[]: crc = 5c67100f; size = 117141250; name = DISC2\MOVIES\9430.VMD
-    file[]: crc = 1760f609; size =       604; name = DISC3\AUTORUN.INF
     file[]: crc = 18bf4d1c; size =      1699; name = DISC3\RESMAP.003
     file[]: crc = 528a481f; size =      1699; name = DISC3\RESMDT.003
     file[]: crc = c25b0fe6; size =  25281759; name = DISC3\RESOURCE.AUD
     file[]: crc = 7be32803; size =  41478819; name = DISC3\RESOURCE.SFX
     file[]: crc = 51ef6837; size =  35233438; name = DISC3\RESSCI.003
-    file[]: crc = ff6b9ecc; size =         6; name = DISC3\VERSION
     file[]: crc = d509e1e3; size =   5418493; name = DISC3\MOVIES\2320.VMD
     file[]: crc = 0dca5af3; size =   9180534; name = DISC3\MOVIES\2330.VMD
     file[]: crc = 5c05061b; size =   2431790; name = DISC3\MOVIES\2360.VMD
@@ -3469,13 +2691,11 @@ game[sol-gk2-deu-10]:
     file[]: crc = 57049738; size =   6243453; name = DISC3\MOVIES\4080.VMD
     file[]: crc = a1811fae; size =   7136296; name = DISC3\MOVIES\4090.VMD
     file[]: crc = 99712572; size =  20238797; name = DISC3\MOVIES\4100.VMD
-    file[]: crc = 1760f609; size =       604; name = DISC4\AUTORUN.INF
     file[]: crc = 45abae2c; size =      2737; name = DISC4\RESMAP.004
     file[]: crc = 69d84942; size =      2737; name = DISC4\RESMDT.004
     file[]: crc = 1d1938d0; size =  83528181; name = DISC4\RESOURCE.AUD
     file[]: crc = 0fc92381; size =   9322294; name = DISC4\RESOURCE.SFX
     file[]: crc = 5d5d0cba; size =  59450811; name = DISC4\RESSCI.004
-    file[]: crc = ff6b9ecc; size =         6; name = DISC4\VERSION
     file[]: crc = fb9c5c3d; size =    684774; name = DISC4\MOVIES\1640.VMD
     file[]: crc = 82efb938; size =   1201750; name = DISC4\MOVIES\1750.VMD
     file[]: crc = 5849559e; size =   1359066; name = DISC4\MOVIES\1760.VMD
@@ -3566,13 +2786,11 @@ game[sol-gk2-deu-10]:
     file[]: crc = c22fdded; size =    544050; name = DISC4\ROBOT\30960.RBT
     file[]: crc = 6bb61ca0; size =    191739; name = DISC4\ROBOT\32930.RBT
     file[]: crc = eab2b1c5; size =    364637; name = DISC4\ROBOT\32960.RBT
-    file[]: crc = 1760f609; size =       604; name = DISC5\AUTORUN.INF
     file[]: crc = d4d3cf73; size =      2053; name = DISC5\RESMAP.005
     file[]: crc = 78825836; size =      2053; name = DISC5\RESMDT.005
     file[]: crc = 8b4acf0b; size =  31032365; name = DISC5\RESOURCE.AUD
     file[]: crc = ad03eb90; size =  54190381; name = DISC5\RESOURCE.SFX
     file[]: crc = 4d41e982; size =  37952633; name = DISC5\RESSCI.005
-    file[]: crc = ff6b9ecc; size =         6; name = DISC5\VERSION
     file[]: crc = eb7101d5; size =   2097736; name = DISC5\MOVIES\2430.VMD
     file[]: crc = 5052d134; size =   1728606; name = DISC5\MOVIES\2440.VMD
     file[]: crc = 4613908c; size =   1928451; name = DISC5\MOVIES\3420.VMD
@@ -3738,12 +2956,10 @@ game[sol-gk2-deu-10]:
     file[]: crc = 469a87c8; size =    307969; name = DISC6\14573.P56
     file[]: crc = a2c54304; size =    307966; name = DISC6\14574.P56
     file[]: crc = c782d62f; size =    307969; name = DISC6\14575.P56
-    file[]: crc = 1760f609; size =       604; name = DISC6\AUTORUN.INF
     file[]: crc = fb8db06f; size =      2995; name = DISC6\RESMAP.006
     file[]: crc = d84a7950; size =      2995; name = DISC6\RESMDT.006
     file[]: crc = 970be6d1; size =  38271238; name = DISC6\RESOURCE.AUD
     file[]: crc = cc3f107a; size =  60585298; name = DISC6\RESSCI.006
-    file[]: crc = ff6b9ecc; size =         6; name = DISC6\VERSION
     file[]: crc = abb9b654; size =  54084640; name = DISC6\MOVIES\7180.VMD
     file[]: crc = 7c9eed96; size =   2094901; name = DISC6\MOVIES\7510.VMD
     file[]: crc = 41aaa5a7; size =  16171863; name = DISC6\MOVIES\7541.VMD
@@ -3820,37 +3036,11 @@ game[sol-gk2-deu-10]:
     file[]: crc = 6e2b0203; size =   5936755; name = DISC6\MOVIES\9240.VMD
 end
 
-
 //
-// German version 1.0 (Windows)
+// v1.0, Italian
 //
-game[sol-gk2-deu-10-win]:
-    name = German 1.0 (Windows)
-    anchorfile = SIERRAW.EXE
-    anchordepth = 2
-    LANGUAGE = 1
-    imports = sol-gk2-deu-10, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = 2b9385ec; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
-    file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
-end
-
-
-//
-// Italian version 1.0
-//
-game[sol-gk2-ita-10]:
-    name = Italian 1.0 (DOS)
+game[v1.0-it]:
+    name = v1.0, Italian
     anchorfile = 100.P56
     LANGUAGE = 39    
     file[]: crc = 50fdbe8a; size =    206369; name = 100.P56
@@ -3879,50 +3069,24 @@ game[sol-gk2-ita-10]:
     file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
     file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
     file[]: crc = 7b42d20c; size =      8504; name = DACRRA.DRV
-    file[]: crc = 5d282f48; size =      6659; name = HAVEVESA.EXE
-    file[]: crc = 82607fdb; size =     87524; name = INSTALL.EXE
-    file[]: crc = f28f08a9; size =     22753; name = INSTALL.HLP
-    file[]: crc = 086cd6a1; size =      5257; name = INSTALL.SCR
-    file[]: crc = d6d6c938; size =      9543; name = INSTALL.TXT
     file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
     file[]: crc = 30e16d87; size =      8437; name = RESMAP.PAT
     file[]: crc = c9fc51ca; size =      8437; name = RESMDT.PAT
     file[]: crc = 4aead679; size =  57085549; name = RESOURCE.AUD
     file[]: crc = decd190d; size =  13491838; name = RESSCI.PAT
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 4f998214; size =    818903; name = SIERRA.EXE
-    file[]: crc = 3731ecd2; size =    260250; name = UVCONFIG.EXE
+    file[]: crc = 08f7ecf9; size =    715504; name = SIERRAW.EXE
     file[]: crc = d5b954e0; size =        13; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
     file[]: crc = 6ffa5c2d; size =      1061; name = DISC1\999.PAL
-    file[]: crc = 40cb16ee; size =    206824; name = DISC1\AUTOPLAY.BMP
-    file[]: crc = e03f5c68; size =     39424; name = DISC1\AUTOPLAY.EXE
-    file[]: crc = 79dd1f04; size =       649; name = DISC1\AUTORUN.INF
-    file[]: crc = 985fe2de; size =      9309; name = DISC1\BDWIN95.TXT
-    file[]: crc = 031d1607; size =     36371; name = DISC1\BOOTDISK.EXE
-    file[]: crc = 581b5321; size =       766; name = DISC1\BOOTDISK.ICO
-    file[]: crc = b36c3eb2; size =      9291; name = DISC1\CONTACT.TXT
-    file[]: crc = f177d3b5; size =      9333; name = DISC1\COPYMEGS.EXE
-    file[]: crc = a03cdf9e; size =       995; name = DISC1\COPYMEGS.PIF
-    file[]: crc = 3eb0cdbd; size =       766; name = DISC1\GK2.ICO
     file[]: crc = 14a285ac; size =         2; name = DISC1\GK2R1.001
-    file[]: crc = f85a03f3; size =     77682; name = DISC1\HDDTEC.EXE
-    file[]: crc = 5d4d388b; size =     11008; name = DISC1\INSTALL.WRI
-    file[]: crc = 72257c5f; size =      2703; name = DISC1\LANGUAGE.INF
-    file[]: crc = 64492198; size =      3714; name = DISC1\MIDITEST.MID
-    file[]: crc = ece2589b; size =     30418; name = DISC1\README
-    file[]: crc = 90549934; size =        14; name = DISC1\README.BAT
-    file[]: crc = 86a3fa1b; size =    359552; name = DISC1\README.WRI
     file[]: crc = c90bbf51; size =      2806; name = DISC1\RESMAP.001
     file[]: crc = ee5b85fb; size =      2806; name = DISC1\RESMDT.001
     file[]: crc = 2e181182; size =  17280001; name = DISC1\RESOURCE.SFX
     file[]: crc = f1e59ea4; size =       378; name = DISC1\RESOURCE.WIN
     file[]: crc = bc1f454b; size =  51083193; name = DISC1\RESSCI.001
-    file[]: crc = 40f50f2f; size =    143642; name = DISC1\SCIDLL.DLL
-    file[]: crc = 749ca232; size =     31168; name = DISC1\SETUP.EXE
-    file[]: crc = 38aaa29d; size =   1170243; name = DISC1\SETUP.SOL
-    file[]: crc = de531d31; size =      3827; name = DISC1\SIERRA.INF
-    file[]: crc = 08f7ecf9; size =    715504; name = DISC1\SIERRAW.EXE
     file[]: crc = 2b4592a8; size =       766; name = DISC1\SRCTXT.TXT
     file[]: crc = ef735b4d; size =   4521173; name = DISC1\MOVIES\100.VMD
     file[]: crc = c861f4ee; size =   2828124; name = DISC1\MOVIES\1000.VMD
@@ -4080,7 +3244,6 @@ game[sol-gk2-ita-10]:
     file[]: crc = 5235cbaf; size =  30334028; name = DISC2\RESOURCE.AUD
     file[]: crc = 4a96ee6a; size =   4195000; name = DISC2\RESOURCE.SFX
     file[]: crc = e35ee3ce; size =  41865579; name = DISC2\RESSCI.002
-    file[]: crc = f7366f35; size =         3; name = DISC2\VERSION
     file[]: crc = f38d6b06; size =  27183579; name = DISC2\MOVIES\1170.VMD
     file[]: crc = 21b6993e; size =   2103837; name = DISC2\MOVIES\1190.VMD
     file[]: crc = a12e6fde; size =    503423; name = DISC2\MOVIES\1210.VMD
@@ -4195,7 +3358,6 @@ game[sol-gk2-ita-10]:
     file[]: crc = 60e7defc; size =  44216960; name = DISC3\RESOURCE.AUD
     file[]: crc = c1d2086c; size =  37410593; name = DISC3\RESOURCE.SFX
     file[]: crc = cca8c72e; size =  35547945; name = DISC3\RESSCI.003
-    file[]: crc = 6b9ecce5; size =         5; name = DISC3\VERSION
     file[]: crc = 7e4753ab; size =   1494915; name = DISC3\MOVIES\120.VMD
     file[]: crc = 4f6896e8; size =    596310; name = DISC3\MOVIES\160.VMD
     file[]: crc = eea0c572; size =    464001; name = DISC3\MOVIES\161.VMD
@@ -4353,7 +3515,6 @@ game[sol-gk2-ita-10]:
     file[]: crc = be0d3913; size =  83159717; name = DISC4\RESOURCE.AUD
     file[]: crc = 1c479003; size =   9415907; name = DISC4\RESOURCE.SFX
     file[]: crc = 13344d10; size =  59304672; name = DISC4\RESSCI.004
-    file[]: crc = f7366f35; size =         3; name = DISC4\VERSION
     file[]: crc = 38d5b552; size =    287631; name = DISC4\MOVIES\1230.VMD
     file[]: crc = e3e7086c; size =    244866; name = DISC4\MOVIES\1270.VMD
     file[]: crc = 25e8a62b; size =    285846; name = DISC4\MOVIES\1271.VMD
@@ -4479,7 +3640,6 @@ game[sol-gk2-ita-10]:
     file[]: crc = f85ad03f; size =  53894999; name = DISC5\RESOURCE.AUD
     file[]: crc = c544aedf; size =  46630950; name = DISC5\RESOURCE.SFX
     file[]: crc = a8c5af97; size =  38303329; name = DISC5\RESSCI.005
-    file[]: crc = f7366f35; size =         3; name = DISC5\VERSION
     file[]: crc = a51d78fa; size =   1722391; name = DISC5\MOVIES\2430.VMD
     file[]: crc = 55ee58f5; size =   1442603; name = DISC5\MOVIES\2440.VMD
     file[]: crc = 61dd6f4a; size =   1601294; name = DISC5\MOVIES\3420.VMD
@@ -4645,7 +3805,6 @@ game[sol-gk2-ita-10]:
     file[]: crc = 84ef24b8; size =  43779569; name = DISC6\RESOURCE.AUD
     file[]: crc = 1293fc5c; size =  11720427; name = DISC6\RESOURCE.SFX
     file[]: crc = e374d9e7; size =  61231670; name = DISC6\RESSCI.006
-    file[]: crc = f7366f35; size =         3; name = DISC6\VERSION
     file[]: crc = 098f689a; size =    335417; name = DISC6\MOVIES\1230.VMD
     file[]: crc = a1b50ff8; size =   1829352; name = DISC6\MOVIES\1320.VMD
     file[]: crc = d8aa1de8; size =    853872; name = DISC6\MOVIES\1330.VMD
@@ -4816,53 +3975,62 @@ game[sol-gk2-ita-10]:
     file[]: crc = 1d6f4fce; size =    331595; name = DISC6\ROBOT\32960.RBT
 end
 
-
 //
-// Italian version 1.0 (Windows)
-//
-game[sol-gk2-ita-10-win]:
-    name = Italian 1.0 (Windows)
-    anchorfile = SIERRAW.EXE
-    anchordepth = 2
-    LANGUAGE = 1
-    imports = sol-gk2-ita-10, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = 08f7ecf9; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
-    file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
-end
-
-
-//
-// Portuguese version 1.0
+// v1.0, Portuguese
 // This version is based on the English 1.11 version.
 //
-game[sol-gk2-por-10]:
-    name = English with Portuguese text 1.0 (DOS)
-    anchorfile = A0C81L00.002
-    anchordepth = 2
+game[v1.0-pt]:
+    name = v1.0, Portuguese
+    imports = v1.11
     LANGUAGE = 351
-    imports = sol-gk2-eng-111
-    file[]: remove = DISC1\MOVIES\CH1.BAT
-    file[]: remove = DISC2\MOVIES\CH2.BAK
-    file[]: remove = DISC2\MOVIES\CH2.BAT
-    file[]: remove = DISC3\MOVIES\CH3.BAK
-    file[]: remove = DISC3\MOVIES\CH3.BAT
-    file[]: remove = DISC4\MOVIES\CH4.BAK
-    file[]: remove = DISC4\MOVIES\CH4.BAT
-    file[]: remove = DISC5\MOVIES\CH5.BAK
-    file[]: remove = DISC5\MOVIES\CH5.BAT
-    file[]: remove = DISC6\MOVIES\CH6.BAK
-    file[]: remove = DISC6\MOVIES\CH6.BAT
+    file[]: crc = 7808456d; size =      4412; name = A0C81L00.002
+    file[]: crc = 51be2d7b; size =      7262; name = A0C81M00.001
+    file[]: crc = bef85585; size =     38141; name = A0C81M00.002
+    file[]: crc = 84bdbfef; size =      3052; name = A0C81M00.003
+    file[]: crc = e7e5f2ed; size =    109288; name = A0C81M00.004
+    file[]: crc = 42d0888b; size =     11587; name = RESMAP.PAT
+    file[]: crc = d229aac6; size =     11587; name = RESMDT.PAT
+    file[]: crc = eb29965b; size =  17158853; name = RESSCI.PAT
+    file[]: crc = ff6b9ecc; size =         6; name = VERSION
+    file[]: crc = 4b3eebdf; size =      2806; name = DISC1\RESMAP.001
+    file[]: crc = 5123fda7; size =      2806; name = DISC1\RESMDT.001
+    file[]: crc = 7a8cba97; size =  30818354; name = DISC1\RESOURCE.AUD
+    file[]: crc = 0ae234a6; size =  50932558; name = DISC1\RESSCI.001
+    file[]: crc = 37ad09be; size =      1999; name = DISC2\RESMAP.002
+    file[]: crc = b6a57ccd; size =      1999; name = DISC2\RESMDT.002
+    file[]: crc = 2e893ec1; size =  31285965; name = DISC2\RESOURCE.AUD
+    file[]: crc = c3e99a61; size =  42258859; name = DISC2\RESSCI.002
+    file[]: crc = b8402f12; size =    999768; name = DISC2\MOVIES\2140.VMD
+    file[]: crc = 308a6437; size =      1711; name = DISC3\RESMAP.003
+    file[]: crc = 739db0d4; size =      1711; name = DISC3\RESMDT.003
+    file[]: crc = 6953493d; size =  41027918; name = DISC3\RESOURCE.AUD
+    file[]: crc = 7e5d6102; size =  35477175; name = DISC3\RESSCI.003
+    file[]: crc = 15b745af; size =   4984077; name = DISC3\MOVIES\2990.VMD
+    file[]: crc = c035f493; size =      2755; name = DISC4\RESMAP.004
+    file[]: crc = 355cc5cf; size =      2755; name = DISC4\RESMDT.004
+    file[]: crc = 65fef358; size =  81897397; name = DISC4\RESOURCE.AUD
+    file[]: crc = 6284fe83; size =  59781752; name = DISC4\RESSCI.004
+    file[]: crc = 93aaeaf3; size =   7178972; name = DISC4\MOVIES\4470.VMD
+    file[]: crc = 921d9828; size =   5318499; name = DISC4\MOVIES\4500.VMD
+    file[]: crc = 6814c6d1; size =   3775726; name = DISC4\MOVIES\4910.VMD
+    file[]: crc = 86e2d849; size =   5560482; name = DISC4\MOVIES\4980.VMD
+    file[]: crc = 7cc5c660; size =      2101; name = DISC5\RESMAP.005
+    file[]: crc = 1fe711ce; size =      2101; name = DISC5\RESMDT.005
+    file[]: crc = 99e177d1; size =  47084422; name = DISC5\RESOURCE.AUD
+    file[]: crc = 32c03a04; size =  38249037; name = DISC5\RESSCI.005
+    file[]: crc = d820c1b1; size =   2397299; name = DISC5\MOVIES\6290.VMD
+    file[]: crc = da6140ad; size =      3007; name = DISC6\RESMAP.006
+    file[]: crc = 66fc6ebd; size =      3007; name = DISC6\RESMDT.006
+    file[]: crc = f5be303a; size =  42526682; name = DISC6\RESOURCE.AUD
+    file[]: crc = 725704c2; size =  60781720; name = DISC6\RESSCI.006
+    file[]: crc = 40cd4120; size =   4864105; name = DISC6\MOVIES\7610.VMD
+    file[]: crc = 8b18d7fa; size =   1639142; name = DISC6\MOVIES\7640.VMD
+    file[]: crc = fea55027; size =   4399974; name = DISC6\MOVIES\7670.VMD
+    file[]: crc = 90795ac3; size =   7994086; name = DISC6\MOVIES\7710.VMD
+    file[]: crc = 075f3487; size =   2837526; name = DISC6\MOVIES\8510.VMD
+    file[]: crc = ec446213; size =   1767474; name = DISC6\MOVIES\8610.VMD
+    file[]: crc = e0946102; size =   2192117; name = DISC6\MOVIES\9050.VMD
+    file[]: crc = a86c008f; size =    889016; name = DISC6\MOVIES\9160.VMD
     file[]: remove = 1020.HEP
     file[]: remove = 1020.SCR
     file[]: remove = 11.HEP
@@ -4923,118 +4091,17 @@ game[sol-gk2-por-10]:
     file[]: remove = 9944.V56
     file[]: remove = DISC1\4002.HEP
     file[]: remove = DISC1\8520.HEP
-    file[]: remove = DISC1\INSTALL.BAK
-    file[]: remove = DISC1\RESOURCE.BAK
-    file[]: remove = DISC1\SIERRA.BAK    
-    file[]: crc = 7808456d; size =      4412; name = A0C81L00.002
-    file[]: crc = 51be2d7b; size =      7262; name = A0C81M00.001
-    file[]: crc = bef85585; size =     38141; name = A0C81M00.002
-    file[]: crc = 84bdbfef; size =      3052; name = A0C81M00.003
-    file[]: crc = e7e5f2ed; size =    109288; name = A0C81M00.004
-    file[]: crc = 7a2fb201; size =     20675; name = INSTALL.HLP
-    file[]: crc = 613bf13c; size =      9919; name = INSTALL.TXT
-    file[]: crc = 42d0888b; size =     11587; name = RESMAP.PAT
-    file[]: crc = d229aac6; size =     11587; name = RESMDT.PAT
-    file[]: crc = eb29965b; size =  17158853; name = RESSCI.PAT
-    file[]: crc = ff6b9ecc; size =         6; name = VERSION
-    file[]: crc = e4872472; size =       653; name = DISC1\AUTORUN.INF    
-    file[]: crc = 4e1e03d5; size =       995; name = DISC1\COPYMEGS.PIF
-    file[]: crc = a1e1bebf; size =      5307; name = DISC1\INSTALL.SCR
-    file[]: crc = 23f5ebde; size =      9728; name = DISC1\INSTALL.WRI
-    file[]: crc = eb833db7; size =      2610; name = DISC1\LANGUAGE.INF
-    file[]: crc = 90549934; size =        14; name = DISC1\LEIAME.BAT
-    file[]: crc = fa844569; size =     31747; name = DISC1\README
-    file[]: crc = c319e62a; size =    282624; name = DISC1\README.WRI
-    file[]: crc = 4b3eebdf; size =      2806; name = DISC1\RESMAP.001
-    file[]: crc = 5123fda7; size =      2806; name = DISC1\RESMDT.001
-    file[]: crc = 7a8cba97; size =  30818354; name = DISC1\RESOURCE.AUD
-    file[]: crc = 0ae234a6; size =  50932558; name = DISC1\RESSCI.001
-    file[]: crc = 749ca232; size =     31168; name = DISC1\SETUP.EXE
-    file[]: crc = 26b0cf2c; size =    454706; name = DISC1\SETUP.SOL
-    file[]: crc = 7ba46845; size =      3317; name = DISC1\SIERRA.INF
-    file[]: crc = e4872472; size =       653; name = DISC2\AUTORUN.INF
-    file[]: crc = 37ad09be; size =      1999; name = DISC2\RESMAP.002
-    file[]: crc = b6a57ccd; size =      1999; name = DISC2\RESMDT.002
-    file[]: crc = 2e893ec1; size =  31285965; name = DISC2\RESOURCE.AUD
-    file[]: crc = c3e99a61; size =  42258859; name = DISC2\RESSCI.002
-    file[]: crc = ff6b9ecc; size =         6; name = DISC2\VERSION
-    file[]: crc = b8402f12; size =    999768; name = DISC2\MOVIES\2140.VMD
-    file[]: crc = e4872472; size =       653; name = DISC3\AUTORUN.INF
-    file[]: crc = 308a6437; size =      1711; name = DISC3\RESMAP.003
-    file[]: crc = 739db0d4; size =      1711; name = DISC3\RESMDT.003
-    file[]: crc = 6953493d; size =  41027918; name = DISC3\RESOURCE.AUD
-    file[]: crc = 7e5d6102; size =  35477175; name = DISC3\RESSCI.003
-    file[]: crc = ff6b9ecc; size =         6; name = DISC3\VERSION
-    file[]: crc = 15b745af; size =   4984077; name = DISC3\MOVIES\2990.VMD
-    file[]: crc = e4872472; size =       653; name = DISC4\AUTORUN.INF
-    file[]: crc = c035f493; size =      2755; name = DISC4\RESMAP.004
-    file[]: crc = 355cc5cf; size =      2755; name = DISC4\RESMDT.004
-    file[]: crc = 65fef358; size =  81897397; name = DISC4\RESOURCE.AUD
-    file[]: crc = 6284fe83; size =  59781752; name = DISC4\RESSCI.004
-    file[]: crc = ff6b9ecc; size =         6; name = DISC4\VERSION
-    file[]: crc = 93aaeaf3; size =   7178972; name = DISC4\MOVIES\4470.VMD
-    file[]: crc = 921d9828; size =   5318499; name = DISC4\MOVIES\4500.VMD
-    file[]: crc = 6814c6d1; size =   3775726; name = DISC4\MOVIES\4910.VMD
-    file[]: crc = 86e2d849; size =   5560482; name = DISC4\MOVIES\4980.VMD
-    file[]: crc = e4872472; size =       653; name = DISC5\AUTORUN.INF
-    file[]: crc = 7cc5c660; size =      2101; name = DISC5\RESMAP.005
-    file[]: crc = 1fe711ce; size =      2101; name = DISC5\RESMDT.005
-    file[]: crc = 99e177d1; size =  47084422; name = DISC5\RESOURCE.AUD
-    file[]: crc = 32c03a04; size =  38249037; name = DISC5\RESSCI.005
-    file[]: crc = ff6b9ecc; size =         6; name = DISC5\VERSION
-    file[]: crc = d820c1b1; size =   2397299; name = DISC5\MOVIES\6290.VMD
-    file[]: crc = e4872472; size =       653; name = DISC6\AUTORUN.INF
-    file[]: crc = da6140ad; size =      3007; name = DISC6\RESMAP.006
-    file[]: crc = 66fc6ebd; size =      3007; name = DISC6\RESMDT.006
-    file[]: crc = f5be303a; size =  42526682; name = DISC6\RESOURCE.AUD
-    file[]: crc = 725704c2; size =  60781720; name = DISC6\RESSCI.006
-    file[]: crc = ff6b9ecc; size =         6; name = DISC6\VERSION
-    file[]: crc = 40cd4120; size =   4864105; name = DISC6\MOVIES\7610.VMD
-    file[]: crc = 8b18d7fa; size =   1639142; name = DISC6\MOVIES\7640.VMD
-    file[]: crc = fea55027; size =   4399974; name = DISC6\MOVIES\7670.VMD
-    file[]: crc = 90795ac3; size =   7994086; name = DISC6\MOVIES\7710.VMD
-    file[]: crc = 075f3487; size =   2837526; name = DISC6\MOVIES\8510.VMD
-    file[]: crc = ec446213; size =   1767474; name = DISC6\MOVIES\8610.VMD
-    file[]: crc = e0946102; size =   2192117; name = DISC6\MOVIES\9050.VMD
-    file[]: crc = a86c008f; size =    889016; name = DISC6\MOVIES\9160.VMD
 end
-
-
-//
-// Portuguese version 1.0 (Windows)
-// This version is based on the English 1.11 version.
-//
-game[sol-gk2-por-10-win]:
-    name = English with Portuguese text 1.0 (Windows)
-    anchorfile = A0C81L00.002
-    anchordepth = 2
-    LANGUAGE = 351
-    imports = sol-gk2-por-10, win32-base
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
-    file[]: crc = ffa8eaf8; size =    715504; name = SIERRAW.EXE
-    file[]: remove = DACBLAST.DRV
-    file[]: remove = DACMSSYS.DRV
-    file[]: remove = DACPRO.DRV
-    file[]: remove = DACPRO16.DRV
-    file[]: remove = DACPRO8.DRV
-    file[]: remove = DACRRA.DRV
-    file[]: remove = HAVEVESA.EXE
-    file[]: remove = MIDNONE.DRV
-    file[]: remove = SIERRA.EXE
-    file[]: remove = UVCONFIG.EXE
-    file[]: remove = VESA.DRV
-end
-
 
 //
 // Upgrade to 1.11
 //
-addon[111patch]:
-    name = Upgrade to 1.11
+addon[v1.11-patch]:
+    name = v1.11 Upgrade
     anchorfile = 33.SCR
     upgradeids = [[[,
-        sol-gk2-eng-10
-        sol-gk2-eng-11
+        v1.0
+        v1.1
     ]]]
     file[]: crc = 62cb383d; size =       562; name = 1020.HEP
     file[]: crc = 0fe39ebe; size =      1294; name = 1020.SCR
@@ -5077,6 +4144,5 @@ addon[111patch]:
     file[]: crc = 6e225826; size =     22064; name = 991.AUD
     file[]: crc = 98194eb0; size =         7; name = VERSION
 end
-
 
 end
