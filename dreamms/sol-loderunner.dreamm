@@ -7,11 +7,10 @@ name = Lode Runner: The Legend Returns
 icon = sol-loderunner.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA
 launch = $(rootpath)\LODERUNN.EXE
 mips = $(MIPS_P100)
 ramkb = 16384
-videohw = svga
 audiohw = sb16+gmidi
 filter = sierra, action
 
@@ -42,6 +41,26 @@ INI = [[[$(CRLF)
     CDdrive=D
     CDinst=0
     resources=0000000002
+    icon=Off
+
+    [technology]
+    display.drv=
+    DibBlit=WinG
+    WinGFound=1
+
+    [symphonics]
+    music=On
+    sound=On
+    volume=45056
+
+    [help]
+    balloon=On
+
+    [player1]
+    input=keys
+
+    [player2]
+    input=keys
 ]]]
 
 script[init]:
