@@ -11,6 +11,7 @@ rootpath = C:\SIERRA\KQ7
 mips = $(MIPS_P100)
 ramkb = 16384
 filter = sierra, adventure
+LANGUAGE = 1
 
 //
 // environment configuration
@@ -106,6 +107,7 @@ WIN = [[[$(CRLF)
     audioSize     = 62k
     dacSize       = 30720
     synthtype     = highsynth
+    language      = $(LANGUAGE)
     $(PATHS)
 ]]]
 
@@ -154,10 +156,10 @@ game[v1.4]:
 end
 
 //
-// v1.51 
+// v1.51
 //
 game[v1.51]:
-    name = v1.51  
+    name = v1.51
     imports = v1.4
     file[]: crc = 485ac6b4; size =    142304; name = 0.CHK
     file[]: crc = 324f1915; size = 206626576; name = RESOURCE.000
@@ -166,6 +168,63 @@ game[v1.51]:
     file[]: crc = 16c00dae; size =    670444; name = SIERRAW.EXE
     file[]: crc = cc7027c1; size =    544057; name = SIERRAWS.EXE
     file[]: crc = 37cfb50a; size =        10; name = VERSION
+end
+
+//
+// v1.51, German
+//
+game[v1.51-de]:
+    name = v1.51, German
+    imports = v1.51
+    LANGUAGE = 49
+    file[]: crc = ef6cd919; size =    138652; name = 0.CHK
+    file[]: crc = 3402e3af; size =   5097577; name = ALTRES.000
+    file[]: crc = 3ba640f9; size =      1198; name = ALTRES.MAP
+    file[]: crc = 1cb366fa; size =      1198; name = ALTRES.MDT
+    file[]: crc = dfe68f55; size =     50911; name = KQ7GAME.HLP
+    file[]: crc = 5d97ebfa; size = 258119621; name = RESOURCE.AUD
+    file[]: crc = ab4c4b1a; size =  51013540; name = RESOURCE.SFX
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = 159f8d62; size =    544057; name = SIERRAWS.EXE
+    file[]: crc = 858afaab; size =   6077564; name = AVI\E108X11.AVI
+    file[]: crc = 604dd69d; size =  21739612; name = AVI\INT08X11.AVI
+    file[]: crc = 599de654; size =      4170; name = PATCH\3250.HEP
+    file[]: crc = d65f1752; size =     19974; name = PATCH\3250.SCR
+    file[]: crc = 1ea88cd2; size =      4560; name = PATCH\4101.HEP
+    file[]: crc = 7156e6c0; size =     13882; name = PATCH\4101.SCR
+    file[]: crc = e8786079; size =      5478; name = PATCH\4450.HEP
+    file[]: crc = df2b15c2; size =     17558; name = PATCH\4450.SCR
+    file[]: crc = ad5934ba; size =      1424; name = PATCH\4500.HEP
+    file[]: crc = 8426e03d; size =      3584; name = PATCH\4500.SCR
+    file[]: crc = f3d832cf; size =      2618; name = PATCH\5000.HEP
+    file[]: crc = e0371bba; size =      7206; name = PATCH\5000.SCR
+    file[]: crc = 496df987; size =      9586; name = PATCH\5300.HEP
+    file[]: crc = 5ccaa138; size =     33562; name = PATCH\5300.SCR
+end
+
+//
+// v1.65c, French
+//
+game[v1.65c-fr]:
+    name = v1.65c, French
+    LANGUAGE = 33
+    anchorfile = SIERRAW.EXE
+    file[]: crc = 36242a33; size =   1975656; name = ALTRES.000
+    file[]: crc = 7c6cace0; size =      1216; name = ALTRES.MAP
+    file[]: crc = 457326c6; size =      1216; name = ALTRES.MDT
+    file[]: crc = 01f45522; size =     44464; name = D2HTOOLS.DLL
+    file[]: crc = fa54a9f7; size =     59392; name = KQ7GAME.HLP
+    file[]: crc = a1d300f9; size = 204385195; name = RESOURCE.000
+    file[]: crc = 92d5e384; size = 205546166; name = RESOURCE.AUD
+    file[]: crc = feffbaa7; size =     18925; name = RESOURCE.MAP
+    file[]: crc = d01a9845; size =  50674104; name = RESOURCE.SFX
+    file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = 3b317dcd; size =    684036; name = SIERRAW.EXE
+    file[]: crc = 89970964; size =        11; name = VERSION
+    file[]: crc = 5545c374; size =   5432492; name = AVI\E108X11.AVI
+    file[]: crc = 78b034f2; size =   2014412; name = AVI\E208X11.AVI
+    file[]: crc = d82ae90e; size =  21743836; name = AVI\INT08X11.AVI
 end
 
 //
