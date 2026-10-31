@@ -7,7 +7,7 @@ name = Space Quest VI: Roger Wilco in The Spinal Frontier
 icon = sol-sq6.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA\SQ6
 mips = $(MIPS_P100)
 ramkb = 16384
 filter = sierra, adventure
@@ -27,12 +27,12 @@ config[environment]:
         osenv = windows 95
         audiohw = gmidi
         winres = 640x480x8
-        launch = $(rootpath)\SQ6W.EXE
-        condition = file_exists("$$(rootpath)\\SQ6W.EXE") && is_demo()
+        launch = $(rootpath)\SIERRAW.EXE $(rootpath)\RESOURCE.WIN
+        condition = file_exists("$$(rootpath)\\SIERRAW.EXE") && is_demo()
     end
     option[dos]: 
         name = DOS
-        launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
+        launch = $(rootpath)\SIERRA.EXE -o $(rootpath)\RESOURCE.CFG
         condition = file_exists("$$(rootpath)\\SIERRA.EXE") && is_game()
     end
     option[win]:
@@ -40,7 +40,7 @@ config[environment]:
         osenv = windows 95
         audiohw = gmidi
         winres = 640x480x8
-        launch = $(rootpath)\SIERRAW.EXE -o \RESOURCE.WIN
+        launch = $(rootpath)\SIERRAW.EXE -o $(rootpath)\RESOURCE.WIN
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE") && is_game()
     end
 end
@@ -77,6 +77,15 @@ config[sound]:
     end
 end
 
+PATHS = [[[$(CRLF)
+    resMap      = $(rootpath)
+    resAud      = $(rootpath)
+    resSfx      = $(rootpath)
+    movieDir    = $(rootpath)\MOVIES
+    robot       = $(rootpath)\ROBOTS
+    patchDir    = $(rootpath)
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv    = VESA.DRV
     soundDrv    = $(SOUND_DRIVER)
@@ -90,12 +99,7 @@ CFG = [[[$(CRLF)
     dacsize     = 30720
     brightness  = 0
     language    = 1
-    resMap      = $(rootpath)
-    resAud      = $(rootpath)
-    resSfx      = $(rootpath)
-    movieDir    = $(rootpath)\MOVIES
-    robot       = $(rootpath)\ROBOTS
-    patchDir    = $(rootpath)
+    $(PATHS)
 ]]]
 
 WIN = [[[$(CRLF)
@@ -116,12 +120,7 @@ WIN = [[[$(CRLF)
     cacheSize2  = 600
     synthtype   = highsynth
     language    = 1
-    resMap      = $(rootpath)
-    resAud      = $(rootpath)
-    resSfx      = $(rootpath)
-    movieDir    = $(rootpath)\MOVIES
-    robot       = $(rootpath)\ROBOTS
-    patchDir    = $(rootpath)
+    $(PATHS)
 ]]]
 
 script[init]:
@@ -338,6 +337,7 @@ end
 //
 demo[interactive-demo]:
     name = Interactive Demo
+    rootpath = C:\SIERRA\SQ6DEMO
     anchorfile = SIERRA.EXE
     file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
     file[]: crc = cff3fc52; size =      4305; name = DACBLAST.DRV
@@ -349,16 +349,17 @@ demo[interactive-demo]:
     file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
     file[]: crc = c6339b9c; size =   2272050; name = RESOURCE.000
     file[]: crc = 8071b831; size = 114486522; name = RESOURCE.AUD
-    file[]: crc = 774a2f3d; size =       218; name = RESOURCE.CFG
+    file[]: crc = f7aed73b; size =       239; name = RESOURCE.CFG
     file[]: crc = 60bc4c4c; size =      2572; name = RESOURCE.MAP
     file[]: crc = c7aa6ff0; size =      2572; name = RESOURCE.MDT
     file[]: crc = 132d30aa; size =   7495186; name = RESOURCE.SFX
+    file[]: crc = d12aab7b; size =       263; name = RESOURCE.WIN
     file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
     file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
     file[]: crc = 027c63a8; size =    142998; name = SCIDLL.DLL
     file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 9cd11d20; size =    925001; name = SIERRA.EXE
-    file[]: crc = 9531d85a; size =    796604; name = SQ6W.EXE
+    file[]: crc = 9531d85a; size =    796604; name = SIERRAW.EXE
     file[]: crc = e2df89fc; size =      1682; name = STD.DRV
     file[]: crc = 6b9ecce5; size =         5; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
