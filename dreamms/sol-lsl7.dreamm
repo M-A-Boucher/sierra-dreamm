@@ -7,10 +7,9 @@ name = Leisure Suit Larry: Love for Sail!
 icon = sol-lsl7.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA\LSL7
 mips = $(MIPS_P100)
 ramkb = 16384
-videohw = svga
 audiohw = sb16
 filter = sierra, adventure
 
@@ -50,6 +49,15 @@ config[sound]:
     end
 end
 
+PATHS = [[[$(CRLF)
+    resMap         = $(rootpath)
+    resAud         = $(rootpath)
+    resSfx         = $(rootpath)
+    audio          = $(rootpath)\$(AUDIOPATH)
+    movieDir       = $(rootpath)\MOVIE
+    patchDir       = $(rootpath)\PATCHES
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv       = VESA.DRV
     soundDrv       = MIDNONE.DRV
@@ -63,12 +71,7 @@ CFG = [[[$(CRLF)
     dacsize        = 30720
     brightness     = 0
     language       = 1
-    resMap         = $(rootpath)
-    resAud         = $(rootpath)
-    resSfx         = $(rootpath)
-    audio          = $(rootpath)\$(AUDIOPATH)
-    movieDir       = $(rootpath)\MOVIE
-    patchDir       = $(rootpath)\PATCHES
+    $(PATHS)
 ]]]
 
 WIN = [[[$(CRLF)
@@ -92,12 +95,7 @@ WIN = [[[$(CRLF)
     VideoSpeed     = 300
     cacheSize2     = 750
     cacheSize3     = 350
-    resMap         = $(rootpath)
-    resAud         = $(rootpath)
-    resSfx         = $(rootpath)
-    audio          = $(rootpath)\$(AUDIOPATH)
-    movieDir       = $(rootpath)\MOVIE
-    patchDir       = $(rootpath)\PATCHES
+    $(PATHS)
 ]]]
 
 script[init]:
@@ -135,14 +133,22 @@ game[v1.01]:
     file[]: crc = f77ec06a; size = 397103899; name = RESOURCE.AUD
     file[]: crc = 6979e5be; size =  36104701; name = RESOURCE.SFX
     file[]: crc = abf9a5d8; size =  66965678; name = RESSCI.000
-    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL  ; optional = true
-    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL ; optional = true
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL
     file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
     file[]: crc = e283a72b; size =    905005; name = SIER.EXE
-    file[]: crc = ccbb4016; size =    787632; name = SIERW.EXE   ; optional = true
-    file[]: crc = 0d5d1c3c; size =    569344; name = SIERW5.EXE  ; optional = true
+    file[]: crc = ccbb4016; size =    787632; name = SIERW.EXE
+    file[]: crc = 0d5d1c3c; size =    569344; name = SIERW5.EXE
     file[]: crc = 80ec049b; size =         6; name = VERSION
     file[]: crc = d3c60945; size =        35; name = VESA.DRV
+    file[]: crc = 6da16ada; size =    308198; name = DRIVERS\MEMORY1.DRV
+    file[]: crc = 718f734f; size =    308198; name = DRIVERS\MEMORY2.DRV
+    file[]: crc = 4ac001ac; size =    308198; name = DRIVERS\MEMORY3.DRV
+    file[]: crc = ef2822e9; size =    308198; name = DRIVERS\MEMORY4.DRV
+    file[]: crc = a9d95b2a; size =    308198; name = DRIVERS\MEMORY5.DRV
+    file[]: crc = 44bf0f3c; size =    308198; name = DRIVERS\MEMORY6.DRV
+    file[]: crc = 230ad3db; size =    308198; name = DRIVERS\MEMORY7.DRV
+    file[]: crc = fa2dfdc7; size =    308198; name = DRIVERS\MEMORY8.DRV
     file[]: crc = 28b34084; size =   9077704; name = MOVIE\10.VMD
     file[]: crc = 04b895bc; size =   1250232; name = MOVIE\11.VMD
     file[]: crc = e27713bf; size =    700396; name = MOVIE\12.VMD
@@ -242,6 +248,30 @@ game[v1.01]:
     file[]: crc = 07a465dc; size =     38620; name = PATCHES\360.CSC
     file[]: crc = 45f77127; size =     41226; name = PATCHES\370.CSC
     file[]: crc = 38a5ae6d; size =     47826; name = PATCHES\410.CSC
+end
+
+//
+// v1.04g, German
+//
+game[v1.04g-de]:
+    name = v1.04g, German
+    imports = v1.01
+    file[]: crc = 3515b254; size =      8188; name = RESMAP.000
+    file[]: crc = 1facf23e; size =      8188; name = RESMDT.000
+    file[]: crc = d19c45c0; size = 398680300; name = RESOURCE.AUD
+    file[]: crc = aff76bdd; size =  32212064; name = RESOURCE.SFX
+    file[]: crc = bb44ec8d; size =  66971724; name = RESSCI.000
+    file[]: crc = cb0002e4; size =      2056; name = SCIMEM.TXT
+    file[]: crc = fd36bc7c; size =    905165; name = SIER.EXE
+    file[]: crc = e86d2fb3; size =    789184; name = SIERW.EXE
+    file[]: crc = 4016d8b5; size =    575488; name = SIERW5.EXE
+    file[]: crc = 68558858; size =         7; name = VERSION
+    file[]: remove = PATCHES\120.CSC
+    file[]: remove = PATCHES\14.MSG
+    file[]: remove = PATCHES\341.CSC
+    file[]: remove = PATCHES\360.CSC
+    file[]: remove = PATCHES\370.CSC
+    file[]: remove = PATCHES\410.CSC
 end
 
 end
