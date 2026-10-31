@@ -27,7 +27,7 @@ config[environment]:
         name = Windows
         osenv = windows 95
         audiohw = gmidi
-    launch = $(rootpath)\LARPOPUP\LARPOPUP.EXE
+        launch = $(rootpath)\SIERW5.EXE
         condition = file_exists("$$(rootpath)\\SIERW5.EXE")
     end
 end
