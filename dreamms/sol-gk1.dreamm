@@ -7,13 +7,14 @@ name = Gabriel Knight: Sins of the Fathers
 icon = sol-gk1.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA\GK
 mips = $(MIPS_486DX2_66)
 ramkb = 8192
 audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 AUDIOHW = sb16
 SFX = $(NULL)
+VIDEO_DRIVER = VGA320.DRV   // Demo fallback
 
 //
 // environment configuration
@@ -31,7 +32,7 @@ config[environment]:
         osenv = windows 3.1
         audiohw = gmidi
         winres = 640x480x8
-        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        launch = $(rootpath)\SIERRAW.EXE $(rootpath)\RESOURCE.WIN
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
     end
 end
@@ -164,9 +165,9 @@ CFG = [[[$(CRLF)
 ]]]
 
 CFG_DEMO = [[[$(CRLF)
-    videoDrv      = VGA320.DRV
+    videoDrv      = $(VIDEO_DRIVER)
     soundDrv      = $(SOUND_DRIVER)
-    audioDrv      = AUDBLAST.DRV
+    audioDrv      = $(AUDIO_DRIVER)
     joyDrv        = NO
     kbdDrv        = IBMKBD.DRV
     mouseDrv      = STDMOUSE.DRV
@@ -187,10 +188,10 @@ WIN = [[[$(CRLF)
     cursorViewAdd = 5000
     synthtype     = $(SOUND_DRIVER)
     genmidi       = TRUE
-    sync          = .\AUD
-    audio         = .\;.\SFX;.\PATCHES;.\AUD
-    movieDir      = .\AVI
-    patchDir      = .\;.\PATCHES
+    sync          = $(rootpath)\AUD
+    audio         = $(rootpath)\;$(rootpath)\SFX;$(rootpath)\PATCHES;$(rootpath)\AUD
+    movieDir      = $(rootpath)\AVI
+    patchDir      = $(rootpath)\;$(rootpath)PATCHES
 ]]]
 
 script[init]:
@@ -665,6 +666,9 @@ addon[floppypatch10b]:
     file[]: crc = 30ee0b69; size =    692384; name = SIERRA.EXE
 end
 
+//
+// v1.0, French Base Files
+//
 fragment[v1.0-int-1.17.94-fr-base]:
     file[]: crc = 3282b2e4; size =     10399; name = 3024.V56
     file[]: crc = 353ee5c2; size =      5782; name = 3025.V56
@@ -732,6 +736,9 @@ installer[v1.0-int-1.17.94-fr-11x1.44m-installer]:
     file[]: crc = 3c990c9f; size =    590291; name = RESOURCE.SFX
 end
 
+//
+// v1.0, German Base Files
+//
 fragment[v1.0-int-1.17.94-de-base]:
     file[]: crc = 28661be8; size =     22718; name = 250.MSG
     file[]: crc = cdcdfd12; size =      4446; name = 260.HEP
@@ -816,17 +823,26 @@ installer[v1.0-int-1.17.94-de-11x1.44m-installer]:
 end
 
 //
-// Base files for v1.0, CD
+// v1.0, CD Base Files
 //
 fragment[v1.0-cd-base]:
-    anchorfile = RESOURCE.000
-    file[]: crc = a772d755; size =       364; name = ALT.MAP
-    file[]: crc = 79be8b9f; size =  12581736; name = RESOURCE.000
-    file[]: crc = 57a7e56c; size =   3622654; name = RESOURCE.ALT
-    file[]: crc = 13a69dcb; size =     10996; name = RESOURCE.MAP
-    file[]: crc = a8603a44; size =  13589592; name = RESOURCE.SFX
-    file[]: crc = accf3567; size =      8178; name = SIERRA.ERR
+    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
+    file[]: crc = 0385a3ac; size =      4717; name = DACBLAST.DRV
+    file[]: crc = ab47a093; size =      2745; name = DACMSSYS.DRV
+    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
+    file[]: crc = efe84434; size =      2956; name = DACPRO.DRV
+    file[]: crc = ba17233a; size =      3098; name = DACPRO16.DRV
+    file[]: crc = 85c36f83; size =      3752; name = DACTHUND.DRV
+    file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
+    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 09cb013b; size =      3098; name = MT32.DRV
+    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
+    file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
+    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
     file[]: crc = 55c3e368; size =        13; name = VERSION
+    file[]: crc = d3c60945; size =        35; name = VESA.DRV
+    file[]: crc = aabb2404; size =        33; name = VGA.DRV
     file[]: crc = 4f7892af; size =       616; name = AUD\#01J0439.2B4
     file[]: crc = 3c16d14b; size =       800; name = AUD\#01K043J.166
     file[]: crc = bba93a62; size =        56; name = AUD\#0IM0100.015
@@ -859,6 +875,31 @@ fragment[v1.0-cd-base]:
     file[]: crc = 678c3298; size =    182662; name = AUD\@0MB0A00.018
     file[]: crc = 1a4a0881; size =     50237; name = AUD\@0MF0406.001
     file[]: crc = e993df3a; size = 354272859; name = AUD\RESOURCE.AUD
+    file[]: crc = 315b40b5; size =    473370; name = SEQ\1.SEQ
+    file[]: crc = 2add1bfe; size =   1018418; name = SEQ\2.SEQ
+    file[]: crc = 33b92d10; size =    278572; name = SEQ\205.SEQ
+    file[]: crc = a58b3b0a; size =    595112; name = SEQ\905.SEQ
+    file[]: crc = 8817d6f3; size =    368403; name = SEQ\BLAST.SEQ
+    file[]: crc = 7d3fc89d; size =    197528; name = SEQ\BLOOD.SEQ
+    file[]: crc = 38b5e5bc; size =    615440; name = SEQ\DRAGON.SEQ
+    file[]: crc = d4ced0f5; size =    209236; name = SEQ\FIREWALL.SEQ
+    file[]: crc = d0dbb821; size =    475352; name = SEQ\HANG.SEQ
+    file[]: crc = 8a0974b4; size =    339392; name = SEQ\KNIFE.SEQ
+    file[]: crc = 2e85faf8; size =    315088; name = SEQ\MAP.SEQ
+    file[]: crc = 6044884f; size =    426781; name = SEQ\MORPH.SEQ
+    file[]: crc = c818900f; size =    662399; name = SEQ\MOTOR.SEQ
+    file[]: crc = 9125ad81; size =    436745; name = SEQ\OLDTALIS.SEQ
+    file[]: crc = 4f4430e8; size =    128767; name = SEQ\ONLY.SEQ
+    file[]: crc = a8eeac28; size =    823275; name = SEQ\PAN1.SEQ
+    file[]: crc = f3525180; size =    809046; name = SEQ\PAN2.SEQ
+    file[]: crc = 25bdbde0; size =    234009; name = SEQ\SHRINK.SEQ
+    file[]: crc = a051b81c; size =    309659; name = SEQ\SNAKE.SEQ
+    file[]: crc = 40f92842; size =    124341; name = SEQ\STAB.SEQ
+    file[]: crc = dca94af0; size =    207478; name = SEQ\SWORD.SEQ
+    file[]: crc = 061c754a; size =    834460; name = SEQ\TALIS.SEQ
+    file[]: crc = f701f9e3; size =    172306; name = SEQ\VEVE.SEQ
+    file[]: crc = 304f536c; size =    238813; name = SEQ\WAKE.SEQ
+    file[]: crc = f2ed6b38; size =    573952; name = SEQ\WICKED.SEQ
     file[]: crc = b23fc212; size =     36912; name = SFX\14.WAV
     file[]: crc = 8bbc708d; size =    283979; name = SFX\201.WAV
     file[]: crc = 33269f77; size =     11537; name = SFX\264.WAV
@@ -907,51 +948,23 @@ fragment[v1.0-cd-base]:
     file[]: crc = 3074bc19; size =   5352671; name = SFX\99.WAV
 end
 
-fragment[v1.0-cd-dos-base]:
-    file[]: crc = 97b288f9; size =     10445; name = ADL.DRV
-    file[]: crc = 0385a3ac; size =      4717; name = DACBLAST.DRV
-    file[]: crc = ab47a093; size =      2745; name = DACMSSYS.DRV
-    file[]: crc = d20dcf62; size =        46; name = DACNONE.DRV
-    file[]: crc = efe84434; size =      2956; name = DACPRO.DRV
-    file[]: crc = ba17233a; size =      3098; name = DACPRO16.DRV
-    file[]: crc = 85c36f83; size =      3752; name = DACTHUND.DRV
-    file[]: crc = cf739a2f; size =      3058; name = GENMIDI.DRV
-    file[]: crc = 26c6b2c8; size =     10926; name = MICROSOF.DRV
-    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
-    file[]: crc = 09cb013b; size =      3098; name = MT32.DRV
-    file[]: crc = d176473d; size =     11411; name = PROAUDIO.DRV
-    file[]: crc = 2231e08d; size =     10429; name = SADL.DRV
-    file[]: crc = 466fac86; size =     10970; name = SBPRO.DRV
-    file[]: crc = d3c60945; size =        35; name = VESA.DRV
-    file[]: crc = aabb2404; size =        33; name = VGA.DRV
-    file[]: crc = 315b40b5; size =    473370; name = SEQ\1.SEQ
-    file[]: crc = 2add1bfe; size =   1018418; name = SEQ\2.SEQ
-    file[]: crc = 33b92d10; size =    278572; name = SEQ\205.SEQ
-    file[]: crc = a58b3b0a; size =    595112; name = SEQ\905.SEQ
-    file[]: crc = 8817d6f3; size =    368403; name = SEQ\BLAST.SEQ
-    file[]: crc = 7d3fc89d; size =    197528; name = SEQ\BLOOD.SEQ
-    file[]: crc = 38b5e5bc; size =    615440; name = SEQ\DRAGON.SEQ
-    file[]: crc = d4ced0f5; size =    209236; name = SEQ\FIREWALL.SEQ
-    file[]: crc = d0dbb821; size =    475352; name = SEQ\HANG.SEQ
-    file[]: crc = 8a0974b4; size =    339392; name = SEQ\KNIFE.SEQ
-    file[]: crc = 2e85faf8; size =    315088; name = SEQ\MAP.SEQ
-    file[]: crc = 6044884f; size =    426781; name = SEQ\MORPH.SEQ
-    file[]: crc = c818900f; size =    662399; name = SEQ\MOTOR.SEQ
-    file[]: crc = 9125ad81; size =    436745; name = SEQ\OLDTALIS.SEQ
-    file[]: crc = 4f4430e8; size =    128767; name = SEQ\ONLY.SEQ
-    file[]: crc = a8eeac28; size =    823275; name = SEQ\PAN1.SEQ
-    file[]: crc = f3525180; size =    809046; name = SEQ\PAN2.SEQ
-    file[]: crc = 25bdbde0; size =    234009; name = SEQ\SHRINK.SEQ
-    file[]: crc = a051b81c; size =    309659; name = SEQ\SNAKE.SEQ
-    file[]: crc = 40f92842; size =    124341; name = SEQ\STAB.SEQ
-    file[]: crc = dca94af0; size =    207478; name = SEQ\SWORD.SEQ
-    file[]: crc = 061c754a; size =    834460; name = SEQ\TALIS.SEQ
-    file[]: crc = f701f9e3; size =    172306; name = SEQ\VEVE.SEQ
-    file[]: crc = 304f536c; size =    238813; name = SEQ\WAKE.SEQ
-    file[]: crc = f2ed6b38; size =    573952; name = SEQ\WICKED.SEQ
-end
-
-fragment[v1.0-cd-win-base]:
+//
+// v1.0, CD
+//
+game[v1.0-cd]:
+    name = v1.0, CD
+    imports = v1.0-cd-base
+    anchorfile = RESOURCE.000
+    file[]: crc = a772d755; size =       364; name = ALT.MAP
+    file[]: crc = 4e95af25; size =     69184; name = PROGLIB.DLL
+    file[]: crc = 79be8b9f; size =  12581736; name = RESOURCE.000
+    file[]: crc = 57a7e56c; size =   3622654; name = RESOURCE.ALT
+    file[]: crc = 13a69dcb; size =     10996; name = RESOURCE.MAP
+    file[]: crc = a8603a44; size =  13589592; name = RESOURCE.SFX
+    file[]: crc = 2a241c0c; size =    141282; name = SCIDLL.DLL
+    file[]: crc = accf3567; size =      8178; name = SIERRA.ERR
+    file[]: crc = c406e2f5; size =    691840; name = SIERRA.EXE
+    file[]: crc = a3a3afb9; size =    584194; name = SIERRAW.EXE
     file[]: crc = 5a48d52f; size =    595678; name = AVI\1.AVI
     file[]: crc = 9a2efcf8; size =    687758; name = AVI\2.AVI
     file[]: crc = 3afd0f7d; size =    148046; name = AVI\200.AVI
@@ -981,9 +994,6 @@ fragment[v1.0-cd-win-base]:
     file[]: crc = 4ef5f37c; size =    148558; name = AVI\VEVE.AVI
     file[]: crc = fbe59ede; size =     90028; name = AVI\WAKE.AVI
     file[]: crc = 4eef7591; size =    870912; name = AVI\WICKED.AVI
-end
-
-fragment[v1.0-cd-patch-base]:
     file[]: crc = 5586b602; size =     17791; name = PATCHES\0.MSG
     file[]: crc = 6552bc65; size =        50; name = PATCHES\10.HEP
     file[]: crc = 15b4d4e0; size =       308; name = PATCHES\10.SCR
@@ -1140,29 +1150,10 @@ fragment[v1.0-cd-patch-base]:
 end
 
 //
-// v1.0, CD, DOS
-//
-game[v1.0-cd-dos]:
-    name = v1.0, CD, DOS
-    imports = v1.0-cd-base, v1.0-cd-dos-base, v1.0-cd-patch-base
-    file[]: crc = c406e2f5; size =    691840; name = SIERRA.EXE
-end
-
-//
-// v1.0, CD, Windows
-//
-game[v1.0-cd-win]:
-    name = v1.0, CD, Windows
-    imports = v1.0-cd-base, v1.0-cd-win-base, v1.0-cd-patch-base
-    file[]: crc = 4e95af25; size =     69184; name = PROGLIB.DLL
-    file[]: crc = 2a241c0c; size =    141282; name = SCIDLL.DLL
-    file[]: crc = a3a3afb9; size =    584194; name = SIERRAW.EXE
-end
-
-//
 // v1.0a Base Files
 //
 fragment[v1.0a-base]:
+    anchorfile = SIERRA.EXE
     file[]: crc = 4ea4a74c; size =      1906; name = PATCHES\391.HEP
     file[]: crc = 331756ce; size =      4054; name = PATCHES\391.SCR
     file[]: crc = 432871ac; size =        98; name = PATCHES\64921.HEP
@@ -1172,76 +1163,39 @@ fragment[v1.0a-base]:
 end
 
 //
-// v1.0a, CD, DOS
+// v1.0a
 //
-addon[v1.0a-cd-dos]:
-    name = v1.0a, CD, DOS
-    upgradeids = v1.0-cd-dos
+addon[v1.0a-cd]:
+    name = v1.0a
+    upgradeids = v1.0-cd
     imports = v1.0a-base
-    anchorfile = SIERRA.EXE
+    anchorfile = 
     file[]: crc = 30ee0b69; size =    692384; name = SIERRA.EXE
-end
-
-//
-// v1.0a, CD, Windows
-//
-addon[v1.0a-cd-win]:
-    name = v1.0a, CD, Windows
-    upgradeids = v1.0-cd-win
-    imports = v1.0a-base
-    anchorfile = SIERRAW.EXE
     file[]: crc = b3e3f689; size =    584450; name = SIERRAW.EXE
 end
 
-upgrader[v1.0a-cd-dos-installer]:
-    name = v1.0a, CD, DOS, Installer
-    upgradeids = v1.0-cd-dos
+upgrader[v1.0a-installer]:
+    name = v1.0a, Installer
+    upgradeids = v1.0-cd
     launch = GKCD.EXE
     imports = v1.0a-base
     anchorfile = GKCD.EXE
     file[]: crc = efade3a7; size =     15561; name = GKCD.EXE
-    file[]: crc = 30ee0b69; size =    692384; name = SIERRA.EXE
-end
-
-upgrader[v1.0a-cd-win-installer]:
-    name = v1.0a, CD, Windows, Installer
-    upgradeids = v1.0-cd-win
-    launch = GKCD.EXE
-    imports = v1.0a-base
-    anchorfile = GKCD.EXE
-    file[]: crc = efade3a7; size =     15561; name = GKCD.EXE
-    file[]: crc = b3e3f689; size =    584450; name = SIERRAW.EXE
 end
 
 //
-// v1.1 Base Files
+// v1.1, CD
 //
-fragment[v1.1-cd-base]:
-    imports = v1.0a-base
-    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
-    file[]: crc = ded423c8; size =        12; name = VERSION
-    file[]: crc = f64ea78a; size =     30412; name = PATCHES\316.SND
-end
-
-//
-// v1.1, CD, DOS
-//
-game[v1.1-cd-dos]:
-    name = v1.1, CD, DOS
-    imports = v1.0-cd-dos, v1.1-cd-base
+game[v1.1-cd]:
+    name = v1.1, CD
+    imports = v1.0-cd, v1.0a-base
     anchorfile = SIERRA.EXE
     file[]: crc = a577da3b; size =      4717; name = DACBLAST.DRV
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
     file[]: crc = 30ee0b69; size =    692384; name = SIERRA.EXE
-end
-
-//
-// v1.1, CD, Windows
-//
-game[v1.1-cd-win]:
-    name = v1.1, CD, Windows
-    imports = v1.0-cd-win, v1.1-cd-base
-    anchorfile = SIERRAW.EXE
     file[]: crc = b3e3f689; size =    584450; name = SIERRAW.EXE
+    file[]: crc = ded423c8; size =        12; name = VERSION
+    file[]: crc = f64ea78a; size =     30412; name = PATCHES\316.SND
 end
 
 fragment[v1.0-cd-international-base]:
@@ -1259,7 +1213,7 @@ end
 //
 game[v1.0-cd-fr]:
     name = v1.0, French, CD
-    imports = v1.0-cd-base, v1.0-cd-dos-base, v1.0-cd-international-base
+    imports = v1.0-cd-base, v1.0-cd-international-base
     file[]: crc = 71a462d3; size =       364; name = ALT.MAP
     file[]: crc = d9927195; size =  13325145; name = RESOURCE.000
     file[]: crc = 246ea79a; size =   3616871; name = RESOURCE.ALT
@@ -1275,7 +1229,7 @@ end
 //
 game[v1.0-cd-de]:
     name = v1.0, German, CD
-    imports = v1.0-cd-base, v1.0-cd-dos-base, v1.0-cd-international-base
+    imports = v1.0-cd-base, v1.0-cd-international-base
     anchorfile = RESOURCE.000
     anchordepth = 1
     file[]: crc = f35d90be; size =       364; name = ALT.MAP
@@ -1304,7 +1258,7 @@ end
 //
 game[v1.0-cd-es]:
     name = v1.0, Spanish, CD
-    imports = v1.0-cd-base, v1.0-cd-dos-base, v1.0-cd-international-base
+    imports = v1.0-cd-base, v1.0-cd-international-base
     anchorfile = RESOURCE.000
     anchordepth = 1
     file[]: crc = a6b1e514; size =       364; name = ALT.MAP
@@ -1355,9 +1309,7 @@ demo[demo]:
     file[]: crc = 7abda9a7; size =      6231; name = AUDPS1.DRV
     file[]: crc = 38e24fd1; size =      7708; name = AUDTHUND.DRV
     file[]: crc = 3fb73c94; size =     98774; name = BLOOD.SEQ
-    file[]: crc = 007a7110; size =      3971; name = DEMO.BAT
     file[]: crc = 7b72c3f8; size =      2549; name = GENMIDI.DRV
-    file[]: crc = b4a235ac; size =     14672; name = GETKEY.COM
     file[]: crc = d0dbb821; size =    475352; name = HANG.SEQ
     file[]: crc = 8caddcb1; size =       758; name = IBMKBD.DRV
     file[]: crc = bc5b5bbe; size =      4018; name = IBMPS1.DRV
@@ -1383,6 +1335,16 @@ demo[demo]:
     file[]: crc = 03c3b393; size =        14; name = VERSION
     file[]: crc = 509fae18; size =      8267; name = VGA320.DRV
     file[]: crc = d07e06a5; size =    236157; name = WAKE.SEQ
+end
+
+demo[alt-demo]:
+    name = Demo, Alt
+    imports = demo
+    file[]: crc = 1f403fc8; size =     13425; name = ARIA.DRV
+    file[]: crc = 5d4f2374; size =      7670; name = AUDBLAST.DRV
+    //file[]: crc = f55a1183; size =      5923; name = EGA640.DRV
+    file[]: crc = 7980e4bd; size =      8199; name = VGA320.DRV
+    //file[]: crc = 19838a03; size =      5905; name = VGA320BW.DRV
 end
 
 end
