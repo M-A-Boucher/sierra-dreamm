@@ -19,7 +19,7 @@ config[environment]:
     title = Environment Configuration
     option[dos]: 
         name = DOS
-        launch = $(rootpath)\SIERRA.EXE -o RESOURCE.CFG
+        launch = $(rootpath)\SIERRA.EXE -o $(rootpath)\RESOURCE.CFG
         condition = file_exists("$$(rootpath)\\SIERRA.EXE")
     end
     option[win]:
@@ -238,6 +238,24 @@ game[v2.00b-gog]:
     file[]: remove = SADL.DRV
     file[]: remove = SBPRO.DRV
     file[]: remove = SCIDLL.DLL
+end
+
+//
+// Interactive Demo
+//
+demo[interactive-demo]:
+    name = Interactive Demo
+    rootpath = C:\SIERRA\KQ7DEMO
+    anchorfile = SIERRAW.EXE
+    file[]: crc = b9e3d0f7; size =     49152; name = KQ7GAME.HLP
+    file[]: crc = 8112b402; size =  84020382; name = RESOURCE.000
+    file[]: crc = c50166d0; size = 216944768; name = RESOURCE.AUD
+    file[]: crc = 3c4532e4; size =     18412; name = RESOURCE.MAP
+    file[]: crc = e3c86434; size =  49062187; name = RESOURCE.SFX
+    file[]: crc = d57367df; size =       340; name = RESOURCE.WIN
+    file[]: crc = 01fb6a0c; size =    142598; name = SCIDLL.DLL
+    file[]: crc = 7969cc00; size =      8475; name = SIERRA.ERR
+    file[]: crc = 92ebbf63; size =    662916; name = SIERRAW.EXE
 end
 
 end
