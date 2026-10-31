@@ -14,7 +14,6 @@ audiohw = $(AUDIOHW)+$(SFX)
 filter = sierra, adventure
 AUDIOHW = sb16
 SFX = $(NULL)
-VIDEO_DRIVER = VGA320.DRV   // Demo fallback
 
 //
 // environment configuration
@@ -42,6 +41,13 @@ end
 //
 config[graphics]:
     title = Graphics Configuration
+    condition = is_dos()
+    option[vga320]:
+        name = $(VGA_NAME)
+        videohw = vga
+        VIDEO_DRIVER = VGA320.DRV
+        condition = file_exists("$$(rootpath)\\VGA320.DRV")
+    end
     option[vga]:
         name = $(VGA_NAME)
         videohw = vga
@@ -61,6 +67,7 @@ end
 //
 config[sound]:
     title = Sound Configuration
+    condition = is_dos()
     option[speaker]:
         name = $(SPEAKER_NAME)
         SOUND_DRIVER = STD.DRV; AUDIOHW = speaker
@@ -114,7 +121,7 @@ end
 //
 config[sfx]:
     title = SFX Configuration
-    condition = is_game()
+    condition = is_dos()
     option[on]:
         name = On
         AUDIO_DRIVER = DACBLAST.DRV; SFX = sb16
@@ -125,14 +132,6 @@ config[sfx]:
         AUDIO_DRIVER = DACNONE.DRV; SFX = $(NULL)
         condition = file_exists("$$(rootpath)\\DACNONE.DRV")
     end
-end
-
-//
-// sfx configuration
-//
-config[sfx-demo]:
-    title = SFX Configuration
-    condition = is_demo()
     option[on]:
         name = On
         AUDIO_DRIVER = AUDBLAST.DRV; SFX = sb16
@@ -150,6 +149,13 @@ INSTALL = [[[$(CRLF)
     AUDDCOMP.EXE .\
 ]]]
 
+PATHS = [[[$(CRLF)
+    sync          = $(rootpath)\AUD
+    audio         = $(rootpath)\AUD;$(rootpath)\SFX;$(rootpath)\PATCHES;$(rootpath)
+    movieDir      = $(rootpath)\AVI
+    patchDir      = $(rootpath)PATCHES;$(rootpath)
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv      = $(VIDEO_DRIVER)
     soundDrv      = $(SOUND_DRIVER)
@@ -158,10 +164,7 @@ CFG = [[[$(CRLF)
     memoryDrv     = ARM.DRV
     minMemory     = 2M
     audioSize     = 63k 
-    sync          = .\AUD
-    audio         = .;.\SFX;.\PATCHES;.\AUD 
-    movieDir      = .\SEQ 
-    patchDir      = .;.\PATCHES
+    $(PATHS)
 ]]]
 
 CFG_DEMO = [[[$(CRLF)
@@ -188,10 +191,7 @@ WIN = [[[$(CRLF)
     cursorViewAdd = 5000
     synthtype     = $(SOUND_DRIVER)
     genmidi       = TRUE
-    sync          = $(rootpath)\AUD
-    audio         = $(rootpath)\;$(rootpath)\SFX;$(rootpath)\PATCHES;$(rootpath)\AUD
-    movieDir      = $(rootpath)\AVI
-    patchDir      = $(rootpath)\;$(rootpath)PATCHES
+    $(PATHS)
 ]]]
 
 script[init]:
@@ -215,9 +215,12 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
+//
+// v1.0 Base Files
+//
 fragment[v1.0-base]:
     file[]: crc = 33d394d8; size =     17660; name = 0.MSG
     file[]: crc = e1fee02c; size =      4558; name = 1.SND
@@ -376,7 +379,6 @@ end
 game[v1.0-int-12.22.93-11x1.44m]:
     name = v1.0, Int. 12.22.93, 11x1.44M
     imports = v1.0-int-11.22.93-11x1.44m
-    anchorfile = SIERRA.EXE
     file[]: crc = de22dc22; size =        60; name = 21.HEP
     file[]: crc = 60e28412; size =       506; name = 21.SCR
     file[]: crc = d44f0e4f; size =     14382; name = 212.SCR
@@ -426,10 +428,7 @@ end
 installer[v1.0-int-12.22.93-11x1.44m-installer]:
     name = v1.0, Int. 12.22.93, 11x1.44M, Installer
     installid = v1.0-int-12.22.93-11x1.44m
-    launch = DREAMM.BAT
     imports = v1.0-int-11.22.93-11x1.44m-installer
-    anchorfile = RESOURCE.SFX
-    anchordepth = 1
     file[]: crc = de22dc22; size =        60; name = 21.HEP
     file[]: crc = 60e28412; size =       506; name = 21.SCR
     file[]: crc = d44f0e4f; size =     14382; name = 212.SCR
