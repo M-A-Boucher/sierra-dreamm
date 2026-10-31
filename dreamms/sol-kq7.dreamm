@@ -7,7 +7,7 @@ name = King’s Quest 7: The Princeless Bride
 icon = sol-kq7.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\SIERRA\KQ7
 mips = $(MIPS_P100)
 ramkb = 16384
 filter = sierra, adventure
@@ -24,10 +24,10 @@ config[environment]:
     end
     option[win]:
         name = Windows
-        osenv = windows 95
+        osenv = windows 3.1
         audiohw = gmidi
         winres = 640x480x8
-        launch = $(rootpath)\SIERRAW.EXE \RESOURCE.WIN
+        launch = $(rootpath)\SIERRAW.EXE -o $(rootpath)\RESOURCE.WIN
         condition = file_exists("$$(rootpath)\\SIERRAW.EXE")
     end
 end
@@ -64,6 +64,14 @@ config[sound]:
     end
 end
 
+PATHS = [[[$(CRLF)
+    resAud        = $(rootpath)
+    resSfx        = $(rootpath)
+    audio         = $(rootpath)
+    movieDir      = $(rootpath)\AVI
+    patchDir      = $(rootpath)\AVI;$(rootpath)
+]]]
+
 CFG = [[[$(CRLF)
     videoDrv      = VESA.DRV
     soundDrv      = $(SOUND_DRIVER)
@@ -77,11 +85,7 @@ CFG = [[[$(CRLF)
     dacsize       = 30720
     brightness    = 0
     language      = 1
-    resMap        = $(rootpath)
-    resAud        = $(rootpath)
-    resSfx        = $(rootpath)
-    robot         = $(rootpath)\AVI
-    patchDir      = $(rootpath)\AVI;$(rootpath)
+    $(PATHS)
 ]]]
 
 WIN = [[[$(CRLF)
@@ -101,14 +105,8 @@ WIN = [[[$(CRLF)
     confirmdac    = TRUE
     audioSize     = 62k
     dacSize       = 30720
-    maxCursorSize = 4
-    resMap        = $(rootpath)
-    resAud        = $(rootpath)
-    resSfx        = $(rootpath)
-    audio         = $(rootpath)
-    robot         = $(rootpath)\AVI
-    movieDir      = $(rootpath)\AVI
-    patchDir      = $(rootpath)\AVI;$(rootpath)
+    synthtype     = highsynth
+    $(PATHS)
 ]]]
 
 script[init]:
@@ -124,14 +122,14 @@ end
 //
 // filesystem
 //
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 //
-// v1.4, CD 
+// v1.4 
 //
-game[v1.4-cd]:
-    name = v1.4, CD  
+game[v1.4]:
+    name = v1.4  
     anchorfile = SIERRAW.EXE
     anchordepth = 1
     file[]: crc = 73bd7d20; size =    142338; name = 0.CHK
@@ -140,8 +138,6 @@ game[v1.4-cd]:
     file[]: crc = 0e312855; size =       466; name = ALTRES.MDT
     file[]: crc = 01f45522; size =     44464; name = D2HTOOLS.DLL
     file[]: crc = 2dbfa79a; size =     61440; name = KQ7GAME.HLP
-    file[]: crc = c8d3ea5e; size =     11520; name = KQ7READ.WRI
-    file[]: crc = 64492198; size =      3714; name = MIDITEST.MID
     file[]: crc = 68651a0b; size = 203882535; name = RESOURCE.000
     file[]: crc = 6854cf65; size = 217716879; name = RESOURCE.AUD
     file[]: crc = 46b1a190; size =     18697; name = RESOURCE.MAP
@@ -152,20 +148,17 @@ game[v1.4-cd]:
     file[]: crc = ac16c675; size =    670444; name = SIERRAW.EXE
     file[]: crc = 7fb546f4; size =    544057; name = SIERRAWS.EXE
     file[]: crc = 4b13f18f; size =         9; name = VERSION
-    file[]: crc = d82b7490; size =   1103992; name = VFW.SOL
-    file[]: crc = dd6ff62f; size =    420866; name = WIN32S.SOL
-    file[]: crc = 8e9e8efc; size =    128575; name = WING.SOL
     file[]: crc = 519dd0d6; size =   9559116; name = AVI\E108X11.AVI
     file[]: crc = 78b034f2; size =   2014412; name = AVI\E208X11.AVI
     file[]: crc = d9f3894c; size =  21948444; name = AVI\INT08X11.AVI
 end
 
 //
-// v1.51, CD 
+// v1.51 
 //
-game[v1.51-cd]:
-    name = v1.51, CD  
-    imports = v1.4-cd
+game[v1.51]:
+    name = v1.51  
+    imports = v1.4
     file[]: crc = 485ac6b4; size =    142304; name = 0.CHK
     file[]: crc = 324f1915; size = 206626576; name = RESOURCE.000
     file[]: crc = 2a56277c; size =     18697; name = RESOURCE.MAP
@@ -176,10 +169,10 @@ game[v1.51-cd]:
 end
 
 //
-// v2.00b, CD 
+// v2.00b 
 //
-game[v2.00b-cd]:
-    name = v2.00b, CD  
+game[v2.00b]:
+    name = v2.00b  
     anchorfile = SIERRA.EXE
     anchordepth = 1
     file[]: crc = 8dd03bc4; size =    144978; name = 0.CHK
@@ -226,8 +219,7 @@ end
 //
 game[v2.00b-gog]:
     name = GOG (v2.00b)
-    imports = v2.00b-cd
-    anchorfile = SIERRA.EXE
+    imports = v2.00b
     file[]: remove = ADL.DRV
     file[]: remove = ALTRES.000
     file[]: remove = ALTRES.MAP
