@@ -74,6 +74,8 @@ CFG = [[[$(CRLF)
     $(PATHS)
 ]]]
 
+
+
 WIN = [[[$(CRLF)
     [Windows]
     title          = Leisure Suit Larry in 'Love For Sail!'
@@ -261,7 +263,6 @@ game[v1.04g-de]:
     file[]: crc = d19c45c0; size = 398680300; name = RESOURCE.AUD
     file[]: crc = aff76bdd; size =  32212064; name = RESOURCE.SFX
     file[]: crc = bb44ec8d; size =  66971724; name = RESSCI.000
-    file[]: crc = cb0002e4; size =      2056; name = SCIMEM.TXT
     file[]: crc = fd36bc7c; size =    905165; name = SIER.EXE
     file[]: crc = e86d2fb3; size =    789184; name = SIERW.EXE
     file[]: crc = 4016d8b5; size =    575488; name = SIERW5.EXE
@@ -272,6 +273,203 @@ game[v1.04g-de]:
     file[]: remove = PATCHES\360.CSC
     file[]: remove = PATCHES\370.CSC
     file[]: remove = PATCHES\410.CSC
+end
+
+//
+// Interactive Demo
+//
+demo[interactive-demo]:
+    name = Interactive Demo
+    rootpath = C:\SIERRA\L7DOSDMO
+    anchorfile = SIERW.EXE
+    file[]: crc = a6801c84; size =      6740; name = CLASSES
+    file[]: crc = 55d4d361; size =      4366; name = DACBLAST.DRV
+    file[]: crc = 88001895; size =      2447; name = DACMSSYS.DRV
+    file[]: crc = 7749378e; size =      2805; name = DACPRO.DRV
+    file[]: crc = 5fd843e1; size =      2729; name = DACPRO16.DRV
+    file[]: crc = 43a428e0; size =      2587; name = DACPRO8.DRV
+    file[]: crc = d30db585; size =      3399; name = DACTHUND.DRV
+    file[]: crc = a21ad12c; size =     10427; name = MIDNONE.DRV
+    file[]: crc = 11017f07; size =      2695; name = RESMAP.000
+    file[]: crc = 34f6837b; size =      2695; name = RESMDT.000
+    file[]: crc = 1860cc17; size =  14501868; name = RESOURCE.AUD
+    file[]: crc = 37bb06dc; size =   3392150; name = RESOURCE.SFX
+    file[]: crc = 9324da2b; size =  10195878; name = RESSCI.000
+    file[]: crc = ad3e8003; size =     37268; name = SBAWE32.DRV
+    file[]: crc = f44021d4; size =     10723; name = SBPRO.DRV
+    file[]: crc = 40f50f2f; size =    143642; name = SCIDLL.DLL
+    file[]: crc = 64fac2ee; size =    141226; name = SCIMIDI.DLL
+    file[]: crc = 1d8ef791; size =    883479; name = SIER.EXE
+    file[]: crc = ba1ed435; size =      8474; name = SIERRA.ERR
+    file[]: crc = a115747d; size =    779008; name = SIERW.EXE
+    file[]: crc = ee9f474a; size =    560640; name = SIERW5.EXE
+    file[]: crc = d81418c9; size =        11; name = VERSION
+    file[]: crc = 043964c0; size =    329255; name = LARPOPUP\ANSWER.WAV
+    file[]: crc = a57c7efd; size =     97814; name = LARPOPUP\D010100.DWV
+    file[]: crc = 08252ec0; size =     52232; name = LARPOPUP\D040100.DWV
+    file[]: crc = c8ae3ca7; size =    302100; name = LARPOPUP\D040101.DWV
+    file[]: crc = a5d61171; size =     71001; name = LARPOPUP\D070400.DWV
+    file[]: crc = cda5a7f4; size =    145899; name = LARPOPUP\D070401.DWV
+    file[]: crc = 33744343; size =    112884; name = LARPOPUP\D103100.DWV
+    file[]: crc = a4824786; size =     94653; name = LARPOPUP\D122500.DWV
+    file[]: crc = 277ca74c; size =    102537; name = LARPOPUP\D123100.DWV
+    file[]: crc = 26cce5b5; size =      3424; name = LARPOPUP\HOOKSDLL.DLL
+    file[]: crc = 008c60a5; size =    136044; name = LARPOPUP\L001.WAV
+    file[]: crc = 88600cf7; size =    145406; name = LARPOPUP\L002.WAV
+    file[]: crc = 68a5d68f; size =    166101; name = LARPOPUP\L003.WAV
+    file[]: crc = 43c0ad1c; size =    106478; name = LARPOPUP\L004.WAV
+    file[]: crc = 6a778e5c; size =    135551; name = LARPOPUP\L005.WAV
+    file[]: crc = 996c0180; size =     53262; name = LARPOPUP\L006.WAV
+    file[]: crc = 5763c37a; size =    272042; name = LARPOPUP\L007.WAV
+    file[]: crc = baea0933; size =     82334; name = LARPOPUP\L008.WAV
+    file[]: crc = 2ffb4490; size =     57696; name = LARPOPUP\L009.WAV
+    file[]: crc = f513daef; size =     43899; name = LARPOPUP\L010.WAV
+    file[]: crc = 465e1efe; size =     60161; name = LARPOPUP\L011.WAV
+    file[]: crc = 0498186b; size =    104507; name = LARPOPUP\L012.WAV
+    file[]: crc = fc00b331; size =     21936; name = LARPOPUP\L013.WAV
+    file[]: crc = 969d7528; size =     60327; name = LARPOPUP\L014.WAV
+    file[]: crc = b0c2c7c0; size =     71493; name = LARPOPUP\L015.WAV
+    file[]: crc = afab07e7; size =     52277; name = LARPOPUP\L016.WAV
+    file[]: crc = 5d3a5638; size =     64103; name = LARPOPUP\L017.WAV
+    file[]: crc = dcf34139; size =     70015; name = LARPOPUP\L018.WAV
+    file[]: crc = 84022e35; size =     79377; name = LARPOPUP\L019.WAV
+    file[]: crc = fe123cbe; size =     51291; name = LARPOPUP\L020.WAV
+    file[]: crc = f2265b59; size =     64595; name = LARPOPUP\L021.WAV
+    file[]: crc = 7d0d36ad; size =     78393; name = LARPOPUP\L022.WAV
+    file[]: crc = 26ba2124; size =     56658; name = LARPOPUP\L023.WAV
+    file[]: crc = 5adc9682; size =     61793; name = LARPOPUP\L024.WAV
+    file[]: crc = 7d0787d9; size =    154275; name = LARPOPUP\L025.WAV
+    file[]: crc = 9164907d; size =     99580; name = LARPOPUP\L026.WAV
+    file[]: crc = f0f912a7; size =     47842; name = LARPOPUP\L027.WAV
+    file[]: crc = beae7534; size =    100073; name = LARPOPUP\L028.WAV
+    file[]: crc = cefd53a5; size =     33552; name = LARPOPUP\L029.WAV
+    file[]: crc = af16c735; size =    189753; name = LARPOPUP\L030.WAV
+    file[]: crc = 106f38f1; size =     38479; name = LARPOPUP\L031.WAV
+    file[]: crc = 13a5e3e8; size =     46856; name = LARPOPUP\L032.WAV
+    file[]: crc = eab12769; size =     53262; name = LARPOPUP\L033.WAV
+    file[]: crc = 03d307a8; size =    180391; name = LARPOPUP\L034.WAV
+    file[]: crc = 44cdc9bd; size =    133580; name = LARPOPUP\L035.WAV
+    file[]: crc = 0589b3b1; size =    114362; name = LARPOPUP\L036.WAV
+    file[]: crc = 8c0472dc; size =     50798; name = LARPOPUP\L037.WAV
+    file[]: crc = 465cd70b; size =     76421; name = LARPOPUP\L038.WAV
+    file[]: crc = ae064e3d; size =    127667; name = LARPOPUP\L039.WAV
+    file[]: crc = db7da22b; size =    347912; name = LARPOPUP\L040.WAV
+    file[]: crc = fdf3393a; size =     40037; name = LARPOPUP\L041.WAV
+    file[]: crc = 68646c8d; size =     89233; name = LARPOPUP\L042.WAV
+    file[]: crc = 2aaaf225; size =     69522; name = LARPOPUP\L043.WAV
+    file[]: crc = 0c28cf16; size =     96624; name = LARPOPUP\L044.WAV
+    file[]: crc = 30dccafb; size =     97568; name = LARPOPUP\L045.WAV
+    file[]: crc = e81651d2; size =    165609; name = LARPOPUP\L046.WAV
+    file[]: crc = 9425f23b; size =     85290; name = LARPOPUP\L047.WAV
+    file[]: crc = 1a760395; size =    126930; name = LARPOPUP\L048.WAV
+    file[]: crc = 8a53dc59; size =    130624; name = LARPOPUP\L049.WAV
+    file[]: crc = 7ec35e8d; size =     45475; name = LARPOPUP\L050.WAV
+    file[]: crc = 43f83c4c; size =    125994; name = LARPOPUP\L051.WAV
+    file[]: crc = ce40477e; size =     71884; name = LARPOPUP\L052.WAV
+    file[]: crc = 4fcc4b8e; size =    148362; name = LARPOPUP\L053.WAV
+    file[]: crc = 8a701a2f; size =     60517; name = LARPOPUP\L054.WAV
+    file[]: crc = 19a630ee; size =     60820; name = LARPOPUP\L055.WAV
+    file[]: crc = 8aa88c6c; size =    177856; name = LARPOPUP\L056.WAV
+    file[]: crc = 9af43826; size =     63462; name = LARPOPUP\L057.WAV
+    file[]: crc = c3c275be; size =     98805; name = LARPOPUP\L058.WAV
+    file[]: crc = 591fc905; size =    272535; name = LARPOPUP\L059.WAV
+    file[]: crc = fc1004b3; size =     57204; name = LARPOPUP\L060.WAV
+    file[]: crc = cf85885b; size =    129145; name = LARPOPUP\L061.WAV
+    file[]: crc = d0ec74f4; size =     58682; name = LARPOPUP\L062.WAV
+    file[]: crc = cd8f448f; size =     74663; name = LARPOPUP\L063.WAV
+    file[]: crc = fa2f7003; size =     64135; name = LARPOPUP\L064.WAV
+    file[]: crc = 2e4d1784; size =     81671; name = LARPOPUP\L065.WAV
+    file[]: crc = 5c93dbaf; size =    100565; name = LARPOPUP\L066.WAV
+    file[]: crc = 182e9aa1; size =     56711; name = LARPOPUP\L067.WAV
+    file[]: crc = 3cdbeebb; size =     45378; name = LARPOPUP\L068.WAV
+    file[]: crc = 095fac8c; size =     39957; name = LARPOPUP\L069.WAV
+    file[]: crc = 0e6ce523; size =     99088; name = LARPOPUP\L070.WAV
+    file[]: crc = 087d3e7d; size =     45378; name = LARPOPUP\L071.WAV
+    file[]: crc = 4bcf6aba; size =     61638; name = LARPOPUP\L072.WAV
+    file[]: crc = 621dd287; size =     39368; name = LARPOPUP\L073.WAV
+    file[]: crc = 9a1ff70b; size =     80968; name = LARPOPUP\L074.WAV
+    file[]: crc = c534647b; size =     66647; name = LARPOPUP\L075.WAV
+    file[]: crc = f449702b; size =     70094; name = LARPOPUP\L076.WAV
+    file[]: crc = d6b6db10; size =     78493; name = LARPOPUP\L077.WAV
+    file[]: crc = ad87ba1f; size =     68747; name = LARPOPUP\L078.WAV
+    file[]: crc = b3484589; size =     92528; name = LARPOPUP\L079.WAV
+    file[]: crc = ad88e10e; size =     79317; name = LARPOPUP\L080.WAV
+    file[]: crc = 805ebfc6; size =     57517; name = LARPOPUP\L081.WAV
+    file[]: crc = 91ad596a; size =    108714; name = LARPOPUP\L082.WAV
+    file[]: crc = 916d9d1e; size =     38029; name = LARPOPUP\L083.WAV
+    file[]: crc = b6645685; size =     63792; name = LARPOPUP\L084.WAV
+    file[]: crc = d8cbcc6c; size =     62802; name = LARPOPUP\L085.WAV
+    file[]: crc = 9397d8d4; size =    121926; name = LARPOPUP\L086.WAV
+    file[]: crc = 38541876; size =     89886; name = LARPOPUP\L087.WAV
+    file[]: crc = 8f15cacd; size =    114659; name = LARPOPUP\L088.WAV
+    file[]: crc = e2b855aa; size =     90877; name = LARPOPUP\L089.WAV
+    file[]: crc = 255f7ac0; size =     69738; name = LARPOPUP\L090.WAV
+    file[]: crc = 4b7d9069; size =     66435; name = LARPOPUP\L091.WAV
+    file[]: crc = d6888a8c; size =    111356; name = LARPOPUP\L092.WAV
+    file[]: crc = 63c64005; size =     70729; name = LARPOPUP\L093.WAV
+    file[]: crc = a92d7226; size =    118953; name = LARPOPUP\L094.WAV
+    file[]: crc = 3d022671; size =     24488; name = LARPOPUP\L095.WAV
+    file[]: crc = bcd63cc6; size =    150992; name = LARPOPUP\L096.WAV
+    file[]: crc = 625db5ee; size =    138441; name = LARPOPUP\L097.WAV
+    file[]: crc = 5f1def09; size =    133817; name = LARPOPUP\L098.WAV
+    file[]: crc = f7900715; size =     52232; name = LARPOPUP\L099.WAV
+    file[]: crc = d821cc72; size =     65114; name = LARPOPUP\L100.WAV
+    file[]: crc = 9224d867; size =    177746; name = LARPOPUP\L101.WAV
+    file[]: crc = 14fe5def; size =    122916; name = LARPOPUP\L102.WAV
+    file[]: crc = 5703625b; size =    117632; name = LARPOPUP\L103.WAV
+    file[]: crc = 9a02b13a; size =    164534; name = LARPOPUP\L104.WAV
+    file[]: crc = 3ffe391e; size =    127871; name = LARPOPUP\L105.WAV
+    file[]: crc = 5f53baf2; size =    151653; name = LARPOPUP\L106.WAV
+    file[]: crc = cd20f66c; size =     85262; name = LARPOPUP\L107.WAV
+    file[]: crc = 7f4c144e; size =     95831; name = LARPOPUP\L108.WAV
+    file[]: crc = 9907b8ed; size =     42984; name = LARPOPUP\L109.WAV
+    file[]: crc = f0ccb13e; size =    174113; name = LARPOPUP\L110.WAV
+    file[]: crc = f3e635ca; size =    205491; name = LARPOPUP\L111.WAV
+    file[]: crc = 7c6b3c42; size =    144055; name = LARPOPUP\L112.WAV
+    file[]: crc = d7c103fe; size =     69946; name = LARPOPUP\L113.WAV
+    file[]: crc = 002ba40f; size =     70729; name = LARPOPUP\L114.WAV
+    file[]: crc = c9efd246; size =    106071; name = LARPOPUP\L115.WAV
+    file[]: crc = 93997b82; size =    303579; name = LARPOPUP\L116.WAV
+    file[]: crc = 21488bff; size =    125203; name = LARPOPUP\L117.WAV
+    file[]: crc = 56706637; size =     63472; name = LARPOPUP\L118.WAV
+    file[]: crc = 4060792c; size =    215376; name = LARPOPUP\L119.WAV
+    file[]: crc = fae36641; size =     47842; name = LARPOPUP\L120.WAV
+    file[]: crc = 9ecb721c; size =    152304; name = LARPOPUP\L121.WAV
+    file[]: crc = 5bf1ff49; size =    187290; name = LARPOPUP\L122.WAV
+    file[]: crc = 386fe26f; size =    141464; name = LARPOPUP\L123.WAV
+    file[]: crc = 647426c5; size =    111406; name = LARPOPUP\L124.WAV
+    file[]: crc = 37870218; size =    182854; name = LARPOPUP\L125.WAV
+    file[]: crc = 49da9f94; size =    122740; name = LARPOPUP\L126.WAV
+    file[]: crc = 7f06d5c4; size =     84737; name = LARPOPUP\L127.WAV
+    file[]: crc = 2182fab4; size =     64595; name = LARPOPUP\L128.WAV
+    file[]: crc = f6f91859; size =    101058; name = LARPOPUP\L129.WAV
+    file[]: crc = 2d9adbc4; size =    197145; name = LARPOPUP\L130.WAV
+    file[]: crc = 2475be3a; size =    122740; name = LARPOPUP\L131.WAV
+    file[]: crc = f0e4e6a1; size =    133087; name = LARPOPUP\L132.WAV
+    file[]: crc = 97234051; size =     91205; name = LARPOPUP\L133.WAV
+    file[]: crc = 9809f7ec; size =     76293; name = LARPOPUP\L134.WAV
+    file[]: crc = ecfd2d4c; size =     63787; name = LARPOPUP\L135.WAV
+    file[]: crc = e94612d7; size =    105340; name = LARPOPUP\L136.WAV
+    file[]: crc = 870c52b6; size =    152138; name = LARPOPUP\L137.WAV
+    file[]: crc = dea82f3d; size =    186429; name = LARPOPUP\L138.WAV
+    file[]: crc = 2276fdf8; size =     24480; name = LARPOPUP\LARPOPUP.EXE
+    file[]: crc = 80a97f01; size =    148680; name = LARPOPUP\M00.MWV
+    file[]: crc = 9086681f; size =    141413; name = LARPOPUP\M01.MWV
+    file[]: crc = d8f8773a; size =     16216; name = LARPOPUP\POP1.BMP
+    file[]: crc = 49ff626b; size =     16216; name = LARPOPUP\POP2.BMP
+    file[]: crc = cba1a597; size =     16216; name = LARPOPUP\POP3.BMP
+    file[]: crc = 83d91abb; size =     16216; name = LARPOPUP\POP4.BMP
+    file[]: crc = 6120bd99; size =     16216; name = LARPOPUP\POP5.BMP
+    file[]: crc = 2e92817b; size =      6942; name = LARPOPUP\USERGUID.TXT
+    file[]: crc = 47aa6092; size =     75286; name = MUSIC\22M8\10000.AUD
+    file[]: crc = 2fe095ff; size =   2449803; name = MUSIC\22M8\13000.AUD
+    file[]: crc = ca884814; size =   3209318; name = MUSIC\22M8\51200.AUD
+    file[]: crc = 846dcfb4; size =    301104; name = MUSIC\22S16\10000.AUD
+    file[]: crc = e487176d; size =   9799174; name = MUSIC\22S16\13000.AUD
+    file[]: crc = e4852e79; size =  12837234; name = MUSIC\22S16\51200.AUD
+    file[]: crc = 4b53b066; size =    150558; name = MUSIC\22S8\10000.AUD
+    file[]: crc = d68cdb1f; size =   4899593; name = MUSIC\22S8\13000.AUD
+    file[]: crc = e2133500; size =   6418623; name = MUSIC\22S8\51200.AUD
 end
 
 end
