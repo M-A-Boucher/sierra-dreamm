@@ -7,8 +7,8 @@ name = Leisure Suit Larry Goes Looking for Love (In Several Wrong Places)
 icon = sol-lsl2.png
 machine = pc
 osenv = dos
-rootpath = C:\
-launch = $(rootpath)\SCIV.EXE
+rootpath = C:\SIERRA\LSL2
+launch = $(rootpath)\SIERRA.EXE
 mips = $(MIPS_386DX_33)
 ramkb = 1024
 filter = sierra, adventure
@@ -90,11 +90,7 @@ CFG = [[[$(CRLF)
     mouseDrv = STDMOUSE.DRV
 ]]]
 
-script[init]:
-    code = [[[$(CRLF)
-        file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
-    ]]]
-end
+script[init]: code = file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)")
 
 //
 // filesystem
@@ -112,7 +108,6 @@ $(include cp-lsl2.inc)
 //
 game[v1.000.011-int-0.000.343-3x720k]:
     name = v1.000.011, Int. 0.000.343, 3x720K
-    launch = SIERRA.EXE
     anchorfile = RESOURCE.001
     file[]: crc = 2604f137; size =      5684; name = ADL.DRV
     file[]: crc = df1dd41f; size =      2388; name = CGA320BW.DRV; optional = true
@@ -139,9 +134,7 @@ end
 //
 game[v1.000.011-int-0.000.343-6x360k]:
     name = v1.000.011, Int. 0.000.343, 6x360K
-    launch = SIERRA.EXE
     imports = v1.000.011-int-0.000.343-3x720k
-    anchorfile = RESOURCE.001
     file[]: crc = b1fc0228; size =    140526; name = RESOURCE.001
     file[]: crc = b5de1232; size =    348672; name = RESOURCE.002
     file[]: crc = 588b0c0e; size =    236676; name = RESOURCE.003
@@ -158,7 +151,6 @@ game[v1.002.000-int-0.000.409-3x720k]:
     name = v1.002.000, Int. 0.000.409, 3x720K
     launch = SCIV.EXE
     imports = v1.000.011-int-0.000.343-3x720k
-    anchorfile = RESOURCE.001
     file[]: crc = ae656423; size =      5857; name = ADL.DRV
     file[]: crc = 00d6319d; size =      2029; name = CGA320BW.DRV; optional = true
     file[]: crc = 7e2226e0; size =      2388; name = CGA320C.DRV ; optional = true
@@ -173,6 +165,7 @@ game[v1.002.000-int-0.000.409-3x720k]:
     file[]: crc = 6d7d7c65; size =      4758; name = RESOURCE.MAP
     file[]: crc = a72ed4bc; size =     73697; name = SCIV.EXE
     file[]: crc = 68bab91d; size =      1325; name = STD.DRV
+    file[]: remove = SIERRA.EXE
 end
 
 //
@@ -180,9 +173,7 @@ end
 //
 game[v1.002.000-int-0.000.409-6x360k]:
     name = v1.002.000, Int. 0.000.409, 6x360K
-    launch = SCIV.EXE
     imports = v1.002.000-int-0.000.409-3x720k
-    anchorfile = RESOURCE.001
     file[]: crc = bcaeb1da; size =    143847; name = RESOURCE.001
     file[]: crc = 7807636d; size =    348331; name = RESOURCE.002
     file[]: crc = e5f695e7; size =    236550; name = RESOURCE.003
@@ -190,17 +181,6 @@ game[v1.002.000-int-0.000.409-6x360k]:
     file[]: crc = 6a501f98; size =    277732; name = RESOURCE.005
     file[]: crc = f624731f; size =    345683; name = RESOURCE.006
     file[]: crc = b32f24ab; size =      5628; name = RESOURCE.MAP
-end
-
-//
-// Leisure Suit Larry's Greatest Hits and Misses (v1.002.000, Int. 0.000.409)
-//
-game[v1.002.000-int-0.000.409-leisure-suit-larry-collectors-series]:
-    name = Leisure Suit Larry's Greatest Hits and Misses (v1.002.000, Int. 0.000.409)
-    launch = SCIV.EXE
-    imports = v1.002.000-int-0.000.409-6x360k
-    anchorfile = RESOURCE.001
-    file[]: remove = SIERRA.EXE
 end
 
 end
