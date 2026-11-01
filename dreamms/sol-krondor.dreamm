@@ -7,13 +7,14 @@ name = Betrayal at Krondor
 icon = sol-krondor.png
 machine = pc
 osenv = dos
-rootpath = C:\
+rootpath = C:\KRONDOR
 launch = $(rootpath)\KRONDOR.EXE
 mips = $(MIPS_P100)
 ramkb = 8192
-videohw = vga;
+videohw = vga
 audiohw = $(AUDIOHW)
 filter = sierra, adventure
+CD = false
 
 //
 // sound configuration
@@ -85,8 +86,18 @@ script[init]:
         if (is_game())
           file_save("$$(rootpath)\\RESOURCE.CFG", "$$(CFG)");
 
-        if (file_exists("$$(rootpath)\\CD\\CDDA.SOU"))
+        if ($(CD))
+        {
           file_save("$$(rootpath)\\DRIVE.CFG", "$$(DRIVE)");
+          
+          if (!file_exists("$$(rootpath)\\KRONDOR.CFG"))
+          { 
+            if (file_exists("$$(rootpath)\\CD\\CDDA.SOU"))
+              file_save("$$(rootpath)\\KRONDOR.CFG", "`h:02 01 03 00 1F");
+            else
+              file_save("$$(rootpath)\\KRONDOR.CFG", "`h:02 01 03 00 0F");
+          }
+        }
     ]]]
 end
 
@@ -103,7 +114,6 @@ mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = file_e
 fragment[v1.0-base]:
     file[]: crc = b5a5ffe4; size =       107; name = ADL.DRV
     file[]: crc = fe394644; size =       116; name = GENMIDI.DRV
-    file[]: crc = 57b85fb7; size =    453904; name = KRONDOR.EXE
     file[]: crc = 0baeb6c4; size =       109; name = MT32.DRV
     file[]: crc = 46fbecdf; size =        97; name = SNDBLAST.DRV
     file[]: crc = fe78b9a7; size =       118; name = STD.DRV
@@ -144,34 +154,6 @@ installer[v1.0-int-6.15.93-7x1.44m-installer]:
     file[]: crc = ca0e1137; size =     15862; name = UNCHUNK.EXE
 end
 
-//
-// v1.01, Int. 6.28.93, 7x1.44M
-//
-game[v1.01-int-6.28.93-7x1.44m]:
-    name = v1.01, Int. 6.28.93, 7x1.44M
-    imports = v1.0-int-6.15.93-7x1.44m
-    anchorfile = KRONDOR.001
-    file[]: crc = a4cdc747; size =  11561634; name = KRONDOR.001
-    file[]: crc = 1ce3751f; size =    453920; name = KRONDOR.EXE
-    file[]: crc = c9e4b862; size =     14149; name = KRONDOR.RMF
-end
-
-//
-// v1.01, Int. 6.28.93, 7x1.44M, Installer
-//
-installer[v1.01-int-6.28.93-7x1.44m-installer]:
-    name = v1.01, Int. 6.28.93, 7x1.44M, Installer
-    installid = v1.01-int-6.28.93-7x1.44m
-    launch = DREAMM.BAT
-    imports = v1.0-int-6.15.93-7x1.44m-installer
-    anchorfile = RESOURCE.000
-    file[]: crc = 131daaaa; size =   1456272; name = RESOURCE.001
-    file[]: crc = c9fb5c38; size =   1456333; name = RESOURCE.002
-    file[]: crc = e22ff9b0; size =   1456121; name = RESOURCE.003
-    file[]: crc = 2a25b08b; size =   1456044; name = RESOURCE.004
-    file[]: crc = f00bcede; size =   1456529; name = RESOURCE.005
-    file[]: crc = 968f1358; size =    945890; name = RESOURCE.006
-end
 
 //
 // v1.0, Int. 7.29.93, German, 7x1.44M
@@ -179,7 +161,6 @@ end
 game[v1.0-int-7.29.93-de-7x1.44m]:
     name = v1.0, Int. 7.29.93, German, 7x1.44M
     imports = v1.0-int-6.15.93-7x1.44m
-    anchorfile = KRONDOR.001
     file[]: crc = c5637c2e; size =  12161020; name = KRONDOR.001
     file[]: crc = 4b42ac73; size =    455824; name = KRONDOR.EXE
     file[]: crc = b5aba27f; size =     14341; name = KRONDOR.RMF
@@ -192,9 +173,7 @@ end
 installer[v1.0-int-7.29.93-de-7x1.44m-installer]:
     name = v1.0, Int. 7.29.93, German, 7x1.44M, Installer
     installid = v1.0-int-7.29.93-de-7x1.44m
-    launch = DREAMM.BAT
     imports = v1.0-int-6.15.93-7x1.44m-installer
-    anchorfile = RESOURCE.000
     file[]: crc = 4b42ac73; size =    455824; name = KRONDOR.EXE
     file[]: crc = efe1624b; size =   1456234; name = RESOURCE.001
     file[]: crc = de6fb32c; size =   1456411; name = RESOURCE.002
@@ -205,12 +184,37 @@ installer[v1.0-int-7.29.93-de-7x1.44m-installer]:
 end
 
 //
+// v1.01, Int. 6.28.93, 7x1.44M
+//
+game[v1.01-int-6.28.93-7x1.44m]:
+    name = v1.01, Int. 6.28.93, 7x1.44M
+    imports = v1.0-int-6.15.93-7x1.44m
+    file[]: crc = a4cdc747; size =  11561634; name = KRONDOR.001
+    file[]: crc = 1ce3751f; size =    453920; name = KRONDOR.EXE
+    file[]: crc = c9e4b862; size =     14149; name = KRONDOR.RMF
+end
+
+//
+// v1.01, Int. 6.28.93, 7x1.44M, Installer
+//
+installer[v1.01-int-6.28.93-7x1.44m-installer]:
+    name = v1.01, Int. 6.28.93, 7x1.44M, Installer
+    installid = v1.01-int-6.28.93-7x1.44m
+    imports = v1.0-int-6.15.93-7x1.44m-installer
+    file[]: crc = 131daaaa; size =   1456272; name = RESOURCE.001
+    file[]: crc = c9fb5c38; size =   1456333; name = RESOURCE.002
+    file[]: crc = e22ff9b0; size =   1456121; name = RESOURCE.003
+    file[]: crc = 2a25b08b; size =   1456044; name = RESOURCE.004
+    file[]: crc = f00bcede; size =   1456529; name = RESOURCE.005
+    file[]: crc = 968f1358; size =    945890; name = RESOURCE.006
+end
+
+//
 // v1.02, Int. 9.21.93, 7x1.44M
 //
 game[v1.02-int-9.21.93-7x1.44m]:
     name = v1.02, Int. 9.21.93, 7x1.44M
     imports = v1.01-int-6.28.93-7x1.44m
-    anchorfile = KRONDOR.001
     file[]: crc = 3c1a8a55; size =  11562208; name = KRONDOR.001
     file[]: crc = b5c120a7; size =    454960; name = KRONDOR.EXE
     file[]: crc = 13b21912; size =     14149; name = KRONDOR.RMF
@@ -223,9 +227,7 @@ end
 installer[v1.02-int-9.21.93-7x1.44m-installer]:
     name = v1.02, Int. 9.21.93, 7x1.44M, Installer
     installid = v1.02-int-9.21.93-7x1.44m
-    launch = DREAMM.BAT
     imports = v1.01-int-6.28.93-7x1.44m-installer
-    anchorfile = RESOURCE.000
     file[]: crc = b5c120a7; size =    454960; name = KRONDOR.EXE
     file[]: crc = bca01e49; size =   1456238; name = RESOURCE.001
     file[]: crc = 27dcbb96; size =   1456531; name = RESOURCE.002
@@ -236,16 +238,25 @@ installer[v1.02-int-9.21.93-7x1.44m-installer]:
 end
 
 //
+// v1.02, Free Release
+//
+game[v1.02-free]:
+    name = v1.02, Free Release
+    imports = v1.02-int-9.21.93-7x1.44m
+    file[]: crc = 57b85fb7; size =    453904; name = KRONDOR.EXE
+end
+
+//
 // v1.02, CD
 //
 game[v1.02-cd]:
     name = v1.02, CD
     imports = v1.02-int-9.21.93-7x1.44m
-    anchorfile = KRONDOR.001
+    CD = true
     file[]: crc = d89e0563; size =  11562652; name = KRONDOR.001
     file[]: crc = d7b6aa1d; size =    456048; name = KRONDOR.EXE
     file[]: crc = f1c23f87; size =     14165; name = KRONDOR.RMF
-    file[]:                                   name = CD\CDDA.SOU; cdda = 97/113/62/50/84/42/26/33/12/66/51/47/48/64/46/51/77/73/57/65/77/58/105/71/56/45/43/47/45/34/80/52/56/72/12/41/69/63/30/37/91/44/67/50/54/9/9/11/9/15/16/16/14/14/12/75/54/60/9/57/75/83
+    file[]:                                   name = CD\CDDA.SOU; cdda = 97/113/62/50/84/42/26/33/12/66/51/47/48/64/46/51/77/73/57/65/77/58/105/71/56/45/43/47/45/34/80/52/56/72/12/41/69/63/30/37/91/44/67/50/54/9/9/11/9/15/16/16/14/14/12/75/54/60/9/57/75/83; optional = true
 end
 
 end
